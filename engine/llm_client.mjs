@@ -4,17 +4,27 @@
  */
 
 import http from 'http';
+import https from 'https';
 
 const OLLAMA_HOST = process.env.OLLAMA_HOST || 'localhost';
 const OLLAMA_PORT = process.env.OLLAMA_PORT || 11434;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '';
 
 export class LlmClient {
   constructor(defaultModel = 'qwen2.5:3b') {
     this.defaultModel = defaultModel;
   }
 
-  // 1. Yerel Ollama Modellerini Listele
+  // 1. Kullanılabilir Modelleri Listele (Ollama + Google Gemini)
   async listAvailableModels() {
+    const result = {
+      available: false,
+      models: [],
+      geminiAvailable: Boolean(GEMINI_API_KEY),
+      geminiModels: ['gemini-2.0-flash', 'gemini-1.5-pro', 'gemini-4-argon (Deneysel / Gelecek Nesil)'],
+      host: `http://${OLLAMA_HOST}:${OLLAMA_PORT}`
+    };
+
     return new Promise((resolve) => {
       const req = http.request({
         hostname: OLLAMA_HOST,
@@ -28,30 +38,110 @@ export class LlmClient {
         res.on('end', () => {
           try {
             const parsed = JSON.parse(data);
-            const models = (parsed.models || []).map(m => m.name);
-            resolve({ available: true, models, host: `http://${OLLAMA_HOST}:${OLLAMA_PORT}` });
+            const ollamaModels = (parsed.models || []).map(m => m.name);
+            result.available = true;
+            result.models = [...ollamaModels, ...result.geminiModels];
+            resolve(result);
           } catch (e) {
-            resolve({ available: false, models: [], error: 'JSON parse hatası' });
+            result.models = [...result.geminiModels];
+            resolve(result);
           }
         });
       });
 
       req.on('error', () => {
-        resolve({ available: false, models: [], error: 'Ollama servisine ulaşılamadı' });
+        result.models = [...result.geminiModels];
+        resolve(result);
       });
 
       req.on('timeout', () => {
         req.destroy();
-        resolve({ available: false, models: [], error: 'Zaman aşımı' });
+        result.models = [...result.geminiModels];
+        resolve(result);
       });
 
       req.end();
     });
   }
 
-  // 2. Metin Üret (Generate)
+  // 2. Metin Üret (Router: Gemini veya Ollama)
   async generateCompletion(prompt, model = null) {
     const targetModel = model || this.defaultModel;
+
+    if (targetModel.toLowerCase().startsWith('gemini')) {
+      return this.generateGeminiCompletion(prompt, targetModel);
+    }
+
+    return this.generateOllamaCompletion(prompt, targetModel);
+  }
+
+  // 2.1 Google Gemini API Entegrasyonu (Gemini 2.0 / 1.5 / Argon vb.)
+  async generateGeminiCompletion(prompt, model) {
+    const cleanModelName = model.split(' ')[0].trim(); // 'gemini-4-argon (Deneysel)' -> 'gemini-4-argon'
+    const apiKey = GEMINI_API_KEY;
+
+    if (!apiKey) {
+      throw new Error(`GEMINI_API_KEY bulunamadi. Gemini modelini (${cleanModelName}) kullanmak icin terminalde export GEMINI_API_KEY="AIza..." calistiriniz.`);
+    }
+
+    return new Promise((resolve, reject) => {
+      const payload = JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+          temperature: 0.2,
+          responseMimeType: 'application/json'
+        }
+      });
+
+      const options = {
+        hostname: 'generativelanguage.googleapis.com',
+        path: `/v1beta/models/${cleanModelName}:generateContent?key=${apiKey}`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(payload)
+        },
+        timeout: 30000
+      };
+
+      const req = https.request(options, (res) => {
+        let body = '';
+        res.on('data', chunk => { body += chunk; });
+        res.on('end', () => {
+          try {
+            const data = JSON.parse(body);
+            if (data.error) {
+              reject(new Error(`Gemini API Hatasi (${data.error.code}): ${data.error.message}`));
+              return;
+            }
+            const candidateText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (!candidateText) {
+              reject(new Error('Gemini API gecerli bir yanit donmedi.'));
+              return;
+            }
+            resolve(candidateText);
+          } catch (err) {
+            reject(new Error(`Gemini yaniti cozumlenemedi: ${err.message}`));
+          }
+        });
+      });
+
+      req.on('error', (err) => {
+        reject(new Error(`Gemini API baglanti hatasi: ${err.message}`));
+      });
+
+      req.on('timeout', () => {
+        req.destroy();
+        reject(new Error('Gemini API istek zaman asimina ugradi (30s).'));
+      });
+
+      req.write(payload);
+      req.end();
+    });
+  }
+
+  // 2.2 Yerel Ollama API Entegrasyonu
+  async generateOllamaCompletion(prompt, targetModel) {
 
     return new Promise((resolve, reject) => {
       const payload = JSON.stringify({
