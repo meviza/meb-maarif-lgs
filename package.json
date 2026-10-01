@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node engine/test_suite.mjs",
     "generate": "node engine/question_builder.mjs",
+    "generate:bulk": "node engine/bulk_generator.mjs",
     "seed": "node engine/seed_runner.mjs",
     "start": "node server.mjs",
     "serve": "node server.mjs"

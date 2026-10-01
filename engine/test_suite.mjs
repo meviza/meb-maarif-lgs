@@ -234,6 +234,38 @@ async function runTestSuite() {
     assert.strictEqual(retrieved.studentName, 'Kerem Çelik', 'Öğrenci adı eşleşmiyor');
   });
 
+  // TEST 9: Faz 4 - Canlı LLM Entegrasyonu ve JEV Self-Correction Motoru
+  await asyncTest('Faz 4: LLM istemcisi, prompt motoru ve JEV self-correction döngüsü çalışmalı', async () => {
+    const { buildQuestionPrompt, buildSelfCorrectionPrompt } = await import('./prompt_templates.mjs');
+    const p1 = buildQuestionPrompt({ course: 'turkce', topic: 'Paragrafta Yapı' });
+    assert.ok(p1.includes('BLOOM TAKSONOMİSİ'), 'Sistem yönergeleri eksik');
+
+    const p2 = buildSelfCorrectionPrompt({
+      originalQuestion: { id: 'TEST-01' },
+      rejectionReasons: ['Çeldirici gücü yetersiz']
+    });
+    assert.ok(p2.includes('Çeldirici gücü yetersiz'), 'Düzeltme geri bildirimi eksik');
+
+    // Model listesi
+    const { llmClient } = await import('./llm_client.mjs');
+    const modelInfo = await llmClient.listAvailableModels();
+    assert.ok(typeof modelInfo.available === 'boolean', 'Model durumu boolean olmalı');
+
+    // JEV Pipeline ile soru üretimi ve denetimi
+    const { jevPipeline } = await import('./jev_self_correction.mjs');
+    const result = await jevPipeline.produceQuestion({
+      course: 'turkce',
+      topic: 'Paragrafta Anlam',
+      outcomeCode: 'T.8.3.14'
+    });
+
+    assert.ok(result.success, 'Soru üretimi başarısız');
+    assert.ok(result.question.stimulus, 'Öncül metni eksik');
+    assert.ok(result.question.stem, 'Soru kökü eksik');
+    assert.ok(result.audit.passed, 'JEV onayı alınamadı');
+    assert.ok(result.audit.score >= 0.85, 'JEV puanı yetersiz');
+  });
+
   console.log('\n====================================================');
   console.log(`📊 TEST SONUÇLARI: ${passedTests}/${totalTests} Test Başarıyla Geçti.`);
   console.log('====================================================');

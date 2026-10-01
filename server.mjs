@@ -8,6 +8,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { db } from './engine/db_adapter.mjs';
+import { llmClient } from './engine/llm_client.mjs';
+import { jevPipeline } from './engine/jev_self_correction.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -191,6 +193,38 @@ export const server = http.createServer((req, res) => {
       return;
     }
     sendJson(res, 200, result);
+    return;
+  }
+
+  // 7. Faz 4: AI Model Bilgisi ve Ollama Durumu: GET /api/ai/models
+  if (req.method === 'GET' && pathname === '/api/ai/models') {
+    llmClient.listAvailableModels().then(info => {
+      sendJson(res, 200, info);
+    }).catch(err => {
+      sendJson(res, 500, { error: err.message });
+    });
+    return;
+  }
+
+  // 8. Faz 4: Canlı Soru Üretimi ve JEV Self-Correction: POST /api/ai/generate-question
+  if (req.method === 'POST' && pathname === '/api/ai/generate-question') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', async () => {
+      try {
+        const payload = JSON.parse(body || '{}');
+        const generated = await jevPipeline.produceQuestion({
+          course: payload.course || 'turkce',
+          topic: payload.topic || 'Paragrafta Anlam',
+          outcomeCode: payload.outcomeCode,
+          difficulty: payload.difficulty,
+          model: payload.model
+        });
+        sendJson(res, 200, generated);
+      } catch (err) {
+        sendJson(res, 500, { error: err.message });
+      }
+    });
     return;
   }
 
