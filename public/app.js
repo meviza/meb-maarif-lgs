@@ -87,7 +87,20 @@ let timerInterval = null;
 let timerSeconds = 30 * 60;
 
 // Sayfa Yüklendiğinde
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('questions.json');
+    if (res.ok) {
+      const data = await res.json();
+      Object.keys(data).forEach(k => {
+        questionBank[k] = data[k];
+      });
+      console.log('⚡ Jev onaylı sorular questions.json üzerinden başarıyla yüklendi.');
+    }
+  } catch (err) {
+    console.log('Yerel soru havuzu kullanılıyor.');
+  }
+
   renderQuestionNav();
   loadQuestion(0);
   renderOpticalSheet();

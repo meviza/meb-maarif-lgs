@@ -4,9 +4,9 @@
   "description": "MEB Türkiye Yüzyılı Maarif Modeli 8. Sınıf LGS Soru Bankası, Jev System-1 Denetim Motoru ve Optik Sınav Platformu",
   "type": "module",
   "scripts": {
-    "test": "node engine/jev_evaluator.mjs",
+    "test": "node engine/test_suite.mjs",
     "generate": "node engine/question_builder.mjs",
-    "serve": "npx serve public -l 3000"
+    "serve": "npx serve public -l 3333"
   },
   "keywords": [
     "meb",

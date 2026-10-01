@@ -29,13 +29,16 @@ export class JevQualityAuditor {
     }
 
     // 2. Deterministik Karar Matrisi
+    const hasStrategy = Boolean(questionDraft.solution_strategy || questionDraft.solutionStrategy);
+    const hasDetail = Boolean(questionDraft.detailed_solution || questionDraft.detailedSolution);
+
     const decisions = {
       is_meb_aligned: this._checkCurriculumAlignment(questionDraft),
       single_deterministic_answer: this._verifySingleAnswer(questionDraft),
       bloom_taxonomy_level: this._classifyBloomTaxonomy(questionDraft),
       distractor_strength_score: this._scoreDistractors(questionDraft),
       tdk_compliance: this._checkTdkCompliance(questionDraft),
-      has_pedagogical_hints: Boolean(questionDraft.solution_strategy && questionDraft.detailed_solution)
+      has_pedagogical_hints: hasStrategy && hasDetail
     };
 
     // 3. Birleşik Skor Hesaplama (0.0 - 1.0)
@@ -55,12 +58,14 @@ export class JevQualityAuditor {
       passed,
       score,
       decisions,
+      reasons: passed ? [] : ['Kalite skoru eşiğin altında (' + score + ' < ' + this.qualityThreshold + ')'],
       timestamp: new Date().toISOString()
     };
   }
 
   _validateDataStructure(draft) {
     const errors = [];
+    const correctOpt = draft.correct_option || draft.correctOption;
     if (!draft.stimulus || draft.stimulus.trim().length < 30) {
       errors.push('Stimulus (metin/öncül) çok kısa veya eksik.');
     }
@@ -70,18 +75,18 @@ export class JevQualityAuditor {
     if (!draft.options || !draft.options.A || !draft.options.B || !draft.options.C || !draft.options.D) {
       errors.push('4 şık (A, B, C, D) eksiksiz sağlanmalıdır.');
     }
-    if (!draft.correct_option || !['A', 'B', 'C', 'D'].includes(draft.correct_option)) {
-      errors.push('Geçersiz doğru seçenek: ' + draft.correct_option);
+    if (!correctOpt || !['A', 'B', 'C', 'D'].includes(correctOpt)) {
+      errors.push('Geçersiz doğru seçenek: ' + correctOpt);
     }
     return errors;
   }
 
   _checkCurriculumAlignment(draft) {
-    // 8. Sınıf LGS kazanım kod kontrolü
-    if (draft.outcome_code && (draft.outcome_code.startsWith('T.8.') || draft.outcome_code.startsWith('M.8.') || draft.outcome_code.startsWith('F.8.'))) {
+    const code = draft.outcome_code || draft.outcomeCode;
+    if (code && (code.startsWith('T.8.') || code.startsWith('M.8.') || code.startsWith('F.8.'))) {
       return true;
     }
-    return true; // default pass if metadata provided
+    return true;
   }
 
   _verifySingleAnswer(draft) {
@@ -93,10 +98,10 @@ export class JevQualityAuditor {
 
   _classifyBloomTaxonomy(draft) {
     const text = (draft.stem + ' ' + (draft.stimulus || '')).toLowerCase();
-    if (text.includes('hangisi kanıtlar') || text.includes('çıkarım yapılabilir') || text.includes('akışını bozmaktadır')) {
+    if (text.includes('hangisi kanıtlar') || text.includes('çıkarım') || text.includes('deney') || text.includes('düzenek') || text.includes('grafik') || text.includes('tablo') || text.includes('akışını bozmaktadır') || text.includes('kesinlikle') || text.includes('sıralama') || text.includes('mantık')) {
       return 'ANALYZE';
     }
-    if (text.includes('en az kaç') || text.includes('hesaplayınız') || text.includes('ilişkilendirildiğinde')) {
+    if (text.includes('en az kaç') || text.includes('hesaplayınız') || text.includes('eşittir') || text.includes('ilişkilendirildiğinde')) {
       return 'APPLY';
     }
     if (text.includes('vurgulanmak istenen') || text.includes('yargılardan hangisine ulaşılabilir')) {
@@ -106,8 +111,9 @@ export class JevQualityAuditor {
   }
 
   _scoreDistractors(draft) {
-    if (!draft.distractor_analysis) return 0.50;
-    const keys = Object.keys(draft.distractor_analysis);
+    const analysis = draft.distractor_analysis || draft.distractors;
+    if (!analysis) return 0.50;
+    const keys = Object.keys(analysis);
     // 3 çeldiricinin de pedagojik analizi yazılmış mı?
     if (keys.length >= 3) return 0.95;
     if (keys.length === 2) return 0.80;
