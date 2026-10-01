@@ -1145,3 +1145,434 @@ body {
   }
 }
 
+/* ==========================================================================
+   FAZ 5: Shadcn/UI Öğretmen & Yönetici Paneli (LMS Studio)
+   ========================================================================== */
+
+.admin-dashboard-view {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.admin-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.admin-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.admin-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 4px 0 0;
+}
+
+.admin-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 9999px;
+}
+
+/* 4 Metrik Kartı Grid */
+.stat-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-icon {
+  font-size: 18px;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.stat-trend {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* İki Sütunlu Çalışma Alanı */
+.admin-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.admin-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 14px;
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-icon {
+  font-size: 22px;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 3px 0 0;
+}
+
+/* Shadcn Form Elemanları */
+.ai-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.form-control {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-action-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-shadcn-primary {
+  background: var(--primary-deep-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-shadcn-primary:hover {
+  background: #1e3a8a;
+  transform: translateY(-1px);
+}
+
+.btn-shadcn-secondary {
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-shadcn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.status-msg {
+  font-size: 12px;
+  color: var(--accent-blue);
+  font-weight: 600;
+  animation: pulse 1.5s infinite;
+}
+
+/* Soru Önizleme Kartı */
+.ai-preview-box {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preview-tags {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.prev-stimulus {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #334155;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-blue);
+}
+
+.prev-stem {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.prev-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.prev-opt-item {
+  font-size: 12px;
+  padding: 6px 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.prev-opt-item.correct {
+  border-color: #10b981;
+  background: #f0fdf4;
+  font-weight: 700;
+}
+
+.prev-strategy-box {
+  font-size: 11px;
+  color: #0369a1;
+  background: #f0f9ff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
+}
+
+/* Shadcn Tablo */
+.sessions-table-wrapper {
+  overflow-x: auto;
+}
+
+.shadcn-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+
+.shadcn-table th {
+  background: #f8fafc;
+  color: #64748b;
+  font-weight: 700;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.shadcn-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--text-main);
+}
+
+.empty-table-cell {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 32px 12px !important;
+}
+
+/* ==========================================================================
+   YAZDIRILABİLİR LGS DENEME KİTAPÇIĞI (@media print)
+   ========================================================================== */
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+
+  .navbar,
+  .sidebar,
+  .optical-column,
+  .booklet-footer-nav,
+  .mode-toggle-group,
+  .admin-dashboard-view,
+  .mobile-optical-trigger,
+  .solution-drawer {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-booklet-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 90vh;
+    border: 3px double #000000;
+    padding: 40px;
+    margin: 20px 0;
+  }
+
+  .print-cover-title {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 10pt;
+  }
+
+  .print-cover-sub {
+    font-size: 14pt;
+    margin-bottom: 30pt;
+  }
+
+  .print-questions-grid {
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid #cccccc;
+  }
+
+  .print-question-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 24pt;
+    padding-bottom: 12pt;
+    border-bottom: 1px dashed #dddddd;
+  }
+
+  .print-q-num {
+    font-weight: bold;
+    font-size: 13pt;
+  }
+
+  .print-optical-page {
+    page-break-before: always;
+    border: 2px solid #000000;
+    padding: 30px;
+    margin: 20px 0;
+  }
+}
+

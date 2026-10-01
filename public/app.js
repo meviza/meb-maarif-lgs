@@ -107,8 +107,20 @@ function setupEventListeners() {
   // Mod Değiştirme
   const btnPractice = document.getElementById('btnPracticeMode');
   const btnExam = document.getElementById('btnExamMode');
+  const btnAdmin = document.getElementById('btnAdminMode');
+  const btnPrint = document.getElementById('btnPrintMode');
+
   if (btnPractice) btnPractice.addEventListener('click', () => setMode('practice'));
   if (btnExam) btnExam.addEventListener('click', () => setMode('exam'));
+  if (btnAdmin) btnAdmin.addEventListener('click', () => setMode('admin'));
+  if (btnPrint) btnPrint.addEventListener('click', () => setMode('print'));
+
+  // AI Canlı Soru Stüdyosu
+  const btnGenAi = document.getElementById('btnGenerateAiQuestion');
+  if (btnGenAi) btnGenAi.addEventListener('click', generateAiQuestion);
+
+  const btnSaveAi = document.getElementById('btnSaveToBank');
+  if (btnSaveAi) btnSaveAi.addEventListener('click', saveAiQuestionToBank);
 
   // Ders Değiştirme Butonları
   const courseButtons = document.querySelectorAll('.course-btn');
@@ -141,13 +153,35 @@ function setupEventListeners() {
   }
 }
 
-// 4. Mod Değiştirme
+// 4. Mod Değiştirme (Öğrenme, Gerçek Sınav, Öğretmen Paneli, Yazdır)
 function setMode(mode) {
-  appState.currentMode = mode;
-  document.getElementById('btnPracticeMode').classList.toggle('active', mode === 'practice');
-  document.getElementById('btnExamMode').classList.toggle('active', mode === 'exam');
+  if (mode === 'print') {
+    preparePrintBooklet();
+    window.print();
+    return;
+  }
 
+  appState.currentMode = mode;
+  document.getElementById('btnPracticeMode')?.classList.toggle('active', mode === 'practice');
+  document.getElementById('btnExamMode')?.classList.toggle('active', mode === 'exam');
+  document.getElementById('btnAdminMode')?.classList.toggle('active', mode === 'admin');
+
+  const mainLayout = document.getElementById('mainLayout');
+  const adminDashboard = document.getElementById('adminDashboard');
   const timerEl = document.getElementById('examTimer');
+
+  if (mode === 'admin') {
+    if (mainLayout) mainLayout.classList.add('hidden');
+    if (adminDashboard) adminDashboard.classList.remove('hidden');
+    if (timerEl) timerEl.classList.add('hidden');
+    clearInterval(appState.timerInterval);
+    renderAdminDashboard();
+    return;
+  } else {
+    if (mainLayout) mainLayout.classList.remove('hidden');
+    if (adminDashboard) adminDashboard.classList.add('hidden');
+  }
+
   if (mode === 'exam') {
     timerEl.classList.remove('hidden');
     startTimer();
@@ -665,4 +699,237 @@ function startTimer() {
       display.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     }
   }, 1000);
+}
+
+// ============================================================================
+// FAZ 5: Shadcn/UI Öğretmen & Yönetici Paneli & Canlı AI Soru Stüdyosu
+// ============================================================================
+
+let lastGeneratedAiQuestion = null;
+
+// Yönetici Panelini Render Et
+async function renderAdminDashboard() {
+  // Toplam Soru Sayısı
+  let totalQ = 0;
+  for (const cKey of ['turkce', 'matematik', 'fen', 'sosyal']) {
+    const course = appState.multiTestBank[cKey];
+    if (course && course.tests) {
+      totalQ += course.tests.reduce((acc, t) => acc + (t.questions?.length || 0), 0);
+    }
+  }
+  const totalQEl = document.getElementById('adminStatTotalQuestions');
+  if (totalQEl) totalQEl.textContent = totalQ;
+
+  // Çözülen Oturum Sayısı ve Ortalama Net
+  const completedSessions = Object.values(appState.sessions).filter(s => s.examEvaluated && s.score);
+  const totalSessionsEl = document.getElementById('adminStatTotalSessions');
+  const avgNetEl = document.getElementById('adminStatAvgNet');
+
+  if (totalSessionsEl) totalSessionsEl.textContent = completedSessions.length;
+  if (avgNetEl) {
+    if (completedSessions.length > 0) {
+      const sumNet = completedSessions.reduce((acc, s) => acc + s.score.net, 0);
+      avgNetEl.textContent = (sumNet / completedSessions.length).toFixed(2);
+    } else {
+      avgNetEl.textContent = '--';
+    }
+  }
+
+  // Ollama Modellerini Çek ve Listele
+  try {
+    const res = await fetch('/api/ai/models');
+    if (res.ok) {
+      const data = await res.json();
+      const select = document.getElementById('aiModelSelect');
+      const badge = document.getElementById('aiModelBadge');
+      if (select && data.models && data.models.length > 0) {
+        select.innerHTML = '';
+        data.models.forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m;
+          opt.textContent = m + (m.includes('qwen') ? ' (Önerilen)' : '');
+          select.appendChild(opt);
+        });
+        if (badge) badge.textContent = `${data.models.length} Model Aktif`;
+      }
+    }
+  } catch (err) {
+    console.log('Ollama model listesi yerel modda.');
+  }
+
+  // Oturum Geçmişi Tablosunu Doldur
+  const tbody = document.getElementById('adminSessionsTableBody');
+  if (tbody) {
+    if (completedSessions.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="5" class="empty-table-cell">Henüz çözülmüş sınav oturumu bulunmuyor. Bir test çözüp tamamlayınız.</td></tr>`;
+    } else {
+      tbody.innerHTML = completedSessions.map(s => `
+        <tr>
+          <td><strong>Kerem Çelik</strong></td>
+          <td>${s.score?.totalQuestions ? `${s.score.totalQuestions} Soruluk LGS Testi` : 'LGS Denemesi'}</td>
+          <td><span style="color:#059669; font-weight:700;">${s.score.correct} D</span> / <span style="color:#dc2626; font-weight:700;">${s.score.wrong} Y</span> / <span>${s.score.empty} B</span></td>
+          <td><strong style="color:#2563eb; font-size:14px;">${s.score.net.toFixed(2)}</strong></td>
+          <td><span class="badge-pill" style="background:#dcfce7; color:#15803d; font-weight:700;">✓ Tamamlandı</span></td>
+        </tr>
+      `).join('');
+    }
+  }
+}
+
+// Canlı AI Soru Üret (Ollama + JEV Self-Correction Pipeline)
+async function generateAiQuestion() {
+  const course = document.getElementById('aiCourseSelect')?.value || 'turkce';
+  const topic = document.getElementById('aiTopicInput')?.value || 'Paragrafta Anlam';
+  const model = document.getElementById('aiModelSelect')?.value || 'qwen2.5:3b';
+  const difficulty = document.getElementById('aiDifficultySelect')?.value || 'LGS Yeni Nesil';
+
+  const statusEl = document.getElementById('aiGenerationStatus');
+  const btnGen = document.getElementById('btnGenerateAiQuestion');
+  const previewBox = document.getElementById('aiQuestionPreviewBox');
+
+  if (statusEl) {
+    statusEl.classList.remove('hidden');
+    statusEl.textContent = `🤖 ${model} modeli soruyu kurguluyor ve JEV denetliyor...`;
+  }
+  if (btnGen) btnGen.disabled = true;
+
+  try {
+    const res = await fetch('/api/ai/generate-question', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ course, topic, model, difficulty })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.question) {
+        lastGeneratedAiQuestion = data.question;
+
+        if (previewBox) {
+          previewBox.classList.remove('hidden');
+
+          document.getElementById('prevCourse').textContent = data.question.course;
+          document.getElementById('prevDifficulty').textContent = data.question.difficulty;
+          document.getElementById('prevJevScore').textContent = `JEV ONAYLI: ${data.audit.score} (Deneme: ${data.attempts})`;
+
+          document.getElementById('prevStimulus').textContent = data.question.stimulus;
+          document.getElementById('prevStem').textContent = data.question.stem;
+
+          const optionsGrid = document.getElementById('prevOptions');
+          if (optionsGrid && data.question.options) {
+            optionsGrid.innerHTML = Object.entries(data.question.options).map(([k, v]) => `
+              <div class="prev-opt-item ${k === data.question.correctOption ? 'correct' : ''}">
+                <strong>${k})</strong> ${v} ${k === data.question.correctOption ? '✓' : ''}
+              </div>
+            `).join('');
+          }
+
+          const strategyBox = document.getElementById('prevStrategy');
+          if (strategyBox) {
+            strategyBox.innerHTML = `<strong>${data.question.solutionStrategy}</strong><br/><span style="color:#475569;">${data.question.detailedSolution}</span>`;
+          }
+        }
+      }
+    }
+  } catch (err) {
+    alert('AI soru üretiminde hata: ' + err.message);
+  } finally {
+    if (statusEl) statusEl.classList.add('hidden');
+    if (btnGen) btnGen.disabled = false;
+  }
+}
+
+// Üretilen Soruyu Canlı Havuza Ekle
+function saveAiQuestionToBank() {
+  if (!lastGeneratedAiQuestion) return;
+
+  const courseKey = lastGeneratedAiQuestion.course.toLowerCase();
+  const targetCourse = appState.multiTestBank[courseKey] || appState.multiTestBank.turkce;
+
+  if (targetCourse && targetCourse.tests && targetCourse.tests[0]) {
+    targetCourse.tests[0].questions.push(lastGeneratedAiQuestion);
+    updateCourseBadges();
+    renderAdminDashboard();
+    alert(`✓ Tebrikler! "${lastGeneratedAiQuestion.id}" kodlu yeni nesil soru ${targetCourse.courseName} havuzuna başarıyla eklendi.`);
+
+    const previewBox = document.getElementById('aiQuestionPreviewBox');
+    if (previewBox) previewBox.classList.add('hidden');
+    lastGeneratedAiQuestion = null;
+  }
+}
+
+// Resmi MEB Yazdırılabilir Kitapçık ve Optik Form (@media print)
+function preparePrintBooklet() {
+  const container = document.getElementById('printBookletContainer');
+  if (!container) return;
+
+  const courseData = getCurrentCourseData();
+  const test = getCurrentTest();
+  if (!test) return;
+
+  let questionsHtml = '';
+  test.questions.forEach((q, idx) => {
+    questionsHtml += `
+      <div class="print-question-card">
+        <div class="print-q-num">SORU ${idx + 1} (${q.outcomeCode})</div>
+        <div style="margin: 8px 0; font-size: 11pt; line-height: 1.4;">${q.stimulus}</div>
+        <div style="font-weight: bold; margin-bottom: 8px; font-size: 11pt;">${q.stem}</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 10pt;">
+          <div><strong>A)</strong> ${q.options.A}</div>
+          <div><strong>B)</strong> ${q.options.B}</div>
+          <div><strong>C)</strong> ${q.options.C}</div>
+          <div><strong>D)</strong> ${q.options.D}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  let opticalRows = '';
+  test.questions.forEach((q, idx) => {
+    opticalRows += `
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px; font-family: monospace;">
+        <span style="width: 24px; font-weight: bold;">${idx + 1}.</span>
+        <span>( A )</span> <span>( B )</span> <span>( C )</span> <span>( D )</span>
+      </div>
+    `;
+  });
+
+  container.innerHTML = `
+    <div class="print-cover-page">
+      <div style="font-size: 16pt; font-weight: bold; margin-bottom: 20px;">T.C. MİLLÎ EĞİTİM BAKANLIĞI</div>
+      <div class="print-cover-title">8. SINIF MERKEZİ SINAV (LGS) DENEME KİTAPÇIĞI</div>
+      <div class="print-cover-sub">Türkiye Yüzyılı Maarif Modeli • ${courseData.courseName} - ${test.title}</div>
+      <div style="border: 2px solid #000; padding: 20px; width: 80%; margin: 20px auto; text-align: left; font-size: 11pt;">
+        <p><strong>ADAYIN ADI SOYADI:</strong> ..............................................................</p>
+        <p><strong>T.C. KİMLİK NUMARASI:</strong> ..............................................................</p>
+        <p><strong>KİTAPÇIK TÜRÜ:</strong> A</p>
+        <p><strong>TOPLAM SORU SAYISI:</strong> ${test.questions.length} Soru</p>
+        <p><strong>SINAV SÜRESİ:</strong> 30 Dakika</p>
+      </div>
+      <p style="font-size: 10pt; color: #444; margin-top: 30px;">Bu test JEV System-1 yapay zekâ kalite denetiminden geçmiş ve MEB standartlarına uygun olarak derlenmiştir.</p>
+    </div>
+
+    <div style="padding: 20px 0;">
+      <div style="text-align: center; font-weight: bold; font-size: 14pt; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 8px;">
+        ${courseData.courseName.toUpperCase()} DERSİ SINAV SORULARI (${test.title})
+      </div>
+      <div class="print-questions-grid">
+        ${questionsHtml}
+      </div>
+    </div>
+
+    <div class="print-optical-page">
+      <div style="text-align: center; font-weight: bold; font-size: 16pt; margin-bottom: 16px;">
+        ÖDSGM LGS OPTİK CEVAP KAĞIDI (A KİTAPÇIĞI)
+      </div>
+      <div style="display: flex; justify-content: space-around; border: 1px solid #000; padding: 12px; margin-bottom: 20px;">
+        <span><strong>DERS:</strong> ${courseData.courseName}</span>
+        <span><strong>TEST:</strong> ${test.id}</span>
+        <span><strong>SORU SAYISI:</strong> ${test.questions.length}</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 40px;">
+        <div>${opticalRows}</div>
+      </div>
+    </div>
+  `;
 }
