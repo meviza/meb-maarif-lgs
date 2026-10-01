@@ -98,13 +98,24 @@ export class JevQualityAuditor {
 
   _classifyBloomTaxonomy(draft) {
     const text = (draft.stem + ' ' + (draft.stimulus || '')).toLowerCase();
-    if (text.includes('kanıt') || text.includes('çıkar') || text.includes('deney') || text.includes('düzenek') || text.includes('grafik') || text.includes('tablo') || text.includes('akışını bozmaktadır') || text.includes('kesinlikle') || text.includes('sıralama') || text.includes('mantık') || text.includes('ilişki') || text.includes('karşılaştır')) {
+    if (
+      text.includes('kanıt') || text.includes('çıkar') || text.includes('deney') ||
+      text.includes('düzenek') || text.includes('grafik') || text.includes('tablo') ||
+      text.includes('akışını bozmaktadır') || text.includes('kesinlikle') || text.includes('sıralama') ||
+      text.includes('mantık') || text.includes('ilişki') || text.includes('karşılaştır') ||
+      text.includes('söylenemez') || text.includes('ulaşılamaz') || text.includes('yanlıştır') ||
+      text.includes('savunulamaz') || text.includes('yararlanılma') || text.includes('bağdaşır')
+    ) {
       return 'ANALYZE';
     }
-    if (text.includes('kaç') || text.includes('hesap') || text.includes('eşittir') || text.includes('değeri') || text.includes('alan') || text.includes('hacim')) {
+    if (
+      text.includes('kaç') || text.includes('hesap') || text.includes('eşittir') ||
+      text.includes('değeri') || text.includes('alan') || text.includes('hacim') ||
+      text.includes('gösterim') || text.includes('olasılık') || text.includes('oran')
+    ) {
       return 'APPLY';
     }
-    if (text.includes('vurgulanmak istenen') || text.includes('ulaşılabilir') || text.includes('ana fikir')) {
+    if (text.includes('vurgulanmak istenen') || text.includes('ulaşılabilir') || text.includes('ana fikir') || text.includes('değerlendirme')) {
       return 'EVALUATE';
     }
     return 'UNDERSTAND';

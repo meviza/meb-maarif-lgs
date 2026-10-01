@@ -1,0 +1,200 @@
+{
+  "test1": {
+    "id": "SOS-T1",
+    "title": "Test 1: Bir Kahraman Doğuyor & Millî Uyanış",
+    "badge": "2024 LGS Çıkmış Soru Benzeri",
+    "questions": [
+      {
+        "id": "LGS-SOS-T1-01",
+        "course": "İNKILAP TARİHİ",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "İTA.8.1.1 • Bir Kahraman Doğuyor: Fikir Akımları ve Dağılmayı Önleme Çabaları",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "19. yüzyılın sonları ve 20. yüzyılın başlarında dağılma tehlikesiyle karşı karşıya kalan Osmanlı Devleti'ni kurtarmak amacıyla aydınlar ve devlet adamları tarafından çeşitli fikir akımları ileri sürülmüştür:\n\n• Osmanlıcılık: Din, dil ve ırk farkı gözetmeksizin imparatorluk sınırları içindeki herkesi kanun önünde eşit 'Osmanlı vatandaşı' kabul ederek ortak bir vatan aidiyeti oluşturmayı amaçlamıştır. Ancak 1877-1878 Osmanlı-Rus Savaşı sonrası bağımsızlığını ilan eden Balkan uluslarının ayrılıkçı isyanları ve II. Meşrutiyet dönemindeki gelişmeler bu akımın devletin bütünlüğünü sağlamaya yetmediğini göstermiştir.\n\n• İslamcılık (Ümmetçilik): Bütün Müslümanları halifenin sancağı etrafında birleştirmeyi ve İslami dayanışmayı esas almıştır. II. Abdülhamid döneminde devlet politikası olarak uygulanmış; fakat I. Dünya Savaşı'nda Halife'nin yayımladığı cihad çağrısına rağmen bazı Arap aşiretlerinin İngilizlerle iş birliği yaparak Hicaz ve Yemen cephelerinde Osmanlı birliklerine karşı savaşması bu fikrin birleştiriciliğine ağır bir darbe vurmuştur.\n\n• Türkçülük: Balkan Savaşları sonrasında yaşanan büyük hezimetler ve Osmanlıcılık ile İslamcılığın etkisini kaybetmesi üzerine kuvvetlenmiştir. Ziya Gökalp ve Mehmet Emin Yurdakul gibi aydınların öncülüğünde, millî kimliğe, kültüre ve Türk milletinin öz gücüne dayanarak bir varoluş mücadelesi verilmesini savunmuş; daha sonra Kurtuluş Savaşı'nın ve cumhuriyetin temel ideolojik harcını oluşturmuştur.",
+        "stem": "Verilen tarihsel bilgiler ve fikir akımlarının gelişim seyri incelendiğinde aşağıdaki değerlendirmelerden hangisine ulaşılamaz?",
+        "options": {
+          "A": "Osmanlı aydınları ve idarecileri, imparatorluğun parçalanmasını önlemek amacıyla dönemin şartlarına göre farklı siyasal ve toplumsal projeler üretmişlerdir.",
+          "B": "Uluslararası gelişmeler ve sahadaki askerî-siyasi hadiseler, bazı fikir akımlarının geçerliliğini yitirmesinde ve etkisini kaybetmesinde belirleyici olmuştur.",
+          "C": "Türkçülük akımı, çok uluslu ve ümmetçi modellerin başarısızlığa uğradığı bir tarihsel konjonktürde Anadolu'daki bağımsızlık iradesine fikrî dayanak sağlamıştır.",
+          "D": "Osmanlı aydınları, Batı dünyasının bilimsel ve teknik ilerlemelerini bütünüyle reddederek kurtuluşu yalnızca monarşik düzenin katı muhafazasında aramışlardır."
+        },
+        "correctOption": "D",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Bu soru, 2024 LGS'de sıkça test edilen 'Metne Dayalı Çıkarım ve Tarihsel Kavram Analizi' mantığına dayanır. Çözüm tekniği: Seçeneklerdeki aşırı genellemeleri ve tarihsel anakronizmleri (çelişkileri) arayın. D şıkkında yer alan 'Batı dünyasının bilimsel ve teknik ilerlemelerini bütünüyle reddetme' iddiası; hem Osmanlı yenileşme hareketlerinin (Tanzimat, Meşrutiyet) hem Batıcılık akımının hem de Mustafa Kemal'in benimsediği çağdaşlaşma vizyonunun tam aksidir. Aydınlar geleneksel yapıyı katı şekilde korumak için değil, devleti modernleştirerek kurtarmak için fikir üretmişlerdir.",
+        "detailedSolution": "Metindeki tarihsel veriler adım adım analiz edildiğinde:\n- Osmanlıcılık, İslamcılık ve Türkçülük akımlarının devleti çöküşten kurtarmak amacıyla üretildiği bilgisi A şıkkını kesin olarak doğrular.\n- Balkan Savaşları'nın Osmanlıcılığa, Arap aşiretlerinin İngilizlerle iş birliğinin İslamcılığa darbe vurması; uluslararası hadiselerin fikir akımlarının geçerliliğini yitirmesine yol açtığını gösterir (B şıkkı doğru).\n- Osmanlıcılık ve İslamcılığın dağılmayı önleyememesi üzerine güçlenen Türkçülüğün, Kurtuluş Savaşı'nın ideolojik harcını oluşturduğu tespiti C şıkkını doğrular.\n- D şıkkındaki 'aydınların Batı bilim ve tekniğini bütünüyle reddettiği' yargısı ise tamamen asılsızdır. Osmanlı aydınları (örneğin Tevfik Fikret, Abdullah Cevdet gibi Batıcılar ya da Ziya Gökalp gibi Türkçüler) Batı'nın tekniğini alarak modernleşmeyi savunmuşlardır; dolayısıyla bu çıkarım yapılamaz.",
+        "distractors": {
+          "A": "Güçlü Çeldirici (Doğru Analiz Tuzağı): Metnin giriş cümlesinde doğrudan ifade edilen 'dağılmayı önlemek için farklı projeler üretildiği' tespitidir; doğru bir çıkarım olduğu için olumsuz soru kökünde elenmelidir.",
+          "B": "Orta Çeldirici (Nedensellik İlişkisi): Savaşlar ve isyanlar ile fikir akımlarının çöküşü arasındaki nedensellik bağını doğru kuran bir seçenektir.",
+          "C": "Zayıf Çeldirici: Türkçülüğün Kurtuluş Savaşı'na zemin hazırladığı bilgisi metnin son cümlesinde açıkça belirtilmiştir."
+        }
+      },
+      {
+        "id": "LGS-SOS-T1-02",
+        "course": "İNKILAP TARİHİ",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "İTA.8.1.3 • Bir Kahraman Doğuyor: Mustafa Kemal'in Askerlik Hayatı ve Kişilik Özellikleri",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Mustafa Kemal Paşa'nın Millî Mücadele öncesinde üstlendiği görevlerde sergilediği iki mühim hadise şöyledir:\n\nI. Hadise (Trablusgarp Savaşı - 1911): İtalyanların Trablusgarp'ı işgali üzerine Osmanlı Devleti karadan Mısır'ın İngiliz işgali altında olması, denizden ise donanmanın yetersizliği sebebiyle bölgeye ordu gönderememiştir. Mustafa Kemal ve bir grup genç Osmanlı subayı, kılık değiştirerek ve binbir güçlüğü aşarak gizlice Trablusgarp'a gitmiştir. Mustafa Kemal (Gazeteci Şerif Bey takma adıyla), bölgedeki dağınık ve birbiriyle rekabet halindeki yerli Arap kabilelerini bir araya getirerek onları düzenli bir savunma hattında birleştirmiş; Derne ve Tobruk'ta modern İtalyan ordusuna karşı büyük direniş zaferleri elde etmiştir.\n\nII. Hadise (Çanakkale Cephesi - 1915): 19. Tümen Komutanı Yarbay Mustafa Kemal, Çanakkale Kara Savaşları sırasında İtilaf birliklerinin Seddülbahir'den ziyade Arıburnu ve Conkbayırı hattından ana çıkarmayı yapacağını ve tepeyi ele geçirmek isteyeceğini önceden tahmin etmiştir. Üst komutanlıktan emir beklemeksizin kendi inisiyatifiyle 57. Alay'ı harekete geçirmiş, kilit tepeyi düşmandan önce tutmuş ve askerlerine 'Ben size taarruzu emretmiyorum, ölmeyi emrediyorum! Biz ölünceye kadar geçecek zaman zarfında yerimize başka kuvvetler ve komutanlar kaim olabilir!' emrini vererek çıkartmayı püskürtmüştür.",
+        "stem": "Mustafa Kemal Paşa'nın bu iki tarihî hadisede sergilediği tutum ve icraatlar; sırasıyla onun aşağıdaki kişilik özelliklerinden hangileriyle doğrudan bağdaşır?",
+        "options": {
+          "A": "Teşkilatçılık (Örgütleyicilik) — İleri Görüşlülük ve Liderlik",
+          "B": "Gelenekçilik — Çok Yönlülük",
+          "C": "Açık Sözlülük — Uzlaşmacılık",
+          "D": "İnkılapçılık — Dogmatiklik"
+        },
+        "correctOption": "A",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: MEB LGS'de Mustafa Kemal'in kişilik özellikleri her yıl istisnasız sorulan çekirdek bir konudur. Kavram anahtarları:\n- Dağınık halkı/kabileleri örgütleme, millî cemiyetleri birleştirme -> 'Teşkilatçılık / Birleştiricilik / Örgütleyicilik'.\n- Düşmanın nereden çıkarma yapacağını veya bir olayın gelecekteki akışını önceden kestirip haklı çıkma -> 'İleri Görüşlülük'.\n- İnisiyatif alarak askere cesaret aşılama ve komuta etme -> 'Liderlik / Askerî Deha'.\nBu eşleştirmeyi sağlayan yegâne seçenek A'dır.",
+        "detailedSolution": "Hadiseler incelendiğinde:\n- I. Hadisede Mustafa Kemal'in dağınık yerli halkı İtalyan sömürgeciliğine karşı örgütlemesi, onları ortak bir gaye etrafında organize etmesi onun tartışmasız 'Teşkilatçılık (Örgütleyicilik)' vasfını kanıtlar.\n- II. Hadisede ise İtilaf Devletleri'nin nereden çıkarma yapacağını önceden doğru öngörmesi 'İleri Görüşlülük' yeteneğini; kritik anda üstlerinden emir beklemeksizin inisiyatif alarak tarihi emri vermesi ve savaşın seyrini değiştirmesi ise 'Liderlik ve Kararlılık' vasfını ispatlar.\n- Bu nedenle I ve II numaralı hadiseler sırasıyla Teşkilatçılık ve İleri Görüşlülük/Liderlik ile örtüşmektedir (Doğru cevap A).",
+        "distractors": {
+          "B": "Güçlü Çeldirici (Kavram Yanılgısı Tuzağı): Mustafa Kemal'in farklı sahalardaki başarılarını 'çok yönlülük' olarak düşünen öğrenci bu şıkka kayabilir; ancak ilk bölümdeki 'gelenekçilik' Mustafa Kemal'in inkılapçı kimliğiyle bağdaşmaz.",
+          "C": "Orta Çeldirici: Mustafa Kemal'in askerlerine verdiği 'ölmeyi emrediyorum' sözü kararlılık içerse de 'uzlaşmacılık' savaştaki uzlaşmaz tavırla taban tabana zıttır.",
+          "D": "Zayıf Çeldirici: 'Dogmatiklik' (bağnazlık, katılık) Mustafa Kemal'in akılcı ve bilimsel düşünce sistemiyle asla bağdaşmayan çelişkili bir ifadedir."
+        }
+      },
+      {
+        "id": "LGS-SOS-T1-03",
+        "course": "İNKILAP TARİHİ",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "İTA.8.2.2 • Millî Uyanış: Mondros Ateşkes Antlaşması ve İşgallere Karşı Tepkiler",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "30 Ekim 1918'de imzalanan Mondros Ateşkes Antlaşması'nın bazı maddeleri ve bu maddelerin uygulanma süreci şöyledir:\n\n• 7. Madde: İtilaf Devletleri, güvenliklerini tehdit edecek bir durum ortaya çıkarsa herhangi bir stratejik noktayı işgal hakkına sahip olacaktır.\n• 24. Madde: Vilâyât-ı Sitte'de (Doğu'daki altı vilayette) bir karışıklık çıkarsa, İtilaf Devletleri buraları işgal edebilecektir.\n• Askerî Hükümler: Sınırların korunması ve iç güvenliğin temini için gereken asgari birlikler dışındaki Osmanlı ordusu derhâl terhis edilecek; orduya ait silah, cephane ve mühimmat İtilaf Devletleri'nin kontrolüne teslim edilecektir.\n• Ulaşım ve Haberleşme Hükümleri: Bütün telsiz, telgraf istasyonları ile demir yolları ve Toros Tünelleri İtilaf Devletleri'nin denetimine bırakılacaktır.\n\nAntlaşmanın hemen ardından İtilaf donanması İstanbul'a demirlemiş; İngilizler Musul, Urfa, Antep ve Maraş'ı; Fransızlar Adana ve Mersin'i; İtalyanlar Antalya ve Muğla çevresini; Yunanlılar ise İzmir'i işgal etmiştir. Bu işgaller karşısında İstanbul Hükûmeti teslimiyetçi ve sükûneti telkin eden bir politika izlerken; Türk milleti vatan topraklarını korumak amacıyla bölgesel Müdafaa-i Hukuk cemiyetleri kurmuş ve Kuvâ-yı Millîye birlikleriyle silahlı direnişe geçmiştir.",
+        "stem": "Mondros Ateşkes Antlaşması'nın maddeleri ve yaşanan gelişmeler birlikte değerlendirildiğinde aşağıdakilerden hangisi söylenemez?",
+        "options": {
+          "A": "İtilaf Devletleri, antlaşmanın 7 ve 24. maddeleri sayesinde Anadolu'da yapacakları keyfî işgallere uluslararası hukuk zemininde meşru bir kılıf hazırlamışlardır.",
+          "B": "Ordunun terhis edilmesi ve haberleşme araçlarına el konulması, Türk milletini savunmasız bırakmayı ve işgallere karşı organize bir direniş cephesinin kurulmasını engellemeyi hedeflemiştir.",
+          "C": "İstanbul Hükûmeti ile Türk milleti, işgal güçlerine karşı yekvücut hareket ederek ortak bir savunma ve kurtuluş stratejisi uygulamıştır.",
+          "D": "Türk milletinin kurduğu Müdafaa-i Hukuk cemiyetleri ve Kuvâ-yı Millîye birlikleri, milletin bağımsız yaşama azminin ve meşru müdafaa hakkının somut göstergesidir."
+        },
+        "correctOption": "C",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Bu soru tipinde LGS, 'İstanbul Hükûmeti'nin tutumu' ile 'Türk milletinin tutumu' arasındaki derin zıtlığı test eder. Mondros sonrası İstanbul Hükûmeti padişah ve Damat Ferit önderliğinde teslimiyetçi, sessiz ve uzlaşmacı davranmış; halka 'direnmeyin, İtilafların adaletine güvenin' çağrısı yapmıştır. Buna karşılık Türk milleti cemiyetler ve Kuvâ-yı Millîye ile başkaldırmıştır. C şıkkındaki 'İstanbul Hükûmeti ile Türk milletinin ortak savunma yaptığı' iddiası bariz bir tarihsel yanılgıdır.",
+        "detailedSolution": "Maddeler ve tarihsel gerçekler değerlendirildiğinde:\n- 7. ve 24. maddelerin ucu açık ifadeleri ('güvenliği tehdit eden durum', 'karışıklık'), İtilaf Devletleri'nin istedikleri yeri işgal etmelerine hukuki bahane oluşturmuştur (A şıkkı doğru).\n- Ordunun dağıtılması ve telgraf/demir yollarına el konulması, halkın birbirini haberdar etmesini ve ordunun karşı koymasını önleyerek memleketi savunmasız bırakma amacını taşır (B şıkkı doğru).\n- Türk milletinin işgalleri kabul etmeyip Kuvâ-yı Millîye ve direniş cemiyetlerini kurması bağımsızlık aşkını ve meşru savunma hakkını kanıtlar (D şıkkı doğru).\n- C şıkkında iddia edilen durum ise tamamen yanlıştır; İstanbul Hükûmeti işgallere boyun eğip teslimiyetçi bir tavır takınırken, Türk milleti tam aksine kendi öz gücüyle silahlı direniş başlatmıştır. Yani aralarında ortak bir mücadele stratejisi değil, derin bir yaklaşım farkı ve çatışma mevcuttur.",
+        "distractors": {
+          "A": "Güçlü Çeldirici (Hukuki Yorum Tuzağı): 7. ve 24. maddelerin amacını kavramakta zorlanan öğrenci 'hukuki kılıf' kavramına takılabilir; ancak bu maddeler tam olarak işgalleri meşrulaştırmak için konulmuştur.",
+          "B": "Orta Çeldirici (Askerî-Lojistik Analiz): Ordunun terhisi ve telgraf kontrolünün mantığını açıklayan doğru bir tespit olduğu için aranan olumsuz cevap olamaz.",
+          "D": "Zayıf Çeldirici: Kuvâ-yı Millîye ve cemiyetlerin milletin bağımsızlık refleksini temsil ettiği temel bir MEB kazanımıdır."
+        }
+      },
+      {
+        "id": "LGS-SOS-T1-04",
+        "course": "İNKILAP TARİHİ",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "İTA.8.2.4 • Millî Uyanış: Genelgeler ve Kongreler Süreci (Sivas Kongresi ve Teşkilatlanma)",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "4-11 Eylül 1919 tarihleri arasında toplanan Sivas Kongresi, Millî Mücadele'nin teşkilatlanmasında dönüm noktası teşkil eden tarihî kararlara imza atmıştır:\n\n1. Karar: Yurdun dört bir yanında bölgesel kurtuluş amacıyla kurulan bütün Müdafaa-i Hukuk cemiyetleri, 'Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti' adı altında birleştirilmiştir.\n2. Karar: Erzurum Kongresi'nde yalnızca Doğu illerini temsilen seçilen Temsil Heyeti'nin üye sayısı artırılmış ve bu heyet 'Bütün vatanı temsil eder' hükmü getirilmiştir.\n3. Karar: Manda ve himaye fikri, kongrede yapılan yoğun tartışmaların ardından bir daha asla gündeme gelmemek üzere kesin ve nihai olarak reddedilmiştir.\n4. Karar: Temsil Heyeti, Ali Fuat Paşa'yı Batı Cephesi Kuvâ-yı Millîye Genel Komutanlığı görevine resmen atamıştır.\n5. Karar: Millî davanın haklı gerekçelerini millete ve dünya kamuoyuna duyurmak, zararlı propagandaları etkisiz kılmak için Sivas'ta 'İrade-i Millîye' adıyla bir gazete çıkarılması kararlaştırılmıştır.",
+        "stem": "Sivas Kongresi'nde alınan bu kararlar ve ulaşılan sonuçlarla ilgili aşağıdaki eşleştirmelerden hangisi yanlıştır?",
+        "options": {
+          "A": "Cemiyetlerin birleştirilmesi -> Millî Mücadele'nin bölgesellikten kurtarılarak tek bir merkezden ve ortak stratejiyle idare edilmesi sağlanmıştır.",
+          "B": "Temsil Heyeti'nin Ali Fuat Paşa'yı ataması -> Heyetin yasama yetkisini kullanarak İstanbul Hükûmeti'nin yerini tamamen aldığını kanıtlar.",
+          "C": "Manda ve himayenin kesin reddi -> Tam bağımsızlık ilkesinden hiçbir surette taviz verilmeyeceğini ilan etmiştir.",
+          "D": "İrade-i Millîye gazetesinin çıkarılması -> Millî Mücadele'nin sesini duyurmak ve kamuoyu oluşturmak için basının gücünden yararlanıldığını gösterir."
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Bu soru, LGS'de devletin üç temel erki olan 'Yasama, Yürütme, Yargı' kavramlarının tarihsel olaylara uygulanmasını ölçer.\n- Yasama: Kanun yapma, yasa çıkarma (Meclis görevidir).\n- Yürütme: Kanunları uygulama, hükûmet etme, bir memuru veya ordu komutanını göreve atama (Hükûmet görevidir).\n- Yargı: Mahkemeler yoluyla yargılama yapma.\nTemsil Heyeti'nin Ali Fuat Paşa'yı komutan olarak tayin etmesi bir 'atama' işlemidir; dolayısıyla YASAMA değil, YÜRÜTME yetkisinin kullanıldığını gösterir. B şıkkında 'yasama yetkisi' dendiği için hatalıdır!",
+        "detailedSolution": "Kararlar ve kavramsal sonuçları irdelendiğinde:\n- Bütün cemiyetlerin Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti çatısında toplanması, Millî Mücadele'yi merkezi bir disiplin ve tek elden yönetim kabiliyetine ulaştırmıştır (A şıkkı doğru).\n- Temsil Heyeti'nin bir komutanı (Ali Fuat Paşa'yı) Batı Cephesi'ne ataması, bir hükûmet gibi hareket ettiğini ve 'Yürütme' (icra) yetkisini ilk defa kullandığını gösterir. Atama işlemi kanun koyma (yasama) değildir; bu sebeple B şıkkındaki eşleştirme kavramsal olarak yanlıştır.\n- Manda ve himayenin koşulsuz reddedilmesi, başka bir devletin vesayetine girmeyi dışlayarak 'Tam Bağımsızlık' kararlılığını simgeler (C şıkkı doğru).\n- Gazete çıkarılması basın-yayın yoluyla halkı aydınlatma, iç ve dış kamuoyunu örgütleme hamlesidir (D şıkkı doğru).",
+        "distractors": {
+          "A": "Güçlü Çeldirici (Merkeziyetçilik Analizi): Cemiyetlerin birleştirilmesinin Millî Mücadele'yi tek merkezden yönetmek anlamına geldiğini bilen öğrenci bu şıkkı hızla eler.",
+          "C": "Orta Çeldirici: Manda ve himaye ile tam bağımsızlık arasındaki doğrudan zıtlığı bildiren doğru bir eşleştirmedir.",
+          "D": "Zayıf Çeldirici: İrade-i Millîye gazetesinin basın ve kamuoyu oluşturma fonksiyonu açık bir bilgidir."
+        }
+      }
+    ]
+  },
+  "test2": {
+    "id": "SOS-T2",
+    "title": "Test 2: Ya İstiklal Ya Ölüm & Maarif Seferberliği",
+    "badge": "MEB Maarif Modeli Özel",
+    "questions": [
+      {
+        "id": "LGS-SOS-T2-01",
+        "course": "İNKILAP TARİHİ",
+        "sourceTag": "MEB Maarif Modeli Özel",
+        "outcomeCode": "İTA.8.3.1 • Doğu ve Güney Cepheleri: Gümrü Antlaşması ve Millî Mücadele Diplomasisi",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Mondros Ateşkesi sonrasında ordusunu dağıtmayan 15. Kolordu Komutanı Kâzım Karabekir Paşa, Doğu Anadolu'da Türk köylerine baskın düzenleyen ve Sevr Antlaşması'na dayanarak bölgede hak iddia eden Ermeni kuvvetlerine karşı taarruza geçmiştir. Sarıkamış, Kars ve Gümrü'yü kurtaran Türk ordusunun kesin askerî zaferi üzerine Ermenistan Hükûmeti barış istemek zorunda kalmış ve 3 Aralık 1920'de TBMM Hükûmeti ile Ermenistan arasında Gümrü Barış Antlaşması imzalanmıştır.\n\nAntlaşmanın mühim hükümleri şunlardır:\n• Kars, Sarıkamış, Kağızman ve Iğdır TBMM Hükûmeti'ne bırakılacaktır.\n• Ermenistan Hükûmeti, Sevr Antlaşması'nı tanımadığını ve Türkiye aleyhindeki bütün toprak iddialarından vazgeçtiğini kabul edecektir.\n• Ermenistan, antlaşma metninde ilk kez 'Türkiye Büyük Millet Meclisi Hükûmeti' ifadesini resmen kullanmıştır.\n\nBu antlaşmanın akabinde Doğu Cephesi kapanmış, bölgedeki düzenli ordu birlikleri ile silah ve cephane stokları Yunan taarruzunun yoğunlaştığı Batı Cephesi'ne sevk edilmiştir.",
+        "stem": "Gümrü Antlaşması'nın maddeleri ve doğurduğu sonuçlar dikkate alındığında aşağıdaki çıkarımlardan hangisi yapılamaz?",
+        "options": {
+          "A": "TBMM Hükûmeti, uluslararası diplomaside ilk askerî ve siyasi zaferini kazanarak varlığını yabancı bir devlete hukuken kabul ettirmiştir.",
+          "B": "Sevr Antlaşması'nın Doğu Anadolu'da bağımsız bir Ermenistan devleti kurulmasını öngören maddesi hem sahada hem de masada geçersiz kılınmıştır.",
+          "C": "Doğu Cephesi'ndeki tehlikenin bertaraf edilmesi, Türk ordusunun Batı Cephesi'ndeki savunma gücünü lojistik ve insan kaynağı bakımından kuvvetlendirmiştir.",
+          "D": "Gümrü Antlaşması ile Türkiye'nin doğu sınırları hiçbir değişikliğe uğramayacak şekilde nihai ve kesin şeklini almıştır."
+        },
+        "correctOption": "D",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: MEB Maarif Modeli ve LGS sınavlarında doğu sınırının aşamaları en temel ayırt edici kazanımlardan biridir. Doğu sınırının kronolojik gelişimi:\n1. Gümrü Antlaşması (Ermenistan ile - ilk adım, Doğu Cephesi kapandı),\n2. Moskova Antlaşması (Sovyetler Birliği ile - I. İnönü Zaferi sonrası sınır büyük ölçüde çizildi, Batum Gürcistan'a bırakıldı),\n3. Kars Antlaşması (Kafkas Cumhuriyetleri ile - Sakarya Zaferi sonrası Doğu sınırı KESİN ŞEKLİNİ ALDI).\nDolayısıyla D şıkkındaki 'Gümrü Antlaşması ile doğu sınırları kesin ve nihai şeklini almıştır' yargısı kronolojik ve tarihsel olarak yanlıştır.",
+        "detailedSolution": "Tarihsel gelişmeler ve antlaşma hükümleri incelendiğinde:\n- Gümrü Antlaşması TBMM'nin imzaladığı ilk antlaşmadır ve TBMM'yi tanıyan ilk devlet Ermenistan olmuştur; bu durum TBMM'nin ilk diplomatik zaferidir (A şıkkı doğru).\n- Ermenistan'ın Sevr'i tanımadığını ilan etmesi, Sevr'in büyük Ermenistan planını tarihe gömmüştür (B şıkkı doğru).\n- Doğu birliklerinin ve mühimmatın Batı'ya kaydırılması, Yunan işgaline karşı Batı Cephesi'ni tahkim etmiştir (C şıkkı doğru).\n- D şıkkı ise hatalıdır çünkü Türkiye'nin doğu sınırına son ve kesin şeklini veren antlaşma Sakarya Meydan Muharebesi'nden sonra imzalanan Kars Antlaşması'dır (13 Ekim 1921). Gümrü sadece ilk adımdır.",
+        "distractors": {
+          "A": "Güçlü Çeldirici (Hukuki Statü Analizi): TBMM'nin ilk diplomatik başarısı olduğunu bilen dikkatli öğrenci bu şıkkı eler; ancak dikkatsiz öğrenci 'hukuken tanınma' kavramını erken bularak bu seçeneğe yönelebilir.",
+          "B": "Orta Çeldirici: Sevr'in geçersizliği maddesi metinde doğrudan yazılı olduğu için elenmelidir.",
+          "C": "Zayıf Çeldirici: Doğu birliklerinin Batı Cephesi'ne kaydırılmasının lojistik faydası metnin son cümlesinde açıkça belirtilmiştir."
+        }
+      },
+      {
+        "id": "LGS-SOS-T2-02",
+        "course": "İNKILAP TARİHİ",
+        "sourceTag": "MEB Maarif Modeli Özel",
+        "outcomeCode": "İTA.8.3.3 • Batı Cephesi: Tekâlif-i Millîye Emirleri ve Topyekûn Seferberlik (Millî Dayanışma)",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Kütahya-Eskişehir Muharebeleri'nde Türk ordusunun Sakarya Nehri'nin doğusuna çekilmesi üzerine TBMM'de büyük bir sarsıntı yaşanmış; meclis, 5 Ağustos 1921'de çıkardığı kanunla yasama ve yürütme yetkilerini üç aylık süreyle Mustafa Kemal Paşa'ya devrederek onu Başkomutan seçmiştir. Başkomutan Mustafa Kemal Paşa, 7-8 Ağustos 1921'de yayımladığı Tekâlif-i Millîye (Millî Yükümlülük) Emirleri ile milletini topyekûn bir seferberliğe çağırmıştır. Bu emirlerden bazıları şunlardır:\n\n• Her ilçede bir Tekâlif-i Millîye Komisyonu kurulacaktır.\n• Her aile birer kat çamaşır, bir çift çorap ve bir çift çarık hazırlayıp komisyona teslim edecektir.\n• Halkın ve tüccarın elinde bulunan buğday, un, saman, nohut, fasulye, et gibi gıda maddeleri ile giyim eşyalarının, kumaş, kösele ve nalın %40'ına bedeli sonradan ödenmek üzere el konulacaktır.\n• Demirci, marangoz, tesviyeci ve saraç gibi zanaatkârlar ordunun ihtiyaç duyduğu silah ve donanımı imal etmek üzere ordu hizmetine alınacaktır.\n• Taşıt sahipleri, ayda bir defa olmak üzere ordu malzemelerini 100 kilometrelik mesafeye bedelsiz taşıyacaktır.\n\nTürk milleti, elinde avucunda ne varsa canı gönülden Tekâlif-i Millîye komisyonlarına teslim etmiş; cephe gerisindeki kadınlar, çocuklar ve yaşlılar kağnılarla cepheye cephane taşımıştır.",
+        "stem": "Tekâlif-i Millîye Emirleri ve Türk milletinin bu emirlere gösterdiği fedakârlık birlikte değerlendirildiğinde aşağıdakilerden hangisi savunulamaz?",
+        "options": {
+          "A": "Kurtuluş Savaşı'nın sadece cephedeki askerin süngüsüyle değil, milletin bütün maddi ve manevi varlığını ortaya koyduğu topyekûn bir seferberlikle kazanıldığı",
+          "B": "Mustafa Kemal Paşa'nın meclisten aldığı Başkomutanlık yetkisine dayanarak doğrudan kanun niteliğinde yaptırımlar uygulayabildiği",
+          "C": "Ordunun giyim, gıda, ulaşım ve mühimmat eksikliklerinin milletin öz kaynakları ve millî dayanışma ruhuyla giderilmesinin amaçlandığı",
+          "D": "Türk milletinin bağımsızlık mücadelesini dış devletlerin vereceği şartlı hibelere ve yabancı mali yardımlara endekslediği"
+        },
+        "correctOption": "D",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: MEB Maarif Modeli'nin erdem-değer-eylem çerçevesinde 'Millî Dayanışma', 'Vatanseverlik' ve 'Fedakârlık' teması Tekâlif-i Millîye üzerinden işlenir. Soru kökünde 'savunulamaz' ifadesine dikkat edilmelidir. Türk milleti bağımsızlığı yabancı devletlerin mali yardımlarına veya mandasına değil, kendi öz varlığına, çarığına, çorabına ve kağnısına borçludur. D seçeneğindeki 'yabancı mali yardımlara endeksleme' ifadesi bağımsızlık ruhuyla tamamen çelişir.",
+        "detailedSolution": "Metin ve tarihî olgular tetkik edildiğinde:\n- Tarladaki çiftçiden atölyedeki zanaatkâra kadar herkesin savaşa katılması ve kağnılarla cepheye mermi taşınması, savaşın 'topyekûn seferberlik' karakterini açıkça kanıtlar (A şıkkı doğru).\n- Mustafa Kemal Paşa'nın meclis onayına gerek kalmaksızın bizzat yayımladığı emirlerle vergi ve hizmet yükümlülüğü getirmesi, meclisin yasama ve yürütme yetkilerini Başkomutan sıfatıyla kullandığını doğrular (B şıkkı doğru).\n- Çorap, çarık, buğday, un ve taşıtların ordu emrine tahsis edilmesi lojistik eksikliklerin millî dayanışmayla kapatılmasını hedefler (C şıkkı doğru).\n- D şıkkındaki 'yabancı mali yardımlara ve şartlı hibelere endekslendiği' iddiası ise tamamen gerçek dışıdır. Millî Mücadele hiçbir dış vesayete boyun eğmeden, milletin kendi fedakârlığı ile başarılmıştır.",
+        "distractors": {
+          "A": "Güçlü Çeldirici: Topyekûn savaş kavramını tam oturtamayan öğrencinin doğru olduğunu düşünüp elemesi gereken ana kazanımdır.",
+          "B": "Orta Çeldirici: Başkomutanlık Kanunu'nun içeriğini hatırlamayan öğrenci 'Mustafa Kemal kanun niteliğinde emir yayımlayabilir mi?' tereddüdüne düşebilir; fakat Başkomutanlık yasama erkinin devrini kapsar.",
+          "C": "Zayıf Çeldirici: Tekâlif-i Millîye'nin lojistik amacını doğrudan özetleyen tartışmasız doğru bir cümledir."
+        }
+      },
+      {
+        "id": "LGS-SOS-T2-03",
+        "course": "İNKILAP TARİHİ",
+        "sourceTag": "MEB Maarif Modeli Özel",
+        "outcomeCode": "İTA.8.3.4 • Maarif Seferberliği: I. Maarif Kongresi ve Millî Eğitimin Temelleri",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Kütahya-Eskişehir Muharebeleri'nin en buhranlı günlerinde, Yunan ordusunun Ankara sınırına dayandığı 16-21 Temmuz 1921 tarihinde Ankara'da I. Maarif Kongresi toplanmıştır. Mustafa Kemal Paşa cephedeki karargâhından bizzat gelerek kongrenin açış nutkunda şu tarihî tespitleri yapmıştır:\n\n'Efendiler! Yetişecek çocuklarımıza ve gençlerimize, görecekleri tahsilin hududu ne olursa olsun, en evvel ve her şeyden evvel Türkiye'nin istiklaline, kendi benliğine ve millî ananelerine düşman olan bütün unsurlarla mücadele etmek lüzumu öğretilmelidir. Dünyada milletlerarası vaziyete göre böyle bir mücadelenin gerektirdiği manevi unsurlarla donanmayan fertlerden ve bu mahiyette fertlerden mürekkep heyetlere hayat ve istiklal hakkı yoktur.\n\nŞimdiye kadar takip olunan tahsil ve terbiye usullerinin, milletimizin gerileme tarihinde en mühim etken olduğu kanaatindeyim. Onun için bir millî eğitim programından bahsederken; eski devrin hurafelerinden, doğamızla hiçbir münasebeti olmayan yabancı fikirlerden, Doğu'dan ve Batı'dan gelebilen bütün tesirlerden tamamen uzak, millî seciyemiz ve tarihimizle uyumlu bir kültürü kastediyorum. Çünkü millî dehamızın inkişafı ancak böyle bir kültür ile temin olunabilir.'",
+        "stem": "Mustafa Kemal Paşa'nın Maarif Kongresi açış nutkundan hareketle Türkiye Yüzyılı Maarif Modeli'nin de ilham kaynağı olan eğitim felsefesiyle ilgili aşağıdaki yargılardan hangisine ulaşılamaz?",
+        "options": {
+          "A": "Gelecek nesillerin eğitiminde millî bilincin, bağımsızlık aşkının ve öz değerleri savunma kararlılığının en öncelikli ilke olması gerektiği vurgulanmıştır.",
+          "B": "Milletin çağdaş medeniyet seviyesine erişebilmesinin yegâne yolunun, yerli kültürel mirası terk ederek yabancı eğitim modellerini harfiyen uygulamak olduğu savunulmuştur.",
+          "C": "Eski dönemlerde uygulanan ezberci ve taklitçi eğitim anlayışlarının toplumun gerilemesinde temel bir rol oynadığı teşhisi konulmuştur.",
+          "D": "Kültür ve eğitim politikasının milletin kendi karakterine, sosyolojik zeminine ve tarihsel birikimine uygun olarak inşa edilmesi hedeflenmiştir."
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Bu soru, MEB Maarif Modeli'nin kalbinde yer alan 'Millî Terbiye ve Maarif Vizyonu'nu sınar. Mustafa Kemal nutkunda açıkça 'Doğu'dan ve Batı'dan gelebilen bütün tesirlerden tamamen uzak, millî seciyemiz ve tarihimizle uyumlu bir kültür' talep etmektedir. B şıkkında ifade edilen 'yerli kültürel mirası terk ederek yabancı eğitim modellerini harfiyen uygulamak' anlayışı; Mustafa Kemal'in 'millî eğitim' ilkesinin tam zıttıdır ve sömürgeci bir taklitçilik zihniyetini temsil eder. Bu nedenle ulaşılamaz olan doğru seçenek B'dir.",
+        "detailedSolution": "Mustafa Kemal'in sözleri çözümlendiğinde:\n- 'Çocuklarımıza Türkiye'nin istiklaline ve millî benliğine düşman unsurlarla mücadele öğretilmelidir' ifadesi A şıkkını kesinlikle doğrular.\n- 'Şimdiye kadar takip olunan terbiye usulleri milletimizin gerilemesinde en mühim etkendir' sözü C şıkkını açıkça destekler.\n- 'Millî seciyemiz ve tarihimizle uyumlu bir kültür... Kültür milletin seciyesidir' vurgusu D şıkkını doğrular.\n- B şıkkında iddia edilen 'yerli mirası terk edip yabancı modelleri harfiyen uygulama' tezi ise metne 180 derece zıttır. Mustafa Kemal yabancı tesirlerden uzak, öz kültürümüzle yoğrulmuş millî bir eğitimi şart koşmuştur.",
+        "distractors": {
+          "A": "Güçlü Çeldirici (Öncelik Tespiti): Nutkun ilk paragrafındaki 'en evvel ve her şeyden evvel' ifadesini metinden okuyan öğrenci bunun doğruluğunu fark eder.",
+          "C": "Orta Çeldirici: Geçmiş eğitim sistemine yönelik eleştirinin doğruluğunu metindeki 'gerileme tarihinde en mühim etken' ifadesi ispatlar.",
+          "D": "Zayıf Çeldirici: Maarif felsefesinin yerlilik ve millîlik ilkesidir; metinle tam uyumludur."
+        }
+      },
+      {
+        "id": "LGS-SOS-T2-04",
+        "course": "İNKILAP TARİHİ",
+        "sourceTag": "MEB Maarif Modeli Özel",
+        "outcomeCode": "İTA.8.3.5 • Batı Cephesi: Sakarya Meydan Muharebesi ve Diplomatik Zaferler (Kars & Ankara Antlaşmaları)",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "23 Ağustos - 13 Eylül 1921 tarihleri arasında cereyan eden Sakarya Meydan Muharebesi'nde Başkomutan Mustafa Kemal Paşa'nın 'Hattı müdafaa yoktur, sathı müdafaa vardır. O satıh bütün vatandır. Vatanın her karış toprağı vatandaşın kanıyla ıslanmadıkça terk olunamaz!' emriyle Türk ordusu 22 gün 22 gece süren savaşta Yunan taarruzunu kırmış ve düşmanı hezimete uğratmıştır. 1683 II. Viyana Kuşatması'ndan beri 238 yıldır süren Türk geri çekilişi Sakarya'da son bulmuştur.\n\nBu büyük askerî zaferin iç ve dış politikadaki yansımaları şunlardır:\n• İç Politika: TBMM, 19 Eylül 1921'de Başkomutan Mustafa Kemal Paşa'ya kanunla 'Mareşal' rütbesi ve 'Gazi' unvanını vermiştir. Türk halkının orduya ve zafere olan inancı kesinleşmiştir.\n• Dış Politika (Kafkaslar): 13 Ekim 1921'de Sovyetler Birliği'ne bağlı Kafkas Cumhuriyetleri (Azerbaycan, Ermenistan, Gürcistan) ile Kars Antlaşması imzalanmış; Türkiye'nin doğu sınırı kesin olarak çizilmiştir.\n• Dış Politika (Güney Cephesi): 20 Ekim 1921'de Fransa ile Ankara Antlaşması imzalanmış; Fransa işgal ettiği Güneydoğu Anadolu'dan çekilmiş, Güney Cephesi resmen kapanmış ve Fransa TBMM'yi tanıyan ilk İtilaf Devleti olmuştur.\n• İtalya: Sakarya zaferinden sonra Anadolu'da işgal ettiği topraklardan (Antalya, Muğla çevresi) tamamen çekilmiştir.",
+        "stem": "Sakarya Meydan Muharebesi ve sonrasında yaşanan bu gelişmeler birlikte incelendiğinde aşağıdaki çıkarımlardan hangisi yapılamaz?",
+        "options": {
+          "A": "Askerî sahada kazanılan kesin zafer, hem yurt içinde idareye olan güveni pekiştirmiş hem de uluslararası sahada çok boyutlu diplomatik kazanımlara kapı aralamıştır.",
+          "B": "Fransa'nın Ankara Antlaşması'nı imzalaması ve İtalya'nın çekilmesiyle, İtilaf Devletleri arasındaki birlik bozulmuş ve Türkiye'ye karşı kurulan emperyalist blok fiilen parçalanmıştır.",
+          "C": "Sakarya Zaferi'nin akabinde İtilaf Devletleri Sevr Antlaşması dayatmasından bütünüyle vazgeçerek TBMM'nin Misakımillî hedeflerini hiçbir şart koşmaksızın hemen onaylamıştır.",
+          "D": "Güney Cephesi'nin kapanması ve Doğu sınırının kesinleşmesi, TBMM Hükûmeti'nin bütün askerî ve lojistik gücünü nihai darbe için Batı Cephesi'ne yoğunlaştırmasına olanak tanımıştır."
+        },
+        "correctOption": "C",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Bu soru, LGS'de sıkça kurulan 'Askerî Zafer -> Diplomatik Başarı' ilişkisi ve kronolojik çıkarım mantığını ölçer. Sakarya Zaferi diplomatik bir dönüm noktasıdır; Fransa ile Ankara, Kafkaslarla Kars Antlaşmaları imzalanmış, İtilaf bloğu çatlamıştır. Ancak İtilaf Devletleri Sevr'den derhâl vazgeçmemiş ve Misakımillî'yi koşulsuz kabul etmemiştir. Hâlâ barış için Sevr'i yumuşatarak sunmaya çalışmışlardır. Misakımillî'nin İtilaflara kabul ettirilmesi Büyük Taarruz, Başkomutan Meydan Muharebesi, Mudanya Ateşkesi ve nihayetinde Lozan Barış Antlaşması ile gerçekleşmiştir. Dolayısıyla C seçeneğindeki iddia tarihen olanaksızdır.",
+        "detailedSolution": "Hadiseler ve sonuçları incelendiğinde:\n- Mustafa Kemal'e unvan verilmesi iç politikayı, Kars ve Ankara Antlaşmaları ise dış politikadaki büyük kazanımları kanıtlar (A şıkkı doğru).\n- Bir İtilaf devleti olan Fransa'nın TBMM ile anlaşarak geri çekilmesi ve İtalya'nın işgali sonlandırması, İtilaf bloğunun dağıldığını ve İngiltere'nin yalnızlaştığını gösterir (B şıkkı doğru).\n- Doğu ve Güney sınırlarının güvenceye alınması, tüm asker ve cephanenin Batı Cephesi'ne (Büyük Taarruz hazırlıklarına) kaydırılmasını sağlamıştır (D şıkkı doğru).\n- C şıkkı ise yanlıştır. Sakarya'dan sonra İtilaf Devletleri Misakımillî'yi derhâl onaylamamış; Sevr'in tadil edilmiş teklifleriyle zaman kazanmaya çalışmışlardır. Türkiye'nin tam bağımsızlığını ve Misakımillî'yi kabul etmeleri ancak Büyük Taarruz zaferi ve Lozan Barış Antlaşması ile mümkün olmuştur.",
+        "distractors": {
+          "A": "Güçlü Çeldirici (İç-Dış Politika Ayrımı): İç ve dış politika korelasyonunu kuran doğru bir analizdir; aranan olumsuz cevap olamaz.",
+          "B": "Orta Çeldirici (Diplomatik Ayrışma): İtilaf bloğunun parçalanması Fransa ve İtalya'nın çekilmesiyle doğrulanır.",
+          "D": "Zayıf Çeldirici: Askerî stratejinin doğal sonucudur; doğu ve güney rahatlayınca batıya yüklenilmiştir."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "test1": {
+    "id": "MAT-T1",
+    "title": "Test 1: Çarpanlar, Katlar ve Üslü İfadeler",
+    "badge": "2024 LGS Çıkmış Soru Benzeri",
+    "questions": [
+      {
+        "id": "LGS-MAT-T1-01",
+        "course": "MATEMATİK",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "M.8.1.1.1 • EBOB-EKOK Modelleme ve Problem Çözme",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Bir belediye, yeni yapılan doğrusal bir sahil bisiklet yolunun her iki tarafına da aydınlatma ve geri dönüşüm üniteleri yerleştirecektir.\n\n• Yolun deniz tarafındaki kenarına yolun başından sonuna kadar 12 metre aralıklarla solar aydınlatma direkleri dikilmiştir.\n• Yolun kara tarafındaki kenarına ise yolun başından sonuna kadar 18 metre aralıklarla atık pil toplama kutuları yerleştirilmiştir.\n• Bisiklet yolunun hem başlangıç hem de bitiş noktalarında her iki kenarda da karşılıklı olarak bu direk ve kutulardan birer tane bulunmaktadır.\n• Aydınlatma direği ile atık pil kutusunun tam karşılıklı geldiği her noktaya (başlangıç ve bitiş dahil) acil yardım butonu yerleştirilmiş olup toplam 9 adet acil yardım butonu kullanılmıştır.",
+        "stem": "Buna göre bu bisiklet yoluna yerleştirilen solar aydınlatma direkleri ile atık pil toplama kutularının toplam sayısı kaçtır?",
+        "options": {
+          "A": "38",
+          "B": "40",
+          "C": "42",
+          "D": "44"
+        },
+        "correctOption": "C",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Karşılıklı gelme durumları iki sayının En Küçük Ortak Katı (EKOK) ile ilişkilidir. EKOK(12, 18)'i hesaplayınız. Başlangıç ve bitiş dahil 9 buton yerleştirilmişse, ardışık butonlar arasında 8 aralık olduğunu unutmayınız. Yolun toplam uzunluğunu bulduktan sonra her iki kenar için [Uzunluk / Aralık + 1] formülüyle eleman sayılarını tespit ediniz.",
+        "detailedSolution": "1. Adım (Karşılaşma Aralığının Hesaplanması):\nSolar direkler 12 m, pil kutuları 18 m aralıklarla yerleştirilmektedir. İkisinin aynı hizaya geldiği mesafeler 12 ve 18'in ortak katlarıdır:\nEKOK(12, 18) = 36 metredir.\nDemek ki her 36 metrede bir direk ve kutu karşılıklı gelmektedir.\n\n2. Adım (Yol Uzunluğunun Bulunması):\nBaşlangıç ve bitiş noktaları dahil olmak üzere karşılıklı gelen toplam 9 nokta (acil buton) vardır.\n9 nokta arasında (9 - 1) = 8 adet 36 metrelik aralık bulunur.\nBisiklet yolunun toplam uzunluğu = 8 x 36 = 288 metredir.\n\n3. Adım (Direk ve Kutu Sayılarının Hesaplanması):\nYolun başında ve sonunda da eleman bulunduğundan:\n• Solar Aydınlatma Direği Sayısı = (288 / 12) + 1 = 24 + 1 = 25 adet.\n• Atık Pil Kutusu Sayısı = (288 / 18) + 1 = 16 + 1 = 17 adet.\n\n4. Adım (Toplam Sayı):\nToplam Ünite Sayısı = 25 + 17 = 42 adettir.\nDoğru cevap C şıkkıdır.",
+        "distractors": {
+          "A": "Yolun uzunluğunu (288 m) doğru bulup başlangıç ve bitişteki direkleri eklemeyi unutan ve 24 + 16 = 40 bulduktan sonra 2 adet buton düşenlerin seçeneğidir.",
+          "B": "Başlangıç noktalarındaki (+1) ilave direk ve kutuları eklemeyi unutup yalnızca aralık sayılarını toplayan öğrencilerin düştüğü çeldiricidir: 24 + 16 = 40.",
+          "D": "9 noktayı 9 aralık zannedip yolu 9 x 36 = 324 metre hesaplayan veya hesaplama hatası yaparak fazladan ekleme yapan öğrencilerin sonucudur."
+        }
+      },
+      {
+        "id": "LGS-MAT-T1-02",
+        "course": "MATEMATİK",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "M.8.1.1.2 • Ortak Bölenler ve Alan Modelleri",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Kenar uzunlukları metre cinsinden 1'den büyük birer tam sayı olan dikdörtgen biçimindeki bir hobi bahçesi projesinde zemin, yatay ve dikey doğrusal hatlarla 4 farklı dikdörtgensel parsele ayrılmıştır.\n\nBu parsellerden üçünün kullanım alanları krokide gösterilmiştir:\n• Domates ekili alan: 48 m²\n• Biber ekili alan: 36 m²\n• Salatalık ekili alan: 60 m²\n• Çilek ekili alan: Alanı belirtilmemiştir.\n\nDomates ve Biber parselleri yan yana (üst sırada), Salatalık ve Çilek parselleri ise yan yana (alt sırada) bulunmaktadır. Domates ile Salatalık parselleri aynı dikey sütunda yer almaktadır.",
+        "stem": "Buna göre kenar uzunlukları tam sayı olan bu hobi bahçesinin dış çevre uzunluğu en az kaç metredir?",
+        "options": {
+          "A": "54",
+          "B": "60",
+          "C": "68",
+          "D": "72"
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Parsellerin ortak kenarlarını değişkenlerle modelleyiniz: Üst sıranın dikey kenarına x, alt sıranın dikey kenarına y; sol sütunun yatay kenarına a, sağ sütunun yatay kenarına b deyiniz. x·a = 48, x·b = 36, y·a = 60 eşitliklerinden ortak çarpanları ve oranları (a/b = 4/3, x/y = 4/5) elde ediniz. Çevrenin en az olması için kenarların birbirine en yakın değerlerini seçiniz.",
+        "detailedSolution": "1. Adım (Geometrik Modelleme ve Oranlar):\nParsellerin kenarlarını belirleyelim:\n• Domates: x · a = 48\n• Biber: x · b = 36\n• Salatalık: y · a = 60\n• Çilek: y · b = ?\n\nBuradan oranlama yaparsak:\n(x · a) / (x · b) = a / b = 48 / 36 = 4 / 3 => a = 4k ve b = 3k (k bir tam sayı).\n(x · a) / (y · a) = x / y = 48 / 60 = 4 / 5 => x = 4m ve y = 5m (m bir tam sayı).\n\n2. Adım (Çarpan Eşitliği):\nx · a = (4m) · (4k) = 16 · m · k = 48 => m · k = 3 bulunur.\nm ve k pozitif tam sayılar olduğundan iki durum mümkündür:\n\n1. Durum (m = 1, k = 3):\n• a = 4 · 3 = 12 m, b = 3 · 3 = 9 m => Toplam Yatay Kenar = a + b = 21 m\n• x = 4 · 1 = 4 m, y = 5 · 1 = 5 m => Toplam Dikey Kenar = x + y = 9 m\n• Dış Çevre = 2 · (21 + 9) = 2 · 30 = 60 metredir.\n(Tüm kenarlar 1'den büyüktür: 12, 9, 4, 5 > 1, şart sağlanır).\n\n2. Durum (m = 3, k = 1):\n• a = 4 · 1 = 4 m, b = 3 · 1 = 3 m => Toplam Yatay Kenar = 7 m\n• x = 4 · 3 = 12 m, y = 5 · 3 = 15 m => Toplam Dikey Kenar = 27 m\n• Dış Çevre = 2 · (7 + 27) = 2 · 34 = 68 metredir.\n\n3. Adım (En Küçük Değer):\nBizden çevrenin en az değeri istendiğinden cevap 60 metredir.\nDoğru cevap B şıkkıdır.",
+        "distractors": {
+          "A": "Çevre hesabında kenarları eksik toplayan veya 21 + 9 = 30 bulup iki katını almayı unutanların tahminidir.",
+          "C": "m = 3 ve k = 1 durumunu seçerek soruda istenen 'en az' yerine 'en çok' çevre değerini hesaplayan öğrencilerin düştüğü çeldiricidir: 2 · (7 + 27) = 68.",
+          "D": "Ortak kenarları EBOB değerleri yerine rastgele çarpanlarla seçip çevreyi gereksiz büyüten öğrencilerin sonucudur."
+        }
+      },
+      {
+        "id": "LGS-MAT-T1-03",
+        "course": "MATEMATİK",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "M.8.1.2.2 • Üslü İfadelerle Temel İşlemler",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Yenilenebilir enerji üreten modern bir güneş enerjisi santralinde dikdörtgen biçiminde özdeş fotovoltaik paneller kullanılmıştır.\n\nSantraldeki teknik özellikler şu şekildedir:\n• Her bir güneş panelinin kısa kenar uzunluğu 2^6 cm, uzun kenar uzunluğu 2^8 cm'dir.\n• Santral sahasına bu panellerden 2^7 tanesi aralarında boşluk bırakılmadan yan yana yerleştirilerek dev bir solar platform oluşturulmuştur.\n• Bu solar platformun her 1 cm²'lik yüzeyi 1 saatte 4^-3 watt elektrik enerjisi üretmektedir.",
+        "stem": "Buna göre kurulan bu solar platformun kesintisiz 16 saat çalışması durumunda ürettiği toplam elektrik enerjisi kaç watt'tır?",
+        "options": {
+          "A": "2^17",
+          "B": "2^19",
+          "C": "2^20",
+          "D": "2^22"
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Adım adım tüm nicelikleri 2'nin kuvveti biçiminde ifade ediniz: 1 panelin alanı = 2^6 · 2^8 = 2^14 cm². Toplam alanı bulmak için panel sayısı (2^7) ile çarpınız. Birim yüzey üretimini (4^-3 = 2^-6) ve süreyi (16 = 2^4) üslü sayı çarpma kuralı [2^a · 2^b = 2^(a+b)] ile birleştiriniz.",
+        "detailedSolution": "1. Adım (Bir Panelin Alanı):\nBir adet dikdörtgen panelin alanı = Kısa Kenar x Uzun Kenar\nAlan = 2^6 cm x 2^8 cm = 2^(6 + 8) = 2^14 cm²'dir.\n\n2. Adım (Platformun Toplam Alanı):\nPlatformda 2^7 adet özdeş panel bulunmaktadır.\nToplam Alan = 2^7 x 2^14 = 2^(7 + 14) = 2^21 cm²'dir.\n\n3. Adım (1 Saatteki Enerji Üretimi):\nHer 1 cm² yüzey 1 saatte 4^-3 watt enerji üretir.\n4^-3 = (2^2)^-3 = 2^(-6) watt'tır.\nPlatformun 1 saatteki toplam üretimi = 2^21 x 2^(-6) = 2^(21 - 6) = 2^15 watt'tır.\n\n4. Adım (16 Saatteki Toplam Üretim):\nSüre: 16 saat = 2^4 saattir.\nToplam Üretilen Enerji = 2^15 x 2^4 = 2^(15 + 4) = 2^19 watt'tır.\nDoğru cevap B şıkkıdır.",
+        "distractors": {
+          "A": "16 saatlik süreyi (2^4) çarpmak yerine 1 saatlik enerjiden 2^4 değerini çıkaran veya üs toplarken işlem hatası yapan öğrencilerin sonucudur: 2^15 x 2^2 = 2^17.",
+          "C": "Panel sayısını yanlışlıkla 2^8 alarak üssü 1 fazla bulan öğrencilerin işaretlediği çeldiricidir: 2^20.",
+          "D": "Negatif üssü (4^-3) pozitif kabul edip 2^21 ile 2^6'yı çarpan öğrencilerin düştüğü kavram yanılgısıdır."
+        }
+      },
+      {
+        "id": "LGS-MAT-T1-04",
+        "course": "MATEMATİK",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "M.8.1.2.5 • Çok Büyük ve Çok Küçük Sayılar ile Bilimsel Gösterim",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Millî Eğitim Bakanlığı ve Çevre Vakfı iş birliğiyle yürütülen 'Geleceğe Akan Damlalar' projesi kapsamında okullarda su israfını önlemek amacıyla fotoselli (sensörlü) musluk dönüşümü başlatılmıştır.\n\nProje verilerine göre:\n• Projeye dahil edilen 80 ilin her birinde 250 okula sensörlü musluklar takılmıştır.\n• Klasik muslukların açık kalması veya damlatması sebebiyle bir okulda günde ortalama 80 litre su boşa akmaktadır.\n• Takılan sensörlü musluklar sayesinde okullardaki bu su israfının %75'i engellenmiştir.\n• Tasarruf hesabı, okulların bir eğitim-öğretim yılında açık olduğu 200 gün esas alınarak yapılmıştır.\n(1 Litre = 1000 mililitredir).",
+        "stem": "Buna göre bu proje sayesinde bir eğitim-öğretim yılında tasarruf edilen toplam su miktarının mililitre (mL) cinsinden bilimsel gösterimi aşağıdakilerden hangisidir?",
+        "options": {
+          "A": "2,4 · 10^11",
+          "B": "2,4 · 10^8",
+          "C": "24 · 10^10",
+          "D": "3,2 · 10^11"
+        },
+        "correctOption": "A",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Önce toplam okul sayısını (80 x 250 = 20.000 = 2 x 10^4) ve bir okulun günlük tasarruf miktarını (80 x %75 = 60 L) bulunuz. 200 gün ile çarparak toplam litreyi, ardından 10^3 ile çarparak mililitreyi elde ediniz. Bilimsel gösterim koşulunun 1 ≤ |a| < 10 olduğunu unutmayınız.",
+        "detailedSolution": "1. Adım (Toplam Okul Sayısı):\nToplam Okul Sayısı = 80 il x 250 okul = 20.000 okul = 2 x 10^4 okuldur.\n\n2. Adım (Bir Okuldaki Günlük Tasarruf Miktarı):\nBir okulda günde 80 L su israf ediliyordu. Bunun %75'i tasarruf edildiğine göre:\nGünlük Tasarruf = 80 x (75 / 100) = 80 x (3 / 4) = 60 litredir.\n\n3. Adım (Bir Okulun 200 Günlük Tasarrufu):\n1 Okulun Yıllık Tasarrufu = 60 L x 200 gün = 12.000 litredir.\n\n4. Adım (Tüm Okulların Toplam Su Tasarrufu):\nToplam Tasarruf (Litre) = 20.000 okul x 12.000 L\n= (2 x 10^4) x (1,2 x 10^4) = 2,4 x 10^8 litredir.\n\n5. Adım (Mililitreye Dönüştürme ve Bilimsel Gösterim):\n1 Litre = 1000 mL = 10^3 mL olduğuna göre:\nToplam Tasarruf (mL) = 2,4 x 10^8 x 10^3 = 2,4 x 10^(8+3) = 2,4 x 10^11 mililitredir.\n2,4 katsayısı 1 ≤ a < 10 şartını sağladığından ifade bilimsel gösterimdedir.\nDoğru cevap A şıkkıdır.",
+        "distractors": {
+          "B": "Litre cinsinden bulduğu sonucu (2,4 · 10^8) mililitreye çevirmeyi unutan öğrencilerin düştüğü çeldiricidir.",
+          "C": "Sonucu 24 · 10^10 bularak bilimsel gösterim tanımındaki 1 ≤ |a| < 10 kuralını ihmal eden öğrencilerin seçeneğidir.",
+          "D": "%75 tasarruf yerine kalan %25 israfı veya yanlış çarpma işlemi yaparak katsayıyı 3,2 bulan öğrencilerin sonucudur."
+        }
+      }
+    ]
+  },
+  "test2": {
+    "id": "MAT-T2",
+    "title": "Test 2: Cebirsel İfadeler ve Olasılık",
+    "badge": "MEB Beceri Temelli Test",
+    "questions": [
+      {
+        "id": "LGS-MAT-T2-01",
+        "course": "MATEMATİK",
+        "sourceTag": "MEB Beceri Temelli Test",
+        "outcomeCode": "M.8.2.1.3 • Özdeşlikler ve İki Kare Farkı Modellemesi",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Bir teknoloji ve havacılık kulübü, geliştirdikleri insansız hava araçları (İHA) için kare şeklinde düz bir test ve iniş pisti inşa etmiştir.\n\nPistin mimari planında şu detaylar yer almaktadır:\n• Pistin tamamı kenar uzunluğu (3x + 4) metre olan kare biçimindedir.\n• Bu pistin tam orta kısmına acil inişler için kenar uzunluğu (x - 2) metre olan kare şeklinde bir alan kırmızı renge boyanmıştır.\n• Pistin kırmızı bölge dışında kalan tüm zeminine ise kaydırmaz özel epoksi kaplama yapılacaktır.",
+        "stem": "Buna göre epoksi kaplama yapılacak bölgenin alanının metrekare cinsinden değerini veren cebirsel ifade aşağıdakilerden hangisidir?",
+        "options": {
+          "A": "8x^2 + 28x + 12",
+          "B": "8x^2 + 20x + 12",
+          "C": "8x^2 + 28x + 20",
+          "D": "10x^2 + 28x + 12"
+        },
+        "correctOption": "A",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: İki kare farkı özdeşliği [A^2 - B^2 = (A - B)(A + B)] ile çok hızlı çözüme ulaşabilirsiniz. Terimleri açarak çıkarırken parantez önündeki eksi işaretinin tüm terimlerin işaretini değiştirdiğine [-(x^2 - 4x + 4) = -x^2 + 4x - 4] dikkat ediniz.",
+        "detailedSolution": "1. Yöntem (İki Kare Farkı Özdeşliği ile Çözüm):\nEpoksi Alanı = Pistin Toplam Alanı - Kırmızı Alan\n= (3x + 4)^2 - (x - 2)^2\nA^2 - B^2 = (A - B) · (A + B) kuralını uygulayalım:\n• A - B = (3x + 4) - (x - 2) = 3x + 4 - x + 2 = 2x + 6\n• A + B = (3x + 4) + (x - 2) = 4x + 2\nÇarpım = (2x + 6)(4x + 2) = 8x^2 + 4x + 24x + 12 = 8x^2 + 28x + 12 metrekaredir.\n\n2. Yöntem (Kare Açılımları ile Çözüm):\n• Toplam Alan = (3x + 4)^2 = 9x^2 + 24x + 16\n• Kırmızı Alan = (x - 2)^2 = x^2 - 4x + 4\n• Epoksi Alanı = (9x^2 + 24x + 16) - (x^2 - 4x + 4)\n= 9x^2 - x^2 + 24x - (-4x) + 16 - 4\n= 8x^2 + 28x + 12 metrekaredir.\nDoğru cevap A şıkkıdır.",
+        "distractors": {
+          "B": "-(x - 2)^2 açılımında eksi işaretini -4x terimine dağıtmayıp +24x - 4x = 20x olarak hesaplayan öğrencilerin düştüğü en yaygın işaret çeldiricisidir.",
+          "C": "Sabit terimler farkında 16 - 4 yerine 16 - (-4) = 20 yazarak hata yapan öğrencilerin işaretlediği seçenektir.",
+          "D": "Alanları çıkarmak yerine 9x^2 ile x^2'yi toplayıp 10x^2 bulan dikkatsiz öğrencilerin seçeneğidir."
+        }
+      },
+      {
+        "id": "LGS-MAT-T2-02",
+        "course": "MATEMATİK",
+        "sourceTag": "MEB Beceri Temelli Test",
+        "outcomeCode": "M.8.2.1.4 • Cebirsel İfadelerin Çarpımı ve Geometrik Desenler",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Bir marangoz, kısa kenar uzunluğu (x + 2) cm, uzun kenar uzunluğu (3x + 4) cm olan dikdörtgen biçimindeki 4 adet özdeş ahşap çıtayı düz bir masa üzerinde birleştirerek bir resim çerçevesi oluşturmuştur.\n\nÇıtalar birbirine dik olacak şekilde, aralarında boşluk bırakılmadan ve uçları dışarı taşmayacak biçimde yan yana getirilmiş; böylece çerçevenin ortasında kare şeklinde boş bir resim yerleştirme alanı oluşmuştur.",
+        "stem": "Buna göre çerçevenin ortasında oluşan kare biçimindeki boş bölgenin alanını santimetrekare cinsinden veren cebirsel ifade aşağıdakilerden hangisidir?",
+        "options": {
+          "A": "4x^2 + 8x + 4",
+          "B": "4x^2 + 4x + 4",
+          "C": "4x^2 + 16x + 16",
+          "D": "9x^2 + 24x + 16"
+        },
+        "correctOption": "A",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Çerçevenin ortasında kalan kare boşluğun bir kenar uzunluğunu bulunuz. Şeklin simetrisinden bu kenar uzunluğu, dikdörtgen çıtanın uzun kenarından kısa kenarının çıkarılmasıyla elde edilir: Kenar = (3x + 4) - (x + 2) = 2x + 2. Ardından bu kenarın karesini alınız.",
+        "detailedSolution": "1. Adım (Ortadaki Boşluğun Kenar Uzunluğu):\n4 özdeş dikdörtgen çıta ile oluşturulan çerçevenin iç kenarı, çıtanın uzun kenarından bitişiğindeki çıtanın kısa kenarının çıkarılmasıyla bulunur:\nİç Boşluğun Bir Kenarı = Uzun Kenar - Kısa Kenar\n= (3x + 4) - (x + 2)\n= 3x + 4 - x - 2 = 2x + 2 cm'dir.\n\n2. Adım (İç Boşluğun Alanının Hesaplanması):\nİç bölge bir kare olduğundan alanı bir kenarının karesine eşittir:\nAlan = (2x + 2)^2\nTam kare açılımı kuralına göre [(a + b)^2 = a^2 + 2ab + b^2]:\n= (2x)^2 + 2 · (2x) · 2 + 2^2\n= 4x^2 + 8x + 4 cm² bulunur.\n\n3. Adım (Alternatif Doğrulama - Toplam Alandan Çıkarma):\nDış büyük karenin bir kenarı = Uzun Kenar + Kısa Kenar = (3x + 4) + (x + 2) = 4x + 6 cm.\nDış Alan = (4x + 6)^2 = 16x^2 + 48x + 36 cm².\n4 adet çıtanın alanı = 4 · [(x + 2)(3x + 4)] = 4 · (3x^2 + 10x + 8) = 12x^2 + 40x + 32 cm².\nİç Boşluk = (16x^2 + 48x + 36) - (12x^2 + 40x + 32) = 4x^2 + 8x + 4 cm².\nDoğru cevap A şıkkıdır.",
+        "distractors": {
+          "B": "(2x + 2)^2 açılımında birinci ile ikincinin çarpımının iki katını almayı unutup 2 · 2x = 4x yazan öğrencilerin düştüğü çeldiricidir.",
+          "C": "İç kenarı yanlışlıkla (2x + 4) olarak hesaplayıp karesini alan öğrencilerin bulduğu sonuçtur.",
+          "D": "Doğrudan bir çıtanın uzun kenarının karesini (3x + 4)^2 hesaplayan dikkatsiz öğrencilerin seçeneğidir."
+        }
+      },
+      {
+        "id": "LGS-MAT-T2-03",
+        "course": "MATEMATİK",
+        "sourceTag": "MEB Beceri Temelli Test",
+        "outcomeCode": "M.8.5.1.4 • Basit Olayların Olasılığı ve Olasılık Değişimi",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Bir okul kütüphanesinde Roman, Bilim Kurgu, Şiir ve Tarih olmak üzere 4 farklı türde toplam 90 adet kitap bulunmaktadır.\n\nBu kitapların türlerine göre dağılımı ile ilgili şunlar bilinmektedir:\n• Kütüphaneden rastgele seçilen bir kitabın Şiir kitabı olma olasılığı 1/6'dır.\n• Tarih kitaplarının sayısı, Şiir kitaplarının sayısından 15 fazladır.\n• Roman kitaplarının sayısı, Bilim Kurgu kitaplarının sayısının 2 katıdır.\n\nKütüphane haftasında bir yayınevi bu okula destek olmak amacıyla kütüphaneye 30 adet yeni Bilim Kurgu kitabı daha bağışlamış ve bu kitaplar kütüphanedeki diğer kitapların arasına yerleştirilmiştir.",
+        "stem": "Buna göre son durumda bu kütüphaneden rastgele seçilen bir kitabın Bilim Kurgu kitabı olma olasılığı kaçtır?",
+        "options": {
+          "A": "1/4",
+          "B": "3/8",
+          "C": "1/2",
+          "D": "5/8"
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: İlk durumdaki 90 kitaptan yola çıkarak Şiir (90 x 1/6 = 15) ve Tarih (15 + 15 = 30) sayılarını bulunuz. Kalan 45 kitabı 2k ve k oranında Roman (30) ve Bilim Kurgu (15) olarak paylaştırınız. Yeni eklenen 30 kitabı hem Bilim Kurgu sayısına hem de toplam kitap sayısına ekleyerek yeni olasılığı hesaplayınız.",
+        "detailedSolution": "1. Adım (Başlangıçtaki Kitap Sayılarının Hesaplanması):\n• Toplam kitap sayısı = 90 adettir.\n• Şiir kitabı olma olasılığı = 1/6 olduğundan:\n  Şiir Kitabı Sayısı = 90 x (1/6) = 15 adettir.\n• Tarih kitapları sayısı Şiir'den 15 fazla olduğundan:\n  Tarih Kitabı Sayısı = 15 + 15 = 30 adettir.\n• Geriye kalan kitaplar (Roman ve Bilim Kurgu):\n  Kalan = 90 - (15 + 30) = 90 - 45 = 45 adettir.\n• Roman sayısı (R), Bilim Kurgu sayısının (BK) 2 katıdır:\n  R = 2 · BK => 2 · BK + BK = 3 · BK = 45 => BK = 15, Roman = 30 adettir.\n\n2. Adım (Bağış Sonrası Yeni Durum):\n• 30 adet yeni Bilim Kurgu kitabı eklenmiştir:\n  Yeni Bilim Kurgu Sayısı = 15 + 30 = 45 adet.\n• Kütüphanedeki yeni toplam kitap mevcudu:\n  Yeni Toplam = 90 + 30 = 120 adettir.\n\n3. Adım (Olasılığın Hesaplanması):\nSeçilen bir kitabın Bilim Kurgu olma olasılığı:\nOlasılık = İstenen Durum Sayısı / Tüm Durum Sayısı\n= 45 / 120\nPay ve paydayı 15 ile sadeleştirelim:\n= (45 / 15) / (120 / 15) = 3 / 8'dir.\nDoğru cevap B şıkkıdır.",
+        "distractors": {
+          "A": "Son durumda Roman seçilme olasılığını hesaplayan öğrencilerin sonucudur: 30 / 120 = 1/4.",
+          "C": "Yeni eklenen 30 kitabı sadece Bilim Kurgu'ya ekleyip paydada toplamı değiştirmeyi unutanların sonucudur: 45 / 90 = 1/2.",
+          "D": "Roman veya Bilim Kurgu kitaplarının toplam olasılığını hesaplayan öğrencilerin düştüğü çeldiricidir: (45 + 30) / 120 = 75 / 120 = 5/8."
+        }
+      },
+      {
+        "id": "LGS-MAT-T2-04",
+        "course": "MATEMATİK",
+        "sourceTag": "MEB Beceri Temelli Test",
+        "outcomeCode": "M.8.5.1.5 • Kareköklü İfadeler ve Olasılık Modellemesi",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Bir matematik öğretmeni, olasılık ve kareköklü ifadeler konusunu pekiştirmek için üzerinde kareköklü sayılar yazan kartlarla bir etkinlik tasarlamıştır.\n\nÖğretmen masaya iki kutu koymuş ve içlerine üzerlerinde aşağıdaki sayıların yazılı olduğu dörder kart atmıştır:\n• 1. Kutu: √18, √20, √24, √48\n• 2. Kutu: √2, √8, √12, √45\n\nBu etkinlikte bir öğrenci 1. Kutudan rastgele bir kart, ardından 2. Kutudan rastgele bir kart çekmiş ve kartların üzerinde yazan iki kareköklü ifadeyi birbiriyle çarpmıştır.",
+        "stem": "Buna göre yapılan bu çarpma işleminin sonucunun bir doğal sayı olma olasılığı kaçtır?",
+        "options": {
+          "A": "1/8",
+          "B": "3/16",
+          "C": "1/4",
+          "D": "5/16"
+        },
+        "correctOption": "C",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: İki kareköklü ifadenin çarpımının bir doğal sayı (kökten kurtulmuş pozitif sayı) olabilmesi için kök içlerindeki kısımların (a√b gösteriminde 'b' sayılarının) aynı olması gerekir. Tüm kartları önce a√b biçiminde sadeleştiriniz. Toplam olası durum sayısının 4 x 4 = 16 olduğunu belirleyip eşleşen durumları sayınız.",
+        "detailedSolution": "1. Adım (Kartların a√b Biçiminde Yazılması):\n• 1. Kutudaki Kartlar:\n  - √18 = √(9 · 2) = 3√2\n  - √20 = √(4 · 5) = 2√5\n  - √24 = √(4 · 6) = 2√6\n  - √48 = √(16 · 3) = 4√3\n\n• 2. Kutudaki Kartlar:\n  - √2 = 1√2\n  - √8 = √(4 · 2) = 2√2\n  - √12 = √(4 · 3) = 2√3\n  - √45 = √(9 · 5) = 3√5\n\n2. Adım (Tüm Olası Durumların Sayısı):\n1. Kutudan 4 farklı, 2. Kutudan 4 farklı kart seçilebileceğinden:\nTüm Olası Durumlar = 4 x 4 = 16 tanedir.\n\n3. Adım (Çarpımı Doğal Sayı Yapan İstenen Durumlar):\nİki köklü sayının çarpımının doğal sayı olması için aynı kök katsayısına (√2, √3, √5 vb.) sahip olmaları gerekir:\n• 1. Kutudaki 3√2 ile:\n  - 2. Kutudaki √2 çarpılırsa: 3√2 · √2 = 6 (Doğal sayı)\n  - 2. Kutudaki 2√2 çarpılırsa: 3√2 · 2√2 = 12 (Doğal sayı) => (2 durum)\n• 1. Kutudaki 2√5 ile:\n  - 2. Kutudaki 3√5 çarpılırsa: 2√5 · 3√5 = 30 (Doğal sayı) => (1 durum)\n• 1. Kutudaki 2√6 ile:\n  - 2. Kutuda kök içi 6 olan kart yoktur => (0 durum)\n• 1. Kutudaki 4√3 ile:\n  - 2. Kutudaki 2√3 çarpılırsa: 4√3 · 2√3 = 24 (Doğal sayı) => (1 durum)\n\nToplam İstenen Durum Sayısı = 2 + 1 + 0 + 1 = 4 durumdur.\n\n4. Adım (Olasılığın Hesaplanması):\nOlasılık = İstenen Durum Sayısı / Tüm Olası Durumlar\n= 4 / 16 = 1 / 4'tür.\nDoğru cevap C şıkkıdır.",
+        "distractors": {
+          "A": "Yalnızca √2 köküne sahip eşleşmeleri (3√2 ile √2 ve 2√2) hesaba katıp diğerlerini unutan öğrencilerin sonucudur: 2 / 16 = 1/8.",
+          "B": "√8 sayısını kök dışına çıkarırken hata yapıp veya tek bir √2 eşleşmesi sayıp toplam 3 durum bulanların seçeneğidir: 3/16.",
+          "D": "2√6 ile 2√3'ün çarpımını (2√6 · 2√3 = 4√18 = 12√2) yanlışlıkla doğal sayı zannedip 5 durum bulan öğrencilerin düştüğü çeldiricidir: 5/16."
+        }
+      }
+    ]
+  }
+}

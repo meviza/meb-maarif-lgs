@@ -1,0 +1,200 @@
+{
+  "test1": {
+    "id": "TR-T1",
+    "title": "Test 1: Paragrafta Anlam ve Yapı",
+    "badge": "2024 LGS Çıkmış Soru Benzeri",
+    "questions": [
+      {
+        "id": "LGS-TR-T1-01",
+        "course": "TÜRKÇE",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "T.8.3.14 • Paragrafta Ana Fikir ve Vurgulanan Anlam",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Günümüz dijital çağında bilgiye ulaşmak bir tık kadar yakın olsa da bilginin içselleştirilmesi her zamankinden daha güç bir hâl almıştır. Ekranlar karşısında gerçekleştirdiğimiz hızlı taramalar, zihnimize anlık ve parçalı veriler sunmakta; fakat bu durum 'derin okuma' olarak adlandırdığımız zihinsel inşa sürecini baltalamaktadır. Oysa basılı bir kitabın sayfalarında ilerlerken satır aralarındaki boşlukları kendi hayal gücümüzle doldurur, yazarın kurduğu mantıksal örgüyle tartışır ve empati yeteneğimizi bileriz. Bilgiyi tüketmek ile onu bir kavrayışa dönüştürmek arasındaki fark; bir gölün yüzeyinde kayıp gitmek ile onun berrak derinliklerine dalıp inciler toplamak gibidir. Gerçek zihinsel olgunluk, bilginin çokluğunda değil; metinle kurulan bu derin ve sabırlı bağda filizlenir.",
+        "stem": "Bu parçada asıl anlatılmak istenen düşünce aşağıdakilerden hangisidir?",
+        "options": {
+          "A": "Dijital teknolojilerin yaygınlaşması, bireylerin yazılı kültürle olan bağını tamamen koparmıştır.",
+          "B": "Nitelikli bir zihinsel gelişim, bilginin hızla tüketilmesinden ziyade sabırla ve derinlemesine özümsenmesiyle mümkündür.",
+          "C": "Basılı kitaplar, teknolojik araçlara göre bilgiye daha güvenilir ve pratik yoldan ulaşma imkânı sunar.",
+          "D": "Empati yeteneğinin gelişmesi, bireyin bilimsel ve felsefi metinleri düzenli olarak okumasına bağlıdır."
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Ana fikir sorularında metnin bütününe hâkim olan temel ileti aranır. Özellikle metnin son cümlelerinde yer alan 'Bilgiyi tüketmek ile onu bir kavrayışa dönüştürmek arasındaki fark...', 'Gerçek zihinsel olgunluk, bilginin çokluğunda değil; metinle kurulan bu derin ve sabırlı bağda filizlenir.' vurgusu, bilginin yüzeysel tüketimi yerine derinlemesine kavranması gerektiğini doğrudan ortaya koyar.",
+        "detailedSolution": "Parçada dijital ortamda gerçekleşen hızlı bilgi tüketimi ile basılı kitaplar üzerinden yapılan 'derin okuma' arasındaki nitelik farkı işlenmiştir. Yazar; bilginin çokluğunun veya hızla taranmasının zihinsel olgunluk sağlamadığını, asıl gelişimin sabırla metnin derinliklerine inip onu bir kavrayışa (özümsemeye) dönüştürmekle gerçekleşeceğini vurgulamaktadır. Bu durum B seçeneğinde eksiksiz özetlenmiştir. Doğru cevap B seçeneğidir.",
+        "distractors": {
+          "A": "Metinde teknolojinin bağı tamamen kopardığı iddia edilmemiştir; yüzeysel okuma alışkanlığına dikkat çekilmiştir.",
+          "C": "Parçada basılı kitapların daha pratik olduğu söylenmemiş, aksine dijitalin pratik ama yüzeysel, basılının ise derinlikli olduğu belirtilmiştir.",
+          "D": "Empati yeteneğinin derin okuma ile geliştiğine değinilmiş ancak bunun yalnızca bilimsel ve felsefi metinlerle sınırlı olduğu gibi bir genelleme yapılmamıştır."
+        }
+      },
+      {
+        "id": "LGS-TR-T1-02",
+        "course": "TÜRKÇE",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "T.8.3.16 • Paragrafın Yapısı ve Akışı Bozan Cümle",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "(I) Mimar Sinan’ın yüzyıllara meydan okuyan abidevi eserleri, sadece estetik bir zirve değil; aynı zamanda eşsiz bir statik ve jeolojik dehanın ürünüdür. (II) Sinan, yapılarının temelini atmadan önce zemini tonlarca ağırlıktaki kazıklarla sıkıştırmış ve temelin oturması için yıllarca sabırla beklemiştir. (III) Süleymaniye ve Selimiye gibi ulu camilerin kubbe kasnaklarında kullandığı horasan harcı ve esnek kilit taşları, deprem dalgalarını emerek enerjiyi toprağa iletecek şekilde tasarlanmıştır. (IV) Klasik Osmanlı mimarisinde kubbe içi hat yazıları ve çiniler, ibadethaneye giren cemaatin ruhuna manevi bir dinginlik aşılamak amacıyla özel bir uyumla yerleştirilmiştir. (V) Nitekim meydana gelen şiddetli sarsıntılarda yapıların esneyip kırılmamasını sağlayan bu mimari mekanizma, günümüz sismoloji uzmanlarınca hâlâ hayranlıkla incelenmektedir.",
+        "stem": "Bu parçada numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+        "options": {
+          "A": "II",
+          "B": "III",
+          "C": "IV",
+          "D": "V"
+        },
+        "correctOption": "C",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Akışı bozan cümle sorularında konu zincirine ve kavramsal bağa dikkat edilir. I, II, III ve V. cümleler Sinan'ın mimarisindeki mühendislik, zemin statiği, horasan harcı ve depreme dayanıklılık mekanizmalarını anlatırken IV. cümle konudan saparak iç mekândaki tezyinat ve manevi etkiye geçmiştir. Bu nedenle düşüncenin akışını bozar.",
+        "detailedSolution": "Metnin bütününde Mimar Sinan'ın yapılarındaki sismik direnç, zemin statiği, zemin sıkıştırma ve deprem enerjisini sönümleyen harç/kilit taşı mühendisliği incelenmektedir. V. cümledeki 'Nitekim meydana gelen şiddetli sarsıntılarda yapıların esneyip kırılmamasını sağlayan bu mimari mekanizma...' ifadesi doğrudan III. cümledeki esnek kilit taşları ve horasan harcına bağlanmaktadır. Arada yer alan IV. cümle ise ibadethanenin iç süslemesi (hat ve çini) ve manevi tesirine değinerek konunun odağını değiştirmiş ve akışı bozmuştur. Doğru cevap C seçeneğidir.",
+        "distractors": {
+          "A": "II. cümle Sinan'ın zemin mühendisliğini ve temel atma tekniğini açıklayarak ana temayı devam ettirmektedir.",
+          "B": "III. cümle zemin tekniğinden sonra üst yapının depreme karşı nasıl güçlendirildiğini somutlaştırmaktadır.",
+          "D": "V. cümle III. cümlede anlatılan deprem mekanizmasının günümüzdeki bilimsel yankısını ele alıp metni mantıksal bir sonuca bağlamaktadır."
+        }
+      },
+      {
+        "id": "LGS-TR-T1-03",
+        "course": "TÜRKÇE",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "T.8.3.34 • Metinler Arası Karşılaştırma ve Bakış Açısı",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "1. Metin:\nYapay zekâ dil modelleri; milyonlarca edebî metni tarayarak dilin ritmini, sözcük sıklıklarını ve kurgusal örüntüleri matematiksel bir kusursuzlukla taklit edebilmektedir. Günümüzde bir algoritma, saniyeler içinde belirli bir şairin üslubunda hece veznine uygun şiirler yazabilmekte veya popüler türlerin şablonlarına uyan sürükleyici polisiye taslakları üretebilmektedir. Bu durum, edebiyatın biçimsel ve teknik boyutunun algoritmalar vasıtasıyla çözümlenebilir bir mekaniğe sahip olduğunu açıkça göstermektedir.\n\n2. Metin:\nEdebiyat bir formül veya sözcük dizimi değil; kanayan bir vicdanın, varoluş sancısının ve insan kalbinin derinliklerindeki çelişkilerin kâğıda dökülmesidir. Bir algoritma sözcükleri kusursuz bir kafiyeyle yan yana getirebilir ama asla bir evladını yitiren ananın sessiz çığlığını ya da ilk aşkın getirdiği o tatlı ürpertinin yakıcılığını hissedemez. Hissetmediği için de ürettiği her satır, ruhsuz bir plastik çiçek gibi kokudan ve samimiyetten yoksun kalmaya mahkûmdur.",
+        "stem": "Bu iki metinle ilgili olarak aşağıdakilerden hangisi söylenemez?",
+        "options": {
+          "A": "1. metinde yapay zekânın edebiyattaki üretkenliği teknik ve nesnel bir dille değerlendirilmiştir.",
+          "B": "2. metinde edebiyatın asıl cevherinin insani duygular ve yaşanmışlıklar olduğu savunulmuştur.",
+          "C": "Her iki metinde de yapay zekânın sanatsal yaratıcılıkta gelecekte insanın yerini alacağı fikri benimsenmiştir.",
+          "D": "2. metnin anlatımında benzetme ve öznel yargılardan yararlanılarak düşünce pekiştirilmiştir."
+        },
+        "correctOption": "C",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: İki metin karşılaştırıldığında ortak ve zıt fikirler netleştirilir. 1. metin yapay zekanın teknik başarısını nesnel anlatırken; 2. metin yapay zekanın insan ruhundan yoksun olduğunu ('ruhsuz bir plastik çiçek gibi') belirterek asla insanın yerini alamayacağını savunmaktadır. Bu nedenle 'her iki metinde insanın yerini alacağı benimsenmiştir' yargısı söylenemez.",
+        "detailedSolution": "1. metin algoritmaların biçimsel ve teknik yeteneklerini nesnel/analitik bir üslupla anlatmaktadır (A seçeneği doğru). 2. metin ise edebiyatın duygu, vicdan ve insani yaşantı olduğunu vurgulayarak duygusal ve öznel bir tavır takınmış, 'plastik çiçek' benzetmesi yapmıştır (B ve D seçenekleri doğru). Ancak 2. metin yapay zekanın insan duygusuna asla erişemeyeceğini açıkça söyleyerek insanın yerini alamayacağını belirtmiştir; dolayısıyla her ikisinde de insanın yerini alacağı fikrinin benimsendiği söylenemez. Doğru cevap C seçeneğidir.",
+        "distractors": {
+          "A": "1. metinde 'milyonlarca metni tarayarak', 'hece veznine uygun', 'biçimsel boyut' gibi teknik ve tarafsız tespitler yer almaktadır.",
+          "B": "2. metinde 'kanayan bir vicdan, varoluş sancısı, sessiz çığlık' gibi insani özler edebiyatın merkezine konmuştur.",
+          "D": "2. metinde 'ruhsuz bir plastik çiçek gibi' ifadesiyle benzetme yapılmış ve kişisel değerlendirmeler sunulmuştur."
+        }
+      },
+      {
+        "id": "LGS-TR-T1-04",
+        "course": "TÜRKÇE",
+        "sourceTag": "2024 LGS Çıkmış Soru Benzeri",
+        "outcomeCode": "T.8.3.18 • Düşünceyi Geliştirme Yolları ve Anlatım Nitelikleri",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Rize’nin dağ köylerinde binbir emekle dokunan 'feretiko' (Rize bezi), lifleri tek tek ayrıştırılan kendir ipliğinin ahşap tezgâhlarda sabırla düğümlenmesiyle hayat bulan geleneksel bir dokuma sanatıdır. Fabrikasyon pamuklu kumaşların aksine feretiko, liflerinin doğal mikrogözenekli yapısı sayesinde nemi hızla emer ve sıcak Karadeniz günlerinde bedeni serin tutan doğal bir klima vazifesi görür. Dokuma ustası Emine Nine, mekik seslerinin odayı doldurduğu loş tezgâh başında şöyle fısıldar: 'Kendir ipliği inatçıdır, ona hükmedemezsin; ancak sevginle terbiye edip sabırla işlersen tenine ipekten bir kalkan olur.' Yüzyıllardır çeyiz sandıklarının baş tacı olan bu kumaş; doğallığın sentetik tekstil ürünlerine karşı verdiği soylu bir direnişin adıdır.",
+        "stem": "Bu parçanın anlatımında aşağıdaki düşünceyi geliştirme yollarının hangisinden yararlanılmamıştır?",
+        "options": {
+          "A": "Tanımlama",
+          "B": "Karşılaştırma",
+          "C": "Tanık gösterme",
+          "D": "Sayısal verilerden yararlanma"
+        },
+        "correctOption": "D",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Parçadaki düşünceyi geliştirme yollarını eşleştirin: 1) İlk cümlede feretiko nedir? sorusunun cevabı verilmiştir ('...dokuma sanatıdır' -> Tanımlama). 2) 'Fabrikasyon pamuklu kumaşların aksine' denilerek kıyaslama yapılmıştır (Karşılaştırma). 3) Dokuma ustası Emine Nine'nin sözü tırnak içinde aynen aktarılmıştır (Tanık gösterme). Metinde istatistiki bir rakam veya araştırma oranı bulunmadığından sayısal veri kullanılmamıştır.",
+        "detailedSolution": "Metinde:\n• 'Feretiko (...) geleneksel bir dokuma sanatıdır' cümlesiyle 'Feretiko nedir?' sorusuna yanıt verilmiş, tanımlama yapılmıştır.\n• 'Fabrikasyon pamuklu kumaşların aksine...' ifadesiyle feretiko ile sanayi kumaşları arasında karşılaştırma yapılmıştır.\n• Dokuma ustası Emine Nine'nin görüşleri tırnak içerisinde aktarılarak tanık göstermeye başvurulmuştur.\n• Ancak metinde istatistiki veya ölçmeye dayalı sayısal verilerden yararlanılmamıştır. Doğru cevap D seçeneğidir.",
+        "distractors": {
+          "A": "İlk cümlede açıkça feretiko kumaşının ne olduğu tanımlanmıştır.",
+          "B": "Geleneksel feretiko ile fabrikasyon kumaşlar mukayese edilerek karşılaştırma yapılmıştır.",
+          "C": "Emine Nine'nin doğrudan alıntılanan sözü düşünceyi desteklemek için tanık gösterilmiştir."
+        }
+      }
+    ]
+  },
+  "test2": {
+    "id": "TR-T2",
+    "title": "Test 2: Sözel Mantık ve Metin Analizi",
+    "badge": "MEB ÖDSGM Örnek Soru",
+    "questions": [
+      {
+        "id": "LGS-TR-T2-01",
+        "course": "TÜRKÇE",
+        "sourceTag": "MEB ÖDSGM Örnek Soru",
+        "outcomeCode": "T.8.3.26 • Sözel Mantık / Sıralama ve Kesin Yargı Çıkarımı",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Bir teknoloji fuarında A, B, C, D ve E okullarının robotik kulüpleri; pazartesi, salı, çarşamba, perşembe ve cuma günleri birer sunum yapacaktır. Her gün yalnızca bir okul sunum yapacaktır.\n\nSunum sıralamasıyla ilgili bilinenler şunlardır:\n• A okulu, C okulundan hemen önceki gün sunum yapmıştır.\n• B okulu, sunumunu E okulundan sonraki bir günde gerçekleştirmiştir.\n• Perşembe günü sunum yapan okul D okuludur.\n• Cuma günü sunum yapan okul C okulu değildir.",
+        "stem": "Bu bilgilere göre cuma günü sunum yapan okul aşağıdakilerden hangisidir?",
+        "options": {
+          "A": "A okulu",
+          "B": "B okulu",
+          "C": "C okulu",
+          "D": "E okulu"
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Günleri Pazartesi, Salı, Çarşamba, Perşembe, Cuma olarak dizin. Perşembe = D sabittir. A ve C peş peşe (AC bloğu) gelmelidir. D Perşembe olduğu için AC bloğu ya (Pzt-Salı) ya da (Salı-Çrş) olabilir. Her iki durumda da geriye kalan günleri ve 'E'nin B'den önce olduğu' şartını inceleyin. Her iki olasılıkta da Cuma gününe B okulunun kaldığını göreceksiniz.",
+        "detailedSolution": "Adım adım çözüm tablosu:\nGünler: Pazartesi (1), Salı (2), Çarşamba (3), Perşembe (4), Cuma (5).\n1. Kesin bilgi: 4. gün (Perşembe) = D okuludur.\n2. 'A okulu C'den hemen önceki gündür' kuralına göre A ve C ardışık iki gün olmalıdır (AC bloğu). D 4. günde olduğuna göre AC bloğu yalnızca iki yere yerleşebilir:\n   - 1. İhtimal: AC = Pazartesi (A) ve Salı (C).\n     Geriye kalan günler: Çarşamba ve Cuma. Kalan okullar: E ve B.\n     Kural: B okulu E'den sonraki bir gündür. Dolayısıyla Çarşamba = E, Cuma = B olur.\n   - 2. İhtimal: AC = Salı (A) ve Çarşamba (C).\n     Geriye kalan günler: Pazartesi ve Cuma. Kalan okullar: E ve B.\n     Kural: B okulu E'den sonraki bir gündür. Dolayısıyla Pazartesi = E, Cuma = B olur.\n   (Not: C okulu cuma günü değildir kuralı da her iki durumda sağlanmaktadır.)\nHer iki ihtimalde de Cuma günü sunum yapan okul kesinlikle B okuludur. Doğru cevap B seçeneğidir.",
+        "distractors": {
+          "A": "A okulu C'den hemen önce olacağı için cuma günü yer alamaz; cuma sunum yapsaydı C okulunun cumartesi olması gerekirdi.",
+          "C": "Verilen kurallarda 'Cuma günü sunum yapan okul C okulu değildir' ifadesi açıkça belirtilmiştir.",
+          "D": "E okulu B'den önce sunum yapmak zorunda olduğundan ve sunum yapacak başka gün kalmadığından haftanın son günü olan cumaya kalamaz."
+        }
+      },
+      {
+        "id": "LGS-TR-T2-02",
+        "course": "TÜRKÇE",
+        "sourceTag": "MEB ÖDSGM Örnek Soru",
+        "outcomeCode": "T.8.3.25 • Tablo ve Grafik Yorumlama / Veri Analizi",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Aşağıdaki tabloda, bir ülkenin 2021, 2022 ve 2023 yıllarındaki temiz enerji üretim kaynaklarının toplam elektrik üretimi içerisindeki payları (%) ve yıllık toplam elektrik üretim miktarları (milyar kilovatsaat - kWh) verilmiştir:\n\n| Yıl | Toplam Üretim (Milyar kWh) | Hidroelektrik Payı (%) | Rüzgâr Payı (%) | Güneş Payı (%) | Biyokütle Payı (%) |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **2021** | 300 | %20 | %10 | %5 | %2 |\n| **2022** | 320 | %18 | %11 | %7 | %2 |\n| **2023** | 350 | %16 | %12 | %10 | %2 |\n\n(Not: Tabloda verilen yüzdeler o yılın toplam üretimi üzerinden hesaplanmaktadır.)",
+        "stem": "Bu tablodaki verilerden hareketle aşağıdaki yargılardan hangisine kesinlikle ulaşılamaz?",
+        "options": {
+          "A": "2021'den 2023'e güneş enerjisinin hem toplam üretimdeki yüzdelik payı hem de üretilen elektrik miktarı artmıştır.",
+          "B": "Biyokütle enerjisinin yüzdelik payı değişmemesine rağmen 2023 yılında üretilen biyokütle elektrik miktarı 2021 yılından fazladır.",
+          "C": "Hidroelektrik santrallerinde 2023 yılında üretilen elektrik miktarı, 2021 yılındaki üretim miktarından daha azdır.",
+          "D": "Rüzgâr enerjisinden 2022 yılında elde edilen elektrik miktarı, aynı yıl güneş enerjisinden elde edilen miktarın 2 katından fazladır."
+        },
+        "correctOption": "D",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Tablo sorularında 'yüzde payı' ile 'gerçek üretim miktarı' ayrımına dikkat edilmelidir.\nÜretim Miktarı = Toplam Üretim x Yüzde.\n2022 yılında:\nToplam: 320 milyar kWh.\nRüzgâr: %11 -> 320 x 0,11 = 35,2 milyar kWh.\nGüneş: %7 -> 320 x 0,07 = 22,4 milyar kWh.\nGüneşin 2 katı: 2 x 22,4 = 44,8 milyar kWh'dir. 35,2 milyar kWh, 44,8'den azdır (yani 2 katından fazla değildir, 2 katından azdır!).",
+        "detailedSolution": "Seçenekleri verilerle tek tek hesaplayalım:\n• A seçeneği: Güneş payı %5'ten %10'a çıkmıştır. Miktar: 2021'de 300 x %5 = 15 milyar kWh; 2023'te 350 x %10 = 35 milyar kWh. Hem oran hem miktar artmıştır (Ulaşılır).\n• B seçeneği: Biyokütle oranı hep %2'dir. 2021'de 300 x %2 = 6 milyar kWh iken 2023'te 350 x %2 = 7 milyar kWh'dir. Miktar artmıştır (Ulaşılır).\n• C seçeneği: Hidroelektrik miktarı 2021'de 300 x %20 = 60 milyar kWh iken; 2023'te 350 x %16 = 56 milyar kWh'dir. 56 < 60 olduğu için miktar azalmıştır (Ulaşılır).\n• D seçeneği: 2022'de Rüzgâr payı %11 (320 x 0,11 = 35,2 milyar kWh), Güneş payı %7'dir (320 x 0,07 = 22,4 milyar kWh). Güneş enerjisinin 2 katı 44,8 milyar kWh yapar. Rüzgâr üretimi (35,2), güneşin 2 katından (44,8) fazla değil, tam tersine daha azdır. Bu bilgi kesinlikle yanlıştır. Doğru cevap D seçeneğidir.",
+        "distractors": {
+          "A": "Hesaplandığında güneş enerjisinin hem payının (%5 -> %10) hem de net üretiminin (15 -> 35 milyar kWh) düzenli arttığı görülmektedir.",
+          "B": "Toplam üretim 300'den 350'ye çıktığı için sabit kalan %2'lik pay miktar bazında 6'dan 7 milyar kWh'ye yükselmiştir.",
+          "C": "Hidroelektrik üretimi 2021'de 60 milyar kWh iken 2023'te 56 milyar kWh'ye gerilemiştir."
+        }
+      },
+      {
+        "id": "LGS-TR-T2-03",
+        "course": "TÜRKÇE",
+        "sourceTag": "MEB ÖDSGM Örnek Soru",
+        "outcomeCode": "T.8.3.26 • Sözel Mantık / Kurallı Akıl Yürütme ve Kodlama",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Akıllı bir serada ortam koşullarını denetlemek için sıcaklık, toprak nemi ve karbondioksit (CO2) sensörleri kullanılmaktadır. Sistem her ölçümde 3 karakterden oluşan bir 'Durum Kodu' üretmekte ve bu koda göre havalandırma, sulama ve ısıtma ünitelerine otomatik komut göndermektedir.\n\nKodlama Kuralları:\n1. Karakter (Sıcaklık):\n   - 15°C'nin altı: D (Düşük)\n   - 15°C - 25°C arası: N (Normal)\n   - 25°C'nin üstü: Y (Yüksek)\n\n2. Karakter (Toprak Nemi):\n   - %40'ın altı: K (Kuru)\n   - %40 - %70 arası: M (Mutedil/İdeal)\n   - %70'in üstü: I (Islak)\n\n3. Karakter (CO2 Seviyesi):\n   - 800 ppm altı: 1 (Yetersiz)\n   - 800 - 1200 ppm arası: 2 (Dengeli)\n   - 1200 ppm üstü: 3 (Zengin)\n\nSistem Yönergesi:\n• Eğer Durum Kodu 'Y-K-...' ile başlıyorsa (sıcaklık yüksek, toprak kuru) 'Acil Yağmurlama ve Gölgeleme' devreye girer.\n• Eğer Durum Kodu '...-I-1' ile bitiyorsa (toprak ıslak, CO2 yetersiz) 'Tahliye Fanı ve Karbon Takviyesi' devreye girer.\n• Eğer Durum Kodu 'N-M-2' ise 'Dengeli Koruma Modu' uygulanır.",
+        "stem": "Sera içi ölçümünde sıcaklığın 28°C, toprak neminin %35 ve CO2 seviyesinin 950 ppm olduğu tespit edildiğine göre sistemin üreteceği Durum Kodu ve uygulayacağı işlem aşağıdakilerin hangisinde doğru verilmiştir?",
+        "options": {
+          "A": "Durum Kodu: Y-K-2 | Uygulanacak İşlem: Acil Yağmurlama ve Gölgeleme",
+          "B": "Durum Kodu: Y-M-2 | Uygulanacak İşlem: Dengeli Koruma Modu",
+          "C": "Durum Kodu: N-K-1 | Uygulanacak İşlem: Tahliye Fanı ve Karbon Takviyesi",
+          "D": "Durum Kodu: Y-K-3 | Uygulanacak İşlem: Acil Yağmurlama ve Gölgeleme"
+        },
+        "correctOption": "A",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Basamakları tek tek ölçüm değerleriyle eşleştirin:\n1. Sıcaklık 28°C (>25°C) -> Y\n2. Nem %35 (<%40) -> K\n3. CO2 950 ppm (800-1200 arası) -> 2\nDurum Kodu: Y-K-2 olur. 'Y-K-...' ile başladığı için sistem yönergesine göre 'Acil Yağmurlama ve Gölgeleme' işlemi uygulanır.",
+        "detailedSolution": "Ölçüm değerlerini kurallara göre kodlayalım:\n• Sıcaklık: 28°C, 25°C'nin üstünde olduğundan 1. karakter 'Y' olur.\n• Toprak Nemi: %35, %40'ın altında (kuru) olduğundan 2. karakter 'K' olur.\n• CO2 Seviyesi: 950 ppm, 800-1200 ppm aralığında (dengeli) olduğundan 3. karakter '2' olur.\nBöylece oluşan Durum Kodu 'Y-K-2'dir.\nSistem yönergesinde 'Eğer Durum Kodu Y-K-... ile başlıyorsa Acil Yağmurlama ve Gölgeleme devreye girer' şartı yer almaktadır. Oluşan Y-K-2 kodu bu şarta uyduğu için 'Acil Yağmurlama ve Gölgeleme' devreye girecektir. Doğru cevap A seçeneğidir.",
+        "distractors": {
+          "B": "Toprak nemi %35 iken 'Mutedil' (M) kodu seçilmiştir; bu hatalıdır.",
+          "C": "Sıcaklık 28°C iken 'Normal' (N) kabul edilmiş ve CO2 yanlış değerlendirilmiştir.",
+          "D": "950 ppm seviyesi 1200'ün altında olmasına rağmen '3' (zengin) kodu verilmiştir."
+        }
+      },
+      {
+        "id": "LGS-TR-T2-04",
+        "course": "TÜRKÇE",
+        "sourceTag": "MEB ÖDSGM Örnek Soru",
+        "outcomeCode": "T.8.3.35 • Metin Tamamlama ve Mantıksal Bütünlük",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "MÖ 3. yüzyılda İskenderiye Kütüphanesi’nin yöneticisi olan Eratosthenes, modern uyduların ve lazerli ölçüm cihazlarının olmadığı bir çağda Dünya'nın çevresini inanılmaz bir hassasiyetle hesaplamayı başarmıştır. Yaz gündönümünde Syene (Asvan) kentinde öğle vakti güneş ışınlarının derin bir su kuyusunun dibine dik açıyla ulaştığını ve gölge oluşturmadığını öğrenen bilgin; aynı gün ve saatte İskenderiye'de diktiği bir çubuğun yaklaşık 7,2 derecelik bir gölge açısı oluşturduğunu tespit etmiştir. İki şehir arasındaki mesafeyi kervanların yürüyüş süresinden hesaplayan bilgin, çemberin 360 derecelik geometri kuralını bu farka oranlayarak gezegenimizin çevresini yaklaşık 40.000 kilometre olarak bulmuştur. Bu bilimsel zafer göstermektedir ki ----.",
+        "stem": "Bu parçanın sonuna düşüncenin akışına ve metnin iletisine göre aşağıdakilerden hangisi getirilmelidir?",
+        "options": {
+          "A": "çağları aşan büyük keşifler, gelişmiş laboratuvarlardan ziyade keskin bir gözlem gücü ve doğru işletilen bir akıl yürütmeyle gerçekleştirilir",
+          "B": "antik çağda yaşamış filozofların kuramsal iddiaları, günümüz pozitif bilimlerinin gelişmesini büyük ölçüde geciktirmiştir",
+          "C": "coğrafi sınırların belirlenmesinde matematiksel hesaplamalar yerine her zaman tarihsel belgeler esas alınmalıdır",
+          "D": "doğa olaylarının gizemini çözebilmek için öncelikle teknolojik aletlerin mükemmel seviyeye ulaşması gerekir"
+        },
+        "correctOption": "A",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Paragraf tamamlama sorularında boşluktan önceki sebep-sonuç ilişkisine bakılır. Metin, hiçbir teknolojik aygıt olmadan sadece bir kuyu, bir çubuk, gölge açısı ve geometri bilgisiyle Dünya'nın çevresinin hesaplandığını anlatmaktadır. Dolayısıyla 'Bu bilimsel zafer göstermektedir ki...' ifadesinden sonra teknolojinin yokluğuna rağmen gözlem ve akıl yürütmeyle devasa keşiflerin yapılabileceğini belirten bir yargı gelmelidir.",
+        "detailedSolution": "Metnin ana teması; Eratosthenes'in hiçbir modern aygıt ve uydu teknolojisi bulunmaksızın, sadece basit bir çubuğun gölgesini gözlemleyerek ve geometri prensiplerini kullanarak Dünya'nın çevresini neredeyse sıfır hatayla hesaplamasıdır. Bu tarihsel olay, bilimin en büyük gücünün teknolojik cihazların lüksünde değil, insanın gözlem yeteneği, merakı ve doğru mantıksal kurgusunda yattığını kanıtlamaktadır. A seçeneğindeki ifade bu ana fikri mükemmel bir şekilde tamamlamaktadır. Doğru cevap A seçeneğidir.",
+        "distractors": {
+          "B": "Metinde antik çağ filozoflarının bilimi geciktirdiği yönünde hiçbir olumsuz yargı bulunmamaktadır; aksine antik bir başarı övülmektedir.",
+          "C": "Parçada coğrafi sınırların belirlenmesi değil, Dünya'nın çevresinin hesaplanması söz konusudur.",
+          "D": "Bu ifade metnin ana fikriyle taban tabana zıttır; çünkü Eratosthenes teknolojik aletler olmaksızın bu keşfi yapmıştır."
+        }
+      }
+    ]
+  }
+}

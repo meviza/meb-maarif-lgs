@@ -1,0 +1,200 @@
+{
+  "test1": {
+    "id": "FEN-T1",
+    "title": "Test 1: Mevsimler, İklim ve DNA",
+    "badge": "2023-2024 LGS Çıkmış Soru Formatı",
+    "questions": [
+      {
+        "id": "LGS-FEN-T1-01",
+        "course": "FEN BİLİMLERİ",
+        "sourceTag": "2024 LGS Çıkmış Soru",
+        "outcomeCode": "F.8.1.1.1 • Mevsimlerin Oluşumu ve Güneş Işınlarının Geliş Açısı",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Dünya'nın Güneş etrafındaki dolanımı ve eksen eğikliği nedeniyle Güneş ışınlarının yeryüzüne düşme açısı yıl boyunca değişir. Birim yüzeye düşen ışık enerjisi miktarı arttıkça o bölgede sıcaklık artışı daha fazla olur.\nFen bilimleri öğretmeni, 21 Haziran tarihinde özdeş iki termometre ve özdeş ışık kaynakları kullanarak aşağıdaki iki aşamalı deneyi yapmıştır:\n• 1. Düzenek: Işık kaynağı K termometresine 90°lik dik açıyla tutulmuş, aydınlanan alan dar (20 cm²) olmuş ve 10 dakika sonra sıcaklık artışı 15 °C olarak ölçülmüştür.\n• 2. Düzenek: Işık kaynağı L termometresine 30°lik eğik açıyla tutulmuş, aydınlanan alan geniş (60 cm²) olmuş ve 10 dakika sonra sıcaklık artışı 5 °C olarak ölçülmüştür.\nAyrıca aynı 21 Haziran günü öğle saat 12.00'de Dünya üzerindeki X ve Y şehirlerinde bulunan özdeş 1 metre uzunluğundaki dikey çubukların gölge boyları ölçülmüştür. X şehrinde çubuğun gölgesi oluşmazken (gölge boyu = 0), Y şehrinde çubuğun gölge boyu 1,8 metre olarak ölçülmüştür.",
+        "stem": "Yapılan deney düzeneği ve Dünya üzerindeki gözlemlere göre aşağıdaki çıkarımlardan hangisi doğrudur?",
+        "options": {
+          "A": "X şehri Kuzey Yarım Küre'de Yengeç Dönencesi üzerinde, Y şehri ise Güney Yarım Küre'de yer almaktadır.",
+          "B": "2. düzenekte aydınlanan alan daha geniş olduğu için birim yüzeye aktarılan ısı enerjisi 1. düzenekten daha fazladır.",
+          "C": "Y şehrinde birim yüzeye düşen Güneş enerjisi miktarı X şehrindekinden daha fazladır.",
+          "D": "21 Aralık tarihinde aynı saatte X şehrindeki gölge boyu Y şehrindekinden daha kısa olur."
+        },
+        "correctOption": "A",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: 21 Haziran tarihinde Güneş ışınları Kuzey Yarım Küre'deki Yengeç Dönencesi'ne öğle vakti 90°lik dik açıyla düşer ve dik gelen ışınlar gölge oluşturmaz (gölge boyu = 0). Güney Yarım Küre'ye ise eğik açıyla geldiğinden gölge boyu uzundur. Işınlar dik geldikçe birim alana düşen enerji artar, sıcaklık daha çok yükselir.",
+        "detailedSolution": "21 Haziran'da Güneş ışınları Yengeç Dönencesi'ne dik düşer ve öğle vakti gölge sıfırdır; bu nedenle X şehri Yengeç Dönencesi üzerindedir. Aynı tarihte Güney Yarım Küre kış mevsimini yaşar ve Güneş ışınları eğik açıyla geldiği için gölge boyu oldukça uzundur (1,8 m); bu da Y şehrinin Güney Yarım Küre'de olduğunu kesinleştirir (Doğru cevap A). 2. düzenekte aydınlanan alan genişlemesine rağmen birim yüzeye düşen enerji azalmıştır (B yanlış). X şehrinde ışınlar dik geldiğinden birim yüzeye düşen enerji Y'den fazladır (C yanlış). 21 Aralık'ta Güneş ışınları Oğlak Dönencesi'ne (Güney) dik gelir; bu tarihte Y şehrindeki gölge boyu X'ten daha kısa olur (D yanlış).",
+        "distractors": {
+          "B": "Aydınlanan alan genişledikçe toplam ışık enerjisi daha geniş alana dağıldığından birim yüzeye düşen enerji azalır.",
+          "C": "X şehrine ışınlar dik geldiği için birim yüzeye aktarılan enerji miktarı eğik açıyla gelen Y şehrinden çok daha fazladır.",
+          "D": "21 Aralık'ta Güneş ışınları Güney Yarım Küre'ye dik geleceği için Y şehrinde gölge boyu X şehrine göre daha kısa olur."
+        }
+      },
+      {
+        "id": "LGS-FEN-T1-02",
+        "course": "FEN BİLİMLERİ",
+        "sourceTag": "2023 LGS Çıkmış Soru",
+        "outcomeCode": "F.8.1.2.1 • İklim ve Hava Olayları - Rüzgâr Oluşumu ve Basınç Merkezleri",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Hava sıcaklığındaki değişimler basınç farklarına yol açarak rüzgâr oluşumuna neden olur. Sıcaklığın yüksek olduğu bölgelerde hava molekülleri genleşerek yükselir ve Alçak Basınç (AB) alanı oluşur. Sıcaklığın düşük olduğu bölgelerde ise hava molekülleri sıkışarak alçalır ve Yüksek Basınç (YB) alanı oluşur. Rüzgâr, yatay yönde yüksek basınçtan alçak basınca doğru gerçekleşen hava hareketidir.\nAralarında 50 km mesafe bulunan K ve L kentlerinde aynı gün yapılan hava gözlemleri şöyledir:\n• K Kenti: Hava sıcaklığı 14 °C'dir. Gökyüzü açıktır ve bulut bulunmamaktadır. Alçalıcı hava hareketleri etkilidir.\n• L Kenti: Hava sıcaklığı 28 °C'dir. Gökyüzü yoğun bulutludur ve aralıklı sağanak yağış görülmektedir. Yükselici hava hareketleri etkilidir.\nİki kent arasına yerleştirilen rüzgâr ölçüm istasyonunda rüzgâr tulumunun yönü incelenmiştir.",
+        "stem": "K ve L kentlerindeki hava olayları ve rüzgâr oluşumu ile ilgili aşağıdaki ifadelerden hangisi kesinlikle doğrudur?",
+        "options": {
+          "A": "K kentinde alçak basınç alanı, L kentinde yüksek basınç alanı etkilidir.",
+          "B": "İki kent arasında esen rüzgârın yönü K kentinden L kentine doğrudur.",
+          "C": "L kentinde havanın yoğunluğu K kentine göre daha fazladır.",
+          "D": "K kentinde yağış görülme ihtimali L kentine göre daha yüksektir."
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Rüzgârın yönünü bulmak için altın kural: Soğuk bölge = Yüksek Basınç (alçalıcı hava, açık gökyüzü); Sıcak bölge = Alçak Basınç (yükselici hava, bulutlu ve yağışlı gökyüzü). Rüzgâr daima soğuktan sıcağa, yani Yüksek Basınçtan Alçak Basınca (K'den L'ye) doğru eser.",
+        "detailedSolution": "K kenti 14 °C olup soğuktur; hava yoğunluğu fazladır, alçalıcı hava hareketleri görülür ve Yüksek Basınç (YB) alanıdır. L kenti ise 28 °C olup sıcaktır; hava molekülleri yükselici hareket yapar, bulut ve yağış oluşturur ve Alçak Basınç (AB) alanıdır. Rüzgâr daima yatay yönde Yüksek Basınçtan Alçak Basınca doğru estiği için rüzgârın yönü K kentinden L kentine doğrudur (Doğru cevap B). A şıkkında basınç alanları ters verilmiştir. C şıkkında sıcak havada tanecikler genleştiği için L kentindeki hava yoğunluğu daha azdır. D şıkkında açık havalı K kentinde yağış ihtimali çok düşüktür.",
+        "distractors": {
+          "A": "Soğuk olan K kenti Yüksek Basınç alanı, sıcak olan L kenti ise Alçak Basınç alanıdır; şıkta kavramlar ters eşleştirilmiştir.",
+          "C": "Sıcak olan L kentinde hava genleşerek yükseldiği için hava yoğunluğu K kentine göre daha azdır.",
+          "D": "Alçalıcı hava hareketinin görüldüğü Yüksek Basınç alanlarında (K kenti) hava açık olup yağış ihtimali düşüktür."
+        }
+      },
+      {
+        "id": "LGS-FEN-T1-03",
+        "course": "FEN BİLİMLERİ",
+        "sourceTag": "2024 LGS Benzeri Soru",
+        "outcomeCode": "F.8.2.1.2 • DNA ve Genetik Kod - DNA'nın Eşlenmesi ve Nükleotid Dizilimi",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Hücre bölünmesi öncesinde DNA molekülü kendini hatasız olarak eşleyerek kalıtsal bilginin yeni hücrelere aktarılmasını sağlar. Bir DNA molekülünün kendini eşleme süreci ve bu süreçte sitoplazmadaki serbest nükleotid sayılarındaki değişim incelenmiştir.\nEşlenme sürecinde gerçekleşen aşamalar:\n1. DNA'nın çift sarmal yapısı bir fermuar gibi açılarak iki iplik birbirinden ayrılır.\n2. Sitoplazmada serbest halde bulunan nükleotidler çekirdek içerisine girer.\n3. Ayrılan ipliklerin karşısına uygun nükleotidler (Adenin karşısına Timin, Guanin karşısına Sitozin) yerleşir.\n4. Başlangıçtaki DNA molekülü ile nükleotid dizilimi tamamen aynı olan iki yeni DNA molekülü oluşur.\nAşağıdaki verilerde eşlenme sırasında sitoplazmada serbest bulunan deoksiriboz şekeri ve organik baz sayılarının değişimi verilmiştir:\n• Deoksiriboz şekeri: 1200 adetten 400 adede düşmüştür (800 adet kullanılmıştır).\n• Adenin bazı: 300 adetten 100 adede düşmüştür (200 adet kullanılmıştır).\n• Guanin bazı: 350 adetten 150 adede düşmüştür (200 adet kullanılmıştır).",
+        "stem": "Bu bilgilere ve eşlenme sürecine göre aşağıdaki değerlendirmelerden hangisi yanlıştır?",
+        "options": {
+          "A": "DNA eşlenmesi sırasında sitoplazmadan çekirdeğe toplam 800 adet inorganik fosfat molekülü geçmiştir.",
+          "B": "Yeni ipliklerin sentezi için sitoplazmadan çekilen serbest Sitozin bazı sayısı 200 adettir.",
+          "C": "Eşlenme sürecinde sitoplazmadaki serbest deoksiriboz şekeri ve fosfat miktarı artış gösterirken çekirdekteki DNA miktarı azalmıştır.",
+          "D": "Oluşan iki yeni DNA molekülünün her birinde biri ana DNA'ya ait eski, diğeri ise yeni sentezlenen iplik bulunur."
+        },
+        "correctOption": "C",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: DNA eşlenmesinde yeni zincirlerin kurulabilmesi için sitoplazmadaki serbest nükleotidler (şeker, fosfat, baz) çekirdeğe girer. Bu nedenle sitoplazmadaki serbest nükleotid miktarı AZALIR, çekirdekteki DNA ve nükleotid miktarı ise İKİ KATINA çıkar.",
+        "detailedSolution": "Eşlenme sırasında sitoplazmadaki serbest nükleotidler çekirdek içerisine alındığı için sitoplazmadaki serbest fosfat, şeker ve organik baz miktarı azalır; çekirdekteki genetik madde (DNA) miktarı ise 2 katına çıkar. Bu nedenle sitoplazmadaki serbest şeker ve fosfat miktarının arttığını, çekirdekteki DNA miktarının azaldığını iddia eden C seçeneği kesinlikle yanlıştır (Doğru cevap C).\nHer nükleotidde 1 şeker ve 1 fosfat olduğundan 800 şeker kullanılmışsa 800 fosfat kullanılmıştır (A doğru). Guanin (200) kullanıldıysa karşısına 200 Sitozin kullanılır (B doğru). Eşlenme yarı korunumlu (semikonservatif) gerçekleşir; yeni DNA'ların bir ipliği eski, bir ipliği yenidir (D doğru).",
+        "distractors": {
+          "A": "Her nükleotidin yapısında bir deoksiriboz şekeri ve bir fosfat grubu bulunduğundan kullanılan fosfat sayısı şeker sayısına (800) eşittir, ifade doğrudur.",
+          "B": "DNA çift sarmalında Guanin karşısına Sitozin eşleştiği için kullanılan Guanin sayısı (200) kadar Sitozin bazı (200) harcanır, ifade doğrudur.",
+          "D": "DNA kendini yarı korunumlu eşler; oluşan her bir yeni DNA molekülünün bir ipliği orijinal ana DNA'ya aitken diğeri yeni oluşturulan ipliktir, ifade doğrudur."
+        }
+      },
+      {
+        "id": "LGS-FEN-T1-04",
+        "course": "FEN BİLİMLERİ",
+        "sourceTag": "2023 LGS Çıkmış Soru",
+        "outcomeCode": "F.8.2.2.1 • Kalıtım - Çaprazlamalar ve Genotip-Fenotip Olasılıkları",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Bezelyelerde mor çiçek rengi aleli (M), beyaz çiçek rengi aleline (m) baskındır. Bir araştırmacı, çiçek rengi bakımından fenotipi mor olan iki bezelye bitkisini (1. ve 2. ata bezelyeler) çaprazlamış ve elde edilen 1. kuşaktaki (F1) bezelyelerin çiçek renklerini kaydetmiştir.\nDeney sonuçları:\n• F1 kuşağında toplam 400 adet bezelye bitkisi elde edilmiş; bunların 302 tanesi mor çiçekli, 98 tanesi ise beyaz çiçekli olmuştur (yaklaşık %75 mor, %25 beyaz oranı).\nAraştırmacı daha sonra F1 kuşağında oluşan beyaz çiçekli bezelyelerden biri ile ata bezelyelerden birini çaprazlayarak 2. kuşağı (F2) elde etmiştir.",
+        "stem": "Yapılan bu çaprazlamalar ve sonuçlarına göre aşağıdaki ifadelerden hangisine kesinlikle ulaşılamaz?",
+        "options": {
+          "A": "Çaprazlanan 1. ve 2. ata bezelyelerin genotipleri heterozigottur (Mm x Mm).",
+          "B": "F1 kuşağında oluşan mor çiçekli bezelyelerin tamamı homozigot baskın (MM) genotipe sahiptir.",
+          "C": "F2 kuşağında beyaz çiçekli bezelye oluşma olasılığı %50'dir.",
+          "D": "Beyaz çiçek alelinin fenotipte etkisini gösterebilmesi için homozigot çekinik (mm) durumda olması gerekir."
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: İki mor çiçekli bezelyeden beyaz çiçekli bezelye oluşması, her iki ata bireyin de çekinik geni taşıdığını (Mm x Mm) kanıtlar. Mm x Mm çaprazlamasında F1 kuşağında oluşan mor çiçeklilerin 1/3'ü homozigot (MM), 2/3'ü ise heterozigottur (Mm). Yani mor çiçeklilerin \"tamamı homozigottur\" ifadesi kesinlikle yanlıştır.",
+        "detailedSolution": "Ata bezelyelerin her ikisi de mor çiçekli olmasına rağmen yavrularında beyaz çiçek (mm) görülmesi, her iki atanın da heterozigot (Mm) olduğunu ispatlar (A doğru). Mm x Mm çaprazlamasında genotip dağılımı 1 MM : 2 Mm : 1 mm şeklindedir. Dolayısıyla oluşan mor çiçekli bezelyelerin 1/3'ü homozigot (MM), 2/3'ü ise heterozigottur (Mm); tamamının homozigot olması imkansızdır (B ulaşılamaz ve yanlıştır, doğru cevap B). F1'deki beyaz çiçekli (mm) ile ata bezelyelerden biri (Mm) çaprazlandığında (Mm x mm) yavruların %50'si Mm (mor), %50'si mm (beyaz) olur (C doğru). Çekinik aleller ancak homozigot (mm) durumda fenotipte etkisini gösterir (D doğru).",
+        "distractors": {
+          "A": "İki mor bezelyeden beyaz yavru çıkması ata bireylerin heterozigot (Mm) olduğunu kesin olarak kanıtlar.",
+          "C": "Mm x mm çaprazlamasından %50 Mm (mor) ve %50 mm (beyaz) yavru elde edilir, ifade doğrudur.",
+          "D": "Çekinik genler baskın gen bulunmadığında (yani homozigot durumda) fenotipte ortaya çıkar, temel kalıtım kuralıdır."
+        }
+      }
+    ]
+  },
+  "test2": {
+    "id": "FEN-T2",
+    "title": "Test 2: Basınç ve Madde-Endüstri Deneyleri",
+    "badge": "MEB Örnek Sorular",
+    "questions": [
+      {
+        "id": "LGS-FEN-T2-01",
+        "course": "FEN BİLİMLERİ",
+        "sourceTag": "MEB Örnek Soru 2024",
+        "outcomeCode": "F.8.3.1.1 • Katı Basıncını Etkileyen Değişkenler (Kuvvet ve Yüzey Alanı)",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Katı maddeler ağırlıklarından dolayı bulundukları yüzeye bir kuvvet uygular ve bu kuvvetin etkisiyle basınç oluşturur. Katı basıncı (P), cismin ağırlığı (G) ile doğru, yere temas eden yüzey alanı (S) ile ters orantılıdır (P = G / S).\nAğırlıkları ve boyutları özdeş, homojen yapılı 3 adet dikdörtgenler prizması şeklindeki tuğla (G ağırlığında, geniş taban alanı 2S, dar taban alanı S) kullanılarak sünger zemin üzerinde üç farklı durum oluşturulmuştur:\n• 1. Durum: Tek bir tuğla dar yüzeyi (S) üzerine süngere bırakılmıştır. Süngerdeki batma miktarı h1 olarak ölçülmüştür.\n• 2. Durum: Aynı tuğlanın üzerine özdeş bir tuğla daha konulmuş (toplam ağırlık 2G), taban alanı yine dar yüzey (S) olacak şekilde süngere bırakılmıştır. Süngerdeki batma miktarı h2 olarak ölçülmüştür.\n• 3. Durum: 1. durumdaki tek tuğla, tabanına dik olacak şekilde tam ortasından dikey olarak kesilmiş ve yarısı atılmıştır. Kalan yarım tuğla (ağırlığı G/2, taban alanı S/2) sünger zemin üzerine bırakılmış ve batma miktarı h3 olarak ölçülmüştür.",
+        "stem": "Süngerdeki batma miktarlarının zemine uygulanan katı basıncıyla doğru orantılı olduğu bilindiğine göre, ölçülen batma miktarları (h1, h2, h3) arasındaki ilişki aşağıdakilerin hangisinde doğru verilmiştir?",
+        "options": {
+          "A": "h2 > h1 = h3",
+          "B": "h2 > h1 > h3",
+          "C": "h1 = h2 = h3",
+          "D": "h1 > h2 > h3"
+        },
+        "correctOption": "A",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: LGS'nin en klasik katı basıncı tuzağı: Düzgün katı bir cisim tabanına dik olarak kesildiğinde hem ağırlığı (G) hem de yüzey alanı (S) aynı oranda azalır. G/S oranı değişmediği için zemine uygulanan basınç DEĞİŞMEZ! Dolayısıyla P1 = P3 olur. 2. durumda ise ağırlık 2 katına çıkıp yüzey sabit kaldığı için basınç 2 katına çıkar (P2 = 2P1).",
+        "detailedSolution": "1. Durum: Basınç P1 = G / S -> Batma miktarı h1'dir.\n2. Durum: Yüzey alanı S sabit kalırken ağırlık 2G'ye çıkmıştır; basınç P2 = 2G / S = 2P1 olur. Bu nedenle batma miktarı en fazladır (h2 = 2h1).\n3. Durum: Tuğla tabanına dik kesilip yarısı atıldığında kalan parçanın ağırlığı G/2, taban alanı S/2 olur. Basınç P3 = (G/2) / (S/2) = G / S = P1 olur. Basınç değişmediği için batma miktarı 1. durumla aynı kalır (h3 = h1).\nSonuç olarak batma miktarları arasındaki ilişki h2 > h1 = h3 şeklindedir (Doğru cevap A).",
+        "distractors": {
+          "B": "Ağırlığı azalan 3. tuğlanın taban alanı da aynı oranda (yarıya) indiği için birim yüzeye düşen kuvvet değişmez; h1 > h3 olamaz, h1 = h3'tür.",
+          "C": "2. durumda temas yüzeyi sabitken ağırlık iki katına çıktığından basınç artar; tüm durumların eşit olması mümkün değildir.",
+          "D": "Ağırlık arttıkça basınç artacağından h2'nin en küçük olması fizik yasalarına aykırıdır."
+        }
+      },
+      {
+        "id": "LGS-FEN-T2-02",
+        "course": "FEN BİLİMLERİ",
+        "sourceTag": "MEB Örnek Soru 2024",
+        "outcomeCode": "F.8.3.1.3 • Gaz Basıncı ve Açık Hava Basıncı Deneyleri",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Atmosferi oluşturan gazlar, ağırlıkları ve tanecik hareketleri nedeniyle temas ettikleri tüm yüzeylere her yönde bir basınç uygular. Buna \"açık hava basıncı\" (atmosfer basıncı) denir.\nBir öğretmen, fen laboratuvarında açık hava basıncının varlığını kanıtlamak için öğrencilerine aşağıdaki deneyi uygulamıştır:\n1. Adım: İnce cidarlı boş bir metal yağ tenekesinin içerisine bir miktar su konulup ısıtıcı üzerinde kaynatılmıştır. Kaynama sırasında su buharı teneke içindeki havanın büyük kısmını dışarı sürüklemiştir.\n2. Adım: Teneke ocaktan alınmış, vakit kaybetmeden tenekenin kapağı hava almayacak şekilde sıkıca kapatılmıştır.\n3. Adım: Kapağı kapalı tenekenin üzerine buzlu soğuk su dökülmüştür.\nGözlem: Soğuk su dökülür dökülmez metal tenekenin içe doğru şiddetle ezildiği ve büzüştüğü gözlenmiştir.",
+        "stem": "Metal tenekenin içe doğru ezilmesiyle sonuçlanan bu deneyle ilgili aşağıdaki yorumlardan hangisi doğrudur?",
+        "options": {
+          "A": "Tenekenin ezilmesinin nedeni, soğuk su döküldüğünde açık hava basıncının aniden artış göstermesidir.",
+          "B": "Teneke içindeki su buharının yoğuşması sonucu iç gaz basıncı açık hava basıncının altına düşmüş ve dış basınç tenekeyi ezmiştir.",
+          "C": "Deney açık hava basıncının deniz seviyesinden yukarılara çıkıldıkça arttığını kanıtlar.",
+          "D": "Tenekenin kapağı açılırsa iç basınç tamamen sıfırlanacağı için teneke eski şekline kendiliğinden geri döner."
+        },
+        "correctOption": "B",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: İçe çökme/büzüşme deneylerinin mantığı: Başlangıçta iç basınç = dış basınçtır. Soğuk su döküldüğünde teneke içindeki su buharı aniden yoğuşarak sıvıya dönüşür ve gaz tanecik sayısı/basıncı dramatik biçimde düşer (P_iç < P_dış). Dışarıdaki açık hava basıncı iç basınçtan daha büyük hale geldiği için tenekeyi içeri doğru büzer.",
+        "detailedSolution": "Teneke ısıtıldığında içerisindeki havanın yerini su buharı alır. Kapak kapatılıp üzerine soğuk su döküldüğünde su buharı hızla yoğuşarak sıvı suya dönüşür. Kapalı kapta gaz miktarının aniden azalması sonucu tenekenin iç basıncı çok düşük bir değere geriler. Dışarıdaki açık hava basıncı değişmediği halde tenekenin iç basıncından çok daha büyük konuma gelir (P_açıkhava > P_iç). Dış basıncın dengelenemeyen bu kuvveti tenekeyi içeri doğru çökerterek ezer (Doğru cevap B). A şıkkında açık hava basıncı ani bir artış göstermez, sabit kalır. C şıkkında bu deney açık hava basıncının yükseklikle değişimini değil varlığını gösterir. D şıkkında metallerdeki kalıcı deformasyon kendiliğinden düzelmez ve hava girince iç basınç açık hava basıncına eşitlenir, sıfırlanmaz.",
+        "distractors": {
+          "A": "Soğuk su dökülmesi atmosferin açık hava basıncını artırmaz; açık hava basıncı ortam koşullarında sabittir, azalan tenekenin iç basıncıdır.",
+          "C": "Deney tek bir yükseklikte gerçekleştirilmiştir, yükseklikle açık hava basıncının değişimini test eden bir düzenek değildir.",
+          "D": "Kapak açıldığında teneke içine hava dolarak iç basınç açık hava basıncına eşitlenir, basınç sıfırlanmaz ve büzülen metal kendiliğinden düzelmez."
+        }
+      },
+      {
+        "id": "LGS-FEN-T2-03",
+        "course": "FEN BİLİMLERİ",
+        "sourceTag": "MEB Örnek Soru 2023",
+        "outcomeCode": "F.8.4.2.1 • Fiziksel ve Kimyasal Değişimler ve Kütlenin Korunumu",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Maddenin yalnızca dış görünüşünde (şekil, boyut, fiziksel hâl) meydana gelen ve maddenin kimliğini değiştirmeyen olaylara \"fiziksel değişim\", maddenin iç yapısının değişerek yeni özellikte maddelerin oluştuğu olaylara ise \"kimyasal değişim\" denir.\nBir öğrenci grubu kapalı ve sızdırmaz iki ayrı kapta aşağıdaki deneyleri gerçekleştirmiş ve hassas terazi ile kütle ölçümleri yapmıştır:\n• 1. Deney Düzeneği: Ağzı sıkıca kapalı bir cam kapta 100 gram katı buz parçası bulunmaktadır. Terazi 100 gramı göstermektedir. Kap ısıtılmış, buz tamamen eriyerek sıvı suya dönüşmüş ve bir kısmı buharlaşmıştır. Buharlaşan su kapalı kap içinde kalmıştır. Terazi tekrar tartıldığında 100 gram gösterdiği, maddenin kimlik özelliğinin (bağ yapısının) değişmediği belirlenmiştir.\n• 2. Deney Düzeneği: İçinde 80 gram sirke (asit çözeltisi) bulunan cam erlenmayerin ağzına, içinde 20 gram karbonat (bazik tuz) bulunan esnek bir balon hava almayacak şekilde takılmıştır. Düzenek terazide tartıldığında toplam kütle 100 gram gelmiştir. Balon dikleştirilerek karbonat sirkenin içine dökülmüştür. Sıvıda yoğun gaz kabarcıkları çıkmış, kabın tabanı soğumuş, balon şişmiş ve kapta yeni maddeler oluşmuştur. Tepkime tamamlandığında terazi yeniden tartılmış ve yine 100 gram ölçülmüştür.",
+        "stem": "Yapılan bu iki deney ve elde edilen gözlem sonuçlarına dayanarak aşağıdaki çıkarımlardan hangisi yapılamaz?",
+        "options": {
+          "A": "1. deneyde hal değişimi gerçekleşmiş olup fiziksel bir değişimdir; atomlar arası kimyasal bağlar kopmamıştır.",
+          "B": "2. deneyde gaz çıkışı ve yeni madde oluşumu kimyasal bir tepkime gerçekleştiğini gösterir.",
+          "C": "Her iki deneyde de kapalı sistemlerde kütlenin korunduğu kanıtlanmıştır.",
+          "D": "2. deneyde gaz çıkışı nedeniyle tepkime sonunda kapta bulunan atomların sayısı ve çeşidi başlangıçtakinden farklıdır."
+        },
+        "correctOption": "D",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Kimyasal tepkimenin değişmez kanunları: Kimyasal tepkimelerde yeni maddeler oluşur, bağlar kırılır ve yeni bağlar kurulur; ANCAK atom çeşidi, atom sayısı ve toplam kütle HİÇBİR ZAMAN DEĞİŞMEZ, daima korunur!",
+        "detailedSolution": "Kimyasal tepkimelerde giren maddelerdeki atomlar yeniden düzenlenerek ürünleri oluşturur. Tepkimeye giren atomların cinsi (çeşidi) ve toplam sayısı kesinlikle değişmez ve korunur. Bu nedenle 2. deneyde atomların sayısı ve çeşidinin farklılaştığını iddia eden D seçeneği temel kimya yasalarına aykırıdır (Ulaşılamaz olan seçenek D'dir).\n1. deneyde buzun erimesi ve buharlaşması saf bir hal değişimidir, fizikseldir (A doğru). 2. deneyde gaz çıkışı ve kabın tabanının soğuması kimyasal tepkimenin kanıtıdır (B doğru). Her iki deneyde de başlangıç kütlesi (100 g) ile son kütle (100 g) eşit kaldığından kapalı sistemde kütlenin korunduğu ispatlanmıştır (C doğru).",
+        "distractors": {
+          "A": "Hal değişimleri (erime, buharlaşma) fiziksel değişimdir ve molekül içi bağlar kopmaz, ifade doğrudur.",
+          "B": "Gaz çıkışı, çökelek oluşumu, ısı ve renk değişimi kimyasal tepkimelerin tipik göstergeleridir, ifade doğrudur.",
+          "C": "Kapalı kaplarda gerçekleşen tüm fiziksel ve kimyasal süreçlerde toplam kütle daima korunur, terazi ölçümleri de bunu doğrular."
+        }
+      },
+      {
+        "id": "LGS-FEN-T2-04",
+        "course": "FEN BİLİMLERİ",
+        "sourceTag": "MEB Örnek Soru 2024",
+        "outcomeCode": "F.8.4.3.1 • Periyodik Sistemde Elementlerin Sınıflandırılması ve Ayırt Edici Özellikleri",
+        "difficulty": "LGS Yeni Nesil",
+        "stimulus": "Periyodik sistemde elementler artan atom numaralarına (proton sayılarına) göre dizilir. Benzer kimyasal özellik gösteren elementler genellikle aynı düşey sütunda (grup) yer alır. Elementler metaller, ametaller, yarı metaller ve soygazlar olarak sınıflandırılır.\nPeriyodik sistemin ilk 18 elementi arasından seçilen K, L, M ve N elementleri ile ilgili şu bilgiler verilmiştir:\n• K Elementi: 1. periyot 1A grubunda bulunur. Oda koşullarında gaz haldedir ve ametal özellik gösterir.\n• L Elementi: Atom numarası 2'dir. Son katmanında 2 elektron bulunmasına rağmen kararlı yapıda olduğundan periyodik sistemin en sağındaki 8A grubunda yer alır.\n• M Elementi: Isı ve elektriği iyi iletir, tel ve levha haline getirilebilir. Yüzeyi parlaktır ve 3. periyot 2A grubunda yer alır.\n• N Elementi: M elementi ile aynı periyotta yer alır. Yüzeyi mattır, kırılgandır (tel ve levha haline getirilemez) ve oda koşullarında gaz haldedir (3. periyot 7A grubu).",
+        "stem": "Verilen bilgilere ve periyodik sistemdeki kurallara göre aşağıdaki ifadelerden hangisi yanlıştır?",
+        "options": {
+          "A": "K elementi 1A grubundaki alkali metallerle aynı grupta bulunmasına rağmen bir ametaldir (Hidrojen).",
+          "B": "L elementi soygazdır ve kararlı elektron dizilimine sahip olduğu için kimyasal tepkimelere girme eğilimi göstermez (Helyum).",
+          "C": "M elementi ile N elementi arasında elektron ortaklaşması sonucu kovalent bağlı bir bileşik oluşur.",
+          "D": "M elementi metal sınıfında, N elementi ise ametal sınıfında yer almaktadır."
+        },
+        "correctOption": "C",
+        "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Metal ve ametal atomları arasında kimyasal bağ oluşurken ametaller elektron ortaklaşması yapmaz; metaller elektron VERİR, ametaller elektron ALIR ve İYONİK bağlı bileşik oluşur. Elektron ortaklaşması yalnızca ametal-ametal atomları arasında (kovalent bağ) gerçekleşir.",
+        "detailedSolution": "M elementi 3. periyot 2A grubunda bulunan Magnezyum (metal), N elementi ise 3. periyot 7A grubunda bulunan Klor (ametal) elementidir. Metaller ile ametaller tepkimeye girdiğinde metal elektron verir (katyon), ametal elektron alır (anyon) ve aralarında elektron alışverişine dayalı İYONİK BAĞLI bileşik oluşur. \"Elektron ortaklaşması sonucu kovalent bağlı bileşik oluşur\" ifadesi yanlıştır (Doğru cevap C).\nK elementi Hidrojen olup 1A grubundaki tek ametaldir (A doğru). L elementi Helyum'dur; değerlik elektron sayısı 2 olmasına rağmen 8A soygazıdır (B doğru). M metal, N ise ametaldir (D doğru).",
+        "distractors": {
+          "A": "1A grubunun ilk elementi Hidrojen bir ametaldir; grubundaki diğer elementler metal olduğu için bu durum periyodik sistemin en önemli istisnasıdır.",
+          "B": "Helyum (atom no 2) tek katmanında 2 elektron bulundurur (dublet kuralı), soygazdır ve tepkimeye girmez.",
+          "D": "M elementi parlak ve tel-levha haline gelen bir metaldir; N elementi ise mat, kırılgan bir ametaldir, sınıflandırma doğrudur."
+        }
+      }
+    ]
+  }
+}

@@ -92,15 +92,25 @@
               <span class="course-name">T.C. İnkılap Tarihi</span>
               <span class="course-meta">Sosyal Bilgiler & Maarif</span>
             </div>
-            <span class="badge-pill" id="badgeSosyal">4 Soru</span>
+            <span class="badge-pill" id="badgeSosyal">12 Soru</span>
           </button>
+        </div>
+      </div>
+
+      <!-- Test Seçici (Test Listesi) -->
+      <div class="sidebar-block">
+        <div class="block-header">
+          <span class="block-label">MEB LGS TESTLERİ</span>
+        </div>
+        <div class="test-list" id="testList">
+          <!-- Test Butonları Dinamik Gelir -->
         </div>
       </div>
 
       <div class="sidebar-block">
         <div class="block-header">
           <span class="block-label">SORU GEZGİNİ</span>
-          <span id="activeQuestionCounter" class="counter-text">Soru 1 / 4</span>
+          <span id="activeQuestionCounter" class="counter-text">Soru 1 / 6</span>
         </div>
         <div class="question-navigator" id="questionNavigator">
           <!-- Soru Gezinti Butonları Dinamik Gelir -->
@@ -142,6 +152,7 @@
         <div class="booklet-top-bar">
           <div class="booklet-title-wrapper">
             <span id="qCourseBadge" class="pill-badge pill-course">TÜRKÇE</span>
+            <span id="qSourceBadge" class="pill-badge pill-source">2024 LGS Formatı</span>
             <span id="qOutcomeBadge" class="pill-badge pill-outcome">T.8.3.14.03 • Akışı Bozan Cümle</span>
             <span id="qDifficultyBadge" class="pill-badge pill-diff">LGS Yeni Nesil</span>
           </div>
@@ -188,7 +199,10 @@
     </main>
 
     <!-- Sağ Sütun: İnteraktif LGS Optik Formu -->
-    <aside class="optical-column">
+    <aside class="optical-column" id="opticalColumn">
+      <button id="btnMobileOptical" class="mobile-optical-trigger" type="button">
+        <span>📑 LGS Optik Formunu Göster / Gizle</span>
+      </button>
       <div class="optical-form-card">
         <div class="optical-header-box">
           <div class="optical-main-title">ÖDSGM LGS OPTİK CEVAP FORMU</div>

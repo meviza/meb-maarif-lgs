@@ -1,129 +1,108 @@
 /**
- * MEB Maarif LGS Platformu - İnteraktif Soru ve Optik Sınav Motoru (Kurumsal Sürüm)
+ * MEB Maarif LGS Platformu - Çoklu Test ve Yalıtılmış Oturum Motoru (Faz 2)
+ * Türkiye Yüzyılı Maarif Modeli 8. Sınıf LGS Sınav Sistemi
  */
 
 // Uygulama Durumu (State)
 const appState = {
   currentMode: 'practice', // 'practice' | 'exam'
   currentCourse: 'turkce',
-  currentIndex: 0,
-  userAnswers: {}, // { 'LGS-TR-01': 'C', ... }
-  examEvaluated: false,
+  currentTestIndex: 0,
+  currentQuestionIndex: 0,
+  sessions: {}, // [testId]: { userAnswers: {}, examEvaluated: false, score: null }
   timerInterval: null,
   timerSeconds: 30 * 60,
-  questionBank: {}
+  multiTestBank: {}
 };
 
 // Sayfa Yüklendiğinde Başlat
 document.addEventListener('DOMContentLoaded', async () => {
-  await initQuestionBank();
+  await initTestBank();
   setupEventListeners();
   renderApp();
 });
 
-// 1. Soru Bankasını Yükle
-async function initQuestionBank() {
+// 1. Çoklu Test Bankasını Yükle
+async function initTestBank() {
   try {
     const res = await fetch('questions.json');
     if (res.ok) {
-      appState.questionBank = await res.json();
-      console.log('✓ questions.json başarıyla yüklendi.');
+      appState.multiTestBank = await res.json();
+      console.log('✓ questions.json çoklu test bankası başarıyla yüklendi.');
     } else {
       throw new Error('questions.json okunamadı');
     }
   } catch (err) {
     console.warn('questions.json yüklenemedi, varsayılan gömülü veri kullanılıyor.', err);
     // Gömülü yedek soru seti
-    appState.questionBank = {
-      turkce: [
-        {
-          id: 'LGS-TR-01',
-          course: 'TÜRKÇE',
-          outcomeCode: 'T.8.3.14.03 • Akışı Bozan Cümle',
-          difficulty: 'LGS Yeni Nesil',
-          stimulus: '(I) Yapay zekâ destekli klinik tanı sistemleri, tıp dünyasında hekimlerin en kritik karar destek mekanizması hâline gelmiştir. (II) Milyonlarca vaka ve radyolojik görüntüyü saniyeler içinde tarayan bu algoritmalar, insan gözünün kaçırabileceği mikroskobik doku anomalilerini yüksek hassasiyetle saptayabilmektedir. (III) Hastane binalarının mimari tasarımında doğal ışık kullanımının artırılması, ameliyat sonrası hasta nekahet süresini belirgin şekilde kısaltmaktadır. (IV) Hekimin klinik tecrübesiyle yapay zekânın devasa veri işleme kabiliyeti harmanlandığında, teşhis hataları en aza inmekte ve tedavi başarısı katlanmaktadır.',
-          stem: 'Bu parçadaki numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?',
-          options: { A: 'I', B: 'II', C: 'III', D: 'IV' },
-          correctOption: 'C',
-          solutionStrategy: '💡 UZMAN ÖĞRETMEN STRATEJİSİ: Parçanın omurgasını oluşturan anahtar kavramları (Yapay zekâ, klinik tanı, teşhis) takip edin. Konunun aniden hastane mimarisine saptığı cümleyi yakalayın.',
-          detailedSolution: 'I, II ve IV. cümleler yapay zekânın hekim teşhislerindeki teknolojik katkısını işlerken, III. cümle bağlam dışına çıkıp hastane mimarisinden söz etmektedir. Dolayısıyla III. cümle akışı bozar.',
-          distractors: {
-            A: 'I. cümle giriş cümlesidir; konuyu tanımlar.',
-            B: 'II. cümle I. cümlenin mantıksal devamıdır; algoritmanın gücünü açıklar.',
-            D: 'IV. cümle teknolojiyi hekim tecrübesiyle bağlayıp ana fikri tamamlar.'
+    appState.multiTestBank = {
+      turkce: {
+        courseName: 'Türkçe',
+        tests: [
+          {
+            id: 'TR-T1',
+            title: 'Test 1: Paragrafta Anlam ve Yapı',
+            badge: '2024 LGS Çıkmış Soru Formatı',
+            questions: [
+              {
+                id: 'LGS-TR-01',
+                course: 'TÜRKÇE',
+                sourceTag: '2024 LGS Çıkmış Soru Formatı',
+                outcomeCode: 'T.8.3.14.03 • Akışı Bozan Cümle',
+                difficulty: 'LGS Yeni Nesil',
+                stimulus: '(I) Yapay zekâ destekli klinik tanı sistemleri, tıp dünyasında hekimlerin en kritik karar destek mekanizması hâline gelmiştir. (II) Milyonlarca vaka ve radyolojik görüntüyü saniyeler içinde tarayan bu algoritmalar, insan gözünün kaçırabileceği mikroskobik doku anomalilerini yüksek hassasiyetle saptayabilmektedir. (III) Hastane binalarının mimari tasarımında doğal ışık kullanımının artırılması, ameliyat sonrası hasta nekahet süresini belirgin şekilde kısaltmaktadır. (IV) Hekimin klinik tecrübesiyle yapay zekânın devasa veri işleme kabiliyeti harmanlandığında, teşhis hataları en aza inmekte ve tedavi başarısı katlanmaktadır.',
+                stem: 'Bu parçadaki numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?',
+                options: { A: 'I', B: 'II', C: 'III', D: 'IV' },
+                correctOption: 'C',
+                solutionStrategy: '💡 UZMAN ÖĞRETMEN STRATEJİSİ: Parçanın omurgasını oluşturan anahtar kavramları (Yapay zekâ, klinik tanı, teşhis) takip edin. Konunun aniden hastane mimarisine saptığı cümleyi yakalayın.',
+                detailedSolution: 'I, II ve IV. cümleler yapay zekânın hekim teşhislerindeki teknolojik katkısını işlerken, III. cümle bağlam dışına çıkıp hastane mimarisinden söz etmektedir. Dolayısıyla III. cümle akışı bozar.',
+                distractors: {
+                  A: 'I. cümle giriş cümlesidir; konuyu tanımlar.',
+                  B: 'II. cümle I. cümlenin mantıksal devamıdır; algoritmanın gücünü açıklar.',
+                  D: 'IV. cümle teknolojiyi hekim tecrübesiyle bağlayıp ana fikri tamamlar.'
+                }
+              }
+            ]
           }
-        },
-        {
-          id: 'LGS-TR-02',
-          course: 'TÜRKÇE',
-          outcomeCode: 'T.8.3.14.01 • Ana Düşünce (Vurgulanan Fikir)',
-          difficulty: 'LGS Yeni Nesil',
-          stimulus: 'Gerçek bir yazar, çağının tanığı olmakla yetinmez; o, toplumun duymadığı fısıltıları, görmezden geldiği yaraları kelimelerin büyüteci altına alır. Sanat, yalnızca bir ayna gibi gerçeği yansıtmaz; gerçeğin karanlıkta kalmış köşelerine fener tutarak insanı dönüştürmeyi hedefler. Sadece alkış almak için yazılmış suya sabuna dokunmayan eserler, zamanın acımasız eleğinde savrulup yok olmaya mahkûmdur.',
-          stem: 'Bu parçada asıl vurgulanmak istenen düşünce aşağıdakilerden hangisidir?',
-          options: {
-            A: 'Sanatçılar, toplumun beğenisini kazanmak için güncel konuları işlemelidir.',
-            B: 'Kalıcı ve değerli edebiyat, toplumsal gerçekleri aydınlatıp insanı dönüştürme gücü taşıyan edebiyattır.',
-            C: 'Zamanın eleğinden yalnızca estetik kaygıyla yazılmış süslü metinler geçebilir.',
-            D: 'Toplumun sorunlarını işlemeyen yazarlar geleceğe kalıcı eser bırakamaz.'
-          },
-          correctOption: 'B',
-          solutionStrategy: '💡 UZMAN ÖĞRETMEN STRATEJİSİ: Parçanın son cümlesindeki "zamanın acımasız eleği" ve ortadaki "insanı dönüştürmeyi hedefler" ifadesi doğrudan kalıcılık ve dönüştürücü güç vurgusunu işaret eder.',
-          detailedSolution: 'Yazar, sanatın pasif bir ayna olmanın ötesine geçerek insanı dönüştürmesi gerektiğini ve suya sabuna dokunmayan eserlerin unutulacağını savunmaktadır. Bu da B şıkkındaki yargıyı doğrular.',
-          distractors: {
-            A: 'Yazar alkış ve beğeni peşinde koşmayı eleştirmektedir, tam zıttıdır.',
-            C: 'Metinde estetik süsten değil, gerçeğe fener tutmaktan bahsedilir.',
-            D: 'D şıkkı güçlü bir çeldiricidir ancak yazarın asıl amacı sadece olumsuzlamak değil, kalıcı sanatın dönüştürücü gücünü vurgulamaktır.'
-          }
-        }
-      ],
-      matematik: [
-        {
-          id: 'LGS-MAT-01',
-          course: 'MATEMATİK',
-          outcomeCode: 'M.8.1.1.1 • EBOB-EKOK Modelleme',
-          difficulty: 'LGS Yeni Nesil',
-          stimulus: 'Bir belediye, kenar uzunlukları 180 metre ve 240 metre olan dikdörtgen biçimindeki bir afet lojistik alanının etrafına ve içine, eşit aralıklarla güneş enerjili aydınlatma direkleri dikecektir. Sahadaki köşelere de birer direk dikilmesi zorunludur. Ayrıca afet durumunda güvenli geçişi sağlamak amacıyla iki direk arasındaki mesafenin metre cinsinden bir tam sayı ve 15 metreden küçük olması istenmektedir.',
-          stem: 'Buna göre bu lojistik sahasının sadece çevresi boyunca dikilecek aydınlatma direği sayısı en az kaç olabilir?',
-          options: { A: '35', B: '42', C: '70', D: '84' },
-          correctOption: 'C',
-          solutionStrategy: '💡 UZMAN ÖĞRETMEN STRATEJİSİ: En az direk için aralık en büyük seçilmelidir. Kısıt: Mesafe < 15 m. 180 ve 240\'ın EBOB\'unun (60) 15\'ten küçük en büyük bölenini bulunuz.',
-          detailedSolution: 'EBOB(180, 240) = 60 m. 60\'ın 15\'ten küçük en büyük böleni: 12 m. Çevre = 2 x (180 + 240) = 840 m. Direk Sayısı = 840 / 12 = 70 adet.',
-          distractors: {
-            A: 'Aralığı yanlışlıkla 24 m kabul eden öğrencilerin bulduğu sonuçtur.',
-            B: '15\'ten küçük kuralını unutup aralığı 20 m alanların düştüğü güçlü çeldiricidir (840/20 = 42).',
-            D: 'Aralığı 10 m seçip en büyük böleni yakalayamayanların sonucudur.'
-          }
-        }
-      ],
-      fen: [
-        {
-          id: 'LGS-FEN-01',
-          course: 'FEN BİLİMLERİ',
-          outcomeCode: 'F.8.1.1.1 • Işık Açısı ve Sıcaklık İlişkisi',
-          difficulty: 'LGS Yeni Nesil',
-          stimulus: 'Fen bilimleri öğretmeni, özdeş iki el feneri ve özdeş iki termometre kullanarak karanlık bir laboratuvarda aşağıdaki deney düzeneğini kuruyor:\n• 1. Düzenek: El feneri düz bir zemine dik (90°) açıyla tutuluyor ve aydınlanan dairesel alanın sıcaklığı 10 dakika sonra ölçülüyor.\n• 2. Düzenek: El feneri aynı mesafeden eğik (30°) açıyla tutuluyor ve aydınlanan elips şeklindeki alanın sıcaklığı 10 dakika sonra ölçülüyor.\nDeney sonucunda 1. düzenekteki termometrenin 2. düzenekten 8 °C daha yüksek bir sıcaklık gösterdiği kaydediliyor.',
-          stem: 'Yapılan bu kontrollü deneyle ilgili aşağıdaki çıkarımlardan hangisi doğrudur?',
-          options: {
-            A: 'Deneyde bağımsız değişken, aydınlanan yüzeyin başlangıç sıcaklığıdır.',
-            B: 'Güneş ışınlarının gelme açısı küçüldükçe birim yüzeye düşen ışık enerjisi miktarı artar.',
-            C: '2. düzenekte aydınlanan alanın daha geniş olması, birim yüzeye aktarılan ısı enerjisinin daha az olduğunu kanıtlar.',
-            D: 'Deney sonucuna göre mevsimlerin oluşumunda Dünya\'nın Güneş\'e olan uzaklığının değişmesi belirleyicidir.'
-          },
-          correctOption: 'C',
-          solutionStrategy: '💡 UZMAN ÖĞRETMEN STRATEJİSİ: Açı eğikleştikçe alan genişler, birim yüzeye düşen enerji azalır.',
-          detailedSolution: '2. düzenekte ışık eğik açıyla geldiği için enerji daha geniş bir yüzeye dağılmıştır. Enerji dağıldığı için birim alana aktarılan ısı enerjisi azalmış ve sıcaklık artışı daha düşük kalmıştır.',
-          distractors: {
-            A: 'Bağımsız değişken ışığın gelme açısıdır.',
-            B: 'Açı küçüldükçe birim yüzeye düşen enerji azalır.',
-            D: 'Güneş\'e uzaklık mevsimlerde etkili değildir.'
-          }
-        }
-      ]
+        ]
+      }
     };
   }
 }
 
-// 2. Olay Dinleyicileri (Event Listeners)
+// 2. Yardımcı Fonksiyonlar (Data Accessors)
+function getCurrentCourseData() {
+  return appState.multiTestBank[appState.currentCourse] || { courseName: '', tests: [] };
+}
+
+function getCurrentTest() {
+  const courseData = getCurrentCourseData();
+  if (!courseData.tests || courseData.tests.length === 0) return null;
+  return courseData.tests[appState.currentTestIndex] || courseData.tests[0];
+}
+
+function getCurrentQuestions() {
+  const test = getCurrentTest();
+  return test ? test.questions : [];
+}
+
+function getCurrentQuestion() {
+  const questions = getCurrentQuestions();
+  return questions[appState.currentQuestionIndex] || questions[0];
+}
+
+function getSession(testId) {
+  if (!appState.sessions[testId]) {
+    appState.sessions[testId] = {
+      userAnswers: {},
+      examEvaluated: false,
+      score: null
+    };
+  }
+  return appState.sessions[testId];
+}
+
+// 3. Olay Dinleyicileri (Event Listeners)
 function setupEventListeners() {
   // Mod Değiştirme
   const btnPractice = document.getElementById('btnPracticeMode');
@@ -131,7 +110,7 @@ function setupEventListeners() {
   if (btnPractice) btnPractice.addEventListener('click', () => setMode('practice'));
   if (btnExam) btnExam.addEventListener('click', () => setMode('exam'));
 
-  // Ders Değiştirme
+  // Ders Değiştirme Butonları
   const courseButtons = document.querySelectorAll('.course-btn');
   courseButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -151,9 +130,18 @@ function setupEventListeners() {
   const btnReset = document.getElementById('btnResetExam');
   if (btnFinish) btnFinish.addEventListener('click', finishExam);
   if (btnReset) btnReset.addEventListener('click', resetExam);
+
+  // Mobil Optik Aç/Kapa Butonu
+  const btnMobileOpt = document.getElementById('btnMobileOptical');
+  const opticalCol = document.getElementById('opticalColumn');
+  if (btnMobileOpt && opticalCol) {
+    btnMobileOpt.addEventListener('click', () => {
+      opticalCol.classList.toggle('mobile-open');
+    });
+  }
 }
 
-// 3. Mod Ayarla
+// 4. Mod Değiştirme
 function setMode(mode) {
   appState.currentMode = mode;
   document.getElementById('btnPracticeMode').classList.toggle('active', mode === 'practice');
@@ -171,12 +159,14 @@ function setMode(mode) {
   renderQuestion();
   renderSolutionDrawer();
   renderOpticalSheet();
+  renderScoreReport();
 }
 
-// 4. Ders Seçimi
+// 5. Ders Değiştirme (Dersler Arası Geçişte Durum Yalıtımı)
 function selectCourse(courseKey) {
   appState.currentCourse = courseKey;
-  appState.currentIndex = 0;
+  appState.currentTestIndex = 0;
+  appState.currentQuestionIndex = 0;
 
   // Buton aktiflik sınıfları
   document.querySelectorAll('.course-btn').forEach(btn => {
@@ -198,42 +188,96 @@ function selectCourse(courseKey) {
   renderApp();
 }
 
-// 5. Ana Render Metodu
+// 6. Test Değiştirme (Testler Arası Durum Yalıtımı)
+function selectTest(testIndex) {
+  appState.currentTestIndex = testIndex;
+  appState.currentQuestionIndex = 0;
+  renderApp();
+}
+
+// 7. Ana Render Metodu
 function renderApp() {
   updateCourseBadges();
+  renderTestList();
   renderQuestionNav();
   renderQuestion();
   renderSolutionDrawer();
   renderOpticalSheet();
+  renderScoreReport();
 }
 
-// Ders Soru Sayısı Rozetlerini Güncelle
+// Ders Rozetlerini Güncelle (Toplam Soru Sayıları)
 function updateCourseBadges() {
-  const turkceCount = appState.questionBank.turkce?.length || 0;
-  const matCount = appState.questionBank.matematik?.length || 0;
-  const fenCount = appState.questionBank.fen?.length || 0;
-  const sosyalCount = appState.questionBank.sosyal?.length || 0;
+  const getCount = (courseKey) => {
+    const course = appState.multiTestBank[courseKey];
+    if (!course || !course.tests) return 0;
+    return course.tests.reduce((acc, t) => acc + (t.questions?.length || 0), 0);
+  };
 
   const bTr = document.getElementById('badgeTurkce');
   const bMat = document.getElementById('badgeMatematik');
   const bFen = document.getElementById('badgeFen');
   const bSosyal = document.getElementById('badgeSosyal');
 
-  if (bTr) bTr.textContent = `${turkceCount} Soru`;
-  if (bMat) bMat.textContent = `${matCount} Soru`;
-  if (bFen) bFen.textContent = `${fenCount} Soru`;
-  if (bSosyal) bSosyal.textContent = `${sosyalCount} Soru`;
+  if (bTr) bTr.textContent = `${getCount('turkce')} Soru`;
+  if (bMat) bMat.textContent = `${getCount('matematik')} Soru`;
+  if (bFen) bFen.textContent = `${getCount('fen')} Soru`;
+  if (bSosyal) bSosyal.textContent = `${getCount('sosyal')} Soru`;
+}
+
+// Test Listesini Render Et
+function renderTestList() {
+  const testListContainer = document.getElementById('testList');
+  if (!testListContainer) return;
+  testListContainer.innerHTML = '';
+
+  const courseData = getCurrentCourseData();
+  const tests = courseData.tests || [];
+
+  tests.forEach((test, idx) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `test-card-btn ${idx === appState.currentTestIndex ? 'active' : ''}`;
+
+    const session = getSession(test.id);
+    const answeredCount = Object.keys(session.userAnswers || {}).length;
+    const isCompleted = session.examEvaluated;
+
+    let statusBadge = '';
+    if (isCompleted) {
+      statusBadge = `<span style="color:#059669; font-weight:700;">✓ Tamamlandı</span> • `;
+    } else if (answeredCount > 0) {
+      statusBadge = `<span style="color:#2563eb; font-weight:700;">${answeredCount}/${test.questions.length}</span> • `;
+    }
+
+    btn.innerHTML = `
+      <div class="test-info-box">
+        <span class="test-name">${test.title}</span>
+        <span class="test-tag-meta">${statusBadge}${test.badge || 'MEB Maarif'}</span>
+      </div>
+      <span class="test-q-count">${test.questions.length} Soru</span>
+    `;
+
+    btn.addEventListener('click', () => {
+      selectTest(idx);
+    });
+
+    testListContainer.appendChild(btn);
+  });
 }
 
 // Soru Gezgini Butonları
 function renderQuestionNav() {
   const container = document.getElementById('questionNavigator');
-  const questions = appState.questionBank[appState.currentCourse] || [];
+  const questions = getCurrentQuestions();
+  const test = getCurrentTest();
+  const session = test ? getSession(test.id) : { userAnswers: {} };
+
   container.innerHTML = '';
 
   const counterEl = document.getElementById('activeQuestionCounter');
   if (counterEl) {
-    counterEl.textContent = `Soru ${appState.currentIndex + 1} / ${questions.length}`;
+    counterEl.textContent = `Soru ${appState.currentQuestionIndex + 1} / ${questions.length}`;
   }
 
   questions.forEach((q, idx) => {
@@ -242,17 +286,20 @@ function renderQuestionNav() {
     btn.className = 'nav-q-btn';
     btn.textContent = `${idx + 1}`;
 
-    if (idx === appState.currentIndex) {
+    if (idx === appState.currentQuestionIndex) {
       btn.classList.add('active');
     }
 
-    if (appState.userAnswers[q.id]) {
+    if (session.userAnswers[q.id]) {
       btn.classList.add('answered');
     }
 
     btn.addEventListener('click', () => {
-      appState.currentIndex = idx;
-      renderApp();
+      appState.currentQuestionIndex = idx;
+      renderQuestion();
+      renderQuestionNav();
+      renderSolutionDrawer();
+      renderOpticalSheet();
     });
 
     container.appendChild(btn);
@@ -261,9 +308,12 @@ function renderQuestionNav() {
 
 // Soru Kitapçığını Render Et
 function renderQuestion() {
-  const questions = appState.questionBank[appState.currentCourse] || [];
-  const q = questions[appState.currentIndex];
+  const questions = getCurrentQuestions();
+  const q = questions[appState.currentQuestionIndex];
   if (!q) return;
+
+  const test = getCurrentTest();
+  const session = test ? getSession(test.id) : { userAnswers: {}, examEvaluated: false };
 
   // Başlık Meta Rozetleri
   document.getElementById('qCourseBadge').textContent = q.course;
@@ -271,8 +321,13 @@ function renderQuestion() {
   document.getElementById('qDifficultyBadge').textContent = q.difficulty;
   document.getElementById('qCodeBadge').textContent = q.id;
 
+  const sourceBadge = document.getElementById('qSourceBadge');
+  if (sourceBadge) {
+    sourceBadge.textContent = q.sourceTag || test?.badge || '2024 LGS Formatı';
+  }
+
   // Soru Numarası
-  document.getElementById('qNumberDisplay').textContent = `${appState.currentIndex + 1}.`;
+  document.getElementById('qNumberDisplay').textContent = `${appState.currentQuestionIndex + 1}.`;
 
   // Metin ve Soru Kökü
   document.getElementById('stimulusBox').textContent = q.stimulus;
@@ -281,14 +336,14 @@ function renderQuestion() {
   // Alt İlerleme
   const progressEl = document.getElementById('footerProgress');
   if (progressEl) {
-    progressEl.textContent = `${appState.currentIndex + 1} / ${questions.length}`;
+    progressEl.textContent = `${appState.currentQuestionIndex + 1} / ${questions.length}`;
   }
 
   // Şıklar Listesi
   const optionsList = document.getElementById('optionsList');
   optionsList.innerHTML = '';
 
-  const selectedAnswer = appState.userAnswers[q.id];
+  const selectedAnswer = session.userAnswers[q.id];
 
   ['A', 'B', 'C', 'D'].forEach(opt => {
     const card = document.createElement('div');
@@ -298,8 +353,9 @@ function renderQuestion() {
       card.classList.add('selected');
     }
 
-    // Pratik Modunda veya Sınav Değerlendirilmişse Renklendir
-    if ((appState.currentMode === 'practice' && selectedAnswer) || appState.examEvaluated) {
+    // YALITIM KURALI:
+    // Sadece 'practice' modunda cevap verildiğinde VEYA mevcut test bitirilmişse (examEvaluated) renkleri göster!
+    if ((appState.currentMode === 'practice' && selectedAnswer) || session.examEvaluated) {
       if (opt === q.correctOption) {
         card.classList.add('correct');
       } else if (selectedAnswer === opt) {
@@ -319,34 +375,49 @@ function renderQuestion() {
 
 // Şık Seçimi
 function selectOption(questionId, selectedOption) {
-  appState.userAnswers[questionId] = selectedOption;
+  const test = getCurrentTest();
+  if (!test) return;
+
+  const session = getSession(test.id);
+
+  // Sınav modu değerlendirilmişse kitle
+  if (appState.currentMode === 'exam' && session.examEvaluated) {
+    return;
+  }
+
+  session.userAnswers[questionId] = selectedOption;
   renderQuestionNav();
   renderQuestion();
   renderSolutionDrawer();
   renderOpticalSheet();
+  renderTestList(); // Test listesindeki ilerleme sayısını güncelle
 }
 
 // Soru Değiştirme (İleri / Geri)
 function navigateQuestion(delta) {
-  const questions = appState.questionBank[appState.currentCourse] || [];
-  const nextIdx = appState.currentIndex + delta;
+  const questions = getCurrentQuestions();
+  const nextIdx = appState.currentQuestionIndex + delta;
   if (nextIdx >= 0 && nextIdx < questions.length) {
-    appState.currentIndex = nextIdx;
-    renderApp();
+    appState.currentQuestionIndex = nextIdx;
+    renderQuestion();
+    renderQuestionNav();
+    renderSolutionDrawer();
+    renderOpticalSheet();
   }
 }
 
 // Çözüm Rehberi Çekmecesini Yönet
 function renderSolutionDrawer() {
   const drawer = document.getElementById('solutionDrawer');
-  const questions = appState.questionBank[appState.currentCourse] || [];
-  const q = questions[appState.currentIndex];
+  const q = getCurrentQuestion();
   if (!q) return;
 
-  const answered = appState.userAnswers[q.id];
+  const test = getCurrentTest();
+  const session = test ? getSession(test.id) : { userAnswers: {}, examEvaluated: false };
+  const answered = session.userAnswers[q.id];
 
-  // Sadece pratik modunda cevap verildiğinde veya sınav bitirildiğinde göster
-  if ((appState.currentMode === 'practice' && answered) || appState.examEvaluated) {
+  // Sadece pratik modunda cevap verilmişse veya sınav değerlendirilmişse göster
+  if ((appState.currentMode === 'practice' && answered) || session.examEvaluated) {
     drawer.classList.remove('hidden');
 
     document.getElementById('solutionStrategyText').textContent = q.solutionStrategy;
@@ -368,21 +439,25 @@ function renderSolutionDrawer() {
   }
 }
 
-// Sağ Panel: Optik Formu Çiz
+// Sağ Panel: Optik Formu Çiz (Ders ve Test Bazlı Yalıtılmış)
 function renderOpticalSheet() {
   const container = document.getElementById('opticalRowsContainer');
-  const questions = appState.questionBank[appState.currentCourse] || [];
+  const questions = getCurrentQuestions();
+  const test = getCurrentTest();
+  if (!test) return;
+
+  const session = getSession(test.id);
   container.innerHTML = '';
 
   questions.forEach((q, idx) => {
     const row = document.createElement('div');
     row.className = 'opt-row-item';
 
-    if (idx === appState.currentIndex) {
+    if (idx === appState.currentQuestionIndex) {
       row.classList.add('current-active-row');
     }
 
-    const selected = appState.userAnswers[q.id];
+    const selected = session.userAnswers[q.id];
 
     let bubblesHtml = '';
     ['A', 'B', 'C', 'D'].forEach(opt => {
@@ -392,7 +467,8 @@ function renderOpticalSheet() {
         extraClass += ' filled';
       }
 
-      if (appState.examEvaluated) {
+      // SADECE VE SADECE BU TEST DEĞERLENDİRİLMİŞSE YEŞİL/KIRMIZI GÖSTER
+      if (session.examEvaluated) {
         if (opt === q.correctOption) {
           extraClass += ' eval-correct';
         } else if (selected === opt && selected !== q.correctOption) {
@@ -416,15 +492,18 @@ function renderOpticalSheet() {
         e.stopPropagation();
         const qid = b.getAttribute('data-qid');
         const opt = b.getAttribute('data-opt');
-        appState.currentIndex = idx;
+        appState.currentQuestionIndex = idx;
         selectOption(qid, opt);
       });
     });
 
     // Satıra tıklayınca o soruya git
     row.addEventListener('click', () => {
-      appState.currentIndex = idx;
-      renderApp();
+      appState.currentQuestionIndex = idx;
+      renderQuestion();
+      renderQuestionNav();
+      renderSolutionDrawer();
+      renderOpticalSheet();
     });
 
     container.appendChild(row);
@@ -433,16 +512,19 @@ function renderOpticalSheet() {
 
 // Sınavı Tamamla ve Optik Formu Tara
 function finishExam() {
-  clearInterval(appState.timerInterval);
-  appState.examEvaluated = true;
+  const test = getCurrentTest();
+  if (!test) return;
 
-  const questions = appState.questionBank[appState.currentCourse] || [];
+  const session = getSession(test.id);
+  session.examEvaluated = true;
+
+  const questions = test.questions || [];
   let correct = 0;
   let wrong = 0;
   let empty = 0;
 
   questions.forEach(q => {
-    const ans = appState.userAnswers[q.id];
+    const ans = session.userAnswers[q.id];
     if (!ans) {
       empty++;
     } else if (ans === q.correctOption) {
@@ -452,45 +534,71 @@ function finishExam() {
     }
   });
 
-  // LGS Kuralı: 3 Yanlış 1 Doğruyu Götürür!
+  // MEB LGS Kuralı: 3 Yanlış 1 Doğruyu Götürür!
   const net = Math.max(0, correct - (wrong / 3));
+
+  session.score = {
+    correct,
+    wrong,
+    empty,
+    net: parseFloat(net.toFixed(2)),
+    totalQuestions: questions.length
+  };
 
   // Arayüzü Güncelle
   renderOpticalSheet();
   renderQuestion();
   renderSolutionDrawer();
+  renderTestList();
+  renderScoreReport();
+}
 
-  // Karne Raporunu Göster
+// Karne Raporunu Göster / Gizle
+function renderScoreReport() {
+  const test = getCurrentTest();
   const reportCard = document.getElementById('scoreReportCard');
-  if (reportCard) {
+  if (!reportCard) return;
+
+  if (!test) {
+    reportCard.classList.add('hidden');
+    return;
+  }
+
+  const session = getSession(test.id);
+
+  if (session.examEvaluated && session.score) {
     reportCard.classList.remove('hidden');
 
-    document.getElementById('scoreCorrect').textContent = correct;
-    document.getElementById('scoreWrong').textContent = wrong;
-    document.getElementById('scoreEmpty').textContent = empty;
-    document.getElementById('scoreNet').textContent = net.toFixed(2);
+    document.getElementById('scoreCorrect').textContent = session.score.correct;
+    document.getElementById('scoreWrong').textContent = session.score.wrong;
+    document.getElementById('scoreEmpty').textContent = session.score.empty;
+    document.getElementById('scoreNet').textContent = session.score.net.toFixed(2);
 
     const feedbackEl = document.getElementById('reportFeedbackText');
     if (feedbackEl) {
-      if (wrong > 0) {
+      if (session.score.wrong > 0) {
         feedbackEl.innerHTML = `⚠️ <strong>Kazanım Eksikliği Tespiti:</strong> Yanlış yaptığınız sorularda güçlü çeldiriciye takıldınız. Sağlanan "Uzman Öğretmen Çözüm Taktikleri"ni inceleyiniz.`;
-      } else if (correct === questions.length) {
-        feedbackEl.innerHTML = `🎉 <strong>Mükemmel Başarı:</strong> MEB Maarif Modeli LGS standartlarındaki tüm yeni nesil soruları tam netle tamamladınız!`;
+      } else if (session.score.correct === session.score.totalQuestions) {
+        feedbackEl.innerHTML = `🎉 <strong>Mükemmel Başarı:</strong> ${test.title} içindeki tüm soruları tam netle tamamladınız!`;
       } else {
         feedbackEl.innerHTML = `📌 <strong>Tavsiye:</strong> Boş bıraktığınız sorular için kısıt ve hipotez kurallarını tekrar gözden geçiriniz.`;
       }
     }
+  } else {
+    reportCard.classList.add('hidden');
   }
 }
 
-// Sınavı Sıfırla
+// Sınavı Sıfırla (Sadece Mevcut Test İçin)
 function resetExam() {
-  appState.userAnswers = {};
-  appState.examEvaluated = false;
-  appState.currentIndex = 0;
+  const test = getCurrentTest();
+  if (!test) return;
 
-  const reportCard = document.getElementById('scoreReportCard');
-  if (reportCard) reportCard.classList.add('hidden');
+  const session = getSession(test.id);
+  session.userAnswers = {};
+  session.examEvaluated = false;
+  session.score = null;
+  appState.currentQuestionIndex = 0;
 
   renderApp();
 }
