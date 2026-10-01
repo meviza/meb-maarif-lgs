@@ -8,7 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { JevQualityAuditor } from './jev_evaluator.mjs';
-import { richQuestionBank } from './question_builder.mjs';
+import { loadAndMergeAllQuestions } from './question_builder.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -66,24 +66,32 @@ async function runTestSuite() {
     assert.ok(content.includes('30 Alt Soru Tipi Taksonomisi'), '30 paragraf alt tipi eksik');
   });
 
-  // TEST 3: Soru Havuzu Bütünlüğü
-  test('Soru havuzu tüm dersleri (Türkçe, Matematik, Fen) içermeli', () => {
-    assert.ok(richQuestionBank.turkce?.length >= 3, 'Türkçe soru sayısı yetersiz');
-    assert.ok(richQuestionBank.matematik?.length >= 2, 'Matematik soru sayısı yetersiz');
-    assert.ok(richQuestionBank.fen?.length >= 2, 'Fen Bilimleri soru sayısı yetersiz');
+  // TEST 3: Soru Havuzu Bütünlüğü (4 Ana Branş)
+  test('Soru havuzu tüm dersleri (Türkçe, Matematik, Fen, Sosyal) içermeli', () => {
+    const raw = fs.readFileSync(path.join(__dirname, '..', 'public', 'questions.json'), 'utf-8');
+    const allQuestions = JSON.parse(raw);
+    assert.ok(allQuestions.turkce?.length >= 4, 'Türkçe soru sayısı yetersiz');
+    assert.ok(allQuestions.matematik?.length >= 4, 'Matematik soru sayısı yetersiz');
+    assert.ok(allQuestions.fen?.length >= 4, 'Fen Bilimleri soru sayısı yetersiz');
+    assert.ok(allQuestions.sosyal?.length >= 4, 'İnkılap Tarihi / Sosyal soru sayısı yetersiz');
   });
 
   // TEST 4: Jev (System 1) Karar ve Kalite Denetimi
   await asyncTest('Tüm sorular Jev System-1 kalite denetimini %100 başarıyla geçmeli', async () => {
+    const raw = fs.readFileSync(path.join(__dirname, '..', 'public', 'questions.json'), 'utf-8');
+    const allQuestions = JSON.parse(raw);
     const auditor = new JevQualityAuditor();
-    for (const [course, questions] of Object.entries(richQuestionBank)) {
+    let count = 0;
+    for (const [course, questions] of Object.entries(allQuestions)) {
       for (const q of questions) {
+        count++;
         const audit = await auditor.evaluateQuestion(q);
-        assert.strictEqual(audit.passed, true, `Soru ${q.id} Jev onayından geçemedi`);
+        assert.strictEqual(audit.passed, true, `Soru ${q.id} (${course}) Jev onayından geçemedi: ${audit.reasons?.join(', ')}`);
         assert.ok(audit.score >= 0.85, `Soru ${q.id} skoru yetersiz: ${audit.score}`);
         assert.strictEqual(audit.decisions.single_deterministic_answer, true, `Soru ${q.id} deterministik değil`);
       }
     }
+    assert.ok(count >= 20, `Toplam soru sayısı yetersiz: ${count}`);
   });
 
   // TEST 5: LGS 3-Yanlış 1-Doğru Net Hesaplama Algoritması

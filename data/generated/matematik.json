@@ -1,0 +1,90 @@
+[
+  {
+    "id": "LGS-MAT-04",
+    "course": "MATEMATİK",
+    "outcomeCode": "M.8.2.1.4 • Cebirsel İfadeler ve Özdeşlikler",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Bir peyzaj mimarı, bir sitenin bahçesine yapacağı rekreasyon alanı için kenar uzunluğu (4x + 6) metre olan kare şeklinde bir arsa tahsis etmiştir.\n\nMimarın hazırladığı yerleşim planında:\n• Bu arsanın dört köşesine, kenar uzunlukları (x + 1) metre olan kare biçiminde dört adet özdeş ahşap kamelya inşa edilecektir.\n• Kamelyaların dışında kalan orta bölgenin tamamına ise çim ekilerek dinlenme alanı oluşturulacaktır.",
+    "stem": "Buna göre çim ekilecek bölgenin alanının metrekare cinsinden değerini veren cebirsel ifade aşağıdakilerden hangisidir?",
+    "options": {
+      "A": "12x^2 + 40x + 32",
+      "B": "15x^2 + 46x + 35",
+      "C": "12x^2 + 48x + 32",
+      "D": "16x^2 + 40x + 32"
+    },
+    "correctOption": "A",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: İki kare farkı özdeşliğini [A^2 - B^2 = (A - B)(A + B)] veya toplam alandan 4 kamelyanın alanını çıkarma yöntemini kullanınız. 4(x + 1)^2 ifadesinin [2(x + 1)]^2 olduğuna dikkat ediniz.",
+    "detailedSolution": "1. Arsanın toplam alanı bir karedir: Alan = (4x + 6)^2 = 16x^2 + 48x + 36 metrekaredir.\n2. Bir adet kamelyanın alanı = (x + 1)^2 = x^2 + 2x + 1 metrekaredir.\n3. Dört köşede toplam 4 adet özdeş kamelya vardır: 4 x (x^2 + 2x + 1) = 4x^2 + 8x + 4 metrekare.\n4. Çim ekilecek alan = Toplam Alan - 4 Kamelyanın Alanı\n= (16x^2 + 48x + 36) - (4x^2 + 8x + 4)\n= 16x^2 - 4x^2 + 48x - 8x + 36 - 4\n= 12x^2 + 40x + 32 metrekaredir.\n(İki kare farkı ile: [(4x + 6) - (2x + 2)][(4x + 6) + (2x + 2)] = (2x + 4)(6x + 8) = 12x^2 + 40x + 32). Doğru cevap A şıkkıdır.",
+    "distractors": {
+      "B": "Dört kamelya yerine yalnızca bir kamelyanın alanını çıkaran öğrencilerin düştüğü çeldiricidir: (4x + 6)^2 - (x + 1)^2 = 15x^2 + 46x + 35.",
+      "C": "(x + 1)^2 açılımında birinci ile ikincinin çarpımının iki katını unutup x^2 + 1 kabul eden öğrencilerin bulduğu sonuçtur.",
+      "D": "Toplam alandaki 16x^2 teriminden kamelyaların 4x^2 alanını çıkarmayı unutan öğrencilerin işaretlediği seçenektir."
+    }
+  },
+  {
+    "id": "LGS-MAT-05",
+    "course": "MATEMATİK",
+    "outcomeCode": "M.8.5.1.5 • Basit Olayların Olasılığı",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Bir spor kulübünde basketbol ve voleybol branşlarına kayıtlı toplam 60 sporcu bulunmaktadır. Bu sporcuların yaşları 13 veya 14'tür.\n\nKulüpteki sporcularla ilgili bilinenler şunlardır:\n• Basketbol branşına kayıtlı sporcu sayısı, voleybol branşına kayıtlı sporcu sayısının 2 katıdır.\n• Basketbol branşındaki 14 yaşındaki sporcu sayısı, 13 yaşındaki sporcu sayısından 8 fazladır.\n• Kulüpteki tüm sporcular arasından rastgele seçilen bir sporcunun 13 yaşında olma olasılığı 2/5'tir.",
+    "stem": "Buna göre voleybol branşındaki sporcular arasından rastgele seçilen bir sporcunun 14 yaşında olma olasılığı kaçtır?",
+    "options": {
+      "A": "1/5",
+      "B": "2/5",
+      "C": "3/5",
+      "D": "4/5"
+    },
+    "correctOption": "C",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Öncelikle branş sayılarını (Basketbol = 40, Voleybol = 20) ve tüm kulüpteki yaş dağılımını (13 yaş: 24 kişi, 14 yaş: 36 kişi) bulunuz. Ardından basketbolcuların yaş denklemini çözüp voleybolculara geçiş yapınız.",
+    "detailedSolution": "1. Adım: Toplam 60 sporcu vardır. Basketbolcu sayısı (B), voleybolcu sayısının (V) 2 katı olduğuna göre: B + V = 2V + V = 3V = 60 => V = 20, B = 40 kişidir.\n2. Adım: Tüm sporcular arasından rastgele seçilen birinin 13 yaşında olma olasılığı 2/5 ise; kulüpteki toplam 13 yaşındaki sporcu sayısı = 60 x (2/5) = 24 kişidir. O hâlde 14 yaşındaki toplam sporcu sayısı = 60 - 24 = 36 kişidir.\n3. Adım: Basketbol branşındaki toplam 40 sporcudan 14 yaşındakiler (B14), 13 yaşındakilerden (B13) 8 fazla olduğuna göre:\nB13 + B14 = 40 => B13 + (B13 + 8) = 40 => 2 B13 = 32 => B13 = 16 kişidir.\nBuradan basketbol branşındaki 14 yaşındaki sporcu sayısı B14 = 16 + 8 = 24 kişidir.\n4. Adım: Kulüpte toplam 36 adet 14 yaşında sporcu vardı. Basketbolda 24 kişi olduğuna göre voleyboldaki 14 yaşındaki sporcu sayısı = 36 - 24 = 12 kişidir.\n5. Adım: Voleybol branşında toplam 20 sporcu olduğundan, bu gruptan rastgele seçilen birinin 14 yaşında olma olasılığı = 12 / 20 = 3/5'tir. Doğru cevap C şıkkıdır.",
+    "distractors": {
+      "A": "14 yaşındaki voleybolcu sayısını (12) tüm kulüp mevcuduna (60) oranlayan öğrencilerin düştüğü çeldiricidir: 12 / 60 = 1/5.",
+      "B": "14 yaş yerine 13 yaşındaki voleybolcuların olasılığını hesaplayan öğrencilerin yanılgısıdır: 8 / 20 = 2/5.",
+      "D": "Basketbol branşındaki 13 yaşındakileri voleybola aktarıp hesaplayan öğrencilerin sonucudur: 16 / 20 = 4/5."
+    }
+  },
+  {
+    "id": "LGS-MAT-06",
+    "course": "MATEMATİK",
+    "outcomeCode": "M.8.2.2.6 • Doğrusal Denklemler ve Eğim",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Erişilebilirlik mevzuatına göre tekerlekli sandalye kullanıcıları için tasarlanan açık alan rampalarında eğim en fazla %6 olmalıdır.\n\nBir kültür merkezinin giriş kapısının zeminden yüksekliği 150 cm'dir. Bu kapıya ulaşmak için yapılacak rampa projesinde şu planlama yapılmıştır:\n• Rampa; zemin ile yatay dinlenme sahanlığı arasındaki '1. Rampa' ve sahanlık ile giriş kapısı arasındaki '2. Rampa' olmak üzere iki bölümden oluşmaktadır.\n• Yatay dinlenme sahanlığının zeminden yüksekliği 60 cm'dir.\n• 1. Rampanın eğimi standarttaki üst sınıra eşit olup %6'dır.\n• 2. Rampanın eğimi ise %5 olarak projelendirilmiştir.",
+    "stem": "Buna göre yapılan bu projede 2. Rampanın yatay uzunluğu, 1. Rampanın yatay uzunluğundan kaç metre fazladır?",
+    "options": {
+      "A": "5",
+      "B": "6",
+      "C": "8",
+      "D": "12"
+    },
+    "correctOption": "C",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Eğim formülünü [Eğim = Dikey Uzunluk / Yatay Uzunluk] uygulayınız. 1. Rampanın dikey yüksekliğinin 60 cm, 2. Rampanın dikey yüksekliğinin ise (150 - 60 = 90 cm) olduğuna dikkat ediniz.",
+    "detailedSolution": "1. Adım (1. Rampa Analizi):\n• 1. Rampanın dikey yüksekliği = 60 cm'dir.\n• Eğimi = %6 = 6 / 100'dür.\n• Eğim = Dikey / Yatay1 => 6 / 100 = 60 / Yatay1 => Yatay1 = (60 x 100) / 6 = 1000 cm = 10 metredir.\n\n2. Adım (2. Rampa Analizi):\n• Giriş kapısı 150 cm, sahanlık 60 cm yükseklikte olduğundan 2. Rampanın dikey yüksekliği = 150 - 60 = 90 cm'dir.\n• Eğimi = %5 = 5 / 100 = 1 / 20'dir.\n• Eğim = Dikey / Yatay2 => 1 / 20 = 90 / Yatay2 => Yatay2 = 90 x 20 = 1800 cm = 18 metredir.\n\n3. Adım (Farkın Hesaplanması):\n• Yatay uzunluklar farkı = Yatay2 - Yatay1 = 18 - 10 = 8 metredir. Doğru cevap C şıkkıdır.",
+    "distractors": {
+      "A": "Dikey yükseklikleri yanlışlıkla eşit (75 cm) kabul eden öğrencilerin bulduğu sonuçtur.",
+      "B": "2. Rampanın eğimini de %6 kabul edip dikey yükseklik farkını (30 cm) eğime bölenlerin sonucudur: (90 - 60) / 0,06 = 500 cm (veya 6 m hatası).",
+      "D": "2. Rampanın dikey yüksekliğini sahanlığı çıkarmadan doğrudan 150 cm alan öğrencilerin düştüğü güçlü çeldiricidir: 150 x 20 = 3000 cm (30 m) ve 30 - 18 = 12 metre."
+    }
+  },
+  {
+    "id": "LGS-MAT-07",
+    "course": "MATEMATİK",
+    "outcomeCode": "M.8.1.4.2 • Veri Analizi",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Bir organik tarım kooperatifinin bir sezonda hasat ettiği toplam 72 ton zeytinin türlerine göre (Gemlik, Domat, Ayvalık) dağılımı Grafik 1'deki daire grafiğinde gösterilmiştir.\n\nKooperatif, hasat ettiği zeytinlerin bir kısmını zeytinyağı üretiminde kullanmış, kalan kısmını ise sofralık olarak satışa ayırmıştır. Zeytin türlerine göre zeytinyağı üretiminde kullanılan miktarların yüzdesi ise Grafik 2'deki sütun grafiğinde verilmiştir.\n\n• Grafik 1 (Daire Grafiği - Hasat Dağılımı): Gemlik zeytini 150°, Domat zeytini 90° ve Ayvalık zeytini 120°'lik merkez açıyla gösterilmiştir.\n• Grafik 2 (Sütun Grafiği - Zeytinyağına Ayrılan Pay %): Gemlik %40, Domat %50, Ayvalık %75.",
+    "stem": "Buna göre bu kooperatifin zeytinyağı üretiminde kullanmadığı (sofralık olarak ayırdığı) toplam zeytin miktarı kaç tondur?",
+    "options": {
+      "A": "27",
+      "B": "33",
+      "C": "36",
+      "D": "39"
+    },
+    "correctOption": "B",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Daire grafiğinde 360° = 72 ton bağıntısından 1° = 0,2 ton oranını yakalayınız. Her türün toplam miktarını bulduktan sonra zeytinyağına ayrılan yüzdeleri değil, geriye kalan sofralık yüzdeleri (%60, %50, %25) hesaplayarak toplayınız.",
+    "detailedSolution": "1. Adım (Türlerin Toplam Miktarının Bulunması):\n360° toplam 72 ton zeytini temsil ettiğine göre 1° = 72 / 360 = 0,2 tondur.\n• Gemlik zeytini: 150 x 0,2 = 30 ton\n• Domat zeytini: 90 x 0,2 = 18 ton\n• Ayvalık zeytini: 120 x 0,2 = 24 ton\n(Toplam: 30 + 18 + 24 = 72 ton)\n\n2. Adım (Sofralık Ayrılan Miktarların Hesaplanması):\n• Gemlik zeytini: %40'ı yağ için kullanılırsa geriye %60'ı sofralık kalır => 30 x (60 / 100) = 18 ton sofralık.\n• Domat zeytini: %50'si yağ için kullanılırsa geriye %50'si sofralık kalır => 18 x (50 / 100) = 9 ton sofralık.\n• Ayvalık zeytini: %75'i yağ için kullanılırsa geriye %25'i sofralık kalır => 24 x (25 / 100) = 6 ton sofralık.\n\n3. Adım (Toplam Sofralık Zeytin Miktarı):\nToplam Sofralık Miktar = 18 + 9 + 6 = 33 tondur. Doğru cevap B şıkkıdır.",
+    "distractors": {
+      "A": "Yalnızca Gemlik ve Domat zeytinlerinin sofralık miktarını toplayıp Ayvalık'ı unutanların sonucudur: 18 + 9 = 27 ton.",
+      "C": "Tüm ürünlerin yarısının sofralık ayrıldığını varsayan dikkatsiz öğrenci tahminidir: 72 / 2 = 36 ton.",
+      "D": "Soru kökündeki 'kullanmadığı' ifadesini gözden kaçırıp zeytinyağı üretiminde KULLANILAN toplam miktarı hesaplayan öğrencilerin düştüğü en güçlü tuzaktır: (12 + 9 + 18 = 39 ton)."
+    }
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "LGS-TR-05",
+    "course": "TÜRKÇE",
+    "outcomeCode": "T.8.3.18 • Düşünceyi Geliştirme Yolları",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Eleştiri; bir sanat yapıtının estetik değerini, kurmaca dünyasını ve eksiklerini tarafsız bir teraziyle tartma sanatıdır. Geleneksel yaklaşımların aksine çağdaş eleştiri, okura hazır reçeteler sunmaktan ziyade yapıtın derinliklerine kapı aralayan daha kapsayıcı bir kılavuzdur. Edebiyat kuramcısı T. S. Eliot da bu durumu şu sözlerle perçinler: \"Gerçek eleştirmenin görevi esere değer biçmek değil, eserin kendi iç ahengini duyurmasına imkân tanımaktır.\"",
+    "stem": "Bu parçanın anlatımında düşünceyi geliştirmek için aşağıdaki yolların hangilerine başvurulmuştur?",
+    "options": {
+      "A": "Tanımlama – Karşılaştırma – Tanık gösterme",
+      "B": "Örneklendirme – Benzetme – Karşılaştırma",
+      "C": "Tanımlama – Benzetme – Sayısal verilerden yararlanma",
+      "D": "Tanık gösterme – Sayısal verilerden yararlanma – Örneklendirme"
+    },
+    "correctOption": "A",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Metindeki düşünceyi geliştirme yollarını adım adım tespit edin: 1) İlk cümledeki \"Eleştiri nedir?\" sorusunun cevabı (Tanımlama), 2) \"-den ziyade, aksine, daha\" ifadeleriyle kurulan kıyaslama (Karşılaştırma), 3) T. S. Eliot ve tırnak içindeki alıntısı (Tanık gösterme).",
+    "detailedSolution": "Metnin ilk cümlesinde eleştirinin ne olduğu açıklanarak tanımlama yapılmıştır (\"tartma sanatıdır\"). İkinci cümlede geleneksel eleştiri ile çağdaş eleştiri \"aksine, -den ziyade, daha\" sözcükleriyle karşılaştırılmıştır. Son cümlede ise edebiyat kuramcısı T. S. Eliot'ın adı verilerek onun sözü tırnak içinde aynen aktarılmış ve tanık gösterilmiştir. Dolayısıyla metinde tanımlama, karşılaştırma ve tanık gösterme yollarına başvurulmuştur. Doğru cevap A seçeneğidir.",
+    "distractors": {
+      "B": "Metinde örneklendirme ve benzetme unsurları bulunmamaktadır; yalnızca karşılaştırma mevcuttur.",
+      "C": "Tanımlama yapılmış olsa da metinde benzetme ve sayısal verilerden yararlanma yollarına yer verilmemiştir.",
+      "D": "Tanık gösterme bulunmakla birlikte sayısal veri ve örneklendirme metinde yer almamaktadır."
+    }
+  },
+  {
+    "id": "LGS-TR-06",
+    "course": "TÜRKÇE",
+    "outcomeCode": "T.8.3.34 • Metin Karşılaştırma",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "1. Metin:\nBiyomimikri, doğanın milyonlarca yıllık evrimsel tecrübesini insan teknolojisine uyarlama sanatıdır. Örneğin yalıçapkını kuşunun suya dalarken ses çıkarmayan ve su direncini en aza indiren gaga yapısı, Japon mühendisler tarafından saatte 300 kilometre hızla giden hızlı trenlerin burun tasarımına ilham vermiştir. Doğanın sunduğu kusursuz çözümler, mühendislik problemlerine çevre dostu ve yenilikçi yanıtlar getirmektedir.\n\n2. Metin:\nKöpek balıklarının derisini kaplayan mikroskobik girintilerin sürtünmeyi azaltarak bakterilerin yüzeye tutunmasını zorlaştırdığı keşfedilmiştir. Bilim insanları bu dokuyu modelleyerek hastane yüzeylerinde ve tıbbi cihaz kaplamalarında bakteri tutmayan özel malzemeler geliştirmiştir. Böylece sağlık alanında kimyasal dezenfektan ihtiyacı azalmış, doğadaki bir canlıdan ilham alan sürdürülebilir bir hijyen modeli ortaya çıkmıştır.",
+    "stem": "Numaralanmış bu iki metnin ortak yönü aşağıdakilerden hangisidir?",
+    "options": {
+      "A": "Ulaşım ve sağlık sektöründeki yeniliklerin getirdiği ekonomik tasarrufu sayısal verilerle kanıtlamaları",
+      "B": "Doğadaki canlıların biyolojik özelliklerinin teknolojik ve bilimsel gelişmelere esin kaynağı olduğunu vurgulamaları",
+      "C": "İnsan eliyle geliştirilen modern teknolojilerin doğal çevre üzerindeki yıkıcı etkilerini eleştirmeleri",
+      "D": "Biyolojik çeşitliliğin korunması amacıyla yürütülen uluslararası mühendislik projelerini tanıtmaları"
+    },
+    "correctOption": "B",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: İki farklı metin karşılaştırılırken her metnin ana fikri tek bir cümleye indirgenir: 1. Metin (Kuş gagası -> Hızlı tren tasarımı), 2. Metin (Köpek balığı derisi -> Bakteri tutmayan hastane kaplaması). Her ikisinin kesişim kümesi doğanın teknolojiye esin kaynağı olmasıdır.",
+    "detailedSolution": "1. metinde yalıçapkını kuşunun gagasının hızlı trenlerin aerodinamik tasarımına ilham vermesi, 2. metinde ise köpek balığı derisi yapısının hastanelerdeki antibakteriyel kaplamalara model olması anlatılmaktadır. Her iki metinde de doğadaki canlıların biyolojik/anatomik yapılarının teknolojiye ve bilime esin kaynağı olduğu (biyomimikri) vurgulanmaktadır. Doğru cevap B seçeneğidir.",
+    "distractors": {
+      "A": "Ulaşım 1. metinde, sağlık ise 2. metinde geçmektedir; ayrıca metinlerde sayısal verilerle ekonomik tasarruf kanıtlama ortak özellik değildir.",
+      "C": "Metinlerde çevre tahribatı eleştirilmemekte; tam aksine doğadan ilham alan yapıcı ve çevre dostu teknolojiler övülmektedir.",
+      "D": "Uluslararası biyoçeşitlilik koruma projelerinden bahsedilmemekte, canlıların özelliklerinin taklit edilmesi anlatılmaktadır."
+    }
+  },
+  {
+    "id": "LGS-TR-07",
+    "course": "TÜRKÇE",
+    "outcomeCode": "T.8.3.14 • Paragrafı İki Bölüme Ayırma",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "(I) Ebru sanatı, kitreyle yoğunlaştırılmış suyun yüzeyine toprak boyaların serpilmesi ve bu desenlerin kâğıda aktarılmasıyla icra edilen kadim bir süsleme sanatıdır. (II) Geleneksel kültürümüzde sabrın ve renklerin ahenginin bir sembolü kabul edilen bu sanat, yüzyıllar boyunca yazma eserlerin cilt kapaklarında ve hat levhalarında kendine yer bulmuştur. (III) Usta-çırak ilişkisiyle nesilden nesle aktarılan ebru, icracısına yalnızca fırça tutmayı değil, suyun akışına ve renklerin iradesine teslim olmayı da öğretmiştir. (IV) Son yıllarda çağdaş tasarımcılar, geleneksel ebrunun estetik çizgilerini grafik tasarım, tekstil ve mimari gibi modern alanlara taşımaktadır. (V) Dijital ortama aktarılan ebru motifleri; seramik panolarda, çağdaş mobilyalarda ve moda koleksiyonlarında özgün desenler olarak yeniden can bulmaktadır. (VI) Böylelikle bu köklü miras, yalnızca tarihî eserlerin sayfalarında kalmayıp gündelik hayatın estetik nesnelerine dönüşerek geleceğe uzanmaktadır.",
+    "stem": "Bu parçadaki cümleler arasındaki anlam ilişkisi dikkate alınıp metin iki paragrafa ayrılmak istense ikinci paragraf numaralanmış cümlelerin hangisiyle başlar?",
+    "options": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "correctOption": "C",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Paragraf bölme sorularında yazarın konunun hangi alt boyutuna geçtiğini tespit edin. I, II ve III. cümleler geleneksel ebrunun geçmişteki icrasını ve felsefesini anlatırken IV. cümleden itibaren \"Son yıllarda çağdaş tasarımcılar...\" denilerek günümüz modern alanlarındaki uygulamalarına geçilmiştir.",
+    "detailedSolution": "I, II ve III. cümlelerde ebru sanatının tanımı, tarihî icrası, usta-çırak geleneği ve felsefi arka planı ele alınmaktadır. IV. cümleden itibaren ise konunun yönü değişmiş ve ebrunun modern tasarım, tekstil ve mimari gibi güncel kullanım alanları incelenmeye başlanmıştır. Dolayısıyla ikinci paragraf IV. cümle ile başlamalıdır. Doğru cevap C seçeneğidir.",
+    "distractors": {
+      "A": "II. cümle I. cümlenin doğrudan devamıdır; geleneksel ebrunun kültürümüzdeki anlamını ve kullanım yerlerini sürdürür.",
+      "B": "III. cümle geleneksel icra sürecindeki usta-çırak ilişkisini ve manevi disiplini detaylandırarak ilk konuyu tamamlar.",
+      "D": "V. cümle IV. cümlede başlayan modern alanlara uyarlama konusunun bir devamı ve örneğidir; yeni bir paragraf başlangıcı olamaz."
+    }
+  },
+  {
+    "id": "LGS-TR-08",
+    "course": "TÜRKÇE",
+    "outcomeCode": "T.8.3.26 • Sözel Mantık / Şifreleme ve Tablo Okuma",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Bir bilişim kulübünde 4 harfli sözcükleri şifrelemek amacıyla aşağıdaki 4x4'lük harf tablosu ve kurallar kullanılmaktadır:\n\n| | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|\n| A | K | A | L | E |\n| B | M | İ | R | T |\n| C | O | U | S | Y |\n| D | V | Z | N | P |\n\nŞifreleme Kuralları:\n1. Temel Kod: Her harfin temel kodu, bulunduğu satır harfi ile sütun numarasının yan yana yazılmasıyla elde edilir. (Örneğin B satırı ve 3. sütundaki \"R\" harfinin temel kodu B3'tür.)\n2. 1. Harf: Temel kodu doğrudan yazılır.\n3. 2. Harf: Temel kodundaki harf ve rakam yer değiştirilerek yazılır. (Örneğin temel kodu \"A2\" ise şifreye \"2A\" olarak geçer.)\n4. 3. Harf: Temel kodu doğrudan yazılır.\n5. 4. Harf: Tabloda bulunduğu satırın bir sağındaki sütunda yer alan harfin temel kodu yazılır; harf 4. sütundaysa o satırın 1. sütunundaki harfin temel koduna dönülür. (Örneğin B satırı 4. sütundaki \"T\" harfi yerine aynı satırın 1. sütunundaki harfin temel kodu olan \"B1\" yazılır.)",
+    "stem": "Bu tablo ve şifreleme kurallarına göre 'KART' sözcüğünün doğru şifresi aşağıdakilerden hangisidir?",
+    "options": {
+      "A": "A1 - A2 - B3 - B4",
+      "B": "1A - 2A - 3B - 4B",
+      "C": "A1 - 2A - B3 - B4",
+      "D": "A1 - 2A - B3 - B1"
+    },
+    "correctOption": "D",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Şifreleme sorularında her harfi sırasıyla kural tablosuna göre adım adım işleyin: 1. Harf K -> A1 (değişmez). 2. Harf A -> Temel kodu A2, kurala göre ters çevir -> 2A. 3. Harf R -> B3 (değişmez). 4. Harf T -> Temel kodu B4, 4. sütunda olduğu için satırın başına (1. sütuna) döner -> B1.",
+    "detailedSolution": "KART sözcüğünün harflerini kural basamaklarına göre çözümleyelim:\n• 1. harf 'K': A satırı 1. sütundadır -> Temel kod A1, kural gereği aynen yazılır: A1\n• 2. harf 'A': A satırı 2. sütundadır -> Temel kod A2, harf ve rakam yer değiştirir: 2A\n• 3. harf 'R': B satırı 3. sütundadır -> Temel kod B3, kural gereği aynen yazılır: B3\n• 4. harf 'T': B satırı 4. sütundadır -> 4. sütun kuralı gereği aynı satırın 1. sütunundaki harfin temel kodu alınır: B1\nO hâlde şifre \"A1 - 2A - B3 - B1\" olur. Doğru cevap D seçeneğidir.",
+    "distractors": {
+      "A": "Hiçbir kural dönüşümünü uygulamayıp yalnızca temel kodları yazan dikkatsiz öğrencinin düşeceği yanılgıdır.",
+      "B": "2. harfteki yer değiştirme kuralını tüm harflere uygulayan öğrencinin seçeneğidir.",
+      "C": "2. harf kuralını uygulayıp 4. harfin bir sağdaki sütuna kayma kuralını unutan öğrencinin güçlü çeldiricisidir."
+    }
+  }
+]

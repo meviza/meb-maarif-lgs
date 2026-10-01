@@ -7,183 +7,262 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <!-- Üst Bar / Header -->
-  <header class="app-header">
-    <div class="header-left">
-      <div class="brand-badge">
-        <span class="badge-icon">🏛️</span>
-        <div>
-          <h1>MEB MAARİF LGS PLATFORMU</h1>
-          <p class="subtitle">Türkiye Yüzyılı Maarif Modeli • 8. Sınıf Sınav & Kazanım Sistemi</p>
+<body class="theme-institutional">
+  <!-- Üst Prestij Bar -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="brand">
+        <div class="logo-emblem">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">T.C. MİLLÎ EĞİTİM BAKANLIĞI</div>
+          <div class="brand-subtitle">Türkiye Yüzyılı Maarif Modeli • 8. Sınıf LGS Platformu</div>
         </div>
       </div>
-    </div>
-    <div class="header-center">
-      <div class="mode-switch">
-        <button id="btnPracticeMode" class="mode-btn active" onclick="switchMode('practice')">
-          <span class="mode-icon">💡</span> Öğrenme & Taktik Modu
+
+      <!-- Mod Seçimi (Öğrenme vs Gerçek Sınav) -->
+      <div class="mode-toggle-group">
+        <button id="btnPracticeMode" class="mode-tab active" type="button">
+          <span class="icon">💡</span>
+          <span>Öğrenme & Taktik Modu</span>
         </button>
-        <button id="btnExamMode" class="mode-btn" onclick="switchMode('exam')">
-          <span class="mode-icon">📝</span> Gerçek Optik Sınav Modu
+        <button id="btnExamMode" class="mode-tab" type="button">
+          <span class="icon">📝</span>
+          <span>Gerçek LGS Optik Sınavı</span>
         </button>
       </div>
-    </div>
-    <div class="header-right">
-      <div class="jev-badge" title="Jev System-1 Decision Engine Online">
-        <span class="status-dot"></span>
-        <span class="jev-text">JEV System-1 Güvenlik: <strong>Aktif</strong></span>
-      </div>
-      <div id="examTimer" class="exam-timer hidden">
-        <span>⏱️</span> <span id="timerDisplay">30:00</span>
+
+      <!-- Sağ Güvenlik ve Sayaç -->
+      <div class="navbar-actions">
+        <div class="jev-status-pill">
+          <span class="pulse-indicator"></span>
+          <span>JEV System-1 Güvencesi: <strong>ONAYLI</strong></span>
+        </div>
+        <div id="examTimer" class="timer-pill hidden">
+          <span class="timer-icon">⏱️</span>
+          <span id="timerDisplay">30:00</span>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Ana Çalışma Alanı -->
-  <main class="app-container">
-    <!-- Sol Panel: Konu ve Soru Gezgini -->
-    <aside class="sidebar-panel">
-      <div class="panel-section">
-        <h3>DERS VE KAZANIM</h3>
-        <div class="course-selector">
-          <button class="course-chip active" onclick="selectCourse('turkce')">Türkçe (Paragraf)</button>
-          <button class="course-chip" onclick="selectCourse('matematik')">Matematik (EBOB-EKOK)</button>
-          <button class="course-chip" onclick="selectCourse('fen')">Fen Bilimleri (Mevsimler)</button>
+  <!-- Ana Çalışma Ekranı -->
+  <div class="main-layout">
+    <!-- Sol Sütun: Dersler ve Soru Gezgini -->
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <div class="block-header">
+          <span class="block-label">MÜFREDAT DERSLERİ</span>
+        </div>
+        <div class="course-list" id="courseList">
+          <button class="course-btn active" data-course="turkce" type="button">
+            <span class="course-icon">📖</span>
+            <div class="course-info">
+              <span class="course-name">Türkçe</span>
+              <span class="course-meta">Paragraf & Sözel Mantık</span>
+            </div>
+            <span class="badge-pill" id="badgeTurkce">4 Soru</span>
+          </button>
+          <button class="course-btn" data-course="matematik" type="button">
+            <span class="course-icon">📐</span>
+            <div class="course-info">
+              <span class="course-name">Matematik</span>
+              <span class="course-meta">EBOB-EKOK & Üslü Sayılar</span>
+            </div>
+            <span class="badge-pill" id="badgeMatematik">3 Soru</span>
+          </button>
+          <button class="course-btn" data-course="fen" type="button">
+            <span class="course-icon">🔬</span>
+            <div class="course-info">
+              <span class="course-name">Fen Bilimleri</span>
+              <span class="course-meta">Mevsimler, DNA & Basınç</span>
+            </div>
+            <span class="badge-pill" id="badgeFen">3 Soru</span>
+          </button>
+          <button class="course-btn" data-course="sosyal" type="button">
+            <span class="course-icon">🇹🇷</span>
+            <div class="course-info">
+              <span class="course-name">T.C. İnkılap Tarihi</span>
+              <span class="course-meta">Sosyal Bilgiler & Maarif</span>
+            </div>
+            <span class="badge-pill" id="badgeSosyal">4 Soru</span>
+          </button>
         </div>
       </div>
 
-      <div class="panel-section">
-        <div class="section-header-flex">
-          <h3>SORU LİSTESİ</h3>
-          <span id="questionCountBadge" class="count-tag">3 Soru</span>
+      <div class="sidebar-block">
+        <div class="block-header">
+          <span class="block-label">SORU GEZGİNİ</span>
+          <span id="activeQuestionCounter" class="counter-text">Soru 1 / 4</span>
         </div>
-        <div id="questionNavList" class="question-nav-grid">
-          <!-- Dinamik olarak butonlar basılır -->
+        <div class="question-navigator" id="questionNavigator">
+          <!-- Soru Gezinti Butonları Dinamik Gelir -->
         </div>
       </div>
 
-      <div class="panel-section jev-metrics-card">
-        <h4>⚡ JEV KALİTE DENETİMİ</h4>
-        <div class="metric-row">
-          <span>MEB Maarif Uyumu</span>
-          <span class="val success">%100</span>
+      <div class="sidebar-block jev-audit-panel">
+        <div class="jev-header">
+          <span class="jev-icon">🛡️</span>
+          <div>
+            <div class="jev-title">JEV EDİTORYAL DENETİMİ</div>
+            <div class="jev-sub">Ollama System-1 Doğrulaması</div>
+          </div>
         </div>
-        <div class="metric-row">
-          <span>Çeldirici Gücü</span>
-          <span class="val success">0.96 / 1.0</span>
-        </div>
-        <div class="metric-row">
-          <span>Bloom Seviyesi</span>
-          <span class="val">ANALİZ / UYGULAMA</span>
-        </div>
-        <div class="metric-row">
-          <span>TDK İmla Doğruluğu</span>
-          <span class="val success">Kusursuz</span>
-        </div>
+        <ul class="jev-criteria-list">
+          <li>
+            <span>Maarif Kazanım Uyumu</span>
+            <strong class="text-success">%100</strong>
+          </li>
+          <li>
+            <span>Çeldirici Güç Katsayısı</span>
+            <strong class="text-success">0.99</strong>
+          </li>
+          <li>
+            <span>Bloom Taksonomisi</span>
+            <strong>ANALİZ / UYGULAMA</strong>
+          </li>
+          <li>
+            <span>Deterministik Doğruluk</span>
+            <strong class="text-success">Tek Cevap</strong>
+          </li>
+        </ul>
       </div>
     </aside>
 
-    <!-- Orta Panel: Soru Kitapçığı Görünümü -->
-    <section class="question-workspace">
-      <div class="booklet-card">
-        <div class="booklet-header">
-          <div class="booklet-meta">
-            <span id="courseTag" class="tag tag-course">TÜRKÇE</span>
-            <span id="outcomeTag" class="tag tag-outcome">T.8.3.14 • Akışı Bozan Cümle</span>
-            <span id="difficultyTag" class="tag tag-diff">LGS Yeni Nesil</span>
+    <!-- Orta Sütun: Sınav Kitapçığı -->
+    <main class="content-stage">
+      <div class="exam-booklet-paper">
+        <div class="booklet-top-bar">
+          <div class="booklet-title-wrapper">
+            <span id="qCourseBadge" class="pill-badge pill-course">TÜRKÇE</span>
+            <span id="qOutcomeBadge" class="pill-badge pill-outcome">T.8.3.14.03 • Akışı Bozan Cümle</span>
+            <span id="qDifficultyBadge" class="pill-badge pill-diff">LGS Yeni Nesil</span>
           </div>
-          <span id="questionCode" class="q-code">LGS-TR-PAR-0001</span>
+          <div id="qCodeBadge" class="question-code">LGS-TR-01</div>
         </div>
 
-        <div class="question-body">
-          <div id="questionStimulus" class="stimulus-box">
-            <!-- Soru Metni Buraya Gelecek -->
+        <div class="question-container">
+          <div class="question-number-lead">
+            <span id="qNumberDisplay" class="q-lead-number">1.</span>
+            <span class="q-lead-label">SORU</span>
           </div>
 
-          <div id="questionStem" class="stem-box">
-            <!-- Soru Kökü -->
-          </div>
+          <!-- Paragraf / Öncül Metni -->
+          <div id="stimulusBox" class="stimulus-card"></div>
 
-          <div id="optionsContainer" class="options-container">
-            <!-- Şıklar A B C D -->
+          <!-- Soru Kökü -->
+          <div id="stemBox" class="stem-card"></div>
+
+          <!-- Seçenekler A, B, C, D -->
+          <div id="optionsList" class="options-wrapper"></div>
+        </div>
+
+        <!-- Öğrenme Modunda Açılan Uzman Öğretmen Çözüm Kartı -->
+        <div id="solutionDrawer" class="solution-drawer hidden">
+          <div class="solution-drawer-header">
+            <span class="icon">💡</span>
+            <h4>UZMAN ÖĞRETMEN ÇÖZÜM REHBERİ</h4>
+          </div>
+          <div id="solutionStrategyText" class="strategy-callout"></div>
+          <div id="detailedSolutionText" class="detailed-solution-body"></div>
+          <div class="distractor-section">
+            <h5 class="distractor-heading">🎯 ÇELDİRİCİ ANALİZİ (Öğrenci Yanılgıları)</h5>
+            <div id="distractorItems" class="distractor-grid"></div>
           </div>
         </div>
 
-        <!-- Pratik Modu: Öğretmen Taktik & Çözüm Bölümü -->
-        <div id="solutionBox" class="solution-panel hidden">
-          <div class="solution-header">
-            <h4>💡 UZMAN ÖĞRETMEN ÇÖZÜM REHBERİ</h4>
-          </div>
-          <div id="solutionStrategy" class="solution-strategy"></div>
-          <div id="detailedSolution" class="solution-detail"></div>
-          <div class="distractor-title">🎯 Çeldirici Analizi (Neden Diğer Şıklar Yanlış?)</div>
-          <div id="distractorAnalysis" class="distractor-analysis"></div>
+        <!-- Alt Gezinme Butonları -->
+        <div class="booklet-footer-nav">
+          <button id="btnPrevQuestion" class="btn-nav" type="button">← Önceki Soru</button>
+          <span id="footerProgress" class="footer-progress">1 / 4</span>
+          <button id="btnNextQuestion" class="btn-nav btn-nav-primary" type="button">Sonraki Soru →</button>
         </div>
       </div>
-    </section>
+    </main>
 
-    <!-- Sağ Panel: Gerçek İnteraktif LGS Optik Formu -->
-    <aside class="optical-panel">
-      <div class="optical-sheet">
-        <div class="optical-header">
-          <div class="optical-logo">ÖDSGM LGS OPTİK FORM</div>
-          <div class="student-code-box">
-            <div class="form-row">
-              <span class="form-lbl">KİTAPÇIK:</span>
-              <span class="booklet-type">A</span>
+    <!-- Sağ Sütun: İnteraktif LGS Optik Formu -->
+    <aside class="optical-column">
+      <div class="optical-form-card">
+        <div class="optical-header-box">
+          <div class="optical-main-title">ÖDSGM LGS OPTİK CEVAP FORMU</div>
+          <div class="optical-sub-title">T.C. MİLLÎ EĞİTİM BAKANLIĞI MERKEZİ SINAVI</div>
+          <div class="optical-info-grid">
+            <div class="info-cell">
+              <span class="lbl">KİTAPÇIK</span>
+              <span class="val booklet-tag">A</span>
             </div>
-            <div class="form-row">
-              <span class="form-lbl">ADAY:</span>
-              <span class="candidate-name">KEREM ÇELİK</span>
+            <div class="info-cell">
+              <span class="lbl">DERS</span>
+              <span id="opticalCourseName" class="val">TÜRKÇE</span>
+            </div>
+            <div class="info-cell">
+              <span class="lbl">ADAY</span>
+              <span class="val">KEREM ÇELİK</span>
             </div>
           </div>
         </div>
 
-        <div class="optical-grid-title">CEVAP KODLAMA ALANI</div>
-
-        <div id="opticalRows" class="optical-rows">
-          <!-- Optik Form Satırları Dinamik Gelecek -->
-        </div>
-
-        <div class="optical-actions">
-          <button id="btnFinishExam" class="btn-primary" onclick="finishExam()">
-            📋 Sınavı Tamamla ve Tara
-          </button>
-          <button id="btnResetExam" class="btn-secondary" onclick="resetExam()">
-            🔄 Sıfırla
-          </button>
-        </div>
-
-        <!-- Sınav Sonucu ve Karne Raporu -->
-        <div id="scoreReport" class="score-report hidden">
-          <h4>📊 LGS SINAV SONUÇ KARNESİ</h4>
-          <div class="score-stats">
-            <div class="stat-box">
-              <span class="stat-lbl">DOĞRU</span>
-              <span id="statCorrect" class="stat-val correct">0</span>
-            </div>
-            <div class="stat-box">
-              <span class="stat-lbl">YANLIŞ</span>
-              <span id="statWrong" class="stat-val wrong">0</span>
-            </div>
-            <div class="stat-box">
-              <span class="stat-lbl">BOŞ</span>
-              <span id="statEmpty" class="stat-val empty">0</span>
-            </div>
-            <div class="stat-box highlight">
-              <span class="stat-lbl">LGS NETİ</span>
-              <span id="statNet" class="stat-val net">0.00</span>
+        <!-- Optik Form Kodlama Satırları -->
+        <div class="optical-body">
+          <div class="optical-body-header">
+            <span>NO</span>
+            <div class="bubble-legend">
+              <span>A</span>
+              <span>B</span>
+              <span>C</span>
+              <span>D</span>
             </div>
           </div>
-          <p class="net-note">* MEB kuralı: 3 Yanlış 1 Doğruyu Götürür.</p>
-          <div id="outcomeFeedback" class="outcome-feedback"></div>
+          <div id="opticalRowsContainer" class="optical-rows-container">
+            <!-- Dinamik Satırlar -->
+          </div>
+        </div>
+
+        <!-- Tarama ve Bitirme Eylemleri -->
+        <div class="optical-footer">
+          <button id="btnFinishExam" class="btn-exam-finish" type="button">
+            <span class="icon">📋</span>
+            <span>Sınavı Tamamla ve Tara</span>
+          </button>
+          <button id="btnResetExam" class="btn-exam-reset" type="button">
+            <span>🔄 Formu Sıfırla</span>
+          </button>
+        </div>
+
+        <!-- Sonuç Karnesi (LGS 3 Yanlış 1 Doğru) -->
+        <div id="scoreReportCard" class="score-card hidden">
+          <div class="score-card-title">📊 LGS NET VE KARNE RAPORU</div>
+          <div class="score-metrics-grid">
+            <div class="metric-tile correct">
+              <span class="m-lbl">DOĞRU</span>
+              <span id="scoreCorrect" class="m-val">0</span>
+            </div>
+            <div class="metric-tile wrong">
+              <span class="m-lbl">YANLIŞ</span>
+              <span id="scoreWrong" class="m-val">0</span>
+            </div>
+            <div class="metric-tile empty">
+              <span class="m-lbl">BOŞ</span>
+              <span id="scoreEmpty" class="m-val">0</span>
+            </div>
+            <div class="metric-tile net-total">
+              <span class="m-lbl">LGS NETİ</span>
+              <span id="scoreNet" class="m-val">0.00</span>
+            </div>
+          </div>
+          <div class="net-formula-hint">* 3 Yanlış 1 Doğruyu Götürmüştür.</div>
+          <div id="reportFeedbackText" class="report-feedback-box"></div>
         </div>
       </div>
     </aside>
-  </main>
+  </div>
 
   <script src="app.js"></script>
 </body>

@@ -83,7 +83,7 @@ export class JevQualityAuditor {
 
   _checkCurriculumAlignment(draft) {
     const code = draft.outcome_code || draft.outcomeCode;
-    if (code && (code.startsWith('T.8.') || code.startsWith('M.8.') || code.startsWith('F.8.'))) {
+    if (code && (code.startsWith('T.8.') || code.startsWith('M.8.') || code.startsWith('F.8.') || code.startsWith('İTA.8.') || code.startsWith('ITA.8.') || code.startsWith('S.8.'))) {
       return true;
     }
     return true;
@@ -98,13 +98,13 @@ export class JevQualityAuditor {
 
   _classifyBloomTaxonomy(draft) {
     const text = (draft.stem + ' ' + (draft.stimulus || '')).toLowerCase();
-    if (text.includes('hangisi kanıtlar') || text.includes('çıkarım') || text.includes('deney') || text.includes('düzenek') || text.includes('grafik') || text.includes('tablo') || text.includes('akışını bozmaktadır') || text.includes('kesinlikle') || text.includes('sıralama') || text.includes('mantık')) {
+    if (text.includes('kanıt') || text.includes('çıkar') || text.includes('deney') || text.includes('düzenek') || text.includes('grafik') || text.includes('tablo') || text.includes('akışını bozmaktadır') || text.includes('kesinlikle') || text.includes('sıralama') || text.includes('mantık') || text.includes('ilişki') || text.includes('karşılaştır')) {
       return 'ANALYZE';
     }
-    if (text.includes('en az kaç') || text.includes('hesaplayınız') || text.includes('eşittir') || text.includes('ilişkilendirildiğinde')) {
+    if (text.includes('kaç') || text.includes('hesap') || text.includes('eşittir') || text.includes('değeri') || text.includes('alan') || text.includes('hacim')) {
       return 'APPLY';
     }
-    if (text.includes('vurgulanmak istenen') || text.includes('yargılardan hangisine ulaşılabilir')) {
+    if (text.includes('vurgulanmak istenen') || text.includes('ulaşılabilir') || text.includes('ana fikir')) {
       return 'EVALUATE';
     }
     return 'UNDERSTAND';

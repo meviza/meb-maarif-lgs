@@ -1,0 +1,90 @@
+[
+  {
+    "id": "LGS-FEN-04",
+    "course": "FEN BİLİMLERİ",
+    "outcomeCode": "F.8.3.1.2 • Sıvı Basıncı ve Derinlik - Yoğunluk İlişkisi",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Fen bilimleri öğretmeni, sıvı basıncını etkileyen değişkenleri incelemek için içi renklendirilmiş su ile dolu U borusu, esnek hortum ve ucuna esnek balon gerilmiş bir huniden oluşan manometre düzeneğini hazırlamıştır. Huninin daldırıldığı sıvının uyguladığı basınç arttıkça U borusundaki sıvı kolları arasındaki seviye farkı (h) artmaktadır.\nÖğretmen, özdeş beherlerde bulunan sıvılarla aşağıdaki iki aşamalı deneyi gerçekleştirmiştir:\n• 1. Aşama: Huni, yoğunluğu d olan saf su bulunan behere önce h derinliğine daldırılmış ve U borusundaki seviye farkı h1 olarak ölçülmüştür. Ardından huni aynı kapta 2h derinliğine daldırılmış ve seviye farkının h2 = 2h1 olduğu gözlenmiştir.\n• 2. Aşama: Huni, aynı sıcaklıkta yoğunluğu 2d olan gliserin bulunan behere h derinliğine daldırılmış ve U borusundaki seviye farkı h3 olarak ölçülmüştür. Ölçüm sonucunda h3 = h2 olduğu tespit edilmiştir.",
+    "stem": "Yapılan bu kontrollü deney ve elde edilen sonuçlara göre aşağıdaki yargılardan hangisi kesinlikle doğrudur?",
+    "options": {
+      "A": "1. aşamada sıvının yoğunluğu sabit tutulduğunda, sıvı derinliği ile sıvı basıncının doğru orantılı olduğu kanıtlanmıştır.",
+      "B": "2. aşamada gliserine daldırılan huninin derinliği iki katına çıkarılırsa U borusundaki seviye farkı h1 değerine eşit olur.",
+      "C": "Deneyin 1. aşamasındaki bağımsız değişken U borusundaki seviye farkı, bağımlı değişken ise huninin daldırılma derinliğidir.",
+      "D": "U borusundaki seviye farkının değişimi, manometrede kullanılan U borusunun kesit alanına bağlıdır."
+    },
+    "correctOption": "A",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: Kontrollü deneylerde hipotez ve değişken analizine dikkat ediniz: 1. aşamada sıvı cinsi (yoğunluk d) sabit tutulmuş, derinlik h'den 2h'ye çıkarıldığında manometredeki sıvı farkı 2 katına çıkmıştır. Bu durum derinlik-basınç doğru orantısını açıkça ispatlar.",
+    "detailedSolution": "1. aşamada sabit tutulan değişken sıvı yoğunluğu (saf su), bağımsız değişken derinlik (h'den 2h'ye), bağımlı değişken ise sıvı basıncıdır (h1'den 2h1'e çıkmıştır). Derinlik 2 katına çıktığında seviye farkının da 2 katına çıkması (h2 = 2h1), sıvı basıncının derinlikle doğru orantılı olduğunu kesin olarak kanıtlar (Doğru cevap A). 2. aşamada gliserinin yoğunluğu 2d olduğu için derinlik 2 katına çıkarılırsa basınç 4 katına çıkar (B yanlış). 1. aşamada bağımsız değişken araştırmacının değiştirdiği derinliktir, seviye farkı bağımlı değişkendir (C yanlış). U borusundaki sıvı seviye farkı huninin ucundaki basınca bağlı olup U borusunun kesit alanına veya şekline bağlı değildir (D yanlış).",
+    "distractors": {
+      "B": "Gliserinde derinlik 2 katına çıkarılırsa basınç ve seviye farkı 2 kat daha artarak 4h1 olur, h1 değerine düşmez.",
+      "C": "Bağımsız değişken araştırmacının değiştirdiği (derinlik), bağımlı değişken ise bundan etkilenen sonuçtur (seviye farkı); kavramlar ters verilmiştir.",
+      "D": "Sıvı basıncı ve buna bağlı seviye farkı U borusunun kesit alanına veya şekline bağlı değildir."
+    }
+  },
+  {
+    "id": "LGS-FEN-05",
+    "course": "FEN BİLİMLERİ",
+    "outcomeCode": "F.8.4.4.4 • Asit Yağmurları ve pH Değişimi",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Sanayi tesislerinin yoğun olduğu bir sanayi bölgesinde ve sanayiden uzak kırsal bir ormanlık alanda bir ay boyunca toplanan yağmur suyu numuneleri ile göl sularının pH değerleri ölçülerek aşağıdaki tablo oluşturulmuştur:\n\n• Sanayi Bölgesi: Yağmur Suyu pH = 4,2 | Göl Suyu Başlangıç pH = 7,4 | 1 Ay Sonraki Göl Suyu pH = 6,1\n• Kırsal Orman Bölgesi: Yağmur Suyu pH = 6,5 | Göl Suyu Başlangıç pH = 7,6 | 1 Ay Sonraki Göl Suyu pH = 7,5\n\nAyrıca sanayi bölgesinden toplanan yağmur suyu örneğinin bir kısmı mermer heykel parçası üzerine, bir kısmı ise cam kaba damlatılmıştır. Deney sonucunda mermer parçası üzerinde aşınma ve gaz çıkışı gözlenirken, cam kapta herhangi bir değişim meydana gelmemiştir.",
+    "stem": "Bu gözlem ve deney sonuçlarına dayanarak yapılan aşağıdaki çıkarımlardan hangisi doğrudur?",
+    "options": {
+      "A": "Kırsal bölgedeki yağmur suyunun asidik özelliği sanayi bölgesindekinden daha fazladır.",
+      "B": "Sanayi bölgesindeki asit yağmurları göl ekosisteminin asitliğini artırarak pH değerinin nötr seviyeden uzaklaşmasına neden olmuştur.",
+      "C": "Asidik yağışlar tüm kap türlerine ve temas ettiği malzemelere eşit derecede aşındırıcı etki gösterir.",
+      "D": "Fabrika bacalarından salınan kükürt dioksit ve azot dioksit gazları göl suyunun bazikleşmesini sağlamıştır."
+    },
+    "correctOption": "B",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: pH ölçeğinde 7 nötrdür. 7'den 0'a yaklaşıldıkça asitlik artar. Asitler mermer ve metalleri aşındırırken cam ve plastiğe zarar vermez. Sanayi bölgesinde göl suyu pH'sinin 7,4'ten 6,1'e düşmesi asitleşmeyi ve nötrden uzaklaşmayı kanıtlar.",
+    "detailedSolution": "Sanayi bölgesindeki göl suyu pH'si bir ayda 7,4'ten 6,1'e gerilemiştir. pH'nin 7'nin altına inmesi ortamın asitleştiğini ve göl ekosisteminin olumsuz etkilendiğini açıkça ortaya koyar (Doğru cevap B). A şıkkında pH 4,2 olan sanayi yağmuru çok daha kuvvetli asidiktir. C şıkkında asitler cam kaba etki etmemiştir. D şıkkında kükürt ve azot oksitler suyu bazikleştirmeyip asitlendirir.",
+    "distractors": {
+      "A": "pH değeri küçüldükçe asitlik kuvveti artar; pH 4,2 olan sanayi suyu pH 6,5 olan sudan çok daha kuvvetli asidiktir.",
+      "C": "Asitler cam ve plastik kaplara etki etmezken mermeri aşındırır; aşındırıcı etki malzemeye göre farklılaşır.",
+      "D": "Fosil yakıt gazları göl suyunu bazikleştirmez, suyun pH değerini düşürerek asitlendirir."
+    }
+  },
+  {
+    "id": "LGS-FEN-06",
+    "course": "FEN BİLİMLERİ",
+    "outcomeCode": "F.8.5.1.1 • Kaldıraç Tipleri ve Kuvvet Kazancı",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Ağırlığı ve sürtünmesi ihmal edilen eşit bölmelendirilmiş homojen çubuklar ve özdeş P yükleri kullanılarak üç farklı kaldıraç düzeneği hazırlanmıştır:\n• 1. Düzenek (Çift taraflı kaldıraç): Destek noktası ortada, P yükü desteğe 1 birim uzaklıkta, F1 uygulanan kuvvet ise desteğe 3 birim uzaklıktadır.\n• 2. Düzenek (Yükün ortada olduğu tek taraflı kaldıraç): Destek bir uçta, P yükü desteğe 2 birim uzaklıkta, F2 kuvveti desteğe 4 birim uzaklıktadır.\n• 3. Düzenek (Kuvvetin ortada olduğu tek taraflı kaldıraç): Destek bir uçta, F3 kuvveti desteğe 1 birim uzaklıkta, P yükü desteğe 3 birim uzaklıktadır.\nTüm düzenekler yatay dengede olduğuna göre uygulanan kuvvetler ve sağladıkları mekanik avantajlar karşılaştırılmıştır.",
+    "stem": "Bu kaldıraç düzenekleri ile ilgili olarak aşağıdaki ifadelerden hangisi yanlıştır?",
+    "options": {
+      "A": "1. düzenekte kuvvet kolu yük kolundan büyük olduğu için 3 kat kuvvet kazancı sağlanmıştır.",
+      "B": "2. düzenekte kuvvet kazancı vardır ve uygulanan F2 kuvveti P yükünün ağırlığından küçüktür.",
+      "C": "3. düzenek kuvvetten kayıp vererek yoldan kazanç elde etmek amacıyla kullanılır.",
+      "D": "Düzenekler arasında yapılan işten en çok kazanç sağlayan düzenek 1. düzenektir."
+    },
+    "correctOption": "D",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: MEB Basit Makineler Temel İlkesi: Hiçbir basit makinede işten veya enerjiden kazanç sağlanamaz. Yalnızca kuvvetten veya yoldan kazanç sağlanabilir ya da iş yapma kolaylığı elde edilir.",
+    "detailedSolution": "Kaldıraçlar dahil hiçbir basit makinede işten veya enerjiden kazanç sağlanamaz. Yapılan iş aynı kalır; sadece uygulanan kuvvetin büyüklüğü, yönü veya yol değişir. Bu nedenle 1. düzeneğin işten kazanç sağladığını öne süren D seçeneği temel fizik ilkelerine ve MEB kazanımlarına aykırıdır (Yanlış olan seçenek D'dir).\n1. Düzenek: Kuvvet Kolu = 3, Yük Kolu = 1 -> Kuvvet Kazancı = 3 (F1 = P/3, doğru).\n2. Düzenek: Kuvvet Kolu = 4, Yük Kolu = 2 -> Kuvvet Kazancı = 2 (F2 = P/2 < P, doğru).\n3. Düzenek: Kuvvet Kolu = 1, Yük Kolu = 3 -> Yoldan kazanç, kuvvetten kayıp (F3 = 3P, doğru).",
+    "distractors": {
+      "A": "1. düzenekte F1 x 3 = P x 1 olduğundan F1 = P/3'tür ve 3 kat kuvvet kazancı vardır, ifade doğrudur.",
+      "B": "2. düzenekte F2 x 4 = P x 2 olduğundan F2 = P/2'dir; kuvvet yükten küçük olup kuvvet kazancı vardır, ifade doğrudur.",
+      "C": "3. düzenekte kuvvet ortadadır; kuvvet kolu yük kolundan küçük olduğundan yoldan kazanç, kuvvetten kayıp vardır, ifade doğrudur."
+    }
+  },
+  {
+    "id": "LGS-FEN-07",
+    "course": "FEN BİLİMLERİ",
+    "outcomeCode": "F.8.6.2.2 • Fotosentez ve Solunum İlişkisi",
+    "difficulty": "LGS Yeni Nesil",
+    "stimulus": "Işık geçiren, hava sızdırmaz özdeş üç cam fanus kullanılarak 25 °C oda sıcaklığında aşağıdaki kontrollü deney düzenekleri kurulmuştur:\n• 1. Fanus: Yeşil bir saksı bitkisi, kireç suyu (kireç suyu karbondioksit varlığında bulanır) ve sürekli beyaz ışık veren lamba.\n• 2. Fanus: Yeşil bir saksı bitkisi, canlı bir fare, kireç suyu ve sürekli beyaz ışık veren lamba.\n• 3. Fanus: Yeşil bir saksı bitkisi, kireç suyu konularak fanusun üzeri tamamen ışık geçirmeyen siyah bir örtü ile kapatılmıştır.\nBelirli bir süre beklendikten sonra fanuslardaki gaz değişimleri ile kireç suyunun durumu gözlenmiştir. 1. fanustaki kireç suyunun berrak kaldığı, 3. fanustaki kireç suyunun ise hızla bulandığı tespit edilmiştir.",
+    "stem": "Gerçekleştirilen bu deney düzeneği ve gözlemlere dayanılarak aşağıdaki çıkarımlardan hangisine ulaşılamaz?",
+    "options": {
+      "A": "1. fanusta bitkinin fotosentez hızı solunum hızından yüksek olduğu için ortamdaki karbondioksit tükenmiş ve kireç suyu bulanmamıştır.",
+      "B": "3. fanustaki kireç suyunun bulanması, bitkinin karanlık ortamda fotosentez yapamadığını ve sadece solunum yaparak ortama karbondioksit verdiğini kanıtlar.",
+      "C": "2. fanusta farenin solunumla ürettiği karbondioksit, ışık altında bitki tarafından fotosentezde tüketilebileceği için canlılar yaşamlarını daha uzun süre devam ettirebilir.",
+      "D": "Yeşil bitkiler sadece gündüzleri fotosentez yaparken solunum olayını yalnızca geceleri karanlık ortamda gerçekleştirirler."
+    },
+    "correctOption": "D",
+    "solutionStrategy": "💡 UZMAN ÖĞRETMEN STRATEJİSİ: LGS'de en sık sorulan kavram yanılgısı: \"Bitkiler gündüz sadece fotosentez, gece sadece solunum yapar.\" Yanlış! Bitkiler dahil tüm canlılar gece ve gündüz kesintisiz olarak 24 saat hücresel solunum yaparlar.",
+    "detailedSolution": "Yeşil bitkiler fotosentezi yalnızca ışık varlığında (gündüz ya da yapay ışıkta) yaparken hücresel solunumu canlılıkları boyunca gece-gündüz kesintisiz olarak 24 saat sürdürürler. Bu nedenle bitkilerin solunumu yalnızca geceleri karanlıkta yaptığını iddia eden D seçeneği büyük bir kavram yanılgısıdır ve deneyden ulaşılamaz (Doğru cevap D).\n1. fanusta aydınlıkta fotosentez hızı solunumu aştığı için net CO2 birikmez, kireç suyu bulanmaz (A doğru). 3. fanusta karanlıkta fotosentez durur, solunumla açığa çıkan CO2 kireç suyunu bulandırır (B doğru). 2. fanusta gaz döngüsü yaşamı uzatır (C doğru).",
+    "distractors": {
+      "A": "Işık altında fotosentez solunumu aştığında ortamdaki CO2 tüketilir, kireç suyu berrak kalır; bu çıkarım bilimsel olarak doğrudur.",
+      "B": "Karanlık ortamda fotosentez gerçekleşmez; solunum sonucu açığa çıkan karbondioksit kireç suyunu bulandırır, doğru bir çıkarımdır.",
+      "C": "Bitki ve fare arasındaki O2-CO2 dengesi canlıların fanustaki yaşam süresini uzatır, doğru bir çıkarımdır."
+    }
+  }
+]
