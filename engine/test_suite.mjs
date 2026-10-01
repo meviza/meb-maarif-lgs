@@ -184,6 +184,56 @@ async function runTestSuite() {
     assert.ok(htmlContent.includes('id="btnMobileOptical"'), 'btnMobileOptical butonu eksik');
   });
 
+  // TEST 8: Faz 3 - PostgreSQL Tohumlama, Veri Katmanı ve REST API Bütünlüğü
+  await asyncTest('Faz 3: Veritabanı adaptörü, SQL tohumlama ve API uç noktaları çalışmalı', async () => {
+    // 1. SQL Tohum dosyası kontrolü
+    const seedSqlPath = path.join(__dirname, '..', 'db', 'seed_full_production.sql');
+    assert.ok(fs.existsSync(seedSqlPath), 'seed_full_production.sql bulunamadı');
+    const seedSql = fs.readFileSync(seedSqlPath, 'utf-8');
+    assert.ok(seedSql.includes('INSERT INTO courses'), 'courses tohumu eksik');
+    assert.ok(seedSql.includes('INSERT INTO tests'), 'tests tohumu eksik');
+    assert.ok(seedSql.includes('INSERT INTO questions'), 'questions tohumu eksik');
+
+    // 2. Database Adapter kontrolü
+    const { db } = await import('./db_adapter.mjs');
+    const summary = db.getCoursesSummary();
+    assert.strictEqual(summary.length, 4, '4 kurs özeti bekleniyordu');
+    const totalQ = summary.reduce((acc, c) => acc + c.questionCount, 0);
+    assert.strictEqual(totalQ, 53, '53 soru bekleniyordu');
+
+    // 3. Test çekme
+    const trTests = db.getTestsByCourse('turkce');
+    assert.strictEqual(trTests.length, 3, 'Türkçe 3 test içermeli');
+
+    const test1 = db.getTestById('TR-T1');
+    assert.ok(test1 && test1.questions.length > 0, 'TR-T1 soruları yüklenemedi');
+
+    // 4. Sunucu taraflı sınav değerlendirme ve eksik kazanım analizi
+    const submitResult = db.submitExamSession({
+      testId: 'TR-T1',
+      answers: {
+        'LGS-TR-01': 'C', // Doğru
+        'LGS-TR-02': 'A'  // Yanlış (Doğrusu B)
+      },
+      studentName: 'Kerem Çelik',
+      mode: 'EXAM',
+      durationSeconds: 120
+    });
+
+    assert.ok(submitResult.sessionId, 'Oturum ID üretilmedi');
+    assert.strictEqual(submitResult.score.correctCount, 1, '1 doğru olmalı');
+    assert.strictEqual(submitResult.score.wrongCount, 1, '1 yanlış olmalı');
+    // Net = 1 - (1/3) = 0.67
+    assert.strictEqual(submitResult.score.netScore, 0.67, 'Net puan 0.67 olmalı');
+    assert.ok(submitResult.deficiencies.length === 1, '1 eksik kazanım tespit edilmeli');
+    assert.strictEqual(submitResult.deficiencies[0].questionId, 'LGS-TR-02', 'LGS-TR-02 eksik kazanım olmalı');
+
+    // 5. Kayıtlı oturumu sorgulama
+    const retrieved = db.getSessionResult(submitResult.sessionId);
+    assert.ok(retrieved, 'Kayıtlı oturum getirilemedi');
+    assert.strictEqual(retrieved.studentName, 'Kerem Çelik', 'Öğrenci adı eşleşmiyor');
+  });
+
   console.log('\n====================================================');
   console.log(`📊 TEST SONUÇLARI: ${passedTests}/${totalTests} Test Başarıyla Geçti.`);
   console.log('====================================================');

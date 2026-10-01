@@ -1,0 +1,214 @@
+/**
+ * MEB Maarif LGS Platformu - Kurumsal REST API ve Web Sunucusu (Faz 3)
+ * Node.js Native HTTP Sunucusu (Sıfır Bağımlılık, Yüksek Güvenilirlik)
+ */
+
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { db } from './engine/db_adapter.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const PORT = process.env.PORT || 3333;
+const PUBLIC_DIR = path.join(__dirname, 'public');
+
+// MIME Tipleri
+const MIME_TYPES = {
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'application/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.ico': 'image/x-icon'
+};
+
+// Yardımcı: JSON Yanıt Gönder
+function sendJson(res, statusCode, data) {
+  res.writeHead(statusCode, {
+    'Content-Type': 'application/json; charset=utf-8',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  });
+  res.end(JSON.stringify(data));
+}
+
+// Yardımcı: Statik Dosya Gönder
+function serveStaticFile(req, res, filePath) {
+  let safePath = path.normalize(filePath);
+  if (!safePath.startsWith(PUBLIC_DIR)) {
+    res.writeHead(403);
+    res.end('Erişim Reddedildi');
+    return;
+  }
+
+  fs.stat(safePath, (err, stats) => {
+    if (err || !stats.isFile()) {
+      // 404 durumunda index.html'e yönlendir (SPA fallback)
+      const indexPath = path.join(PUBLIC_DIR, 'index.html');
+      fs.readFile(indexPath, (err2, content) => {
+        if (err2) {
+          res.writeHead(404);
+          res.end('Dosya Bulunamadı');
+        } else {
+          res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+          res.end(content);
+        }
+      });
+      return;
+    }
+
+    const ext = path.extname(safePath).toLowerCase();
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+
+    res.writeHead(200, {
+      'Content-Type': contentType,
+      'Content-Length': stats.size,
+      'Cache-Control': 'no-cache'
+    });
+
+    const stream = fs.createReadStream(safePath);
+    stream.pipe(res);
+  });
+}
+
+// Sunucu Oluştur
+export const server = http.createServer((req, res) => {
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  const pathname = parsedUrl.pathname;
+
+  // CORS Preflight
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204, {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
+    });
+    res.end();
+    return;
+  }
+
+  // ============================================================================
+  // REST API UÇ NOKTALARI
+  // ============================================================================
+
+  // 1. Sistem Sağlık ve Bilgi
+  if (req.method === 'GET' && pathname === '/api/health') {
+    const summary = db.getCoursesSummary();
+    const totalQ = summary.reduce((sum, c) => sum + c.questionCount, 0);
+    const totalT = summary.reduce((sum, c) => sum + c.testCount, 0);
+    sendJson(res, 200, {
+      status: 'online',
+      system: 'MEB Maarif LGS Platformu',
+      version: '1.0.0-faz3',
+      jevAuditor: 'ACTIVE (System-1)',
+      stats: {
+        totalCourses: summary.length,
+        totalTests: totalT,
+        totalQuestions: totalQ
+      },
+      timestamp: new Date().toISOString()
+    });
+    return;
+  }
+
+  // 2. Kurs Listesi
+  if (req.method === 'GET' && pathname === '/api/courses') {
+    const courses = db.getCoursesSummary();
+    sendJson(res, 200, { courses });
+    return;
+  }
+
+  // 3. Kursa Ait Test Paketleri: /api/courses/:courseKey/tests
+  const courseTestsMatch = pathname.match(/^\/api\/courses\/([a-zA-Z0-9_-]+)\/tests$/);
+  if (req.method === 'GET' && courseTestsMatch) {
+    const courseKey = courseTestsMatch[1];
+    const tests = db.getTestsByCourse(courseKey);
+    sendJson(res, 200, { courseKey, tests });
+    return;
+  }
+
+  // 4. Tek Bir Test ve Soruları: /api/tests/:testId
+  const testMatch = pathname.match(/^\/api\/tests\/([a-zA-Z0-9_-]+)$/);
+  if (req.method === 'GET' && testMatch) {
+    const testId = testMatch[1];
+    const testData = db.getTestById(testId);
+    if (!testData) {
+      sendJson(res, 404, { error: `Test bulunamadı: ${testId}` });
+      return;
+    }
+    sendJson(res, 200, testData);
+    return;
+  }
+
+  // 5. Optik Formu Gönder ve Sunucuda Puanla: POST /api/exam/submit
+  if (req.method === 'POST' && pathname === '/api/exam/submit') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body || '{}');
+        if (!payload.testId) {
+          sendJson(res, 400, { error: 'testId alanı zorunludur' });
+          return;
+        }
+
+        const sessionResult = db.submitExamSession({
+          testId: payload.testId,
+          answers: payload.answers || {},
+          studentName: payload.studentName || 'Kerem Çelik',
+          mode: payload.mode || 'EXAM',
+          durationSeconds: payload.durationSeconds || 0
+        });
+
+        sendJson(res, 201, {
+          success: true,
+          message: 'Sınav oturumu başarıyla kaydedildi ve puanlandı.',
+          session: sessionResult
+        });
+      } catch (err) {
+        sendJson(res, 500, { error: err.message });
+      }
+    });
+    return;
+  }
+
+  // 6. Kaydedilmiş Sınav Sonucunu Getir: GET /api/exam/results/:sessionId
+  const sessionResultMatch = pathname.match(/^\/api\/exam\/results\/([a-zA-Z0-9_-]+)$/);
+  if (req.method === 'GET' && sessionResultMatch) {
+    const sessionId = sessionResultMatch[1];
+    const result = db.getSessionResult(sessionId);
+    if (!result) {
+      sendJson(res, 404, { error: `Sınav oturumu bulunamadı: ${sessionId}` });
+      return;
+    }
+    sendJson(res, 200, result);
+    return;
+  }
+
+  // ============================================================================
+  // STATİK DOSYA SUNUCUSU (PUBLIC KLASÖRÜ)
+  // ============================================================================
+  let targetFile = pathname === '/' ? 'index.html' : pathname.replace(/^\//, '');
+  const filePath = path.join(PUBLIC_DIR, targetFile);
+  serveStaticFile(req, res, filePath);
+});
+
+// Doğrudan çalıştırıldığında dinlemeye başla
+if (process.argv[1]?.endsWith('server.mjs')) {
+  server.listen(PORT, () => {
+    console.log(`====================================================`);
+    console.log(`🚀 MEB Maarif LGS Platform Sunucusu Aktif!`);
+    console.log(`📡 URL: http://localhost:${PORT}`);
+    console.log(`📋 REST API: http://localhost:${PORT}/api/health`);
+    console.log(`====================================================`);
+  });
+}

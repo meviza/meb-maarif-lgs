@@ -510,8 +510,8 @@ function renderOpticalSheet() {
   });
 }
 
-// Sınavı Tamamla ve Optik Formu Tara
-function finishExam() {
+// Sınavı Tamamla ve Optik Formu Tara (İstemci & Sunucu REST API Entegrasyonu)
+async function finishExam() {
   const test = getCurrentTest();
   if (!test) return;
 
@@ -545,12 +545,37 @@ function finishExam() {
     totalQuestions: questions.length
   };
 
-  // Arayüzü Güncelle
+  // Arayüzü Anında Güncelle
   renderOpticalSheet();
   renderQuestion();
   renderSolutionDrawer();
   renderTestList();
   renderScoreReport();
+
+  // Faz 3: Sunucu Tarafı Güvenli Kayıt (REST API)
+  try {
+    const response = await fetch('/api/exam/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        testId: test.id,
+        answers: session.userAnswers,
+        studentName: 'Kerem Çelik',
+        mode: appState.currentMode.toUpperCase(),
+        durationSeconds: (30 * 60 - appState.timerSeconds)
+      })
+    });
+    if (response.ok) {
+      const data = await response.json();
+      if (data && data.session) {
+        session.apiSessionId = data.session.sessionId;
+        session.deficiencies = data.session.deficiencies;
+        renderScoreReport(); // Sunucu analiz raporuyla zenginleştir
+      }
+    }
+  } catch (err) {
+    console.log('ℹ️ API çevrimdışı, yerel değerlendirme devrede.', err);
+  }
 }
 
 // Karne Raporunu Göster / Gizle
@@ -576,12 +601,30 @@ function renderScoreReport() {
 
     const feedbackEl = document.getElementById('reportFeedbackText');
     if (feedbackEl) {
+      let deficiencyHtml = '';
+      if (session.deficiencies && session.deficiencies.length > 0) {
+        const items = session.deficiencies.slice(0, 3).map(d => 
+          `<li><strong>${d.outcomeCode}:</strong> ${d.distractorReason}</li>`
+        ).join('');
+        deficiencyHtml = `
+          <div style="margin-top: 10px; padding: 10px; background: #fffbeb; border-radius: 8px; border: 1px solid #fde68a;">
+            <div style="color: #b45309; font-size: 11px; font-weight: 800; margin-bottom: 4px;">🎯 EKSİK KAZANIM RAPORU (JEV Analizi)</div>
+            <ul style="margin: 0; padding-left: 16px; font-size: 11px; color: #78350f;">
+              ${items}
+            </ul>
+          </div>
+        `;
+      }
+
+      let sessionMeta = session.apiSessionId ? 
+        `<div style="font-size: 10px; color: #64748b; margin-top: 8px; font-family: var(--font-mono);">✓ Sunucuya Kaydedildi (ID: ${session.apiSessionId.slice(0, 8)}...)</div>` : '';
+
       if (session.score.wrong > 0) {
-        feedbackEl.innerHTML = `⚠️ <strong>Kazanım Eksikliği Tespiti:</strong> Yanlış yaptığınız sorularda güçlü çeldiriciye takıldınız. Sağlanan "Uzman Öğretmen Çözüm Taktikleri"ni inceleyiniz.`;
+        feedbackEl.innerHTML = `⚠️ <strong>Kazanım Eksikliği Tespiti:</strong> Yanlış yaptığınız sorularda güçlü çeldiriciye takıldınız. Sağlanan "Uzman Öğretmen Çözüm Taktikleri"ni inceleyiniz.${deficiencyHtml}${sessionMeta}`;
       } else if (session.score.correct === session.score.totalQuestions) {
-        feedbackEl.innerHTML = `🎉 <strong>Mükemmel Başarı:</strong> ${test.title} içindeki tüm soruları tam netle tamamladınız!`;
+        feedbackEl.innerHTML = `🎉 <strong>Mükemmel Başarı:</strong> ${test.title} içindeki tüm soruları tam netle tamamladınız!${sessionMeta}`;
       } else {
-        feedbackEl.innerHTML = `📌 <strong>Tavsiye:</strong> Boş bıraktığınız sorular için kısıt ve hipotez kurallarını tekrar gözden geçiriniz.`;
+        feedbackEl.innerHTML = `📌 <strong>Tavsiye:</strong> Boş bıraktığınız sorular için kısıt ve hipotez kurallarını tekrar gözden geçiriniz.${deficiencyHtml}${sessionMeta}`;
       }
     }
   } else {
