@@ -10,9 +10,9 @@
 | :--- | :--- | :--- | :--- |
 | **Faz 1** | **Çekirdek Motor & Standartlar** | MEB Maarif Standartları, JEV Motoru, PostgreSQL Şeması, İlk Prototip | **TAMAMLANDI ✅** |
 | **Faz 2** | **Çoklu Test & Oturum Yalıtımı** | 4 Branş, 12 Test Paketi, 53 Soru, State İzolasyonu, Mobil Optik Çekmece | **TAMAMLANDI ✅** |
-| **Faz 3** | **PostgreSQL & Backend API** | Express REST API, Dinamik Veritabanı Sorguları, Güvenli Optik Sınav Kaydı | **SIRADAKİ ADIM 🎯** |
-| **Faz 4** | **Canlı LLM + JEV Soru Fabrikası** | Ollama / Gemini Entegrasyonu, Self-Correction Loop, Toplu Soru Üretimi | **PLANLANDI 📋** |
-| **Faz 5** | **Öğretmen & Yönetici Paneli** | LMS Yönetim Paneli, Eksik Kazanım Karnesi, PDF Çıktı ve Optik Baskı | **PLANLANDI 📋** |
+| **Faz 3** | **PostgreSQL & Backend API** | Express REST API, Dinamik Veritabanı Sorguları, Güvenli Optik Sınav Kaydı | **TAMAMLANDI ✅** |
+| **Faz 4** | **Canlı LLM + JEV Soru Fabrikası** | 4 Kademeli Zorluk Seviyesi, Sıfır-Şüphe Denetimi, Self-Correction Döngüsü | **TAMAMLANDI ✅** |
+| **Faz 5** | **Öğretmen & Yönetici Paneli & UI/UX** | LMS Yönetim Paneli, Dark Tema (shadcn), Kurumsal Giriş Portalı, PDF Baskı | **TAMAMLANDI ✅** |
 
 ---
 

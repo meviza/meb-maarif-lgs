@@ -266,6 +266,230 @@ async function runTestSuite() {
     assert.ok(result.audit.score >= 0.85, 'JEV puanı yetersiz');
   });
 
+  // TEST 10: 4 Kademeli Zorluk Seviyesi ve Bilişsel Yük Uyumu Denetim Testi
+  await asyncTest('4 Kademeli Zorluk Seviyesi ve Bilişsel Yük Uyumu Denetimi (Kavrama, Uygulama, LGS Yeni Nesil, Olimpiyat)', async () => {
+    const auditor = new JevQualityAuditor();
+    const { jevPipeline } = await import('./jev_self_correction.mjs');
+    const { DIFFICULTY_LEVELS } = await import('./prompt_templates.mjs');
+
+    // 1. Dört seviyenin tanımlarının mevcudiyeti
+    assert.ok(DIFFICULTY_LEVELS.KAVRAMA, 'KAVRAMA seviyesi eksik');
+    assert.ok(DIFFICULTY_LEVELS.UYGULAMA, 'UYGULAMA seviyesi eksik');
+    assert.ok(DIFFICULTY_LEVELS.LGS_YENI_NESIL, 'LGS_YENI_NESIL seviyesi eksik');
+    assert.ok(DIFFICULTY_LEVELS.SEKIL_VE_OLIMPIYAT, 'SEKIL_VE_OLIMPIYAT seviyesi eksik');
+
+    // 2. Her bir zorluk seviyesine uygun soruların yüksek uyumla denetimden geçmesi
+    const levels = ['KAVRAMA', 'UYGULAMA', 'LGS_YENI_NESIL', 'SEKIL_VE_OLIMPIYAT'];
+    for (const lvl of levels) {
+      const q = jevPipeline.generateDeterministicFallback('matematik', 'Müfredat', 'M.8.1', lvl);
+      const audit = await auditor.evaluateQuestion(q);
+      assert.strictEqual(audit.passed, true, `${lvl} seviyesindeki soru denetimden geçemedi`);
+      assert.ok(audit.score >= 0.85, `${lvl} soru skoru yetersiz: ${audit.score}`);
+      assert.ok(audit.decisions.difficulty_alignment >= 0.85, `${lvl} zorluk uyum skoru yetersiz: ${audit.decisions.difficulty_alignment}`);
+    }
+
+    // 3. Uyumsuzluk Cezalandırma Testi (Cognitive Load Mismatch Penalty):
+    // Olimpiyat seviyesi olarak etiketlenmiş ama basit sözlük tanımı olan bir soru
+    const mismatchedOlympic = {
+      outcome_code: 'T.8.1.1',
+      difficulty: 'Şekil ve Olimpiyat',
+      stimulus: 'Bir sözcüğün ilk anlamına gerçek anlam denir.',
+      stem: 'Bu bilgiye göre gerçek anlam nedir?',
+      options: { A: 'İlk anlam', B: 'Mecaz', C: 'Terim', D: 'Yan' },
+      correct_option: 'A',
+      solution_strategy: 'Tanımı hatırlayınız.',
+      detailed_solution: 'Gerçek anlam ilk anlamdır.',
+      distractor_analysis: { B: 'Mecazdır.', C: 'Terimdir.', D: 'Yandır.' }
+    };
+    const mismatchAudit = await auditor.evaluateQuestion(mismatchedOlympic);
+    assert.strictEqual(mismatchAudit.passed, false, 'Olimpiyat seviyesine uymayan sığ soru onay almamalı');
+    assert.ok(mismatchAudit.decisions.difficulty_alignment < 0.70, 'Uyumsuz zorluk seviyesi cezalandırılmalı');
+    assert.ok(mismatchAudit.reasons.some(r => r.includes('zorluk') || r.includes('Olimpiyat')), 'Uyumsuzluk sebebi bildirilmeli');
+  });
+
+  // TEST 11: Sıfır Şüphe ve Deterministik Cevap Testi (Çift Cevap, Muğlaklık ve Ayrıklık Denetimi)
+  await asyncTest('Sıfır Şüphe ve Deterministik Cevap Testi (Çift Cevap, Muğlaklık ve Ayrıklık Denetimi)', async () => {
+    const auditor = new JevQualityAuditor();
+
+    // 1. Soru kökünde muğlak ifade ('belki') tespiti
+    const ambiguousStemQuestion = {
+      outcome_code: 'F.8.4.1',
+      difficulty: 'LGS Yeni Nesil',
+      stimulus: 'Bitkiler ışık altında fotosentez yaparak organik besin ve oksijen üretirler.',
+      stem: 'Buna göre deney sonucunda fotosentez hızı belki artabilir mi?',
+      options: { A: 'Evet', B: 'Hayır', C: 'Değişmez', D: 'Sıfırlanır' },
+      correct_option: 'A',
+      solution_strategy: 'Işık şiddeti artınca hız artar.',
+      detailed_solution: 'A şıkkı doğrudur.',
+      distractor_analysis: { B: 'Azalmaz.', C: 'Sabit kalmaz.', D: 'Sıfırlanmaz.' }
+    };
+    const resStem = await auditor.evaluateQuestion(ambiguousStemQuestion);
+    assert.strictEqual(resStem.passed, false, 'Muğlak soru köküne sahip soru reddedilmeli');
+    assert.strictEqual(resStem.decisions.zero_ambiguity, false, 'zero_ambiguity false olmalı');
+    assert.ok(resStem.reasons.some(r => r.includes('belki') || r.includes('muğlak')), 'Muğlak ifade sebebi bildirilmeli');
+
+    // 2. Seçenekte muğlak ifade ('çoğu zaman') tespiti
+    const ambiguousOptionQuestion = {
+      outcome_code: 'T.8.3.14',
+      difficulty: 'LGS Yeni Nesil',
+      stimulus: 'Sanatçı eserlerinde toplumsal gerçekleri tarafsız ve derinlikli biçimde yansıtır.',
+      stem: 'Bu metne göre sanatçının tavrıyla ilgili hangisi söylenebilir?',
+      options: {
+        A: 'Çoğu zaman tarafsız kalmayı tercih eder.',
+        B: 'Toplumsal sorunlara duyarsızdır.',
+        C: 'Yalnızca bireysel temaları işler.',
+        D: 'Popüler beğeniyi hedefler.'
+      },
+      correct_option: 'A',
+      solution_strategy: 'Metni okuyunuz.',
+      detailed_solution: 'A şıkkı metinle uyumludur.',
+      distractor_analysis: { B: 'Duyarlıdır.', C: 'Bireysel değildir.', D: 'Popülerliği hedeflemez.' }
+    };
+    const resOpt1 = await auditor.evaluateQuestion(ambiguousOptionQuestion);
+    assert.strictEqual(resOpt1.passed, false, 'Muğlak seçenek içeren soru reddedilmeli');
+    assert.strictEqual(resOpt1.decisions.zero_ambiguity, false, 'zero_ambiguity false olmalı');
+
+    // 3. Seçenekte muğlak ifade ('olabilir gibi') tespiti
+    const ambiguousOptionQuestion2 = {
+      outcome_code: 'T.8.3.14',
+      difficulty: 'LGS Yeni Nesil',
+      stimulus: 'Edebiyat toplumun aynası olmakla kalmaz; geleceği de inşa eder.',
+      stem: 'Bu metinden çıkarılabilecek kesin sonuç hangisidir?',
+      options: {
+        A: 'Edebiyat toplumu dönüştürücü güce sahiptir.',
+        B: 'Eserler geleceği etkileyebilir olabilir gibi görünmektedir.',
+        C: 'Sanat sadece geçmişi anlatır.',
+        D: 'Toplum sanattan etkilenmez.'
+      },
+      correct_option: 'A',
+      solution_strategy: 'Metne odaklanınız.',
+      detailed_solution: 'A şıkkı doğrudur.',
+      distractor_analysis: { B: 'Muğlaktır.', C: 'Geçmişle sınırlı değildir.', D: 'Etkilenir.' }
+    };
+    const resOpt2 = await auditor.evaluateQuestion(ambiguousOptionQuestion2);
+    assert.strictEqual(resOpt2.decisions.zero_ambiguity, false, 'olabilir gibi muğlaklığı yakalanmalı');
+
+    // 4. Çift cevap ve tekrarlanan seçenek (Duplicate Option)
+    const duplicateQuestion = {
+      outcome_code: 'M.8.1.1',
+      difficulty: 'Uygulama',
+      stimulus: 'Bir sayının 3 katının 5 fazlası 20 dir.',
+      stem: 'Buna göre bu sayı kaçtır?',
+      options: { A: '5', B: '5', C: '6', D: '7' },
+      correct_option: 'A',
+      solution_strategy: '3x + 5 = 20 ise x = 5.',
+      detailed_solution: 'x = 5 tir.',
+      distractor_analysis: { B: 'Aynıdır.', C: 'Hatalıdır.', D: 'Hatalıdır.' }
+    };
+    const resDup = await auditor.evaluateQuestion(duplicateQuestion);
+    assert.strictEqual(resDup.passed, false, 'Tekrarlanan seçenekli soru reddedilmeli');
+    assert.strictEqual(resDup.decisions.single_deterministic_answer, false, 'Tek deterministik cevap false olmalı');
+    assert.strictEqual(resDup.decisions.zero_ambiguity, false, 'zero_ambiguity false olmalı');
+
+    // 5. Kapsayan ve çakışan eşitsizlik seçenekleri (Overlapping Inequalities)
+    const overlappingInequalityQuestion = {
+      outcome_code: 'M.8.2.1',
+      difficulty: 'Uygulama',
+      stimulus: 'Bir depodaki su seviyesi x litredir.',
+      stem: 'Depodaki su miktarının kısıtı aşağıdakilerden hangisidir?',
+      options: { A: 'x > 10', B: 'x > 20', C: 'x < 5', D: 'x < 2' },
+      correct_option: 'A',
+      solution_strategy: 'Eşitsizliği kurunuz.',
+      detailed_solution: 'Doğru cevap A dır.',
+      distractor_analysis: { B: 'Yanlış kısıt.', C: 'Yanlış sınır.', D: 'Yanlış sınır.' }
+    };
+    const resIneq = await auditor.evaluateQuestion(overlappingInequalityQuestion);
+    assert.strictEqual(resIneq.passed, false, 'Çakışan eşitsizlik seçenekleri reddedilmeli');
+    assert.strictEqual(resIneq.decisions.zero_ambiguity, false);
+
+    // 6. Meta-seçenekler (Hepsi, Hiçbiri)
+    const metaOptionQuestion = {
+      outcome_code: 'T.8.3.1',
+      difficulty: 'Kavrama',
+      stimulus: 'Sözcüklerin zıt anlamlıları anlamca birbirinin karşıtı olan sözcüklerdir.',
+      stem: 'Aşağıdakilerden hangisi zıt anlamlı sözcük çiftidir?',
+      options: { A: 'İyi - Kötü', B: 'Güzel - Çirkin', C: 'Yukarıdakilerin hepsi', D: 'Hiçbiri' },
+      correct_option: 'A',
+      solution_strategy: 'Zıt anlamlıları bulunuz.',
+      detailed_solution: 'A şıkkı doğrudur.',
+      distractor_analysis: { B: 'B de zıttır.', C: 'Meta şık.', D: 'Geçersiz şık.' }
+    };
+    const resMeta = await auditor.evaluateQuestion(metaOptionQuestion);
+    assert.strictEqual(resMeta.passed, false, 'Meta-seçenekler reddedilmeli');
+    assert.strictEqual(resMeta.decisions.zero_ambiguity, false);
+  });
+
+  // TEST 12: JEV System-1 4 Branş Kalite Kapısı Testi (Türkçe, Matematik, Fen, Sosyal)
+  await asyncTest('JEV System-1 4 Branş Kalite Kapısı ve Deterministik Soru Üretimi Testi', async () => {
+    const auditor = new JevQualityAuditor();
+    const { jevPipeline } = await import('./jev_self_correction.mjs');
+
+    const branches = [
+      { key: 'turkce', name: 'Türkçe', outcomePrefix: 'T.8.' },
+      { key: 'matematik', name: 'Matematik', outcomePrefix: 'M.8.' },
+      { key: 'fen', name: 'Fen Bilimleri', outcomePrefix: 'F.8.' },
+      { key: 'sosyal', name: 'T.C. İnkılap Tarihi', outcomePrefix: 'İTA.8.' }
+    ];
+
+    const testDiffs = ['KAVRAMA', 'UYGULAMA', 'LGS_YENI_NESIL', 'SEKIL_VE_OLIMPIYAT'];
+
+    for (const branch of branches) {
+      for (const diff of testDiffs) {
+        const fallbackQ = jevPipeline.generateDeterministicFallback(branch.key, 'Genel Müfredat', `${branch.outcomePrefix}1.1`, diff);
+        
+        // Emojilerin temizlenmiş olduğunu doğrula
+        const rawJson = JSON.stringify(fallbackQ);
+        const emojiRegex = /[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
+        assert.strictEqual(emojiRegex.test(rawJson), false, `${branch.name} - ${diff} sorusunda emoji bulundu!`);
+
+        // JEV Kalite Denetimi
+        const audit = await auditor.evaluateQuestion(fallbackQ);
+        assert.strictEqual(audit.passed, true, `${branch.name} - ${diff} JEV onayından geçemedi: ${audit.reasons?.join(', ')}`);
+        assert.ok(audit.score >= 0.85, `${branch.name} - ${diff} skoru yetersiz: ${audit.score}`);
+        assert.strictEqual(audit.decisions.is_meb_aligned, true, `${branch.name} MEB uyumu eksik`);
+        assert.strictEqual(audit.decisions.single_deterministic_answer, true, `${branch.name} tek cevap doğrulanmadı`);
+        assert.strictEqual(audit.decisions.zero_ambiguity, true, `${branch.name} sıfır şüphe kapısından geçemedi`);
+        assert.ok(audit.decisions.difficulty_alignment >= 0.85, `${branch.name} zorluk uyumu yetersiz`);
+        assert.ok(fallbackQ.solutionStrategy.includes('UZMAN ÖĞRETMEN STRATEJİSİ'), `${branch.name} çözüm stratejisi formatı hatalı`);
+        assert.ok(fallbackQ.detailedSolution.length > 20, `${branch.name} detaylı çözüm yetersiz`);
+        assert.strictEqual(Object.keys(fallbackQ.distractors).length, 3, `${branch.name} 3 çeldirici açıklaması içermeli`);
+      }
+    }
+  });
+
+  // TEST 13: JEV Self-Correction Döngüsü ve Hata Geri Bildirimi Aktarım Testi
+  await asyncTest('JEV Self-Correction Döngüsü ve Hata Geri Bildirimi Aktarımı Çalışmalı', async () => {
+    const auditor = new JevQualityAuditor();
+    const { buildSelfCorrectionPrompt } = await import('./prompt_templates.mjs');
+
+    // Kusurlu soru taslağı (Muğlak ifade ve eksik çeldiriciler)
+    const flawedQuestion = {
+      outcome_code: 'T.8.3.14',
+      difficulty: 'LGS Yeni Nesil',
+      stimulus: 'Sanat ve edebiyat toplumun vazgeçilmez iki unsurudur.',
+      stem: 'Bu metne göre sanat belki de toplumu nasıl etkiler?',
+      options: { A: 'Olumlu', B: 'Olumlu', C: 'Olumsuz', D: 'Etkilemez' },
+      correct_option: 'A'
+    };
+
+    const audit = await auditor.evaluateQuestion(flawedQuestion);
+    assert.strictEqual(audit.passed, false, 'Kusurlu soru onay almamalı');
+    assert.ok(audit.reasons.length >= 2, 'En az 2 ayrı ret sebebi dönmeli');
+
+    // buildSelfCorrectionPrompt ile hata bildiriminin prompta aktarılması
+    const correctionPrompt = buildSelfCorrectionPrompt({
+      originalQuestion: flawedQuestion,
+      rejectionReasons: audit.reasons,
+      difficulty: 'LGS_YENI_NESIL'
+    });
+
+    for (const reason of audit.reasons) {
+      assert.ok(correctionPrompt.includes(reason), `Ret sebebi prompta aktarılmamış: "${reason}"`);
+    }
+    assert.ok(correctionPrompt.includes('SIFIR ŞÜPHE İLKESİ'), 'Sıfır şüphe ilkesi promptta yer almalı');
+    assert.ok(correctionPrompt.includes('HEDEF ZORLUK SEVİYESİ: LGS_YENI_NESIL'), 'Hedef zorluk seviyesi promptta belirtilmeli');
+  });
+
   console.log('\n====================================================');
   console.log(`📊 TEST SONUÇLARI: ${passedTests}/${totalTests} Test Başarıyla Geçti.`);
   console.log('====================================================');
@@ -276,3 +500,4 @@ async function runTestSuite() {
 }
 
 runTestSuite();
+

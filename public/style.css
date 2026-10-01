@@ -35,6 +35,34 @@
   --optical-bubble-fill: #1e293b;
 }
 
+[data-theme="dark"], body.dark-theme {
+  --primary-navy: #09090b;
+  --primary-deep-blue: #18181b;
+  --accent-blue: #3b82f6;
+  --accent-blue-light: rgba(59, 130, 246, 0.15);
+  --accent-gold: #fbbf24;
+  --accent-emerald: #10b981;
+  --accent-rose: #f87171;
+
+  /* Arayüz Nötrleri (shadcn Zinc-950 / Zinc-900 / Zinc-800) */
+  --bg-page: #09090b;
+  --bg-card: #141417;
+  --border-light: #27272a;
+  --border-medium: #3f3f46;
+
+  /* Tipografi Renkleri */
+  --text-main: #f4f4f5;
+  --text-body: #d4d4d8;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+
+  /* Optik Kağıt Rengi (Dark) */
+  --optical-bg: #101014;
+  --optical-border: #27272a;
+  --optical-bubble-border: #71717a;
+  --optical-bubble-fill: #3b82f6;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -1574,5 +1602,457 @@ body {
     padding: 30px;
     margin: 20px 0;
   }
+}
+
+/* ==========================================================================
+   14. Tema Değiştirici & Kullanıcı Profili (shadcn / UI8 Tasarımı)
+   ========================================================================== */
+
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.user-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 12px 4px 6px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.user-profile-badge:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.user-avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.user-profile-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.user-nav-name {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.user-nav-sub {
+  font-size: 10px;
+  color: #94a3b8;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   15. Kurumsal MEB Maarif Giriş ve Kimlik Doğrulama Portalı (Giriş Ekranı)
+   ========================================================================== */
+
+.portal-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(9, 9, 11, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-auth-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  padding: 36px 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-main);
+}
+
+.portal-auth-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.portal-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.badge-maarif-pill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.badge-year-pill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: #eff6ff;
+  color: #1e40af;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.portal-emblem-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+
+.portal-main-title {
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.portal-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.portal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.portal-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.portal-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.portal-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-body);
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-svg {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.input-with-icon .portal-input {
+  padding-left: 38px;
+}
+
+.portal-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  background: var(--bg-page);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.portal-input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.portal-actions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-portal-primary {
+  width: 100%;
+  height: 46px;
+  background: var(--accent-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-portal-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.btn-portal-demo {
+  width: 100%;
+  height: 38px;
+  background: transparent;
+  color: var(--text-body);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-portal-demo:hover {
+  background: var(--bg-page);
+  border-color: var(--border-medium);
+  color: var(--text-main);
+}
+
+.portal-security-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   16. Dark Tema Uyarlamaları (shadcn / Slate & Zinc)
+   ========================================================================== */
+
+[data-theme="dark"] .center-booklet-column,
+[data-theme="dark"] .test-selector-sidebar,
+[data-theme="dark"] .sidebar-block,
+[data-theme="dark"] .optical-form-card,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .admin-card,
+[data-theme="dark"] .option-card {
+  background: var(--bg-card);
+  border-color: var(--border-light);
+}
+
+[data-theme="dark"] .option-card:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--accent-blue);
+}
+
+[data-theme="dark"] .option-card.selected {
+  background: rgba(59, 130, 246, 0.16);
+  border-color: var(--accent-blue);
+}
+
+[data-theme="dark"] .opt-badge-circle {
+  background: #27272a;
+  border-color: #3f3f46;
+  color: #f4f4f5;
+}
+
+[data-theme="dark"] .test-card-btn {
+  background: #18181b;
+  border-color: #27272a;
+}
+
+[data-theme="dark"] .test-card-btn:hover {
+  background: #27272a;
+}
+
+[data-theme="dark"] .test-card-btn.active {
+  background: #27272a;
+  border-color: var(--accent-blue);
+}
+
+[data-theme="dark"] .course-btn {
+  background: #18181b;
+  border-color: #27272a;
+}
+
+[data-theme="dark"] .course-btn:hover {
+  background: #27272a;
+}
+
+[data-theme="dark"] .course-btn.active {
+  background: #27272a;
+  border-color: var(--accent-blue);
+}
+
+[data-theme="dark"] .form-control {
+  background: #18181b;
+  border-color: #27272a;
+  color: #f4f4f5;
+}
+
+[data-theme="dark"] .form-control:focus {
+  border-color: var(--accent-blue);
+}
+
+[data-theme="dark"] .solution-drawer {
+  background: #1c1917;
+  border-color: #44403c;
+}
+
+[data-theme="dark"] .strategy-callout {
+  background: #292524;
+  border-left-color: var(--accent-gold);
+  color: #fef08a;
+}
+
+[data-theme="dark"] .distractor-box {
+  background: #292524;
+  border-color: #44403c;
+  color: #d6d3d1;
+}
+
+[data-theme="dark"] .optical-grid-header {
+  background: #18181b;
+  color: #a1a1aa;
+}
+
+[data-theme="dark"] .bubble-circle {
+  border-color: #52525b;
+  color: #a1a1aa;
+}
+
+[data-theme="dark"] .bubble-circle.marked {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .score-card {
+  background: #18181b;
+  border-color: #27272a;
+}
+
+[data-theme="dark"] .admin-table th {
+  background: #18181b;
+  color: #a1a1aa;
+  border-color: #27272a;
+}
+
+[data-theme="dark"] .admin-table td {
+  border-color: #27272a;
+}
+
+[data-theme="dark"] .admin-table tr:hover td {
+  background: #1e1e24;
+}
+
+/* Zorluk Rozetleri (JEV 4-Tier Badges) */
+.badge-diff-kavrama {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+.badge-diff-uygulama {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+.badge-diff-lgs {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+.badge-diff-sampiyon {
+  background: #f5f3ff;
+  color: #6d28d9;
+  border: 1px solid #ddd6fe;
+}
+
+[data-theme="dark"] .badge-diff-kavrama {
+  background: rgba(2, 132, 199, 0.2);
+  color: #38bdf8;
+  border-color: rgba(2, 132, 199, 0.4);
+}
+[data-theme="dark"] .badge-diff-uygulama {
+  background: rgba(217, 119, 6, 0.2);
+  color: #fbbf24;
+  border-color: rgba(217, 119, 6, 0.4);
+}
+[data-theme="dark"] .badge-diff-lgs {
+  background: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+  border-color: rgba(37, 99, 235, 0.4);
+}
+[data-theme="dark"] .badge-diff-sampiyon {
+  background: rgba(124, 58, 237, 0.2);
+  color: #c084fc;
+  border-color: rgba(124, 58, 237, 0.4);
 }
 

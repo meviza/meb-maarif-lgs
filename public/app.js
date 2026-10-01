@@ -12,11 +12,20 @@ const appState = {
   sessions: {}, // [testId]: { userAnswers: {}, examEvaluated: false, score: null }
   timerInterval: null,
   timerSeconds: 30 * 60,
-  multiTestBank: {}
+  multiTestBank: {},
+  theme: localStorage.getItem('meb_theme') || 'light',
+  user: JSON.parse(localStorage.getItem('meb_user') || 'null') || {
+    name: 'Kerem Çelik',
+    no: '571',
+    class: '8/A',
+    target: 'Fen Lisesi (500 Tam Puan Hedefi)'
+  }
 };
 
 // Sayfa Yüklendiğinde Başlat
 document.addEventListener('DOMContentLoaded', async () => {
+  initTheme();
+  initPortalAuth();
   await initTestBank();
   setupEventListeners();
   renderApp();
@@ -151,6 +160,130 @@ function setupEventListeners() {
       opticalCol.classList.toggle('mobile-open');
     });
   }
+}
+
+// 3.1. Tema Yönetimi (Dark / Light)
+function initTheme() {
+  const saved = localStorage.getItem('meb_theme') || 'light';
+  applyTheme(saved);
+
+  const btn = document.getElementById('btnThemeToggle');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('meb_theme', next);
+    });
+  }
+}
+
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.body.classList.add('dark-theme');
+    document.querySelector('.icon-sun')?.classList.add('hidden');
+    document.querySelector('.icon-moon')?.classList.remove('hidden');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    document.body.classList.remove('dark-theme');
+    document.querySelector('.icon-sun')?.classList.remove('hidden');
+    document.querySelector('.icon-moon')?.classList.add('hidden');
+  }
+}
+
+// 3.2. Kurumsal MEB Maarif Portalı (Giriş Ekranı & Profil)
+function initPortalAuth() {
+  const savedUser = JSON.parse(localStorage.getItem('meb_user') || 'null');
+  if (savedUser) {
+    appState.user = savedUser;
+  }
+  updateUserDisplay();
+
+  const btnUser = document.getElementById('btnUserProfile');
+  if (btnUser) {
+    btnUser.addEventListener('click', openPortalModal);
+  }
+
+  const form = document.getElementById('portalLoginForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('inputStudentName')?.value.trim() || 'Kerem Çelik';
+      const no = document.getElementById('inputStudentNo')?.value.trim() || '571';
+      const cls = document.getElementById('selectStudentClass')?.value || '8/A';
+      const target = document.getElementById('selectStudentTarget')?.value || 'Fen Lisesi (500 Tam Puan)';
+
+      appState.user = { name, no, class: cls, target };
+      localStorage.setItem('meb_user', JSON.stringify(appState.user));
+      updateUserDisplay();
+      closePortalModal();
+    });
+  }
+
+  const btnDemo = document.getElementById('btnQuickDemoLogin');
+  if (btnDemo) {
+    btnDemo.addEventListener('click', () => {
+      appState.user = {
+        name: 'Kerem Çelik',
+        no: '571',
+        class: '8/A',
+        target: 'Fen Lisesi (500 Tam Puan Hedefi)'
+      };
+      localStorage.setItem('meb_user', JSON.stringify(appState.user));
+      updateUserDisplay();
+      closePortalModal();
+    });
+  }
+
+  // İlk gelişte kullanıcı kayıtlı değilse modalı göster
+  if (!savedUser) {
+    openPortalModal();
+  }
+}
+
+function updateUserDisplay() {
+  const nameEl = document.getElementById('navUserName');
+  const badgeEl = document.getElementById('navUserBadge');
+  if (nameEl) nameEl.textContent = appState.user.name;
+  if (badgeEl) badgeEl.textContent = `${appState.user.class} • No: ${appState.user.no}`;
+}
+
+function openPortalModal() {
+  const modal = document.getElementById('portalAuthModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    if (document.getElementById('inputStudentName')) {
+      document.getElementById('inputStudentName').value = appState.user.name;
+    }
+    if (document.getElementById('inputStudentNo')) {
+      document.getElementById('inputStudentNo').value = appState.user.no;
+    }
+  }
+}
+
+function closePortalModal() {
+  const modal = document.getElementById('portalAuthModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+// 3.3. Zorluk Seviyesi Yardımcıları
+function getDifficultyBadgeClass(diff) {
+  if (!diff) return 'badge-diff-lgs';
+  const d = diff.toLowerCase();
+  if (d.includes('kavrama') || d === 'kavrama') return 'badge-diff-kavrama';
+  if (d.includes('uygulama') || d === 'uygulama') return 'badge-diff-uygulama';
+  if (d.includes('olimpiyat') || d.includes('sampiyon') || d.includes('şampiyon') || d === 'sekil_ve_olimpiyat') return 'badge-diff-sampiyon';
+  return 'badge-diff-lgs';
+}
+
+function formatDifficultyText(diff) {
+  if (!diff) return 'LGS Yeni Nesil';
+  if (diff === 'KAVRAMA') return 'Temel (Kavrama)';
+  if (diff === 'UYGULAMA') return 'Orta (Uygulama)';
+  if (diff === 'LGS_YENI_NESIL') return 'LGS Yeni Nesil';
+  if (diff === 'SEKIL_VE_OLIMPIYAT') return 'Şampiyon Düzeyi';
+  return diff;
 }
 
 // 4. Mod Değiştirme (Öğrenme, Gerçek Sınav, Öğretmen Paneli, Yazdır)
@@ -351,8 +484,11 @@ function renderQuestion() {
 
   // Başlık Meta Rozetleri
   document.getElementById('qCourseBadge').textContent = q.course;
-  document.getElementById('qOutcomeBadge').textContent = q.outcomeCode;
-  document.getElementById('qDifficultyBadge').textContent = q.difficulty;
+  const diffBadge = document.getElementById('qDifficultyBadge');
+  if (diffBadge) {
+    diffBadge.textContent = formatDifficultyText(q.difficulty);
+    diffBadge.className = 'badge-pill ' + getDifficultyBadgeClass(q.difficulty);
+  }
   document.getElementById('qCodeBadge').textContent = q.id;
 
   const sourceBadge = document.getElementById('qSourceBadge');
@@ -594,7 +730,7 @@ async function finishExam() {
       body: JSON.stringify({
         testId: test.id,
         answers: session.userAnswers,
-        studentName: 'Kerem Çelik',
+        studentName: appState.user?.name || 'Kerem Çelik',
         mode: appState.currentMode.toUpperCase(),
         durationSeconds: (30 * 60 - appState.timerSeconds)
       })
@@ -824,7 +960,11 @@ async function generateAiQuestion() {
           previewBox.classList.remove('hidden');
 
           document.getElementById('prevCourse').textContent = data.question.course;
-          document.getElementById('prevDifficulty').textContent = data.question.difficulty;
+          const prevDiffEl = document.getElementById('prevDifficulty');
+          if (prevDiffEl) {
+            prevDiffEl.textContent = formatDifficultyText(data.question.difficulty);
+            prevDiffEl.className = 'badge-pill ' + getDifficultyBadgeClass(data.question.difficulty);
+          }
           document.getElementById('prevJevScore').textContent = `JEV ONAYLI: ${data.audit.score} (Deneme: ${data.attempts})`;
 
           document.getElementById('prevStimulus').textContent = data.question.stimulus;

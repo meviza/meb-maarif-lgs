@@ -68,6 +68,38 @@
 
       <!-- Sağ Güvenlik ve Sayaç -->
       <div class="navbar-actions">
+        <!-- Tema Değiştirici (Dark / Light) -->
+        <button id="btnThemeToggle" class="theme-toggle-btn" type="button" aria-label="Temayı Değiştir" title="Karanlık / Aydınlık Mod">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Öğrenci / Kullanıcı Profili Rozeti -->
+        <button id="btnUserProfile" class="user-profile-badge" type="button" title="Giriş Yapan Aday Profili (Düzenlemek için tıkla)">
+          <div class="user-avatar-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div class="user-profile-info">
+            <span id="navUserName" class="user-nav-name">Kerem Çelik</span>
+            <span id="navUserBadge" class="user-nav-sub">8/A • LGS Adayı</span>
+          </div>
+        </button>
+
         <div class="jev-status-pill">
           <span class="pulse-indicator"></span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:#059669;">
@@ -207,11 +239,12 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Zorluk Düzeyi</label>
+              <label class="form-label">Zorluk Düzeyi (JEV Kalibreli)</label>
               <select id="aiDifficultySelect" class="form-control">
-                <option value="LGS Yeni Nesil">LGS Yeni Nesil (Analiz / Muhakeme)</option>
-                <option value="Zor">İleri Düzey Eleştirel Düşünme</option>
-                <option value="Orta">Standart MEB Formatı</option>
+                <option value="LGS_YENI_NESIL" selected>LGS Yeni Nesil (ÖDSGM Analiz & Mantık-Muhakeme)</option>
+                <option value="KAVRAMA">Temel / Kavrama (Kavram & Tanım Seviyesi)</option>
+                <option value="UYGULAMA">Orta / Uygulama (Standart Kural & Formül)</option>
+                <option value="SEKIL_VE_OLIMPIYAT">Şampiyon Düzeyi (Üst Düzey Sentez & Seçici)</option>
               </select>
             </div>
           </div>
@@ -575,6 +608,86 @@
         </div>
       </div>
     </aside>
+  </div>
+
+  <!-- Kurumsal MEB Maarif Giriş ve Kimlik Doğrulama Portalı (Giriş Ekranı) -->
+  <div id="portalAuthModal" class="portal-modal-overlay hidden">
+    <div class="portal-auth-card">
+      <div class="portal-auth-header">
+        <div class="portal-badge-row">
+          <span class="badge-maarif-pill">T.C. MİLLÎ EĞİTİM BAKANLIĞI</span>
+          <span class="badge-year-pill">2026 LGS ADAY PORTALI</span>
+        </div>
+        <div class="portal-emblem-box">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="portal-main-title">Türkiye Yüzyılı Maarif Modeli</h2>
+        <p class="portal-subtitle">8. Sınıf LGS Yeni Nesil Ölçme, Değerlendirme ve Optik Sınav Portalı</p>
+      </div>
+
+      <form id="portalLoginForm" class="portal-form">
+        <div class="portal-form-group">
+          <label class="portal-label">Aday Adı ve Soyadı</label>
+          <div class="input-with-icon">
+            <svg class="input-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <input type="text" id="inputStudentName" class="portal-input" value="Kerem Çelik" required placeholder="Adınız Soyadınız">
+          </div>
+        </div>
+
+        <div class="portal-form-row">
+          <div class="portal-form-group">
+            <label class="portal-label">Öğrenci / Okul No</label>
+            <input type="text" id="inputStudentNo" class="portal-input" value="571" required placeholder="Örn: 571">
+          </div>
+          <div class="portal-form-group">
+            <label class="portal-label">Şube / Sınıf</label>
+            <select id="selectStudentClass" class="portal-input">
+              <option value="8/A" selected>8/A Şubesi</option>
+              <option value="8/B">8/B Şubesi</option>
+              <option value="8/C">8/C Şubesi</option>
+              <option value="8/D">8/D Şubesi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="portal-form-group">
+          <label class="portal-label">Hedef Lise ve Puan Seviyesi</label>
+          <select id="selectStudentTarget" class="portal-input">
+            <option value="Fen Lisesi (500 Tam Puan Hedefi)" selected>Fen Lisesi (500 Tam Puan Hedefi)</option>
+            <option value="Sosyal Bilimler Lisesi">Sosyal Bilimler Lisesi (Seçici Yargı)</option>
+            <option value="Anadolu Lisesi (Yüksek Dilim)">Anadolu Lisesi (Yüksek Yüzdelik Dilim)</option>
+            <option value="Proje İmam Hatip / Tematik Lise">Proje / Tematik Lise</option>
+          </select>
+        </div>
+
+        <div class="portal-actions-group">
+          <button type="submit" id="btnSubmitPortalLogin" class="btn-portal-primary">
+            <span>Sınav Oturumunu Başlat</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+          <button type="button" id="btnQuickDemoLogin" class="btn-portal-demo">
+            <span>Hızlı Demo Girişi (Tek Tıkla Doğrula)</span>
+          </button>
+        </div>
+
+        <div class="portal-security-notice">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <span>Oturum Verileri JEV System-1 ve PostgreSQL omurgasında güvenli ve kalıcı olarak saklanır.</span>
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- MEB Resmi Yazdırılabilir Sınav Kitapçığı ve Optik Form (@media print) -->
