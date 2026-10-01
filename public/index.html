@@ -27,22 +27,41 @@
         </div>
       </div>
 
-      <!-- Mod Seçimi (Öğrenme, Gerçek Sınav, Öğretmen Paneli, Yazdır) -->
+      <!-- Mod Seçimi (shadcn/ui Özel SVG İkonlu Sekmeler) -->
       <div class="mode-toggle-group">
         <button id="btnPracticeMode" class="mode-tab active" type="button">
-          <span class="icon">💡</span>
+          <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+            <path d="M9 18h6"/>
+            <path d="M10 22h4"/>
+          </svg>
           <span>Öğrenme Modu</span>
         </button>
+
         <button id="btnExamMode" class="mode-tab" type="button">
-          <span class="icon">📝</span>
+          <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 11 3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
           <span>LGS Optik Sınavı</span>
         </button>
+
         <button id="btnAdminMode" class="mode-tab" type="button">
-          <span class="icon">📊</span>
+          <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="7" height="9" x="3" y="3" rx="1"/>
+            <rect width="7" height="5" x="14" y="3" rx="1"/>
+            <rect width="7" height="9" x="14" y="12" rx="1"/>
+            <rect width="7" height="5" x="3" y="16" rx="1"/>
+          </svg>
           <span>Öğretmen Paneli</span>
         </button>
+
         <button id="btnPrintMode" class="mode-tab" type="button">
-          <span class="icon">🖨️</span>
+          <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+            <rect width="12" height="8" x="6" y="14"/>
+          </svg>
           <span>Kitapçık Yazdır</span>
         </button>
       </div>
@@ -51,10 +70,17 @@
       <div class="navbar-actions">
         <div class="jev-status-pill">
           <span class="pulse-indicator"></span>
-          <span>JEV System-1 Güvencesi: <strong>ONAYLI</strong></span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:#059669;">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <span>JEV System-1: <strong>ONAYLI</strong></span>
         </div>
         <div id="examTimer" class="timer-pill hidden">
-          <span class="timer-icon">⏱️</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626;">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
           <span id="timerDisplay">30:00</span>
         </div>
       </div>
@@ -75,21 +101,33 @@
         </div>
       </div>
 
-      <!-- 4 Temel Metrik Kartı (shadcn UI Stat Cards) -->
+      <!-- 4 Temel Metrik Kartı (UI8 / shadcn Tasarımı) -->
       <div class="stat-cards-grid">
         <div class="stat-card">
           <div class="stat-card-header">
             <span class="stat-label">Toplam Soru Havuzu</span>
-            <span class="stat-icon">📚</span>
+            <div class="stat-icon-box bg-blue-subtle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                <path d="M6 6h10"/>
+                <path d="M6 10h10"/>
+              </svg>
+            </div>
           </div>
           <div class="stat-value" id="adminStatTotalQuestions">53</div>
-          <div class="stat-trend text-success">✓ 4 Temel Branş • 12 Test Paketi</div>
+          <div class="stat-trend text-success">4 Temel Branş • 12 Test Paketi</div>
         </div>
 
         <div class="stat-card">
           <div class="stat-card-header">
             <span class="stat-label">Çözülen Sınav Oturumu</span>
-            <span class="stat-icon">📝</span>
+            <div class="stat-icon-box bg-indigo-subtle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                <path d="m9 14 2 2 4-4"/>
+              </svg>
+            </div>
           </div>
           <div class="stat-value" id="adminStatTotalSessions">0</div>
           <div class="stat-trend" id="adminStatSessionTrend">PostgreSQL Kalıcı Kayıt</div>
@@ -98,7 +136,13 @@
         <div class="stat-card">
           <div class="stat-card-header">
             <span class="stat-label">Ortalama LGS Neti</span>
-            <span class="stat-icon">📊</span>
+            <div class="stat-icon-box bg-emerald-subtle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
           </div>
           <div class="stat-value" id="adminStatAvgNet">--</div>
           <div class="stat-trend">3 Yanlış 1 Doğruyu Götürür</div>
@@ -107,7 +151,12 @@
         <div class="stat-card">
           <div class="stat-card-header">
             <span class="stat-label">JEV Denetim Güvencesi</span>
-            <span class="stat-icon">🛡️</span>
+            <div class="stat-icon-box bg-purple-subtle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
           </div>
           <div class="stat-value text-success">%100</div>
           <div class="stat-trend text-success">Ortalama Kalite Skoru: 0.99</div>
@@ -120,7 +169,11 @@
         <div class="admin-card ai-studio-card">
           <div class="card-header">
             <div class="card-title-group">
-              <span class="card-icon">⚡</span>
+              <div class="stat-icon-box bg-amber-subtle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
               <div>
                 <h3 class="card-title">Canlı AI Soru Stüdyosu</h3>
                 <p class="card-desc">Ollama yerel modelleri ve JEV Self-Correction ile yeni nesil soru üretimi</p>
@@ -165,7 +218,10 @@
 
           <div class="form-action-row">
             <button id="btnGenerateAiQuestion" class="btn-shadcn-primary" type="button">
-              <span>⚡ JEV Onaylı Yeni Nesil Soru Üret</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+              <span>JEV Onaylı Yeni Nesil Soru Üret</span>
             </button>
             <span id="aiGenerationStatus" class="status-msg hidden">Model çalışıyor ve JEV denetliyor...</span>
           </div>
@@ -179,7 +235,7 @@
                 <span class="pill-badge" id="prevJevScore" style="background:#dcfce7; color:#15803d; font-weight:800;">JEV ONAYLI: 0.99</span>
               </div>
               <button id="btnSaveToBank" class="btn-shadcn-secondary" type="button">
-                <span>✓ Soru Bankasına Ekle</span>
+                <span>Soru Bankasına Ekle</span>
               </button>
             </div>
             <div id="prevStimulus" class="prev-stimulus"></div>
@@ -193,7 +249,15 @@
         <div class="admin-card sessions-card">
           <div class="card-header">
             <div class="card-title-group">
-              <span class="card-icon">📋</span>
+              <div class="stat-icon-box bg-slate-subtle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" x2="8" y1="13" y2="13"/>
+                  <line x1="16" x2="8" y1="17" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </div>
               <div>
                 <h3 class="card-title">Son Sınav Oturumları</h3>
                 <p class="card-desc">Öğrenci sınav sonuçları ve eksik kazanım raporları</p>
@@ -234,31 +298,57 @@
         </div>
         <div class="course-list" id="courseList">
           <button class="course-btn active" data-course="turkce" type="button">
-            <span class="course-icon">📖</span>
+            <div class="course-icon-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                <path d="M6 6h10"/>
+                <path d="M6 10h10"/>
+              </svg>
+            </div>
             <div class="course-info">
               <span class="course-name">Türkçe</span>
               <span class="course-meta">Paragraf & Sözel Mantık</span>
             </div>
-            <span class="badge-pill" id="badgeTurkce">4 Soru</span>
+            <span class="badge-pill" id="badgeTurkce">14 Soru</span>
           </button>
+
           <button class="course-btn" data-course="matematik" type="button">
-            <span class="course-icon">📐</span>
+            <div class="course-icon-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m21.3 15.3-6.6-6.6a2.4 2.4 0 0 0-3.4 0l-7.6 7.6a1 1 0 0 0 0 1.4l4.3 4.3a1 1 0 0 0 1.4 0l7.6-7.6a2.4 2.4 0 0 0 0-3.4Z"/>
+                <path d="m14 7 3 3"/>
+                <path d="m7 14 3 3"/>
+              </svg>
+            </div>
             <div class="course-info">
               <span class="course-name">Matematik</span>
               <span class="course-meta">EBOB-EKOK & Üslü Sayılar</span>
             </div>
-            <span class="badge-pill" id="badgeMatematik">3 Soru</span>
+            <span class="badge-pill" id="badgeMatematik">14 Soru</span>
           </button>
+
           <button class="course-btn" data-course="fen" type="button">
-            <span class="course-icon">🔬</span>
+            <div class="course-icon-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/>
+                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/>
+              </svg>
+            </div>
             <div class="course-info">
               <span class="course-name">Fen Bilimleri</span>
               <span class="course-meta">Mevsimler, DNA & Basınç</span>
             </div>
-            <span class="badge-pill" id="badgeFen">3 Soru</span>
+            <span class="badge-pill" id="badgeFen">13 Soru</span>
           </button>
+
           <button class="course-btn" data-course="sosyal" type="button">
-            <span class="course-icon">🇹🇷</span>
+            <div class="course-icon-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                <line x1="4" x2="4" y1="22" y2="15"/>
+              </svg>
+            </div>
             <div class="course-info">
               <span class="course-name">T.C. İnkılap Tarihi</span>
               <span class="course-meta">Sosyal Bilgiler & Maarif</span>
@@ -290,7 +380,12 @@
 
       <div class="sidebar-block jev-audit-panel">
         <div class="jev-header">
-          <span class="jev-icon">🛡️</span>
+          <div class="stat-icon-box bg-purple-subtle" style="width:32px; height:32px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
           <div>
             <div class="jev-title">JEV EDİTORYAL DENETİMİ</div>
             <div class="jev-sub">Ollama System-1 Doğrulaması</div>
@@ -349,22 +444,35 @@
         <!-- Öğrenme Modunda Açılan Uzman Öğretmen Çözüm Kartı -->
         <div id="solutionDrawer" class="solution-drawer hidden">
           <div class="solution-drawer-header">
-            <span class="icon">💡</span>
+            <div class="stat-icon-box bg-blue-subtle" style="width:28px; height:28px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" x2="12" y1="16" y2="12"/>
+                <line x1="12" x2="12.01" y1="8" y2="8"/>
+              </svg>
+            </div>
             <h4>UZMAN ÖĞRETMEN ÇÖZÜM REHBERİ</h4>
           </div>
           <div id="solutionStrategyText" class="strategy-callout"></div>
           <div id="detailedSolutionText" class="detailed-solution-body"></div>
           <div class="distractor-section">
-            <h5 class="distractor-heading">🎯 ÇELDİRİCİ ANALİZİ (Öğrenci Yanılgıları)</h5>
+            <h5 class="distractor-heading">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              ÇELDİRİCİ ANALİZİ (Öğrenci Yanılgıları)
+            </h5>
             <div id="distractorItems" class="distractor-grid"></div>
           </div>
         </div>
 
         <!-- Alt Gezinme Butonları -->
         <div class="booklet-footer-nav">
-          <button id="btnPrevQuestion" class="btn-nav" type="button">← Önceki Soru</button>
+          <button id="btnPrevQuestion" class="btn-nav" type="button">Önceki Soru</button>
           <span id="footerProgress" class="footer-progress">1 / 4</span>
-          <button id="btnNextQuestion" class="btn-nav btn-nav-primary" type="button">Sonraki Soru →</button>
+          <button id="btnNextQuestion" class="btn-nav btn-nav-primary" type="button">Sonraki Soru</button>
         </div>
       </div>
     </main>
@@ -372,7 +480,11 @@
     <!-- Sağ Sütun: İnteraktif LGS Optik Formu -->
     <aside class="optical-column" id="opticalColumn">
       <button id="btnMobileOptical" class="mobile-optical-trigger" type="button">
-        <span>📑 LGS Optik Formunu Göster / Gizle</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+        </svg>
+        <span>LGS Optik Formunu Göster / Gizle</span>
       </button>
       <div class="optical-form-card">
         <div class="optical-header-box">
@@ -413,17 +525,33 @@
         <!-- Tarama ve Bitirme Eylemleri -->
         <div class="optical-footer">
           <button id="btnFinishExam" class="btn-exam-finish" type="button">
-            <span class="icon">📋</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 11 3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
             <span>Sınavı Tamamla ve Tara</span>
           </button>
           <button id="btnResetExam" class="btn-exam-reset" type="button">
-            <span>🔄 Formu Sıfırla</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+              <path d="M21 3v5h-5"/>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+              <path d="M8 16H3v5"/>
+            </svg>
+            <span>Formu Sıfırla</span>
           </button>
         </div>
 
         <!-- Sonuç Karnesi (LGS 3 Yanlış 1 Doğru) -->
         <div id="scoreReportCard" class="score-card hidden">
-          <div class="score-card-title">📊 LGS NET VE KARNE RAPORU</div>
+          <div class="score-card-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+            <span>LGS NET VE KARNE RAPORU</span>
+          </div>
           <div class="score-metrics-grid">
             <div class="metric-tile correct">
               <span class="m-lbl">DOĞRU</span>

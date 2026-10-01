@@ -28,7 +28,7 @@ async function initTestBank() {
     const res = await fetch('questions.json');
     if (res.ok) {
       appState.multiTestBank = await res.json();
-      console.log('✓ questions.json çoklu test bankası başarıyla yüklendi.');
+      console.log('[OK] questions.json çoklu test bankası başarıyla yüklendi.');
     } else {
       throw new Error('questions.json okunamadı');
     }
@@ -54,7 +54,7 @@ async function initTestBank() {
                 stem: 'Bu parçadaki numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?',
                 options: { A: 'I', B: 'II', C: 'III', D: 'IV' },
                 correctOption: 'C',
-                solutionStrategy: '💡 UZMAN ÖĞRETMEN STRATEJİSİ: Parçanın omurgasını oluşturan anahtar kavramları (Yapay zekâ, klinik tanı, teşhis) takip edin. Konunun aniden hastane mimarisine saptığı cümleyi yakalayın.',
+                solutionStrategy: 'UZMAN ÖĞRETMEN STRATEJİSİ: Parçanın omurgasını oluşturan anahtar kavramları (Yapay zekâ, klinik tanı, teşhis) takip edin. Konunun aniden hastane mimarisine saptığı cümleyi yakalayın.',
                 detailedSolution: 'I, II ve IV. cümleler yapay zekânın hekim teşhislerindeki teknolojik katkısını işlerken, III. cümle bağlam dışına çıkıp hastane mimarisinden söz etmektedir. Dolayısıyla III. cümle akışı bozar.',
                 distractors: {
                   A: 'I. cümle giriş cümlesidir; konuyu tanımlar.',
@@ -279,7 +279,7 @@ function renderTestList() {
 
     let statusBadge = '';
     if (isCompleted) {
-      statusBadge = `<span style="color:#059669; font-weight:700;">✓ Tamamlandı</span> • `;
+      statusBadge = `<span style="color:#059669; font-weight:700; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Tamamlandı</span> • `;
     } else if (answeredCount > 0) {
       statusBadge = `<span style="color:#2563eb; font-weight:700;">${answeredCount}/${test.questions.length}</span> • `;
     }
@@ -642,7 +642,10 @@ function renderScoreReport() {
         ).join('');
         deficiencyHtml = `
           <div style="margin-top: 10px; padding: 10px; background: #fffbeb; border-radius: 8px; border: 1px solid #fde68a;">
-            <div style="color: #b45309; font-size: 11px; font-weight: 800; margin-bottom: 4px;">🎯 EKSİK KAZANIM RAPORU (JEV Analizi)</div>
+            <div style="color: #b45309; font-size: 11px; font-weight: 800; margin-bottom: 4px; display:flex; align-items:center; gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              EKSİK KAZANIM RAPORU (JEV Analizi)
+            </div>
             <ul style="margin: 0; padding-left: 16px; font-size: 11px; color: #78350f;">
               ${items}
             </ul>
@@ -651,14 +654,26 @@ function renderScoreReport() {
       }
 
       let sessionMeta = session.apiSessionId ? 
-        `<div style="font-size: 10px; color: #64748b; margin-top: 8px; font-family: var(--font-mono);">✓ Sunucuya Kaydedildi (ID: ${session.apiSessionId.slice(0, 8)}...)</div>` : '';
+        `<div style="font-size: 10px; color: #64748b; margin-top: 8px; font-family: var(--font-mono); display:flex; align-items:center; gap:4px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Sunucuya Kaydedildi (ID: ${session.apiSessionId.slice(0, 8)}...)
+        </div>` : '';
 
       if (session.score.wrong > 0) {
-        feedbackEl.innerHTML = `⚠️ <strong>Kazanım Eksikliği Tespiti:</strong> Yanlış yaptığınız sorularda güçlü çeldiriciye takıldınız. Sağlanan "Uzman Öğretmen Çözüm Taktikleri"ni inceleyiniz.${deficiencyHtml}${sessionMeta}`;
+        feedbackEl.innerHTML = `<div style="display:flex; align-items:flex-start; gap:8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div><strong>Kazanım Eksikliği Tespiti:</strong> Yanlış yaptığınız sorularda güçlü çeldiriciye takıldınız. Sağlanan "Uzman Öğretmen Çözüm Taktikleri"ni inceleyiniz.${deficiencyHtml}${sessionMeta}</div>
+        </div>`;
       } else if (session.score.correct === session.score.totalQuestions) {
-        feedbackEl.innerHTML = `🎉 <strong>Mükemmel Başarı:</strong> ${test.title} içindeki tüm soruları tam netle tamamladınız!${sessionMeta}`;
+        feedbackEl.innerHTML = `<div style="display:flex; align-items:flex-start; gap:8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          <div><strong>Mükemmel Başarı:</strong> ${test.title} içindeki tüm soruları tam netle tamamladınız!${sessionMeta}</div>
+        </div>`;
       } else {
-        feedbackEl.innerHTML = `📌 <strong>Tavsiye:</strong> Boş bıraktığınız sorular için kısıt ve hipotez kurallarını tekrar gözden geçiriniz.${deficiencyHtml}${sessionMeta}`;
+        feedbackEl.innerHTML = `<div style="display:flex; align-items:flex-start; gap:8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" style="flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div><strong>Tavsiye:</strong> Boş bıraktığınız sorular için kısıt ve hipotez kurallarını tekrar gözden geçiriniz.${deficiencyHtml}${sessionMeta}</div>
+        </div>`;
       }
     }
   } else {
@@ -769,7 +784,7 @@ async function renderAdminDashboard() {
           <td>${s.score?.totalQuestions ? `${s.score.totalQuestions} Soruluk LGS Testi` : 'LGS Denemesi'}</td>
           <td><span style="color:#059669; font-weight:700;">${s.score.correct} D</span> / <span style="color:#dc2626; font-weight:700;">${s.score.wrong} Y</span> / <span>${s.score.empty} B</span></td>
           <td><strong style="color:#2563eb; font-size:14px;">${s.score.net.toFixed(2)}</strong></td>
-          <td><span class="badge-pill" style="background:#dcfce7; color:#15803d; font-weight:700;">✓ Tamamlandı</span></td>
+          <td><span class="badge-pill" style="background:#dcfce7; color:#15803d; font-weight:700; display:inline-flex; align-items:center; gap:4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Tamamlandı</span></td>
         </tr>
       `).join('');
     }
@@ -789,7 +804,7 @@ async function generateAiQuestion() {
 
   if (statusEl) {
     statusEl.classList.remove('hidden');
-    statusEl.textContent = `🤖 ${model} modeli soruyu kurguluyor ve JEV denetliyor...`;
+    statusEl.innerHTML = `<span class="spinner" style="display:inline-block; width:12px; height:12px; border:2px solid #2563eb; border-top-color:transparent; border-radius:50%; margin-right:6px; animation:spin 1s linear infinite;"></span> ${model} modeli soruyu kurguluyor ve JEV denetliyor...`;
   }
   if (btnGen) btnGen.disabled = true;
 
@@ -819,7 +834,7 @@ async function generateAiQuestion() {
           if (optionsGrid && data.question.options) {
             optionsGrid.innerHTML = Object.entries(data.question.options).map(([k, v]) => `
               <div class="prev-opt-item ${k === data.question.correctOption ? 'correct' : ''}">
-                <strong>${k})</strong> ${v} ${k === data.question.correctOption ? '✓' : ''}
+                <strong>${k})</strong> ${v} ${k === data.question.correctOption ? ' (Doğru Seçenek)' : ''}
               </div>
             `).join('');
           }
@@ -850,7 +865,7 @@ function saveAiQuestionToBank() {
     targetCourse.tests[0].questions.push(lastGeneratedAiQuestion);
     updateCourseBadges();
     renderAdminDashboard();
-    alert(`✓ Tebrikler! "${lastGeneratedAiQuestion.id}" kodlu yeni nesil soru ${targetCourse.courseName} havuzuna başarıyla eklendi.`);
+    alert(`Tebrikler! "${lastGeneratedAiQuestion.id}" kodlu yeni nesil soru ${targetCourse.courseName} havuzuna başarıyla eklendi.`);
 
     const previewBox = document.getElementById('aiQuestionPreviewBox');
     if (previewBox) previewBox.classList.add('hidden');

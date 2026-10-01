@@ -115,7 +115,7 @@ export class JevQualityAuditor {
     ) {
       return 'APPLY';
     }
-    if (text.includes('vurgulanmak istenen') || text.includes('ulaşılabilir') || text.includes('ana fikir') || text.includes('değerlendirme')) {
+    if (text.includes('vurgulanmak istenen') || text.includes('anlatılmak istenen') || text.includes('ana düşünce') || text.includes('ulaşılabilir') || text.includes('ana fikir') || text.includes('değerlendirme')) {
       return 'EVALUATE';
     }
     return 'UNDERSTAND';

@@ -43,7 +43,7 @@ class DatabaseAdapter {
     }
 
     this.isInitialized = true;
-    console.log(`✓ DatabaseAdapter başlatıldı (${this.testLookup.size} test, ${this.questionLookup.size} soru indekslendi).`);
+    console.log(`[OK] DatabaseAdapter baslatildi (${this.testLookup.size} test, ${this.questionLookup.size} soru indekslendi).`);
   }
 
   // 1. Kurs Özetleri
@@ -51,10 +51,10 @@ class DatabaseAdapter {
     this.init();
     const result = [];
     const courseMeta = {
-      turkce: { icon: '📖', subtitle: 'Paragraf & Sözel Mantık' },
-      matematik: { icon: '📐', subtitle: 'EBOB-EKOK & Üslü Sayılar' },
-      fen: { icon: '🔬', subtitle: 'Mevsimler, DNA & Basınç' },
-      sosyal: { icon: '🇹🇷', subtitle: 'Sosyal Bilgiler & Maarif' }
+      turkce: { icon: 'book-open', subtitle: 'Paragraf & Sözel Mantık' },
+      matematik: { icon: 'compass', subtitle: 'EBOB-EKOK & Üslü Sayılar' },
+      fen: { icon: 'atom', subtitle: 'Mevsimler, DNA & Basınç' },
+      sosyal: { icon: 'flag', subtitle: 'Sosyal Bilgiler & Maarif' }
     };
 
     for (const [courseKey, courseData] of Object.entries(this.multiTestBank)) {
@@ -63,7 +63,7 @@ class DatabaseAdapter {
       result.push({
         key: courseKey,
         name: courseData.courseName,
-        icon: courseMeta[courseKey]?.icon || '📚',
+        icon: courseMeta[courseKey]?.icon || 'book',
         subtitle: courseMeta[courseKey]?.subtitle || '',
         testCount: tests.length,
         questionCount: totalQuestions

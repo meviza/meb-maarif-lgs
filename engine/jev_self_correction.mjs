@@ -32,7 +32,7 @@ export class JevSelfCorrectionPipeline {
           D: 'İletişim vasıtalarının yetersiz olduğu toplumlarda millet bilinci gelişemez.'
         },
         correctOption: 'B',
-        solutionStrategy: '💡 UZMAN ÖĞRETMEN STRATEJİSİ: Parçadaki "kendi kavram dünyasını inşa etmek" ve "hafıza-varoluş tasavvuru" ifadeleri doğrudan düşünce bağımsızlığı ve dil ilişkisine işaret eder.',
+        solutionStrategy: 'UZMAN ÖĞRETMEN STRATEJİSİ: Parçadaki "kendi kavram dünyasını inşa etmek" ve "hafıza-varoluş tasavvuru" ifadeleri doğrudan düşünce bağımsızlığı ve dil ilişkisine işaret eder.',
         detailedSolution: 'Yazar, dili kuru bir iletişim aracı olarak değil, kültürel varoluşun ve bağımsız düşüncenin kurucu unsuru olarak nitelemektedir. Dolayısıyla doğru yanıt B şıkkıdır.',
         distractors: {
           A: 'Metinde yabancı dil öğrenmenin zararlarından bahsedilmemiştir; aşırı genellemedir.',
@@ -50,7 +50,7 @@ export class JevSelfCorrectionPipeline {
         stem: 'Buna göre bir raftaki kitap sayısı ile diğer raftaki kitap sayısı arasındaki fark en fazla kaç olabilir?',
         options: { A: '3', B: '4', C: '5', D: '6' },
         correctOption: 'B',
-        solutionStrategy: '💡 UZMAN ÖĞRETMEN STRATEJİSİ: 18 ve 24\'ün EKOK\'unu (72 mm) bulunuz. Kısıt: Raf < 3000 mm. Farkın en fazla olması için raf uzunluğu 3000 mm\'den küçük en büyük 72\'nin katı seçilmelidir.',
+        solutionStrategy: 'UZMAN ÖĞRETMEN STRATEJİSİ: 18 ve 24\'ün EKOK\'unu (72 mm) bulunuz. Kısıt: Raf < 3000 mm. Farkın en fazla olması için raf uzunluğu 3000 mm\'den küçük en büyük 72\'nin katı seçilmelidir.',
         detailedSolution: 'EKOK(18, 24) = 72 mm. 3000 mm\'den küçük en büyük kat: 72 x 40 = 2880 mm. 1. raftaki kitap sayısı: 2880 / 18 = 160. 2. raftaki kitap sayısı: 2880 / 24 = 120. Ancak tek bir periyotluk (72 mm) fark: (72/18) - (72/24) = 4 - 3 = 1 kitaptır. 4 katı için fark en fazla 4 olacaktır.',
         distractors: {
           A: 'EKOK katını eksik hesaplayan öğrencilerin sonucudur.',
