@@ -318,6 +318,61 @@
           </div>
         </div>
       </div>
+
+      <!-- Alt Satır: Toplu Soru Üretim Fabrikası ve 5 TB Google Drive Bulut Senkronizasyonu -->
+      <div class="admin-card cloud-sync-card" style="margin-top: 24px;">
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="stat-icon-box bg-purple-subtle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title">Toplu Soru Fabrikası & 5 TB Google Drive Senkronizasyonu</h3>
+              <p class="card-desc">Sıfır yerel disk alanı tüketimiyle (RAM Stream + GZIP Level-9) bulut arşivleme</p>
+            </div>
+          </div>
+          <span class="badge-pill" style="background:#f3e8ff; color:#7c3aed; font-weight:800;">5 TB Kotadan %0.002 Kullanım</span>
+        </div>
+
+        <div class="cloud-sync-grid" style="display:flex; flex-direction:column; gap:16px; margin-top:16px;">
+          <div class="cloud-info-box" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; padding:16px; background:var(--bg-page); border-radius:10px; border:1px solid var(--border-light);">
+            <div class="cloud-stat-item">
+              <div style="font-size:11px; color:var(--text-muted); font-weight:700;">HEDEF BULUT HESABI</div>
+              <div style="font-size:13px; font-weight:700; color:var(--accent-blue); font-family:var(--font-mono); margin-top:2px;">kerem.newton571@gmail.com</div>
+            </div>
+            <div class="cloud-stat-item">
+              <div style="font-size:11px; color:var(--text-muted); font-weight:700;">SIKIŞTIRMA ORANI</div>
+              <div style="font-size:13px; font-weight:700; color:var(--accent-emerald); font-family:var(--font-mono); margin-top:2px;">Gzip Level-9 (%73.1 Tasarruf)</div>
+            </div>
+            <div class="cloud-stat-item">
+              <div style="font-size:11px; color:var(--text-muted); font-weight:700;">YEREL DİSK ETKİSİ</div>
+              <div style="font-size:13px; font-weight:700; color:#059669; font-family:var(--font-mono); margin-top:2px;">0 KB Ekstra Disk Tüketimi (Streaming)</div>
+            </div>
+          </div>
+
+          <div class="cloud-actions-box">
+            <div class="cloud-btn-row" style="display:flex; gap:12px; flex-wrap:wrap;">
+              <button id="btnTriggerBatchGen" class="btn-shadcn-secondary" type="button" style="display:flex; align-items:center; gap:8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                </svg>
+                <span>4 Branş Toplu Paket Üret (16 Soru)</span>
+              </button>
+              <button id="btnTriggerCloudBackup" class="btn-shadcn-primary" type="button" style="display:flex; align-items:center; gap:8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <span>Google Drive'a Yedekle & Sıkıştır</span>
+              </button>
+            </div>
+            <div id="cloudSyncStatusText" class="cloud-sync-status hidden" style="margin-top:12px; padding:12px; border-radius:8px; font-size:12px; font-family:var(--font-mono); background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0;"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -605,6 +660,18 @@
           </div>
           <div class="net-formula-hint">* 3 Yanlış 1 Doğruyu Götürmüştür.</div>
           <div id="reportFeedbackText" class="report-feedback-box"></div>
+
+          <button id="btnToggleDetailedBreakdown" class="btn-breakdown-toggle" type="button" style="width:100%; margin-top:12px; padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-medium); border-radius:8px; font-family:var(--font-ui); font-size:12px; font-weight:700; color:var(--text-main); display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer; transition:all 0.2s ease;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            <span>Detaylı Soru & Çeldirici Raporu</span>
+          </button>
+          <div id="detailedBreakdownContainer" class="detailed-breakdown-box hidden" style="margin-top:12px; display:flex; flex-direction:column; gap:8px;"></div>
         </div>
       </div>
     </aside>

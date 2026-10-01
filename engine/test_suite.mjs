@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 async function runTestSuite() {
   console.log('====================================================');
-  console.log('🧪 MEB MAARİF LGS PLATFORMU - FAZ 2 TEST BAŞLADI');
+  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (16 TEST)');
   console.log('====================================================\n');
 
   let passedTests = 0;
@@ -490,8 +490,173 @@ async function runTestSuite() {
     assert.ok(correctionPrompt.includes('HEDEF ZORLUK SEVİYESİ: LGS_YENI_NESIL'), 'Hedef zorluk seviyesi promptta belirtilmeli');
   });
 
+  // TEST 14: Gzip Level-9 Bulut Arşivleme ve Sıkıştırma Oranı Testi (> %70 tasarruf doğrulaması)
+  await asyncTest('Test 14: Gzip Level-9 Bulut Arşivleme ve Sıkıştırma Oranı Testi (> %70 tasarruf doğrulaması)', async () => {
+    const { compressPayload, prepareBackupPayload, compressAndArchiveData } = await import('../scripts/cloud_sync_manager.mjs');
+    const zlib = (await import('zlib')).default;
+
+    // 1. Platform yedek yükünün doğrulanması
+    const payload = prepareBackupPayload();
+    assert.ok(payload.metadata, 'Yedek metadata alanı eksik');
+    assert.strictEqual(payload.metadata.user, 'kerem.newton571@gmail.com', 'Hedef kullanıcı eşleşmiyor');
+    assert.strictEqual(payload.metadata.storageQuotaTarget, 'Google Drive 5TB', 'Hedef kota eşleşmiyor');
+    assert.ok(payload.questions, 'Soru havuzu eksik');
+
+    // 2. RAM üzerinde Level-9 Gzip sıkıştırma testi
+    const compResult = compressPayload(payload, { level: 9 });
+    assert.ok(compResult.rawBytes > 0, 'Orijinal veri boyutu sıfır');
+    assert.ok(compResult.compressedBytes > 0, 'Sıkıştırılmış veri boyutu sıfır');
+    assert.ok(compResult.compressedBytes < compResult.rawBytes, 'Sıkıştırma gerçekleşmedi');
+
+    // > %70 tasarruf doğrulama
+    assert.ok(compResult.savingRatio > 70.0, `Sıkıştırma tasarrufu %70 üzerinde olmalı, bulunan: %${compResult.savingRatio}`);
+    assert.strictEqual(compResult.compressedBuffer[0], 0x1f, 'Gzip sihirli baytı 1 eksik');
+    assert.strictEqual(compResult.compressedBuffer[1], 0x8b, 'Gzip sihirli baytı 2 eksik');
+
+    // 3. Bellekten geri açma (Decompression round-trip integrity)
+    const decompressed = zlib.gunzipSync(compResult.compressedBuffer).toString('utf-8');
+    const restored = JSON.parse(decompressed);
+    assert.strictEqual(restored.metadata.user, 'kerem.newton571@gmail.com', 'Kurtarılan veri metadata doğrulaması başarısız');
+    assert.ok(restored.questions.turkce, 'Kurtarılan soru havuzu eksik');
+
+    // 4. Bellek içi arşivleme fonksiyonu doğrulaması
+    const memArchive = compressAndArchiveData({ writeToDisk: false });
+    assert.ok(memArchive.savingRatio > 70.0, `Arşiv tasarrufu %70 üzerinde olmalı: %${memArchive.savingRatio}`);
+  });
+
+  // TEST 15: Google Drive Direct Streaming Motoru Doğrulama Testi
+  await asyncTest('Test 15: Google Drive Direct Streaming Motoru Doğrulama Testi', async () => {
+    const { DriveDirectStreamer, DEFAULT_TARGET_ACCOUNT, streamDirectToDrive } = await import('../scripts/drive_direct_streamer.mjs');
+
+    // 1. Hedef hesap ve kota doğrulaması
+    assert.strictEqual(DEFAULT_TARGET_ACCOUNT, 'kerem.newton571@gmail.com', 'Varsayılan hedef hesap eşleşmiyor');
+    const streamer = new DriveDirectStreamer({ silent: true, dryRun: true });
+    assert.strictEqual(streamer.targetAccount, 'kerem.newton571@gmail.com', 'Streamer hedef hesabı eşleşmiyor');
+
+    // 2. RAM payload hazırlığı ve sıfır disk kullanımı doğrulaması
+    const ramPayload = streamer.prepareRamStreamPayload();
+    assert.strictEqual(ramPayload.localDiskBytesUsed, 0, 'Yerel disk alanı kullanıldı (0 bayt olmalı)');
+    assert.ok(ramPayload.compressedBytes > 0, 'Sıkıştırılmış veri boyutu sıfır olamaz');
+    assert.strictEqual(ramPayload.checksumSha256.length, 64, 'SHA-256 sağlama uzunluğu 64 karakter olmalı');
+    assert.strictEqual(ramPayload.checksumMd5.length, 32, 'MD5 sağlama uzunluğu 32 karakter olmalı');
+
+    // 3. Resumable Upload el sıkışması simülasyonu
+    const session = await streamer.initiateResumableSession(ramPayload);
+    assert.strictEqual(session.simulated, true, 'Dry-run modunda oturum simüle edilmeli');
+    assert.ok(session.sessionUri.includes('uploadType=resumable'), 'Resumable upload parametresi eksik');
+    assert.ok(session.protocol.includes('Resumable Upload'), 'Protokol tipi hatalı');
+
+    // 4. Parçalı HTTP bellek akışı ve sıfır disk ayak izi testi
+    const chunkedStreamer = new DriveDirectStreamer({ chunkSize: 32 * 1024, silent: true, dryRun: true });
+    let progressFired = false;
+    let finalPercentage = 0;
+
+    const streamResult = await chunkedStreamer.streamToDrive(null, (p) => {
+      progressFired = true;
+      finalPercentage = p.percentage;
+    });
+
+    assert.strictEqual(streamResult.success, true, 'Bulut akışı başarılı olmalı');
+    assert.strictEqual(streamResult.simulated, true, 'Dry-run modunda simüle edilmeli');
+    assert.strictEqual(streamResult.targetAccount, 'kerem.newton571@gmail.com', 'Hedef hesap eşleşmiyor');
+    assert.ok(streamResult.chunkCount >= 2, 'Çoklu parça akışı doğrulanmalı (en az 2 parça)');
+    assert.strictEqual(streamResult.bytesStreamed, streamResult.totalBytes, 'Aktarılan bayt toplam bayta eşit olmalı');
+    assert.strictEqual(streamResult.localDiskBytesUsed, 0, 'Akış esnasında yerel disk alanı tüketilmemeli');
+    assert.strictEqual(progressFired, true, 'İlerleme (progress) callback tetiklenmeli');
+    assert.strictEqual(finalPercentage, 100, 'Nihai aktarım yüzdesi %100 olmalı');
+
+    // 5. Yardımcı fonksiyon doğrulaması
+    const helperResult = await streamDirectToDrive({ silent: true, dryRun: true });
+    assert.strictEqual(helperResult.success, true, 'streamDirectToDrive çağrısı başarılı olmalı');
+    assert.strictEqual(helperResult.localDiskBytesUsed, 0, 'Yardımcı fonksiyon yerel disk alanı tüketmemeli');
+  });
+
+  // TEST 16: Toplu Soru Fabrikası (Bulk Generator) 4 Branş ve 4 Zorluk Seviyesi Testi
+  await asyncTest('Test 16: Toplu Soru Fabrikası (Bulk Generator) 4 Branş ve 4 Zorluk Seviyesi Testi', async () => {
+    const {
+      generateFullMatrix,
+      generateQuestionBatch,
+      runBulkGeneration,
+      SUPPORTED_BRANCHES,
+      SUPPORTED_DIFFICULTIES
+    } = await import('./bulk_generator.mjs');
+    const auditor = new JevQualityAuditor();
+
+    // 1. Desteklenen branşlar ve zorluk seviyeleri kontrolü
+    assert.strictEqual(SUPPORTED_BRANCHES.length, 4, '4 ana branş tanımlı olmalı');
+    const branchKeys = SUPPORTED_BRANCHES.map(b => b.key);
+    assert.ok(branchKeys.includes('turkce'), 'Türkçe branşı eksik');
+    assert.ok(branchKeys.includes('matematik'), 'Matematik branşı eksik');
+    assert.ok(branchKeys.includes('fen'), 'Fen Bilimleri branşı eksik');
+    assert.ok(branchKeys.includes('inkilap'), 'İnkılap Tarihi branşı eksik');
+
+    assert.strictEqual(SUPPORTED_DIFFICULTIES.length, 4, '4 zorluk seviyesi tanımlı olmalı');
+    assert.ok(SUPPORTED_DIFFICULTIES.includes('KAVRAMA'), 'KAVRAMA seviyesi eksik');
+    assert.ok(SUPPORTED_DIFFICULTIES.includes('UYGULAMA'), 'UYGULAMA seviyesi eksik');
+    assert.ok(SUPPORTED_DIFFICULTIES.includes('LGS_YENI_NESIL'), 'LGS_YENI_NESIL seviyesi eksik');
+    assert.ok(SUPPORTED_DIFFICULTIES.includes('SEKIL_VE_OLIMPIYAT'), 'SEKIL_VE_OLIMPIYAT seviyesi eksik');
+
+    // 2. 4 Branş x 4 Zorluk Seviyesi (16 Soru) Deterministik Matris Üretimi
+    const matrix = await generateFullMatrix({
+      countPerCategory: 1,
+      deterministic: true,
+      silent: true
+    });
+
+    assert.strictEqual(matrix.totalGenerated, 16, 'Toplam 16 adet soru üretilmeli (4 branş x 4 zorluk)');
+    assert.strictEqual(matrix.questions.length, 16, 'Soru listesi uzunluğu 16 olmalı');
+
+    // Her branş ve zorluktan 4'er soru olmalı
+    for (const b of SUPPORTED_BRANCHES) {
+      assert.strictEqual(matrix.branchCounts[b.key], 4, `${b.name} branşında 4 soru üretilmeli`);
+    }
+    for (const d of SUPPORTED_DIFFICULTIES) {
+      assert.strictEqual(matrix.difficultyCounts[d], 4, `${d} seviyesinde 4 soru üretilmeli`);
+    }
+
+    // 3. JEV Quality & Sıfır Şüphe Denetimi (16 sorunun tamamı %100 onay almalı)
+    const emojiRegex = /[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
+    for (const q of matrix.questions) {
+      // Emojisiz kontrol
+      assert.strictEqual(emojiRegex.test(JSON.stringify(q)), false, `Soru ${q.id} içinde emoji bulundu`);
+
+      const audit = await auditor.evaluateQuestion(q);
+      assert.strictEqual(audit.passed, true, `Soru ${q.id} JEV kalite kapısından geçemedi: ${audit.reasons?.join(', ')}`);
+      assert.ok(audit.score >= 0.85, `Soru ${q.id} JEV skoru yetersiz: ${audit.score}`);
+      assert.strictEqual(audit.decisions.single_deterministic_answer, true, `Soru ${q.id} tek deterministik cevaba sahip değil`);
+      assert.strictEqual(audit.decisions.zero_ambiguity, true, `Soru ${q.id} sıfır şüphe kuralını ihlal etti`);
+      assert.ok(audit.decisions.difficulty_alignment >= 0.85, `Soru ${q.id} zorluk uyumu yetersiz: ${audit.decisions.difficulty_alignment}`);
+      assert.strictEqual(Object.keys(q.options).length, 4, `Soru ${q.id} 4 seçenek içermeli`);
+      assert.ok(q.solutionStrategy, `Soru ${q.id} çözüm stratejisi içermeli`);
+      assert.ok(q.detailedSolution, `Soru ${q.id} detaylı çözüm içermeli`);
+      assert.strictEqual(Object.keys(q.distractors || {}).length, 3, `Soru ${q.id} 3 çeldirici açıklaması içermeli`);
+    }
+
+    // 4. Tekil branş/zorluk grubu üretimi testi
+    const singleBatch = await generateQuestionBatch({
+      course: 'fen',
+      difficulty: 'SEKIL_VE_OLIMPIYAT',
+      count: 1,
+      deterministic: true,
+      silent: true
+    });
+    assert.strictEqual(singleBatch.length, 1, 'Tekil üretimde 1 soru bekleniyordu');
+    assert.strictEqual(singleBatch[0]._meta.difficulty, 'SEKIL_VE_OLIMPIYAT', 'Zorluk seviyesi eşleşmiyor');
+    assert.strictEqual(singleBatch[0]._meta.branch, 'fen', 'Branş eşleşmiyor');
+
+    // 5. runBulkGeneration CLI sarmalayıcı testi (disk kayıtsız mod)
+    const bulkResult = await runBulkGeneration({
+      matrix: true,
+      deterministic: true,
+      save: false,
+      count: 1
+    });
+    assert.strictEqual(bulkResult.count, 16, 'Toplu üretimde 16 soru bekleniyordu');
+    assert.strictEqual(bulkResult.questions.length, 16, 'Soru dizisi 16 adet olmalı');
+  });
+
   console.log('\n====================================================');
-  console.log(`📊 TEST SONUÇLARI: ${passedTests}/${totalTests} Test Başarıyla Geçti.`);
+  console.log(`[RAPOR] TEST SONUÇLARI: ${passedTests}/${totalTests} Test Başarıyla Geçti.`);
   console.log('====================================================');
 
   if (passedTests !== totalTests) {

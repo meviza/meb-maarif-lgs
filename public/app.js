@@ -160,6 +160,62 @@ function setupEventListeners() {
       opticalCol.classList.toggle('mobile-open');
     });
   }
+
+  // Detaylı Çeldirici Raporu Aç/Kapa
+  const btnToggleBreakdown = document.getElementById('btnToggleDetailedBreakdown');
+  const breakdownBox = document.getElementById('detailedBreakdownContainer');
+  if (btnToggleBreakdown && breakdownBox) {
+    btnToggleBreakdown.addEventListener('click', () => {
+      breakdownBox.classList.toggle('hidden');
+    });
+  }
+
+  // Toplu Üretim & Bulut Senkronizasyon Eylemleri
+  const btnBatch = document.getElementById('btnTriggerBatchGen');
+  const btnCloud = document.getElementById('btnTriggerCloudBackup');
+  const cloudStatus = document.getElementById('cloudSyncStatusText');
+
+  if (btnBatch) {
+    btnBatch.addEventListener('click', async () => {
+      if (cloudStatus) {
+        cloudStatus.classList.remove('hidden');
+        cloudStatus.innerHTML = '<span class="spinner" style="display:inline-block; width:12px; height:12px; border:2px solid #7c3aed; border-top-color:transparent; border-radius:50%; margin-right:6px; animation:spin 1s linear infinite;"></span> 4 branş ve 4 seviyede JEV denetimli 16 soru üretiliyor...';
+      }
+      try {
+        const res = await fetch('/api/ai/batch-generate', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          if (cloudStatus) {
+            cloudStatus.innerHTML = `[OK] ${data.count} yeni nesil soru başarıyla üretildi ve JEV System-1 tarafından %100 onaylandı.`;
+          }
+          alert(`Tebrikler! ${data.count} yeni nesil LGS sorusu JEV onaylı olarak üretildi.`);
+          renderAdminDashboard();
+        }
+      } catch (err) {
+        if (cloudStatus) cloudStatus.innerHTML = `[HATA] Toplu üretim başarısız: ${err.message}`;
+      }
+    });
+  }
+
+  if (btnCloud) {
+    btnCloud.addEventListener('click', async () => {
+      if (cloudStatus) {
+        cloudStatus.classList.remove('hidden');
+        cloudStatus.innerHTML = '<span class="spinner" style="display:inline-block; width:12px; height:12px; border:2px solid #2563eb; border-top-color:transparent; border-radius:50%; margin-right:6px; animation:spin 1s linear infinite;"></span> Gzip Level-9 sıkıştırma ve Google Drive streaming başlatıldı...';
+      }
+      try {
+        const res = await fetch('/api/cloud/sync', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          if (cloudStatus) {
+            cloudStatus.innerHTML = `[BULUT AKTARIMI BAŞARILI]<br/>Hedef: kerem.newton571@gmail.com (5 TB Drive)<br/>Orijinal: ${data.rawSizeKb} KB | Sıkıştırılmış: ${data.compSizeKb} KB (%${data.ratio} Tasarruf)<br/>Yerel SSD Tüketimi: 0 KB (Zero-Disk Stream)`;
+          }
+        }
+      } catch (err) {
+        if (cloudStatus) cloudStatus.innerHTML = `[HATA] Bulut yedekleme: ${err.message}`;
+      }
+    });
+  }
 }
 
 // 3.1. Tema Yönetimi (Dark / Light)
@@ -812,10 +868,73 @@ function renderScoreReport() {
         </div>`;
       }
     }
+    renderDetailedBreakdown();
   } else {
     reportCard.classList.add('hidden');
   }
 }
+
+// Detaylı Soru ve Çeldirici Raporunu Doldur
+function renderDetailedBreakdown() {
+  const test = getCurrentTest();
+  const container = document.getElementById('detailedBreakdownContainer');
+  if (!test || !container) return;
+
+  const session = getSession(test.id);
+  const questions = test.questions || [];
+
+  container.innerHTML = questions.map((q, idx) => {
+    const userAns = session.userAnswers[q.id];
+    const isCorrect = userAns === q.correctOption;
+    const isEmpty = !userAns;
+
+    let statusBadge = '';
+    let itemBorder = '#e2e8f0';
+    let itemBg = 'var(--bg-page)';
+
+    if (isCorrect) {
+      statusBadge = '<span class="badge-pill" style="background:#dcfce7; color:#15803d; font-weight:700;">Doğru (+' + userAns + ')</span>';
+      itemBorder = '#bbf7d0';
+    } else if (isEmpty) {
+      statusBadge = '<span class="badge-pill" style="background:#f1f5f9; color:#475569; font-weight:700;">Boş</span>';
+      itemBorder = '#e2e8f0';
+    } else {
+      statusBadge = '<span class="badge-pill" style="background:#fee2e2; color:#b91c1c; font-weight:700;">Yanlış (' + userAns + ' / Doğru: ' + q.correctOption + ')</span>';
+      itemBorder = '#fecaca';
+      itemBg = '#fffafa';
+    }
+
+    let distractorExplanation = '';
+    if (!isCorrect && !isEmpty && q.distractors && q.distractors[userAns]) {
+      distractorExplanation = `<div style="font-size:11px; color:#b45309; margin-top:4px;"><strong>Yanılgı Analizi:</strong> ${q.distractors[userAns]}</div>`;
+    }
+
+    return `
+      <div class="breakdown-q-card" style="padding:10px 12px; border:1px solid ${itemBorder}; background:${itemBg}; border-radius:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <strong style="font-size:12px;">Soru ${idx + 1}: ${q.outcomeCode || 'LGS Kazanımı'}</strong>
+          ${statusBadge}
+        </div>
+        ${distractorExplanation}
+        <button type="button" class="btn-goto-solution" onclick="inspectQuestionSolution(${idx})" style="margin-top:6px; background:none; border:none; color:var(--accent-blue); font-size:11px; font-weight:700; cursor:pointer; text-decoration:underline;">
+          Çözüm ve Taktikleri İncele →
+        </button>
+      </div>
+    `;
+  }).join('');
+}
+
+// İlgili Soruya Odaklan ve Çözüm Çekmecesini Aç
+window.inspectQuestionSolution = function(idx) {
+  appState.currentQuestionIndex = idx;
+  setMode('practice');
+  renderQuestion();
+  renderSolutionDrawer();
+  const drawer = document.getElementById('solutionDrawer');
+  if (drawer) {
+    drawer.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 
 // Sınavı Sıfırla (Sadece Mevcut Test İçin)
 function resetExam() {

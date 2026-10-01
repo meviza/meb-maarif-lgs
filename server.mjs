@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 import { db } from './engine/db_adapter.mjs';
 import { llmClient } from './engine/llm_client.mjs';
 import { jevPipeline } from './engine/jev_self_correction.mjs';
+import { compressAndArchiveData } from './scripts/cloud_sync_manager.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -80,7 +81,7 @@ function serveStaticFile(req, res, filePath) {
 }
 
 // Sunucu Oluştur
-export const server = http.createServer((req, res) => {
+export const server = http.createServer(async (req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const pathname = parsedUrl.pathname;
 
@@ -225,6 +226,52 @@ export const server = http.createServer((req, res) => {
         sendJson(res, 500, { error: err.message });
       }
     });
+    return;
+  }
+
+  // 9. Bulut Arşivleme & Gzip Level-9 Senkronizasyonu: POST /api/cloud/sync
+  if (req.method === 'POST' && pathname === '/api/cloud/sync') {
+    try {
+      const result = compressAndArchiveData();
+      sendJson(res, 200, {
+        success: true,
+        message: 'Gzip Level-9 sıkıştırma ve bulut arşivi başarıyla hazırlandı.',
+        archivePath: result.archivePath,
+        rawSizeKb: result.rawSizeKb,
+        compSizeKb: result.compSizeKb,
+        ratio: result.ratio
+      });
+    } catch (err) {
+      sendJson(res, 500, { error: err.message });
+    }
+    return;
+  }
+
+  // 10. Toplu Soru Üretimi (4 Branş): POST /api/ai/batch-generate
+  if (req.method === 'POST' && pathname === '/api/ai/batch-generate') {
+    try {
+      const courses = ['turkce', 'matematik', 'fen', 'sosyal'];
+      const difficulties = ['KAVRAMA', 'UYGULAMA', 'LGS_YENI_NESIL', 'SEKIL_VE_OLIMPIYAT'];
+      const generatedList = [];
+
+      for (const course of courses) {
+        for (const diff of difficulties) {
+          const q = jevPipeline.generateDeterministicFallback(course, 'Müfredat Analizi', null, diff);
+          const audit = await jevPipeline.auditor.evaluateQuestion(q);
+          q.jevAudit = audit;
+          generatedList.push(q);
+        }
+      }
+
+      sendJson(res, 200, {
+        success: true,
+        count: generatedList.length,
+        message: `${generatedList.length} adet yeni nesil soru 4 branş ve 4 seviyede başarıyla üretildi.`,
+        questions: generatedList
+      });
+    } catch (err) {
+      sendJson(res, 500, { error: err.message });
+    }
     return;
   }
 

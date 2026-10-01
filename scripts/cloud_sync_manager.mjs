@@ -1,6 +1,6 @@
 /**
- * MEB Maarif LGS Platformu - Sıfır Disk Alanı Tüketimli Bulut Senkronizasyon Yöneticisi
- * Hedef Hesap: kerem.newton571@gmail.com (5 TB Google Drive Alanı)
+ * MEB Maarif LGS Platformu - Sifir Disk Alani Tuketimli Bulut Senkronizasyon Yoneticisi
+ * Hedef Hesap: kerem.newton571@gmail.com (5 TB Google Drive Alani)
  */
 
 import fs from 'fs';
@@ -11,14 +11,22 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export function compressAndArchiveData() {
-  const archiveDir = path.join(__dirname, '..', 'data', 'archive');
-  if (!fs.existsSync(archiveDir)) fs.mkdirSync(archiveDir, { recursive: true });
-
+/**
+ * Platform yedek yukunu (metadata + questions + seed sql) hazirlar
+ */
+export function prepareBackupPayload() {
   const questionsPath = path.join(__dirname, '..', 'public', 'questions.json');
   const sqlPath = path.join(__dirname, '..', 'db', 'seed_full_production.sql');
+  const fallbackSqlPath = path.join(__dirname, '..', 'db', 'seed_meb_8th_grade.sql');
 
-  const payload = {
+  let databaseSeed = null;
+  if (fs.existsSync(sqlPath)) {
+    databaseSeed = fs.readFileSync(sqlPath, 'utf-8');
+  } else if (fs.existsSync(fallbackSqlPath)) {
+    databaseSeed = fs.readFileSync(fallbackSqlPath, 'utf-8');
+  }
+
+  return {
     metadata: {
       platform: 'MEB Maarif LGS Platformu',
       version: '1.0.0-faz5',
@@ -27,44 +35,96 @@ export function compressAndArchiveData() {
       exportedAt: new Date().toISOString()
     },
     questions: JSON.parse(fs.readFileSync(questionsPath, 'utf-8')),
-    databaseSeed: fs.existsSync(sqlPath) ? fs.readFileSync(sqlPath, 'utf-8') : null
+    databaseSeed
   };
+}
 
-  const rawJson = JSON.stringify(payload);
-  const rawSizeKb = (Buffer.byteLength(rawJson) / 1024).toFixed(2);
+/**
+ * Verilen yuk veya varsayilan platform verisini bellek icinde (RAM) Level-9 Gzip ile sikistirir.
+ * Sifir yerel disk kullanimi gerektiren durumlar icin dogrudan buffer dondurur.
+ */
+export function compressPayload(payloadOrString = null, options = {}) {
+  const compressionLevel = options.level ?? 9;
+  const payload = payloadOrString || prepareBackupPayload();
+  const rawJson = typeof payload === 'string' ? payload : JSON.stringify(payload);
+  const rawBuffer = Buffer.from(rawJson, 'utf-8');
+  const rawBytes = rawBuffer.length;
+  const rawSizeKb = (rawBytes / 1024).toFixed(2);
 
-  // Yüksek Seviye Gzip Sıkıştırma (Seviye 9)
-  const compressed = zlib.gzipSync(Buffer.from(rawJson), { level: 9 });
-  const compSizeKb = (compressed.length / 1024).toFixed(2);
-  const ratio = ((1 - (compressed.length / Buffer.byteLength(rawJson))) * 100).toFixed(1);
+  // Yuksek Seviye Gzip Sikistirma (Seviye 9)
+  const compressedBuffer = zlib.gzipSync(rawBuffer, { level: compressionLevel });
+  const compressedBytes = compressedBuffer.length;
+  const compSizeKb = (compressedBytes / 1024).toFixed(2);
+  const savingRatio = Number(((1 - (compressedBytes / rawBytes)) * 100).toFixed(2));
+  const ratio = savingRatio.toFixed(1);
 
+  return {
+    rawJson,
+    rawBuffer,
+    rawBytes,
+    compressedBuffer,
+    buffer: compressedBuffer,
+    compressedBytes,
+    rawSizeKb,
+    compSizeKb,
+    savingRatio,
+    ratio
+  };
+}
+
+/**
+ * Sikistirma ve istege bagli yerel arsivleme fonksiyonu
+ */
+export function compressAndArchiveData(options = {}) {
+  const { writeToDisk = true, customDir = null, level = 9 } = options;
+  const archiveDir = customDir || path.join(__dirname, '..', 'data', 'archive');
+  if (writeToDisk && !fs.existsSync(archiveDir)) {
+    fs.mkdirSync(archiveDir, { recursive: true });
+  }
+
+  const compResult = compressPayload(options.payload || null, { level });
   const timestamp = new Date().toISOString().replace(/[-:T.]/g, '').slice(0, 14);
   const archiveFile = `lgs_maarif_backup_${timestamp}.json.gz`;
   const archivePath = path.join(archiveDir, archiveFile);
-  fs.writeFileSync(archivePath, compressed);
 
-  console.log(`====================================================`);
-  console.log(`📦 MEB MAARİF LGS BULUT ARŞİVLEME BAŞARILI`);
-  console.log(`📁 Dosya: ${archivePath}`);
-  console.log(`📊 Orijinal Boyut: ${rawSizeKb} KB`);
-  console.log(`⚡ Sıkıştırılmış Boyut: ${compSizeKb} KB (%${ratio} Tasarruf)`);
-  console.log(`☁️ Hedef Depolama: kerem.newton571@gmail.com (5 TB Drive)`);
-  console.log(`====================================================`);
+  if (writeToDisk) {
+    fs.writeFileSync(archivePath, compResult.compressedBuffer);
+  }
 
-  return { archivePath, rawSizeKb, compSizeKb, ratio };
+  console.log('====================================================');
+  console.log('[BULUT] MEB MAARIF LGS BULUT ARSIVLEME BASARILI');
+  if (writeToDisk) {
+    console.log(`[DOSYA] Dosya: ${archivePath}`);
+  }
+  console.log(`[ORAN] Orijinal Boyut: ${compResult.rawSizeKb} KB`);
+  console.log(`[SIKISTIRMA] Sikistirilmis Boyut: ${compResult.compSizeKb} KB (%${compResult.ratio} Tasarruf)`);
+  console.log('[HEDEF] Hedef Depolama: kerem.newton571@gmail.com (5 TB Drive)');
+  console.log('====================================================');
+
+  return {
+    archivePath: writeToDisk ? archivePath : null,
+    rawSizeKb: compResult.rawSizeKb,
+    compSizeKb: compResult.compSizeKb,
+    ratio: compResult.ratio,
+    savingRatio: compResult.savingRatio,
+    rawBytes: compResult.rawBytes,
+    compressedBytes: compResult.compressedBytes,
+    compressedBuffer: compResult.compressedBuffer,
+    buffer: compResult.compressedBuffer
+  };
 }
 
 export function printCloudUploadInstructions() {
   console.log(`
-🚀 GOOGLE DRIVE (5 TB) BULUT AKTARIM REHBERİ:
+[KILAVUZ] GOOGLE DRIVE (5 TB) BULUT AKTARIM REHBERI:
 ---------------------------------------------------------------------------------
-1. 'rclone' ile Doğrudan Yükleme (Önerilen - Yerel Disk Tüketmez):
+1. 'rclone' ile Dogrudan Yukleme (Onerilen - Yerel Disk Tuketmez):
    $ brew install rclone
-   $ rclone config (Adı: 'gdrive', Tip: 'drive', Kullanıcı: kerem.newton571@gmail.com)
+   $ rclone config (Adi: 'gdrive', Tip: 'drive', Kullanici: kerem.newton571@gmail.com)
    $ rclone copy data/archive/ gdrive:MEB_Maarif_LGS_Yedekleri/ -v
 
-2. Google Drive Desktop ile Otomatik Klasör Senkronizasyonu:
-   Mac Finder içindeki "Google Drive" klasörünüze 'data/archive/' sembolik bağlayın:
+2. Google Drive Desktop ile Otomatik Klasor Senkronizasyonu:
+   Mac Finder icindeki "Google Drive" klasorunuze 'data/archive/' sembolik baglayin:
    $ ln -s $(pwd)/data/archive ~/Google\\ Drive/My\\ Drive/MEB_Maarif_LGS/
 
 3. GitHub Deposu Senkronizasyonu:
