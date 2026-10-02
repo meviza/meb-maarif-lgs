@@ -61,8 +61,14 @@ Platformun tüm işlevleri standart npm komutlarıyla yönetilebilir:
 # Bağımlılıkları yükle (Sıfır harici npm bağımlılığı gerektirir, Node.js yerel API'leri kullanılır)
 npm install
 
-# Tüm otomatik test paketini çalıştır (16/16 Test)
+# Tüm otomatik test paketini çalıştır (17/17 Test Eksiksiz Geçer)
 npm test
+
+# MEB Maarif ve JEV System-1 Kapsamlı Kalite Endeksini Hesapla ve Denetle
+npm run quality:audit
+
+# Soru Bankasını 108 Soruya Ölçekle ve JEV Onayından Geçir
+npm run scale:bank
 
 # Web platformunu ve REST API sunucusunu başlat (Port: 3333)
 npm start
@@ -75,7 +81,7 @@ npm run serve
 # 4 Branş x 4 Zorluk Seviyesinde Toplu Soru Üret (16 Soru Matrisi)
 npm run generate:bulk
 
-# Gzip Level-9 Algoritmasıyla Soru Bankası ve SQL Tohumunu Arşivle (%73.1 Tasarruf)
+# Gzip Level-9 Algoritmasıyla Soru Bankası ve SQL Tohumunu Arşivle (%73.5 Tasarruf)
 npm run cloud:backup
 # veya
 npm run cloud:sync
@@ -83,7 +89,7 @@ npm run cloud:sync
 # Google Drive (5 TB) Sıfır-Disk Doğrudan RAM Akışını Başlat (0 Bayt Yerel Disk Tüketimi)
 npm run drive:stream
 
-# PostgreSQL İlişkisel Tohum Verilerini ve DDL Dosyalarını Doğrula
+# PostgreSQL İlişkisel Tohum Verilerini ve DDL Dosyalarını Doğrula (108 Soru)
 npm run seed
 ```
 

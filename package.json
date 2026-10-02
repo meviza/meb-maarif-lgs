@@ -7,6 +7,8 @@
     "test": "node engine/test_suite.mjs",
     "generate": "node engine/question_builder.mjs",
     "generate:bulk": "node engine/bulk_generator.mjs",
+    "scale:bank": "node engine/bank_scale_generator.mjs",
+    "quality:audit": "node engine/quality_analytics.mjs",
     "seed": "node engine/seed_runner.mjs",
     "cloud:backup": "node scripts/cloud_sync_manager.mjs",
     "cloud:sync": "node scripts/cloud_sync_manager.mjs",

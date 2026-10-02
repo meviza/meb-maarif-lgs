@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 async function runTestSuite() {
   console.log('====================================================');
-  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (16 TEST)');
+  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (17 TEST)');
   console.log('====================================================\n');
 
   let passedTests = 0;
@@ -65,8 +65,8 @@ async function runTestSuite() {
     assert.ok(content.includes('30 Alt Soru Tipi Taksonomisi'), '30 paragraf alt tipi eksik');
   });
 
-  // TEST 3: Çoklu Test ve Soru Havuzu Bütünlüğü (4 Ana Branş, 12 Test Paketi)
-  test('Soru havuzu 4 ana branşı ve en az 12 test paketini içermeli', () => {
+  // TEST 3: Çoklu Test ve Soru Havuzu Bütünlüğü (4 Ana Branş, 16 Test Paketi, 108 Soru)
+  test('Soru havuzu 4 ana branşı ve en az 16 test paketini içermeli', () => {
     const raw = fs.readFileSync(path.join(__dirname, '..', 'public', 'questions.json'), 'utf-8');
     const multiTestBank = JSON.parse(raw);
 
@@ -78,7 +78,7 @@ async function runTestSuite() {
       const course = multiTestBank[cKey];
       assert.ok(course, `${cKey} branşı bulunamadı`);
       assert.ok(Array.isArray(course.tests), `${cKey} tests dizisi içermiyor`);
-      assert.ok(course.tests.length >= 3, `${cKey} branşında en az 3 test paketi olmalı, bulunan: ${course.tests.length}`);
+      assert.ok(course.tests.length >= 4, `${cKey} branşında en az 4 test paketi olmalı, bulunan: ${course.tests.length}`);
 
       for (const t of course.tests) {
         totalTestsCount++;
@@ -90,8 +90,8 @@ async function runTestSuite() {
       }
     }
 
-    assert.strictEqual(totalTestsCount, 12, `Beklenen 12 test paketi, bulunan: ${totalTestsCount}`);
-    assert.ok(totalQuestionsCount >= 50, `Toplam soru sayısı 50'den fazla olmalı, bulunan: ${totalQuestionsCount}`);
+    assert.strictEqual(totalTestsCount, 16, `Beklenen 16 test paketi, bulunan: ${totalTestsCount}`);
+    assert.strictEqual(totalQuestionsCount, 108, `Toplam soru sayısı tam 108 olmalı, bulunan: ${totalQuestionsCount}`);
     console.log(`     ℹ️ Toplam ${totalTestsCount} Test Paketi ve ${totalQuestionsCount} Soru doğrulandı.`);
   });
 
@@ -199,11 +199,11 @@ async function runTestSuite() {
     const summary = db.getCoursesSummary();
     assert.strictEqual(summary.length, 4, '4 kurs özeti bekleniyordu');
     const totalQ = summary.reduce((acc, c) => acc + c.questionCount, 0);
-    assert.strictEqual(totalQ, 53, '53 soru bekleniyordu');
+    assert.strictEqual(totalQ, 108, '108 soru bekleniyordu');
 
     // 3. Test çekme
     const trTests = db.getTestsByCourse('turkce');
-    assert.strictEqual(trTests.length, 3, 'Türkçe 3 test içermeli');
+    assert.strictEqual(trTests.length, 4, 'Türkçe 4 test içermeli');
 
     const test1 = db.getTestById('TR-T1');
     assert.ok(test1 && test1.questions.length > 0, 'TR-T1 soruları yüklenemedi');
@@ -653,6 +653,28 @@ async function runTestSuite() {
     });
     assert.strictEqual(bulkResult.count, 16, 'Toplu üretimde 16 soru bekleniyordu');
     assert.strictEqual(bulkResult.questions.length, 16, 'Soru dizisi 16 adet olmalı');
+  });
+
+  // TEST 17: MEB Maarif Kapsamlı Kalite Endeksi ve Sıfır Şüphe Denetimi
+  await asyncTest('Test 17: MEB Maarif Kapsamlı Kalite Endeksi ve Sıfır Şüphe Denetimi', async () => {
+    const { QuestionQualityAnalytics } = await import('./quality_analytics.mjs');
+    const analytics = new QuestionQualityAnalytics();
+    const report = await analytics.auditFullBank();
+
+    assert.strictEqual(report.totalQuestions, 108, 'Toplam 108 soru denetlenmeli');
+    assert.strictEqual(report.approvedQuestions, 108, '108 sorunun tamamı onaylanmalı');
+    assert.ok(report.overallQualityIndex >= 95, `Genel kalite endeksi en az 95 olmalı, bulunan: ${report.overallQualityIndex}`);
+    assert.strictEqual(report.metrics.mebCurriculumAlignmentRate, 100, 'MEB müfredat uyumu %100 olmalı');
+    assert.strictEqual(report.metrics.zeroAmbiguityRate, 100, 'Sıfır şüphe oranı %100 olmalı');
+    assert.strictEqual(report.metrics.zeroEmojiRate, 100, 'Sıfır emoji oranı %100 olmalı');
+    assert.strictEqual(report.metrics.distractorCompletenessRate, 100, 'Çeldirici tamlığı %100 olmalı');
+    assert.strictEqual(report.metrics.pedagogicalStrategyRate, 100, 'Pedagojik strateji oranı %100 olmalı');
+
+    // 4 Kademeli zorluk dağılımı kontrolü
+    assert.ok(report.difficultyDistribution.KAVRAMA > 0, 'Kavrama seviyesinde soru olmalı');
+    assert.ok(report.difficultyDistribution.UYGULAMA > 0, 'Uygulama seviyesinde soru olmalı');
+    assert.ok(report.difficultyDistribution.LGS_YENI_NESIL > 0, 'LGS Yeni Nesil seviyesinde soru olmalı');
+    assert.ok(report.difficultyDistribution.SEKIL_VE_OLIMPIYAT > 0, 'Şampiyon seviyesinde soru olmalı');
   });
 
   console.log('\n====================================================');
