@@ -40,6 +40,7 @@ export class JevQualityAuditor {
     const distractorStrengthScore = this._scoreDistractors(questionDraft);
     const tdkCompliance = this._checkTdkCompliance(questionDraft);
     const hasPedagogicalHints = hasStrategy && hasDetail;
+    const starRating = this.calculateStarRating(questionDraft);
 
     const decisions = {
       is_meb_aligned: isMebAligned,
@@ -47,6 +48,7 @@ export class JevQualityAuditor {
       zero_ambiguity: zeroAmbiguityResult.passed,
       difficulty_alignment: difficultyAlignmentResult.score,
       bloom_taxonomy_level: bloomLevel,
+      star_rating: starRating,
       distractor_strength_score: distractorStrengthScore,
       tdk_compliance: tdkCompliance,
       has_pedagogical_hints: hasPedagogicalHints
@@ -108,6 +110,7 @@ export class JevQualityAuditor {
       verdict: passed ? 'APPROVED' : 'NEEDS_REVISION',
       passed,
       score,
+      starRating: decisions.star_rating,
       decisions,
       reasons: passed ? [] : reasons,
       timestamp: new Date().toISOString()
@@ -402,6 +405,64 @@ export class JevQualityAuditor {
       return false; // Yazım yanlışı tespit edildi
     }
     return true;
+  }
+
+  /**
+   * 1'den 5 Yıldıza Kadar Zorluk Derecelendirmesi ve Test Dağıtım Rehberi
+   * @param {Object} draft - Soru nesnesi
+   * @returns {Object} Yıldız skoru (1-5), etiket, kategori ve test dağıtım konumu
+   */
+  calculateStarRating(draft) {
+    const rawDiff = this._normalizeDifficulty(draft);
+    const bloom = this._classifyBloomTaxonomy(draft);
+    const fullText = ((draft.stimulus || '') + ' ' + (draft.stem || '')).toLowerCase();
+    const stimLen = (draft.stimulus || '').trim().length;
+
+    let stars = 3;
+    let starLabel = "★★★☆☆";
+    let category = "3 Yıldız • Uygulama (Standart)";
+    let placement = "Orta Bölüm / İşlem ve Kural Testi";
+    let rationale = "Standart kural, formül ve iki adımlı işlem gerektirir.";
+
+    if (rawDiff === 'SEKIL_VE_OLIMPIYAT' || fullText.includes('en fazla') || fullText.includes('optimum') || fullText.includes('strateji') || fullText.includes('kısıt')) {
+      stars = 5;
+      starLabel = "★★★★★";
+      category = "5 Yıldız • Şampiyon / Üst Düzey Seçici";
+      placement = "Deneme Sınavı Seçici Soruları (%1'lik Dilim Ayırt Edici)";
+      rationale = "Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir.";
+    } else if (rawDiff === 'LGS_YENI_NESIL' || (bloom === 'ANALYZE' && stimLen >= 80)) {
+      stars = 4;
+      starLabel = "★★★★☆";
+      category = "4 Yıldız • LGS Yeni Nesil (İleri Düzey)";
+      placement = "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)";
+      rationale = "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir.";
+    } else if (rawDiff === 'UYGULAMA' || bloom === 'APPLY') {
+      stars = 3;
+      starLabel = "★★★☆☆";
+      category = "3 Yıldız • Uygulama (Orta Düzey)";
+      placement = "Konu Pekiştirme ve Yöntem İşletimi";
+      rationale = "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme.";
+    } else if (rawDiff === 'KAVRAMA' && stimLen >= 60) {
+      stars = 2;
+      starLabel = "★★☆☆☆";
+      category = "2 Yıldız • Kavrama (Temel-Orta)";
+      placement = "Test Giriş / Ön Hazırlık ve Kavram Testi";
+      rationale = "Temel kavramları ve tanımları anlama, doğrudan çıkarım yapma.";
+    } else {
+      stars = 1;
+      starLabel = "★☆☆☆☆";
+      category = "1 Yıldız • Tanım / Bilgi (Temel Düzey)";
+      placement = "Isınma ve Özgüven Sorusu";
+      rationale = "Tek adımlı kural hatırlama veya doğrudan bilgi yoklama.";
+    }
+
+    return {
+      stars,
+      starLabel,
+      category,
+      placement,
+      rationale
+    };
   }
 }
 

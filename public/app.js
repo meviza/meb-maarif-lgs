@@ -552,6 +552,26 @@ function renderQuestion() {
     sourceBadge.textContent = q.sourceTag || test?.badge || '2024 LGS Formatı';
   }
 
+  // JEV 1-5 Yıldız Zorluk Derecelendirmesi
+  const starBadge = document.getElementById('qStarBadge');
+  const jevStarEl = document.getElementById('jevStarRatingText');
+  const starInfo = q.starRating || {
+    stars: 4,
+    starLabel: '★★★★☆',
+    category: '4 Yıldız • LGS Yeni Nesil',
+    placement: 'LGS Standart Deneme Ana Omurgası'
+  };
+
+  if (starBadge) {
+    starBadge.textContent = `${starInfo.starLabel} ${starInfo.stars} Yıldız`;
+    starBadge.title = `${starInfo.category} (${starInfo.placement})`;
+  }
+
+  if (jevStarEl) {
+    jevStarEl.textContent = `${starInfo.starLabel} (${starInfo.stars}/5)`;
+    jevStarEl.title = starInfo.category;
+  }
+
   // Soru Numarası
   document.getElementById('qNumberDisplay').textContent = `${appState.currentQuestionIndex + 1}.`;
 

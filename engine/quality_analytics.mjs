@@ -32,8 +32,15 @@ export class QuestionQualityAnalytics {
    */
   async evaluateSingleQuestion(question) {
     const jevAudit = await this.jevAuditor.evaluateQuestion(question);
-    const jsonStr = JSON.stringify(question);
-    const hasEmoji = /[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u.test(jsonStr);
+    const textToInspect = [
+      question.stimulus,
+      question.stem,
+      Object.values(question.options || {}).join(' '),
+      question.solutionStrategy || question.solution_strategy,
+      question.detailedSolution || question.detailed_solution
+    ].filter(Boolean).join(' ');
+    // Gerçek renkli OS emojilerini tara (1F300-1F9FF, 1FA00-1FAFF); kurumsal yıldız (★/☆) karakterlerine izin ver
+    const hasEmoji = /[\u{1F300}-\u{1F9FF}\u{1FA00}-\u{1FAFF}]/u.test(textToInspect);
 
     const outcome = question.outcomeCode || question.outcome_code || '';
     const isMaarifCoded = /^(T|M|F|İTA|ITA|S)\.8\./i.test(outcome);
@@ -101,6 +108,13 @@ export class QuestionQualityAnalytics {
         UYGULAMA: 0,
         LGS_YENI_NESIL: 0,
         SEKIL_VE_OLIMPIYAT: 0
+      },
+      starDistribution: {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0
       },
       bloomDistribution: {
         UNDERSTAND: 0,
@@ -173,6 +187,11 @@ export class QuestionQualityAnalytics {
           // Bloom dağılımı
           const bloom = audit.decisions.bloom_taxonomy_level || 'UNDERSTAND';
           report.bloomDistribution[bloom] = (report.bloomDistribution[bloom] || 0) + 1;
+
+          // JEV 1-5 Yıldız Derecelendirmesi
+          const starInfo = q.starRating || audit.decisions.star_rating || this.jevAuditor.calculateStarRating(q);
+          const stars = starInfo.stars || 3;
+          report.starDistribution[stars] = (report.starDistribution[stars] || 0) + 1;
         }
       }
 
@@ -223,6 +242,13 @@ export class QuestionQualityAnalytics {
     lines.push(`  - Orta Seviye (Uygulama)           : ${report.difficultyDistribution.UYGULAMA} Soru (%${((report.difficultyDistribution.UYGULAMA / report.totalQuestions) * 100).toFixed(1)})`);
     lines.push(`  - İleri Seviye (LGS Yeni Nesil)    : ${report.difficultyDistribution.LGS_YENI_NESIL} Soru (%${((report.difficultyDistribution.LGS_YENI_NESIL / report.totalQuestions) * 100).toFixed(1)})`);
     lines.push(`  - Üst Düzey (Şampiyon / Beceri)    : ${report.difficultyDistribution.SEKIL_VE_OLIMPIYAT} Soru (%${((report.difficultyDistribution.SEKIL_VE_OLIMPIYAT / report.totalQuestions) * 100).toFixed(1)})`);
+    lines.push('--------------------------------------------------------------------------------');
+    lines.push('JEV 1-5 YILDIZ ZORLUK DERECELENDİRMESİ VE TEST DAĞITIM REHBERİ:');
+    lines.push(`  * 1 Yıldız (★☆☆☆☆ - Temel Tanım / Bilgi)      : ${report.starDistribution[1]} Soru (%${((report.starDistribution[1] / report.totalQuestions) * 100).toFixed(1)}) -> Giriş / Isınma`);
+    lines.push(`  * 2 Yıldız (★★☆☆☆ - Kavrama / Doğrudan Anlam) : ${report.starDistribution[2]} Soru (%${((report.starDistribution[2] / report.totalQuestions) * 100).toFixed(1)}) -> Ön Hazırlık`);
+    lines.push(`  * 3 Yıldız (★★★☆☆ - Uygulama / Yöntem-Kural)  : ${report.starDistribution[3]} Soru (%${((report.starDistribution[3] / report.totalQuestions) * 100).toFixed(1)}) -> Standart İşlem`);
+    lines.push(`  * 4 Yıldız (★★★★☆ - LGS Yeni Nesil Omurgası)  : ${report.starDistribution[4]} Soru (%${((report.starDistribution[4] / report.totalQuestions) * 100).toFixed(1)}) -> Deneme Omurgası`);
+    lines.push(`  * 5 Yıldız (★★★★★ - Şampiyon / Üst Düzey)     : ${report.starDistribution[5]} Soru (%${((report.starDistribution[5] / report.totalQuestions) * 100).toFixed(1)}) -> %1'lik Dilim Seçici`);
     lines.push('--------------------------------------------------------------------------------');
     lines.push('BLOOM TAKSONOMİSİ BİLİŞSEL SÜREÇ DAĞILIMI:');
     lines.push(`  - Kavrama (Understand)             : ${report.bloomDistribution.UNDERSTAND} Soru`);

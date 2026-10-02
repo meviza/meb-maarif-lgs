@@ -1,6 +1,6 @@
 -- ============================================================================
 -- MEB Maarif LGS Platformu - Faz 3 Tam Üretim SQL Tohum Dosyası
--- Üretim Tarihi: 2026-10-02T07:13:19.054Z
+-- Üretim Tarihi: 2026-10-02T07:37:26.682Z
 -- Toplam: 4 Branş, 12 Test Paketi, 53 Yeni Nesil LGS Sorusu
 -- ============================================================================
 
@@ -176,7 +176,7 @@ INSERT INTO questions (id, outcome_id, code, stimulus, stem, options, correct_op
           'I, II ve IV. cümleler yapay zekânın hekim teşhislerindeki teknolojik katkısını işlerken, III. cümle bağlam dışına çıkıp hastane mimarisinden söz etmektedir. Dolayısıyla III. cümle akışı bozar.',
           '{"A":"I. cümle giriş cümlesidir; konuyu tanımlar.","B":"II. cümle I. cümlenin mantıksal devamıdır; algoritmanın gücünü açıklar.","D":"IV. cümle teknolojiyi hekim tecrübesiyle bağlayıp ana fikri tamamlar."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.974Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.974Z"}'::jsonb,
           true,
           true
         ),
@@ -192,7 +192,7 @@ INSERT INTO questions (id, outcome_id, code, stimulus, stem, options, correct_op
           'Yazar, sanatın pasif bir ayna olmanın ötesine geçerek insanı dönüştürmesi gerektiğini ve suya sabuna dokunmayan eserlerin unutulacağını savunmaktadır. Bu da B şıkkındaki yargıyı doğrular.',
           '{"A":"Yazar alkış ve beğeni peşinde koşmayı eleştirmektedir, tam zıttıdır.","C":"Metinde estetik süsten değil, gerçeğe fener tutmaktan bahsedilir.","D":"D şıkkı güçlü bir çeldiricidir ancak yazarın asıl amacı sadece olumsuzlamak değil, kalıcı sanatın dönüştürücü gücünü vurgulamaktır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"EVALUATE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.976Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"EVALUATE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.976Z"}'::jsonb,
           true,
           true
         ),
@@ -208,7 +208,7 @@ INSERT INTO questions (id, outcome_id, code, stimulus, stem, options, correct_op
           'Parçada dijital ortamda gerçekleşen hızlı bilgi tüketimi ile basılı kitaplar üzerinden yapılan ''derin okuma'' arasındaki nitelik farkı işlenmiştir. Yazar; bilginin çokluğunun veya hızla taranmasının zihinsel olgunluk sağlamadığını, asıl gelişimin sabırla metnin derinliklerine inip onu bir kavrayışa (özümsemeye) dönüştürmekle gerçekleşeceğini vurgulamaktadır. Bu durum B seçeneğinde eksiksiz özetlenmiştir. Doğru cevap B seçeneğidir.',
           '{"A":"Metinde teknolojinin bağı tamamen kopardığı iddia edilmemiştir; yüzeysel okuma alışkanlığına dikkat çekilmiştir.","C":"Parçada basılı kitapların daha pratik olduğu söylenmemiş, aksine dijitalin pratik ama yüzeysel, basılının ise derinlikli olduğu belirtilmiştir.","D":"Empati yeteneğinin derin okuma ile geliştiğine değinilmiş ancak bunun yalnızca bilimsel ve felsefi metinlerle sınırlı olduğu gibi bir genelleme yapılmamıştır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.976Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.976Z"}'::jsonb,
           true,
           true
         ),
@@ -224,7 +224,7 @@ INSERT INTO questions (id, outcome_id, code, stimulus, stem, options, correct_op
           'Metnin bütününde Mimar Sinan''ın yapılarındaki sismik direnç, zemin statiği, zemin sıkıştırma ve deprem enerjisini sönümleyen harç/kilit taşı mühendisliği incelenmektedir. V. cümledeki ''Nitekim meydana gelen şiddetli sarsıntılarda yapıların esneyip kırılmamasını sağlayan bu mimari mekanizma...'' ifadesi doğrudan III. cümledeki esnek kilit taşları ve horasan harcına bağlanmaktadır. Arada yer alan IV. cümle ise ibadethanenin iç süslemesi (hat ve çini) ve manevi tesirine değinerek konunun odağını değiştirmiş ve akışı bozmuştur. Doğru cevap C seçeneğidir.',
           '{"A":"II. cümle Sinan''ın zemin mühendisliğini ve temel atma tekniğini açıklayarak ana temayı devam ettirmektedir.","B":"III. cümle zemin tekniğinden sonra üst yapının depreme karşı nasıl güçlendirildiğini somutlaştırmaktadır.","D":"V. cümle III. cümlede anlatılan deprem mekanizmasının günümüzdeki bilimsel yankısını ele alıp metni mantıksal bir sonuca bağlamaktadır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -244,7 +244,7 @@ Edebiyat bir formül veya sözcük dizimi değil; kanayan bir vicdanın, varolu�
           '1. metin algoritmaların biçimsel ve teknik yeteneklerini nesnel/analitik bir üslupla anlatmaktadır (A seçeneği doğru). 2. metin ise edebiyatın duygu, vicdan ve insani yaşantı olduğunu vurgulayarak duygusal ve öznel bir tavır takınmış, ''plastik çiçek'' benzetmesi yapmıştır (B ve D seçenekleri doğru). Ancak 2. metin yapay zekanın insan duygusuna asla erişemeyeceğini açıkça söyleyerek insanın yerini alamayacağını belirtmiştir; dolayısıyla her ikisinde de insanın yerini alacağı fikrinin benimsendiği söylenemez. Doğru cevap C seçeneğidir.',
           '{"A":"1. metinde ''milyonlarca metni tarayarak'', ''hece veznine uygun'', ''biçimsel boyut'' gibi teknik ve tarafsız tespitler yer almaktadır.","B":"2. metinde ''kanayan bir vicdan, varoluş sancısı, sessiz çığlık'' gibi insani özler edebiyatın merkezine konmuştur.","D":"2. metinde ''ruhsuz bir plastik çiçek gibi'' ifadesiyle benzetme yapılmış ve kişisel değerlendirmeler sunulmuştur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -264,7 +264,7 @@ Edebiyat bir formül veya sözcük dizimi değil; kanayan bir vicdanın, varolu�
 • Ancak metinde istatistiki veya ölçmeye dayalı sayısal verilerden yararlanılmamıştır. Doğru cevap D seçeneğidir.',
           '{"A":"İlk cümlede açıkça feretiko kumaşının ne olduğu tanımlanmıştır.","B":"Geleneksel feretiko ile fabrikasyon kumaşlar mukayese edilerek karşılaştırma yapılmıştır.","C":"Emine Nine''nin doğrudan alıntılanan sözü düşünceyi desteklemek için tanık gösterilmiştir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -296,7 +296,7 @@ Edebiyat bir formül veya sözcük dizimi değil; kanayan bir vicdanın, varolu�
           'Metnin ilk cümlesinde eleştirinin ne olduğu açıklanarak tanımlama yapılmıştır ("tartma sanatıdır"). İkinci cümlede geleneksel eleştiri ile çağdaş eleştiri "aksine, -den ziyade, daha" sözcükleriyle karşılaştırılmıştır. Son cümlede ise edebiyat kuramcısı T. S. Eliot''ın adı verilerek onun sözü tırnak içinde aynen aktarılmış ve tanık gösterilmiştir. Dolayısıyla metinde tanımlama, karşılaştırma ve tanık gösterme yollarına başvurulmuştur. Doğru cevap A seçeneğidir.',
           '{"B":"Metinde örneklendirme ve benzetme unsurları bulunmamaktadır; yalnızca karşılaştırma mevcuttur.","C":"Tanımlama yapılmış olsa da metinde benzetme ve sayısal verilerden yararlanma yollarına yer verilmemiştir.","D":"Tanık gösterme bulunmakla birlikte sayısal veri ve örneklendirme metinde yer almamaktadır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -316,7 +316,7 @@ Köpek balıklarının derisini kaplayan mikroskobik girintilerin sürtünmeyi a
           '1. metinde yalıçapkını kuşunun gagasının hızlı trenlerin aerodinamik tasarımına ilham vermesi, 2. metinde ise köpek balığı derisi yapısının hastanelerdeki antibakteriyel kaplamalara model olması anlatılmaktadır. Her iki metinde de doğadaki canlıların biyolojik/anatomik yapılarının teknolojiye ve bilime esin kaynağı olduğu (biyomimikri) vurgulanmaktadır. Doğru cevap B seçeneğidir.',
           '{"A":"Ulaşım 1. metinde, sağlık ise 2. metinde geçmektedir; ayrıca metinlerde sayısal verilerle ekonomik tasarruf kanıtlama ortak özellik değildir.","C":"Metinlerde çevre tahribatı eleştirilmemekte; tam aksine doğadan ilham alan yapıcı ve çevre dostu teknolojiler övülmektedir.","D":"Uluslararası biyoçeşitlilik koruma projelerinden bahsedilmemekte, canlıların özelliklerinin taklit edilmesi anlatılmaktadır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -349,7 +349,7 @@ Günler: Pazartesi (1), Salı (2), Çarşamba (3), Perşembe (4), Cuma (5).
 Her iki ihtimalde de Cuma günü sunum yapan okul kesinlikle B okuludur. Doğru cevap B seçeneğidir.',
           '{"A":"A okulu C''den hemen önce olacağı için cuma günü yer alamaz; cuma sunum yapsaydı C okulunun cumartesi olması gerekirdi.","C":"Verilen kurallarda ''Cuma günü sunum yapan okul C okulu değildir'' ifadesi açıkça belirtilmiştir.","D":"E okulu B''den önce sunum yapmak zorunda olduğundan ve sunum yapacak başka gün kalmadığından haftanın son günü olan cumaya kalamaz."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -383,7 +383,7 @@ Güneşin 2 katı: 2 x 22,4 = 44,8 milyar kWh''dir. 35,2 milyar kWh, 44,8''den a
 • D seçeneği: 2022''de Rüzgâr payı %11 (320 x 0,11 = 35,2 milyar kWh), Güneş payı %7''dir (320 x 0,07 = 22,4 milyar kWh). Güneş enerjisinin 2 katı 44,8 milyar kWh yapar. Rüzgâr üretimi (35,2), güneşin 2 katından (44,8) fazla değil, tam tersine daha azdır. Bu bilgi kesinlikle yanlıştır. Doğru cevap D seçeneğidir.',
           '{"A":"Hesaplandığında güneş enerjisinin hem payının (%5 -> %10) hem de net üretiminin (15 -> 35 milyar kWh) düzenli arttığı görülmektedir.","B":"Toplam üretim 300''den 350''ye çıktığı için sabit kalan %2''lik pay miktar bazında 6''dan 7 milyar kWh''ye yükselmiştir.","C":"Hidroelektrik üretimi 2021''de 60 milyar kWh iken 2023''te 56 milyar kWh''ye gerilemiştir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -429,7 +429,7 @@ Böylece oluşan Durum Kodu ''Y-K-2''dir.
 Sistem yönergesinde ''Eğer Durum Kodu Y-K-... ile başlıyorsa Acil Yağmurlama ve Gölgeleme devreye girer'' şartı yer almaktadır. Oluşan Y-K-2 kodu bu şarta uyduğu için ''Acil Yağmurlama ve Gölgeleme'' devreye girecektir. Doğru cevap A seçeneğidir.',
           '{"B":"Toprak nemi %35 iken ''Mutedil'' (M) kodu seçilmiştir; bu hatalıdır.","C":"Sıcaklık 28°C iken ''Normal'' (N) kabul edilmiş ve CO2 yanlış değerlendirilmiştir.","D":"950 ppm seviyesi 1200''ün altında olmasına rağmen ''3'' (zengin) kodu verilmiştir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -445,7 +445,7 @@ Sistem yönergesinde ''Eğer Durum Kodu Y-K-... ile başlıyorsa Acil Yağmurlam
           'Metnin ana teması; Eratosthenes''in hiçbir modern aygıt ve uydu teknolojisi bulunmaksızın, sadece basit bir çubuğun gölgesini gözlemleyerek ve geometri prensiplerini kullanarak Dünya''nın çevresini neredeyse sıfır hatayla hesaplamasıdır. Bu tarihsel olay, bilimin en büyük gücünün teknolojik cihazların lüksünde değil, insanın gözlem yeteneği, merakı ve doğru mantıksal kurgusunda yattığını kanıtlamaktadır. A seçeneğindeki ifade bu ana fikri mükemmel bir şekilde tamamlamaktadır. Doğru cevap A seçeneğidir.',
           '{"B":"Metinde antik çağ filozoflarının bilimi geciktirdiği yönünde hiçbir olumsuz yargı bulunmamaktadır; aksine antik bir başarı övülmektedir.","C":"Parçada coğrafi sınırların belirlenmesi değil, Dünya''nın çevresinin hesaplanması söz konusudur.","D":"Bu ifade metnin ana fikriyle taban tabana zıttır; çünkü Eratosthenes teknolojik aletler olmaksızın bu keşfi yapmıştır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -477,7 +477,7 @@ Sistem yönergesinde ''Eğer Durum Kodu Y-K-... ile başlıyorsa Acil Yağmurlam
           'I, II ve III. cümlelerde ebru sanatının tanımı, tarihî icrası, usta-çırak geleneği ve felsefi arka planı ele alınmaktadır. IV. cümleden itibaren ise konunun yönü değişmiş ve ebrunun modern tasarım, tekstil ve mimari gibi güncel kullanım alanları incelenmeye başlanmıştır. Dolayısıyla ikinci paragraf IV. cümle ile başlamalıdır. Doğru cevap C seçeneğidir.',
           '{"A":"II. cümle I. cümlenin doğrudan devamıdır; geleneksel ebrunun kültürümüzdeki anlamını ve kullanım yerlerini sürdürür.","B":"III. cümle geleneksel icra sürecindeki usta-çırak ilişkisini ve manevi disiplini detaylandırarak ilk konuyu tamamlar.","D":"V. cümle IV. cümlede başlayan modern alanlara uyarlama konusunun bir devamı ve örneğidir; yeni bir paragraf başlangıcı olamaz."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -512,7 +512,7 @@ Sistem yönergesinde ''Eğer Durum Kodu Y-K-... ile başlıyorsa Acil Yağmurlam
 O hâlde şifre "A1 - 2A - B3 - B1" olur. Doğru cevap D seçeneğidir.',
           '{"A":"Hiçbir kural dönüşümünü uygulamayıp yalnızca temel kodları yazan dikkatsiz öğrencinin düşeceği yanılgıdır.","B":"2. harfteki yer değiştirme kuralını tüm harflere uygulayan öğrencinin seçeneğidir.","C":"2. harf kuralını uygulayıp 4. harfin bir sağdaki sütuna kayma kuralını unutan öğrencinin güçlü çeldiricisidir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -727,7 +727,7 @@ O hâlde şifre "A1 - 2A - B3 - B1" olur. Doğru cevap D seçeneğidir.',
           'EBOB(180, 240) = 60 m. 60''ın 15''ten küçük en büyük böleni: 12 m. Çevre = 2 x (180 + 240) = 840 m. Direk Sayısı = 840 / 12 = 70 adet.',
           '{"A":"Aralığı yanlışlıkla 24 m kabul eden öğrencilerin bulduğu sonuçtur.","B":"15''ten küçük kuralını unutup aralığı 20 m alanların düştüğü güçlü çeldiricidir (840/20 = 42).","D":"Aralığı 10 m seçip en büyük böleni yakalayamayanların sonucudur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -743,7 +743,7 @@ O hâlde şifre "A1 - 2A - B3 - B1" olur. Doğru cevap D seçeneğidir.',
           '1 sunucu saniyede: 2^14 bayt. 16 sunucu saniyede: 16 x 2^14 = 2^4 x 2^14 = 2^18 bayt. 32 saniyede toplam: 32 x 2^18 = 2^5 x 2^18 = 2^23 bayt işlenir.',
           '{"A":"Zamanı hesaba katmayan öğrencilerin sonucudur.","C":"16 ve 32''yi çarpmayıp üsleri yanlış toplayanların sonucudur.","D":"Üsleri birbiriyle çarpanların düştüğü kavram yanılgısıdır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -781,7 +781,7 @@ Toplam Ünite Sayısı = 25 + 17 = 42 adettir.
 Doğru cevap C şıkkıdır.',
           '{"A":"Yolun uzunluğunu (288 m) doğru bulup başlangıç ve bitişteki direkleri eklemeyi unutan ve 24 + 16 = 40 bulduktan sonra 2 adet buton düşenlerin seçeneğidir.","B":"Başlangıç noktalarındaki (+1) ilave direk ve kutuları eklemeyi unutup yalnızca aralık sayılarını toplayan öğrencilerin düştüğü çeldiricidir: 24 + 16 = 40.","D":"9 noktayı 9 aralık zannedip yolu 9 x 36 = 324 metre hesaplayan veya hesaplama hatası yaparak fazladan ekleme yapan öğrencilerin sonucudur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -833,7 +833,7 @@ Bizden çevrenin en az değeri istendiğinden cevap 60 metredir.
 Doğru cevap B şıkkıdır.',
           '{"A":"Çevre hesabında kenarları eksik toplayan veya 21 + 9 = 30 bulup iki katını almayı unutanların tahminidir.","C":"m = 3 ve k = 1 durumunu seçerek soruda istenen ''en az'' yerine ''en çok'' çevre değerini hesaplayan öğrencilerin düştüğü çeldiricidir: 2 · (7 + 27) = 68.","D":"Ortak kenarları EBOB değerleri yerine rastgele çarpanlarla seçip çevreyi gereksiz büyüten öğrencilerin sonucudur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -870,7 +870,7 @@ Toplam Üretilen Enerji = 2^15 x 2^4 = 2^(15 + 4) = 2^19 watt''tır.
 Doğru cevap B şıkkıdır.',
           '{"A":"16 saatlik süreyi (2^4) çarpmak yerine 1 saatlik enerjiden 2^4 değerini çıkaran veya üs toplarken işlem hatası yapan öğrencilerin sonucudur: 2^15 x 2^2 = 2^17.","C":"Panel sayısını yanlışlıkla 2^8 alarak üssü 1 fazla bulan öğrencilerin işaretlediği çeldiricidir: 2^20.","D":"Negatif üssü (4^-3) pozitif kabul edip 2^21 ile 2^6''yı çarpan öğrencilerin düştüğü kavram yanılgısıdır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -911,7 +911,7 @@ Toplam Tasarruf (mL) = 2,4 x 10^8 x 10^3 = 2,4 x 10^(8+3) = 2,4 x 10^11 mililitr
 Doğru cevap A şıkkıdır.',
           '{"B":"Litre cinsinden bulduğu sonucu (2,4 · 10^8) mililitreye çevirmeyi unutan öğrencilerin düştüğü çeldiricidir.","C":"Sonucu 24 · 10^10 bularak bilimsel gösterim tanımındaki 1 ≤ |a| < 10 kuralını ihmal eden öğrencilerin seçeneğidir.","D":"%75 tasarruf yerine kalan %25 israfı veya yanlış çarpma işlemi yaparak katsayıyı 3,2 bulan öğrencilerin sonucudur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -954,7 +954,7 @@ Mimarın hazırladığı yerleşim planında:
 (İki kare farkı ile: [(4x + 6) - (2x + 2)][(4x + 6) + (2x + 2)] = (2x + 4)(6x + 8) = 12x^2 + 40x + 32). Doğru cevap A şıkkıdır.',
           '{"B":"Dört kamelya yerine yalnızca bir kamelyanın alanını çıkaran öğrencilerin düştüğü çeldiricidir: (4x + 6)^2 - (x + 1)^2 = 15x^2 + 46x + 35.","C":"(x + 1)^2 açılımında birinci ile ikincinin çarpımının iki katını unutup x^2 + 1 kabul eden öğrencilerin bulduğu sonuçtur.","D":"Toplam alandaki 16x^2 teriminden kamelyaların 4x^2 alanını çıkarmayı unutan öğrencilerin işaretlediği seçenektir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -981,7 +981,7 @@ Buradan basketbol branşındaki 14 yaşındaki sporcu sayısı B14 = 16 + 8 = 24
 5. Adım: Voleybol branşında toplam 20 sporcu olduğundan, bu gruptan rastgele seçilen birinin 14 yaşında olma olasılığı = 12 / 20 = 3/5''tir. Doğru cevap C şıkkıdır.',
           '{"A":"14 yaşındaki voleybolcu sayısını (12) tüm kulüp mevcuduna (60) oranlayan öğrencilerin düştüğü çeldiricidir: 12 / 60 = 1/5.","B":"14 yaş yerine 13 yaşındaki voleybolcuların olasılığını hesaplayan öğrencilerin yanılgısıdır: 8 / 20 = 2/5.","D":"Basketbol branşındaki 13 yaşındakileri voleybola aktarıp hesaplayan öğrencilerin sonucudur: 16 / 20 = 4/5."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -1016,7 +1016,7 @@ A^2 - B^2 = (A - B) · (A + B) kuralını uygulayalım:
 Doğru cevap A şıkkıdır.',
           '{"B":"-(x - 2)^2 açılımında eksi işaretini -4x terimine dağıtmayıp +24x - 4x = 20x olarak hesaplayan öğrencilerin düştüğü en yaygın işaret çeldiricisidir.","C":"Sabit terimler farkında 16 - 4 yerine 16 - (-4) = 20 yazarak hata yapan öğrencilerin işaretlediği seçenektir.","D":"Alanları çıkarmak yerine 9x^2 ile x^2''yi toplayıp 10x^2 bulan dikkatsiz öğrencilerin seçeneğidir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -1052,7 +1052,7 @@ Dış Alan = (4x + 6)^2 = 16x^2 + 48x + 36 cm².
 Doğru cevap A şıkkıdır.',
           '{"B":"(2x + 2)^2 açılımında birinci ile ikincinin çarpımının iki katını almayı unutup 2 · 2x = 4x yazan öğrencilerin düştüğü çeldiricidir.","C":"İç kenarı yanlışlıkla (2x + 4) olarak hesaplayıp karesini alan öğrencilerin bulduğu sonuçtur.","D":"Doğrudan bir çıtanın uzun kenarının karesini (3x + 4)^2 hesaplayan dikkatsiz öğrencilerin seçeneğidir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -1098,7 +1098,7 @@ Pay ve paydayı 15 ile sadeleştirelim:
 Doğru cevap B şıkkıdır.',
           '{"A":"Son durumda Roman seçilme olasılığını hesaplayan öğrencilerin sonucudur: 30 / 120 = 1/4.","C":"Yeni eklenen 30 kitabı sadece Bilim Kurgu''ya ekleyip paydada toplamı değiştirmeyi unutanların sonucudur: 45 / 90 = 1/2.","D":"Roman veya Bilim Kurgu kitaplarının toplam olasılığını hesaplayan öğrencilerin düştüğü çeldiricidir: (45 + 30) / 120 = 75 / 120 = 5/8."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -1154,7 +1154,7 @@ Olasılık = İstenen Durum Sayısı / Tüm Olası Durumlar
 Doğru cevap C şıkkıdır.',
           '{"A":"Yalnızca √2 köküne sahip eşleşmeleri (3√2 ile √2 ve 2√2) hesaba katıp diğerlerini unutan öğrencilerin sonucudur: 2 / 16 = 1/8.","B":"√8 sayısını kök dışına çıkarırken hata yapıp veya tek bir √2 eşleşmesi sayıp toplam 3 durum bulanların seçeneğidir: 3/16.","D":"2√6 ile 2√3''ün çarpımını (2√6 · 2√3 = 4√18 = 12√2) yanlışlıkla doğal sayı zannedip 5 durum bulan öğrencilerin düştüğü çeldiricidir: 5/16."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.977Z"}'::jsonb,
           true,
           true
         ),
@@ -1203,7 +1203,7 @@ Bir kültür merkezinin giriş kapısının zeminden yüksekliği 150 cm''dir. B
 • Yatay uzunluklar farkı = Yatay2 - Yatay1 = 18 - 10 = 8 metredir. Doğru cevap C şıkkıdır.',
           '{"A":"Dikey yükseklikleri yanlışlıkla eşit (75 cm) kabul eden öğrencilerin bulduğu sonuçtur.","B":"2. Rampanın eğimini de %6 kabul edip dikey yükseklik farkını (30 cm) eğime bölenlerin sonucudur: (90 - 60) / 0,06 = 500 cm (veya 6 m hatası).","D":"2. Rampanın dikey yüksekliğini sahanlığı çıkarmadan doğrudan 150 cm alan öğrencilerin düştüğü güçlü çeldiricidir: 150 x 20 = 3000 cm (30 m) ve 30 - 18 = 12 metre."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.980Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"APPLY","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":5,"starLabel":"★★★★★","category":"5 Yıldız • Şampiyon / Üst Düzey Seçici","placement":"Deneme Sınavı Seçici Soruları (%1''lik Dilim Ayırt Edici)","rationale":"Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.980Z"}'::jsonb,
           true,
           true
         ),
@@ -1237,7 +1237,7 @@ Kooperatif, hasat ettiği zeytinlerin bir kısmını zeytinyağı üretiminde ku
 Toplam Sofralık Miktar = 18 + 9 + 6 = 33 tondur. Doğru cevap B şıkkıdır.',
           '{"A":"Yalnızca Gemlik ve Domat zeytinlerinin sofralık miktarını toplayıp Ayvalık''ı unutanların sonucudur: 18 + 9 = 27 ton.","C":"Tüm ürünlerin yarısının sofralık ayrıldığını varsayan dikkatsiz öğrenci tahminidir: 72 / 2 = 36 ton.","D":"Soru kökündeki ''kullanmadığı'' ifadesini gözden kaçırıp zeytinyağı üretiminde KULLANILAN toplam miktarı hesaplayan öğrencilerin düştüğü en güçlü tuzaktır: (12 + 9 + 18 = 39 ton)."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.980Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.980Z"}'::jsonb,
           true,
           true
         ),
@@ -1448,7 +1448,7 @@ Deney sonucunda 1. düzenekteki termometrenin 2. düzenekten 8 °C daha yüksek 
           '2. düzenekte ışık eğik açıyla geldiği için enerji daha geniş bir yüzeye dağılmıştır. Enerji dağıldığı için birim alana aktarılan ısı enerjisi azalmış ve sıcaklık artışı daha düşük kalmıştır.',
           '{"A":"Bağımsız değişken ışığın gelme açısıdır.","B":"Açı küçüldükçe birim yüzeye düşen enerji azalır.","D":"Güneş''e uzaklık mevsimlerde etkili değildir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1468,7 +1468,7 @@ Ayrıca aynı 21 Haziran günü öğle saat 12.00''de Dünya üzerindeki X ve Y 
           '21 Haziran''da Güneş ışınları Yengeç Dönencesi''ne dik düşer ve öğle vakti gölge sıfırdır; bu nedenle X şehri Yengeç Dönencesi üzerindedir. Aynı tarihte Güney Yarım Küre kış mevsimini yaşar ve Güneş ışınları eğik açıyla geldiği için gölge boyu oldukça uzundur (1,8 m); bu da Y şehrinin Güney Yarım Küre''de olduğunu kesinleştirir (Doğru cevap A). 2. düzenekte aydınlanan alan genişlemesine rağmen birim yüzeye düşen enerji azalmıştır (B yanlış). X şehrinde ışınlar dik geldiğinden birim yüzeye düşen enerji Y''den fazladır (C yanlış). 21 Aralık''ta Güneş ışınları Oğlak Dönencesi''ne (Güney) dik gelir; bu tarihte Y şehrindeki gölge boyu X''ten daha kısa olur (D yanlış).',
           '{"B":"Aydınlanan alan genişledikçe toplam ışık enerjisi daha geniş alana dağıldığından birim yüzeye düşen enerji azalır.","C":"X şehrine ışınlar dik geldiği için birim yüzeye aktarılan enerji miktarı eğik açıyla gelen Y şehrinden çok daha fazladır.","D":"21 Aralık''ta Güneş ışınları Güney Yarım Küre''ye dik geleceği için Y şehrinde gölge boyu X şehrine göre daha kısa olur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1488,7 +1488,7 @@ Aralarında 50 km mesafe bulunan K ve L kentlerinde aynı gün yapılan hava gö
           'K kenti 14 °C olup soğuktur; hava yoğunluğu fazladır, alçalıcı hava hareketleri görülür ve Yüksek Basınç (YB) alanıdır. L kenti ise 28 °C olup sıcaktır; hava molekülleri yükselici hareket yapar, bulut ve yağış oluşturur ve Alçak Basınç (AB) alanıdır. Rüzgâr daima yatay yönde Yüksek Basınçtan Alçak Basınca doğru estiği için rüzgârın yönü K kentinden L kentine doğrudur (Doğru cevap B). A şıkkında basınç alanları ters verilmiştir. C şıkkında sıcak havada tanecikler genleştiği için L kentindeki hava yoğunluğu daha azdır. D şıkkında açık havalı K kentinde yağış ihtimali çok düşüktür.',
           '{"A":"Soğuk olan K kenti Yüksek Basınç alanı, sıcak olan L kenti ise Alçak Basınç alanıdır; şıkta kavramlar ters eşleştirilmiştir.","C":"Sıcak olan L kentinde hava genleşerek yükseldiği için hava yoğunluğu K kentine göre daha azdır.","D":"Alçalıcı hava hareketinin görüldüğü Yüksek Basınç alanlarında (K kenti) hava açık olup yağış ihtimali düşüktür."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1514,7 +1514,7 @@ Aşağıdaki verilerde eşlenme sırasında sitoplazmada serbest bulunan deoksir
 Her nükleotidde 1 şeker ve 1 fosfat olduğundan 800 şeker kullanılmışsa 800 fosfat kullanılmıştır (A doğru). Guanin (200) kullanıldıysa karşısına 200 Sitozin kullanılır (B doğru). Eşlenme yarı korunumlu (semikonservatif) gerçekleşir; yeni DNA''ların bir ipliği eski, bir ipliği yenidir (D doğru).',
           '{"A":"Her nükleotidin yapısında bir deoksiriboz şekeri ve bir fosfat grubu bulunduğundan kullanılan fosfat sayısı şeker sayısına (800) eşittir, ifade doğrudur.","B":"DNA çift sarmalında Guanin karşısına Sitozin eşleştiği için kullanılan Guanin sayısı (200) kadar Sitozin bazı (200) harcanır, ifade doğrudur.","D":"DNA kendini yarı korunumlu eşler; oluşan her bir yeni DNA molekülünün bir ipliği orijinal ana DNA''ya aitken diğeri yeni oluşturulan ipliktir, ifade doğrudur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1533,7 +1533,7 @@ Araştırmacı daha sonra F1 kuşağında oluşan beyaz çiçekli bezelyelerden 
           'Ata bezelyelerin her ikisi de mor çiçekli olmasına rağmen yavrularında beyaz çiçek (mm) görülmesi, her iki atanın da heterozigot (Mm) olduğunu ispatlar (A doğru). Mm x Mm çaprazlamasında genotip dağılımı 1 MM : 2 Mm : 1 mm şeklindedir. Dolayısıyla oluşan mor çiçekli bezelyelerin 1/3''ü homozigot (MM), 2/3''ü ise heterozigottur (Mm); tamamının homozigot olması imkansızdır (B ulaşılamaz ve yanlıştır, doğru cevap B). F1''deki beyaz çiçekli (mm) ile ata bezelyelerden biri (Mm) çaprazlandığında (Mm x mm) yavruların %50''si Mm (mor), %50''si mm (beyaz) olur (C doğru). Çekinik aleller ancak homozigot (mm) durumda fenotipte etkisini gösterir (D doğru).',
           '{"A":"İki mor bezelyeden beyaz yavru çıkması ata bireylerin heterozigot (Mm) olduğunu kesin olarak kanıtlar.","C":"Mm x mm çaprazlamasından %50 Mm (mor) ve %50 mm (beyaz) yavru elde edilir, ifade doğrudur.","D":"Çekinik genler baskın gen bulunmadığında (yani homozigot durumda) fenotipte ortaya çıkar, temel kalıtım kuralıdır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1584,7 +1584,7 @@ Araştırmacı daha sonra F1 kuşağında oluşan beyaz çiçekli bezelyelerden 
           '1. aşamada sabit tutulan değişken sıvı yoğunluğu (saf su), bağımsız değişken derinlik (h''den 2h''ye), bağımlı değişken ise sıvı basıncıdır (h1''den 2h1''e çıkmıştır). Derinlik 2 katına çıktığında seviye farkının da 2 katına çıkması (h2 = 2h1), sıvı basıncının derinlikle doğru orantılı olduğunu kesin olarak kanıtlar (Doğru cevap A). 2. aşamada gliserinin yoğunluğu 2d olduğu için derinlik 2 katına çıkarılırsa basınç 4 katına çıkar (B yanlış). 1. aşamada bağımsız değişken araştırmacının değiştirdiği derinliktir, seviye farkı bağımlı değişkendir (C yanlış). U borusundaki sıvı seviye farkı huninin ucundaki basınca bağlı olup U borusunun kesit alanına veya şekline bağlı değildir (D yanlış).',
           '{"B":"Gliserinde derinlik 2 katına çıkarılırsa basınç ve seviye farkı 2 kat daha artarak 4h1 olur, h1 değerine düşmez.","C":"Bağımsız değişken araştırmacının değiştirdiği (derinlik), bağımlı değişken ise bundan etkilenen sonuçtur (seviye farkı); kavramlar ters verilmiştir.","D":"Sıvı basıncı ve buna bağlı seviye farkı U borusunun kesit alanına veya şekline bağlı değildir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1605,7 +1605,7 @@ Ayrıca sanayi bölgesinden toplanan yağmur suyu örneğinin bir kısmı mermer
           'Sanayi bölgesindeki göl suyu pH''si bir ayda 7,4''ten 6,1''e gerilemiştir. pH''nin 7''nin altına inmesi ortamın asitleştiğini ve göl ekosisteminin olumsuz etkilendiğini açıkça ortaya koyar (Doğru cevap B). A şıkkında pH 4,2 olan sanayi yağmuru çok daha kuvvetli asidiktir. C şıkkında asitler cam kaba etki etmemiştir. D şıkkında kükürt ve azot oksitler suyu bazikleştirmeyip asitlendirir.',
           '{"A":"pH değeri küçüldükçe asitlik kuvveti artar; pH 4,2 olan sanayi suyu pH 6,5 olan sudan çok daha kuvvetli asidiktir.","C":"Asitler cam ve plastik kaplara etki etmezken mermeri aşındırır; aşındırıcı etki malzemeye göre farklılaşır.","D":"Fosil yakıt gazları göl suyunu bazikleştirmez, suyun pH değerini düşürerek asitlendirir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1628,7 +1628,7 @@ Ağırlıkları ve boyutları özdeş, homojen yapılı 3 adet dikdörtgenler pr
 Sonuç olarak batma miktarları arasındaki ilişki h2 > h1 = h3 şeklindedir (Doğru cevap A).',
           '{"B":"Ağırlığı azalan 3. tuğlanın taban alanı da aynı oranda (yarıya) indiği için birim yüzeye düşen kuvvet değişmez; h1 > h3 olamaz, h1 = h3''tür.","C":"2. durumda temas yüzeyi sabitken ağırlık iki katına çıktığından basınç artar; tüm durumların eşit olması mümkün değildir.","D":"Ağırlık arttıkça basınç artacağından h2''nin en küçük olması fizik yasalarına aykırıdır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1649,7 +1649,7 @@ Gözlem: Soğuk su dökülür dökülmez metal tenekenin içe doğru şiddetle e
           'Teneke ısıtıldığında içerisindeki havanın yerini su buharı alır. Kapak kapatılıp üzerine soğuk su döküldüğünde su buharı hızla yoğuşarak sıvı suya dönüşür. Kapalı kapta gaz miktarının aniden azalması sonucu tenekenin iç basıncı çok düşük bir değere geriler. Dışarıdaki açık hava basıncı değişmediği halde tenekenin iç basıncından çok daha büyük konuma gelir (P_açıkhava > P_iç). Dış basıncın dengelenemeyen bu kuvveti tenekeyi içeri doğru çökerterek ezer (Doğru cevap B). A şıkkında açık hava basıncı ani bir artış göstermez, sabit kalır. C şıkkında bu deney açık hava basıncının yükseklikle değişimini değil varlığını gösterir. D şıkkında metallerdeki kalıcı deformasyon kendiliğinden düzelmez ve hava girince iç basınç açık hava basıncına eşitlenir, sıfırlanmaz.',
           '{"A":"Soğuk su dökülmesi atmosferin açık hava basıncını artırmaz; açık hava basıncı ortam koşullarında sabittir, azalan tenekenin iç basıncıdır.","C":"Deney tek bir yükseklikte gerçekleştirilmiştir, yükseklikle açık hava basıncının değişimini test eden bir düzenek değildir.","D":"Kapak açıldığında teneke içine hava dolarak iç basınç açık hava basıncına eşitlenir, basınç sıfırlanmaz ve büzülen metal kendiliğinden düzelmez."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1669,7 +1669,7 @@ Bir öğrenci grubu kapalı ve sızdırmaz iki ayrı kapta aşağıdaki deneyler
 1. deneyde buzun erimesi ve buharlaşması saf bir hal değişimidir, fizikseldir (A doğru). 2. deneyde gaz çıkışı ve kabın tabanının soğuması kimyasal tepkimenin kanıtıdır (B doğru). Her iki deneyde de başlangıç kütlesi (100 g) ile son kütle (100 g) eşit kaldığından kapalı sistemde kütlenin korunduğu ispatlanmıştır (C doğru).',
           '{"A":"Hal değişimleri (erime, buharlaşma) fiziksel değişimdir ve molekül içi bağlar kopmaz, ifade doğrudur.","B":"Gaz çıkışı, çökelek oluşumu, ısı ve renk değişimi kimyasal tepkimelerin tipik göstergeleridir, ifade doğrudur.","C":"Kapalı kaplarda gerçekleşen tüm fiziksel ve kimyasal süreçlerde toplam kütle daima korunur, terazi ölçümleri de bunu doğrular."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1691,7 +1691,7 @@ Periyodik sistemin ilk 18 elementi arasından seçilen K, L, M ve N elementleri 
 K elementi Hidrojen olup 1A grubundaki tek ametaldir (A doğru). L elementi Helyum''dur; değerlik elektron sayısı 2 olmasına rağmen 8A soygazıdır (B doğru). M metal, N ise ametaldir (D doğru).',
           '{"A":"1A grubunun ilk elementi Hidrojen bir ametaldir; grubundaki diğer elementler metal olduğu için bu durum periyodik sistemin en önemli istisnasıdır.","B":"Helyum (atom no 2) tek katmanında 2 elektron bulundurur (dublet kuralı), soygazdır ve tepkimeye girmez.","D":"M elementi parlak ve tel-levha haline gelen bir metaldir; N elementi ise mat, kırılgan bir ametaldir, sınıflandırma doğrudur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1730,7 +1730,7 @@ Tüm düzenekler yatay dengede olduğuna göre uygulanan kuvvetler ve sağladık
 3. Düzenek: Kuvvet Kolu = 1, Yük Kolu = 3 -> Yoldan kazanç, kuvvetten kayıp (F3 = 3P, doğru).',
           '{"A":"1. düzenekte F1 x 3 = P x 1 olduğundan F1 = P/3''tür ve 3 kat kuvvet kazancı vardır, ifade doğrudur.","B":"2. düzenekte F2 x 4 = P x 2 olduğundan F2 = P/2''dir; kuvvet yükten küçük olup kuvvet kazancı vardır, ifade doğrudur.","C":"3. düzenekte kuvvet ortadadır; kuvvet kolu yük kolundan küçük olduğundan yoldan kazanç, kuvvetten kayıp vardır, ifade doğrudur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1751,7 +1751,7 @@ Belirli bir süre beklendikten sonra fanuslardaki gaz değişimleri ile kireç s
 1. fanusta aydınlıkta fotosentez hızı solunumu aştığı için net CO2 birikmez, kireç suyu bulanmaz (A doğru). 3. fanusta karanlıkta fotosentez durur, solunumla açığa çıkan CO2 kireç suyunu bulandırır (B doğru). 2. fanusta gaz döngüsü yaşamı uzatır (C doğru).',
           '{"A":"Işık altında fotosentez solunumu aştığında ortamdaki CO2 tüketilir, kireç suyu berrak kalır; bu çıkarım bilimsel olarak doğrudur.","B":"Karanlık ortamda fotosentez gerçekleşmez; solunum sonucu açığa çıkan karbondioksit kireç suyunu bulandırır, doğru bir çıkarımdır.","C":"Bitki ve fare arasındaki O2-CO2 dengesi canlıların fanustaki yaşam süresini uzatır, doğru bir çıkarımdır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -1979,7 +1979,7 @@ Fitoplankton -> Zooplankton -> Küçük Balık -> Büyük Balık -> Balık Karta
 - D şıkkındaki ''aydınların Batı bilim ve tekniğini bütünüyle reddettiği'' yargısı ise tamamen asılsızdır. Osmanlı aydınları (örneğin Tevfik Fikret, Abdullah Cevdet gibi Batıcılar ya da Ziya Gökalp gibi Türkçüler) Batı''nın tekniğini alarak modernleşmeyi savunmuşlardır; dolayısıyla bu çıkarım yapılamaz.',
           '{"A":"Güçlü Çeldirici (Doğru Analiz Tuzağı): Metnin giriş cümlesinde doğrudan ifade edilen ''dağılmayı önlemek için farklı projeler üretildiği'' tespitidir; doğru bir çıkarım olduğu için olumsuz soru kökünde elenmelidir.","B":"Orta Çeldirici (Nedensellik İlişkisi): Savaşlar ve isyanlar ile fikir akımlarının çöküşü arasındaki nedensellik bağını doğru kuran bir seçenektir.","C":"Zayıf Çeldirici: Türkçülüğün Kurtuluş Savaşı''na zemin hazırladığı bilgisi metnin son cümlesinde açıkça belirtilmiştir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2006,7 +2006,7 @@ Bu eşleştirmeyi sağlayan yegâne seçenek A''dır.',
 - Bu nedenle I ve II numaralı hadiseler sırasıyla Teşkilatçılık ve İleri Görüşlülük/Liderlik ile örtüşmektedir (Doğru cevap A).',
           '{"B":"Güçlü Çeldirici (Kavram Yanılgısı Tuzağı): Mustafa Kemal''in farklı sahalardaki başarılarını ''çok yönlülük'' olarak düşünen öğrenci bu şıkka kayabilir; ancak ilk bölümdeki ''gelenekçilik'' Mustafa Kemal''in inkılapçı kimliğiyle bağdaşmaz.","C":"Orta Çeldirici: Mustafa Kemal''in askerlerine verdiği ''ölmeyi emrediyorum'' sözü kararlılık içerse de ''uzlaşmacılık'' savaştaki uzlaşmaz tavırla taban tabana zıttır.","D":"Zayıf Çeldirici: ''Dogmatiklik'' (bağnazlık, katılık) Mustafa Kemal''in akılcı ve bilimsel düşünce sistemiyle asla bağdaşmayan çelişkili bir ifadedir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2033,7 +2033,7 @@ Antlaşmanın hemen ardından İtilaf donanması İstanbul''a demirlemiş; İngi
 - C şıkkında iddia edilen durum ise tamamen yanlıştır; İstanbul Hükûmeti işgallere boyun eğip teslimiyetçi bir tavır takınırken, Türk milleti tam aksine kendi öz gücüyle silahlı direniş başlatmıştır. Yani aralarında ortak bir mücadele stratejisi değil, derin bir yaklaşım farkı ve çatışma mevcuttur.',
           '{"A":"Güçlü Çeldirici (Hukuki Yorum Tuzağı): 7. ve 24. maddelerin amacını kavramakta zorlanan öğrenci ''hukuki kılıf'' kavramına takılabilir; ancak bu maddeler tam olarak işgalleri meşrulaştırmak için konulmuştur.","B":"Orta Çeldirici (Askerî-Lojistik Analiz): Ordunun terhisi ve telgraf kontrolünün mantığını açıklayan doğru bir tespit olduğu için aranan olumsuz cevap olamaz.","D":"Zayıf Çeldirici: Kuvâ-yı Millîye ve cemiyetlerin milletin bağımsızlık refleksini temsil ettiği temel bir MEB kazanımıdır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":5,"starLabel":"★★★★★","category":"5 Yıldız • Şampiyon / Üst Düzey Seçici","placement":"Deneme Sınavı Seçici Soruları (%1''lik Dilim Ayırt Edici)","rationale":"Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2063,7 +2063,7 @@ Temsil Heyeti''nin Ali Fuat Paşa''yı komutan olarak tayin etmesi bir ''atama''
 - Gazete çıkarılması basın-yayın yoluyla halkı aydınlatma, iç ve dış kamuoyunu örgütleme hamlesidir (D şıkkı doğru).',
           '{"A":"Güçlü Çeldirici (Merkeziyetçilik Analizi): Cemiyetlerin birleştirilmesinin Millî Mücadele''yi tek merkezden yönetmek anlamına geldiğini bilen öğrenci bu şıkkı hızla eler.","C":"Orta Çeldirici: Manda ve himaye ile tam bağımsızlık arasındaki doğrudan zıtlığı bildiren doğru bir eşleştirmedir.","D":"Zayıf Çeldirici: İrade-i Millîye gazetesinin basın ve kamuoyu oluşturma fonksiyonu açık bir bilgidir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2126,7 +2126,7 @@ Dolayısıyla D şıkkındaki ''Gümrü Antlaşması ile doğu sınırları kesi
 - D şıkkı ise hatalıdır çünkü Türkiye''nin doğu sınırına son ve kesin şeklini veren antlaşma Sakarya Meydan Muharebesi''nden sonra imzalanan Kars Antlaşması''dır (13 Ekim 1921). Gümrü sadece ilk adımdır.',
           '{"A":"Güçlü Çeldirici (Hukuki Statü Analizi): TBMM''nin ilk diplomatik başarısı olduğunu bilen dikkatli öğrenci bu şıkkı eler; ancak dikkatsiz öğrenci ''hukuken tanınma'' kavramını erken bularak bu seçeneğe yönelebilir.","B":"Orta Çeldirici: Sevr''in geçersizliği maddesi metinde doğrudan yazılı olduğu için elenmelidir.","C":"Zayıf Çeldirici: Doğu birliklerinin Batı Cephesi''ne kaydırılmasının lojistik faydası metnin son cümlesinde açıkça belirtilmiştir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2154,7 +2154,7 @@ Türk milleti, elinde avucunda ne varsa canı gönülden Tekâlif-i Millîye kom
 - D şıkkındaki ''yabancı mali yardımlara ve şartlı hibelere endekslendiği'' iddiası ise tamamen gerçek dışıdır. Millî Mücadele hiçbir dış vesayete boyun eğmeden, milletin kendi fedakârlığı ile başarılmıştır.',
           '{"A":"Güçlü Çeldirici: Topyekûn savaş kavramını tam oturtamayan öğrencinin doğru olduğunu düşünüp elemesi gereken ana kazanımdır.","B":"Orta Çeldirici: Başkomutanlık Kanunu''nun içeriğini hatırlamayan öğrenci ''Mustafa Kemal kanun niteliğinde emir yayımlayabilir mi?'' tereddüdüne düşebilir; fakat Başkomutanlık yasama erkinin devrini kapsar.","C":"Zayıf Çeldirici: Tekâlif-i Millîye''nin lojistik amacını doğrudan özetleyen tartışmasız doğru bir cümledir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2178,7 +2178,7 @@ Türk milleti, elinde avucunda ne varsa canı gönülden Tekâlif-i Millîye kom
 - B şıkkında iddia edilen ''yerli mirası terk edip yabancı modelleri harfiyen uygulama'' tezi ise metne 180 derece zıttır. Mustafa Kemal yabancı tesirlerden uzak, öz kültürümüzle yoğrulmuş millî bir eğitimi şart koşmuştur.',
           '{"A":"Güçlü Çeldirici (Öncelik Tespiti): Nutkun ilk paragrafındaki ''en evvel ve her şeyden evvel'' ifadesini metinden okuyan öğrenci bunun doğruluğunu fark eder.","C":"Orta Çeldirici: Geçmiş eğitim sistemine yönelik eleştirinin doğruluğunu metindeki ''gerileme tarihinde en mühim etken'' ifadesi ispatlar.","D":"Zayıf Çeldirici: Maarif felsefesinin yerlilik ve millîlik ilkesidir; metinle tam uyumludur."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2204,7 +2204,7 @@ Bu büyük askerî zaferin iç ve dış politikadaki yansımaları şunlardır:
 - C şıkkı ise yanlıştır. Sakarya''dan sonra İtilaf Devletleri Misakımillî''yi derhâl onaylamamış; Sevr''in tadil edilmiş teklifleriyle zaman kazanmaya çalışmışlardır. Türkiye''nin tam bağımsızlığını ve Misakımillî''yi kabul etmeleri ancak Büyük Taarruz zaferi ve Lozan Barış Antlaşması ile mümkün olmuştur.',
           '{"A":"Güçlü Çeldirici (İç-Dış Politika Ayrımı): İç ve dış politika korelasyonunu kuran doğru bir analizdir; aranan olumsuz cevap olamaz.","B":"Orta Çeldirici (Diplomatik Ayrışma): İtilaf bloğunun parçalanması Fransa ve İtalya''nın çekilmesiyle doğrulanır.","D":"Zayıf Çeldirici: Askerî stratejinin doğal sonucudur; doğu ve güney rahatlayınca batıya yüklenilmiştir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2262,7 +2262,7 @@ Bu büyük askerî zaferin iç ve dış politikadaki yansımaları şunlardır:
 - D şıkkında iddia edilen ''Batılı düşünürlerin yönetim modellerini monarşik yapıyı koşulsuz korumak için benimsediği'' yargısı ise tamamen yanlıştır. Rousseau ve Montesquieu monarşiyi değil; millî egemenlik, kuvvetler ayrılığı ve cumhuriyet kavramlarını savunur. Dolayısıyla bu çıkarım yapılamaz.',
           '{"A":"Kısmi Doğru Tuzağı: Metinde geçen ''farklı inançtan insanların bir arada yaşama kültürü ve yabancı basını izlemesi'' doğrudan bu yargıyı doğruladığı için doğru bir çıkarımdır; aranan ''yapılamaz'' cevabı olamaz.","B":"Güçlü Çeldirici (Metinle Birebir Örtüşme): 1897 Türk-Yunan Savaşı''nın askerî ve diplomatik çelişkisine odaklanan öğrenci bu seçeneğin doğruluğunu görerek eler; ancak olumsuz soru kökünü gözden kaçıran dikkatsiz öğrencinin düşebileceği ilk tuzaktır.","C":"Orta Çeldirici: Sofya''daki parlamento izlenimleri ile meclis ve demokrasi tecrübesi arasında nedensellik ilişkisi kurulduğu için metne tam uyumlu ve geçerli bir tarihsel tespittir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2288,7 +2288,7 @@ Bu büyük askerî zaferin iç ve dış politikadaki yansımaları şunlardır:
 - C şıkkında ise manda ve himayenin reddedilmesinin ''güçlü bir devletin vesayetine girilebileceği'' şeklinde izah edilmesi bariz bir kavram yanılgısıdır. Manda ve himaye ''Ya istiklal ya ölüm!'' parolasıyla tamamen reddedilmiştir. Dolayısıyla C şıkkı yanlıştır.',
           '{"A":"Güçlü Çeldirici (Kavram Yanılgısı Tuzağı): Birçok öğrenci Kurtuluş Savaşı''nı yalnızca dış düşmana karşı bir savaş olarak yorumlar ve saltanata karşı rejim değişikliği boyutunu gözden kaçırır. Ancak ''millî irade'' kavramı açıkça ulusal egemenlik devrimidir; bu şık doğru olduğu için elenmelidir.","B":"Orta Çeldirici (Gerekçe-Hedef İlişkisi): Vatanın tehlikede oluşu ile vatanın bütünlüğü maddelerini başarıyla eşleştiren doğru bir analizdir.","D":"Zayıf Çeldirici: Amasya Genelgesi''nin amaç-gerekçe-yöntem ayrımı MEB öğretim programının omurgasıdır; öğrenci bu eşleşmenin doğruluğunu bilerek şıkkı eler."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":5,"starLabel":"★★★★★","category":"5 Yıldız • Şampiyon / Üst Düzey Seçici","placement":"Deneme Sınavı Seçici Soruları (%1''lik Dilim Ayırt Edici)","rationale":"Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2316,7 +2316,7 @@ Diğer şıklar incelendiğinde:
 - D şıkkı tarihsel kronolojiyle çelişir; Kütahya-Eskişehir Muharebeleri''nden sonra Sakarya Meydan Muharebesi ve Büyük Taarruz ile silahlı direniş zafere ulaştırılmıştır.',
           '{"B":"Güçlü Çeldirici (Kavram Yanılgısı Tuzağı): Dönemin bazı çevrelerinde görülen Batı mandası arayışlarını maarif sahasına uyarlayan şıktır; metinde ''millî kültür politikası'' hedeflendiği vurgulanarak bu yanılgı bertaraf edilmiştir.","C":"Orta Çeldirici (Aşırı Genelleme Tuzağı): Eğitime verilen olağanüstü önemi ''askerî savunmadan tamamen vazgeçildi'' şeklinde abartan ve metin gerçekliğini bozan yanıltıcı seçenektir.","D":"Zayıf Çeldirici (Tarihsel Akışa Zıt Yorum): Kongrenin savaş ortamında toplandığı belirtilmesine karşılık silahlı direnişin terk edildiğini savunan kronolojik açıdan temelsiz ifadedir."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":5,"starLabel":"★★★★★","category":"5 Yıldız • Şampiyon / Üst Düzey Seçici","placement":"Deneme Sınavı Seçici Soruları (%1''lik Dilim Ayırt Edici)","rationale":"Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),
@@ -2342,7 +2342,7 @@ Konferans görüşmelerinde İtilaf Devletleri; Osmanlı Devleti''nin asırlard�
 - D şıkkındaki ''dış ticaret ve ekonomik münasebetlerin tamamen sonlandırıldığı'' iddiası ise tamamen asılsızdır. Türkiye hiçbir zaman dış ticaretini kapatmamış, bilakis kapitülasyonsuz, hür ve millî bir gümrük sistemiyle uluslararası ticaretine devam etmiştir. Dolayısıyla bu yargıya ulaşılamaz.',
           '{"A":"Güçlü Çeldirici (Kavramsal Derinlik Tuzağı): Düyûn-ı Umûmiye''nin feshini yalnızca borç meselesi sanan öğrenciler ''egemen eşitlik'' ilkesini soyut bularak bu şıkka yönelebilir; oysa bir devletin maliyesinin yabancı komisyondan kurtulması egemen eşitliğin doğrudan gereğidir.","B":"Orta Çeldirici: İsmet Paşa''nın konuşmasındaki ''iktisadi istiklal - siyasi istiklal'' korelasyonunun doğrudan karşılığıdır; metinden açıkça çıkarılabildiği için elenir.","C":"Zayıf Çeldirici: Kapitülasyonların kalkmasının adli ve mali sahada sağladığı somut egemenlik haklarıdır; tarihsel gerçekliği tartışmasızdır."}'::jsonb,
           'LGS_YENI_NESIL',
-          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
+          '{"verdict":"APPROVED","passed":true,"score":0.99,"decisions":{"is_meb_aligned":true,"single_deterministic_answer":true,"bloom_taxonomy_level":"ANALYZE","distractor_strength_score":0.95,"tdk_compliance":true,"has_pedagogical_hints":true,"star_rating":{"stars":4,"starLabel":"★★★★☆","category":"4 Yıldız • LGS Yeni Nesil (İleri Düzey)","placement":"LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)","rationale":"Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."}},"reasons":[],"timestamp":"2026-10-01T15:58:53.981Z"}'::jsonb,
           true,
           true
         ),

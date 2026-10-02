@@ -13,6 +13,7 @@
 | **Faz 3** | **PostgreSQL & Backend API** | Express REST API, Dinamik Veritabanı Sorguları, Güvenli Optik Sınav Kaydı | **TAMAMLANDI ✅** |
 | **Faz 4** | **Canlı LLM + JEV Soru Fabrikası** | 4 Kademeli Zorluk Seviyesi, Sıfır-Şüphe Denetimi, Self-Correction Döngüsü | **TAMAMLANDI ✅** |
 | **Faz 5** | **Öğretmen & Yönetici Paneli & UI/UX** | LMS Yönetim Paneli, Dark Tema (shadcn), Kurumsal Giriş Portalı, PDF Baskı | **TAMAMLANDI ✅** |
+| **Faz 6** | **36 Haftalık Müfredat & Yıldız Derecelendirmesi** | 4000+ Soru Kapasitesi, JEV 1-5 Yıldız Skoru, Test Dağıtım Rehberi, 5-6-7. Sınıflar | **TAMAMLANDI ✅** |
 
 ---
 
@@ -75,3 +76,15 @@
   5. Soru Havuzunun 53'ten 108'e ve 16 Test Paketine Genişletilmesi (%100 JEV Onaylı).
   6. RAM üzerinden sıfır disk alanı tüketimiyle Google Drive (5 TB) Gzip Level-9 akışı (`scripts/drive_direct_streamer.mjs`).
   7. 17/17 Otomatik Test Paketi (`npm test`).
+
+---
+
+### ✅ Faz 6: 36 Haftalık Müfredat Fabrikası, JEV 1-5 Yıldız Skoru & 5-6-7. Sınıflar (Tamamlandı)
+- **Hedef:** 4 branşta yıllık 1000'er soru (4032 soru) kapasiteli 36 haftalık ölçekleme, JEV 1-5 Yıldız zorluk derecelendirmesi ve alt sınıflar hazırlığı.
+- **Teslim Edilenler:**
+  1. `engine/academic_calendar_36w.mjs`: 8. Sınıf 4 temel branşın 36 haftalık eksiksiz MEB kazanım haritası ve 2018-2024 LGS çıkmış soru ilham referansları.
+  2. `engine/academic_calendar_5_6_7.mjs`: 5, 6 ve 7. Sınıflar için 4 temel branşta (Türkçe, Matematik, Fen, Sosyal Bilgiler) 36 haftalık yıllık plan ve kazanım matrisleri.
+  3. `engine/curriculum_scale_factory.mjs`: 36 haftalık mikro-paketleme fabrikası (4 branş x 36 hafta x 28 soru = 4,032 soru kapasite planı).
+  4. **JEV 1-5 Yıldız Zorluk Derecelendirmesi:** `engine/jev_evaluator.mjs` içine `calculateStarRating(draft)` motoru entegre edildi. Test hazırlarken soru dağıtım konumu rehberi tanımlandı.
+  5. Soru havuzundaki 108 sorunun tamamı 1-5 yıldız derecelendirmesiyle zenginleştirildi (`scripts/enrich_questions_with_stars.mjs`).
+  6. Arayüzde (`public/index.html` & `public/app.js`) soru başlığında ve JEV kriter panelinde altın sarısı yıldız rozetleri aktif edildi.
