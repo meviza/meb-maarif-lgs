@@ -5,6 +5,7 @@
 
 // Uygulama Durumu (State)
 const appState = {
+  currentGrade: 8, // 5, 6, 7, 8
   currentMode: 'practice', // 'practice' | 'exam'
   currentCourse: 'turkce',
   currentTestIndex: 0,
@@ -26,20 +27,21 @@ const appState = {
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initPortalAuth();
-  await initTestBank();
+  await initTestBank(8);
   setupEventListeners();
   renderApp();
 });
 
 // 1. Çoklu Test Bankasını Yükle
-async function initTestBank() {
+async function initTestBank(grade = 8) {
   try {
-    const res = await fetch('questions.json');
+    const filename = grade === 8 ? 'questions.json' : `questions_grade_${grade}.json`;
+    const res = await fetch(filename);
     if (res.ok) {
       appState.multiTestBank = await res.json();
-      console.log('[OK] questions.json çoklu test bankası başarıyla yüklendi.');
+      console.log(`[OK] ${filename} (${grade}. Sınıf) çoklu test bankası başarıyla yüklendi.`);
     } else {
-      throw new Error('questions.json okunamadı');
+      throw new Error(`${filename} okunamadı`);
     }
   } catch (err) {
     console.warn('questions.json yüklenemedi, varsayılan gömülü veri kullanılıyor.', err);
@@ -130,6 +132,15 @@ function setupEventListeners() {
 
   const btnSaveAi = document.getElementById('btnSaveToBank');
   if (btnSaveAi) btnSaveAi.addEventListener('click', saveAiQuestionToBank);
+
+  // Eğitim Kademesi Değiştirme Butonları (5, 6, 7, 8. Sınıf)
+  const gradeButtons = document.querySelectorAll('.grade-tab-btn');
+  gradeButtons.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const targetGrade = parseInt(btn.getAttribute('data-grade'), 10);
+      if (targetGrade) await switchGrade(targetGrade);
+    });
+  });
 
   // Ders Değiştirme Butonları
   const courseButtons = document.querySelectorAll('.course-btn');
@@ -391,6 +402,45 @@ function setMode(mode) {
   renderScoreReport();
 }
 
+// 4.9. Eğitim Kademesi Değiştirme (5, 6, 7 ve 8. Sınıf)
+async function switchGrade(targetGrade) {
+  const g = Number(targetGrade);
+  if (appState.currentGrade === g) return;
+  appState.currentGrade = g;
+  appState.currentTestIndex = 0;
+  appState.currentQuestionIndex = 0;
+
+  // 4. Ders adı güncellemesi (8. sınıfta İnkılap Tarihi, 5-7'de Sosyal Bilgiler)
+  const courseNameSosyal = document.getElementById('courseNameSosyal');
+  const courseMetaSosyal = document.getElementById('courseMetaSosyal');
+  if (g === 8) {
+    if (courseNameSosyal) courseNameSosyal.textContent = 'T.C. İnkılap Tarihi';
+    if (courseMetaSosyal) courseMetaSosyal.textContent = 'Sosyal Bilgiler & Maarif';
+  } else {
+    if (courseNameSosyal) courseNameSosyal.textContent = 'Sosyal Bilgiler';
+    if (courseMetaSosyal) courseMetaSosyal.textContent = 'Kültür, Miras & Toplumsal Yaşam';
+  }
+
+  // Buton aktiflik sınıfları
+  document.querySelectorAll('.grade-tab-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.getAttribute('data-grade'), 10) === g);
+  });
+
+  const activeGradePill = document.getElementById('activeGradePill');
+  if (activeGradePill) {
+    activeGradePill.textContent = g === 8 ? '8. Sınıf (LGS)' : `${g}. Sınıf`;
+  }
+
+  // Kullanıcı rozetini kademeye göre güncelle
+  const navUserBadge = document.getElementById('navUserBadge');
+  if (navUserBadge) {
+    navUserBadge.textContent = g === 8 ? `${appState.user.class || '8/A'} • LGS Adayı` : `${g}/A • Maarif Öğrencisi`;
+  }
+
+  await initTestBank(g);
+  renderApp();
+}
+
 // 5. Ders Değiştirme (Dersler Arası Geçişte Durum Yalıtımı)
 function selectCourse(courseKey) {
   appState.currentCourse = courseKey;
@@ -407,7 +457,7 @@ function selectCourse(courseKey) {
     turkce: 'TÜRKÇE',
     matematik: 'MATEMATİK',
     fen: 'FEN BİLİMLERİ',
-    sosyal: 'T.C. İNKILAP TARİHİ'
+    sosyal: appState.currentGrade === 8 ? 'T.C. İNKILAP TARİHİ' : 'SOSYAL BİLGİLER'
   };
   const opticalCourseEl = document.getElementById('opticalCourseName');
   if (opticalCourseEl) {

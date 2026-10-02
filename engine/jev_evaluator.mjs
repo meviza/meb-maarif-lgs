@@ -491,6 +491,42 @@ export class JevQualityAuditor {
       rationale
     };
   }
+
+  /**
+   * Sorunun hedeflenen sınıf seviyesine (5, 6, 7, 8) pedagojik uyumunu denetler
+   */
+  evaluateGradeSuitability(draft, targetGrade = 8) {
+    const g = Number(targetGrade) || 8;
+    const text = `${draft.stimulus || ''} ${draft.stem || ''} ${draft.detailedSolution || ''}`.toLowerCase();
+    const warnings = [];
+
+    // 5. Sınıf kısıtları: soyut 8. sınıf cebiri, üslü-köklü LGS denklemleri ve ileri genetik olmamalı
+    if (g === 5) {
+      if (text.includes('pisagor') || text.includes('karekök') || text.includes('ebob') || text.includes('mitoz') || text.includes('mayoz')) {
+        warnings.push('5. sınıf seviyesi için müfredat dışı ileri LGS kavramı tespit edildi.');
+      }
+    }
+
+    // 6. Sınıf kısıtları: 8. sınıf LGS karekök veya kalıtım çaprazlamaları olmamalı
+    if (g === 6) {
+      if (text.includes('pisagor') || text.includes('lgs yeni nesil') || text.includes('mutasyon') || text.includes('modifikasyon')) {
+        warnings.push('6. sınıf seviyesi için henüz işlenmemiş 8. sınıf genetik/geometri kavramı tespit edildi.');
+      }
+    }
+
+    // 7. Sınıf kısıtları: LGS maratonu öncesi temel olmalı, 8. sınıf inkılap cephe detayları olmamalı
+    if (g === 7) {
+      if (text.includes('sevr antlaşması') || text.includes('lozan barış') || text.includes('sakarya meydan')) {
+        warnings.push('7. sınıf seviyesinde 8. sınıf T.C. İnkılap Tarihi konuları yer alamaz.');
+      }
+    }
+
+    return {
+      grade: g,
+      suitable: warnings.length === 0,
+      warnings
+    };
+  }
 }
 
 // Test çalıştırması

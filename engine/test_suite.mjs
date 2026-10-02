@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 async function runTestSuite() {
   console.log('====================================================');
-  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (19 TEST)');
+  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (20 TEST)');
   console.log('====================================================\n');
 
   let passedTests = 0;
@@ -746,6 +746,66 @@ async function runTestSuite() {
     // 3. Vektörel SVG ve Görsel Tasarım Denetimi
     const visualQuestions = flatQuestions.filter(q => q.hasVisual && q.visualContent);
     assert.ok(visualQuestions.length >= 30, `En az 30 soruda görsel tasarım (SVG/Tablo) bulunmalı, bulunan: ${visualQuestions.length}`);
+  });
+
+  // TEST 20: 5, 6, 7 ve 8. Sınıflar Çok Kademeli Müfredat, Soru Havuzu, JEV Sınıf Seviye Denetimi ve Sınıf Seçici API Testi
+  await asyncTest('Test 20: 5, 6, 7 ve 8. Sınıflar Çok Kademeli Müfredat, Soru Havuzu, JEV Sınıf Seviye Denetimi ve Sınıf Seçici API Testi', async () => {
+    const { db } = await import('./db_adapter.mjs');
+    const { JevQualityAuditor } = await import('./jev_evaluator.mjs');
+    db.init();
+
+    // 1. Kademelerin Eksiksiz Varlığı (5, 6, 7, 8)
+    const grades = db.getGrades();
+    assert.strictEqual(grades.length, 4, '4 kademe (5, 6, 7, 8) bulunmalı');
+
+    const gradeMap = {};
+    grades.forEach(g => { gradeMap[g.grade] = g; });
+
+    assert.ok(gradeMap[5] && gradeMap[6] && gradeMap[7] && gradeMap[8], '5, 6, 7 ve 8. sınıflar mevcut olmalı');
+    assert.strictEqual(gradeMap[5].courseCount, 4, '5. sınıf 4 ders içermeli');
+    assert.strictEqual(gradeMap[6].courseCount, 4, '6. sınıf 4 ders içermeli');
+    assert.strictEqual(gradeMap[7].courseCount, 4, '7. sınıf 4 ders içermeli');
+    assert.strictEqual(gradeMap[8].courseCount, 4, '8. sınıf 4 ders içermeli');
+
+    // 2. Soru ve Test Sayıları Doğrulaması
+    assert.strictEqual(gradeMap[5].testCount, 8, '5. sınıf 8 test paketi içermeli');
+    assert.strictEqual(gradeMap[5].questionCount, 56, '5. sınıf 56 soru içermeli');
+
+    assert.strictEqual(gradeMap[6].testCount, 8, '6. sınıf 8 test paketi içermeli');
+    assert.strictEqual(gradeMap[6].questionCount, 56, '6. sınıf 56 soru içermeli');
+
+    assert.strictEqual(gradeMap[7].testCount, 8, '7. sınıf 8 test paketi içermeli');
+    assert.strictEqual(gradeMap[7].questionCount, 56, '7. sınıf 56 soru içermeli');
+
+    assert.strictEqual(gradeMap[8].testCount, 16, '8. sınıf 16 test paketi içermeli');
+    assert.strictEqual(gradeMap[8].questionCount, 108, '8. sınıf 108 soru içermeli');
+
+    const totalQuestionsAll = Object.values(gradeMap).reduce((sum, g) => sum + g.questionCount, 0);
+    assert.strictEqual(totalQuestionsAll, 276, '4 kademede genel toplam 276 soru doğrulanmalı');
+
+    // 3. JEV Sınıf Seviye Denetimi (Grade Suitability)
+    const auditor = new JevQualityAuditor();
+    const g5Test = db.getTestById('G5-MAT-T1');
+    assert.ok(g5Test, '5. sınıf matematik testi bulunmalı');
+    assert.strictEqual(g5Test.grade, 5, 'Test sınıfı 5 olmalı');
+
+    const sampleG5 = g5Test.questions[0];
+    const suitRes = auditor.evaluateGradeSuitability(sampleG5, 5);
+    assert.strictEqual(suitRes.suitable, true, '5. sınıf sorusu 5. sınıf seviyesine uygun olmalı');
+
+    // Kasıtlı kademe ihlali testi (5. sınıfa 8. sınıf Pisagor/Karekök verilmesi)
+    const invalidG5 = { stimulus: "Dik üçgende pisagor bağıntısı ve karekök hesabı yapılır." };
+    const invalidRes = auditor.evaluateGradeSuitability(invalidG5, 5);
+    assert.strictEqual(invalidRes.suitable, false, '5. sınıfta 8. sınıf Pisagor uyarısı verilmeli');
+
+    // 4. Oturum Puanlama ve Sınıf Yalıtımı Testi
+    const sessionRes = db.submitExamSession({
+      testId: 'G5-MAT-T1',
+      answers: { [sampleG5.id]: sampleG5.correctOption },
+      studentName: 'Ayşe Kaya (5. Sınıf)'
+    });
+    assert.strictEqual(sessionRes.grade, 5, 'Oturum sınıfı 5 olarak kaydedilmeli');
+    assert.strictEqual(sessionRes.score.correctCount, 1, '1 doğru hesaplanmalı');
   });
 
   console.log('\n====================================================');

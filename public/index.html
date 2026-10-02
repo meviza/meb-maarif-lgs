@@ -383,6 +383,20 @@
   <div class="main-layout" id="mainLayout">
     <!-- Sol Sütun: Dersler ve Soru Gezgini -->
     <aside class="sidebar">
+      <!-- Eğitim Kademesi Seçici (Grade Switcher: 5, 6, 7, 8. Sınıf) -->
+      <div class="sidebar-block grade-selector-block">
+        <div class="block-header">
+          <span class="block-label">EĞİTİM KADEMESİ</span>
+          <span class="grade-pill-active" id="activeGradePill">8. Sınıf (LGS)</span>
+        </div>
+        <div class="grade-tabs-grid" id="gradeTabs">
+          <button class="grade-tab-btn" data-grade="5" type="button">5. Sınıf</button>
+          <button class="grade-tab-btn" data-grade="6" type="button">6. Sınıf</button>
+          <button class="grade-tab-btn" data-grade="7" type="button">7. Sınıf</button>
+          <button class="grade-tab-btn active" data-grade="8" type="button">8. Sınıf (LGS)</button>
+        </div>
+      </div>
+
       <div class="sidebar-block">
         <div class="block-header">
           <span class="block-label">MÜFREDAT DERSLERİ</span>
@@ -441,8 +455,8 @@
               </svg>
             </div>
             <div class="course-info">
-              <span class="course-name">T.C. İnkılap Tarihi</span>
-              <span class="course-meta">Sosyal Bilgiler & Maarif</span>
+              <span class="course-name" id="courseNameSosyal">T.C. İnkılap Tarihi</span>
+              <span class="course-meta" id="courseMetaSosyal">Sosyal Bilgiler & Maarif</span>
             </div>
             <span class="badge-pill" id="badgeSosyal">24 Soru</span>
           </button>

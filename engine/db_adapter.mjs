@@ -14,8 +14,9 @@ const __dirname = path.dirname(__filename);
 class DatabaseAdapter {
   constructor() {
     this.multiTestBank = {};
+    this.gradeBanks = { 5: {}, 6: {}, 7: {}, 8: {} };
     this.sessions = new Map(); // sessionId -> sessionData
-    this.testLookup = new Map(); // testId -> { courseKey, test }
+    this.testLookup = new Map(); // testId -> { grade, courseKey, test }
     this.questionLookup = new Map(); // questionId -> question
     this.isInitialized = false;
   }
@@ -23,19 +24,32 @@ class DatabaseAdapter {
   init() {
     if (this.isInitialized) return;
 
+    // 8. Sınıf (questions.json)
     const questionsPath = path.join(__dirname, '..', 'public', 'questions.json');
     if (fs.existsSync(questionsPath)) {
-      this.multiTestBank = JSON.parse(fs.readFileSync(questionsPath, 'utf-8'));
+      this.gradeBanks[8] = JSON.parse(fs.readFileSync(questionsPath, 'utf-8'));
+      this.multiTestBank = this.gradeBanks[8];
     }
 
-    // İndeksleri oluştur
-    for (const [courseKey, courseData] of Object.entries(this.multiTestBank)) {
-      if (courseData.tests) {
-        for (const test of courseData.tests) {
-          this.testLookup.set(test.id, { courseKey, test });
-          if (test.questions) {
-            for (const q of test.questions) {
-              this.questionLookup.set(q.id, q);
+    // 5, 6, 7. Sınıflar
+    [5, 6, 7].forEach(g => {
+      const gPath = path.join(__dirname, '..', 'public', `questions_grade_${g}.json`);
+      if (fs.existsSync(gPath)) {
+        this.gradeBanks[g] = JSON.parse(fs.readFileSync(gPath, 'utf-8'));
+      }
+    });
+
+    // İndeksleri oluştur (Tüm kademelerin testleri ve soruları)
+    for (const [gradeNum, bank] of Object.entries(this.gradeBanks)) {
+      const g = Number(gradeNum);
+      for (const [courseKey, courseData] of Object.entries(bank)) {
+        if (courseData.tests) {
+          for (const test of courseData.tests) {
+            this.testLookup.set(test.id, { grade: g, courseKey, test });
+            if (test.questions) {
+              for (const q of test.questions) {
+                this.questionLookup.set(q.id, { ...q, grade: q.grade || g });
+              }
             }
           }
         }
@@ -46,23 +60,70 @@ class DatabaseAdapter {
     console.log(`[OK] DatabaseAdapter baslatildi (${this.testLookup.size} test, ${this.questionLookup.size} soru indekslendi).`);
   }
 
-  // 1. Kurs Özetleri
-  getCoursesSummary() {
+  // 0. Tüm Eğitim Kademeleri (Grades)
+  getGrades() {
     this.init();
+    return [
+      {
+        grade: 5,
+        name: "5. Sınıf",
+        title: "5. Sınıf Maarif Modeli",
+        subtitle: "Temel Bilişsel Beceriler ve Kavram Pekiştirme",
+        courseCount: Object.keys(this.gradeBanks[5] || {}).length,
+        testCount: Object.values(this.gradeBanks[5] || {}).reduce((sum, c) => sum + (c.tests?.length || 0), 0),
+        questionCount: Object.values(this.gradeBanks[5] || {}).reduce((sum, c) => sum + (c.tests?.reduce((s, t) => s + (t.questions?.length || 0), 0) || 0), 0)
+      },
+      {
+        grade: 6,
+        name: "6. Sınıf",
+        title: "6. Sınıf Maarif Modeli",
+        subtitle: "Analitik Düşünme ve Problem Çözme Becerileri",
+        courseCount: Object.keys(this.gradeBanks[6] || {}).length,
+        testCount: Object.values(this.gradeBanks[6] || {}).reduce((sum, c) => sum + (c.tests?.length || 0), 0),
+        questionCount: Object.values(this.gradeBanks[6] || {}).reduce((sum, c) => sum + (c.tests?.reduce((s, t) => s + (t.questions?.length || 0), 0) || 0), 0)
+      },
+      {
+        grade: 7,
+        name: "7. Sınıf",
+        title: "7. Sınıf Maarif Modeli",
+        subtitle: "LGS Hazırlık Temeli ve Mantıksal Çıkarım",
+        courseCount: Object.keys(this.gradeBanks[7] || {}).length,
+        testCount: Object.values(this.gradeBanks[7] || {}).reduce((sum, c) => sum + (c.tests?.length || 0), 0),
+        questionCount: Object.values(this.gradeBanks[7] || {}).reduce((sum, c) => sum + (c.tests?.reduce((s, t) => s + (t.questions?.length || 0), 0) || 0), 0)
+      },
+      {
+        grade: 8,
+        name: "8. Sınıf (LGS)",
+        title: "8. Sınıf LGS Sınav Simülatörü",
+        subtitle: "MEB Maarif LGS Maratonu ve Beceri Temelli Sorular",
+        courseCount: Object.keys(this.gradeBanks[8] || {}).length,
+        testCount: Object.values(this.gradeBanks[8] || {}).reduce((sum, c) => sum + (c.tests?.length || 0), 0),
+        questionCount: Object.values(this.gradeBanks[8] || {}).reduce((sum, c) => sum + (c.tests?.reduce((s, t) => s + (t.questions?.length || 0), 0) || 0), 0)
+      }
+    ];
+  }
+
+  // 1. Kurs Özetleri (Varsayılan grade = 8 ile geriye dönük %100 uyumlu)
+  getCoursesSummary(grade = 8) {
+    this.init();
+    const g = Number(grade) || 8;
+    const bank = this.gradeBanks[g] || this.gradeBanks[8] || this.multiTestBank;
     const result = [];
     const courseMeta = {
-      turkce: { icon: 'book-open', subtitle: 'Paragraf & Sözel Mantık' },
-      matematik: { icon: 'compass', subtitle: 'EBOB-EKOK & Üslü Sayılar' },
-      fen: { icon: 'atom', subtitle: 'Mevsimler, DNA & Basınç' },
-      sosyal: { icon: 'flag', subtitle: 'Sosyal Bilgiler & Maarif' }
+      turkce: { icon: 'book-open', subtitle: g === 8 ? 'Paragraf & Sözel Mantık' : 'Okuma Anlama & Dil Becerileri' },
+      matematik: { icon: 'compass', subtitle: g === 8 ? 'EBOB-EKOK & Üslü Sayılar' : 'Sayısal Beceriler & Modelleme' },
+      fen: { icon: 'atom', subtitle: g === 8 ? 'Mevsimler, DNA & Basınç' : 'Bilimsel Keşif & Deneyler' },
+      inkilap: { icon: 'flag', subtitle: 'T.C. İnkılap Tarihi ve Atatürkçülük' },
+      sosyal: { icon: 'flag', subtitle: 'Kültür, Miras & Toplumsal Yaşam' }
     };
 
-    for (const [courseKey, courseData] of Object.entries(this.multiTestBank)) {
+    for (const [courseKey, courseData] of Object.entries(bank)) {
       const tests = courseData.tests || [];
       const totalQuestions = tests.reduce((sum, t) => sum + (t.questions?.length || 0), 0);
       result.push({
         key: courseKey,
         name: courseData.courseName,
+        grade: g,
         icon: courseMeta[courseKey]?.icon || 'book',
         subtitle: courseMeta[courseKey]?.subtitle || '',
         testCount: tests.length,
@@ -73,9 +134,18 @@ class DatabaseAdapter {
   }
 
   // 2. Bir Kursa Ait Test Paketleri
-  getTestsByCourse(courseKey) {
+  getTestsByCourse(courseKey, grade = null) {
     this.init();
-    const course = this.multiTestBank[courseKey];
+    const g = grade ? Number(grade) : 8;
+    let course = this.gradeBanks[g]?.[courseKey] || this.multiTestBank?.[courseKey];
+    if (!course) {
+      for (const b of Object.values(this.gradeBanks)) {
+        if (b[courseKey]) {
+          course = b[courseKey];
+          break;
+        }
+      }
+    }
     if (!course || !course.tests) return [];
 
     return course.tests.map(t => ({
@@ -95,6 +165,7 @@ class DatabaseAdapter {
 
     return {
       id: item.test.id,
+      grade: item.grade,
       courseKey: item.courseKey,
       title: item.test.title,
       badge: item.test.badge,
@@ -157,6 +228,7 @@ class DatabaseAdapter {
     const sessionRecord = {
       sessionId,
       testId,
+      grade: testItem.grade || 8,
       courseKey: testItem.courseKey,
       testTitle: testItem.test.title,
       studentName,

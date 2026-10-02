@@ -103,37 +103,51 @@ export const server = http.createServer(async (req, res) => {
 
   // 1. Sistem Sağlık ve Bilgi
   if (req.method === 'GET' && pathname === '/api/health') {
-    const summary = db.getCoursesSummary();
-    const totalQ = summary.reduce((sum, c) => sum + c.questionCount, 0);
-    const totalT = summary.reduce((sum, c) => sum + c.testCount, 0);
+    const grades = db.getGrades();
+    const summary = db.getCoursesSummary(8);
+    const totalQAllGrades = db.questionLookup.size;
+    const totalTAllGrades = db.testLookup.size;
     sendJson(res, 200, {
       status: 'online',
-      system: 'MEB Maarif LGS Platformu',
-      version: '1.0.0-faz3',
-      jevAuditor: 'ACTIVE (System-1)',
+      system: 'MEB Maarif Platformu (5, 6, 7 ve 8. Sınıflar)',
+      version: '1.0.0-faz9',
+      jevAuditor: 'ACTIVE (System-1 Multi-Grade)',
       stats: {
+        totalGrades: grades.length,
         totalCourses: summary.length,
-        totalTests: totalT,
-        totalQuestions: totalQ
+        grade8Tests: summary.reduce((sum, c) => sum + c.testCount, 0),
+        grade8Questions: summary.reduce((sum, c) => sum + c.questionCount, 0),
+        allGradesTests: totalTAllGrades,
+        allGradesQuestions: totalQAllGrades
       },
+      grades,
       timestamp: new Date().toISOString()
     });
     return;
   }
 
-  // 2. Kurs Listesi
-  if (req.method === 'GET' && pathname === '/api/courses') {
-    const courses = db.getCoursesSummary();
-    sendJson(res, 200, { courses });
+  // 1.1 Tüm Eğitim Kademeleri: GET /api/grades
+  if (req.method === 'GET' && pathname === '/api/grades') {
+    const grades = db.getGrades();
+    sendJson(res, 200, { success: true, grades });
     return;
   }
 
-  // 3. Kursa Ait Test Paketleri: /api/courses/:courseKey/tests
+  // 2. Kurs Listesi (Kademeye göre: ?grade=5|6|7|8, varsayılan 8)
+  if (req.method === 'GET' && pathname === '/api/courses') {
+    const grade = parsedUrl.searchParams.get('grade') || 8;
+    const courses = db.getCoursesSummary(grade);
+    sendJson(res, 200, { grade: Number(grade), courses });
+    return;
+  }
+
+  // 3. Kursa Ait Test Paketleri: /api/courses/:courseKey/tests (?grade=X)
   const courseTestsMatch = pathname.match(/^\/api\/courses\/([a-zA-Z0-9_-]+)\/tests$/);
   if (req.method === 'GET' && courseTestsMatch) {
     const courseKey = courseTestsMatch[1];
-    const tests = db.getTestsByCourse(courseKey);
-    sendJson(res, 200, { courseKey, tests });
+    const grade = parsedUrl.searchParams.get('grade') || null;
+    const tests = db.getTestsByCourse(courseKey, grade);
+    sendJson(res, 200, { courseKey, grade: grade ? Number(grade) : null, tests });
     return;
   }
 
