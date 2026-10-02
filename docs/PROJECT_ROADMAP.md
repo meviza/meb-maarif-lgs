@@ -88,3 +88,22 @@
   4. **JEV 1-5 Yıldız Zorluk Derecelendirmesi:** `engine/jev_evaluator.mjs` içine `calculateStarRating(draft)` motoru entegre edildi. Test hazırlarken soru dağıtım konumu rehberi tanımlandı.
   5. Soru havuzundaki 108 sorunun tamamı 1-5 yıldız derecelendirmesiyle zenginleştirildi (`scripts/enrich_questions_with_stars.mjs`).
   6. Arayüzde (`public/index.html` & `public/app.js`) soru başlığında ve JEV kriter panelinde altın sarısı yıldız rozetleri aktif edildi.
+
+---
+
+### ✅ Faz 7: MEB Talim Terbiye Ayrıntılı Mikro Konu & Kazanım Hiyerarşisi (1.538 Mikro Konu) (Tamamlandı)
+- **Hedef:** Derslerin konu sayısını yüzeysel 36 haftalık genel başlıklardan çıkarıp, MEB TTKB Öğretim Programı'nın derinlemesine mikro konularına ve alt kazanımlarına kavuşturmak.
+- **Teslim Edilenler:**
+  1. `engine/meb_granular_curriculum.mjs`: MEB Talim ve Terbiye Kurulu Başkanlığı (TTKB) resmî öğretim programları esas alınarak **Ana Ünite -> Konu Alanı -> Mikro Konu (Alt Başlık) -> Resmî Kazanım Kodu -> Bilişsel Düzey (Bloom) -> Soru Tipi Önerisi** mimarisi kuruldu.
+  2. **8. Sınıf LGS Mikro Konu Envanteri (491 Mikro Konu):**
+     - Matematik: 6 Ünite, 12 Ana Konu, **109 Alt/Mikro Konu**
+     - Fen Bilimleri: 7 Ünite, 18 Ana Konu, **135 Alt/Mikro Konu**
+     - Türkçe: 5 Ünite, 14 Ana Konu, **122 Alt/Mikro Konu**
+     - T.C. İnkılap Tarihi ve Atatürkçülük: 7 Ünite, 13 Ana Konu, **125 Alt/Mikro Konu**
+  3. **5, 6 ve 7. Sınıflar Mikro Konu Envanteri (1.047 Mikro Konu):**
+     - 5. Sınıf: 4 Branş, 36 Ünite, **327 Alt/Mikro Konu**
+     - 6. Sınıf: 4 Branş, 36 Ünite, **356 Alt/Mikro Konu**
+     - 7. Sınıf: 4 Branş, 36 Ünite, **364 Alt/Mikro Konu**
+  4. **4 Kademe Genel Toplam:** **1.538 Bağımsız Mikro Konu ve Alt Başlık**
+  5. `scripts/show_granular_curriculum.mjs` & `npm run curriculum:granular`: Kademe ve branş bazlı mikro konu dökümünü listeleyen kurumsal CLI raporlama aracı.
+  6. **Test 18 Entegrasyonu:** `engine/test_suite.mjs` içine MEB Maarif mikro konu ve kazanım hiyerarşisi doğrulama testi eklendi (18/18 PASS - %100).

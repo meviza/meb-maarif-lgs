@@ -10,6 +10,7 @@
     "scale:bank": "node engine/bank_scale_generator.mjs",
     "quality:audit": "node engine/quality_analytics.mjs",
     "plan:36weeks": "node engine/curriculum_scale_factory.mjs --audit-plan",
+    "curriculum:granular": "node scripts/show_granular_curriculum.mjs",
     "generate:curriculum": "node engine/curriculum_scale_factory.mjs",
     "seed": "node engine/seed_runner.mjs",
     "cloud:backup": "node scripts/cloud_sync_manager.mjs",

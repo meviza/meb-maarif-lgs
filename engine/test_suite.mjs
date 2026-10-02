@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 async function runTestSuite() {
   console.log('====================================================');
-  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (17 TEST)');
+  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (18 TEST)');
   console.log('====================================================\n');
 
   let passedTests = 0;
@@ -675,6 +675,35 @@ async function runTestSuite() {
     assert.ok(report.difficultyDistribution.UYGULAMA > 0, 'Uygulama seviyesinde soru olmalı');
     assert.ok(report.difficultyDistribution.LGS_YENI_NESIL > 0, 'LGS Yeni Nesil seviyesinde soru olmalı');
     assert.ok(report.difficultyDistribution.SEKIL_VE_OLIMPIYAT > 0, 'Şampiyon seviyesinde soru olmalı');
+  });
+
+  // TEST 18: MEB Maarif Ayrıntılı Mikro Konu ve Kazanım Hiyerarşisi Doğrulama Testi
+  await asyncTest('Test 18: MEB Maarif Ayrıntılı Mikro Konu ve Kazanım Hiyerarşisi Doğrulama Testi', async () => {
+    const { getGranularCurriculumStats, getGranularSubtopics } = await import('./meb_granular_curriculum.mjs');
+    const stats = getGranularCurriculumStats();
+
+    // 1. Kademe bazında mikro konu sayıları kontrolü
+    assert.ok(stats.grade8TotalSubtopics >= 450, `8. Sınıf mikro konu sayısı en az 450 olmalı, bulunan: ${stats.grade8TotalSubtopics}`);
+    assert.ok(stats.grade8.matematik.subtopics >= 90, `8. Sınıf Matematik alt konu sayısı en az 90 olmalı: ${stats.grade8.matematik.subtopics}`);
+    assert.ok(stats.grade8.fen.subtopics >= 120, `8. Sınıf Fen alt konu sayısı en az 120 olmalı: ${stats.grade8.fen.subtopics}`);
+    assert.ok(stats.grade8.turkce.subtopics >= 100, `8. Sınıf Türkçe alt konu sayısı en az 100 olmalı: ${stats.grade8.turkce.subtopics}`);
+    assert.ok(stats.grade8.sosyal.subtopics >= 110, `8. Sınıf İnkılap Tarihi alt konu sayısı en az 110 olmalı: ${stats.grade8.sosyal.subtopics}`);
+
+    // 2. 5, 6, 7. Sınıflar genel alt konu kontrolü
+    assert.ok(stats.grade5TotalSubtopics >= 300, `5. Sınıf mikro konu sayısı en az 300 olmalı: ${stats.grade5TotalSubtopics}`);
+    assert.ok(stats.grade6TotalSubtopics >= 300, `6. Sınıf mikro konu sayısı en az 300 olmalı: ${stats.grade6TotalSubtopics}`);
+    assert.ok(stats.grade7TotalSubtopics >= 300, `7. Sınıf mikro konu sayısı en az 300 olmalı: ${stats.grade7TotalSubtopics}`);
+    assert.ok(stats.grandTotalMicroTopics >= 1500, `Tüm kademeler toplam mikro konu sayısı en az 1500 olmalı: ${stats.grandTotalMicroTopics}`);
+
+    // 3. getGranularSubtopics API kontrolü
+    const mathSubtopics = getGranularSubtopics('matematik', 8);
+    assert.ok(mathSubtopics.length >= 90, 'Matematik mikro konu listesi eksik');
+    const sample = mathSubtopics[0];
+    assert.ok(sample.id, 'Alt konu id eksik');
+    assert.ok(sample.title, 'Alt konu başlık eksik');
+    assert.ok(sample.outcome, 'Kazanım kodu eksik');
+    assert.ok(sample.cognitive, 'Bilişsel düzey eksik');
+    assert.ok(sample.unitTitle, 'Ünite başlığı eksik');
   });
 
   console.log('\n====================================================');
