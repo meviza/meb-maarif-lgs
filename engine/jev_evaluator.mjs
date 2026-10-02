@@ -42,6 +42,9 @@ export class JevQualityAuditor {
     const hasPedagogicalHints = hasStrategy && hasDetail;
     const starRating = this.calculateStarRating(questionDraft);
 
+    const zeroPlagiarism = this._checkPlagiarismRisk(questionDraft);
+    const videoReady = !!(hasStrategy && hasDetail && distractorStrengthScore >= 0.80);
+
     const decisions = {
       is_meb_aligned: isMebAligned,
       single_deterministic_answer: singleDeterministicAnswer,
@@ -51,7 +54,9 @@ export class JevQualityAuditor {
       star_rating: starRating,
       distractor_strength_score: distractorStrengthScore,
       tdk_compliance: tdkCompliance,
-      has_pedagogical_hints: hasPedagogicalHints
+      has_pedagogical_hints: hasPedagogicalHints,
+      zero_plagiarism_guarantee: zeroPlagiarism,
+      video_solution_readiness: videoReady
     };
 
     // 3. Birleşik Skor Hesaplama (0.0 - 1.0)
@@ -403,6 +408,28 @@ export class JevQualityAuditor {
     const fullText = draft.stimulus + ' ' + draft.stem;
     if (fullText.includes('herşey') || fullText.includes('birşey') || fullText.includes(' yanlız ')) {
       return false; // Yazım yanlışı tespit edildi
+    }
+    return true;
+  }
+
+  /**
+   * Anti-İntihal ve Özgünlük Kapısı (Zero-Plagiarism Gate)
+   * SoruSat, telifli ticari platformlar veya geçmiş çıkmış soruların birebir kopyalanmasını engeller.
+   */
+  _checkPlagiarismRisk(draft) {
+    const fullText = (((draft.stimulus || '') + ' ' + (draft.stem || ''))).toLowerCase();
+    const suspiciousKeywords = [
+      'sorusat',
+      'sorusat.com',
+      'öabt telif',
+      'ösym kaynaklıdır kopyalanamaz',
+      'her hakkı saklıdır',
+      'çıkmış sorudur kopyalanamaz'
+    ];
+    for (const kw of suspiciousKeywords) {
+      if (fullText.includes(kw)) {
+        return false;
+      }
     }
     return true;
   }

@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 async function runTestSuite() {
   console.log('====================================================');
-  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (18 TEST)');
+  console.log('[TEST] MEB MAARİF LGS PLATFORMU - GENİŞLETİLMİŞ TEST PAKETİ (19 TEST)');
   console.log('====================================================\n');
 
   let passedTests = 0;
@@ -704,6 +704,48 @@ async function runTestSuite() {
     assert.ok(sample.outcome, 'Kazanım kodu eksik');
     assert.ok(sample.cognitive, 'Bilişsel düzey eksik');
     assert.ok(sample.unitTitle, 'Ünite başlığı eksik');
+  });
+
+  // TEST 19: JEV Video Çözüm Senaryosu, Anti-İntihal ve InDesign Dizgi Testi
+  await asyncTest('Test 19: JEV Video Çözüm Senaryosu, Anti-İntihal ve InDesign Dizgi Testi', async () => {
+    const { JevVideoSolutionEngine } = await import('./jev_video_solution_engine.mjs');
+    const { JevQualityAuditor } = await import('./jev_evaluator.mjs');
+    const questionsPath = path.join(__dirname, '..', 'public', 'questions.json');
+    const rawData = JSON.parse(fs.readFileSync(questionsPath, 'utf-8'));
+
+    const flatQuestions = [];
+    for (const b of Object.values(rawData)) {
+      for (const t of b.tests) {
+        for (const q of t.questions) {
+          flatQuestions.push({ ...q, courseKey: b.courseName === 'Türkçe' ? 'turkce' : (b.courseName === 'Matematik' ? 'matematik' : 'fen') });
+        }
+      }
+    }
+
+    const videoEngine = new JevVideoSolutionEngine();
+    const demos = videoEngine.generate10DemoScripts(flatQuestions);
+
+    // 1. 10 Seçkin Video Çözüm Senaryosu Doğrulaması
+    assert.strictEqual(demos.length, 10, '10 adet demo video çözüm senaryosu üretilmeli');
+    for (const demo of demos) {
+      assert.ok(demo.questionId, 'Soru kimliği eksik');
+      assert.strictEqual(demo.storyboard.length, 5, `Soru ${demo.questionId} için 5 aşamalı storyboard olmalı`);
+      assert.strictEqual(demo.productionReady, true, 'Prodüksiyon hazır durumu true olmalı');
+      assert.ok(demo.typesettingMetadata.indesignTemplate.includes('InDesign'), 'InDesign şablonu eksik');
+      assert.ok(demo.typesettingMetadata.latexCode.includes('\\begin{question}'), 'LaTeX dizgi kodu eksik');
+    }
+
+    // 2. Anti-İntihal (Zero-Plagiarism) ve Video Çözüm Uygunluğu JEV Denetimi
+    const auditor = new JevQualityAuditor();
+    const sampleQ = flatQuestions[0];
+    const auditRes = await auditor.evaluateQuestion(sampleQ);
+
+    assert.strictEqual(auditRes.decisions.zero_plagiarism_guarantee, true, 'Özgünlük ve anti-intihal kapısı true olmalı');
+    assert.strictEqual(auditRes.decisions.video_solution_readiness, true, 'Video çözüm hazırlık durumu true olmalı');
+
+    // 3. Vektörel SVG ve Görsel Tasarım Denetimi
+    const visualQuestions = flatQuestions.filter(q => q.hasVisual && q.visualContent);
+    assert.ok(visualQuestions.length >= 30, `En az 30 soruda görsel tasarım (SVG/Tablo) bulunmalı, bulunan: ${visualQuestions.length}`);
   });
 
   console.log('\n====================================================');

@@ -170,6 +170,12 @@ function setupEventListeners() {
     });
   }
 
+  // JEV Video Çözüm Modalı Dinleyicileri
+  const btnOpenVideo = document.getElementById('btnOpenVideoSolution');
+  const btnCloseVideo = document.getElementById('btnCloseVideoModal');
+  if (btnOpenVideo) btnOpenVideo.addEventListener('click', openVideoSolutionModal);
+  if (btnCloseVideo) btnCloseVideo.addEventListener('click', closeVideoSolutionModal);
+
   // Toplu Üretim & Bulut Senkronizasyon Eylemleri
   const btnBatch = document.getElementById('btnTriggerBatchGen');
   const btnCloud = document.getElementById('btnTriggerCloudBackup');
@@ -577,6 +583,19 @@ function renderQuestion() {
 
   // Metin ve Soru Kökü
   document.getElementById('stimulusBox').textContent = q.stimulus;
+
+  // Görsel / SVG / Tablo
+  const visualBox = document.getElementById('visualContentBox');
+  if (visualBox) {
+    if (q.visualContent) {
+      visualBox.innerHTML = q.visualContent;
+      visualBox.classList.remove('hidden');
+    } else {
+      visualBox.innerHTML = '';
+      visualBox.classList.add('hidden');
+    }
+  }
+
   document.getElementById('stemBox').textContent = q.stem;
 
   // Alt İlerleme
@@ -683,6 +702,124 @@ function renderSolutionDrawer() {
   } else {
     drawer.classList.add('hidden');
   }
+}
+
+// 4.2. JEV Video Çözüm Senaryosu ve Dizgi Modalı Fonksiyonları
+function openVideoSolutionModal() {
+  const questions = getCurrentQuestions();
+  const q = questions[appState.currentQuestionIndex];
+  if (!q) return;
+
+  const modal = document.getElementById('videoSolutionModal');
+  const titleEl = document.getElementById('videoModalTitle');
+  const contentEl = document.getElementById('videoModalContent');
+  if (!modal || !contentEl) return;
+
+  titleEl.textContent = `🎬 JEV Video Çözüm Senaryosu — ${q.id} (${q.course})`;
+
+  const correctOpt = q.correctAnswer || 'A';
+  const wrongOptions = ['A', 'B', 'C', 'D'].filter(opt => opt !== correctOpt);
+  const distractors = q.distractors || {};
+
+  contentEl.innerHTML = `
+    <div style="background:rgba(37,99,235,0.08); border:1px solid #bfdbfe; border-radius:8px; padding:12px; font-size:12px;">
+      <div style="display:flex; justify-content:space-between; font-weight:700; color:#1e40af; margin-bottom:4px;">
+        <span>🎯 Hedef Süre: 90 Saniye (1.5 Dk)</span>
+        <span>⭐ Zorluk: ${q.starRating?.starLabel || '4 Yıldız'}</span>
+        <span>🏷️ Kazanım: ${q.outcomeCode || 'MEB Maarif'}</span>
+      </div>
+      <div style="color:var(--text-muted);">
+        <strong>Öğretmen Replik Tonu:</strong> Samimi, anlaşılır, MEB Maarif ve LGS odaklı motive edici ses tonu.
+      </div>
+    </div>
+
+    <!-- Sahne 1 -->
+    <div class="storyboard-step">
+      <div class="storyboard-step-header">
+        <strong style="color:#2563eb;">1. Sahne: Soru Kökü ve Kritik İpucu Vurgusu</strong>
+        <span class="storyboard-time">00:00 - 00:15</span>
+      </div>
+      <div style="font-size:12px; margin-bottom:6px; color:var(--text-muted);">
+        <strong>Görsel/Tahta Aksiyonu:</strong> Soru ekranda tam sayfa belirir; soru kökündeki olumsuz veya kilit ifadeler sarı fosforla çizilir.
+      </div>
+      <div style="font-size:13px; line-height:1.5; padding:8px; background:rgba(0,0,0,0.03); border-left:3px solid #2563eb; border-radius:4px;">
+        <em>"Sevgili öğrencilerimiz, bu sorumuzda <strong>${q.topic || 'ilgili MEB konusu'}</strong> kazanımını ele alıyoruz. İlk önce soru kökünü dikkatle okuyoruz ve bizden tam olarak neyin istendiğini belirliyoruz."</em>
+      </div>
+    </div>
+
+    <!-- Sahne 2 -->
+    <div class="storyboard-step">
+      <div class="storyboard-step-header">
+        <strong style="color:#10b981;">2. Sahne: Verilerin Şematize Edilmesi & İpucu</strong>
+        <span class="storyboard-time">00:15 - 00:35</span>
+      </div>
+      <div style="font-size:12px; margin-bottom:6px; color:var(--text-muted);">
+        <strong>Görsel/Tahta Aksiyonu:</strong> Öncüldeki kritik veriler tahtaya kısa maddeler halinde çıkarılır, varsa geometri veya deney şeması çizilir.
+      </div>
+      <div style="font-size:13px; line-height:1.5; padding:8px; background:rgba(0,0,0,0.03); border-left:3px solid #10b981; border-radius:4px;">
+        <em>"Soruda bize verilen kilit bilgilere bakalım: ${q.stimulus ? q.stimulus.slice(0, 110) + '...' : 'Verilen öncül verileri'} bizim hareket noktamızı oluşturuyor."</em>
+      </div>
+    </div>
+
+    <!-- Sahne 3 -->
+    <div class="storyboard-step">
+      <div class="storyboard-step-header">
+        <strong style="color:#f59e0b;">3. Sahne: Adım Adım Çözüm ve Mantık Yürütme</strong>
+        <span class="storyboard-time">00:35 - 01:05</span>
+      </div>
+      <div style="font-size:12px; margin-bottom:6px; color:var(--text-muted);">
+        <strong>Görsel/Tahta Aksiyonu:</strong> Çözüm adımları tahtada renkli kalemlerle satır satır yazılır; ara işlemler netleştirilir.
+      </div>
+      <div style="font-size:13px; line-height:1.5; padding:8px; background:rgba(0,0,0,0.03); border-left:3px solid #f59e0b; border-radius:4px;">
+        <em>"Şimdi çözüm stratejimize geçelim: ${q.detailedSolution ? q.detailedSolution.slice(0, 200) + '...' : q.solutionStrategy} Gördüğünüz gibi işlem zinciri bizi şüpheye yer bırakmadan doğru hedefe taşıyor."</em>
+      </div>
+    </div>
+
+    <!-- Sahne 4 -->
+    <div class="storyboard-step">
+      <div class="storyboard-step-header">
+        <strong style="color:#ef4444;">4. Sahne: Çeldiricilerin Elenmesi (Tuzak Analizi)</strong>
+        <span class="storyboard-time">01:05 - 01:20</span>
+      </div>
+      <div style="font-size:12px; margin-bottom:6px; color:var(--text-muted);">
+        <strong>Görsel/Tahta Aksiyonu:</strong> Yanlış seçeneklerin üstü kırmızı çizgiyle çizilir, tuzağın sebebi ekranda ikaz simgesiyle gösterilir.
+      </div>
+      <div style="font-size:13px; line-height:1.5; padding:8px; background:rgba(0,0,0,0.03); border-left:3px solid #ef4444; border-radius:4px;">
+        <em>"Peki diğer seçenekler neden eleniyor? Örneğin ${wrongOptions[0]} seçeneğinde en sık yapılan hata: ${distractors[wrongOptions[0]] || 'kuralın ters yorumlanmasıdır'}. Bu nedenle bu şıkları eliyoruz."</em>
+      </div>
+    </div>
+
+    <!-- Sahne 5 -->
+    <div class="storyboard-step">
+      <div class="storyboard-step-header">
+        <strong style="color:#8b5cf6;">5. Sahne: Doğru Cevabın Mühürlenmesi</strong>
+        <span class="storyboard-time">01:20 - 01:30</span>
+      </div>
+      <div style="font-size:12px; margin-bottom:6px; color:var(--text-muted);">
+        <strong>Görsel/Tahta Aksiyonu:</strong> Doğru seçenek olan <strong>${correctOpt}</strong> şıkkı yeşil halka içine alınır ve onay tiki konur.
+      </div>
+      <div style="font-size:13px; line-height:1.5; padding:8px; background:rgba(0,0,0,0.03); border-left:3px solid #8b5cf6; border-radius:4px;">
+        <em>"Dolayısıyla doğru cevabımız kesin ve net bir şekilde <strong>${correctOpt}</strong> seçeneğidir. Başarılar dilerim!"</em>
+      </div>
+    </div>
+
+    <!-- Yayınevi Dizgi ve InDesign/LaTeX Bilgisi -->
+    <div style="margin-top:10px; padding:12px; background:#18181b; color:#10b981; font-family:monospace; font-size:11px; border-radius:8px; overflow-x:auto;">
+      <div style="color:#a1a1aa; margin-bottom:4px;">// Adobe InDesign XML & LaTeX Dizgi Etiketi</div>
+      &lt;question id="${q.id}" stars="${q.starRating?.stars || 4}" format="LGS_2Column_A4"&gt;<br/>
+      &nbsp;&nbsp;&lt;stem&gt;${q.stem ? q.stem.slice(0, 80) : ''}...&lt;/stem&gt;<br/>
+      &nbsp;&nbsp;&lt;correct_option&gt;${correctOpt}&lt;/correct_option&gt;<br/>
+      &nbsp;&nbsp;&lt;has_vector_svg&gt;${q.hasVisual ? 'true' : 'false'}&lt;/has_vector_svg&gt;<br/>
+      &lt;/question&gt;
+    </div>
+  `;
+
+  modal.classList.remove('hidden');
+}
+
+function closeVideoSolutionModal() {
+  const modal = document.getElementById('videoSolutionModal');
+  if (modal) modal.classList.add('hidden');
 }
 
 // Sağ Panel: Optik Formu Çiz (Ders ve Test Bazlı Yalıtılmış)

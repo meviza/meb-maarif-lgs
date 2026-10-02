@@ -113,3 +113,35 @@ Sisteme otomatik ekleme yapabilmek için Jev çıktısının şu eşikleri sağl
 | `distractor_quality` | `>= 0.75` | Altındaysa şıklar çok zayıf/kolay demektir, yeniden yaz. |
 | `tdk_compliance` | `true` | İmla hatası varsa otomatik TDK düzelticisine yönlendir. |
 | `is_approved` | `true` | Genel komisyon onayı. |
+
+---
+
+## 5. Değeri Etkileyecek Kritik Kriterler ve Yayınevi Standartları
+
+JEV System-1 denetim motoru, soruların yalnızca teorik doğruluğunu değil; yayınevi, basılı yayın ve dijital eğitim pazarındaki **ticari değerini, telif güvenliğini ve yayınlanabilirlik kalitesini** de güvence altına alır:
+
+### 5.1. Özgünlük ve İntihal (Zero-Plagiarism Gate) — Sıfır Tolerans İlkesi
+- **Hukuki ve Ticari Risk:** Üretilen soruların hiçbir kaynakta, **[SoruSat](https://sorusat.com/)** gibi soru ticaret platformlarında, rakip yayınevlerinin denemelerinde veya MEB'in yayımladığı örnek/çıkmış sorularda birebir yer almaması zorunludur.
+- **Tek İhlal Kuralı:** Tek bir çalıntı veya telifli soru tüm projenin feshine, kurumsal itibar kaybına ve yasal yaptırımlara yol açar.
+- **JEV Denetimi:** JEV, MEB çıkmış sorularından ilham alsa dahi; sayısal değerleri, kurgusal hikâyeyi, isimleri, senaryoyu ve çözüm adımlarını %100 özgünleştirir. Birebir metin ve sayısal benzerlik tespit edilirse soru derhal reddedilir (`REJECT_PLAGIARISM_RISK`).
+
+### 5.2. Video Çözüm Desteği (%20 - %30 Değer Artışı)
+- **Ekonomik Katma Değer:** Soruların yalnızca kuru şık ve kısa yazılı cevaba değil; **5 Aşamalı Video Çözüm Senaryosuna (Storyboard & Voiceover Script)** sahip olması projenin piyasa değerini en az **%20 - %30** artırır.
+- **JEV Storyboard Standardı:**
+  1. *Sahne 1 (00:00-00:15):* Soru kökü ve kilit ipucu analizi (Sarı fosforlu vurgu).
+  2. *Sahne 2 (00:15-00:35):* Verilenlerin şematize edilmesi ve formül/metin omurgası.
+  3. *Sahne 3 (00:35-01:05):* Adım adım çözüm ve tahta animasyon aksiyonları.
+  4. *Sahne 4 (01:05-01:20):* Çeldirici analizi (Öğrenci tuzağının ifşası ve yanlış şıkların elenmesi).
+  5. *Sahne 5 (01:20-01:30):* Doğru cevabın mühürlenmesi ve başarı dileği.
+
+### 5.3. Profesyonel Dizgi ve Vektörel Grafik (InDesign & LaTeX Uyumlu)
+- **Mizanpaj Hazırlığı:** Sorular, profesyonel grafiker veya dizgicinin doğrudan kullanabileceği formatta olmalıdır.
+- **Dizgi Formatları:**
+  - Adobe InDesign Tagged Text / XML şablon uyumu (`LGS_Standard_2Column_A4.indd`).
+  - Matematiksel formüller için standart LaTeX ($KaTeX$) dizgisi.
+  - Geometri, veri analizi ve fen deneyleri için yüksek çözünürlüklü, telifsiz inline Vektörel SVG grafikleri (`<svg viewBox="..."`).
+
+### 5.4. Ayrıntılı Mikro Konu Mimarisi (100+ Mikro Konu / Branş)
+- **Kapsam:** Yıllık 1.000+ soruluk ölçekte, her branş sadece 36 genel başlığa sıkıştırılamaz.
+- **Kural:** Her branş için MEB TTKB resmî programında yer alan **100'ün üzerindeki mikro konu / alt kazanım** (8. sınıfta toplam 491, 4 kademede 1.538 mikro konu) taranmalı ve sorular her mikro konuya dengeli dağıtılmalıdır.
+

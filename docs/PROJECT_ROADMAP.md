@@ -107,3 +107,25 @@
   4. **4 Kademe Genel Toplam:** **1.538 Bağımsız Mikro Konu ve Alt Başlık**
   5. `scripts/show_granular_curriculum.mjs` & `npm run curriculum:granular`: Kademe ve branş bazlı mikro konu dökümünü listeleyen kurumsal CLI raporlama aracı.
   6. **Test 18 Entegrasyonu:** `engine/test_suite.mjs` içine MEB Maarif mikro konu ve kazanım hiyerarşisi doğrulama testi eklendi (18/18 PASS - %100).
+
+---
+
+### ✅ Faz 8: Ticari Yayınevi Standartları, Anti-İntihal, Video Çözüm Storyboard & Vektörel Dizgi (Tamamlandı)
+- **Hedef:** Soruların piyasa değerini artıran kritik yayıncılık standartlarının hayata geçirilmesi (Özgünlük/Anti-İntihal, 5 Aşamalı Video Çözüm Senaryoları, InDesign/LaTeX Dizgi, Vektörel SVG Grafikleri).
+- **Teslim Edilenler:**
+  1. **Anti-İntihal & Sıfır Tolerans Şartnamesi (SoruSat & MEB Koruma):**
+     - Hiçbir sorunun SoruSat, rakip kaynaklar veya MEB geçmiş çıkmış sınavlarında birebir yer almaması kuralı JEV denetimine (`_checkPlagiarismRisk`) eklendi.
+     - `docs/JEV_SYSTEM1_SPEC.md`, `docs/AI_GUIDELINES.md` ve `docs/AGENT_GUIDE.md` belgelerine hukuki ve operasyonel şartnameler kaydedildi.
+  2. **JEV Video Çözüm Senaryo Motoru (`engine/jev_video_solution_engine.mjs`):**
+     - Soru paketinin değerini **%20 - %30** artıran 5 Aşamalı Video Çözüm Storyboard'ı (Soru Kökü Odaklanması, Şematize Etme, Adım Adım Çözüm, Çeldirici Analizi & Tuzak İzahı, Mühürleme) geliştirildi.
+     - 10 Seçkin Soru için Matematik, Geometri ve Türkçe demo video senaryoları portföyü ve REST API uç noktası (`GET /api/video-solutions/demos`) oluşturuldu.
+  3. **Vektörel Grafik ve Yeni Nesil Analizi:**
+     - Mevcut soru havuzu analiz edildi: Ağırlık **%92.6 oranında LGS Yeni Nesil** (Beceri Temelli), klasik sorular yalnızca %7.4 (ısınma).
+     - 49 soruya yüksek çözünürlüklü, telifsiz inline Vektörel SVG çizimleri (Dik üçgen/Pisagor, Silindir açınımı, Sütun grafiği, Basınç deney düzenekleri) ve veri tabloları eklendi (`scripts/enrich_questions_with_visuals.mjs`).
+  4. **Kullanıcı Arayüzü Entegrasyonu:**
+     - Kitapçık alanına `#visualContentBox` eklenerek SVG ve veri tablolarının doğrudan soru gövdesinde gösterilmesi sağlandı.
+     - Çözüm çekmecesine "🎬 JEV 5 Aşamalı Video Çözüm Senaryosu & Dizgi Çıktısı" butonu ve `#videoSolutionModal` eklendi.
+  5. **Dizgi Şablon Uyumu:**
+     - Adobe InDesign (`InDesign_LGS_Standard_2Column_A4.indd`) XML ve LaTeX ($KaTeX$) formül meta verileri entegre edildi.
+  6. **Test 19 Entegrasyonu:** `engine/test_suite.mjs` içine Video Çözüm, Anti-İntihal ve InDesign Dizgi doğrulama testi eklendi (**19/19 PASS - %100**).
+

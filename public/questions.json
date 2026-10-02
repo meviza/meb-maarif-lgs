@@ -57,7 +57,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-02",
@@ -109,7 +112,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T1-01",
@@ -161,7 +167,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T1-02",
@@ -213,7 +222,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T1-03",
@@ -265,7 +277,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T1-04",
@@ -317,7 +332,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T1-05",
@@ -347,7 +365,10 @@
               "category": "5 Yıldız • Şampiyon / Üst Düzey Seçici",
               "placement": "Deneme Sınavı Seçici Soruları (%1'lik Dilim Ayırt Edici)",
               "rationale": "Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           }
         ]
       },
@@ -406,7 +427,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-06",
@@ -458,7 +482,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T2-01",
@@ -510,7 +537,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T2-02",
@@ -562,7 +592,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T2-03",
@@ -614,7 +647,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T2-04",
@@ -666,7 +702,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           },
           {
             "id": "LGS-TR-T2-05",
@@ -696,7 +735,10 @@
               "category": "2 Yıldız • Kavrama (Temel-Orta)",
               "placement": "Test Giriş / Ön Hazırlık ve Kavram Testi",
               "rationale": "Temel kavramları ve tanımları anlama, doğrudan çıkarım yapma."
-            }
+            },
+            "visualContent": "<div class=\"question-visual-table\" style=\"overflow-x:auto; margin:12px 0;\">\n      <table style=\"width:100%; border-collapse:collapse; background:#0F172A; color:#E2E8F0; font-size:12px; border:1px solid #334155; border-radius:6px;\">\n        <thead>\n          <tr style=\"background:#1E293B; border-bottom:2px solid #3B82F6;\">\n            <th style=\"padding:8px; text-align:left;\">Katılımcı</th>\n            <th style=\"padding:8px; text-align:center;\">1. Oturum (09:30)</th>\n            <th style=\"padding:8px; text-align:center;\">2. Oturum (11:00)</th>\n            <th style=\"padding:8px; text-align:center;\">Tercih Durumu</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Ahmet & Zeynep</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Edebiyat / Şiir</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center;\">Birlikte Katılım</td>\n          </tr>\n          <tr style=\"border-bottom:1px solid #334155;\">\n            <td style=\"padding:8px; font-weight:600;\">Burak</td>\n            <td style=\"padding:8px; text-align:center; color:#94A3B8;\">Boş</td>\n            <td style=\"padding:8px; text-align:center; color:#3B82F6;\">Tarih / Felsefe</td>\n            <td style=\"padding:8px; text-align:center;\">Bireysel</td>\n          </tr>\n          <tr>\n            <td style=\"padding:8px; font-weight:600;\">Ceren & Derya</td>\n            <td style=\"padding:8px; text-align:center; color:#F59E0B;\">Sanat Atölyesi</td>\n            <td style=\"padding:8px; text-align:center; color:#10B981;\">Yazarlık</td>\n            <td style=\"padding:8px; text-align:center;\">Ardışık Oturum</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>",
+            "hasVisual": true,
+            "visualType": "data_table"
           }
         ]
       },
@@ -2175,7 +2217,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Eksenler -->\n      <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <line x1=\"50\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <!-- Kılavuz Çizgileri -->\n      <line x1=\"50\" y1=\"50\" x2=\"290\" y2=\"50\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"50\" y1=\"95\" x2=\"290\" y2=\"95\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <text x=\"25\" y=\"55\" fill=\"#94A3B8\" font-size=\"11\">100</text>\n      <text x=\"30\" y=\"100\" fill=\"#94A3B8\" font-size=\"11\">50</text>\n      <text x=\"35\" y=\"145\" fill=\"#94A3B8\" font-size=\"11\">0</text>\n      <!-- Sütunlar -->\n      <rect x=\"75\" y=\"45\" width=\"30\" height=\"95\" fill=\"#3B82F6\" rx=\"3\"/>\n      <rect x=\"135\" y=\"70\" width=\"30\" height=\"70\" fill=\"#10B981\" rx=\"3\"/>\n      <rect x=\"195\" y=\"30\" width=\"30\" height=\"110\" fill=\"#F59E0B\" rx=\"3\"/>\n      <rect x=\"255\" y=\"85\" width=\"30\" height=\"55\" fill=\"#EC4899\" rx=\"3\"/>\n      <!-- Etiketler -->\n      <text x=\"80\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">1. Grup</text>\n      <text x=\"140\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">2. Grup</text>\n      <text x=\"200\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">3. Grup</text>\n      <text x=\"260\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">4. Grup</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-MAT-T4-02",
@@ -2205,7 +2250,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Eksenler -->\n      <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <line x1=\"50\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <!-- Kılavuz Çizgileri -->\n      <line x1=\"50\" y1=\"50\" x2=\"290\" y2=\"50\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"50\" y1=\"95\" x2=\"290\" y2=\"95\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <text x=\"25\" y=\"55\" fill=\"#94A3B8\" font-size=\"11\">100</text>\n      <text x=\"30\" y=\"100\" fill=\"#94A3B8\" font-size=\"11\">50</text>\n      <text x=\"35\" y=\"145\" fill=\"#94A3B8\" font-size=\"11\">0</text>\n      <!-- Sütunlar -->\n      <rect x=\"75\" y=\"45\" width=\"30\" height=\"95\" fill=\"#3B82F6\" rx=\"3\"/>\n      <rect x=\"135\" y=\"70\" width=\"30\" height=\"70\" fill=\"#10B981\" rx=\"3\"/>\n      <rect x=\"195\" y=\"30\" width=\"30\" height=\"110\" fill=\"#F59E0B\" rx=\"3\"/>\n      <rect x=\"255\" y=\"85\" width=\"30\" height=\"55\" fill=\"#EC4899\" rx=\"3\"/>\n      <!-- Etiketler -->\n      <text x=\"80\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">1. Grup</text>\n      <text x=\"140\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">2. Grup</text>\n      <text x=\"200\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">3. Grup</text>\n      <text x=\"260\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">4. Grup</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-MAT-T4-03",
@@ -2235,7 +2283,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Eksenler -->\n      <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <line x1=\"50\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <!-- Kılavuz Çizgileri -->\n      <line x1=\"50\" y1=\"50\" x2=\"290\" y2=\"50\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"50\" y1=\"95\" x2=\"290\" y2=\"95\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <text x=\"25\" y=\"55\" fill=\"#94A3B8\" font-size=\"11\">100</text>\n      <text x=\"30\" y=\"100\" fill=\"#94A3B8\" font-size=\"11\">50</text>\n      <text x=\"35\" y=\"145\" fill=\"#94A3B8\" font-size=\"11\">0</text>\n      <!-- Sütunlar -->\n      <rect x=\"75\" y=\"45\" width=\"30\" height=\"95\" fill=\"#3B82F6\" rx=\"3\"/>\n      <rect x=\"135\" y=\"70\" width=\"30\" height=\"70\" fill=\"#10B981\" rx=\"3\"/>\n      <rect x=\"195\" y=\"30\" width=\"30\" height=\"110\" fill=\"#F59E0B\" rx=\"3\"/>\n      <rect x=\"255\" y=\"85\" width=\"30\" height=\"55\" fill=\"#EC4899\" rx=\"3\"/>\n      <!-- Etiketler -->\n      <text x=\"80\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">1. Grup</text>\n      <text x=\"140\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">2. Grup</text>\n      <text x=\"200\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">3. Grup</text>\n      <text x=\"260\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">4. Grup</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-MAT-T4-04",
@@ -2265,7 +2316,10 @@
               "category": "5 Yıldız • Şampiyon / Üst Düzey Seçici",
               "placement": "Deneme Sınavı Seçici Soruları (%1'lik Dilim Ayırt Edici)",
               "rationale": "Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Eksenler -->\n      <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <line x1=\"50\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <!-- Kılavuz Çizgileri -->\n      <line x1=\"50\" y1=\"50\" x2=\"290\" y2=\"50\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"50\" y1=\"95\" x2=\"290\" y2=\"95\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <text x=\"25\" y=\"55\" fill=\"#94A3B8\" font-size=\"11\">100</text>\n      <text x=\"30\" y=\"100\" fill=\"#94A3B8\" font-size=\"11\">50</text>\n      <text x=\"35\" y=\"145\" fill=\"#94A3B8\" font-size=\"11\">0</text>\n      <!-- Sütunlar -->\n      <rect x=\"75\" y=\"45\" width=\"30\" height=\"95\" fill=\"#3B82F6\" rx=\"3\"/>\n      <rect x=\"135\" y=\"70\" width=\"30\" height=\"70\" fill=\"#10B981\" rx=\"3\"/>\n      <rect x=\"195\" y=\"30\" width=\"30\" height=\"110\" fill=\"#F59E0B\" rx=\"3\"/>\n      <rect x=\"255\" y=\"85\" width=\"30\" height=\"55\" fill=\"#EC4899\" rx=\"3\"/>\n      <!-- Etiketler -->\n      <text x=\"80\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">1. Grup</text>\n      <text x=\"140\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">2. Grup</text>\n      <text x=\"200\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">3. Grup</text>\n      <text x=\"260\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">4. Grup</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-MAT-T4-05",
@@ -2295,7 +2349,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Eksenler -->\n      <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <line x1=\"50\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <!-- Kılavuz Çizgileri -->\n      <line x1=\"50\" y1=\"50\" x2=\"290\" y2=\"50\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"50\" y1=\"95\" x2=\"290\" y2=\"95\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <text x=\"25\" y=\"55\" fill=\"#94A3B8\" font-size=\"11\">100</text>\n      <text x=\"30\" y=\"100\" fill=\"#94A3B8\" font-size=\"11\">50</text>\n      <text x=\"35\" y=\"145\" fill=\"#94A3B8\" font-size=\"11\">0</text>\n      <!-- Sütunlar -->\n      <rect x=\"75\" y=\"45\" width=\"30\" height=\"95\" fill=\"#3B82F6\" rx=\"3\"/>\n      <rect x=\"135\" y=\"70\" width=\"30\" height=\"70\" fill=\"#10B981\" rx=\"3\"/>\n      <rect x=\"195\" y=\"30\" width=\"30\" height=\"110\" fill=\"#F59E0B\" rx=\"3\"/>\n      <rect x=\"255\" y=\"85\" width=\"30\" height=\"55\" fill=\"#EC4899\" rx=\"3\"/>\n      <!-- Etiketler -->\n      <text x=\"80\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">1. Grup</text>\n      <text x=\"140\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">2. Grup</text>\n      <text x=\"200\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">3. Grup</text>\n      <text x=\"260\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">4. Grup</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-MAT-T4-06",
@@ -2325,7 +2382,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Eksenler -->\n      <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <line x1=\"50\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <!-- Kılavuz Çizgileri -->\n      <line x1=\"50\" y1=\"50\" x2=\"290\" y2=\"50\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"50\" y1=\"95\" x2=\"290\" y2=\"95\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <text x=\"25\" y=\"55\" fill=\"#94A3B8\" font-size=\"11\">100</text>\n      <text x=\"30\" y=\"100\" fill=\"#94A3B8\" font-size=\"11\">50</text>\n      <text x=\"35\" y=\"145\" fill=\"#94A3B8\" font-size=\"11\">0</text>\n      <!-- Sütunlar -->\n      <rect x=\"75\" y=\"45\" width=\"30\" height=\"95\" fill=\"#3B82F6\" rx=\"3\"/>\n      <rect x=\"135\" y=\"70\" width=\"30\" height=\"70\" fill=\"#10B981\" rx=\"3\"/>\n      <rect x=\"195\" y=\"30\" width=\"30\" height=\"110\" fill=\"#F59E0B\" rx=\"3\"/>\n      <rect x=\"255\" y=\"85\" width=\"30\" height=\"55\" fill=\"#EC4899\" rx=\"3\"/>\n      <!-- Etiketler -->\n      <text x=\"80\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">1. Grup</text>\n      <text x=\"140\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">2. Grup</text>\n      <text x=\"200\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">3. Grup</text>\n      <text x=\"260\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">4. Grup</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-MAT-T4-07",
@@ -2355,7 +2415,10 @@
               "category": "5 Yıldız • Şampiyon / Üst Düzey Seçici",
               "placement": "Deneme Sınavı Seçici Soruları (%1'lik Dilim Ayırt Edici)",
               "rationale": "Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Eksenler -->\n      <line x1=\"50\" y1=\"20\" x2=\"50\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <line x1=\"50\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#64748B\" stroke-width=\"2\"/>\n      <!-- Kılavuz Çizgileri -->\n      <line x1=\"50\" y1=\"50\" x2=\"290\" y2=\"50\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <line x1=\"50\" y1=\"95\" x2=\"290\" y2=\"95\" stroke=\"#334155\" stroke-dasharray=\"4,4\"/>\n      <text x=\"25\" y=\"55\" fill=\"#94A3B8\" font-size=\"11\">100</text>\n      <text x=\"30\" y=\"100\" fill=\"#94A3B8\" font-size=\"11\">50</text>\n      <text x=\"35\" y=\"145\" fill=\"#94A3B8\" font-size=\"11\">0</text>\n      <!-- Sütunlar -->\n      <rect x=\"75\" y=\"45\" width=\"30\" height=\"95\" fill=\"#3B82F6\" rx=\"3\"/>\n      <rect x=\"135\" y=\"70\" width=\"30\" height=\"70\" fill=\"#10B981\" rx=\"3\"/>\n      <rect x=\"195\" y=\"30\" width=\"30\" height=\"110\" fill=\"#F59E0B\" rx=\"3\"/>\n      <rect x=\"255\" y=\"85\" width=\"30\" height=\"55\" fill=\"#EC4899\" rx=\"3\"/>\n      <!-- Etiketler -->\n      <text x=\"80\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">1. Grup</text>\n      <text x=\"140\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">2. Grup</text>\n      <text x=\"200\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">3. Grup</text>\n      <text x=\"260\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\">4. Grup</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           }
         ]
       }
@@ -2419,7 +2482,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T1-01",
@@ -2471,7 +2537,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T1-02",
@@ -2523,7 +2592,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T1-03",
@@ -2575,7 +2647,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T1-04",
@@ -2627,7 +2702,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T1-05",
@@ -2657,7 +2735,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T1-06",
@@ -2687,7 +2768,10 @@
               "category": "5 Yıldız • Şampiyon / Üst Düzey Seçici",
               "placement": "Deneme Sınavı Seçici Soruları (%1'lik Dilim Ayırt Edici)",
               "rationale": "Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           }
         ]
       },
@@ -2746,7 +2830,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-05",
@@ -2798,7 +2885,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T2-01",
@@ -2850,7 +2940,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T2-02",
@@ -2902,7 +2995,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T2-03",
@@ -2954,7 +3050,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T2-04",
@@ -3006,7 +3105,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T2-05",
@@ -3036,7 +3138,10 @@
               "category": "5 Yıldız • Şampiyon / Üst Düzey Seçici",
               "placement": "Deneme Sınavı Seçici Soruları (%1'lik Dilim Ayırt Edici)",
               "rationale": "Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           }
         ]
       },
@@ -3095,7 +3200,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-07",
@@ -3147,7 +3255,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T3-03",
@@ -3177,7 +3288,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T3-04",
@@ -3207,7 +3321,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T3-05",
@@ -3237,7 +3354,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T3-06",
@@ -3267,7 +3387,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T3-07",
@@ -3297,7 +3420,10 @@
               "category": "5 Yıldız • Şampiyon / Üst Düzey Seçici",
               "placement": "Deneme Sınavı Seçici Soruları (%1'lik Dilim Ayırt Edici)",
               "rationale": "Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           }
         ]
       },
@@ -3334,7 +3460,10 @@
               "category": "2 Yıldız • Kavrama (Temel-Orta)",
               "placement": "Test Giriş / Ön Hazırlık ve Kavram Testi",
               "rationale": "Temel kavramları ve tanımları anlama, doğrudan çıkarım yapma."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T4-02",
@@ -3364,7 +3493,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T4-03",
@@ -3394,7 +3526,10 @@
               "category": "3 Yıldız • Uygulama (Orta Düzey)",
               "placement": "Konu Pekiştirme ve Yöntem İşletimi",
               "rationale": "Verilen kuralı yeni duruma uygulama veya formül adımlarını işletme."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T4-04",
@@ -3424,7 +3559,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T4-05",
@@ -3454,7 +3592,10 @@
               "category": "4 Yıldız • LGS Yeni Nesil (İleri Düzey)",
               "placement": "LGS Standart Deneme Ana Omurgası (%50-60 Ağırlık)",
               "rationale": "Gerçek yaşam senaryosu, çoklu öncül, deney veya tablo analizi gerektirir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T4-06",
@@ -3484,7 +3625,10 @@
               "category": "2 Yıldız • Kavrama (Temel-Orta)",
               "placement": "Test Giriş / Ön Hazırlık ve Kavram Testi",
               "rationale": "Temel kavramları ve tanımları anlama, doğrudan çıkarım yapma."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           },
           {
             "id": "LGS-FEN-T4-07",
@@ -3514,7 +3658,10 @@
               "category": "5 Yıldız • Şampiyon / Üst Düzey Seçici",
               "placement": "Deneme Sınavı Seçici Soruları (%1'lik Dilim Ayırt Edici)",
               "rationale": "Çok adımlı optimizasyon, soyut modelleme ve yüksek analitik akıl yürütme içerir."
-            }
+            },
+            "visualContent": "<svg class=\"question-svg\" viewBox=\"0 0 320 180\" width=\"100%\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:#0F172A; border-radius:8px; border:1px solid #334155; margin:12px 0;\">\n      <!-- Kap 1 -->\n      <rect x=\"50\" y=\"50\" width=\"80\" height=\"90\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"52\" y=\"80\" width=\"76\" height=\"58\" fill=\"rgba(6, 182, 212, 0.4)\"/>\n      <text x=\"75\" y=\"115\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">d yoğunluk</text>\n      <line x1=\"38\" y1=\"80\" x2=\"38\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"22\" y=\"112\" fill=\"#F59E0B\" font-size=\"11\">h</text>\n      <text x=\"75\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">1. Kap</text>\n\n      <!-- Kap 2 (U Borusu / 2h Derinlik) -->\n      <rect x=\"180\" y=\"40\" width=\"90\" height=\"100\" fill=\"none\" stroke=\"#94A3B8\" stroke-width=\"3\" rx=\"2\"/>\n      <rect x=\"182\" y=\"50\" width=\"86\" height=\"88\" fill=\"rgba(59, 130, 246, 0.5)\"/>\n      <text x=\"205\" y=\"100\" fill=\"#E2E8F0\" font-size=\"12\" font-weight=\"bold\">2d yoğunluk</text>\n      <line x1=\"168\" y1=\"50\" x2=\"168\" y2=\"138\" stroke=\"#F59E0B\" stroke-width=\"1.5\"/>\n      <text x=\"150\" y=\"98\" fill=\"#F59E0B\" font-size=\"11\">2h</text>\n      <text x=\"210\" y=\"160\" fill=\"#E2E8F0\" font-size=\"11\" font-weight=\"bold\">2. Kap</text>\n    </svg>",
+            "hasVisual": true,
+            "visualType": "svg_vector"
           }
         ]
       }

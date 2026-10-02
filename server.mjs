@@ -11,6 +11,7 @@ import { db } from './engine/db_adapter.mjs';
 import { llmClient } from './engine/llm_client.mjs';
 import { jevPipeline } from './engine/jev_self_correction.mjs';
 import { compressAndArchiveData } from './scripts/cloud_sync_manager.mjs';
+import { JevVideoSolutionEngine } from './engine/jev_video_solution_engine.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -268,6 +269,25 @@ export const server = http.createServer(async (req, res) => {
         count: generatedList.length,
         message: `${generatedList.length} adet yeni nesil soru 4 branş ve 4 seviyede başarıyla üretildi.`,
         questions: generatedList
+      });
+    } catch (err) {
+      sendJson(res, 500, { error: err.message });
+    }
+    return;
+  }
+
+  // 11. JEV 10 Demo Video Çözüm Senaryosu ve Dizgi Portföyü: GET /api/video-solutions/demos
+  if (req.method === 'GET' && pathname === '/api/video-solutions/demos') {
+    try {
+      db.init();
+      const allQuestions = Array.from(db.questionLookup.values());
+      const engine = new JevVideoSolutionEngine();
+      const demos = engine.generate10DemoScripts(allQuestions);
+      sendJson(res, 200, {
+        success: true,
+        count: demos.length,
+        description: '10 Seçkin Soru İçin JEV 5 Aşamalı Video Çözüm Senaryosu ve InDesign/LaTeX Dizgi Paketi',
+        demos
       });
     } catch (err) {
       sendJson(res, 500, { error: err.message });

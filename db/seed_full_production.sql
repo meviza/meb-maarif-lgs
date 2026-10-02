@@ -1,6 +1,6 @@
 -- ============================================================================
 -- MEB Maarif LGS Platformu - Faz 3 Tam Üretim SQL Tohum Dosyası
--- Üretim Tarihi: 2026-10-02T07:37:26.682Z
+-- Üretim Tarihi: 2026-10-02T08:08:23.368Z
 -- Toplam: 4 Branş, 12 Test Paketi, 53 Yeni Nesil LGS Sorusu
 -- ============================================================================
 

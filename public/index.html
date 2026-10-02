@@ -530,6 +530,9 @@
           <!-- Paragraf / Öncül Metni -->
           <div id="stimulusBox" class="stimulus-card"></div>
 
+          <!-- Görsel / Vektörel SVG Çizim veya Veri Tablosu Kutusu -->
+          <div id="visualContentBox" class="visual-content-card hidden"></div>
+
           <!-- Soru Kökü -->
           <div id="stemBox" class="stem-card"></div>
 
@@ -561,6 +564,16 @@
               ÇELDİRİCİ ANALİZİ (Öğrenci Yanılgıları)
             </h5>
             <div id="distractorItems" class="distractor-grid"></div>
+          </div>
+
+          <!-- JEV Video Çözüm Senaryosu ve Çekim Planı Butonu -->
+          <div style="margin-top:14px; text-align:right;">
+            <button id="btnOpenVideoSolution" class="btn-video-solution" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              🎬 JEV 5 Aşamalı Video Çözüm Senaryosu & Dizgi Çıktısı (Storyboard)
+            </button>
           </div>
         </div>
 
@@ -762,6 +775,30 @@
           <span>Oturum Verileri JEV System-1 ve PostgreSQL omurgasında güvenli ve kalıcı olarak saklanır.</span>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- JEV Video Çözüm Senaryosu ve Dizgi Önizleme Modalı -->
+  <div id="videoSolutionModal" class="portal-modal-overlay hidden">
+    <div class="video-modal-card">
+      <div class="video-modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="stat-icon-box bg-purple-subtle" style="width:32px; height:32px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="margin:0; font-size:15px; font-weight:800;" id="videoModalTitle">JEV Video Çözüm Senaryosu</h3>
+            <p style="margin:2px 0 0 0; font-size:11px; color:var(--text-muted);" id="videoModalSubtitle">Yayınevi Video Çekim Scripti ve Adobe InDesign/LaTeX Dizgi Paketi</p>
+          </div>
+        </div>
+        <button id="btnCloseVideoModal" type="button" class="btn-nav" style="padding:4px 10px; font-size:12px;">✕ Kapat</button>
+      </div>
+
+      <div class="video-modal-body" id="videoModalContent">
+        <!-- JS ile Dinamik Doldurulur -->
+      </div>
     </div>
   </div>
 
