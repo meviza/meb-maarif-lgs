@@ -5,6 +5,9 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
+- [Gece ilerleme kaydı: 673 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Kaynak geometrisi bağlantısı](docs/REASONED_GEOMETRY_RESOLVER_EVIDENCE_2026-10-03.md) ve [gerçek SQL üzerinden sentetik uygulama adaptörü](docs/SYNTHETIC_LEDGER_ADAPTER_EVIDENCE_2026-10-03.md)
+- [4/8 etkin program ve ayrı LGS örnek envanteri](docs/ACTIVE_PROGRAM_AND_MONTHLY_SOURCE_SCOPE_2026-10-03.md), [MEB soru biçimi inceleme taslağı](docs/MEB_QUESTION_FORM_ANALYSIS_2026-10-03.md)
 - [Konu → tek gerekçeli örnek → karışık alıştırma ve güncel kanıt](docs/LESSON_MIXED_FLOW_ACCEPTANCE_2026-10-03.md)
 - [TYMM kaynak seçimi](docs/TYMM_RELEVANCE_SELECTION_2026-10-03.md), [İngilizce kaynak/hak taraması](docs/ENGLISH_OPEN_RESOURCE_SCREENING_2026-10-03.md) ve [gönderilen Cambridge ön başvurusu](docs/LICENSING_ENQUIRY_STATUS_2026-10-03.md)
 - [Antigravity kodunun yeniden denetimi](docs/ANTIGRAVITY_CODE_REAUDIT_2026-10-03.md)

@@ -72,3 +72,26 @@ test('argument accessors and proxies cannot run code while choosing a container'
   assert.throws(() => parse(proxy), /invalid_synthetic_ledger_args/u);
   assert.equal(reads, 0);
 });
+
+test('the synthetic psql bridge uses only the adapter allowlist and same-session PREPARE bound values', () => {
+  assert.equal(typeof api.buildSyntheticPsqlStatement, 'function', 'bounded synthetic adapter psql bridge missing');
+  const text = 'SELECT learning_ledger.replay_receipt($1::jsonb) AS ledger_result';
+  const value = JSON.stringify({ receiptId: "quote'; SELECT secret; --" });
+  const sql = api.buildSyntheticPsqlStatement({ text, values: [value] });
+  assert.ok(sql.startsWith('PREPARE synthetic_adapter_request(jsonb) AS '));
+  assert.ok(sql.includes(text));
+  assert.ok(sql.includes("quote''; SELECT secret; --"));
+  assert.ok(sql.endsWith('DEALLOCATE synthetic_adapter_request;'));
+});
+
+test('the synthetic psql bridge rejects identity changes arbitrary SQL accessors proxies and wrong value counts', () => {
+  assert.equal(typeof api.buildSyntheticPsqlStatement, 'function', 'bounded synthetic adapter psql bridge missing');
+  let reads = 0;
+  const getter = { values: ['{}'] }; Object.defineProperty(getter, 'text', { enumerable: true, get() { reads++; return 'SELECT 1'; } });
+  for (const query of [getter, new Proxy({}, { ownKeys() { reads++; return []; } }), { text: 'SET ROLE postgres; SELECT 1', values: [] },
+    { text: 'SELECT learning_ledger.replay_receipt($1::jsonb) AS ledger_result', values: [] },
+    { text: 'SELECT learning_ledger.replay_receipt($1::jsonb) AS ledger_result', values: ['{}'], dbRole: 'postgres' }]) {
+    assert.throws(() => api.buildSyntheticPsqlStatement(query), /invalid_synthetic_adapter_query/u);
+  }
+  assert.equal(reads, 0);
+});

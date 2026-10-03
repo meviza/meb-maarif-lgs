@@ -2,6 +2,11 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
+- [Gece fazları: güncel 673 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gerekçeli kaynak geometri resolver'ı ve normal fabrika bağlantısı](REASONED_GEOMETRY_RESOLVER_EVIDENCE_2026-10-03.md)
+- [Sentetik uygulama adaptörü: 22 SQL + 8 adaptör kontrolü](SYNTHETIC_LEDGER_ADAPTER_EVIDENCE_2026-10-03.md)
+- [4/8 etkin program sınırı ve 88 LGS örnek bölüm metaverisi](ACTIVE_PROGRAM_AND_MONTHLY_SOURCE_SCOPE_2026-10-03.md)
+- [Gerçek MEB PDF'lerinden soru biçimi ve amaç inceleme taslağı](MEB_QUESTION_FORM_ANALYSIS_2026-10-03.md)
 - [Konu, tek örnek ve karışık test: 628 test / gerçek tarayıcı kabul sınırları](LESSON_MIXED_FLOW_ACCEPTANCE_2026-10-03.md)
 - [143 TYMM kaydının yararlılık seçimi](TYMM_RELEVANCE_SELECTION_2026-10-03.md)
 - [İngilizce açık/ücretsiz kaynaklar: Oxford, Cambridge, British Council, VOA](ENGLISH_OPEN_RESOURCE_SCREENING_2026-10-03.md)

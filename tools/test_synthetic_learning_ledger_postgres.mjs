@@ -10,6 +10,7 @@ import * as v1 from '../packages/contracts/learning_event_sync_eligibility.mjs';
 import { calculateLearningEventSha256 } from '../packages/contracts/learning_event_sync_batch.mjs';
 import { calculateLearningSyncReceiptGovernanceBindingSha256 } from '../packages/contracts/learning_event_sync_eligibility_v2.mjs';
 import { createValidServerResolvedLearningSyncInput, createExactReplayServerResolvedLearningSyncInput } from '../test/support/learning_sync_v2_fixture.mjs';
+import { createSyntheticLearningLedgerAdapter, SYNTHETIC_LEARNING_LEDGER_SQL } from '../packages/persistence/synthetic_learning_ledger_adapter.mjs';
 
 const IMAGE = 'postgres:16.15-alpine';
 const DEFAULT_CONTAINER = 'k12-synthetic-ledger-proof';
@@ -17,6 +18,27 @@ const NAME = /^k12-synthetic-ledger-[a-z0-9][a-z0-9-]{0,40}$/u;
 const roles = { a: 'synthetic_school_a_app', b: 'synthetic_school_b_app', none: 'synthetic_no_scope_app' };
 const sqlLiteral = value => `'${String(value).replaceAll("'", "''")}'`;
 const jsonLiteral = value => `${sqlLiteral(JSON.stringify(value))}::jsonb`;
+
+// Test-only, same-session SQL parameter bridge. It is not a PostgreSQL wire
+// driver. The production adapter emits text + values without interpolation.
+export function buildSyntheticPsqlStatement(query) {
+  if (!query || typeof query !== 'object' || isProxy(query) || Array.isArray(query) || ![Object.prototype, null].includes(Object.getPrototypeOf(query))) throw new Error('invalid_synthetic_adapter_query');
+  const d = Object.getOwnPropertyDescriptors(query), keys = Reflect.ownKeys(d);
+  if (keys.length !== 2 || !keys.includes('text') || !keys.includes('values') || ['text','values'].some(k => !d[k].enumerable || !Object.hasOwn(d[k], 'value'))) throw new Error('invalid_synthetic_adapter_query');
+  const text = d.text.value, values = d.values.value;
+  const plans = [[SYNTHETIC_LEARNING_LEDGER_SQL.append, ['jsonb','jsonb','jsonb']], [SYNTHETIC_LEARNING_LEDGER_SQL.replay, ['jsonb']], [SYNTHETIC_LEARNING_LEDGER_SQL.read, ['text','text','text']]];
+  const plan = plans.find(p => p[0] === text);
+  if (!plan || !Array.isArray(values) || isProxy(values) || Object.getPrototypeOf(values) !== Array.prototype) throw new Error('invalid_synthetic_adapter_query');
+  const fields = Object.getOwnPropertyDescriptors(values), size = fields.length.value;
+  if (size !== plan[1].length || Reflect.ownKeys(fields).length !== size + 1) throw new Error('invalid_synthetic_adapter_query');
+  const copied = [];
+  for (let i = 0; i < size; i++) {
+    const field = fields[String(i)];
+    if (!field || !field.enumerable || !Object.hasOwn(field, 'value') || typeof field.value !== 'string' || Buffer.byteLength(field.value, 'utf8') > 262144) throw new Error('invalid_synthetic_adapter_query');
+    copied.push(field.value);
+  }
+  return `PREPARE synthetic_adapter_request(${plan[1].join(',')}) AS ${text}; EXECUTE synthetic_adapter_request(${copied.map(sqlLiteral).join(',')}); DEALLOCATE synthetic_adapter_request;`;
+}
 
 function validName(name) {
   if (typeof name !== 'string' || !NAME.test(name)) throw new Error('invalid_synthetic_container_name');
@@ -142,7 +164,7 @@ async function runProof(options) {
   const createdId = docker(buildSyntheticDockerArgs(options)).stdout.trim();
   let stopped = false;
   const witnesses = [];
-  const psql = (role, sql, allowFailure = false) => docker(['exec', '-i', name, 'psql', '-X', '-q', '-A', '-t', '-v', 'ON_ERROR_STOP=1', '-U', role, '-d', 'synthetic_ledger'], sql, { allowFailure });
+  const psql = (role, sql, allowFailure = false) => docker(['exec', '-i', name, 'psql', '-X', '-q', '-A', '-t', '-v', 'ON_ERROR_STOP=1', '-v', 'VERBOSITY=verbose', '-U', role, '-d', 'synthetic_ledger'], sql, { allowFailure });
   const scalar = (role, sql) => psql(role, sql).stdout.trim();
   const result = (role, sql) => JSON.parse(scalar(role, sql));
   const denied = (label, role, sql, expected) => {
@@ -165,6 +187,27 @@ async function runProof(options) {
     const otherGrade = await fixture({ grade: 2, stream: 'stream_000000000002', locator: 'ledgerstream_000000000003', receiptId: 'RECEIPT-SYNC-003' });
     const otherLearner = await fixture({ learner: 'learner_bbbbbbbbbbbb', stream: 'stream_000000000003', locator: 'ledgerstream_000000000004', receiptId: 'RECEIPT-SYNC-004' });
     psql('postgres', `INSERT INTO learning_ledger.principal_scopes VALUES ('${roles.a}',${sqlLiteral(a.tenantId)},${sqlLiteral(a.learner)},1),('${roles.b}',${sqlLiteral(b.tenantId)},${sqlLiteral(b.learner)},1);${[a,b,otherGrade,otherLearner].map(seedFixture).join('\n')}`);
+    const adapterWitnesses = [];
+    const adapterExecutions = { a: 0, b: 0 };
+    const metadataCalls = { a: 0, b: 0 };
+    // Database identity is a server-owned closure, never a command/tenant field.
+    // Each query uses PostgreSQL PREPARE + EXECUTE in one psql session. Literal
+    // escaping exists only in this bounded test bridge, not the adapter itself.
+    const executor = (role, key) => query => {
+      adapterExecutions[key]++;
+      const outcome = psql(role, buildSyntheticPsqlStatement(query), true);
+      if (outcome.status !== 0) throw Object.freeze({ code: /ERROR:\s+([0-9A-Z]{5}):/u.exec(outcome.stderr)?.[1] ?? 'XX000' });
+      const output = outcome.stdout.trim();
+      return output ? { rowCount: 1, rows: [{ ledger_result: JSON.parse(output) }] } : { rowCount: 0, rows: [] };
+    };
+    const makeAdapter = (role, key, f) => createSyntheticLearningLedgerAdapter({ execute: executor(role, key),
+      createReceiptMetadata() { metadataCalls[key]++; return { receiptId: f.receipt.receiptId, acceptedAt: f.receipt.acceptedAt }; } });
+    const adapterA = makeAdapter(roles.a, 'a', a), adapterB = makeAdapter(roles.b, 'b', b);
+    const adapterPrepare = (adapter, f, input = f.input) => {
+      const prepared = adapter.prepareCommand({ contractVersion: '1.0.0', serverResolvedEligibilityInput: input, streamLocator: f.command.streamLocator });
+      assert.equal(prepared.valid, true, JSON.stringify(prepared.errors)); return prepared.command;
+    };
+    const liveA = adapterPrepare(adapterA, a), liveB = adapterPrepare(adapterB, b);
     for (const role of Object.values(roles)) assert.equal(scalar(role, 'SELECT rolsuper FROM pg_catalog.pg_roles WHERE rolname=current_user;'), 'f');
     witnesses.push('application_roles_are_not_superusers');
     assert.equal(scalar(roles.a, 'SELECT count(*) FROM learning_ledger.streams;'), '1');
@@ -176,19 +219,50 @@ async function runProof(options) {
     denied('other_learner_denied', roles.a, appendSql(otherLearner), /scope_denied/u);
     assert.equal(scalar(roles.a, `SET app.tenant_id=${sqlLiteral(b.tenantId)}; SELECT tenant_id FROM learning_ledger.streams;`), a.tenantId);
     witnesses.push('caller_tenant_setting_cannot_change_database_scope');
-    const first = result(roles.a, appendSql(a));
+    const adapterFirst = await adapterA.append(liveA); assert.equal(adapterFirst.valid, true, JSON.stringify(adapterFirst));
+    const first = JSON.parse(JSON.stringify(adapterFirst));
     assert.equal(first.outcome, 'accepted'); assert.deepEqual(first.receipt, a.receipt); assert.equal(first.cursor.version, 8); assert.equal(first.cursor.lastSequence, 42);
     assert.equal(scalar(roles.a, 'SELECT count(*) FROM learning_ledger.events;'), '2');
-    const again = result(roles.a, appendSql(a));
+    const adapterAgain = await adapterA.append(liveA); assert.equal(adapterAgain.valid, true, JSON.stringify(adapterAgain));
+    const again = JSON.parse(JSON.stringify(adapterAgain));
     assert.equal(again.outcome, 'idempotent_replay'); assert.deepEqual(again.receipt, a.receipt);
     assert.equal(scalar(roles.a, 'SELECT count(*) FROM learning_ledger.events;'), '2');
     assert.equal(scalar(roles.a, 'SELECT count(*) FROM learning_ledger.receipts;'), '1');
     witnesses.push('append_and_duplicate_replay_have_two_events_one_receipt');
+    assert.equal(metadataCalls.a, 1);
+    adapterWitnesses.push('adapter_append_and_duplicate_reuse_one_immutable_server_receipt');
+    const readA = await adapterA.read(liveA); assert.equal(readA.valid, true, JSON.stringify(readA));
+    assert.equal(readA.cursor.version, 8); assert.equal(readA.cursor.lastSequence, 42);
+    assert.equal(readA.cursor.stateSha256, readA.streamStateSnapshot.stateSha256);
+    adapterWitnesses.push('adapter_read_validates_current_scoped_state_snapshot_hash');
     const replayInput = await createExactReplayServerResolvedLearningSyncInput();
+    // Read back the actual persisted revision, rather than claiming the
+    // generic fixture's separately hashed cursor is a real DB resolution.
+    replayInput.streamStateSnapshot = JSON.parse(JSON.stringify(readA.streamStateSnapshot));
     const replayCommand = prepared(replayInput, a.command.streamLocator.locatorId);
-    const replay = result(roles.a, `SELECT learning_ledger.replay_receipt(${jsonLiteral(replayCommand)});`);
+    const adapterReplay = await adapterA.replay(adapterPrepare(adapterA, a, replayInput)); assert.equal(adapterReplay.valid, true, JSON.stringify(adapterReplay));
+    const replay = JSON.parse(JSON.stringify(adapterReplay));
     assert.equal(replay.outcome, 'idempotent_replay'); assert.deepEqual(replay.receipt, first.receipt);
     witnesses.push('v2_prepared_historical_replay_matches_stored_receipt');
+    adapterWitnesses.push('adapter_historical_replay_hash_bound_to_persisted_receipt');
+    const crossSchool = await adapterA.append(adapterPrepare(adapterA, b));
+    assert.equal(crossSchool.valid, false); assert.equal(crossSchool.error.code, 'scope_denied');
+    const crossRead = await adapterA.read(adapterPrepare(adapterA, b));
+    assert.equal(crossRead.valid, false); assert.equal(crossRead.error.code, 'scope_denied');
+    adapterWitnesses.push('adapter_server_owned_role_denies_other_school_append_and_read');
+    const staleInput = structuredClone(a.input); staleInput.clientBatch.batchId = 'batch_000000000099'; staleInput.clientBatch.idempotencyKey = 'idem_000000000099';
+    const staleResponse = await adapterA.append(adapterPrepare(adapterA, a, staleInput));
+    assert.equal(staleResponse.valid, false); assert.equal(staleResponse.error.code, 'stale_cursor');
+    adapterWitnesses.push('adapter_maps_actual_stale_cursor_without_automatic_retry');
+    const conflictInput = structuredClone(a.input); conflictInput.clientBatch.events[1].clientOccurredAt = '2026-10-03T07:59:29.000Z';
+    const conflictResponse = await adapterA.append(adapterPrepare(adapterA, a, conflictInput));
+    assert.equal(conflictResponse.valid, false); assert.equal(conflictResponse.error.code, 'idempotency_conflict');
+    adapterWitnesses.push('adapter_maps_actual_conflicting_idempotency_hash');
+    const callsBefore = adapterExecutions.a;
+    assert.equal((await adapterA.append(structuredClone(liveA))).error.code, 'untrusted_ledger_command');
+    assert.equal(adapterExecutions.a, callsBefore);
+    assert.throws(() => createSyntheticLearningLedgerAdapter({ execute: executor(roles.a, 'a'), createReceiptMetadata: () => ({}), dbRole: roles.b }), /invalid_synthetic_ledger_adapter_options/u);
+    adapterWitnesses.push('adapter_cloned_command_and_role_override_never_reach_database');
     const conflict = structuredClone(a); conflict.command.append.submission.batchSha256 = '0'.repeat(64); conflict.command.append.intent.batchSha256 = '0'.repeat(64);
     denied('conflicting_idempotency_hash_denied', roles.a, appendSql(conflict), /idempotency_conflict/u);
     const stale = structuredClone(a); stale.command.append.submission.batchId = 'batch_000000000099'; stale.command.append.submission.idempotencyKey = 'idem_000000000099';
@@ -224,17 +298,22 @@ async function runProof(options) {
     assert.equal(scalar(roles.b, 'SELECT count(*) FROM learning_ledger.receipts;'), '0');
     assert.equal(scalar(roles.b, 'SELECT count(*) FROM learning_ledger.receipt_governance;'), '0');
     assert.equal(scalar(roles.b, 'SELECT version FROM learning_ledger.streams;'), '7');
-    const second = result(roles.b, appendSql(b)); assert.equal(second.outcome, 'accepted');
+    const second = await adapterB.append(liveB); assert.equal(second.valid, true, JSON.stringify(second)); assert.equal(second.outcome, 'accepted');
     assert.equal(scalar(roles.b, 'SELECT count(*) FROM learning_ledger.events;'), '2');
     assert.equal(scalar(roles.a, 'SELECT count(*) FROM learning_ledger.events;'), '2');
     witnesses.push('two_schools_have_separate_two_event_ledgers');
+    assert.equal(metadataCalls.b, 1);
+    const readB = await adapterB.read(liveB); assert.equal(readB.valid, true, JSON.stringify(readB)); assert.equal(readB.cursor.lastSequence, 42);
+    adapterWitnesses.push('adapter_two_fixed_non_superuser_role_closures_keep_schools_isolated');
     const runtime = JSON.parse(docker(['container', 'inspect', name, '--format', '{{json .HostConfig}}']).stdout);
     assert.equal(runtime.NetworkMode, 'none'); assert.equal(runtime.Memory, 268435456); assert.equal(runtime.NanoCpus, 1000000000);
     assert.equal(Object.keys(runtime.PortBindings ?? {}).length, 0);
     return { state: 'synthetic_sql_proof_passed', database: 'PostgreSQL 16', syntheticSchools: 2, seededScopedStreams: 4,
       applicationSuperuser: false, scopeIdentity: 'session_user_to_synthetic_role_mapping_not_http_auth',
       witnesses, runtime: { network: 'none', hostPorts: 0, cpu: 1, memoryBytes: runtime.Memory, explicitTmpfsMiB: 58, shmMiB: 2 },
-      integration: 'prepared_V2_commands_to_SQL_functions_via_local_psql_not_a_production_driver',
+      integration: 'live_adapter_prepared_V2_capabilities_to_parameterized_SQL_via_test_only_psql_PREPARE_EXECUTE_bridge_not_wire_driver',
+      adapterProof: { witnesses: adapterWitnesses, fixedServerOwnedDatabaseRole: true, adapterExecutions, automaticRetries: 0,
+        exactReceiptHashAndAcceptedCursorStateVerified: true, responseSchemaValidated: true, driver: 'test_only_psql_bridge_no_pg_wire_driver' },
       productionReady: false, liveStudentDataUsed: false, authenticationResolver: 'not_connected', sourceResolver: 'synthetic_seed_only' };
   } finally {
     const inspection = docker(['container', 'inspect', name, '--format', '{{.Id}}'], undefined, { allowFailure: true });

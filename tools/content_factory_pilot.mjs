@@ -7,6 +7,7 @@ import { createReasonedPerimeterLessonTrace } from '../packages/content-factory/
 import { auditReasonedTeachingTrace, getReasonedTeachingStage } from '../packages/contracts/reasoned_teaching_trace.mjs';
 import { createPerimeterLesson } from '../packages/content-factory/perimeter_lesson.mjs';
 import { createReasonedMediaJob, auditReasonedMediaJob } from '../packages/media/reasoned_media_job.mjs';
+import { resolveReasonedMediaGeometry } from '../packages/media/reasoned_geometry_resolver.mjs';
 import { createMixedPracticePlan } from '../packages/content-factory/mixed_practice_plan.mjs';
 
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
@@ -147,6 +148,15 @@ try {
   const questionMediaJobs = questionTraces.map(trace => createReasonedMediaJob(trace));
   const conceptMediaJobs = conceptLessons.map(trace => createReasonedMediaJob(trace));
   const conceptSource = createPerimeterLesson();
+  // Resolve live source/trace/job capabilities before writing any artifact.
+  // This derived manifest does not rewrite the original jobs, attach audio,
+  // render video or promote a local draft to expert-approved publication.
+  const questionGeometryBindings = batch.items.map((source, index) => resolveReasonedMediaGeometry({
+    source, trace: questionTraces[index], job: questionMediaJobs[index],
+  }));
+  const conceptGeometryBindings = conceptLessons.map((trace, index) => resolveReasonedMediaGeometry({
+    source: conceptSource, trace, job: conceptMediaJobs[index],
+  }));
   const practiceRequest = {
     count: 6, seed: 'lesson-mixed-v1', scope: { grade: null, programVersion: null },
     exampleFamily: 'perimeter', difficultyProfile: { introductory: 50, intermediate: 50, advanced: 0, challenge: 0 },
@@ -172,6 +182,12 @@ try {
       schemaVersion: 'reasoned-factory-media-preparation/v1', questionJobs: questionMediaJobs, conceptJobs: conceptMediaJobs,
       audits: [...questionMediaJobs, ...conceptMediaJobs].map(job => auditReasonedMediaJob(job)),
       audioAttached: false, videoAttached: false, liveProviderCalls: 0,
+    },
+    geometryPreparation: {
+      schemaVersion: 'reasoned-factory-geometry-preparation/v1',
+      questionBindings: questionGeometryBindings, conceptBindings: conceptGeometryBindings,
+      rendererBound: false, audioAttached: false, videoAttached: false,
+      liveProviderCalls: 0, publicationReady: false, learnerReady: false, productionReady: false,
     },
     practicePreparation: {
       schemaVersion: 'lesson-mixed-practice-preparation/v1', reviewPlan, exampleProfileAudit,
