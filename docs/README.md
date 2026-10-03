@@ -2,7 +2,12 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
-- [Gece fazları: güncel 673 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece fazları: güncel 740 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Kaynak-bağlı gerekçeli güvenli SVG sahne renderer'ı](REASONED_SCENE_RENDERER_EVIDENCE_2026-10-03.md)
+- [Yeni renderer bytes'ından gerçek sessiz raster/hareket tanığı](REASONED_SCENE_RASTER_MOTION_EVIDENCE_2026-10-04.md)
+- [Gerçek sentetik SQL makbuz aralığına bağlı dar etkinlik özeti](SYNTHETIC_ACTIVITY_SUMMARY_EVIDENCE_2026-10-03.md)
+- [42 aday sınıf–ders için kaynak rol/indirme/eksik matrisi](SOURCE_SCOPE_CELL_MATRIX_2026-10-04.md)
+- [Kaynak metaveri boşluk raporu ve kesin bayt sayaçları](SOURCE_SCOPE_GAPS_EVIDENCE_2026-10-03.md)
 - [Gerekçeli kaynak geometri resolver'ı ve normal fabrika bağlantısı](REASONED_GEOMETRY_RESOLVER_EVIDENCE_2026-10-03.md)
 - [Sentetik uygulama adaptörü: 22 SQL + 8 adaptör kontrolü](SYNTHETIC_LEDGER_ADAPTER_EVIDENCE_2026-10-03.md)
 - [4/8 etkin program sınırı ve 88 LGS örnek bölüm metaverisi](ACTIVE_PROGRAM_AND_MONTHLY_SOURCE_SCOPE_2026-10-03.md)

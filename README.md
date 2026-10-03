@@ -5,7 +5,9 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
-- [Gece ilerleme kaydı: 673 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece ilerleme kaydı: 740 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Güvenli gerekçeli sahne renderer'ı](docs/REASONED_SCENE_RENDERER_EVIDENCE_2026-10-03.md), [gerçek sessiz hareket tanığı](docs/REASONED_SCENE_RASTER_MOTION_EVIDENCE_2026-10-04.md) ve [makbuz-aralığına bağlı sentetik etkinlik özeti](docs/SYNTHETIC_ACTIVITY_SUMMARY_EVIDENCE_2026-10-03.md)
+- [42 aday sınıf–ders kaynak boşluk matrisi](docs/SOURCE_SCOPE_CELL_MATRIX_2026-10-04.md) ve [kaynak/soru tamlığını karıştırmayan metaveri raporu](docs/SOURCE_SCOPE_GAPS_EVIDENCE_2026-10-03.md)
 - [Kaynak geometrisi bağlantısı](docs/REASONED_GEOMETRY_RESOLVER_EVIDENCE_2026-10-03.md) ve [gerçek SQL üzerinden sentetik uygulama adaptörü](docs/SYNTHETIC_LEDGER_ADAPTER_EVIDENCE_2026-10-03.md)
 - [4/8 etkin program ve ayrı LGS örnek envanteri](docs/ACTIVE_PROGRAM_AND_MONTHLY_SOURCE_SCOPE_2026-10-03.md), [MEB soru biçimi inceleme taslağı](docs/MEB_QUESTION_FORM_ANALYSIS_2026-10-03.md)
 - [Konu → tek gerekçeli örnek → karışık alıştırma ve güncel kanıt](docs/LESSON_MIXED_FLOW_ACCEPTANCE_2026-10-03.md)

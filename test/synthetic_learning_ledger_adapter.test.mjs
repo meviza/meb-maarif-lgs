@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { calculateLearningSyncReceiptSha256, calculateLearningSyncStreamStateSnapshotSha256, calculateLearningSyncActivityScopeSnapshotSha256 } from '../packages/contracts/learning_event_sync_eligibility.mjs';
+import { calculateLearningSyncReceiptSha256, calculateLearningSyncStreamStateSnapshotSha256, calculateLearningSyncActivityScopeSnapshotSha256, calculateLearningEventBatchSha256 } from '../packages/contracts/learning_event_sync_eligibility.mjs';
 import { createValidServerResolvedLearningSyncInput, createExactReplayServerResolvedLearningSyncInput } from './support/learning_sync_v2_fixture.mjs';
+import { calculateLearningEventSha256 } from '../packages/contracts/learning_event_sync_batch.mjs';
+import { calculateLearningSyncReceiptGovernanceBindingSha256 } from '../packages/contracts/learning_event_sync_eligibility_v2.mjs';
 
 const moduleUrl = new URL('../packages/persistence/synthetic_learning_ledger_adapter.mjs', import.meta.url);
 const api = await import(moduleUrl.href).catch(error => { if (error.code === 'ERR_MODULE_NOT_FOUND') return {}; throw error; });
@@ -29,6 +31,184 @@ async function acceptedFixture() {
 }
 const row = ledgerResult => ({ rowCount: 1, rows: [{ ledger_result: ledgerResult }] });
 const accepted = f => ({ outcome: 'accepted', receipt: f.receipt, cursor: f.cursor });
+
+async function activityWindowFixture() {
+  const input = await preparation(), f = await acceptedFixture();
+  const replay = await createExactReplayServerResolvedLearningSyncInput();
+  const probe = makeAdapter(() => row({})).prepareCommand(input);
+  assert.equal(probe.valid, true);
+  const intent = probe.command.append.intent;
+  return { input, result: { outcome: 'activity_window_read', streamLocator: input.streamLocator,
+    cursor: f.cursor, streamStateSnapshot: f.state,
+    includedInterval: { firstEventSequence: 41, lastEventSequence: 42 }, receipt: f.receipt,
+    receiptGovernanceBinding: replay.receiptGovernanceBindingLookup.binding,
+    governanceAudit: { sourceKind: 'synthetic_fixture', purpose: intent.dataHandlingBinding.purpose,
+      classification: intent.dataHandlingBinding.classification, retentionClass: intent.dataHandlingBinding.retentionClass,
+      ownerId: 'owner_learning_governance_001', stewardId: 'steward_learning_governance_001',
+      catalogBinding: intent.catalogBinding, dataHandlingBinding: intent.dataHandlingBinding },
+    events: probe.command.append.submission.events } };
+}
+
+test('activity window reads one fixed bounded statement and returns a live branded immutable receipt interval', async () => {
+  const f = await activityWindowFixture(); let query, metadataCalls = 0;
+  const a = makeAdapter(q => { query = q; return row(f.result); }, () => { metadataCalls++; return metadata; });
+  assert.equal(typeof a.readActivityWindow, 'function', 'persisted activity-window read missing');
+  const p = a.prepareCommand(f.input), result = await a.readActivityWindow(p.command);
+  assert.equal(result.valid, true); assert.equal(result.completeHistory, false);
+  assert.equal(result.windowBasis, 'prepared_batch_receipt_interval');
+  assert.equal(api.isVerifiedSyntheticActivityWindow(result), true);
+  assert.equal(api.isVerifiedSyntheticActivityWindow(structuredClone(result)), false);
+  assert.equal(Object.isFrozen(result.events[0]), true); assert.equal(metadataCalls, 0);
+  assert.equal(query.text, api.SYNTHETIC_LEARNING_LEDGER_SQL.activityWindow);
+  assert.equal(query.values.length, 8); assert.deepEqual(query.values.slice(-2), ['41','42']);
+  assert.match(query.text, /ORDER BY e.event_sequence/u); assert.match(query.text, /LIMIT 101/u);
+  assert.equal(query.text.includes(f.input.streamLocator.locatorId), false);
+});
+
+test('activity windows accept exact replay anchors and later cursor snapshots without claiming complete history', async () => {
+  const f = await activityWindowFixture();
+  f.result.cursor.version = 9; f.result.cursor.lastSequence = 45; f.result.cursor.lastEventSha256 = 'd'.repeat(64);
+  Object.assign(f.result.streamStateSnapshot, { snapshotId: 'STREAM-SYNC-001:8:9', streamVersion: 9, lastAcceptedSequence: 45,
+    lastAcceptedEventSha256: 'd'.repeat(64), capturedAt: '2026-10-03T07:59:51.000Z' });
+  f.result.streamStateSnapshot.stateSha256 = calculateLearningSyncStreamStateSnapshotSha256(f.result.streamStateSnapshot);
+  f.result.cursor.stateSha256 = f.result.streamStateSnapshot.stateSha256;
+  const a = makeAdapter(() => row(f.result)); assert.equal(typeof a.readActivityWindow, 'function');
+  const p = a.prepareCommand(await preparation(true));
+  const result = await a.readActivityWindow(p.command);
+  assert.equal(result.valid, true); assert.equal(result.events.length, 2); assert.equal(result.includedInterval.lastEventSequence, 42);
+  assert.equal(result.cursor.lastSequence, 45); assert.equal(result.completeHistory, false);
+});
+
+test('window commands remain adapter-instance capabilities and missing scoped rows fail closed', async () => {
+  const f = await activityWindowFixture(); let calls = 0;
+  const a = makeAdapter(() => { calls++; return { rowCount: 0, rows: [] }; });
+  const b = makeAdapter(() => { calls++; return row(f.result); });
+  assert.equal(typeof a.readActivityWindow, 'function');
+  const p = a.prepareCommand(f.input);
+  for (const command of [structuredClone(p.command), null, new Proxy(p.command, {})]) {
+    assert.equal((await a.readActivityWindow(command)).error.code, 'untrusted_ledger_command');
+  }
+  assert.equal((await b.readActivityWindow(p.command)).error.code, 'untrusted_ledger_command'); assert.equal(calls, 0);
+  assert.equal((await a.readActivityWindow(p.command)).error.code, 'scope_denied'); assert.equal(calls, 1);
+});
+
+test('missing duplicate reordered and foreign interval events cannot produce a verified window', async () => {
+  const f = await activityWindowFixture();
+  const mutations = [r => r.events.pop(), r => r.events.push(r.events[0]), r => r.events.reverse(),
+    r => { r.events[1].eventSequence = 43; }, r => { r.includedInterval.firstEventSequence = 40; },
+    r => { r.receipt.lastEventSequence = 43; }];
+  for (const mutate of mutations) {
+    const bad = structuredClone(f.result); mutate(bad); const a = makeAdapter(() => row(bad));
+    assert.equal(typeof a.readActivityWindow, 'function');
+    const result = await a.readActivityWindow(a.prepareCommand(f.input).command);
+    assert.equal(result.valid, false); assert.equal(result.error.code, 'ledger_response_invalid');
+    assert.equal(result.commitState, 'not_attempted');
+  }
+});
+
+test('fully rehashed event receipt and sidecar forgeries remain pinned to the prepared source batch', async () => {
+  const f = await activityWindowFixture(), bad = structuredClone(f.result);
+  bad.events[1].eventType = 'hint_requested';
+  const { eventSha256: ignored, ...clean } = bad.events[1]; bad.events[1].eventSha256 = calculateLearningEventSha256(clean);
+  bad.receipt.eventSha256es[1] = bad.events[1].eventSha256;
+  bad.receipt.receiptSha256 = calculateLearningSyncReceiptSha256(bad.receipt);
+  bad.receiptGovernanceBinding.receiptSha256 = bad.receipt.receiptSha256;
+  bad.receiptGovernanceBinding.bindingSha256 = calculateLearningSyncReceiptGovernanceBindingSha256(bad.receiptGovernanceBinding);
+  bad.cursor.lastEventSha256 = bad.events[1].eventSha256;
+  bad.streamStateSnapshot.lastAcceptedEventSha256 = bad.events[1].eventSha256;
+  bad.streamStateSnapshot.stateSha256 = calculateLearningSyncStreamStateSnapshotSha256(bad.streamStateSnapshot);
+  bad.cursor.stateSha256 = bad.streamStateSnapshot.stateSha256;
+  const a = makeAdapter(() => row(bad)); assert.equal(typeof a.readActivityWindow, 'function');
+  assert.equal((await a.readActivityWindow(a.prepareCommand(f.input).command)).error.code, 'ledger_response_invalid');
+});
+
+test('window audit purpose owner source policy and catalog hashes are not caller assertions', async () => {
+  const f = await activityWindowFixture();
+  for (const mutate of [r => { r.governanceAudit.purpose = 'learning_analytics'; }, r => { r.governanceAudit.ownerId = 'another_owner'; },
+    r => { r.governanceAudit.sourceKind = 'production'; }, r => { r.governanceAudit.retentionClass = 'forever'; },
+    r => { r.governanceAudit.dataHandlingBinding.policySha256 = '0'.repeat(64); },
+    r => { r.receiptGovernanceBinding.catalogBinding.catalogSha256 = '0'.repeat(64);
+      r.receiptGovernanceBinding.bindingSha256 = calculateLearningSyncReceiptGovernanceBindingSha256(r.receiptGovernanceBinding); }]) {
+    const bad = structuredClone(f.result); mutate(bad); const a = makeAdapter(() => row(bad)); assert.equal(typeof a.readActivityWindow, 'function');
+    assert.equal((await a.readActivityWindow(a.prepareCommand(f.input).command)).error.code, 'ledger_response_invalid');
+  }
+});
+
+test('window chronology and closed event fields forbid stale snapshots free text and hidden executable data', async () => {
+  const f = await activityWindowFixture(); let reads = 0;
+  const mutations = [r => { r.events[1].clientOccurredAt = '2026-10-03T07:58:59.000Z'; },
+    r => { r.receipt.acceptedAt = '2026-10-03T07:58:59.000Z'; r.receipt.receiptSha256 = calculateLearningSyncReceiptSha256(r.receipt); },
+    r => { r.events[0].note = 'private notebook'; }, r => { r.events[0].strokes = []; },
+    r => { Object.defineProperty(r.events[0], 'eventType', { enumerable: true, get() { reads++; return 'activity_started'; } }); },
+    r => { r.events = new Proxy(r.events, { ownKeys() { reads++; return []; } }); },
+    r => { r.streamStateSnapshot.capturedAt = '2026-10-03T07:58:59.000Z';
+      r.streamStateSnapshot.stateSha256 = calculateLearningSyncStreamStateSnapshotSha256(r.streamStateSnapshot); r.cursor.stateSha256 = r.streamStateSnapshot.stateSha256; }];
+  for (const mutate of mutations) {
+    const bad = structuredClone(f.result); mutate(bad); const a = makeAdapter(() => row(bad)); assert.equal(typeof a.readActivityWindow, 'function');
+    assert.equal((await a.readActivityWindow(a.prepareCommand(f.input).command)).error.code, 'ledger_response_invalid');
+  }
+  assert.equal(reads, 0);
+});
+
+test('a receipt window rejects rehashed cursor versions that have no possible later batches', async () => {
+  const f = await activityWindowFixture(), bad = structuredClone(f.result);
+  bad.cursor.version = 9; bad.streamStateSnapshot.streamVersion = 9; bad.streamStateSnapshot.snapshotId = 'STREAM-SYNC-001:8:9';
+  bad.streamStateSnapshot.stateSha256 = calculateLearningSyncStreamStateSnapshotSha256(bad.streamStateSnapshot);
+  bad.cursor.stateSha256 = bad.streamStateSnapshot.stateSha256;
+  const a = makeAdapter(() => row(bad));
+  assert.equal((await a.readActivityWindow(a.prepareCommand(f.input).command)).error?.code, 'ledger_response_invalid');
+});
+
+test('the immediate persisted receipt cursor must use the exact SQL-produced snapshot revision', async () => {
+  const f = await activityWindowFixture(), bad = structuredClone(f.result);
+  bad.streamStateSnapshot.snapshotId = 'rehash_forged_unrelated_snapshot';
+  bad.streamStateSnapshot.stateSha256 = calculateLearningSyncStreamStateSnapshotSha256(bad.streamStateSnapshot);
+  bad.cursor.stateSha256 = bad.streamStateSnapshot.stateSha256;
+  const a = makeAdapter(() => row(bad));
+  assert.equal((await a.readActivityWindow(a.prepareCommand(f.input).command)).error?.code, 'ledger_response_invalid');
+});
+
+test('rehashing the entire returned foreign batch and sidecar does not replace the live source anchor', async () => {
+  const f = await activityWindowFixture(), bad = structuredClone(f.result);
+  bad.events[1].activityId = 'activity_another_001';
+  const cleanEvents = bad.events.map(event => {
+    const { eventSha256: ignored, ...clean } = event; event.eventSha256 = calculateLearningEventSha256(clean); return clean;
+  });
+  bad.receipt.eventSha256es = bad.events.map(e => e.eventSha256);
+  bad.receipt.batchSha256 = calculateLearningEventBatchSha256({ ...f.input.serverResolvedEligibilityInput.clientBatch, events: cleanEvents });
+  bad.receipt.receiptSha256 = calculateLearningSyncReceiptSha256(bad.receipt);
+  Object.assign(bad.receiptGovernanceBinding, { batchSha256: bad.receipt.batchSha256, receiptSha256: bad.receipt.receiptSha256 });
+  bad.receiptGovernanceBinding.bindingSha256 = calculateLearningSyncReceiptGovernanceBindingSha256(bad.receiptGovernanceBinding);
+  bad.streamStateSnapshot.lastAcceptedEventSha256 = bad.events.at(-1).eventSha256;
+  bad.streamStateSnapshot.stateSha256 = calculateLearningSyncStreamStateSnapshotSha256(bad.streamStateSnapshot);
+  Object.assign(bad.cursor, { lastEventSha256: bad.events.at(-1).eventSha256, stateSha256: bad.streamStateSnapshot.stateSha256 });
+  const a = makeAdapter(() => row(bad));
+  assert.equal((await a.readActivityWindow(a.prepareCommand(f.input).command)).error.code, 'ledger_response_invalid');
+});
+
+test('a correctly rehashed receipt timestamp substitution cannot replace an exact historical replay anchor', async () => {
+  const f = await activityWindowFixture(), bad = structuredClone(f.result);
+  bad.receipt.acceptedAt = '2026-10-03T07:59:30.500Z'; bad.receipt.receiptSha256 = calculateLearningSyncReceiptSha256(bad.receipt);
+  bad.receiptGovernanceBinding.receiptSha256 = bad.receipt.receiptSha256;
+  bad.receiptGovernanceBinding.bindingSha256 = calculateLearningSyncReceiptGovernanceBindingSha256(bad.receiptGovernanceBinding);
+  const a = makeAdapter(() => row(bad));
+  assert.equal((await a.readActivityWindow(a.prepareCommand(await preparation(true)).command)).error.code, 'ledger_response_invalid');
+});
+
+test('window error replies are inert bounded and do not leak SQL raw payloads or claim a read mutation', async () => {
+  const f = await activityWindowFixture();
+  for (const response of [{ ...row(f.result), rowCount: 2 }, { rowCount: 1, rows: [] },
+    row({ ...f.result, verified: true }), row({ ...f.result, events: Array(129).fill(f.result.events[0]) }),
+    row({ ...f.result, governanceAudit: { ...f.result.governanceAudit, ownerId: 'x'.repeat(270000) } })]) {
+    const a = makeAdapter(() => response), result = await a.readActivityWindow(a.prepareCommand(f.input).command);
+    assert.equal(result.error.code, 'ledger_response_invalid'); assert.equal(result.commitState, 'not_attempted');
+    assert.equal(Object.hasOwn(result, 'events'), false); assert.equal(result.automaticRetry, false);
+  }
+  const a = makeAdapter(() => { throw { code: '42501', message: 'private SQL or school data' }; });
+  const result = await a.readActivityWindow(a.prepareCommand(f.input).command);
+  assert.equal(result.error.code, 'scope_denied'); assert.equal(result.commitState, 'not_attempted');
+  assert.equal(JSON.stringify(result).includes('private'), false);
+});
 
 test('append uses a locally prepared live capability and fixed parameterized SQL with immutable receipt binding', async () => {
   const f = await acceptedFixture(), queries = [];

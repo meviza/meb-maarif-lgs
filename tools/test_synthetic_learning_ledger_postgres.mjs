@@ -11,6 +11,7 @@ import { calculateLearningEventSha256 } from '../packages/contracts/learning_eve
 import { calculateLearningSyncReceiptGovernanceBindingSha256 } from '../packages/contracts/learning_event_sync_eligibility_v2.mjs';
 import { createValidServerResolvedLearningSyncInput, createExactReplayServerResolvedLearningSyncInput } from '../test/support/learning_sync_v2_fixture.mjs';
 import { createSyntheticLearningLedgerAdapter, SYNTHETIC_LEARNING_LEDGER_SQL } from '../packages/persistence/synthetic_learning_ledger_adapter.mjs';
+import { summarizeSyntheticActivityWindow } from '../packages/analytics/synthetic_activity_summary.mjs';
 
 const IMAGE = 'postgres:16.15-alpine';
 const DEFAULT_CONTAINER = 'k12-synthetic-ledger-proof';
@@ -26,7 +27,8 @@ export function buildSyntheticPsqlStatement(query) {
   const d = Object.getOwnPropertyDescriptors(query), keys = Reflect.ownKeys(d);
   if (keys.length !== 2 || !keys.includes('text') || !keys.includes('values') || ['text','values'].some(k => !d[k].enumerable || !Object.hasOwn(d[k], 'value'))) throw new Error('invalid_synthetic_adapter_query');
   const text = d.text.value, values = d.values.value;
-  const plans = [[SYNTHETIC_LEARNING_LEDGER_SQL.append, ['jsonb','jsonb','jsonb']], [SYNTHETIC_LEARNING_LEDGER_SQL.replay, ['jsonb']], [SYNTHETIC_LEARNING_LEDGER_SQL.read, ['text','text','text']]];
+  const plans = [[SYNTHETIC_LEARNING_LEDGER_SQL.append, ['jsonb','jsonb','jsonb']], [SYNTHETIC_LEARNING_LEDGER_SQL.replay, ['jsonb']], [SYNTHETIC_LEARNING_LEDGER_SQL.read, ['text','text','text']],
+    [SYNTHETIC_LEARNING_LEDGER_SQL.activityWindow, ['text','text','text','text','text','text','bigint','bigint']]];
   const plan = plans.find(p => p[0] === text);
   if (!plan || !Array.isArray(values) || isProxy(values) || Object.getPrototypeOf(values) !== Array.prototype) throw new Error('invalid_synthetic_adapter_query');
   const fields = Object.getOwnPropertyDescriptors(values), size = fields.length.value;
@@ -305,6 +307,51 @@ async function runProof(options) {
     assert.equal(metadataCalls.b, 1);
     const readB = await adapterB.read(liveB); assert.equal(readB.valid, true, JSON.stringify(readB)); assert.equal(readB.cursor.lastSequence, 42);
     adapterWitnesses.push('adapter_two_fixed_non_superuser_role_closures_keep_schools_isolated');
+    const activitySummaryWitnesses = [];
+    const windowA = await adapterA.readActivityWindow(liveA), windowB = await adapterB.readActivityWindow(liveB);
+    assert.equal(windowA.valid, true, JSON.stringify(windowA)); assert.equal(windowB.valid, true, JSON.stringify(windowB));
+    const summaryA = summarizeSyntheticActivityWindow(windowA), summaryB = summarizeSyntheticActivityWindow(windowB);
+    assert.equal(summaryA.valid, true); assert.equal(summaryB.valid, true);
+    assert.deepEqual({ ...summaryA.counts }, { startedEvents: 1, hintRequestedEvents: 0, completedEvents: 1, observedActiveActivities: 0, observedCompletedActivities: 1 });
+    assert.notEqual(summaryA.provenance.scopeSha256, summaryB.provenance.scopeSha256);
+    assert.equal(summaryA.includedInterval.firstEventSequence, 41); assert.equal(summaryA.completeHistory, false);
+    activitySummaryWitnesses.push('persisted_window_event_receipt_cursor_and_v2_sidecar_hashes_independently_verified');
+    const deniedWindow = await adapterA.readActivityWindow(adapterPrepare(adapterA, b));
+    assert.equal(deniedWindow.valid, false); assert.equal(deniedWindow.error.code, 'scope_denied');
+    activitySummaryWitnesses.push('single_snapshot_window_respects_two_fixed_non_superuser_school_scopes');
+    assert.equal(summarizeSyntheticActivityWindow(structuredClone(windowA)).valid, false);
+    activitySummaryWitnesses.push('serialized_window_cannot_authorize_technical_activity_summary');
+    // A new, separately prepared synthetic batch on the same stream includes
+    // all three allowed event types. It has no answer, score, or notebook text.
+    const nextInput = await createValidServerResolvedLearningSyncInput();
+    nextInput.clientBatch.batchId = 'batch_000000000002'; nextInput.clientBatch.idempotencyKey = 'idem_000000000002';
+    nextInput.clientBatch.events = ['activity_started','hint_requested','activity_completed'].map((eventType, index) => ({
+      eventId: `evt_0000000000${43 + index}`, eventSequence: 43 + index, activityId: 'activity_counting_002', eventType,
+      clientOccurredAt: `2026-10-03T07:59:${['35','40','50'][index]}.000Z` }));
+    nextInput.streamStateSnapshot = structuredClone(readA.streamStateSnapshot);
+    Object.assign(nextInput.activityScopeSnapshot, { streamVersion: 8, stateThroughSequence: 42,
+      lastEventSha256: readA.cursor.lastEventSha256, activities: [{ activityId: 'activity_counting_002', lifecycleState: 'active',
+        currentState: 'not_started', allowedEventTypes: ['activity_started','hint_requested','activity_completed'] }] });
+    nextInput.activityScopeSnapshot.snapshotSha256 = v1.calculateLearningSyncActivityScopeSnapshotSha256(nextInput.activityScopeSnapshot);
+    const nextAdapter = createSyntheticLearningLedgerAdapter({ execute: executor(roles.a, 'a'),
+      createReceiptMetadata: () => ({ receiptId: 'RECEIPT-SYNC-COUNTERS-001', acceptedAt: '2026-10-03T07:59:51.000Z' }) });
+    const nextLive = adapterPrepare(nextAdapter, a, nextInput), nextAccepted = await nextAdapter.append(nextLive);
+    assert.equal(nextAccepted.valid, true, JSON.stringify(nextAccepted)); assert.equal(nextAccepted.cursor.lastSequence, 45);
+    const nextWindow = await nextAdapter.readActivityWindow(nextLive); assert.equal(nextWindow.valid, true, JSON.stringify(nextWindow));
+    const nextSummary = summarizeSyntheticActivityWindow(nextWindow);
+    assert.deepEqual({ ...nextSummary.counts }, { startedEvents: 1, hintRequestedEvents: 1, completedEvents: 1, observedActiveActivities: 0, observedCompletedActivities: 1 });
+    assert.equal(nextSummary.includedInterval.firstEventSequence, 43); assert.equal(nextSummary.includedInterval.lastEventSequence, 45);
+    assert.equal(nextSummary.includedInterval.eventCount, 3); assert.equal(nextSummary.purpose, 'learning_progress_sync');
+    assert.equal(nextSummary.inference.score, 'not_inferred'); assert.equal(nextSummary.analyticsAuthorization, 'separate_policy_pending');
+    activitySummaryWitnesses.push('persisted_three_type_interval_yields_only_started_hint_completed_counters');
+    const oldWindowAfterNewBatch = await adapterA.readActivityWindow(liveA);
+    assert.equal(oldWindowAfterNewBatch.valid, true, JSON.stringify(oldWindowAfterNewBatch)); assert.equal(oldWindowAfterNewBatch.cursor.lastSequence, 45);
+    const oldSummaryAfterNewBatch = summarizeSyntheticActivityWindow(oldWindowAfterNewBatch);
+    assert.deepEqual(oldSummaryAfterNewBatch.counts, summaryA.counts); assert.equal(oldSummaryAfterNewBatch.includedInterval.eventCount, 2);
+    assert.equal(oldSummaryAfterNewBatch.completeHistory, false); assert.equal(oldSummaryAfterNewBatch.currentActivityStateVerified, false);
+    assert.equal(scalar(roles.a, 'SELECT count(*) FROM learning_ledger.events;'), '5');
+    assert.equal(scalar(roles.b, 'SELECT count(*) FROM learning_ledger.events;'), '2');
+    activitySummaryWitnesses.push('later_cursor_and_new_batch_do_not_expand_old_receipt_interval_or_claim_complete_history');
     const runtime = JSON.parse(docker(['container', 'inspect', name, '--format', '{{json .HostConfig}}']).stdout);
     assert.equal(runtime.NetworkMode, 'none'); assert.equal(runtime.Memory, 268435456); assert.equal(runtime.NanoCpus, 1000000000);
     assert.equal(Object.keys(runtime.PortBindings ?? {}).length, 0);
@@ -314,6 +361,10 @@ async function runProof(options) {
       integration: 'live_adapter_prepared_V2_capabilities_to_parameterized_SQL_via_test_only_psql_PREPARE_EXECUTE_bridge_not_wire_driver',
       adapterProof: { witnesses: adapterWitnesses, fixedServerOwnedDatabaseRole: true, adapterExecutions, automaticRetries: 0,
         exactReceiptHashAndAcceptedCursorStateVerified: true, responseSchemaValidated: true, driver: 'test_only_psql_bridge_no_pg_wire_driver' },
+      activitySummaryProof: { witnesses: activitySummaryWitnesses, snapshot: 'one_fixed_SELECT_statement',
+        includedIntervals: [[41,42],[43,45]], persistedEventCounts: { schoolA: 5, schoolB: 2 },
+        latestWindowCounts: nextSummary.counts, purpose: 'learning_progress_sync', completeHistory: false,
+        inference: 'not_inferred', analyticsAuthorization: 'separate_policy_pending', notebookPersistence: 'separate_contract_pending' },
       productionReady: false, liveStudentDataUsed: false, authenticationResolver: 'not_connected', sourceResolver: 'synthetic_seed_only' };
   } finally {
     const inspection = docker(['container', 'inspect', name, '--format', '{{.Id}}'], undefined, { allowFailure: true });

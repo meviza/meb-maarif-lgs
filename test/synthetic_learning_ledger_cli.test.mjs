@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
+import { SYNTHETIC_LEARNING_LEDGER_SQL } from '../packages/persistence/synthetic_learning_ledger_adapter.mjs';
 
 const moduleUrl = new URL('../tools/test_synthetic_learning_ledger_postgres.mjs', import.meta.url);
 const api = await import(moduleUrl.href).catch(error => {
@@ -94,4 +95,15 @@ test('the synthetic psql bridge rejects identity changes arbitrary SQL accessors
     assert.throws(() => api.buildSyntheticPsqlStatement(query), /invalid_synthetic_adapter_query/u);
   }
   assert.equal(reads, 0);
+});
+
+test('the snapshot-window bridge binds eight fixed parameters and refuses range or role injection', () => {
+  assert.equal(typeof SYNTHETIC_LEARNING_LEDGER_SQL.activityWindow, 'string', 'activity-window SQL missing');
+  const text = SYNTHETIC_LEARNING_LEDGER_SQL.activityWindow;
+  const values = ['ledgerstream_000000000001', 'a'.repeat(64), 'stream_000000000001', 'batch_000000000001', 'idem_000000000001', 'b'.repeat(64), '41', '42'];
+  const sql = api.buildSyntheticPsqlStatement({ text, values });
+  assert.ok(sql.startsWith('PREPARE synthetic_adapter_request(text,text,text,text,text,text,bigint,bigint) AS '));
+  for (const query of [{ text, values: values.slice(0, 7) }, { text: text + '; SET ROLE postgres', values }, { text, values, role: 'postgres' }]) {
+    assert.throws(() => api.buildSyntheticPsqlStatement(query), /invalid_synthetic_adapter_query/u);
+  }
 });

@@ -6,7 +6,8 @@
  */
 import { isPromise, isProxy } from 'node:util/types';
 import { prepareLearningSyncLedgerCommand } from '../contracts/learning_sync_ledger_port.mjs';
-import { calculateLearningSyncReceiptSha256, calculateLearningSyncStreamStateSnapshotSha256 } from '../contracts/learning_event_sync_eligibility.mjs';
+import { calculateLearningSyncReceiptSha256, calculateLearningSyncStreamStateSnapshotSha256, calculateLearningEventBatchSha256, validatePseudonymousLearningSyncBatch } from '../contracts/learning_event_sync_eligibility.mjs';
+import { calculateLearningEventSha256 } from '../contracts/learning_event_sync_batch.mjs';
 import { calculateLearningSyncReceiptGovernanceBindingSha256 } from '../contracts/learning_event_sync_eligibility_v2.mjs';
 
 const MAX_BYTES = 262144;
@@ -19,7 +20,15 @@ const LOCATOR_FIELDS = ['locatorId','scopeSha256','eventStreamId'];
 const APPEND_SQL = 'SELECT learning_ledger.append_batch($1::jsonb,$2::jsonb,$3::jsonb) AS ledger_result';
 const REPLAY_SQL = 'SELECT learning_ledger.replay_receipt($1::jsonb) AS ledger_result';
 const READ_SQL = `SELECT jsonb_build_object('outcome','read','streamLocator',jsonb_build_object('locatorId',s.locator_id,'scopeSha256',s.scope_sha256,'eventStreamId',s.event_stream_id),'cursor',jsonb_build_object('version',s.version,'lastSequence',s.last_sequence,'lastEventSha256',s.last_event_sha256,'stateSha256',s.state_sha256),'streamStateSnapshot',s.state_snapshot||jsonb_build_object('stateSha256',s.state_sha256)) AS ledger_result FROM learning_ledger.streams AS s WHERE s.locator_id=$1::text AND s.scope_sha256=$2::text AND s.event_stream_id=$3::text`;
-export const SYNTHETIC_LEARNING_LEDGER_SQL = Object.freeze({ append: APPEND_SQL, replay: REPLAY_SQL, read: READ_SQL });
+// One statement / one PostgreSQL MVCC snapshot, with an exact prepared receipt
+// interval, not an unbounded history or caller-selectable analytics range.
+const ACTIVITY_WINDOW_SQL = `SELECT jsonb_build_object('outcome','activity_window_read','streamLocator',jsonb_build_object('locatorId',s.locator_id,'scopeSha256',s.scope_sha256,'eventStreamId',s.event_stream_id),'cursor',jsonb_build_object('version',s.version,'lastSequence',s.last_sequence,'lastEventSha256',s.last_event_sha256,'stateSha256',s.state_sha256),'streamStateSnapshot',s.state_snapshot||jsonb_build_object('stateSha256',s.state_sha256),'includedInterval',jsonb_build_object('firstEventSequence',$7::bigint,'lastEventSequence',$8::bigint),'receipt',r.receipt_json,'receiptGovernanceBinding',g.binding_json,'governanceAudit',jsonb_build_object('sourceKind',g.source_kind,'purpose',g.purpose,'classification',g.classification,'retentionClass',g.retention_class,'ownerId',g.owner_id,'stewardId',g.steward_id,'catalogBinding',g.catalog_binding,'dataHandlingBinding',g.data_handling_binding),'events',COALESCE((SELECT jsonb_agg(window_event.event_payload ORDER BY window_event.event_sequence) FROM (SELECT e.event_sequence,e.event_payload FROM learning_ledger.events AS e WHERE e.locator_id=s.locator_id AND e.receipt_id=r.receipt_id AND e.event_sequence BETWEEN $7::bigint AND $8::bigint ORDER BY e.event_sequence LIMIT 101) AS window_event),'[]'::jsonb)) AS ledger_result FROM learning_ledger.streams AS s JOIN learning_ledger.receipts AS r ON r.locator_id=s.locator_id JOIN learning_ledger.receipt_governance AS g ON g.receipt_id=r.receipt_id AND g.locator_id=s.locator_id WHERE s.locator_id=$1::text AND s.scope_sha256=$2::text AND s.event_stream_id=$3::text AND r.batch_id=$4::text AND r.idempotency_key=$5::text AND r.batch_sha256=$6::text`;
+export const SYNTHETIC_LEARNING_LEDGER_SQL = Object.freeze({ append: APPEND_SQL, replay: REPLAY_SQL, read: READ_SQL, activityWindow: ACTIVITY_WINDOW_SQL });
+const verifiedActivityWindows = new WeakSet();
+/** Only live, frozen adapter-issued windows carry this in-process capability. */
+export function isVerifiedSyntheticActivityWindow(value) {
+  return value !== null && typeof value === 'object' && !isProxy(value) && verifiedActivityWindows.has(value);
+}
 
 function plain(value) {
   if (value === null || typeof value !== 'object' || isProxy(value) || Array.isArray(value)) return false;
@@ -147,6 +156,86 @@ function readBound(result, entry) {
     && state.lastAcceptedEventSha256 === result.cursor.lastEventSha256 && state.stateSha256 === result.cursor.stateSha256
     && calculateLearningSyncStreamStateSnapshotSha256(state) === state.stateSha256;
 }
+function sameData(a, b) {
+  if (a === b) return true;
+  if (a === null || b === null || typeof a !== 'object' || typeof b !== 'object' || Array.isArray(a) !== Array.isArray(b)) return false;
+  const keys = Object.keys(a);
+  return keys.length === Object.keys(b).length && keys.every(k => Object.hasOwn(b, k) && sameData(a[k], b[k]));
+}
+function windowAnchor(command, source) {
+  const validation = validatePseudonymousLearningSyncBatch(source.clientBatch);
+  if (!validation.valid) throw new Error('invalid_window_anchor');
+  const intent = command.commandKind === 'append' ? command.append.intent : command.replay.intent;
+  const asset = source.dataAssetCatalog.assets.find(v => v.assetId === intent.catalogBinding.learningSyncReceipt.assetId);
+  if (!asset) throw new Error('invalid_window_anchor');
+  return Object.freeze({ batch: validation.normalizedBatch, eventSha256es: validation.integrity.eventSha256es,
+    batchSha256: validation.integrity.batchSha256, intent, ownerId: asset.dataGovernance.owner, stewardId: asset.dataGovernance.steward,
+    replayReceipt: command.commandKind === 'replay' ? source.receiptLookup.byIdempotencyKey : null,
+    authorizationId: source.authorizationSnapshot.authorizationId, entitlementId: source.entitlementSnapshot.entitlementId,
+    governanceSnapshotId: source.governedTargetSnapshot.snapshotId, dataHandlingPolicyId: source.dataHandlingSnapshot.policyId });
+}
+function activityWindowBound(result, entry) {
+  if (!closed(result, ['outcome','streamLocator','cursor','streamStateSnapshot','includedInterval','receipt','receiptGovernanceBinding','governanceAudit','events'])
+    || result.outcome !== 'activity_window_read'
+    || !readBound({ outcome: 'read', streamLocator: result.streamLocator, cursor: result.cursor, streamStateSnapshot: result.streamStateSnapshot }, entry)
+    || !receiptValid(result.receipt) || !historicalCursorBound(result.cursor, result.receipt)) return false;
+  const anchor = entry.windowAnchor, receipt = result.receipt, batch = anchor.batch;
+  const first = batch.events[0].eventSequence, last = batch.events.at(-1).eventSequence;
+  if (!closed(result.includedInterval, ['firstEventSequence','lastEventSequence'])
+    || result.includedInterval.firstEventSequence !== first || result.includedInterval.lastEventSequence !== last
+    || receipt.firstEventSequence !== first || receipt.lastEventSequence !== last
+    || receipt.scopeSha256 !== entry.command.streamLocator.scopeSha256 || receipt.batchId !== batch.batchId
+    || receipt.idempotencyKey !== batch.idempotencyKey || receipt.batchSha256 !== anchor.batchSha256
+    || !sameData(receipt.eventSha256es, anchor.eventSha256es)
+    || Date.parse(result.streamStateSnapshot.capturedAt) < Date.parse(receipt.acceptedAt)
+    || Date.parse(result.streamStateSnapshot.capturedAt) < Date.parse(entry.streamStateSnapshot.capturedAt)) return false;
+  const laterVersions = result.cursor.version - receipt.streamVersionBefore - 1;
+  const laterEvents = result.cursor.lastSequence - receipt.lastEventSequence;
+  if (laterEvents < laterVersions || laterEvents > laterVersions * 100) return false;
+  if (anchor.replayReceipt) {
+    if (!sameData(receipt, anchor.replayReceipt)) return false;
+  } else {
+    if (receipt.predecessorSequence !== entry.streamStateSnapshot.lastAcceptedSequence
+      || receipt.predecessorEventSha256 !== entry.streamStateSnapshot.lastAcceptedEventSha256
+      || receipt.streamVersionBefore !== entry.streamStateSnapshot.streamVersion
+      || ['authorizationId','entitlementId','governanceSnapshotId','dataHandlingPolicyId'].some(k => receipt[k] !== anchor[k])
+      || Date.parse(receipt.acceptedAt) < Date.parse(entry.streamStateSnapshot.capturedAt)
+      || (entry.appendPlan && receipt.receiptSha256 !== entry.appendPlan.receipt.receiptSha256)) return false;
+    if (laterVersions === 0) {
+      const exactState = { ...entry.streamStateSnapshot, snapshotId: `${entry.streamStateSnapshot.snapshotId}:${receipt.streamVersionBefore + 1}`,
+        streamVersion: receipt.streamVersionBefore + 1, lastAcceptedSequence: last,
+        lastAcceptedEventSha256: receipt.eventSha256es.at(-1), capturedAt: receipt.acceptedAt };
+      if (calculateLearningSyncStreamStateSnapshotSha256(exactState) !== result.cursor.stateSha256) return false;
+    }
+  }
+  const binding = result.receiptGovernanceBinding, intent = anchor.intent, audit = result.governanceAudit;
+  if (!closed(binding, ['bindingContractVersion','bindingSha256','receiptId','receiptSha256','scopeSha256','batchSha256','dataHandlingPolicyId','dataHandlingPolicySha256','catalogBinding'])
+    || binding.bindingContractVersion !== '2.0.0' || !hash(binding.bindingSha256)
+    || binding.receiptId !== receipt.receiptId || binding.receiptSha256 !== receipt.receiptSha256
+    || binding.scopeSha256 !== receipt.scopeSha256 || binding.batchSha256 !== receipt.batchSha256
+    || binding.dataHandlingPolicyId !== intent.dataHandlingBinding.policyId || binding.dataHandlingPolicySha256 !== intent.dataHandlingBinding.policySha256
+    || !sameData(binding.catalogBinding, intent.catalogBinding)
+    || calculateLearningSyncReceiptGovernanceBindingSha256(binding) !== binding.bindingSha256
+    || (entry.command.commandKind === 'replay' && binding.bindingSha256 !== intent.receiptGovernanceBindingSha256)) return false;
+  if (!closed(audit, ['sourceKind','purpose','classification','retentionClass','ownerId','stewardId','catalogBinding','dataHandlingBinding'])
+    || audit.sourceKind !== 'synthetic_fixture' || audit.purpose !== 'learning_progress_sync'
+    || ['purpose','classification','retentionClass'].some(k => audit[k] !== intent.dataHandlingBinding[k])
+    || audit.ownerId !== anchor.ownerId || audit.stewardId !== anchor.stewardId
+    || !sameData(audit.catalogBinding, intent.catalogBinding) || !sameData(audit.dataHandlingBinding, intent.dataHandlingBinding)) return false;
+  if (!Array.isArray(result.events) || result.events.length !== batch.events.length || result.events.length > 100) return false;
+  const eventIds = new Set(), cleanEvents = []; let priorTime = -Infinity;
+  for (let index = 0; index < result.events.length; index++) {
+    const event = result.events[index];
+    if (!closed(event, ['eventId','eventSequence','activityId','eventType','clientOccurredAt','eventSha256'])
+      || !id(event.eventId) || !id(event.activityId) || eventIds.has(event.eventId) || event.eventSequence !== first + index
+      || !['activity_started','hint_requested','activity_completed'].includes(event.eventType) || !timestamp(event.clientOccurredAt)
+      || Date.parse(event.clientOccurredAt) < priorTime || Date.parse(event.clientOccurredAt) > Date.parse(receipt.acceptedAt)) return false;
+    const { eventSha256, ...clean } = event;
+    if (eventSha256 !== anchor.eventSha256es[index] || calculateLearningEventSha256(clean) !== eventSha256 || !sameData(clean, batch.events[index])) return false;
+    eventIds.add(event.eventId); cleanEvents.push(clean); priorTime = Date.parse(event.clientOccurredAt);
+  }
+  return calculateLearningEventBatchSha256({ ...batch, events: cleanEvents }) === anchor.batchSha256;
+}
 function writeBound(result, entry, kind) {
   if (!closed(result, ['outcome','receipt','cursor']) || !receiptValid(result.receipt) || !historicalCursorBound(result.cursor, result.receipt) || !preparationCursorBound(result.cursor, entry)) return false;
   if (kind === 'append') {
@@ -181,19 +270,28 @@ export function createSyntheticLearningLedgerAdapter(options) {
     let detached;
     try { detached = safeSnapshot(input); } catch { return preparationFailure(); }
     const prepared = prepareLearningSyncLedgerCommand(detached);
-    if (prepared.valid) commands.set(prepared.command, { command: prepared.command, streamStateSnapshot: detached.serverResolvedEligibilityInput.streamStateSnapshot, appendPlan: null });
+    if (prepared.valid) {
+      const source = detached.serverResolvedEligibilityInput;
+      commands.set(prepared.command, { command: prepared.command, streamStateSnapshot: source.streamStateSnapshot,
+        windowAnchor: windowAnchor(prepared.command, source), appendPlan: null });
+    }
     return prepared;
   }
   async function perform(kind, command) {
     if (command === null || typeof command !== 'object' || isProxy(command) || !commands.has(command)) return failure('untrusted_ledger_command');
     const entry = commands.get(command);
-    if (kind !== 'read' && command.commandKind !== kind) return failure('ledger_command_kind_mismatch');
+    const readOnly = kind === 'read' || kind === 'activityWindow';
+    if (!readOnly && command.commandKind !== kind) return failure('ledger_command_kind_mismatch');
     let query;
     if (kind === 'append') {
       if (!entry.appendPlan) { try { entry.appendPlan = createAppendPlan(entry, createReceiptMetadata()); } catch { return failure('invalid_server_receipt_metadata'); } }
       query = { text: APPEND_SQL, values: [JSON.stringify(command), JSON.stringify(entry.appendPlan.receipt), JSON.stringify(entry.appendPlan.binding)] };
     } else if (kind === 'replay') query = { text: REPLAY_SQL, values: [JSON.stringify(command)] };
-    else query = { text: READ_SQL, values: LOCATOR_FIELDS.map(k => command.streamLocator[k]) };
+    else if (kind === 'activityWindow') {
+      const { batch, batchSha256 } = entry.windowAnchor;
+      query = { text: ACTIVITY_WINDOW_SQL, values: [...LOCATOR_FIELDS.map(k => command.streamLocator[k]), batch.batchId,
+        batch.idempotencyKey, batchSha256, String(batch.events[0].eventSequence), String(batch.events.at(-1).eventSequence)] };
+    } else query = { text: READ_SQL, values: LOCATOR_FIELDS.map(k => command.streamLocator[k]) };
     query = Object.freeze({ text: query.text, values: Object.freeze(query.values) });
     let raw;
     try {
@@ -201,14 +299,20 @@ export function createSyntheticLearningLedgerAdapter(options) {
       // An arbitrary thenable is data, never an executable promise. A native
       // async executor owns Promise resolution; its internal effects are trusted.
       if (!isProxy(raw) && isPromise(raw)) raw = await raw;
-    } catch (error) { return failure(executorError(error), kind === 'read' ? 'not_attempted' : 'unknown'); }
+    } catch (error) { return failure(executorError(error), readOnly ? 'not_attempted' : 'unknown'); }
     let response;
-    try { response = safeSnapshot(raw); } catch { return failure('ledger_response_invalid', kind === 'read' ? 'not_attempted' : 'unknown'); }
-    if (!closed(response, ['rowCount','rows']) || !Array.isArray(response.rows) || response.rows.length !== response.rowCount || ![0,1].includes(response.rowCount)) return failure('ledger_response_invalid', kind === 'read' ? 'not_attempted' : 'unknown');
-    if (kind === 'read' && response.rowCount === 0) return failure('scope_denied');
+    try { response = safeSnapshot(raw); } catch { return failure('ledger_response_invalid', readOnly ? 'not_attempted' : 'unknown'); }
+    if (!closed(response, ['rowCount','rows']) || !Array.isArray(response.rows) || response.rows.length !== response.rowCount || ![0,1].includes(response.rowCount)) return failure('ledger_response_invalid', readOnly ? 'not_attempted' : 'unknown');
+    if (readOnly && response.rowCount === 0) return failure('scope_denied');
     const result = response.rows[0]?.ledger_result;
-    if (response.rowCount !== 1 || !closed(response.rows[0], ['ledger_result']) || !(kind === 'read' ? readBound(result, entry) : writeBound(result, entry, kind))) return failure('ledger_response_invalid', kind === 'read' ? 'not_attempted' : 'unknown');
-    return Object.freeze({ valid: true, ...result, syntheticOnly: true, productionReady: false });
+    let bound = false;
+    try { bound = response.rowCount === 1 && closed(response.rows[0], ['ledger_result'])
+      && (kind === 'activityWindow' ? activityWindowBound(result, entry) : kind === 'read' ? readBound(result, entry) : writeBound(result, entry, kind)); } catch { /* fail closed, no raw data in error */ }
+    if (!bound) return failure('ledger_response_invalid', readOnly ? 'not_attempted' : 'unknown');
+    const output = Object.freeze({ valid: true, ...result, ...(kind === 'activityWindow' ? { completeHistory: false, windowBasis: 'prepared_batch_receipt_interval' } : {}), syntheticOnly: true, productionReady: false });
+    if (kind === 'activityWindow') verifiedActivityWindows.add(output);
+    return output;
   }
-  return Object.freeze({ prepareCommand, append: command => perform('append', command), replay: command => perform('replay', command), read: command => perform('read', command) });
+  return Object.freeze({ prepareCommand, append: command => perform('append', command), replay: command => perform('replay', command),
+    read: command => perform('read', command), readActivityWindow: command => perform('activityWindow', command) });
 }
