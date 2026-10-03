@@ -2,6 +2,12 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
+- [Konu, tek örnek ve karışık test: 628 test / gerçek tarayıcı kabul sınırları](LESSON_MIXED_FLOW_ACCEPTANCE_2026-10-03.md)
+- [143 TYMM kaydının yararlılık seçimi](TYMM_RELEVANCE_SELECTION_2026-10-03.md)
+- [İngilizce açık/ücretsiz kaynaklar: Oxford, Cambridge, British Council, VOA](ENGLISH_OPEN_RESOURCE_SCREENING_2026-10-03.md)
+- [Premium Cambridge ve matematik/geometri baskı-lisans ayrımları](PREMIUM_ENGLISH_AND_MATH_RIGHTS_2026-10-03.md)
+- [Diğer dersler için dokuz adayın hak incelemesi](SUPPLEMENTAL_OPEN_CONTENT_RIGHTS_2026-10-03.md)
+- [Kullanıcı yetkisiyle gönderilmiş Cambridge ön başvurusu: izin henüz yok](LICENSING_ENQUIRY_STATUS_2026-10-03.md)
 - [Önceki iş ürünü ve test teslim kanıtı](DELIVERY_EVIDENCE_2026-10-03.md)
 - [397-test medya/depolama ek teslimi ve açık kapılar](MEDIA_HOSTING_DELIVERY_2026-10-03.md)
 - [Okul barındırması, Docker kredi hesabı ve kapasite planı](HOSTING_STRATEGY_2026-10-03.md)

@@ -1,0 +1,1047 @@
+{
+  "schemaVersion": "tymm-selected-download-observations/v1",
+  "observedAt": "2026-10-03T19:38:57.429Z",
+  "inventoryFile": "tymm-relevance-inventory.json",
+  "localLimits": {
+    "maxFileBytes": 26214400,
+    "maxTotalBytes": 262144000,
+    "timeoutMs": 20000,
+    "maxRedirects": 3
+  },
+  "summary": {
+    "selectedSources": 59,
+    "downloadedSourceRecords": 5,
+    "downloadedBytes": 81847383,
+    "newUniqueByteRevisions": 4,
+    "priorRevisionAliases": 1,
+    "downloadPendingFileBudget": 54,
+    "localIntegrityRechecked": 5,
+    "localIntegrityErrors": 0,
+    "totalDownloadedRecordsAcrossArchives": 49,
+    "totalUniqueDownloadedByteRevisions": 48,
+    "totalUniqueByteLength": 250396912
+  },
+  "fullCurriculumCoverageVerified": false,
+  "productQuestionCount": 0,
+  "studentData": false,
+  "sources": [
+    {
+      "sourceId": "tymm-book-31",
+      "title": "Türkçe 1.Sınıf İlk Okuma Yazma Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/31/turkce-1sinif-ilk-okuma-yazma-kitabi-1kitap",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/turkce-1sinif-ilk-okuma-yazma-kitabi-1kitap_20260905_104336_599.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:37:58.108Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-32",
+      "title": "Türkçe 1.Sınıf İlk Okuma Yazma Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/32/turkce-1sinif-ilk-okuma-yazma-kitabi-2kitap",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/turkce-1sinif-ilk-okuma-yazma-kitabi-2kitap_20260905_104355_902.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:37:58.340Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-23",
+      "title": "Matematik 1.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/23/matematik-1sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/UhDljKM",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:37:58.999Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-25",
+      "title": "Matematik 5.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/25/matematik-5sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/MxA2Nr",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:37:59.283Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-19",
+      "title": "Fen Bilimleri 5.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/19/fen-bilimleri-5sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/UTSNgQB",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:37:59.605Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-152",
+      "title": "İngilizce Dersi 2.Sınıf Çalışma Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/152/ingilizce-dersi-2sinif-calisma-kitabi",
+      "url": "https://meb.ai/giUrK9",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:37:59.907Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-140",
+      "title": "İngilizce Dersi 5.Sınıf Çalışma Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/140/ingilizce-dersi-5sinif-calisma-kitabi",
+      "url": "https://meb.ai/UZ2Ksse",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:00.500Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-46",
+      "title": "Sosyal Bilgiler 5.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/46/sosyal-bilgiler-5sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/UZTEDQC",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:00.849Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-514",
+      "title": "Din Kültürü Ve Ahlak Bilgisi 4.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/514/din-kulturu-ve-ahlak-bilgisi-4sinif-ders-kitabi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-4sinif-ders-kitabi_20261003_183741_260.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "downloaded",
+        "downloadedAt": "2026-10-03T19:38:12.845Z",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-4sinif-ders-kitabi_20261003_183741_260.pdf",
+        "sha256": "7bc92beb0e39fefc8961475c0099ef0da580ce02de92c4974edc04b2fcf492d0",
+        "byteLength": 22637814,
+        "duplicateOfPriorByteRevision": false,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256"
+      }
+    },
+    {
+      "sourceId": "tymm-book-517",
+      "title": "Din Kültürü Ve Ahlak Bilgisi 8.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/517/din-kulturu-ve-ahlak-bilgisi-8sinif-ders-kitabi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-8sinif-ders-kitabi_20261003_185300_204.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "downloaded",
+        "downloadedAt": "2026-10-03T19:38:17.649Z",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-8sinif-ders-kitabi_20261003_185300_204.pdf",
+        "sha256": "519610b1f2b50d2a2298dbffe008c6cc5c8ae5f7b887a09441cc240d30fb5625",
+        "byteLength": 12979060,
+        "duplicateOfPriorByteRevision": false,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256"
+      }
+    },
+    {
+      "sourceId": "tymm-book-21",
+      "title": "Hayat Bilgisi 1.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/21/hayat-bilgisi-1sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/UTWjeP6",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:18.303Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-22",
+      "title": "Hayat Bilgisi 1.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/22/hayat-bilgisi-1sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/jKPdVy",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:18.686Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-24",
+      "title": "Matematik 1.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/24/matematik-1sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/UvHcryL",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:18.999Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-29",
+      "title": "Türkçe 1.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/29/turkce-1sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/l8iio9",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:19.383Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-30",
+      "title": "Türkçe 1.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/30/turkce-1sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/UZZeqYd",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:19.814Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-50",
+      "title": "Hayat Bilgisi 2.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/50/hayat-bilgisi-2sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/IWcGiK",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:20.129Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-51",
+      "title": "Hayat Bilgisi 2.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/51/hayat-bilgisi-2sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/UoJKV4o",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:20.441Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-151",
+      "title": "İngilizce Dersi 2.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/151/ingilizce-dersi-2sinif-ders-kitabi",
+      "url": "https://meb.ai/UjICisN",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:20.772Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-52",
+      "title": "Matematik 2.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/52/matematik-2sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/dW5ziI",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:21.083Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-53",
+      "title": "Matematik 2.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/53/matematik-2sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/UeQe5Lz",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:21.436Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-58",
+      "title": "Türkçe 2.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/58/turkce-2sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/alMV9u",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:21.788Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-59",
+      "title": "Türkçe 2.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/59/turkce-2sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/xzwMpd",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:22.124Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-270",
+      "title": "Fen Bilimleri 3.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/270/fen-bilimleri-3sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/kegFRj",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:22.478Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-271",
+      "title": "Fen Bilimleri 3.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/271/fen-bilimleri-3sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/xYFZct",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:22.818Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-275",
+      "title": "Hayat Bilgisi 3.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/275/hayat-bilgisi-3sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/nGGJ0s",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:23.145Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-276",
+      "title": "Hayat Bilgisi 3.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/276/hayat-bilgisi-3sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/UpNUfOf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:23.455Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-291",
+      "title": "İngilizce Dersi 3.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/291/ingilizce-dersi-3sinif-ders-kitabi",
+      "url": "https://meb.ai/xOG3e6",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:23.794Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-292",
+      "title": "İngilizce Dersi 3.Sınıf Çalışma Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/292/ingilizce-dersi-3sinif-calisma-kitabi",
+      "url": "https://meb.ai/SKR3OC",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:24.176Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-278",
+      "title": "Matematik 3.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/278/matematik-3sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/lFLkBe",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:24.622Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-279",
+      "title": "Matematik 3.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/279/matematik-3sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/Ux6k4N3",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:25.351Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-285",
+      "title": "Türkçe 3.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/285/turkce-3sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/Ue2CBkM",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:26.068Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-286",
+      "title": "Türkçe 3.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/286/turkce-3sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/jwCDS1",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:26.648Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-18",
+      "title": "Din Kültürü Ve Ahlak Bilgisi 5.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/18/din-kulturu-ve-ahlak-bilgisi-5sinif-ders-kitabi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-5sinif-ders-kitabi_20261003_183932_159.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "downloaded",
+        "downloadedAt": "2026-10-03T19:38:32.209Z",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-5sinif-ders-kitabi_20261003_183932_159.pdf",
+        "sha256": "5f5b86ef6b209faf901758776514b6041eb19736c2182e7acb849d4e1721b56e",
+        "byteLength": 12327372,
+        "duplicateOfPriorByteRevision": false,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256"
+      }
+    },
+    {
+      "sourceId": "tymm-book-20",
+      "title": "Fen Bilimleri 5.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/20/fen-bilimleri-5sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/1xuiyc",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:32.877Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-139",
+      "title": "İngilizce Dersi 5.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/139/ingilizce-dersi-5sinif-ders-kitabi",
+      "url": "https://meb.ai/Uo2KUKY",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:33.216Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-26",
+      "title": "Matematik 5.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/26/matematik-5sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/qzYTOr",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:33.578Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-47",
+      "title": "Sosyal Bilgiler 5.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/47/sosyal-bilgiler-5sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/5pBQD6",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:34.103Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-33",
+      "title": "Türkçe 5.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/33/turkce-5sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/UhAFZ4b",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:35.176Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-34",
+      "title": "Türkçe 5.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/34/turkce-5sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/UfjP8nD",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:36.345Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-515",
+      "title": "Din Kültürü Ve Ahlak Bilgisi 6.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/515/din-kulturu-ve-ahlak-bilgisi-6sinif-ders-kitabi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-6sinif-ders-kitabi_20261003_184337_537.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:37.180Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-48",
+      "title": "Fen Bilimleri 6.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/48/fen-bilimleri-6sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/2pn9LH",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:37.661Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-49",
+      "title": "Fen Bilimleri 6.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/49/fen-bilimleri-6sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/U364pU5",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:38.043Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-297",
+      "title": "İngilizce Dersi 6.Sınıf Çalışma Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/297/ingilizce-dersi-6sinif-calisma-kitabi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-6sinif-calisma-kitabi_20260930_124530_359.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "downloaded",
+        "downloadedAt": "2026-10-03T19:38:41.433Z",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-6sinif-calisma-kitabi_20260930_124530_359.pdf",
+        "sha256": "9ba6273f74bf478b8cd313400486d8b1dce5a89e51f255945318f4e5f075dc7d",
+        "byteLength": 8345722,
+        "duplicateOfPriorByteRevision": true,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256"
+      }
+    },
+    {
+      "sourceId": "tymm-book-298",
+      "title": "İngilizce Dersi 6.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/298/ingilizce-dersi-6sinif-ders-kitabi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-6sinif-ders-kitabi_20260930_115014_740.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "downloaded",
+        "downloadedAt": "2026-10-03T19:38:52.185Z",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-6sinif-ders-kitabi_20260930_115014_740.pdf",
+        "sha256": "032136c734cbb28030901fe811b581a2ba5097c403a1d06c1239ca94683812ea",
+        "byteLength": 25557415,
+        "duplicateOfPriorByteRevision": false,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256"
+      }
+    },
+    {
+      "sourceId": "tymm-book-54",
+      "title": "Matematik 6.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/54/matematik-6sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/aaIG5I",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:52.848Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-55",
+      "title": "Matematik 6.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/55/matematik-6sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/Uj0c1mI",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:53.212Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-56",
+      "title": "Sosyal Bilgileri 6.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/56/sosyal-bilgileri-6sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/WygFSY",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:53.541Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-57",
+      "title": "Sosyal Bilgileri 6.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/57/sosyal-bilgileri-6sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/Ofrajx",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:53.869Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-60",
+      "title": "Türkçe 6.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/60/turkce-6sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/ULy28Hy",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:54.249Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-61",
+      "title": "Türkçe 6.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/61/turkce-6sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/CPSB1u",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:54.558Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-516",
+      "title": "Din Kültürü Ve Ahlak Bilgisi 7.Sınıf Ders Kitabı",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/516/din-kulturu-ve-ahlak-bilgisi-7sinif-ders-kitabi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-7sinif-ders-kitabi_20261003_185019_272.pdf",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:54.712Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-272",
+      "title": "Fen Bilimleri 7.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/272/fen-bilimleri-7sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/DDH5xr",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:55.051Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-273",
+      "title": "Fen Bilimleri 7.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/273/fen-bilimleri-7sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/T5ENRQ",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:55.369Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-280",
+      "title": "Matematik 7.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/280/matematik-7sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/0w0pTz",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:55.690Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-281",
+      "title": "Matematik 7.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/281/matematik-7sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/UfnV4xM",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:56.078Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-289",
+      "title": "Sosyal Bilgileri 7.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/289/sosyal-bilgileri-7sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/rO4R8o",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:56.383Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-290",
+      "title": "Sosyal Bilgileri 7.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/290/sosyal-bilgileri-7sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/UttLCVG",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:56.761Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-287",
+      "title": "Türkçe 7.Sınıf Ders Kitabı (1.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/287/turkce-7sinif-ders-kitabi-1kitap",
+      "url": "https://meb.ai/UxjYr7N",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:57.111Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    },
+    {
+      "sourceId": "tymm-book-288",
+      "title": "Türkçe 7.Sınıf Ders Kitabı (2.Kitap)",
+      "sourcePage": "https://tymm.meb.gov.tr/kitap/288/turkce-7sinif-ders-kitabi-2kitap",
+      "url": "https://meb.ai/wMPuMB",
+      "usagePolicy": "reference_only",
+      "reuseRights": "unverified",
+      "semanticReview": "not_performed",
+      "rightsReview": "pending",
+      "publicationReady": false,
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T19:38:57.429Z",
+        "errorCode": "file_byte_limit_exceeded",
+        "nextState": "download_pending_bounded_staging_design"
+      }
+    }
+  ]
+}

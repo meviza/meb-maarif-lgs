@@ -5,6 +5,8 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
+- [Konu → tek gerekçeli örnek → karışık alıştırma ve güncel kanıt](docs/LESSON_MIXED_FLOW_ACCEPTANCE_2026-10-03.md)
+- [TYMM kaynak seçimi](docs/TYMM_RELEVANCE_SELECTION_2026-10-03.md), [İngilizce kaynak/hak taraması](docs/ENGLISH_OPEN_RESOURCE_SCREENING_2026-10-03.md) ve [gönderilen Cambridge ön başvurusu](docs/LICENSING_ENQUIRY_STATUS_2026-10-03.md)
 - [Antigravity kodunun yeniden denetimi](docs/ANTIGRAVITY_CODE_REAUDIT_2026-10-03.md)
 - [Gerçek MEB indirme kaydı](docs/MEB_SOURCE_ARCHIVE_2026-10-03.md) ve [kaynak/hash defteri](sources/meb-reference-registry.json)
 - [İçerik fabrikası ve canlı model sınırları](docs/CONTENT_FACTORY_PILOT.md)

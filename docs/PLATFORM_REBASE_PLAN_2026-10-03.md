@@ -117,6 +117,8 @@ Hareket: konu geçişini açıklayan kısa animasyon, durdurulabilir adım oynat
 
 ## Faz kanıtları ve sıralama
 
+3 Ekim 23:00 sonrası güncel öncelik: [gece kaydı](OVERNIGHT_PROGRESS_2026-10-03.md) önceki sayıların yerine **628 teknik test, 49 kaynak kaydı/48 eşsiz referans PDF ve özel Drive'da 48 metaveri-doğrulanmış dosya** durumunu verir. Seçilen 59 katalog kaynağının 54'ü büyük dosya bütçesiyle bekler; tam müfredat/soru kapsamı ve uzak byte hash kabulü yoktur. [Yeni tek örnek/karışık alıştırma](LESSON_MIXED_FLOW_ACCEPTANCE_2026-10-03.md) ve koşullu kısa yöntem uygulanmıştır, ancak bütün şekil/konu/yaş temsil çeşitliliği değildir. Kaynaklarda soru biçimi/amaç/konu ağırlığı/zorluk kanıtı, gerçek program ve hak haritasından önce tahmin edilmez. [İngilizce](ENGLISH_OPEN_RESOURCE_SCREENING_2026-10-03.md) ve [diğer ders adayları](SUPPLEMENTAL_OPEN_CONTENT_RIGHTS_2026-10-03.md) baskı/varlık bazlı seçilir; [gönderilen Cambridge ön başvurusu](LICENSING_ENQUIRY_STATUS_2026-10-03.md) izin veya satın alma kabulü değildir. Sesli kalem pilotu vardır; yeni gerekçeli anlatımların genel video üretim/senkron hattı hâlâ açıktır.
+
 1. Mevcut kod/referansları doğrula, sahte/kanıtsız iddiaları ayır; kaynak ve pilot araçlarını çalıştır.
 2. Bir resmî sınıf/ders/çıktı için kanonik sayfa/hash eşlemesini öğretmenle doğrula. İlk 100'lük çeşitli soru/ders işini üretici+Clef canlı bağlantısı ile yürüt; tümünü alan/ölçme/hak incelemesine sok.
 3. Gerçek okul backend'i: DB migrasyonu, auth/roller, kalıcı editör işlemleri, tenant ve kota. İlk öğrenci–öğretmen–veli dikey dilimi.
