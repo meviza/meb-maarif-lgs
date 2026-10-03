@@ -18,6 +18,7 @@ export const LEARNING_EVENT_SYNC_BATCH_CONTRACT_VERSION = '1.0.0';
 const MAX_EVENTS_PER_BATCH = 100;
 const arrayIsArray = Array.isArray;
 const objectDefineProperty = Object.defineProperty;
+const objectFreeze = Object.freeze;
 const objectGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 const objectGetOwnPropertyDescriptors = Object.getOwnPropertyDescriptors;
 const objectGetPrototypeOf = Object.getPrototypeOf;
@@ -80,19 +81,29 @@ function listIncludes(list, value) {
   return false;
 }
 
-function createValidationResult(valid, errors, integrity) {
+function createValidationResult(valid, errors, integrity, normalizedBatch) {
   const result = Object.create(null);
   result.valid = valid;
   result.errors = errors;
   if (integrity !== undefined) result.integrity = integrity;
+  if (normalizedBatch !== undefined) result.normalizedBatch = normalizedBatch;
   return result;
 }
 
 function createIntegrity(eventSha256es, batchSha256) {
   const integrity = Object.create(null);
-  integrity.eventSha256es = eventSha256es;
+  integrity.eventSha256es = objectFreeze(eventSha256es);
   integrity.batchSha256 = batchSha256;
-  return integrity;
+  return objectFreeze(integrity);
+}
+
+function freezeNormalizedBatch(batch) {
+  objectFreeze(batch.contentTarget);
+  for (let index = 0; index < batch.events.length; index += 1) {
+    objectFreeze(batch.events[index]);
+  }
+  objectFreeze(batch.events);
+  return objectFreeze(batch);
 }
 
 function isPlainRecord(value) {
@@ -335,6 +346,15 @@ function contentTargetHashProjection(target) {
   };
 }
 
+/**
+ * Hash the closed, revision-bound content target used by a validated batch.
+ * This is an integrity comparison value only; it does not establish that a
+ * target exists, is published, assigned, or authorized for a learner.
+ */
+export function calculateLearningEventContentTargetSha256(target) {
+  return sha256Canonical(contentTargetHashProjection(target));
+}
+
 function batchHashProjection(batch) {
   const source = snapshotClosedHashRecord(batch, ROOT_FIELDS, 'batch');
   const events = snapshotDenseHashArray(
@@ -503,6 +523,7 @@ function validatePseudonymousLearningSyncBatchInternal(batch) {
     contentTarget,
     events
   };
+  freezeNormalizedBatch(normalizedBatch);
 
   try {
     const eventSha256es = [];
@@ -512,7 +533,8 @@ function validatePseudonymousLearningSyncBatchInternal(batch) {
     return createValidationResult(
       true,
       [],
-      createIntegrity(eventSha256es, calculateLearningEventBatchSha256(normalizedBatch))
+      createIntegrity(eventSha256es, calculateLearningEventBatchSha256(normalizedBatch)),
+      normalizedBatch
     );
   } catch {
     const hashErrors = [];

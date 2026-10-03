@@ -47,6 +47,7 @@ test('accepts a closed privacy-minimized offline batch and derives canonical eve
   const {
     calculateLearningEventSha256,
     calculateLearningEventBatchSha256,
+    calculateLearningEventContentTargetSha256,
     validatePseudonymousLearningSyncBatch
   } = await loadContract();
   const batch = validBatch();
@@ -59,6 +60,14 @@ test('accepts a closed privacy-minimized offline batch and derives canonical eve
     calculateLearningEventBatchSha256(batch),
     'fcbe8b0de16b2471e3e44c5e2688f33b7b1eb074910d929d05b6e44e01e9151b'
   );
+  assert.notEqual(
+    calculateLearningEventContentTargetSha256(batch.contentTarget),
+    calculateLearningEventContentTargetSha256({
+      ...batch.contentTarget,
+      outcomeCode: 'MAT.1.1.2'
+    }),
+    'the target digest must bind the curriculum outcome as well as the revision'
+  );
   const result = validatePseudonymousLearningSyncBatch(batch);
   assert.equal(result.valid, true);
   assert.deepEqual(result.errors, []);
@@ -69,6 +78,23 @@ test('accepts a closed privacy-minimized offline batch and derives canonical eve
       batchSha256: 'fcbe8b0de16b2471e3e44c5e2688f33b7b1eb074910d929d05b6e44e01e9151b'
     }
   );
+});
+
+test('returns an immutable normalized snapshot that cannot diverge from later client-object mutation', async () => {
+  const { validatePseudonymousLearningSyncBatch } = await loadContract();
+  const batch = validBatch();
+
+  const result = validatePseudonymousLearningSyncBatch(batch);
+  batch.contentTarget.outcomeCode = 'MAT.1.1.2';
+  batch.events[0].eventSequence = 99;
+
+  assert.equal(result.valid, true);
+  assert.equal(result.normalizedBatch.contentTarget.outcomeCode, 'MAT.1.1.1');
+  assert.equal(result.normalizedBatch.events[0].eventSequence, 41);
+  assert.equal(Object.isFrozen(result.normalizedBatch), true);
+  assert.equal(Object.isFrozen(result.normalizedBatch.contentTarget), true);
+  assert.equal(Object.isFrozen(result.normalizedBatch.events), true);
+  assert.equal(Object.isFrozen(result.normalizedBatch.events[0]), true);
 });
 
 test('fails closed rather than hashing an event that contains an unexpected identity field', async () => {

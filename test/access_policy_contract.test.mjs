@@ -194,6 +194,100 @@ test('allows a student to read only their own resolved content asset', async () 
   assert.deepEqual(missingPackageScope, { allowed: false, reason: 'package_required' });
 });
 
+test('allows only a student to append a batch to their own scoped learning-event stream', async () => {
+  const { evaluateK12Access } = await loadPolicy();
+  const actor = {
+    role: 'student',
+    subjectId: 'learner_001',
+    tenantId: 'school_ankara_001'
+  };
+
+  const ownStream = evaluateK12Access({
+    actor,
+    resource: {
+      type: 'learner_learning_event_stream',
+      tenantId: 'school_ankara_001',
+      learnerId: 'learner_001',
+      packageId: 'package_001',
+      eventStreamId: 'stream_001'
+    },
+    action: 'append_learning_event_batch'
+  });
+  const anotherLearner = evaluateK12Access({
+    actor,
+    resource: {
+      type: 'learner_learning_event_stream',
+      tenantId: 'school_ankara_001',
+      learnerId: 'learner_002',
+      packageId: 'package_001',
+      eventStreamId: 'stream_001'
+    },
+    action: 'append_learning_event_batch'
+  });
+  const missingStream = evaluateK12Access({
+    actor,
+    resource: {
+      type: 'learner_learning_event_stream',
+      tenantId: 'school_ankara_001',
+      learnerId: 'learner_001',
+      packageId: 'package_001'
+    },
+    action: 'append_learning_event_batch'
+  });
+
+  assert.deepEqual(ownStream, { allowed: true, reason: 'learner_learning_event_append' });
+  assert.deepEqual(anotherLearner, { allowed: false, reason: 'subject_mismatch' });
+  assert.deepEqual(missingStream, { allowed: false, reason: 'event_stream_required' });
+});
+
+test('denies inherited authorization claims instead of treating them as actor and resource scope', async () => {
+  const { evaluateK12Access } = await loadPolicy();
+  const inheritedActor = Object.create({
+    role: 'student',
+    subjectId: 'learner_001',
+    tenantId: 'school_ankara_001'
+  });
+  const inheritedResource = Object.create({
+    type: 'learner_learning_event_stream',
+    tenantId: 'school_ankara_001',
+    learnerId: 'learner_001',
+    packageId: 'package_001',
+    eventStreamId: 'stream_001'
+  });
+
+  const decision = evaluateK12Access({
+    actor: inheritedActor,
+    resource: inheritedResource,
+    action: 'append_learning_event_batch'
+  });
+
+  assert.deepEqual(decision, { allowed: false, reason: 'invalid_request' });
+});
+
+test('denies an oversized relationship claim rather than scanning an unbounded authorization array', async () => {
+  const { evaluateK12Access } = await loadPolicy();
+  const relatedLearnerIds = Array.from({ length: 1001 }, (_, index) => (
+    index === 1000 ? 'learner_001' : `learner_${index}`
+  ));
+
+  const decision = evaluateK12Access({
+    actor: {
+      role: 'guardian',
+      subjectId: 'guardian_001',
+      tenantId: 'school_ankara_001',
+      relatedLearnerIds
+    },
+    resource: {
+      type: 'learner_progress_summary',
+      tenantId: 'school_ankara_001',
+      learnerId: 'learner_001'
+    },
+    action: 'read'
+  });
+
+  assert.deepEqual(decision, { allowed: false, reason: 'relationship_required' });
+});
+
 test('denies a student summary request when either learner subject identifier is absent', async () => {
   const { evaluateK12Access } = await loadPolicy();
   const actor = {
