@@ -39,6 +39,40 @@ test('official URL boundary rejects lookalikes, credentials, insecure and unusua
   ]) assert.throws(() => validateOfficialMebUrl(invalid), /official_https_url_required/);
 });
 
+test('reviewed official education CDN and olympiad hosts are allowed without wildcard trust', () => {
+  const { validateOfficialMebUrl } = implementation();
+  for (const allowed of [
+    'https://cdn.eba.gov.tr/temel-egitim/book.pdf',
+    'https://meb.ai/official-link',
+    'https://bilimolimpiyatlari.tubitak.gov.tr/files/exam.pdf',
+  ]) assert.equal(validateOfficialMebUrl(allowed).href, allowed);
+  for (const rejected of [
+    'https://cdn.eba.gov.tr.evil.example/book.pdf',
+    'https://bilimolimpiyatlari.tubitak.gov.tr.evil.example/exam.pdf',
+    'https://unreviewed.tubitak.gov.tr/exam.pdf',
+    'https://meb.ai.evil.example/book.pdf',
+  ]) assert.throws(() => validateOfficialMebUrl(rejected), /official_https_url_required/u);
+});
+
+test('a reviewed MEB short link may redirect to its official CDN but rights remain unverified', async () => {
+  const { archiveSources } = implementation();
+  await withCache(async cacheDirectory => {
+    const initial = { ...source('meb-workbook'), url: 'https://meb.ai/official-link', sourcePage: 'https://tymm.meb.gov.tr/ders-kitaplari' };
+    const requests = [];
+    const report = await archiveSources(registry(initial), { cacheDirectory, fetchImpl: async requested => {
+      requests.push(requested);
+      return requests.length === 1
+        ? new Response(null, { status: 302, headers: { location: 'https://cdn.eba.gov.tr/temel-egitim/book.pdf' } })
+        : new Response(pdf, { headers: { 'content-type': 'application/pdf' } });
+    } });
+    assert.equal(report.successCount, 1);
+    assert.deepEqual(requests, ['https://meb.ai/official-link', 'https://cdn.eba.gov.tr/temel-egitim/book.pdf']);
+    assert.equal(report.sources[0].reuseRights, 'unverified');
+    assert.equal(report.sources[0].usagePolicy, 'reference_only');
+    assert.equal(report.sources[0].download.semanticReview, 'not_performed');
+  });
+});
+
 test('archive saves verified PDF bytes outside source registry and preserves unverified rights', async () => {
   const { archiveSources } = implementation();
   await withCache(async cacheDirectory => {

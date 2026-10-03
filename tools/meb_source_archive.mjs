@@ -5,6 +5,9 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const OFFICIAL_HOSTS = new Set([
   'karabukodm.meb.gov.tr', 'mufredat.meb.gov.tr', 'tymm.meb.gov.tr', 'odsgm.meb.gov.tr',
+  // Exact hosts verified from the official book/olympiad catalogues. Never
+  // infer trust for all subdomains or follow a short link outside this set.
+  'cdn.eba.gov.tr', 'meb.ai', 'bilimolimpiyatlari.tubitak.gov.tr',
 ]);
 const HARD_FILE_BYTES = 25 * 1024 * 1024;
 const HARD_TOTAL_BYTES = 250 * 1024 * 1024;
