@@ -10,6 +10,7 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 - [İçerik fabrikası ve canlı model sınırları](docs/CONTENT_FACTORY_PILOT.md)
 - [DAMA-DMBOK veri yönetimi](docs/DAMA_DATA_GOVERNANCE.md)
 - [Mac/Docker/okul barındırma kararı](docs/HOSTING_STRATEGY_2026-10-03.md), [video kanıtı](docs/VIDEO_PILOT_EVIDENCE_2026-10-03.md) ve [medya araç/lisans araştırması](docs/MEDIA_TOOL_RESEARCH_2026-10-03.md)
+- [Öğretmen ses/hareket standardı](docs/TEACHER_VIDEO_STANDARD_2026-10-03.md) ve [üç gerçek Türkçe ses önizlemi / V2 bağlama kanıtı](docs/TEACHER_VOICE_PILOT_EVIDENCE_2026-10-03.md)
 - [Kalite kapıları](docs/QUALITY_GATES.md) ve [belge dizini](docs/README.md)
 
 36.000 soru hedefi kazanım/alt beceri/soru ailesi kapsama matrisinden hesaplanacak; ders anlatımları ayrı sayılacak. Haftalık akış okul takvimi ve uygulanan program sürümüne bağlanacak. İndirilmiş MEB belgeleri yalnız referanstır; ticari yeniden kullanım hakları henüz doğrulanmadı.

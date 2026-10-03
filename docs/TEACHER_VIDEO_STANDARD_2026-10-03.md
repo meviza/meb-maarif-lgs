@@ -1,6 +1,6 @@
 # Öğretmen karakteri, kalemli çözüm ve ses kalite standardı
 
-Tarih: 2026-10-03. Durum: sürümlü tasarım + yerel hareket prototipi. Doğal Türkçe ses, kelime düzeyinde senkron, öğretmen/dinleyici kabulü ve öğrenci yayını **henüz yok**. Bu bir pedagojik sertifika değildir.
+Tarih: 2026-10-03. Durum: sürümlü tasarım + yerel hareket prototipi + [üç kısa Türkçe ses önizlemi](TEACHER_VOICE_PILOT_EVIDENCE_2026-10-03.md). Doğal ses kalite kabulü, kelime düzeyinde senkron, öğretmen/dinleyici kabulü ve öğrenci yayını **henüz yok**. Bu bir pedagojik sertifika değildir.
 
 ## Ürün kabul kararının değişmesi
 
@@ -80,7 +80,7 @@ Bunlar bağımsız taslak hesaplarıdır; sınıf/aktif öğrenme çıktısı he
 
 ## Google ve açık kaynak seçimi
 
-Canlı Chrome denetiminde Google AI Pro 5 TB planı ve Flow avantajı görüldü; AI Studio seçili proje ücretsiz seviyedeydi. Ses menüsünde `gemini-3.8-flash-tts` ve `gemini-3.8-flash-lite-tts` görünür. Modelin görünmesi, üretilmiş ses/çalışan API/kota kanıtı değildir. Kullanıcı ayrıca onay verince Flow ilk kullanım gizlilik adımı kabul edildi; Flow PRO ve sayısal bakiye ekranda doğrulandı. Üretim, yükleme, ücretli plan değişikliği veya kredi harcaması yapılmadı. Kişisel hesap, proje ID'si, bakiye veya anahtar bu kamuya açık belgeye alınmadı. Üyelik/kota incelemesi içerik üretimine onay değildir.
+İlk canlı Chrome denetiminde Google AI Pro 5 TB planı ve Flow avantajı görüldü; AI Studio seçili proje ücretsiz seviyedeydi. Ses menüsünde `gemini-3.8-flash-tts` ve `gemini-3.8-flash-lite-tts` görünürdü; modelin görünmesi tek başına üretim/API/kota kanıtı sayılmadı. Kullanıcı ayrıca onay verince Flow ilk kullanım gizlilik adımı kabul edildi; Flow PRO ve sayısal bakiye ekranda doğrulandı. Bu üyelik/kota incelemesinde üretim/yükleme/kredi harcaması yapılmadı. Sonraki sınırlı ses denemesi için “devam et” kapsamında AI Studio'da üç kişisel verisiz kısa örnek üretildi: toplam 34,36 s; yeni anahtar/faturalama veya ücretli plan açılmadı, Flow üretimi yapılmadı. [Ayrı pilot kanıtı ve sınırları](TEACHER_VOICE_PILOT_EVIDENCE_2026-10-03.md). Kişisel hesap, proje ID'si, bakiye veya anahtar bu kamuya açık belgeye alınmadı. Üyelik/kota incelemesi tek başına içerik üretimine onay değildir.
 
 [Google TTS kılavuzu](https://ai.google.dev/gemini-api/docs/speech-generation) Türkçe ve ayrı stil/okuma metni kontrolü sağlıyor. İlk aday: yetişkin editörün kişisel veri içermeyen özgün senaryo ile hazır yetişkin sesleri karşılaştırması; klonlama yok. [Fiyat sayfasında](https://ai.google.dev/gemini-api/docs/pricing) 31 Aralık 2026'ya kadar 3.8 Flash çıktı 9 USD/milyon audio token, Lite 6 USD; 25 token/s varsayımıyla 35 s için yalnız çıktı yaklaşık 0,007875 / 0,00525 USD. Girdi, tekrar, vergi ve ücretsiz kota ayrı; Pro üyeliği API kredisi veya sınırsız üretim değildir. 2027 fiyatı yeniden kontrol edilir.
 

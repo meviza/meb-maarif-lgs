@@ -9,39 +9,61 @@ import { createInkPlan, renderInkFrameSvg } from './ink_timeline.mjs';
 import { resolveRectangleVideoRuntime } from './rectangle_video_pilot.mjs';
 
 const CUES = ['intro', 'step1', 'step2', 'step3', 'step4', 'outro'];
+const V1_SEGMENT_KEYS = ['cueId', 'path', 'byteLength', 'sha256'];
+const V2_SEGMENT_KEYS = [...V1_SEGMENT_KEYS, 'transcript', 'transcriptSha256', 'style', 'styleSha256', 'provider', 'modelId', 'voiceId'];
 const TOTAL_LIMIT = 64 * 1024 * 1024;
 const AUDIO_FILE_LIMIT = 10 * 1024 * 1024;
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const isHash = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
+// Conservative declaration screening, not a credential detector or rights proof.
+const unsafeDeclaration = /(?:\b[a-z][a-z0-9+.-]*:\/\/|\b(?:data|file|blob|javascript):|www\.|\bBearer\s|cfut_|\bsk-|\bAIza|\bgh[pousr]_|BEGIN PRIVATE KEY|\b(?:api[_ -]?key|token|password|secret|authorization)\s*[:=])/i;
+function declarationId(value) {
+  return typeof value === 'string' && value === value.trim() && /^[A-Za-z0-9][A-Za-z0-9_. -]{0,95}$/.test(value) && !unsafeDeclaration.test(value);
+}
 function ownRecord(value, keys) {
-  if (!value || typeof value !== 'object' || Array.isArray(value) || ![Object.prototype, null].includes(Object.getPrototypeOf(value))) throw new Error('invalid_audio_manifest');
+  if (!value || typeof value !== 'object' || isProxy(value) || Array.isArray(value) || ![Object.prototype, null].includes(Object.getPrototypeOf(value))) throw new Error('invalid_audio_manifest');
   const descriptors = Object.getOwnPropertyDescriptors(value), ownKeys = Reflect.ownKeys(value);
   if (ownKeys.length !== keys.length || keys.some(key => !Object.hasOwn(descriptors, key) || !Object.hasOwn(descriptors[key], 'value'))) throw new Error('invalid_audio_manifest');
   return Object.fromEntries(keys.map(key => [key, descriptors[key].value]));
 }
-function ownAudioSegments(value) {
+function ownAudioSegments(value, segmentKeys) {
   if (!Array.isArray(value) || isProxy(value) || Object.getPrototypeOf(value) !== Array.prototype) throw new Error('invalid_audio_manifest');
   const descriptors = Object.getOwnPropertyDescriptors(value);
   if (Reflect.ownKeys(value).length !== 7 || descriptors.length?.value !== 6) throw new Error('invalid_audio_manifest');
   return CUES.map((_, index) => {
     const descriptor = descriptors[String(index)];
     if (!Object.hasOwn(descriptors, String(index)) || !Object.hasOwn(descriptor, 'value')) throw new Error('invalid_audio_manifest');
-    return ownRecord(descriptor.value, ['cueId', 'path', 'byteLength', 'sha256']);
+    return ownRecord(descriptor.value, segmentKeys);
   });
 }
 export function validateInkAudioManifest(manifest) {
   try {
-    const data = ownRecord(manifest, ['schemaVersion', 'rightsStatus', 'segments']);
-    if (data.schemaVersion !== 'ink-audio-preview/v1' || data.rightsStatus !== 'technical_preview_only') throw new Error();
-    const supplied = ownAudioSegments(data.segments);
+    if (!manifest || typeof manifest !== 'object' || isProxy(manifest)) throw new Error();
+    const version = Object.getOwnPropertyDescriptor(manifest, 'schemaVersion')?.value;
+    if (!['ink-audio-preview/v1', 'ink-audio-preview/v2'].includes(version)) throw new Error();
+    const v2 = version === 'ink-audio-preview/v2';
+    const data = ownRecord(manifest, v2 ? ['schemaVersion', 'rightsStatus', 'sourcePlanId', 'sourcePlanSha256', 'segments'] : ['schemaVersion', 'rightsStatus', 'segments']);
+    if (data.rightsStatus !== 'technical_preview_only') throw new Error();
+    // Source identity is the UTF-8 JSON serialization of the immutable DEFAULT
+    // plan. Measured audio later creates a different render-plan revision.
+    const sourcePlan = v2 ? createInkPlan() : null;
+    if (v2 && (data.sourcePlanId !== sourcePlan.id || !isHash(data.sourcePlanSha256) || data.sourcePlanSha256 !== sha(JSON.stringify(sourcePlan)))) throw new Error();
+    const supplied = ownAudioSegments(data.segments, v2 ? V2_SEGMENT_KEYS : V1_SEGMENT_KEYS);
     const segments = CUES.map(cueId => {
       const matches = supplied.filter(value => value.cueId === cueId);
       if (matches.length !== 1) throw new Error();
       const s = matches[0];
-      if (typeof s.path !== 'string' || !isAbsolute(s.path) || s.path.length > 4096 || /[\0\r\n]/.test(s.path) || !s.path.endsWith('.wav') || !Number.isSafeInteger(s.byteLength) || s.byteLength < 1 || s.byteLength > AUDIO_FILE_LIMIT || typeof s.sha256 !== 'string' || !/^[a-f0-9]{64}$/.test(s.sha256)) throw new Error();
+      if (typeof s.path !== 'string' || !isAbsolute(s.path) || s.path.length > 4096 || /[\0\r\n]/.test(s.path) || !s.path.endsWith('.wav') || !Number.isSafeInteger(s.byteLength) || s.byteLength < 1 || s.byteLength > AUDIO_FILE_LIMIT || !isHash(s.sha256)) throw new Error();
+      if (v2) {
+        const narration = sourcePlan.segments.find(segment => segment.id === cueId).narration;
+        if (typeof s.transcript !== 'string' || s.transcript !== narration || !isHash(s.transcriptSha256) || s.transcriptSha256 !== sha(s.transcript)) throw new Error();
+        if (typeof s.style !== 'string' || s.style !== s.style.trim() || Buffer.byteLength(s.style) < 1 || Buffer.byteLength(s.style) > 2000 || /[\u0000-\u001f\u007f]/.test(s.style) || unsafeDeclaration.test(s.style) || !isHash(s.styleSha256) || s.styleSha256 !== sha(s.style)) throw new Error();
+        if (![s.provider, s.modelId, s.voiceId].every(declarationId)) throw new Error();
+      }
       return Object.freeze({ ...s });
     });
     if (segments.reduce((sum, s) => sum + s.byteLength, 0) > 40 * 1024 * 1024) throw new Error();
-    return Object.freeze({ schemaVersion: data.schemaVersion, rightsStatus: data.rightsStatus, segments: Object.freeze(segments) });
+    return Object.freeze({ schemaVersion: data.schemaVersion, rightsStatus: data.rightsStatus, ...(v2 ? { sourcePlanId: data.sourcePlanId, sourcePlanSha256: data.sourcePlanSha256 } : {}), segments: Object.freeze(segments) });
   } catch { throw new Error('invalid_audio_manifest'); }
 }
 export function createInkRenderBudget(durationSeconds) {
@@ -122,7 +144,10 @@ export async function renderInkVideo({ outputDirectory, runtime = {}, audioManif
     const info = await probe(config.ffprobePath, path), duration = Number(info.format?.duration);
     if (info.streams?.length !== 1 || info.streams[0].codec_type !== 'audio' || !info.streams[0].codec_name?.startsWith('pcm_') || info.streams[0].channels !== 1 || info.streams[0].sample_rate !== '24000' || !Number.isFinite(duration) || duration < 0.25 || duration > 120) throw new Error('unsupported_audio_artifact');
     measured[s.cueId] = duration;
-    audioEvidence.push({ cueId: s.cueId, fileName: name, byteLength: bytes.length, sha256: s.sha256, measuredSeconds: duration, channels: info.streams[0].channels, sampleRateHz: Number(info.streams[0].sample_rate), codec: info.streams[0].codec_name });
+    const declaration = checkedAudio.schemaVersion === 'ink-audio-preview/v2' ? {
+      transcript: s.transcript, transcriptSha256: s.transcriptSha256, style: s.style, styleSha256: s.styleSha256, provider: s.provider, modelId: s.modelId, voiceId: s.voiceId,
+    } : null;
+    audioEvidence.push({ cueId: s.cueId, fileName: name, byteLength: bytes.length, sha256: s.sha256, measuredSeconds: duration, channels: info.streams[0].channels, sampleRateHz: Number(info.streams[0].sample_rate), codec: info.streams[0].codec_name, ...(declaration ? { declaration } : {}) });
   }
   const plan = createInkPlan(checkedAudio ? { segmentDurations: measured } : {});
   const budget = createInkRenderBudget(plan.durationSeconds);
@@ -170,6 +195,10 @@ export async function renderInkVideo({ outputDirectory, runtime = {}, audioManif
   if (videos.length !== 1 || videos[0].codec_name !== 'h264' || videos[0].pix_fmt !== 'yuv420p' || videos[0].width !== 1280 || videos[0].height !== 720 || videos[0].r_frame_rate !== '24/1' || audios.length !== (checkedAudio ? 1 : 0) || (checkedAudio && audios[0].codec_name !== 'aac') || !Number.isFinite(duration) || Math.abs(duration - plan.durationSeconds) > 0.15) throw new Error('ink_output_contract_failed');
   const video = await boundedBytes(videoPath, null, maximumVideoBytes);
   const receipt = { state: 'motion_draft_rendered', planId: plan.id, planSha256: sha(JSON.stringify(plan)), video: { fileName: 'solution.mp4', byteLength: video.length, sha256: sha(video), codec: 'h264', width: 1280, height: 720, fps: 24, durationSeconds: duration, frameCount: budget.frameCount, audio: !!checkedAudio }, audioEvidence, voiceStatus: checkedAudio ? 'muxed_audio_preview_unreviewed' : 'not_rendered_silent_motion_preview', alignmentStatus: checkedAudio ? 'measured_sentence_segments_not_word_alignment' : 'not_tested_no_audio', narrationQuality: 'not_listener_approved', expertReview: 'pending', curriculumStatus: 'unmapped_draft', publicationReady: false, encodingThreads: 2, maximumTotalBytes: TOTAL_LIMIT };
+  const declaredBinding = checkedAudio?.schemaVersion === 'ink-audio-preview/v2';
+  receipt.contentBindingStatus = declaredBinding ? 'declared_transcript_bound_not_listener_verified' : checkedAudio ? 'unbound_technical_preview_only' : 'not_applicable_no_audio';
+  receipt.speechContentStatus = checkedAudio ? 'not_listener_verified' : 'not_rendered_no_audio';
+  receipt.audioSourcePlan = declaredBinding ? { sourcePlanId: checkedAudio.sourcePlanId, sourcePlanSha256: checkedAudio.sourcePlanSha256 } : null;
   const receiptText = JSON.stringify(receipt, null, 2) + '\n';
   if (writtenBytes + video.length + Buffer.byteLength(receiptText) > TOTAL_LIMIT) throw new Error('artifact_budget_exceeded');
   await writeFile(join(outputDirectory, 'receipt.json'), receiptText, { flag: 'wx' });
