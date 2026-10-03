@@ -62,6 +62,15 @@ export function evaluateDecisionBackedReleaseReadiness(candidate) {
       );
     }
 
+    if (decision.reviewedRevision.contentItemId !== revision.contentItemId) {
+      addError(
+        errors,
+        `decisions[${index}].reviewedRevision.contentItemId`,
+        'review_content_item_mismatch',
+        'review decision must target the release content item'
+      );
+    }
+
     if (
       decision.reviewedRevision.revisionId !== revision.revisionId ||
       decision.reviewedRevision.sha256 !== revision.sha256

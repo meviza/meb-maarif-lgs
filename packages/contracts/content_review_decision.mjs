@@ -38,7 +38,13 @@ function isSha256(value) {
 }
 
 function isValidTimestamp(value) {
-  return typeof value === 'string' && !Number.isNaN(Date.parse(value));
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/u.test(value)) {
+    return false;
+  }
+  const parsed = Date.parse(value);
+  if (Number.isNaN(parsed)) return false;
+  const canonical = new Date(parsed).toISOString();
+  return value === canonical || value === canonical.replace('.000Z', 'Z');
 }
 
 function addError(errors, path, code, message) {
@@ -199,4 +205,3 @@ export function validateContentReviewDecision(decision) {
 
   return { valid: errors.length === 0, errors };
 }
-

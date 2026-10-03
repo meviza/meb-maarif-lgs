@@ -75,6 +75,7 @@ function reviewDecision(discipline, overrides = {}) {
 function releaseCandidate(overrides = {}) {
   return {
     revision: {
+      contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
       sha256: 'a'.repeat(64),
       lifecycleState: 'approved',
@@ -128,6 +129,32 @@ test('blocks release readiness when a valid decision belongs to a different revi
         path: 'decisions[1].reviewedRevision.sha256',
         code: 'review_revision_mismatch',
         message: 'review decision must target the release revision'
+      }
+    ]
+  });
+});
+
+test('blocks release readiness when a valid decision belongs to a different content item', async () => {
+  const { evaluateDecisionBackedReleaseReadiness } = await loadDecisionBackedReleaseGate();
+  const candidate = releaseCandidate();
+  candidate.decisions[1] = reviewDecision('assessment', {
+    reviewedRevision: {
+      contentItemId: 'CONTENT-G1-TR-OTHER',
+      revisionId: 'REV-G1-TR-001',
+      sha256: 'a'.repeat(64)
+    }
+  });
+
+  const result = evaluateDecisionBackedReleaseReadiness(candidate);
+
+  assert.deepEqual(result, {
+    ready: false,
+    nextState: 'blocked',
+    errors: [
+      {
+        path: 'decisions[1].reviewedRevision.contentItemId',
+        code: 'review_content_item_mismatch',
+        message: 'review decision must target the release content item'
       }
     ]
   });

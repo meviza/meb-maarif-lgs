@@ -46,6 +46,26 @@ test('denies every request that crosses a school tenant boundary', async () => {
   assert.deepEqual(decision, { allowed: false, reason: 'tenant_mismatch' });
 });
 
+test('denies blank tenant identifiers before applying a role rule', async () => {
+  const { evaluateK12Access } = await loadPolicy();
+
+  const decision = evaluateK12Access(request({
+    actor: {
+      role: 'guardian',
+      subjectId: 'guardian_001',
+      tenantId: ' ',
+      relatedLearnerIds: ['learner_001']
+    },
+    resource: {
+      type: 'learner_progress_summary',
+      tenantId: ' ',
+      learnerId: 'learner_001'
+    }
+  }));
+
+  assert.deepEqual(decision, { allowed: false, reason: 'tenant_required' });
+});
+
 test('allows a guardian to read only a linked learner progress summary', async () => {
   const { evaluateK12Access } = await loadPolicy();
 
@@ -60,6 +80,24 @@ test('allows a guardian to read only a linked learner progress summary', async (
 
   assert.deepEqual(ownLearner, { allowed: true, reason: 'guardian_relationship' });
   assert.deepEqual(unrelatedLearner, { allowed: false, reason: 'relationship_required' });
+});
+
+test('denies a guardian summary request with no learner scope even if malformed claims include undefined', async () => {
+  const { evaluateK12Access } = await loadPolicy();
+  const decision = evaluateK12Access(request({
+    actor: {
+      role: 'guardian',
+      subjectId: 'guardian_001',
+      tenantId: 'school_ankara_001',
+      relatedLearnerIds: [undefined]
+    },
+    resource: {
+      type: 'learner_progress_summary',
+      tenantId: 'school_ankara_001'
+    }
+  }));
+
+  assert.deepEqual(decision, { allowed: false, reason: 'learner_required' });
 });
 
 test('permits an editor to revise a draft but never to publish it', async () => {
@@ -113,6 +151,25 @@ test('allows a student to read only their own learning summary', async () => {
   assert.deepEqual(anotherSummary, { allowed: false, reason: 'subject_mismatch' });
 });
 
+test('denies a student summary request when either learner subject identifier is absent', async () => {
+  const { evaluateK12Access } = await loadPolicy();
+  const actor = {
+    role: 'student',
+    tenantId: 'school_ankara_001'
+  };
+
+  const decision = evaluateK12Access({
+    actor,
+    resource: {
+      type: 'learner_progress_summary',
+      tenantId: 'school_ankara_001'
+    },
+    action: 'read'
+  });
+
+  assert.deepEqual(decision, { allowed: false, reason: 'subject_required' });
+});
+
 test('allows a teacher to read progress only for an assigned class group', async () => {
   const { evaluateK12Access } = await loadPolicy();
   const actor = {
@@ -145,6 +202,26 @@ test('allows a teacher to read progress only for an assigned class group', async
 
   assert.deepEqual(assignedClass, { allowed: true, reason: 'teacher_class_assignment' });
   assert.deepEqual(unassignedClass, { allowed: false, reason: 'class_assignment_required' });
+});
+
+test('denies a teacher summary request with no class-group scope even if malformed claims include undefined', async () => {
+  const { evaluateK12Access } = await loadPolicy();
+  const decision = evaluateK12Access({
+    actor: {
+      role: 'teacher',
+      subjectId: 'teacher_001',
+      tenantId: 'school_ankara_001',
+      assignedClassGroupIds: [undefined]
+    },
+    resource: {
+      type: 'learner_progress_summary',
+      tenantId: 'school_ankara_001',
+      learnerId: 'learner_001'
+    },
+    action: 'read'
+  });
+
+  assert.deepEqual(decision, { allowed: false, reason: 'class_group_required' });
 });
 
 test('allows a school administrator to read aggregate school data but not a learner record', async () => {

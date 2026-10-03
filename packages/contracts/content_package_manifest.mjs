@@ -9,7 +9,7 @@
 
 import { findCanonicalCurriculumOutcome } from '../reference-data/curriculum_registry.mjs';
 
-export const CONTENT_PACKAGE_CONTRACT_VERSION = '1.0.0';
+export const CONTENT_PACKAGE_CONTRACT_VERSION = '2.0.0';
 
 const FORBIDDEN_STUDENT_FIELDS = new Set([
   'answerKey',
@@ -122,13 +122,20 @@ function validateContentReview(content, errors) {
     return;
   }
 
+  requireString(errors, content.contentItemId, 'content.contentItemId', 'content_item_id_missing', 'A content item identifier is required');
   requireString(errors, content.revisionId, 'content.revisionId', 'revision_id_missing', 'A content revision identifier is required');
+  if (typeof content.revisionSha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(content.revisionSha256)) {
+    addError(errors, 'content.revisionSha256', 'revision_sha256_invalid', 'A content revision requires a SHA-256 hash');
+  }
+  requireString(errors, content.authorId, 'content.authorId', 'content_author_missing', 'A content author identifier is required');
   if (content.lifecycleState !== 'published') {
     addError(errors, 'content.lifecycleState', 'content_not_published', 'Only published content can be packaged for students');
   }
   requireString(errors, content.academicReviewId, 'content.academicReviewId', 'academic_review_missing', 'Academic review evidence is required');
+  requireString(errors, content.assessmentReviewId, 'content.assessmentReviewId', 'assessment_review_missing', 'Assessment review evidence is required');
   requireString(errors, content.rightsReviewId, 'content.rightsReviewId', 'rights_review_missing', 'Rights review evidence is required');
   requireString(errors, content.accessibilityReviewId, 'content.accessibilityReviewId', 'accessibility_review_missing', 'Accessibility review evidence is required');
+  requireString(errors, content.publicationDecisionId, 'content.publicationDecisionId', 'publication_decision_missing', 'A publication decision identifier is required');
 }
 
 function validateAsset(asset, index, errors) {

@@ -17,7 +17,7 @@ async function loadContract() {
 
 function publishableManifest(overrides = {}) {
   return {
-    contractVersion: '1.0.0',
+    contractVersion: '2.0.0',
     packageId: 'CP-G1-TR-001',
     dataGovernance: {
       owner: 'academic-content-owner',
@@ -42,11 +42,16 @@ function publishableManifest(overrides = {}) {
       verificationState: 'canonical_verified'
     },
     content: {
+      contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
+      revisionSha256: 'a'.repeat(64),
+      authorId: 'content-editor-001',
       lifecycleState: 'published',
       academicReviewId: 'AR-001',
+      assessmentReviewId: 'ASR-001',
       rightsReviewId: 'RR-001',
-      accessibilityReviewId: 'AC-001'
+      accessibilityReviewId: 'AC-001',
+      publicationDecisionId: 'PUB-G1-TR-001'
     },
     assets: [
       {
@@ -95,6 +100,49 @@ test('accepts a published student package only with ownership, canonical curricu
   assert.deepEqual(result, { valid: true, errors: [] });
 });
 
+test('rejects the retired v1 package contract before it can reach a governed delivery gate', async () => {
+  const { validateStudentContentPackageManifest } = await loadContract();
+
+  const result = validateStudentContentPackageManifest(publishableManifest({ contractVersion: '1.0.0' }));
+
+  assert.deepEqual(result, {
+    valid: false,
+    errors: [
+      {
+        path: 'contractVersion',
+        code: 'contract_version_unsupported',
+        message: 'Expected contract version 2.0.0'
+      }
+    ]
+  });
+});
+
+test('requires immutable revision, all four review bindings, and a publication decision in a v2 package', async () => {
+  const { validateStudentContentPackageManifest } = await loadContract();
+  const manifest = publishableManifest({
+    content: {
+      revisionId: 'REV-G1-TR-001',
+      lifecycleState: 'published',
+      academicReviewId: 'AR-001',
+      rightsReviewId: 'RR-001',
+      accessibilityReviewId: 'AC-001'
+    }
+  });
+
+  const result = validateStudentContentPackageManifest(manifest);
+
+  assert.deepEqual(
+    result.errors.map(error => error.code),
+    [
+      'content_item_id_missing',
+      'revision_sha256_invalid',
+      'content_author_missing',
+      'assessment_review_missing',
+      'publication_decision_missing'
+    ]
+  );
+});
+
 test('rejects a published student package whose visual lacks verified rights or accessibility evidence', async () => {
   const { validateStudentContentPackageManifest } = await loadContract();
   const manifest = publishableManifest({
@@ -130,11 +178,16 @@ test('rejects answer-bearing fields and raw HTML from a student content package'
   const { validateStudentContentPackageManifest } = await loadContract();
   const manifest = publishableManifest({
     content: {
+      contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
+      revisionSha256: 'a'.repeat(64),
+      authorId: 'content-editor-001',
       lifecycleState: 'published',
       academicReviewId: 'AR-001',
+      assessmentReviewId: 'ASR-001',
       rightsReviewId: 'RR-001',
       accessibilityReviewId: 'AC-001',
+      publicationDecisionId: 'PUB-G1-TR-001',
       answerKey: 'A'
     },
     assets: [

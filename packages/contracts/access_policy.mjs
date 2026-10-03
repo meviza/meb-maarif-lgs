@@ -9,6 +9,10 @@ function isRecord(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
+function isNonEmptyString(value) {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
 function deny(reason) {
   return { allowed: false, reason };
 }
@@ -34,15 +38,21 @@ export function evaluateK12Access(request) {
   }
 
   const { actor, resource, action } = request;
-  if (typeof actor.tenantId !== 'string' || typeof resource.tenantId !== 'string') {
+  if (!isNonEmptyString(actor.tenantId) || !isNonEmptyString(resource.tenantId)) {
     return deny('tenant_required');
   }
   if (actor.tenantId !== resource.tenantId) {
     return deny('tenant_mismatch');
   }
+  if (!isNonEmptyString(actor.subjectId)) {
+    return deny('subject_required');
+  }
 
   if (actor.role === 'guardian') {
     if (action === 'read' && resource.type === 'learner_progress_summary') {
+      if (!isNonEmptyString(resource.learnerId)) {
+        return deny('learner_required');
+      }
       return hasRelatedLearner(actor, resource.learnerId)
         ? allow('guardian_relationship')
         : deny('relationship_required');
@@ -52,6 +62,9 @@ export function evaluateK12Access(request) {
 
   if (actor.role === 'student') {
     if (action === 'read' && resource.type === 'learner_progress_summary') {
+      if (!isNonEmptyString(actor.subjectId) || !isNonEmptyString(resource.learnerId)) {
+        return deny('subject_required');
+      }
       return actor.subjectId === resource.learnerId
         ? allow('learner_self_access')
         : deny('subject_mismatch');
@@ -61,6 +74,9 @@ export function evaluateK12Access(request) {
 
   if (actor.role === 'teacher') {
     if (action === 'read' && resource.type === 'learner_progress_summary') {
+      if (!isNonEmptyString(resource.classGroupId)) {
+        return deny('class_group_required');
+      }
       return hasAssignedClassGroup(actor, resource.classGroupId)
         ? allow('teacher_class_assignment')
         : deny('class_assignment_required');

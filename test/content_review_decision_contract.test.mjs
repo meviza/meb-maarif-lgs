@@ -174,6 +174,26 @@ test('rejects a decision with an invalid revision hash', async () => {
   });
 });
 
+test('rejects a calendar-normalized or non-UTC review timestamp', async () => {
+  const { validateContentReviewDecision } = await loadReviewDecisionContract();
+  const decision = approvedAcademicDecision({
+    decidedAt: '2026-02-30T01:00:00.000Z'
+  });
+
+  const result = validateContentReviewDecision(decision);
+
+  assert.deepEqual(result, {
+    valid: false,
+    errors: [
+      {
+        path: 'decidedAt',
+        code: 'decided_at_invalid',
+        message: 'a valid decision timestamp is required'
+      }
+    ]
+  });
+});
+
 test('rejects answer-bearing fields from a governance decision record', async () => {
   const { validateContentReviewDecision } = await loadReviewDecisionContract();
   const decision = approvedAcademicDecision({
@@ -193,4 +213,3 @@ test('rejects answer-bearing fields from a governance decision record', async ()
     ]
   });
 });
-
