@@ -151,6 +151,49 @@ test('allows a student to read only their own learning summary', async () => {
   assert.deepEqual(anotherSummary, { allowed: false, reason: 'subject_mismatch' });
 });
 
+test('allows a student to read only their own resolved content asset', async () => {
+  const { evaluateK12Access } = await loadPolicy();
+  const actor = {
+    role: 'student',
+    subjectId: 'learner_001',
+    tenantId: 'school_ankara_001'
+  };
+
+  const ownAsset = evaluateK12Access({
+    actor,
+    resource: {
+      type: 'student_content_asset',
+      tenantId: 'school_ankara_001',
+      learnerId: 'learner_001',
+      packageId: 'package_001'
+    },
+    action: 'read'
+  });
+  const anotherLearnerAsset = evaluateK12Access({
+    actor,
+    resource: {
+      type: 'student_content_asset',
+      tenantId: 'school_ankara_001',
+      learnerId: 'learner_002',
+      packageId: 'package_001'
+    },
+    action: 'read'
+  });
+  const missingPackageScope = evaluateK12Access({
+    actor,
+    resource: {
+      type: 'student_content_asset',
+      tenantId: 'school_ankara_001',
+      learnerId: 'learner_001'
+    },
+    action: 'read'
+  });
+
+  assert.deepEqual(ownAsset, { allowed: true, reason: 'learner_content_asset_access' });
+  assert.deepEqual(anotherLearnerAsset, { allowed: false, reason: 'subject_mismatch' });
+  assert.deepEqual(missingPackageScope, { allowed: false, reason: 'package_required' });
+});
+
 test('denies a student summary request when either learner subject identifier is absent', async () => {
   const { evaluateK12Access } = await loadPolicy();
   const actor = {

@@ -69,6 +69,17 @@ export function evaluateK12Access(request) {
         ? allow('learner_self_access')
         : deny('subject_mismatch');
     }
+    if (action === 'read' && resource.type === 'student_content_asset') {
+      if (!isNonEmptyString(actor.subjectId) || !isNonEmptyString(resource.learnerId)) {
+        return deny('subject_required');
+      }
+      if (!isNonEmptyString(resource.packageId)) {
+        return deny('package_required');
+      }
+      return actor.subjectId === resource.learnerId
+        ? allow('learner_content_asset_access')
+        : deny('subject_mismatch');
+    }
     return deny('role_action_not_allowed');
   }
 
