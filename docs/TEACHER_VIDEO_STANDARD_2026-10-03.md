@@ -59,6 +59,14 @@ Taslak 5–6 tonu: “İki sıra tel istiyoruz. Ama kapı açık kalacak. Önce 
 
 Bu örnek mevcut ink klibinin üretilmiş sesi değildir. Alan öğretmeni senaryo/onaylı sayılar/okunuşu incelemeden TTS'ye gönderilmez. Okunacak metin ile yönetmen yönergesi farklı alanlarda tutulur; TTS'ye serbestçe yeni açıklama, sayı veya espri yazdırılmaz.
 
+### Gerekçe ve amaç–sonuç için zorunlu senaryo kapısı
+
+Kullanıcının son incelemesi, doğru `18 ÷ 2 × 3 = 27` işleminin tek başına yeterli öğretim olmadığını gösterdi. Her yeni çözüm taslağı önce ne istendiğini ve birimini, hangi verinin hangi büyüklüğü anlattığını ve neden seçilen yolun hedefe ulaştırdığını açıklamalı. Her işlem girdisi sorudaki veri/şekil özelliği/önceki sonuç kimliğine; her ara sonuç anlam ve birime bağlanmalı. “Şimdi böl/çarp” bu kapıyı tek başına geçmez.
+
+Bahçe örneğinde `18 ÷ 2 = 9 m` bir eş parçadır; `9 × 3 = 27 m` üç eş parçadan oluşan uzun kenardır. Kesrin paydası olan 2, çevrede iki kenar çiftini sayan 2 ve iki tel sırasını sayan 2 karıştırılmaz. Pratik eşdeğer yol, her sırada kapının açık kalması koşulunu koruyan `180 − 8 = 172`dir; `180 − 4` değildir. Strateji yalnız anahtar sözcük ezberiyle seçilmez.
+
+Bu gereksinimin ilk çalışır kanıtı [dokuz aşamalı gerekçeli editör önizlemesidir](REASONED_TEACHING_PILOT_2026-10-03.md). Eski altı-cue ses/video korunur; yeni açıklama henüz seslendirilmedi. Yeni ses/video kabulünde öğrenciye düşünme fırsatı, veri–ses–kalem ID bağları ve koşul/birim kontrolü ayrıca doğrulanır. Editörün “işlemi gör” düğmesine basması öğrenme kanıtı değildir.
+
 ## Ses ve kalem için ortak çözüm grafiği
 
 Soru revizyonu → verilen/hedef/koşul → çözüm düğümü → okunacak kesin cümle → ses artefaktı → zaman işareti → kalem izi → sonuç/anlam etiketi. Kaynak soru/çözüm hash'i değişirse ses/altyazı/video türevleri yeniden incelemeye gider.
