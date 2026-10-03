@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { isProxy } from 'node:util/types';
 import { resolveReasonedMediaGeometry } from './reasoned_geometry_resolver.mjs';
+import { paginateReasonedCaptionText } from './reasoned_caption_text.mjs';
 
 const plans = new WeakSet();
 const protectedKinds = new Set(['result', 'check_answer', 'summary', 'transfer_answer']);
@@ -176,8 +177,7 @@ function compactResult(plan, cue) {
   return `${resultCue.semantic.expression} = ${anchor.value} ${anchor.unit}`;
 }
 
-/** Pure inert SVG DTO; no rasterizer, animation clock, network or provider. */
-export function renderReasonedSceneFrame(plan, inputOptions = {}) {
+function sceneContext(plan, inputOptions) {
   if (!plan || typeof plan !== 'object' || isProxy(plan) || !plans.has(plan)) fail('untrusted_reasoned_scene_plan');
   const { cueIndex, progress, reveal } = frameOptions(inputOptions, plan.cues.length);
   const cue = plan.cues[cueIndex], protectedCue = protectedKinds.has(cue.kind), resultVisible = protectedCue && reveal && progress === 1;
@@ -192,6 +192,14 @@ export function renderReasonedSceneFrame(plan, inputOptions = {}) {
     'word_pen_alignment_not_implemented', 'teacher_review', 'rights_review',
     ...(transfer ? ['transfer_geometry_not_in_canonical_source'] : semanticKinds.map(kind => `${kind}_representation_review`))])];
   const width = asset?.viewBox.width ?? 560, sourceHeight = asset?.viewBox.height ?? 70;
+  return { cueIndex, progress, reveal, cue, protectedCue, resultVisible, locked, transfer,
+    anchors, asset, caption, equation, highlight, highlightStage, semanticKinds, pending, width, sourceHeight };
+}
+
+/** Pure inert SVG DTO; no rasterizer, animation clock, network or provider. */
+export function renderReasonedSceneFrame(plan, inputOptions = {}) {
+  const { cueIndex, progress, reveal, cue, resultVisible, transfer, asset, caption, equation,
+    highlight, highlightStage, semanticKinds, pending, width, sourceHeight } = sceneContext(plan, inputOptions);
   const lines = captionLines(caption, Math.max(30, Math.floor((width - 48) / 8.5)));
   const height = sourceHeight + 90 + lines.length * 24 + (equation ? 32 : 0);
   const safeName = `Kaynak & gerekçe — ${caption}`;
@@ -209,4 +217,70 @@ export function renderReasonedSceneFrame(plan, inputOptions = {}) {
     safeLayerSha256: bytesHash(asset ? sourceLayer(plan, asset) : ''), svgScenePrepared: true,
     ...limits(), pending };
   frame.contentSha256 = hash(frame); return freeze(frame);
+}
+
+function captionFrameOptions(input) {
+  if (!input || typeof input !== 'object' || isProxy(input) || Array.isArray(input)
+    || ![Object.prototype, null].includes(Object.getPrototypeOf(input))) fail('invalid_reasoned_caption_options');
+  const descriptors = Object.getOwnPropertyDescriptors(input), keys = Reflect.ownKeys(descriptors);
+  if (keys.length > 4 || keys.some(key => !['cueIndex', 'progress', 'reveal', 'pageIndex'].includes(key)
+    || !descriptors[key].enumerable || !Object.hasOwn(descriptors[key], 'value'))) fail('invalid_reasoned_caption_options');
+  const pageIndex = Object.hasOwn(descriptors, 'pageIndex') ? descriptors.pageIndex.value : 0;
+  if (!Number.isSafeInteger(pageIndex) || pageIndex < 0 || pageIndex >= 32) fail('invalid_reasoned_caption_page_index');
+  return { pageIndex: pageIndex === 0 ? 0 : pageIndex, sceneOptions: Object.fromEntries(['cueIndex', 'progress', 'reveal']
+    .filter(key => Object.hasOwn(descriptors, key)).map(key => [key,
+      key === 'cueIndex' && descriptors[key].value === 0 ? 0 : descriptors[key].value])) };
+}
+function captionLimits() {
+  return { ...limits(), serializedAuthority: 'none', ttsPrepared: false,
+    captionAudioSyncVerified: false, wordBoundaryTimestampsProvided: false };
+}
+
+/** Render only one current safe caption page from a live source-bound plan.
+ * Full canonical narration stays in a separate editor-only plain-text packet.
+ * Page changes are presentation choices, not inferred audio/word timestamps. */
+export function renderReasonedCaptionFrame(plan, inputOptions = {}) {
+  if (arguments.length > 2) fail('invalid_reasoned_caption_arguments');
+  if (!plan || typeof plan !== 'object' || isProxy(plan) || !plans.has(plan)) fail('untrusted_reasoned_scene_plan');
+  const { pageIndex, sceneOptions } = captionFrameOptions(inputOptions);
+  const context = sceneContext(plan, sceneOptions);
+  const { cueIndex, progress, reveal, cue, resultVisible, locked, transfer, asset, caption,
+    highlight, highlightStage, semanticKinds, width, sourceHeight } = context;
+  const pagination = paginateReasonedCaptionText(caption);
+  if (pageIndex >= pagination.pages.length) fail('invalid_reasoned_caption_page_index');
+  const selectedPage = pagination.pages[pageIndex], fullTranscript = locked ? null : cue.transcript;
+  const fullTranscriptSha256 = fullTranscript === null ? null : bytesHash(fullTranscript);
+  const pending = [...new Set([...context.pending, 'caption_glyph_width_and_geometry_fit_review',
+    'caption_page_navigation_and_accessibility_review', 'full_narration_audio_and_word_alignment_not_implemented'])];
+  const height = sourceHeight + 138;
+  const safeCaption = selectedPage.lines.join(' ');
+  const transferNotice = 'Yeni transfer şekli kaynakta yok; geometrik temsil bekliyor.';
+  const safeName = `Kaynak & gerekçe — ${safeCaption}${transfer ? ` — ${transferNotice}` : ''}`;
+  const sourceSvg = asset ? sourceLayer(plan, asset) : '';
+  const textLines = selectedPage.lines.map((line, i) => `<text data-caption-line="${i}" x="24" y="${sourceHeight + 49 + i * 24}" font-size="17" fill="#263b46" xml:space="preserve">${escape(line)}</text>`).join('');
+  const strokes = highlight.paths.map(path => `<path d="${pathD(path.points)}" fill="none" stroke="#ea5a2a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>`).join('');
+  const pen = highlight.pen ? `<g data-layer="highlight-pen"><circle cx="${highlight.pen.x}" cy="${highlight.pen.y}" r="5" fill="#203b50"/><path d="M ${highlight.pen.x} ${highlight.pen.y} l 7 -13 l 5 3 Z" fill="#f1bd46" stroke="#203b50" stroke-width="1"/></g>` : '';
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="${escape(safeName)}"><title>${escape(safeName)}</title><desc>${escape(safeName)}</desc><rect width="${width}" height="${height}" fill="#fffaf1"/><g font-family="sans-serif">${sourceSvg}<g data-layer="progressive-highlight">${strokes}${pen}</g>${transfer ? `<text data-layer="transfer-pending" x="24" y="38" font-size="13" fill="#697b80">${escape(transferNotice)}</text>` : ''}<path d="M 24 ${sourceHeight + 16} H ${width - 24}" stroke="#d7e1da"/><g data-layer="current-caption-page">${textLines}</g></g></svg>`;
+  const binding = { source: plan.source, trace: plan.trace, job: plan.job, geometrySha256: plan.geometrySha256,
+    scenePlanSha256: plan.contentSha256, cueId: cue.id, cueIndex, kind: cue.kind, progress,
+    revealRequested: reveal, resultVisible, pageIndex, pageCount: pagination.pages.length, pagingSha256: pagination.pagingSha256 };
+  const frame = { schemaVersion: 'reasoned-caption-svg-frame/v1', state: 'current_cue_paged_svg_frame_draft',
+    svg, svgSha256: bytesHash(svg), ...binding, selectedPage, selectedPageSha256: hash(selectedPage),
+    fullTranscriptSha256, sourceVisualId: asset?.id ?? null, sourceDiagramProof: !transfer,
+    frameRepresentation: representation,
+    representationStatus: transfer ? 'unsupported_new_geometry_pending' : semanticKinds.length ? 'source_regions_with_semantic_review_pending' : 'canonical_source_regions_highlighted',
+    highlightStage, highlight, penMeaning: plan.penMeaning, coordinatePolicy: plan.coordinatePolicy,
+    sourceAssetSvgSha256: asset?.svgSha256 ?? null, safeLayerSha256: bytesHash(sourceSvg),
+    captionLayout: { fontSizeSvgUnits: 17, lineHeightSvgUnits: 24, reservedLines: 2,
+      reservedHeightSvgUnits: 138, glyphFitVerified: false, geometryRescaled: false,
+      measurement: 'utf16_code_units_not_rendered_glyph_width' },
+    svgScenePrepared: true, captionPresentationPrepared: true, ...captionLimits(), pending };
+  frame.contentSha256 = hash(frame); freeze(frame);
+  const narrationPacket = { schemaVersion: 'reasoned-caption-narration-packet/v1', state: 'current_cue_separate_narration_draft',
+    contentFormat: pagination.contentFormat, ...binding, frameSha256: frame.contentSha256, frameSvgSha256: frame.svgSha256,
+    transcriptVisibility: locked ? 'protected_response_locked' : 'current_cue_only', fullTranscript, fullTranscriptSha256,
+    paging: pagination.paging, pages: pagination.pages, sourceDiagramProof: frame.sourceDiagramProof,
+    representationStatus: frame.representationStatus, captionPresentationPrepared: true, ...captionLimits(), pending };
+  narrationPacket.contentSha256 = hash(narrationPacket);
+  return freeze({ frame, narrationPacket });
 }

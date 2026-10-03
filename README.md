@@ -5,7 +5,9 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
-- [Gece ilerleme kaydı: 783 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece ilerleme kaydı: 839 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [İki yönlü karşılaştırma taslakları](docs/GEOMETRIC_COMPARISON_DRAFT_EVIDENCE_2026-10-04.md), [görünür kısa caption SVG](docs/REASONED_CAPTION_FRAME_EVIDENCE_2026-10-04.md) ve [gerçek sentetik defter SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_POSTGRES_EVIDENCE_2026-10-04.md)
+- [Fabrika bağlantısı ve gerçek küçük raster kontrolü](docs/CAPTION_COMPARISON_FACTORY_ACCEPTANCE_2026-10-04.md)
 - [Kaynak sayfalı geometrik nicelikler/mikrobeceri matrisi](docs/GRADE5_GEOMETRIC_QUANTITIES_MATRIX_2026-10-04.md), [fabrikaya bağlı kayıpsız caption sayfaları](docs/REASONED_CAPTION_PAGES_EVIDENCE_2026-10-04.md) ve [ayrı sentetik defter hazırlık sözleşmesi](docs/SYNTHETIC_NOTEBOOK_CONTRACT_EVIDENCE_2026-10-04.md)
 - [Güvenli gerekçeli sahne renderer'ı](docs/REASONED_SCENE_RENDERER_EVIDENCE_2026-10-03.md), [gerçek sessiz hareket tanığı](docs/REASONED_SCENE_RASTER_MOTION_EVIDENCE_2026-10-04.md) ve [makbuz-aralığına bağlı sentetik etkinlik özeti](docs/SYNTHETIC_ACTIVITY_SUMMARY_EVIDENCE_2026-10-03.md)
 - [42 aday sınıf–ders kaynak boşluk matrisi](docs/SOURCE_SCOPE_CELL_MATRIX_2026-10-04.md) ve [kaynak/soru tamlığını karıştırmayan metaveri raporu](docs/SOURCE_SCOPE_GAPS_EVIDENCE_2026-10-03.md)

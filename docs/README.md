@@ -2,7 +2,11 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
-- [Gece fazları: güncel 783 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece fazları: güncel 839 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [İki yönlü geometrik karşılaştırma: farklı görev aileleri, stok değil](GEOMETRIC_COMPARISON_DRAFT_EVIDENCE_2026-10-04.md)
+- [Görünür, kaynak-bağlı iki satırlı caption SVG](REASONED_CAPTION_FRAME_EVIDENCE_2026-10-04.md)
+- [Ayrı sentetik defter: 73 gerçek PostgreSQL kontrolü](SYNTHETIC_NOTEBOOK_POSTGRES_EVIDENCE_2026-10-04.md)
+- [Normal fabrikada caption/karşılaştırma ve 18 gerçek PNG kontrolü](CAPTION_COMPARISON_FACTORY_ACCEPTANCE_2026-10-04.md)
 - [5. sınıf geometrik nicelikler: 4 çıktı / 23 proje mikrobecerisi](GRADE5_GEOMETRIC_QUANTITIES_MATRIX_2026-10-04.md)
 - [Fabrikaya bağlı kayıpsız, yanıtı kilitli kısa caption sayfaları](REASONED_CAPTION_PAGES_EVIDENCE_2026-10-04.md)
 - [DAMA amaç ayrımlı sentetik defter intent sözleşmesi — DB kaydı değil](SYNTHETIC_NOTEBOOK_CONTRACT_EVIDENCE_2026-10-04.md)
