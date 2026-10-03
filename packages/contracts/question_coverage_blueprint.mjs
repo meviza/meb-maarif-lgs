@@ -13,11 +13,15 @@ export const QUESTION_COVERAGE_BLUEPRINT_CONTRACT_VERSION = '1.0.0';
 
 const arrayIsArray = Array.isArray;
 const arraySort = Function.call.bind(Array.prototype.sort);
+const dateConstructor = Date;
 const dateParse = Date.parse;
+const dateToISOString = Function.call.bind(Date.prototype.toISOString);
 const jsonStringify = JSON.stringify;
 const mapConstructor = Map;
 const mapGet = Function.call.bind(Map.prototype.get);
 const mapSet = Function.call.bind(Map.prototype.set);
+const numberConstructor = Number;
+const numberIsNaN = Number.isNaN;
 const numberIsSafeInteger = Number.isSafeInteger;
 const objectCreate = Object.create;
 const objectDefineProperty = Object.defineProperty;
@@ -249,7 +253,7 @@ function isPositiveSafeInteger(value) {
 function isStrictUtcTimestamp(value) {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/u.test(value)) return false;
   const timestamp = dateParse(value);
-  return !Number.isNaN(timestamp) && new Date(timestamp).toISOString() === value;
+  return !numberIsNaN(timestamp) && dateToISOString(new dateConstructor(timestamp)) === value;
 }
 
 function isHttpsUrl(value) {
@@ -264,7 +268,7 @@ function isHttpsUrl(value) {
 function isAcademicYear(value) {
   if (typeof value !== 'string') return false;
   const match = /^(\d{4})-(\d{4})$/u.exec(value);
-  return match !== null && Number(match[2]) === Number(match[1]) + 1;
+  return match !== null && numberConstructor(match[2]) === numberConstructor(match[1]) + 1;
 }
 
 function snapshotClosedRecord(value, allowedFields, path, errors) {
@@ -330,7 +334,7 @@ function snapshotDenseArray(value, path, errors, maximumLength) {
   for (let index = 0; index < fields.length; index += 1) {
     const field = fields[index];
     if (field === 'length') continue;
-    if (typeof field !== 'string' || !regExpTest(ARRAY_INDEX_PATTERN, field) || Number(field) >= length) {
+    if (typeof field !== 'string' || !regExpTest(ARRAY_INDEX_PATTERN, field) || numberConstructor(field) >= length) {
       addError(errors, path, 'unexpected_array_field', 'arrays may contain only dense indexed data entries');
       continue;
     }

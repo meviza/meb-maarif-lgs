@@ -43,6 +43,7 @@ const setConstructor = Set;
 const setAdd = Function.call.bind(Set.prototype.add);
 const setHas = Function.call.bind(Set.prototype.has);
 const stringConstructor = String;
+const stringReplace = Function.call.bind(String.prototype.replace);
 const jsonStringify = JSON.stringify;
 const weakSetConstructor = WeakSet;
 const weakSetAdd = Function.call.bind(WeakSet.prototype.add);
@@ -226,7 +227,7 @@ function isCanonicalUtcTimestamp(value) {
   const timestamp = dateParse(value);
   if (numberIsNaN(timestamp)) return false;
   const canonical = dateToISOString(new dateConstructor(timestamp));
-  return value === canonical || value === canonical.replace('.000Z', 'Z');
+  return value === canonical || value === stringReplace(canonical, '.000Z', 'Z');
 }
 
 function snapshotClosedRecord(value, allowedFields, path, errors) {
@@ -819,6 +820,32 @@ function createCoverageSummary(report) {
   return objectFreeze(summary);
 }
 
+function calculateCoverageReviewReadinessIntentSha256FromIntent(intent) {
+  const definition = objectCreate(null);
+  const fields = [
+    'contractVersion',
+    'resolverSnapshotId',
+    'observedAt',
+    'sourcePolicyVersion',
+    'lifecycleReviewSnapshotSha256',
+    'blueprintId',
+    'blueprintRevisionId',
+    'blueprintSha256',
+    'canonicalCurriculumSnapshotSha256',
+    'programVersion',
+    'grade',
+    'courseKey',
+    'approvedContentRevisionBindings'
+  ];
+  for (let index = 0; index < arrayLength(fields); index += 1) {
+    const field = fields[index];
+    setOwnValue(definition, field, intent[field]);
+  }
+  return createHash('sha256')
+    .update(`k12.coverage-review-readiness-intent/v1:${canonicalJson(objectFreeze(definition))}`, 'utf8')
+    .digest('hex');
+}
+
 /**
  * Return only an internal coverage-review-ready intent. It is deliberately
  * not a publication decision, a delivery decision, or authority evidence.
@@ -895,7 +922,10 @@ export function evaluateServerResolvedQuestionCoverageReviewReadiness(value) {
             contentRevisionId: item.contentRevisionId,
             contentRevisionSha256: item.contentRevisionSha256,
             assetSetSha256: item.assetSetSha256,
-            blueprintCellId: item.blueprintCellId
+            blueprintCellId: item.blueprintCellId,
+            registryEntryId: item.registryEntryId,
+            outcomeCode: item.outcomeCode,
+            microSkillId: item.microSkillId
           }));
         }
       } else if (lifecycleSnapshot.releaseCandidate !== null) {
@@ -914,6 +944,7 @@ export function evaluateServerResolvedQuestionCoverageReviewReadiness(value) {
     if (arrayLength(errors) > 0) return createBlockedResult(errors);
 
     const intent = objectCreate(null);
+    setOwnValue(intent, 'contractVersion', SERVER_RESOLVED_QUESTION_COVERAGE_REVIEW_READINESS_CONTRACT_VERSION);
     setOwnValue(intent, 'resolverSnapshotId', resolverContext.snapshotId);
     setOwnValue(intent, 'observedAt', resolverContext.observedAt);
     setOwnValue(intent, 'sourcePolicyVersion', resolverContext.sourcePolicyVersion);
@@ -922,7 +953,11 @@ export function evaluateServerResolvedQuestionCoverageReviewReadiness(value) {
     setOwnValue(intent, 'blueprintRevisionId', coverage.report.blueprintRevisionId);
     setOwnValue(intent, 'blueprintSha256', coverage.report.blueprintSha256);
     setOwnValue(intent, 'canonicalCurriculumSnapshotSha256', coverageEvaluationInput.canonicalCurriculumSnapshotSha256);
+    setOwnValue(intent, 'programVersion', coverageEvaluationInput.blueprint.programVersion);
+    setOwnValue(intent, 'grade', coverageEvaluationInput.blueprint.grade);
+    setOwnValue(intent, 'courseKey', coverageEvaluationInput.blueprint.courseKey);
     setOwnValue(intent, 'approvedContentRevisionBindings', objectFreeze(approvedBindings));
+    setOwnValue(intent, 'coverageReviewReadinessIntentSha256', calculateCoverageReviewReadinessIntentSha256FromIntent(intent));
     const result = objectCreate(null);
     setOwnValue(result, 'eligible', true);
     setOwnValue(result, 'nextState', 'coverage_review_ready');

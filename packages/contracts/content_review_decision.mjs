@@ -8,6 +8,12 @@
 
 export const CONTENT_REVIEW_DECISION_CONTRACT_VERSION = '2.0.0';
 
+const dateConstructor = Date;
+const dateParse = Date.parse;
+const dateToISOString = Function.call.bind(Date.prototype.toISOString);
+const numberIsNaN = Number.isNaN;
+const stringReplace = Function.call.bind(String.prototype.replace);
+
 const REVIEW_REQUIREMENTS = new Map([
   ['academic', { role: 'academic_reviewer', evidenceKind: 'curriculum_registry_entry' }],
   ['assessment', { role: 'assessment_reviewer', evidenceKind: 'assessment_rubric' }],
@@ -41,10 +47,10 @@ function isValidTimestamp(value) {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/u.test(value)) {
     return false;
   }
-  const parsed = Date.parse(value);
-  if (Number.isNaN(parsed)) return false;
-  const canonical = new Date(parsed).toISOString();
-  return value === canonical || value === canonical.replace('.000Z', 'Z');
+  const parsed = dateParse(value);
+  if (numberIsNaN(parsed)) return false;
+  const canonical = dateToISOString(new dateConstructor(parsed));
+  return value === canonical || value === stringReplace(canonical, '.000Z', 'Z');
 }
 
 function addError(errors, path, code, message) {
@@ -134,7 +140,7 @@ function validateEvidence(evidenceRefs, requiredEvidenceKind, errors) {
       errors,
       'evidenceRefs',
       'required_evidence_kind_missing',
-      `${requiredEvidenceKind === 'curriculum_registry_entry' ? 'academic' : requiredEvidenceKind.replace(/_record$|_rubric$/u, '')} review requires evidence kind ${requiredEvidenceKind}`
+      `${requiredEvidenceKind === 'curriculum_registry_entry' ? 'academic' : stringReplace(requiredEvidenceKind, /_record$|_rubric$/u, '')} review requires evidence kind ${requiredEvidenceKind}`
     );
   }
 }

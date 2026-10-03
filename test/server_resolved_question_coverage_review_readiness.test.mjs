@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 const BRIDGE_MODULE_URL = new URL('../packages/contracts/server_resolved_question_coverage_review_readiness.mjs', import.meta.url);
+const PACKAGE_COVERAGE_BINDING_MODULE_URL = new URL('../packages/contracts/server_resolved_content_package_coverage_binding.mjs', import.meta.url);
 const COVERAGE_MODULE_URL = new URL('../packages/contracts/question_coverage_blueprint.mjs', import.meta.url);
 
 const SHA_A = 'a'.repeat(64);
@@ -24,6 +25,15 @@ async function loadBridge() {
     'approved assessment items need a server-resolved coverage-to-review-readiness bridge'
   );
   return import(BRIDGE_MODULE_URL.href);
+}
+
+async function loadPackageCoverageBinding() {
+  assert.equal(
+    fs.existsSync(PACKAGE_COVERAGE_BINDING_MODULE_URL),
+    true,
+    'a package target needs a server-resolved coverage binding before a later publication or delivery phase'
+  );
+  return import(PACKAGE_COVERAGE_BINDING_MODULE_URL.href);
 }
 
 async function loadCoverageContract() {
@@ -184,6 +194,55 @@ function refreshLifecycleReviewSnapshotHash(candidate, bridge) {
       candidate.resolverContext,
       candidate.itemLifecycleSnapshots
     );
+}
+
+function packageTargetFor(coverageCandidate, itemIndex = 0) {
+  const coverageInput = coverageCandidate.coverageEvaluationInput;
+  const item = coverageInput.itemMetadata[itemIndex];
+  const blueprint = coverageInput.blueprint;
+  return {
+    packageId: 'package_g1_math_001',
+    packageManifestSha256: SHA_C,
+    itemId: item.itemId,
+    contentItemId: item.contentItemId,
+    contentRevisionId: item.contentRevisionId,
+    contentRevisionSha256: item.contentRevisionSha256,
+    assetSetSha256: item.assetSetSha256,
+    blueprintCellId: item.blueprintCellId,
+    curriculum: {
+      registryEntryId: item.registryEntryId,
+      programVersion: blueprint.programVersion,
+      grade: blueprint.grade,
+      courseKey: blueprint.courseKey,
+      outcomeCode: item.outcomeCode
+    }
+  };
+}
+
+async function packageCoverageBindingCandidate(
+  coverageCandidate,
+  packageContentTarget = packageTargetFor(coverageCandidate)
+) {
+  const packageBinding = await loadPackageCoverageBinding();
+  const resolverContext = {
+    contractVersion: '1.0.0',
+    snapshotId: 'package_coverage_snapshot_g1_math_001',
+    observedAt: '2026-10-03T11:30:00.000Z',
+    sourcePolicyVersion: 'package-coverage-source-v1',
+    packageCoverageSnapshotSha256: null
+  };
+  resolverContext.packageCoverageSnapshotSha256 =
+    packageBinding.calculatePackageCoverageSnapshotSha256(
+      resolverContext,
+      packageContentTarget,
+      coverageCandidate
+    );
+  return {
+    contractVersion: '1.0.0',
+    resolverContext,
+    packageContentTarget,
+    coverageReviewResolverInput: coverageCandidate
+  };
 }
 
 function coverageEvaluationInput(coverageContract, { partialCoverage = false } = {}) {
@@ -480,4 +539,241 @@ test('requires exactly one resolved lifecycle snapshot for each coverage item', 
 
   assert.equal(result.eligible, false);
   assert.equal(result.errors.some(error => error.code === 'item_lifecycle_snapshot_missing'), true);
+});
+
+test('recomputes coverage review readiness before binding one immutable package target to its approved blueprint cell', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const coverageCandidate = await bridgeCandidate();
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(
+    await packageCoverageBindingCandidate(coverageCandidate)
+  );
+
+  assert.equal(result.eligible, true);
+  assert.equal(result.nextState, 'package_coverage_binding_ready');
+  assert.equal(result.scopeCoverageComplete, true);
+  assert.equal(result.packageCoverageBindingIntent.itemId, coverageCandidate.coverageEvaluationInput.itemMetadata[0].itemId);
+  assert.equal(typeof result.packageCoverageBindingIntent.packageCoverageBindingSha256, 'string');
+  assert.equal(result.packageCoverageBindingIntent.packageCoverageBindingSha256.length, 64);
+  assert.equal('published' in result, false);
+  assert.equal('publicationEligible' in result, false);
+  assert.equal('deliveryEligible' in result, false);
+});
+
+test('blocks a package target whose immutable content revision tuple aliases another coverage item', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const coverageCandidate = await bridgeCandidate();
+  const candidate = await packageCoverageBindingCandidate(coverageCandidate);
+  candidate.packageContentTarget.contentRevisionSha256 = SHA_A;
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(
+    candidate
+  );
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'package_target_content_binding_mismatch'), true);
+});
+
+test('blocks a package target that pairs an approved item identity with another blueprint cell', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const coverageCandidate = await bridgeCandidate();
+  const candidate = await packageCoverageBindingCandidate(coverageCandidate);
+  candidate.packageContentTarget.blueprintCellId = coverageCandidate.coverageEvaluationInput.itemMetadata[1].blueprintCellId;
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(
+    candidate
+  );
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'package_target_blueprint_cell_mismatch'), true);
+});
+
+test('blocks a package curriculum declaration that does not match the recomputed blueprint outcome', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const coverageCandidate = await bridgeCandidate();
+  const candidate = await packageCoverageBindingCandidate(coverageCandidate);
+  candidate.packageContentTarget.curriculum.outcomeCode = 'MAT.1.1.9';
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(
+    candidate
+  );
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'package_target_curriculum_mismatch'), true);
+});
+
+test('keeps partial scope explicit when a currently approved package target has a valid coverage binding', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const coverageCandidate = await bridgeCandidate({ partialCoverage: true });
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(
+    await packageCoverageBindingCandidate(coverageCandidate)
+  );
+
+  assert.equal(result.eligible, true);
+  assert.equal(result.scopeCoverageComplete, false);
+  assert.equal(result.coverageSummary.missingRequiredVariantCellCount, 1);
+});
+
+test('rejects a caller-supplied precomputed coverage-review result instead of recomputing the resolver input', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const coverageCandidate = await bridgeCandidate();
+  const candidate = await packageCoverageBindingCandidate(coverageCandidate);
+  candidate.precomputedCoverageReviewReadiness = { eligible: true };
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'unexpected_field'), true);
+});
+
+test('blocks a package resolver context whose hash does not bind the target and freshly recomputed coverage evidence', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const candidate = await packageCoverageBindingCandidate(await bridgeCandidate());
+  candidate.resolverContext.packageCoverageSnapshotSha256 = SHA_A;
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'package_coverage_snapshot_hash_mismatch'), true);
+});
+
+test('blocks a package target whose immutable package-manifest digest changed after the resolver snapshot was formed', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const candidate = await packageCoverageBindingCandidate(await bridgeCandidate());
+  candidate.packageContentTarget.packageManifestSha256 = SHA_A;
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'package_coverage_snapshot_hash_mismatch'), true);
+});
+
+test('requires every immutable target identity field to match one recomputed approved binding', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const coverageCandidate = await bridgeCandidate();
+  const mutations = [
+    ['itemId', 'item_g1_math_missing_001', 'package_target_item_binding_missing'],
+    ['contentItemId', 'contentitem_g1_math_missing_001', 'package_target_content_binding_mismatch'],
+    ['contentRevisionId', 'itemrev_g1_math_missing_001', 'package_target_content_binding_mismatch'],
+    ['contentRevisionSha256', SHA_A, 'package_target_content_binding_mismatch'],
+    ['assetSetSha256', SHA_A, 'package_target_content_binding_mismatch'],
+    ['blueprintCellId', 'bpcell_g1_math_missing_001', 'package_target_blueprint_cell_mismatch']
+  ];
+
+  for (const [field, value, expectedCode] of mutations) {
+    const candidate = await packageCoverageBindingCandidate(coverageCandidate);
+    candidate.packageContentTarget[field] = value;
+    const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(candidate);
+
+    assert.equal(result.eligible, false, `${field} alias must be blocked`);
+    assert.equal(result.errors.some(error => error.code === expectedCode), true, `${field} must report its immutable-binding mismatch`);
+  }
+});
+
+test('does not treat a caller-shaped bridge result as a coverage-review resolver input', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const candidate = await packageCoverageBindingCandidate(await bridgeCandidate());
+  candidate.coverageReviewResolverInput = {
+    eligible: true,
+    nextState: 'coverage_review_ready',
+    scopeCoverageComplete: true,
+    errors: []
+  };
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'coverage_review_readiness_blocked'), true);
+});
+
+test('blocks a package resolver observation that predates the recomputed coverage-review observation', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const candidate = await packageCoverageBindingCandidate(await bridgeCandidate());
+  candidate.resolverContext.observedAt = '2026-10-03T10:30:00.000Z';
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'resolver_observed_before_coverage_review_observation'), true);
+});
+
+test('does not inherit publication, delivery, or manifest claims after Object prototype pollution', async () => {
+  const candidate = await packageCoverageBindingCandidate(await bridgeCandidate());
+  const script = `
+    import fs from 'node:fs';
+    import { evaluateServerResolvedContentPackageCoverageBinding } from ${JSON.stringify(PACKAGE_COVERAGE_BINDING_MODULE_URL.href)};
+    const candidate = JSON.parse(fs.readFileSync(0, 'utf8'));
+    Object.defineProperties(Object.prototype, {
+      published: { configurable: true, enumerable: true, value: true },
+      deliveryEligible: { configurable: true, enumerable: true, value: true },
+      manifestValid: { configurable: true, enumerable: true, value: true }
+    });
+    const result = evaluateServerResolvedContentPackageCoverageBinding(candidate);
+    process.stdout.write(JSON.stringify({
+      eligible: result.eligible,
+      resultPrototypeIsNull: Object.getPrototypeOf(result) === null,
+      publishedInResult: 'published' in result,
+      deliveryEligibleInResult: 'deliveryEligible' in result,
+      manifestValidInResult: 'manifestValid' in result
+    }));
+  `;
+  const child = spawnSync(process.execPath, ['--input-type=module', '--eval', script], {
+    encoding: 'utf8',
+    input: JSON.stringify(candidate)
+  });
+
+  assert.equal(child.status, 0, child.stderr);
+  assert.deepEqual(JSON.parse(child.stdout), {
+    eligible: true,
+    resultPrototypeIsNull: true,
+    publishedInResult: false,
+    deliveryEligibleInResult: false,
+    manifestValidInResult: false
+  });
+});
+
+test('rejects an accessor-backed package target rather than invoking it during binding', async () => {
+  const packageBinding = await loadPackageCoverageBinding();
+  const candidate = await packageCoverageBindingCandidate(await bridgeCandidate());
+  Object.defineProperty(candidate.packageContentTarget, 'packageId', {
+    configurable: true,
+    enumerable: true,
+    get() {
+      throw new Error('package target accessor must not run');
+    }
+  });
+
+  const result = packageBinding.evaluateServerResolvedContentPackageCoverageBinding(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'accessor_field_not_allowed'), true);
+});
+
+test('remains valid when numeric and timestamp intrinsics are poisoned after the contracts load', async () => {
+  const bridge = await loadBridge();
+  const coverageCandidate = await bridgeCandidate();
+  coverageCandidate.resolverContext.observedAt = '2026-10-03T11:00:00Z';
+  refreshLifecycleReviewSnapshotHash(coverageCandidate, bridge);
+  const candidate = await packageCoverageBindingCandidate(coverageCandidate);
+  const script = `
+    import fs from 'node:fs';
+    import { evaluateServerResolvedContentPackageCoverageBinding } from ${JSON.stringify(PACKAGE_COVERAGE_BINDING_MODULE_URL.href)};
+    const candidate = JSON.parse(fs.readFileSync(0, 'utf8'));
+    globalThis.Number = () => -1;
+    String.prototype.replace = () => 'forged';
+    const result = evaluateServerResolvedContentPackageCoverageBinding(candidate);
+    process.stdout.write(JSON.stringify({
+      eligible: result.eligible,
+      errorCodes: result.errors.map(error => error.code)
+    }));
+  `;
+  const child = spawnSync(process.execPath, ['--input-type=module', '--eval', script], {
+    encoding: 'utf8',
+    input: JSON.stringify(candidate)
+  });
+
+  assert.equal(child.status, 0, child.stderr);
+  assert.deepEqual(JSON.parse(child.stdout), {
+    eligible: true,
+    errorCodes: []
+  });
 });
