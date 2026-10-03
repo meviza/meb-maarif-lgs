@@ -34,12 +34,14 @@ Güncel ayrıntılı plan: [PLATFORM_REBASE_PLAN_2026-10-03.md](PLATFORM_REBASE_
 | --- | --- | --- |
 | Resmî kaynaklar | Sınırlı referans arşivi ve hash'li kayıt | Tüm sınıf/ders/program kapsamı; PDF sayfa/öğrenme çıktısı ayrıştırması ve alan uzmanı eşlemesi |
 | 36.000 soru hedefi | Aşağıdan yukarıya kapsam bütçesi; henüz tamamlanmış banka yok | Mikrobeceri hücreleri toplamı 36.000; eksik ders ve kazanım sıfır; her hücrede gerçek çeşitlilik |
-| Üretim | Özgün deterministik geometri pilotu; model üretimi ayrıca yapılandırılır | Üretici + bağımsız çözüm + görsel + Clef + alan/ölçme/dil-hak incelemesinden geçen ilk 100 |
-| Konu anlatımı / çözüm | Pilot çözüm grafiği ve sahne/transkript | Yaş düzeyi onaylı ders paketleri; gerçek video/ses çıktısının kare ve altyazı denetimi |
-| Türkçe öğretmen sesi | B+C korunuyor; ilk üç, Charon, Iapetus/Algieba ve Sulafat/Erinome kısa önizlemleri teknik doğrulandı; önceki örneklerde genel olumlu dinleme geri bildirimi var, tekil ses/ders seçimi ve yeni kadın örneklerinin kabulü bekliyor | Dinleme tercihi + hak/sayı/birim/karakter kabulü; [Türkçe isimli persona planı](TEACHER_PERSONA_PLAN_2026-10-03.md), sonra altı cue ve kelime–kalem ölçümü; [pilot kanıtı](TEACHER_VOICE_PILOT_EVIDENCE_2026-10-03.md) |
+| Üretim | Özgün bahçe sorusu ortak kalem/çözüm kaynağına bağlı; tek görselli Clef hazırlığı ve negatif güvenlik testleri var; canlı Clef token alanı boş, dış istek 0; üretici LLM çağrılmadı | Yeni tokenla tek danışma çağrısı; sonra üretici + bağımsız çözüm + görsel + alan/ölçme/dil-hak incelemesinden geçen ilk 100 |
+| Konu anlatımı / çözüm | Gerçek 36,375 s sesli kalem MP4 ve ayrı çevre–alan dersi; 47,76 s ders sesi, iki özgün şekil ve iki kontrol sorusu; kısmi müfredat adayları | Uzman/yaş düzeyi, tam konuşma-sayı-birim ve kelime–kalem ölçümü; mini ders animasyon videosu henüz yok |
+| Türkçe öğretmen sesi | B+C korunuyor; ilk altı-cue Charon çözümü ve ayrı Sulafat mini ders sesi teknik doğrulandı; önceki seslere genel olumlu geri bildirim var, bu yeni pilotun dinleme kabulü bekliyor; ses üretimi tarayıcıdan yarı otomatik | Dinleme tercihi + hak/sayı/birim/karakter kabulü; [persona planı](TEACHER_PERSONA_PLAN_2026-10-03.md), kelime–kalem ölçümü ve ayrı API TTS otomasyonu; [uçtan uca pilot kanıtı](TEACHING_FACTORY_E2E_PILOT_2026-10-03.md) |
 | İçerik Atölyesi | Yerel, salt-okunur inceleme prototipi | Kimlik/yetki ve kalıcı işlem kaydı; editör → uzman → yayıncı görev akışı |
 | Okul backend'i | Mimari ve sözleşmeler; öğrenci verisi kapalı | Gerçek DB migrasyon/tenant izolasyonu/iş kotası/geri yükleme entegrasyon testleri |
 | Analitik | Ölçülebilir öğrenme kanıtı tasarımı | Açıklanabilir beceri ölçümü ve psikometri; çocukları zekâ/meslek etiketleriyle sıralamama |
 | Flutter | Bilinçli olarak sonraki mobil faz | SDK için depolama kararı; backend dikey dilimi; fiziksel Android/iOS telefon-tablet kanıtı |
 
 Kaynak indirme ve içerik taslaklarının proje Drive klasörüne aktarımı kullanıcı tarafından yetkilendirildi. Öğrenci verisi veya kimlik bilgisinin Drive/model sağlayıcısına aktarımı bu kapsamda değildir. Canlı model çağrısında yapılandırılmış kimlik ve açık iş başına bütçe gerekir; yapılandırılmamış model başarılı sayılmaz.
+
+Son yerel pilot: [sesli kalem çözümü + ayrı mini ders raporu](TEACHING_FACTORY_E2E_PILOT_2026-10-03.md). Ham hesap ekranları, sesler/video ve yerel yol içeren manifestler kamu GitHub deposuna alınmadı. Güncel teknik test kapısı: gerçek medya opt-in'i ve güvenilir Sharp ile 507/507; bu pedagojik kabul veya üretim yayını değildir.

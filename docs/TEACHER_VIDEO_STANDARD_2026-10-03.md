@@ -2,6 +2,8 @@
 
 Tarih: 2026-10-03. Durum: sürümlü tasarım + yerel hareket prototipi + [üç kısa Türkçe ses önizlemi](TEACHER_VOICE_PILOT_EVIDENCE_2026-10-03.md). Doğal ses kalite kabulü, kelime düzeyinde senkron, öğretmen/dinleyici kabulü ve öğrenci yayını **henüz yok**. Bu bir pedagojik sertifika değildir.
 
+Sonraki aynı gün koşusunda altı gerçek konuşma parçası kalem hareketine bağlandı: 36,375 s H.264/AAC MP4; ayrıca 47,76 s Sulafat sesli, iki görselli ayrı çevre–alan mini dersi hazırlandı. [Yeni pilot raporu](TEACHING_FACTORY_E2E_PILOT_2026-10-03.md) bu durumu kaydeder. Aşağıdaki önceki sessiz/önerilen zamanlama kayıtları tarihsel başlangıç kanıtıdır. Yeni çıktı cümle/parça süresine göre zamanlanmıştır; kelime senkronu, dinleyici kabulü ve yayın hâlâ açık kapılardır.
+
 ## Ürün kabul kararının değişmesi
 
 Önceki beş statik sahneden oluşan sessiz MP4 teknik olarak oynatılabiliyordu; kullanıcı onu ders videosu kalitesi bakımından reddetti. Codec/decode başarısı bu reddi geçersiz kılmaz. Yeni kabulün merkezi, bir öğretmenin öğrencinin yanında düşünerek çözmesine yaklaşan **anlatım + gerekçe + hareket + düşünme fırsatı**dır. Sadece slayt geçişi, oyuncak kalem, yapay heyecan veya doğru sonucu hızlı okuma yeterli değildir.
