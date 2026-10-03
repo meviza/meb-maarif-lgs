@@ -79,3 +79,20 @@ test('each preview diagram has its own accessible label references without rewri
     assert.equal(report.reasonedTeaching.questionTraces[index].source.contentSha256, item.contentSha256);
   }
 });
+
+// Break caught: normal question production omits downstream media jobs or
+// attaches stale narration despite changing the teacher explanation trace.
+test('normal factory output binds every reasoning trace to an unvoiced media job', async t => {
+  const { report } = await run(t, 12);
+  assert.ok(report.mediaPreparation, 'normal factory must prepare its downstream jobs');
+  assert.equal(report.mediaPreparation.questionJobs.length, 12);
+  assert.equal(report.mediaPreparation.conceptJobs.length, 1);
+  assert.equal(report.mediaPreparation.audioAttached, false);
+  assert.equal(report.mediaPreparation.videoAttached, false);
+  assert.equal(report.mediaPreparation.liveProviderCalls, 0);
+  for (const [index, job] of report.mediaPreparation.questionJobs.entries()) {
+    assert.equal(job.source.contentSha256, report.items[index].contentSha256);
+    assert.equal(job.trace.contentSha256, report.reasonedTeaching.questionTraces[index].contentSha256);
+    assert.equal(job.publicationReady, false);
+  }
+});

@@ -6,6 +6,7 @@ import { createReasonedMathTrace } from '../packages/content-factory/reasoned_ma
 import { createReasonedPerimeterLessonTrace } from '../packages/content-factory/reasoned_concept_lesson.mjs';
 import { auditReasonedTeachingTrace, getReasonedTeachingStage } from '../packages/contracts/reasoned_teaching_trace.mjs';
 import { createPerimeterLesson } from '../packages/content-factory/perimeter_lesson.mjs';
+import { createReasonedMediaJob, auditReasonedMediaJob } from '../packages/media/reasoned_media_job.mjs';
 
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 // The owned rectangle renderer uses these exact three attributes. Namespace
@@ -67,6 +68,8 @@ try {
   // Counts still reflect diversity-rejected drafts, never 100 accepted originals.
   const questionTraces = batch.items.map(createReasonedMathTrace);
   const conceptLessons = [createReasonedPerimeterLessonTrace()];
+  const questionMediaJobs = questionTraces.map(trace => createReasonedMediaJob(trace));
+  const conceptMediaJobs = conceptLessons.map(trace => createReasonedMediaJob(trace));
   const report = {
     schemaVersion: 'content-factory-pilot-report/v1', ...batch,
     providerStatus: { generator: 'deterministic_math_pilot', clef: 'not_invoked', livePaidCalls: 0, studentDataTransferred: false },
@@ -77,6 +80,11 @@ try {
       questionAudits: questionTraces.map(auditReasonedTeachingTrace),
       conceptAudits: conceptLessons.map(auditReasonedTeachingTrace),
       summary: { reasonedQuestionDrafts: questionTraces.length, reasonedConceptDrafts: conceptLessons.length, expertApproved: 0, published: 0, liveProviderCalls: 0 },
+    },
+    mediaPreparation: {
+      schemaVersion: 'reasoned-factory-media-preparation/v1', questionJobs: questionMediaJobs, conceptJobs: conceptMediaJobs,
+      audits: [...questionMediaJobs, ...conceptMediaJobs].map(job => auditReasonedMediaJob(job)),
+      audioAttached: false, videoAttached: false, liveProviderCalls: 0,
     },
     publicationGate: { state: 'closed', reasons: ['canonical_registry_and_full_quality_gates_not_connected', 'trusted_review_store_not_connected'] },
   };
