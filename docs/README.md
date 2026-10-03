@@ -7,6 +7,8 @@ Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında günce
 - [Okul barındırması, Docker kredi hesabı ve kapasite planı](HOSTING_STRATEGY_2026-10-03.md)
 - [Video/Türkçe ses araçları ve lisans matrisi](MEDIA_TOOL_RESEARCH_2026-10-03.md)
 - [Gerçek sessiz MP4 ve tekrar üretim kanıtı](VIDEO_PILOT_EVIDENCE_2026-10-03.md)
+- [Öğretmen karakteri, kalemli çözüm ve ses kabul standardı](TEACHER_VIDEO_STANDARD_2026-10-03.md)
+- [Sürekli kalem hareketi ve ses birleştirme teknik kanıtı](INK_MOTION_EVIDENCE_2026-10-03.md)
 - [Drive connector güvenlik kapısı ve kısmi gerçek uzak teslim](DRIVE_REMOTE_EVIDENCE_2026-10-03.md)
 - [Gerçek tarayıcı kabulü ve sınırları](UI_BROWSER_ACCEPTANCE_2026-10-03.md)
 - [Yenilenmiş ürün/faz planı ve güncel gerçek durum](PLATFORM_REBASE_PLAN_2026-10-03.md)

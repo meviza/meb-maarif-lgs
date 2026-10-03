@@ -79,8 +79,13 @@ Bu belge sertifika veya resmî değerlendirme iddiası değildir. Amaç, CMMI Se
 | `ACC-*` | WCAG 2.2 AA | Klavye, odak, kontrast, hareket azaltma ve alternatifler test edilir |
 | `PERF-*` | Düşük cihaz/ağ | Öğrenci temel akışı kabul edilen süre/bellek sınırında kalır |
 | `PILOT-*` | Psikometri ve kullanılabilirlik | Madde hatası, anlaşılmama ve öğretmen geri bildirimi kapatılır |
+| `INK-*` | Kalem izi, işaretleme/yazma/sonuç sırası | Kalem ucu gerçek iz ucunda; sonuç yazım tamamlanmadan açılmaz; pen-up geçişi ve kapanma/deadline testleri geçer |
+| `VOICE-*` | Öğretmen karakteri, Türkçe okunuş, dinleyici kabulü | Yaş bandı/yetişkin voice hakkı kayıtlı; metin aynen korunur; en az iki alan öğretmeni + bir Türkçe uzmanıyla kör dinleme ve kritik hata ret kaydı gerekir |
+| `SYNC-*` | Ses–kalem–altyazı | Gerçek ses/anahtar kelime/kare sınırı ölçülür; yalnız cümle süresi veya codec testi kelime hizalaması sayılmaz |
 
 WCAG 2.2 bir W3C Recommendation’dır; erişilebilirlik hedefi için uygun temel standardı sağlar. [W3C WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/)
+
+Videoda teknik MP4 başarısı ile öğretici kalite kabulü ayrıdır. Önceki statik/sessiz pilot kullanıcı tarafından kalite bakımından reddedildi; [yeni öğretmen/kalem/ses kabul standardı](TEACHER_VIDEO_STANDARD_2026-10-03.md) uygulanır. Unit test, model öz-değerlendirmesi veya AI-detector puanı dinleyici kabulünün yerine geçemez.
 
 ## 5. UI/UX kalite standardı
 

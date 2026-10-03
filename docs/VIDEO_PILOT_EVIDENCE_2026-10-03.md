@@ -2,6 +2,8 @@
 
 Tarih: 2026-10-03. Durum `draft_video_rendered`; yayın kapalı, ses/TTS yok, uzman incelemesi bekliyor, kanonik müfredat eşlemesi çözülmedi.
 
+**Sonraki kullanıcı kabulü:** aşağıdaki statik beş-sahne yaklaşımı ders videosu kalitesi bakımından reddedildi. Teknik render kanıtı tarihçe olarak korunur; pedagojik/satış kalitesi kabulü değildir. Yeni yön [öğretmen/kalem/ses standardında](TEACHER_VIDEO_STANDARD_2026-10-03.md); sürekli kalem hareketinin ayrı taslağı vardır, doğal ses kabulü hâlâ bekler.
+
 Özgün `rectangle-007`: 8 cm × 2 cm dikdörtgenin çevresi. Doğrulanmış ortak çözüm grafiği `8 + 2 = 10`, `2 × 10 = 20 cm`; aynı sayılar soru, çizim, sonuç ve altyazıda kullanılır. Ham kullanıcı SVG'si veya generatif görselden-video modele şekil gönderilmez.
 
 ## Gerçek çıktılar
