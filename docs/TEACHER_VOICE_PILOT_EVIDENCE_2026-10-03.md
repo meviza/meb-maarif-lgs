@@ -75,3 +75,18 @@ Canlı seçicide `Masculine` filtresi altında Charon seçildi. `Get code` öniz
 Tek anahtarsız UI üretimi yapıldı; yeni credential, faturalama veya ücretli plan açılmadı. Aynı mono 24 kHz/16-bit PCM formatı ve kaynak WAV byte-rate kusuru görüldü. Özgün dosya korundu; ayrı türevin byte-rate'i 48.000 olarak düzeltildi. Kaynak ve türev tam decode, FFprobe, WAV başlığı ve dosya hash kontrollerinden geçti; PCM payload SHA-256 `cd2a3c5e202af61d3480c39c44668886827a07743f0e43e90df985be2cfa2e81` birebir eşleşti. Ses hızlandırılmadı, yeniden örneklenmedi veya düzenlenmedi.
 
 Yerel `male-preview-receipt.json` kaynak/metin/üslup kimliği, kullanıcı tercihi, konfigürasyon kanıtı, hashler ve inceleme durumlarını kaydeder. Ses ve hesap arayüzü kanıtı kamu Git'ine yüklenmedi. Bu turda uygulama kodu değişmedi; önceki 441 test sonucu yeni bir yazılım testi olarak sunulmaz. Ek sesin telaffuz, sayı/birim, doğallık, yaş uygunluğu, hak ve öğretmen incelemeleri bekliyor; `publicationReady = false`. Tam sesli çözüm videosu veya kelime–kalem senkronu henüz üretilmedi.
+
+## Iapetus ve Algieba alternatifleri — dinleme için hazır
+
+Kullanıcı iki alternatifin kısa örneklerini dinlemeyi onayladı; kaliteli hitabet/ses halinde kullanmak ve dersler için Türkçe isimli farklı rehberler seçmek istedi. İki anahtarsız UI üretimi yapıldı: aynı 24 kelimelik özgün kaynak, aynı C üslup metni/hash'i ve aynı `gemini-3.8-flash-tts`. Üretimden önce seçicide `Current` ve kod önizlemesinde sırasıyla `voice_name="Iapetus"` / `voice_name="Algieba"` doğrulandı; eski Fola bloğu kimlik kanıtı sayılmadı. Sağlayıcı yanıtından bağımsız ses kimliği attestasyonu yoktur. Yeni anahtar, ücretli plan, Flow üretimi veya kişisel/öğrenci verisi aktarımı olmadı.
+
+| Örnek | Hazır ses / üslup | Önerilen isim (seçilmedi) | Süre | Düzeltilmiş WAV byte sayısı | Düzeltilmiş WAV SHA-256 |
+| --- | --- | --- | --- | --- | --- |
+| E | Iapetus / C | Deniz | 11,08 s | 531.918 | `0ea6517ff60ad429fb743eb157a4a94a1a34f3c7adac52f63d8c0571ed3bd4ad` |
+| F | Algieba / C | Arda | 11,04 s | 529.998 | `2bb9ebe7caf497400d821dc8437570d45d38f18843454fc9e2c1017185df2f44` |
+
+Toplam 22,12 s, iki düzeltilmiş WAV 1.061.916 byte. Dört kaynak/türev FFprobe ve tam decode'dan geçti; mono 24 kHz/16-bit PCM doğrulandı. Kaynakların byte-rate'i yine 96.000 idi; ayrı türevlerde 48.000'e düzeltildi. Kaynak ve türev PCM hashleri birebir aynı: E `4d35bdf92e40a01b34ba99118efc647819befb4b2cae38005df27040118b87c5`, F `9963aff5ba9f3f4489a33a882a1784bbc9cf73d080cc01fa0e0200ace2a76680`. Yeniden örnekleme, hızlandırma, seviye değiştirme veya konuşma düzenleme yok.
+
+Normalize PCM RMS/peak: E 0,123633 / 0,858521; F 0,121769 / 0,813751. Her ikisinde tam ölçek örnek sayısı 0. Bu yalnız dosya düzeyi ölçümdür; algısal kalite, clipping yokluğu, hitabet, öğretmen sıcaklığı veya gerçek okunmuş metin kabulü anlamına gelmez. Yerel `male-alternatives-receipt.json` kaynak/üslup/hash/konfigürasyon/ölçüm/tercih beyanlarını tutar; sesler ve hesap ekranları kamu Git'ine alınmadı. Uygulama kodu değişmedi; önceki test sayısı yeni koşu olarak sunulmaz.
+
+Dinleme, hak ve öğretmen kabulü bekliyor; isimler/ders eşlemeleri seçilmedi, `publicationReady = false`. Çok sesli ürün yönü ve yaşa uygun şeffaf kurmaca karakter planı: [Türkçe rehber personaları](TEACHER_PERSONA_PLAN_2026-10-03.md). Önce isim/ses tercihi; sonra ders/yaş bazında daha temsilî değerlendirme ve kabul kapıları.
