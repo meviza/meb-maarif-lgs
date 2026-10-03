@@ -51,7 +51,9 @@ Konu anlatımı hattı: çıktı ve ön koşul → somut örnek → görsel tems
 
 Doğrulanmış çözüm grafiği ortak kaynak olur: verilenler, hedef, işlem, gerekçe, sonuç ve yanılgı. Aynı sayılar soru, SVG ve sahne metninde kullanılır; rastgele LLM metninden animasyon çıkartılmaz.
 
-İlk teslim hafif adım oynatımı + sahne/transkript JSON'udur; **MP4 veya ses üretildiği anlamına gelmez**. Sonraki adım sahne paketini izole renderer (Remotion/Manim değerlendirmesi) ve lisanslı ses/TTS ile üretmek; altyazı, alternatif açıklama, hız/durdurma, hareket azaltma ve mobil okunurluk eklemek. Clef çıktı karelerinin yönergeyle uyumunu değerlendirebilir; video üretemez ve matematik ispatının yerine geçemez. Gerçek video maliyeti, başarı/terk ölçümü ve satış etkisi pilotta ölçülür; “değer iki katına çıkar” doğrulanmış sonuç değildir.
+İlk teslim hafif adım oynatımı + sahne/transkript JSON'uydu. Ek teslimde bir özgün dikdörtgen sorusu için 35 saniyelik gerçek **sessiz MP4** üretildi ve yeniden üretim/hash/codec/tam decode kontrolleri yapıldı; [video kanıtı](VIDEO_PILOT_EVIDENCE_2026-10-03.md). Bu, sesli çözüm veya uzman/müfredat onayı değildir. Sonraki adım lisanslı ve izinli Türkçe TTS, ses–sahne senkronu, hız/durdurma/hareket azaltma ve mobil okunurluk. Matematik şekli deterministik renderer ile korunur; generatif I2V ayrı dekoratif/öykü işidir. Clef kareleri ön-denetleyebilir, video üretemez ve matematik ispatının yerine geçemez. Başarı/terk ölçümü ve satış etkisi pilotta ölçülür; “değer iki katına çıkar” doğrulanmış sonuç değildir.
+
+Mac/Docker/GPU iş bölümü, $250 kredi hesabı, gerçek okul veri kapısı ve depolama varsayımları [barındırma kararı](HOSTING_STRATEGY_2026-10-03.md); araç/ağırlık/ses lisansları [medya araştırması](MEDIA_TOOL_RESEARCH_2026-10-03.md). Docker Sandbox okulun on-prem sunucusu olarak sunulmaz. Büyük modeller ve ücretli hesap/işler otomatik açılmaz.
 
 ## DAMA-DMBOK merkezli veri tasarımı
 

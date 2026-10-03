@@ -9,6 +9,7 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 - [Gerçek MEB indirme kaydı](docs/MEB_SOURCE_ARCHIVE_2026-10-03.md) ve [kaynak/hash defteri](sources/meb-reference-registry.json)
 - [İçerik fabrikası ve canlı model sınırları](docs/CONTENT_FACTORY_PILOT.md)
 - [DAMA-DMBOK veri yönetimi](docs/DAMA_DATA_GOVERNANCE.md)
+- [Mac/Docker/okul barındırma kararı](docs/HOSTING_STRATEGY_2026-10-03.md), [video kanıtı](docs/VIDEO_PILOT_EVIDENCE_2026-10-03.md) ve [medya araç/lisans araştırması](docs/MEDIA_TOOL_RESEARCH_2026-10-03.md)
 - [Kalite kapıları](docs/QUALITY_GATES.md) ve [belge dizini](docs/README.md)
 
 36.000 soru hedefi kazanım/alt beceri/soru ailesi kapsama matrisinden hesaplanacak; ders anlatımları ayrı sayılacak. Haftalık akış okul takvimi ve uygulanan program sürümüne bağlanacak. İndirilmiş MEB belgeleri yalnız referanstır; ticari yeniden kullanım hakları henüz doğrulanmadı.
@@ -23,7 +24,7 @@ npm run generate:pilot -- --count 100 --out /absolute/path/to/new-empty-pilot-di
 K12_PILOT_REPORT=/absolute/path/to/new-empty-pilot-directory/batch.json npm run studio
 ```
 
-Stüdyo yalnız `http://127.0.0.1:3334` üzerinde çalışır. Filtrelenebilir taslak sorular, özgün SVG çizimler, adım adım çözümler ve kaynak defteri gösterir. Gerçek okul yönetici kimlik doğrulaması, rol/tenant yetkileri, video MP4 ve öğrenci analitiği sunmaz. Çözüm anahtarı editöryal incelemede görünür; öğrenci API'sine açılmaz.
+Stüdyo yalnız `http://127.0.0.1:3334` üzerinde çalışır. Filtrelenebilir taslak sorular, özgün SVG çizimler, adım adım çözümler ve kaynak defteri gösterir. Gerçek okul yönetici kimlik doğrulaması, rol/tenant yetkileri veya öğrenci analitiği sunmaz. Ayrı CLI bir soru için sessiz MP4 pilotu üretir; bu video öğrenci kütüphanesine bağlanmış/yayımlanmış değildir. Çözüm anahtarı editöryal incelemede görünür; öğrenci API'sine açılmaz.
 
 `npm run student:preview` ayrı `http://127.0.0.1:3335` öğrenci tasarım önizlemesini açar: yalnız sentetik 6. sınıf/yıllık okul kaydı, altı ders çekmecesi, kaydedilenler, takıldıklarım ve metin/çizim defteri. Başka sınıf seçimi yoktur; istemci sınıf/rol/yıl beyanları API'de reddedilir. Defter yalnız oturum belleğindedir; yenilenince silinir, öğretmene gönderilmez. Soru/ders/video kütüphanesi uzman onaylı içerik bulunmadığı için boştur. Bu, gerçek kimlik/abonelik servisi veya kalıcı öğrenci uygulaması değildir.
 

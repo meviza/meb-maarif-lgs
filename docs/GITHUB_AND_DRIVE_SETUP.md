@@ -8,7 +8,7 @@ Kod, testler, planlar ve resmî kaynakların URL/hash/sürüm/hak durum metaveri
 
 ## Drive (kullanıcının bildirdiği 5 TB hesap)
 
-Mevcut Google Drive Desktop senkronizasyon alanı bulundu. Yeni Google Drive MCP bağlantısı veya OAuth kurulmadı. Mevcut Desktop mount'u üzerinden yalnız açık, öğrenci verisi içermeyen kaynak referansları ve özgün inceleme taslakları ayrı bir `K12-Codex-Archive` dizinine kopyalanabilir.
+İlk fazda mevcut Google Drive Desktop alanı bulundu ve yeni MCP/OAuth kurulmadan yerel kopyalar doğrulandı. Kullanıcının Drive pluginini etkinleştirmesinden sonraki ek fazda connector profil eşleşmesi, özel klasörler ve 13 uzak dosyanın bayt geri okuması doğrulandı; [güncel kısmi uzak teslim kanıtı](DRIVE_REMOTE_EVIDENCE_2026-10-03.md). 70 dosyalık arşiv tamamlanmış değildir; yerel ve uzak durumlar karıştırılmaz. Aşağıdaki Desktop adaptörü önceki yerel kopya davranışını anlatır.
 
 `packages/storage/verified_archive.mjs`:
 
@@ -18,7 +18,7 @@ Mevcut Google Drive Desktop senkronizasyon alanı bulundu. Yeni Google Drive MCP
 - 300 MiB toplam sınır uygular; kaynaklar için hak/purpose/retention defteri ayrıca geçerlidir;
 - `local_copy_verified` ile `remoteSyncState: not_verified` durumlarını ayrı tutar.
 
-Masaüstü klasörüne doğrulanmış kopya, Google Drive sunucusuna başarıyla yüklendiğine kanıt değildir. Uzak dosya/hash doğrulaması için sonradan yetkili Drive API/MCP veya Desktop eşitleme kanıtı gerekir. Kullanıcının bildirdiği 5 TB toplam/boş kota bu çalışmada API ile doğrulanmadı.
+Masaüstü klasörüne doğrulanmış kopya, Google Drive sunucusuna başarıyla yüklendiğine kanıt değildir. Uzak doğrulama ayrı yetkili connector metadata + byte/hash geri okumasıyla yapılır. 5 TB toplam kapasite web göstergesinde görüldü; boş kota/üretim SLA'sı API ile doğrulanmış değildir.
 
 ## Disk ve veri mimarisi
 
