@@ -2,7 +2,12 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
-- [Gece fazları: güncel 893 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece fazları: güncel 940 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Altyazı gezinmesi: gerçek masaüstü/mobil emülasyon ve unknown-state kilidi](CAPTION_REVIEW_BROWSER_ACCEPTANCE_2026-10-04.md)
+- [Tek yerel editörün kapalı HTTP/DOM gezinme sınırı](REASONED_CAPTION_HTTP_EVIDENCE_2026-10-04.md)
+- [Defter uygulaması: son açık okuma ve amaç ayrımlı kullanım sayımı](SYNTHETIC_NOTEBOOK_APPLICATION_EVIDENCE_2026-10-04.md)
+- [Defter uygulaması gerçek SQL: eski73 + adapter13 + uygulama10 tanık](SYNTHETIC_NOTEBOOK_APPLICATION_SQL_EVIDENCE_2026-10-04.md)
+- [6. sınıf sayı muhakemesi: 4 çıktı / 17 mikrobeceri / 13 aile adayı](GRADE6_SOURCE_SEMANTIC_PILOT_2026-10-04.md)
 - [Aylık LGS: gerçek PDF, özel Drive byte readback ve güncel 50/49 kapsam](LGS_MONTHLY_ROOT_ARCHIVE_ACCEPTANCE_2026-10-04.md)
 - [İki bounded aylık LGS GET ve kaynak-biçimi pilotu](LGS_MONTHLY_DOWNLOAD_PILOT_2026-10-04.md)
 - [Kaynak-bağlı kapalı caption review controller](REASONED_CAPTION_REVIEW_EVIDENCE_2026-10-04.md)

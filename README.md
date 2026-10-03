@@ -5,7 +5,8 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
-- [Gece ilerleme kaydı: 893 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece ilerleme kaydı: 940 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gerçek tarayıcıda kontrollü altyazı gezinmesi](docs/CAPTION_REVIEW_BROWSER_ACCEPTANCE_2026-10-04.md), [kapalı yerel editör HTTP sınırı](docs/REASONED_CAPTION_HTTP_EVIDENCE_2026-10-04.md), [defter uygulaması gerçek SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_APPLICATION_SQL_EVIDENCE_2026-10-04.md) ve [6. sınıf kaynak/mikrobeceri dilimi](docs/GRADE6_SOURCE_SEMANTIC_PILOT_2026-10-04.md)
 - [Gerçek aylık LGS edinimi ve özel Drive byte kanıtı](docs/LGS_MONTHLY_ROOT_ARCHIVE_ACCEPTANCE_2026-10-04.md), [caption review/DOM fabrika bağlantısı](docs/CAPTION_REVIEW_FACTORY_ACCEPTANCE_2026-10-04.md) ve [gerçek sentetik defter adaptörü SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_ADAPTER_SQL_EVIDENCE_2026-10-04.md)
 - [İki yönlü karşılaştırma taslakları](docs/GEOMETRIC_COMPARISON_DRAFT_EVIDENCE_2026-10-04.md), [görünür kısa caption SVG](docs/REASONED_CAPTION_FRAME_EVIDENCE_2026-10-04.md) ve [gerçek sentetik defter SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_POSTGRES_EVIDENCE_2026-10-04.md)
 - [Fabrika bağlantısı ve gerçek küçük raster kontrolü](docs/CAPTION_COMPARISON_FACTORY_ACCEPTANCE_2026-10-04.md)
@@ -39,6 +40,8 @@ K12_PILOT_REPORT=/absolute/path/to/new-empty-pilot-directory/batch.json npm run 
 Stüdyo yalnız `http://127.0.0.1:3334` üzerinde çalışır. Filtrelenebilir taslak sorular, özgün SVG çizimler, adım adım çözümler ve kaynak defteri gösterir. Gerçek okul yönetici kimlik doğrulaması, rol/tenant yetkileri veya öğrenci analitiği sunmaz. Ayrı CLI bir soru için sessiz MP4 pilotu üretir; bu video öğrenci kütüphanesine bağlanmış/yayımlanmış değildir. Çözüm anahtarı editöryal incelemede görünür; öğrenci API'sine açılmaz.
 
 `npm run student:preview` ayrı `http://127.0.0.1:3335` öğrenci tasarım önizlemesini açar: yalnız sentetik 6. sınıf/yıllık okul kaydı, altı ders çekmecesi, kaydedilenler, takıldıklarım ve metin/çizim defteri. Başka sınıf seçimi yoktur; istemci sınıf/rol/yıl beyanları API'de reddedilir. Defter yalnız oturum belleğindedir; yenilenince silinir, öğretmene gönderilmez. Soru/ders/video kütüphanesi uzman onaylı içerik bulunmadığı için boştur. Bu, gerçek kimlik/abonelik servisi veya kalıcı öğrenci uygulaması değildir.
+
+`node tools/caption_review_preview.mjs` ayrı `http://127.0.0.1:3339` üzerinde tek geçici editör oturumu açar (`--port 0` ephemeral port seçer). Gerekçeli bahçe çözümünün30 adımında metin sayfaları ve yanıtı açık gösterme kontrolleri sunucuya bağlıdır; HTML gelecekteki planı authority diye kullanmaz. Önizleme18px literal DOM metni, ayrı tam mevcut anlatım ve kapalı ikincil SVG içerir. Belirsiz POST + başarısız yeniden okuma kontrolleri kilitler; sayfa yenilenip başarılı güncel okuma gelmeden devam etmez. Bu yeni ses/video, öğrenci auth, kalıcı defter UI veya premium tasarım teslimi değildir; normal fabrika HTML'i hâlâ ilk sayfa hazırlığını gösterir.
 
 100 adaylık yerel sayısal pilotta 12 taslak kalır, 88 aday tekrar/çeşitlilik sınırında elenir. Bu pilot Clef veya canlı metin modeli çağırmaz. Sayısal kontrol, arşiv özgünlüğü veya pedagojik uzman kararı yerine geçmez. Rastgele 100 soruyu onaylı sayma veya otomatik yayınlama yoktur.
 

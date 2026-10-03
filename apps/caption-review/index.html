@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yerel editör · altyazı incelemesi</title>
+  <link rel="stylesheet" href="/review.css">
+  <script type="module" src="/review.mjs"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">TEK YEREL EDİTÖR · SENTETİK TASLAK</p>
+      <h1>Gerekçeyi sayfa sayfa incele</h1>
+      <p>Bir sunucu örneğine bağlı pencereler aynı geçici adım ve sayfa konumunu paylaşır. Bu öğrenci arayüzü, kimlik doğrulama, kalıcı kayıt veya çok kullanıcılı oturum değildir.</p>
+    </header>
+    <section class="caption-card" aria-label="Geçerli açıklama sayfası">
+      <p id="cue-counter" class="counter">Geçerli sayfa okunuyor.</p>
+      <div id="caption-lines" aria-live="polite" aria-atomic="true"></div>
+      <p id="status" class="status" role="status">Yalnız yerel API'den geçerli adım isteniyor.</p>
+      <div class="controls" aria-label="Altyazı sayfası">
+        <button id="previous-page" type="button" disabled>Önceki sayfa</button>
+        <button id="next-page" type="button" disabled>Sonraki sayfa</button>
+      </div>
+      <div class="controls" aria-label="Gerekçe adımı">
+        <button id="previous-cue" type="button" disabled>Önceki gerekçe</button>
+        <button id="next-cue" type="button" disabled>Sonraki gerekçe</button>
+        <button id="reveal-current" type="button" disabled>Geçerli yanıtı editör olarak aç</button>
+      </div>
+    </section>
+    <details id="svg-preview">
+      <summary>İsteğe bağlı kaynak-bağlı SVG incelemesi</summary>
+      <p>Geometrik yol değiştirilmez veya küçültülmez. Bu ikincil görsel aynı geçerli altyazıyı da taşır; çift anlatım ve tarayıcı erişilebilirlik kabulü henüz doğrulanmadı.</p>
+      <div class="visual-scroll"><img id="source-image" alt="" aria-hidden="true"></div>
+    </details>
+    <details id="narration-preview">
+      <summary>Ayrı tam geçerli adım anlatımı · editör incelemesi</summary>
+      <pre id="full-narration">Henüz geçerli anlatım okunmadı.</pre>
+    </details>
+    <footer>
+      <p>Sayfa veya yanıt açmak öğrenme becerisi, başarı, öğretmen ya da yayın onayı değildir. Müfredat, haklar ve uzman incelemesi bekler. Ses, video ve kelime-kalem senkronu üretilmedi.</p>
+    </footer>
+  </main>
+</body>
+</html>
