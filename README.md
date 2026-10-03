@@ -1,4 +1,8 @@
-# MEB Maarif LGS Platformu — JEV System-1 ve Optik Sınav Sistemi
+# MEB Maarif LGS Platformu — Prototip ve Doğrulama Çalışması
+
+> **Durum notu — 3 Ekim 2026:** Bu depo, 5–8. sınıf odaklı bir geliştirme prototipidir; MEB onayı, %100 müfredat uyumu, sıfır hata/intihal/halüsinasyon, canlı PostgreSQL/Drive entegrasyonu veya üretime hazır K–12 ürünü iddiası için yeterli bağımsız kanıt sunmaz. Bu dalın geçerli doğruluk sınırı ve kontrollü genişleme planı için [Codex çalışma belgelerine](docs/README.md) bakın. Aşağıdaki tarihsel açıklamalar, bu notla çeliştiğinde ürün beyanı olarak yorumlanmamalıdır.
+
+# Tarihsel Prototip Açıklaması
 
 T.C. Millî Eğitim Bakanlığı **Türkiye Yüzyılı Maarif Modeli** 8. Sınıf Liselere Geçiş Sistemi (LGS) müfredatına %100 uyumlu; **JEV System-1** kural ve kalite denetim motoru ile güçlendirilmiş, sıfır halüsinasyonlu ve sıfır şüpheli soru fabrikası, PostgreSQL ilişkisel veri omurgası, gerçekçi LGS optik sınav simülasyonu ve bulut senkronizasyon platformudur.
 

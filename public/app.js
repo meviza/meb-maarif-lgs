@@ -1,6 +1,5 @@
 /**
- * MEB Maarif LGS Platformu - Çoklu Test ve Yalıtılmış Oturum Motoru (Faz 2)
- * Türkiye Yüzyılı Maarif Modeli 8. Sınıf LGS Sınav Sistemi
+ * K-12 Eğitim Platformu - yayın öncesi, salt-okunur içerik inceleme yüzeyi.
  */
 
 // Uygulama Durumu (State)
@@ -14,12 +13,13 @@ const appState = {
   timerInterval: null,
   timerSeconds: 30 * 60,
   multiTestBank: {},
+  contentAccess: 'read_only_draft',
   theme: localStorage.getItem('meb_theme') || 'light',
-  user: JSON.parse(localStorage.getItem('meb_user') || 'null') || {
-    name: 'Kerem Çelik',
-    no: '571',
-    class: '8/A',
-    target: 'Fen Lisesi (500 Tam Puan Hedefi)'
+  user: {
+    name: 'Yerel prototip',
+    no: '—',
+    class: 'İçerik incelemesi',
+    target: 'Yayın öncesi doğrulama'
   }
 };
 
@@ -32,52 +32,43 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderApp();
 });
 
-// 1. Çoklu Test Bankasını Yükle
+// 1. Yanıt anahtarlarını taşımayan salt-okunur içerik DTO'larını yükle.
 async function initTestBank(grade = 8) {
+  appState.contentAccess = 'read_only_draft';
+  appState.sessions = {};
   try {
-    const filename = grade === 8 ? 'questions.json' : `questions_grade_${grade}.json`;
-    const res = await fetch(filename);
-    if (res.ok) {
-      appState.multiTestBank = await res.json();
-      console.log(`[OK] ${filename} (${grade}. Sınıf) çoklu test bankası başarıyla yüklendi.`);
-    } else {
-      throw new Error(`${filename} okunamadı`);
+    const coursesResponse = await fetch(`/api/courses?grade=${encodeURIComponent(grade)}`);
+    if (!coursesResponse.ok) {
+      throw new Error('Ders metadatası alınamadı.');
     }
+
+    const { courses = [] } = await coursesResponse.json();
+    const courseEntries = await Promise.all(courses.map(async course => {
+      const testsResponse = await fetch(`/api/courses/${encodeURIComponent(course.key)}/tests?grade=${encodeURIComponent(grade)}`);
+      if (!testsResponse.ok) throw new Error(`${course.name} test listesi alınamadı.`);
+
+      const { tests = [] } = await testsResponse.json();
+      const questionSets = await Promise.all(tests.map(async test => {
+        const testResponse = await fetch(`/api/tests/${encodeURIComponent(test.id)}`);
+        if (!testResponse.ok) throw new Error(`${test.id} taslağı alınamadı.`);
+        return testResponse.json();
+      }));
+
+      return [course.key, { courseName: course.name, tests: questionSets }];
+    }));
+
+    appState.multiTestBank = Object.fromEntries(courseEntries);
+    const availableCourses = Object.keys(appState.multiTestBank);
+    if (availableCourses.length === 0) throw new Error('İncelenecek taslak içerik bulunamadı.');
+    if (!appState.multiTestBank[appState.currentCourse]) {
+      appState.currentCourse = availableCourses[0];
+    }
+    appState.currentTestIndex = 0;
+    appState.currentQuestionIndex = 0;
+    console.info(`[BİLGİ] ${grade}. sınıf için yalnızca yanıt anahtarı içermeyen taslak içerik yüklendi.`);
   } catch (err) {
-    console.warn('questions.json yüklenemedi, varsayılan gömülü veri kullanılıyor.', err);
-    // Gömülü yedek soru seti
-    appState.multiTestBank = {
-      turkce: {
-        courseName: 'Türkçe',
-        tests: [
-          {
-            id: 'TR-T1',
-            title: 'Test 1: Paragrafta Anlam ve Yapı',
-            badge: '2024 LGS Çıkmış Soru Formatı',
-            questions: [
-              {
-                id: 'LGS-TR-01',
-                course: 'TÜRKÇE',
-                sourceTag: '2024 LGS Çıkmış Soru Formatı',
-                outcomeCode: 'T.8.3.14.03 • Akışı Bozan Cümle',
-                difficulty: 'LGS Yeni Nesil',
-                stimulus: '(I) Yapay zekâ destekli klinik tanı sistemleri, tıp dünyasında hekimlerin en kritik karar destek mekanizması hâline gelmiştir. (II) Milyonlarca vaka ve radyolojik görüntüyü saniyeler içinde tarayan bu algoritmalar, insan gözünün kaçırabileceği mikroskobik doku anomalilerini yüksek hassasiyetle saptayabilmektedir. (III) Hastane binalarının mimari tasarımında doğal ışık kullanımının artırılması, ameliyat sonrası hasta nekahet süresini belirgin şekilde kısaltmaktadır. (IV) Hekimin klinik tecrübesiyle yapay zekânın devasa veri işleme kabiliyeti harmanlandığında, teşhis hataları en aza inmekte ve tedavi başarısı katlanmaktadır.',
-                stem: 'Bu parçadaki numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?',
-                options: { A: 'I', B: 'II', C: 'III', D: 'IV' },
-                correctOption: 'C',
-                solutionStrategy: 'UZMAN ÖĞRETMEN STRATEJİSİ: Parçanın omurgasını oluşturan anahtar kavramları (Yapay zekâ, klinik tanı, teşhis) takip edin. Konunun aniden hastane mimarisine saptığı cümleyi yakalayın.',
-                detailedSolution: 'I, II ve IV. cümleler yapay zekânın hekim teşhislerindeki teknolojik katkısını işlerken, III. cümle bağlam dışına çıkıp hastane mimarisinden söz etmektedir. Dolayısıyla III. cümle akışı bozar.',
-                distractors: {
-                  A: 'I. cümle giriş cümlesidir; konuyu tanımlar.',
-                  B: 'II. cümle I. cümlenin mantıksal devamıdır; algoritmanın gücünü açıklar.',
-                  D: 'IV. cümle teknolojiyi hekim tecrübesiyle bağlayıp ana fikri tamamlar.'
-                }
-              }
-            ]
-          }
-        ]
-      }
-    };
+    appState.multiTestBank = {};
+    console.warn('Taslak içerik yüklenemedi; cevap anahtarlı yerel yedek kullanılmayacak.', err);
   }
 }
 
@@ -115,6 +106,8 @@ function getSession(testId) {
 
 // 3. Olay Dinleyicileri (Event Listeners)
 function setupEventListeners() {
+  lockReadOnlyControls();
+
   // Mod Değiştirme
   const btnPractice = document.getElementById('btnPracticeMode');
   const btnExam = document.getElementById('btnExamMode');
@@ -235,6 +228,30 @@ function setupEventListeners() {
   }
 }
 
+function lockReadOnlyControls() {
+  if (appState.contentAccess !== 'read_only_draft') return;
+
+  const controls = [
+    'btnExamMode',
+    'btnAdminMode',
+    'btnPrintMode',
+    'btnFinishExam',
+    'btnOpenVideoSolution',
+    'btnGenerateAiQuestion',
+    'btnSaveToBank',
+    'btnTriggerBatchGen',
+    'btnTriggerCloudBackup'
+  ];
+
+  for (const id of controls) {
+    const button = document.getElementById(id);
+    if (!button) continue;
+    button.disabled = true;
+    button.setAttribute('aria-disabled', 'true');
+    button.title = 'Yayın öncesi doğrulama tamamlanana kadar bu işlev kapalıdır.';
+  }
+}
+
 // 3.1. Tema Yönetimi (Dark / Light)
 function initTheme() {
   const saved = localStorage.getItem('meb_theme') || 'light';
@@ -265,53 +282,15 @@ function applyTheme(theme) {
   }
 }
 
-// 3.2. Kurumsal MEB Maarif Portalı (Giriş Ekranı & Profil)
+// 3.2. Salt-okunur prototip profili
 function initPortalAuth() {
-  const savedUser = JSON.parse(localStorage.getItem('meb_user') || 'null');
-  if (savedUser) {
-    appState.user = savedUser;
-  }
   updateUserDisplay();
 
   const btnUser = document.getElementById('btnUserProfile');
   if (btnUser) {
-    btnUser.addEventListener('click', openPortalModal);
-  }
-
-  const form = document.getElementById('portalLoginForm');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('inputStudentName')?.value.trim() || 'Kerem Çelik';
-      const no = document.getElementById('inputStudentNo')?.value.trim() || '571';
-      const cls = document.getElementById('selectStudentClass')?.value || '8/A';
-      const target = document.getElementById('selectStudentTarget')?.value || 'Fen Lisesi (500 Tam Puan)';
-
-      appState.user = { name, no, class: cls, target };
-      localStorage.setItem('meb_user', JSON.stringify(appState.user));
-      updateUserDisplay();
-      closePortalModal();
+    btnUser.addEventListener('click', () => {
+      window.alert('Bu sürüm öğrenci profili, kimlik doğrulama veya kalıcı kişisel veri kaydı yapmaz.');
     });
-  }
-
-  const btnDemo = document.getElementById('btnQuickDemoLogin');
-  if (btnDemo) {
-    btnDemo.addEventListener('click', () => {
-      appState.user = {
-        name: 'Kerem Çelik',
-        no: '571',
-        class: '8/A',
-        target: 'Fen Lisesi (500 Tam Puan Hedefi)'
-      };
-      localStorage.setItem('meb_user', JSON.stringify(appState.user));
-      updateUserDisplay();
-      closePortalModal();
-    });
-  }
-
-  // İlk gelişte kullanıcı kayıtlı değilse modalı göster
-  if (!savedUser) {
-    openPortalModal();
   }
 }
 
@@ -320,24 +299,6 @@ function updateUserDisplay() {
   const badgeEl = document.getElementById('navUserBadge');
   if (nameEl) nameEl.textContent = appState.user.name;
   if (badgeEl) badgeEl.textContent = `${appState.user.class} • No: ${appState.user.no}`;
-}
-
-function openPortalModal() {
-  const modal = document.getElementById('portalAuthModal');
-  if (modal) {
-    modal.classList.remove('hidden');
-    if (document.getElementById('inputStudentName')) {
-      document.getElementById('inputStudentName').value = appState.user.name;
-    }
-    if (document.getElementById('inputStudentNo')) {
-      document.getElementById('inputStudentNo').value = appState.user.no;
-    }
-  }
-}
-
-function closePortalModal() {
-  const modal = document.getElementById('portalAuthModal');
-  if (modal) modal.classList.add('hidden');
 }
 
 // 3.3. Zorluk Seviyesi Yardımcıları
@@ -351,7 +312,7 @@ function getDifficultyBadgeClass(diff) {
 }
 
 function formatDifficultyText(diff) {
-  if (!diff) return 'LGS Yeni Nesil';
+  if (!diff) return 'Zorluk etiketi bekliyor';
   if (diff === 'KAVRAMA') return 'Temel (Kavrama)';
   if (diff === 'UYGULAMA') return 'Orta (Uygulama)';
   if (diff === 'LGS_YENI_NESIL') return 'LGS Yeni Nesil';
@@ -361,6 +322,11 @@ function formatDifficultyText(diff) {
 
 // 4. Mod Değiştirme (Öğrenme, Gerçek Sınav, Öğretmen Paneli, Yazdır)
 function setMode(mode) {
+  if (appState.contentAccess === 'read_only_draft' && mode !== 'practice') {
+    window.alert('Bu taslak yüzeyde sınav, yönetim ve yazdırma işlevleri yayın öncesi kontroller tamamlanana kadar kapalıdır.');
+    return;
+  }
+
   if (mode === 'print') {
     preparePrintBooklet();
     window.print();
@@ -434,7 +400,7 @@ async function switchGrade(targetGrade) {
   // Kullanıcı rozetini kademeye göre güncelle
   const navUserBadge = document.getElementById('navUserBadge');
   if (navUserBadge) {
-    navUserBadge.textContent = g === 8 ? `${appState.user.class || '8/A'} • LGS Adayı` : `${g}/A • Maarif Öğrencisi`;
+    navUserBadge.textContent = `${g}. sınıf • yayın öncesi inceleme`;
   }
 
   await initTestBank(g);
@@ -461,7 +427,7 @@ function selectCourse(courseKey) {
   };
   const opticalCourseEl = document.getElementById('opticalCourseName');
   if (opticalCourseEl) {
-    opticalCourseEl.textContent = courseTitles[courseKey] || 'LGS TESTİ';
+    opticalCourseEl.textContent = courseTitles[courseKey] || 'TASLAK TEST';
   }
 
   renderApp();
@@ -532,7 +498,7 @@ function renderTestList() {
     btn.innerHTML = `
       <div class="test-info-box">
         <span class="test-name">${test.title}</span>
-        <span class="test-tag-meta">${statusBadge}${test.badge || 'MEB Maarif'}</span>
+        <span class="test-tag-meta">${statusBadge}${test.badge || 'İçerik doğrulama bekliyor'}</span>
       </div>
       <span class="test-q-count">${test.questions.length} Soru</span>
     `;
@@ -605,26 +571,29 @@ function renderQuestion() {
 
   const sourceBadge = document.getElementById('qSourceBadge');
   if (sourceBadge) {
-    sourceBadge.textContent = q.sourceTag || test?.badge || '2024 LGS Formatı';
+    sourceBadge.textContent = 'İçerik doğrulama bekliyor';
   }
+
+  const outcomeBadge = document.getElementById('qOutcomeBadge');
+  if (outcomeBadge) outcomeBadge.textContent = q.outcomeCode || 'Kazanım eşlemesi bekliyor';
 
   // JEV 1-5 Yıldız Zorluk Derecelendirmesi
   const starBadge = document.getElementById('qStarBadge');
   const jevStarEl = document.getElementById('jevStarRatingText');
   const starInfo = q.starRating || {
-    stars: 4,
-    starLabel: '★★★★☆',
-    category: '4 Yıldız • LGS Yeni Nesil',
-    placement: 'LGS Standart Deneme Ana Omurgası'
+    stars: '—',
+    starLabel: '—',
+    category: 'Zorluk doğrulaması bekliyor',
+    placement: 'Taslak içerik'
   };
 
   if (starBadge) {
-    starBadge.textContent = `${starInfo.starLabel} ${starInfo.stars} Yıldız`;
+    starBadge.textContent = starInfo.stars === '—' ? 'Zorluk doğrulaması bekliyor' : `${starInfo.starLabel} ${starInfo.stars} Yıldız`;
     starBadge.title = `${starInfo.category} (${starInfo.placement})`;
   }
 
   if (jevStarEl) {
-    jevStarEl.textContent = `${starInfo.starLabel} (${starInfo.stars}/5)`;
+    jevStarEl.textContent = starInfo.stars === '—' ? 'Belirlenmedi' : `${starInfo.starLabel} (${starInfo.stars}/5)`;
     jevStarEl.title = starInfo.category;
   }
 
@@ -638,7 +607,7 @@ function renderQuestion() {
   const visualBox = document.getElementById('visualContentBox');
   if (visualBox) {
     if (q.visualContent) {
-      visualBox.innerHTML = q.visualContent;
+      visualBox.textContent = 'Görsel içerik; kaynak, lisans ve erişilebilirlik incelemesi tamamlanana kadar gösterilmez.';
       visualBox.classList.remove('hidden');
     } else {
       visualBox.innerHTML = '';
@@ -670,7 +639,7 @@ function renderQuestion() {
 
     // YALITIM KURALI:
     // Sadece 'practice' modunda cevap verildiğinde VEYA mevcut test bitirilmişse (examEvaluated) renkleri göster!
-    if ((appState.currentMode === 'practice' && selectedAnswer) || session.examEvaluated) {
+    if (appState.contentAccess !== 'read_only_draft' && ((appState.currentMode === 'practice' && selectedAnswer) || session.examEvaluated)) {
       if (opt === q.correctOption) {
         card.classList.add('correct');
       } else if (selectedAnswer === opt) {
@@ -724,6 +693,10 @@ function navigateQuestion(delta) {
 // Çözüm Rehberi Çekmecesini Yönet
 function renderSolutionDrawer() {
   const drawer = document.getElementById('solutionDrawer');
+  if (appState.contentAccess === 'read_only_draft') {
+    drawer?.classList.add('hidden');
+    return;
+  }
   const q = getCurrentQuestion();
   if (!q) return;
 
@@ -765,9 +738,21 @@ function openVideoSolutionModal() {
   const contentEl = document.getElementById('videoModalContent');
   if (!modal || !contentEl) return;
 
+  if (appState.contentAccess === 'read_only_draft') {
+    titleEl.textContent = 'Çözüm içeriği yayın öncesi doğrulamada';
+    contentEl.textContent = 'Yanıt anahtarı, çözüm ve video senaryosu bu salt-okunur taslak yüzeyinde gösterilmez.';
+    modal.classList.remove('hidden');
+    return;
+  }
+
   titleEl.textContent = `🎬 JEV Video Çözüm Senaryosu — ${q.id} (${q.course})`;
 
-  const correctOpt = q.correctAnswer || 'A';
+  const correctOpt = q.correctOption;
+  if (!['A', 'B', 'C', 'D'].includes(correctOpt)) {
+    contentEl.textContent = 'Bu soru için doğrulanmış bir cevap anahtarı bulunmuyor.';
+    modal.classList.remove('hidden');
+    return;
+  }
   const wrongOptions = ['A', 'B', 'C', 'D'].filter(opt => opt !== correctOpt);
   const distractors = q.distractors || {};
 
@@ -945,6 +930,10 @@ function renderOpticalSheet() {
 
 // Sınavı Tamamla ve Optik Formu Tara (İstemci & Sunucu REST API Entegrasyonu)
 async function finishExam() {
+  if (appState.contentAccess === 'read_only_draft') {
+    window.alert('Bu prototipte puanlama, öğrenci kaydı ve cevap geri bildirimi kapalıdır.');
+    return;
+  }
   const test = getCurrentTest();
   if (!test) return;
 
@@ -993,7 +982,7 @@ async function finishExam() {
       body: JSON.stringify({
         testId: test.id,
         answers: session.userAnswers,
-        studentName: appState.user?.name || 'Kerem Çelik',
+        studentName: appState.user?.name || 'Yerel prototip',
         mode: appState.currentMode.toUpperCase(),
         durationSeconds: (30 * 60 - appState.timerSeconds)
       })
@@ -1242,7 +1231,7 @@ async function renderAdminDashboard() {
     } else {
       tbody.innerHTML = completedSessions.map(s => `
         <tr>
-          <td><strong>Kerem Çelik</strong></td>
+          <td><strong>Yerel prototip</strong></td>
           <td>${s.score?.totalQuestions ? `${s.score.totalQuestions} Soruluk LGS Testi` : 'LGS Denemesi'}</td>
           <td><span style="color:#059669; font-weight:700;">${s.score.correct} D</span> / <span style="color:#dc2626; font-weight:700;">${s.score.wrong} Y</span> / <span>${s.score.empty} B</span></td>
           <td><strong style="color:#2563eb; font-size:14px;">${s.score.net.toFixed(2)}</strong></td>

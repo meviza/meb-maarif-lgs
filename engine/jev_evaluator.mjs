@@ -3,6 +3,42 @@
  * Ollama / System-One Typed Decision Architecture
  */
 
+import { ALL_GRADES_CURRICULUM, getGranularSubtopics } from './meb_granular_curriculum.mjs';
+
+function normalizeOutcomeCode(rawCode) {
+  if (typeof rawCode !== 'string') return null;
+  const code = rawCode.trim().split(/\s|•/u)[0];
+  if (!code) return null;
+
+  // The local prototype data uses the Turkish dotted I for İnkılap Tarihi.
+  // Normalize the ASCII spelling only for lookups; this is not an official
+  // curriculum-code authority.
+  return code.replace(/^ITA\./u, 'İTA.');
+}
+
+function buildPrototypeCurriculumRegistry() {
+  const registry = new Map();
+
+  for (const [grade, curriculum] of Object.entries(ALL_GRADES_CURRICULUM)) {
+    for (const courseKey of Object.keys(curriculum)) {
+      for (const item of getGranularSubtopics(courseKey, Number(grade))) {
+        const outcomeCode = normalizeOutcomeCode(item.outcome);
+        if (!outcomeCode) continue;
+
+        const entries = registry.get(outcomeCode) || [];
+        entries.push({ grade: Number(grade), courseKey });
+        registry.set(outcomeCode, entries);
+      }
+    }
+  }
+
+  return registry;
+}
+
+// This registry is a local prototype fixture, not a substitute for the
+// versioned official MEB/TTKB source registry defined in the delivery plan.
+const PROTOTYPE_CURRICULUM_REGISTRY = buildPrototypeCurriculumRegistry();
+
 export class JevQualityAuditor {
   constructor(options = {}) {
     this.ollamaHost = options.ollamaHost || 'http://localhost:11434';
@@ -15,7 +51,7 @@ export class JevQualityAuditor {
    * @param {Object} questionDraft - LLM tarafından üretilen soru taslağı
    * @returns {Promise<Object>} Denetim raporu ve onay durumu
    */
-  async evaluateQuestion(questionDraft) {
+  async evaluateQuestion(questionDraft, expectations = {}) {
     // 1. Yapısal Sentaks ve Bütünlük Kontrolü (Fast System-1 Gate)
     const syntaxErrors = this._validateDataStructure(questionDraft);
     if (syntaxErrors.length > 0) {
@@ -32,8 +68,11 @@ export class JevQualityAuditor {
     const hasStrategy = Boolean(questionDraft.solution_strategy || questionDraft.solutionStrategy);
     const hasDetail = Boolean(questionDraft.detailed_solution || questionDraft.detailedSolution);
 
-    const isMebAligned = this._checkCurriculumAlignment(questionDraft);
+    const curriculumMatch = this._checkCurriculumAlignment(questionDraft, expectations);
+    const hasRecognizedPrototypeOutcomeCode = curriculumMatch.matchesExpectedScope;
     const singleDeterministicAnswer = this._verifySingleAnswer(questionDraft);
+    const answerKeyStatus = this._checkAnswerKeyEvidence(questionDraft);
+    const answerKeyEvidenceConsistent = answerKeyStatus !== 'evidence_mismatch' && answerKeyStatus !== 'evidence_invalid';
     const zeroAmbiguityResult = this._checkZeroAmbiguity(questionDraft);
     const difficultyAlignmentResult = this._checkDifficultyAlignment(questionDraft);
     const bloomLevel = this._classifyBloomTaxonomy(questionDraft);
@@ -46,8 +85,16 @@ export class JevQualityAuditor {
     const videoReady = !!(hasStrategy && hasDetail && distractorStrengthScore >= 0.80);
 
     const decisions = {
-      is_meb_aligned: isMebAligned,
+      // Backward-compatible field: this is only a recognized prototype code
+      // format check, not a claim of official MEB approval or full alignment.
+      is_meb_aligned: hasRecognizedPrototypeOutcomeCode,
+      curriculum_code_recognized: curriculumMatch.registryMatch,
+      curriculum_registry_match: curriculumMatch.matchesExpectedScope,
+      expected_outcome_match: curriculumMatch.expectedOutcomeMatch,
+      expected_course_match: curriculumMatch.expectedCourseMatch,
+      expected_grade_match: curriculumMatch.expectedGradeMatch,
       single_deterministic_answer: singleDeterministicAnswer,
+      answer_key_status: answerKeyStatus,
       zero_ambiguity: zeroAmbiguityResult.passed,
       difficulty_alignment: difficultyAlignmentResult.score,
       bloom_taxonomy_level: bloomLevel,
@@ -81,6 +128,7 @@ export class JevQualityAuditor {
     const passed = score >= this.qualityThreshold &&
                    decisions.single_deterministic_answer &&
                    decisions.is_meb_aligned &&
+                   answerKeyEvidenceConsistent &&
                    decisions.zero_ambiguity &&
                    decisions.difficulty_alignment >= 0.70;
 
@@ -96,7 +144,10 @@ export class JevQualityAuditor {
       reasons.push(difficultyAlignmentResult.reason || `Soru kurgusunun bilişsel yükü talep edilen zorluk seviyesi (${difficultyAlignmentResult.targetLevel}) ile uyumsuz.`);
     }
     if (!decisions.is_meb_aligned) {
-      reasons.push('Müfredat ve MEB kazanım uyumu sağlanamadı.');
+      reasons.push('Yerel prototip müfredat kaydında beklenen kazanım kodu bulunamadı veya istenen kapsamla eşleşmedi.');
+    }
+    if (!answerKeyEvidenceConsistent) {
+      reasons.push('Bildirilen cevap anahtarı kanıtı doğru seçenekle çelişiyor veya geçersiz.');
     }
     if (decisions.distractor_strength_score < 0.80) {
       reasons.push('Çeldirici analizi zayıf veya eksik (tüm seçenekler gerekçelendirilmeli).');
@@ -112,8 +163,19 @@ export class JevQualityAuditor {
     }
 
     return {
-      verdict: passed ? 'APPROVED' : 'NEEDS_REVISION',
+      verdict: passed ? 'AUTOMATED_SCREENING_PASSED' : 'NEEDS_REVISION',
       passed,
+      // Publication additionally requires source/right, expert, accessibility,
+      // and pilot evidence outside this heuristic screen.
+      publicationEligible: false,
+      lifecycleState: passed ? 'automated_pass' : 'draft',
+      promotionBlockedReasons: [
+        'Otomatik ön-kontrol tek başına yayın kararı veremez.',
+        ...(answerKeyStatus === 'unverified' ? ['Cevap anahtarı için öğretmen veya alan uzmanı kanıtı bekleniyor.'] : []),
+        ...(answerKeyStatus === 'evidence_mismatch' || answerKeyStatus === 'evidence_invalid'
+          ? ['Cevap anahtarı kanıtı düzeltilmeden taslak terfi edemez.']
+          : [])
+      ],
       score,
       starRating: decisions.star_rating,
       decisions,
@@ -140,12 +202,39 @@ export class JevQualityAuditor {
     return errors;
   }
 
-  _checkCurriculumAlignment(draft) {
-    const code = draft.outcome_code || draft.outcomeCode;
-    if (code && (code.startsWith('T.8.') || code.startsWith('M.8.') || code.startsWith('F.8.') || code.startsWith('İTA.8.') || code.startsWith('ITA.8.') || code.startsWith('S.8.'))) {
-      return true;
-    }
-    return true;
+  _checkCurriculumAlignment(draft, expectations = {}) {
+    const outcomeCode = normalizeOutcomeCode(draft.outcome_code || draft.outcomeCode);
+    const entries = outcomeCode ? PROTOTYPE_CURRICULUM_REGISTRY.get(outcomeCode) || [] : [];
+    const expectedOutcomeCode = normalizeOutcomeCode(expectations.expectedOutcomeCode);
+    const expectedCourseKey = expectations.expectedCourseKey || expectations.expectedCourse;
+    const expectedGrade = expectations.expectedGrade === undefined || expectations.expectedGrade === null
+      ? null
+      : Number(expectations.expectedGrade);
+
+    const registryMatch = entries.length > 0;
+    const expectedOutcomeMatch = !expectedOutcomeCode || outcomeCode === expectedOutcomeCode;
+    const expectedCourseMatch = !expectedCourseKey || entries.some(entry => entry.courseKey === expectedCourseKey);
+    const expectedGradeMatch = !expectedGrade || entries.some(entry => entry.grade === expectedGrade);
+
+    return {
+      registryMatch,
+      expectedOutcomeMatch,
+      expectedCourseMatch,
+      expectedGradeMatch,
+      matchesExpectedScope: registryMatch && expectedOutcomeMatch && expectedCourseMatch && expectedGradeMatch
+    };
+  }
+
+  _checkAnswerKeyEvidence(draft) {
+    const evidence = draft.answerKeyEvidence || draft.answer_key_evidence;
+    if (!evidence) return 'unverified';
+    if (typeof evidence !== 'object') return 'evidence_invalid';
+
+    const declaredOption = draft.correct_option || draft.correctOption;
+    const expectedOption = evidence.expectedOption || evidence.expected_option;
+    if (!['A', 'B', 'C', 'D'].includes(expectedOption)) return 'evidence_invalid';
+
+    return expectedOption === declaredOption ? 'evidence_matched' : 'evidence_mismatch';
   }
 
   _verifySingleAnswer(draft) {

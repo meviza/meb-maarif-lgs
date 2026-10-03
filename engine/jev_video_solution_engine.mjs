@@ -22,7 +22,7 @@ export class JevVideoSolutionEngine {
 
     const branch = question._meta?.branch || question.courseKey || 'matematik';
     const stars = question.starRating?.stars || 4;
-    const correctOpt = question.correctAnswer || 'A';
+    const correctOpt = this._resolveCorrectOption(question);
     const correctText = question.options?.[correctOpt] || '';
     const stem = question.stem || '';
     const stimulus = question.stimulus || '';
@@ -102,6 +102,7 @@ export class JevVideoSolutionEngine {
    * Adobe InDesign ve LaTeX Yayıncılık Şablonu İçin Kod Parçacığı Üretir
    */
   generateLatexSnippet(question) {
+    const correctOpt = this._resolveCorrectOption(question);
     const qNum = question.id.replace(/[^0-9]/g, '').slice(-2) || '1';
     return `
 % --- YAYINEVİ DİZGİ ŞABLONU (MEB MAARİF LGS FORMATI) ---
@@ -116,9 +117,17 @@ export class JevVideoSolutionEngine {
     \\item[C)] ${question.options?.C || ''}
     \\item[D)] ${question.options?.D || ''}
   \\end{options}
-  \\correct{${question.correctAnswer || 'A'}}
+  \\correct{${correctOpt}}
 \\end{question}
 `.trim();
+  }
+
+  _resolveCorrectOption(question) {
+    const correctOpt = question.correctOption || question.correct_option || question.correctAnswer;
+    if (!['A', 'B', 'C', 'D'].includes(correctOpt)) {
+      throw new Error('Soru için geçerli doğru seçenek (A, B, C veya D) gereklidir.');
+    }
+    return correctOpt;
   }
 
   /**

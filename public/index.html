@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MEB Maarif LGS — Yeni Nesil Soru & Optik Sınav Platformu</title>
+  <title>K-12 Eğitim Platformu — İçerik Doğrulama Prototipi</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body class="theme-institutional">
   <!-- Üst Prestij Bar -->
@@ -22,8 +19,8 @@
           </svg>
         </div>
         <div class="brand-text">
-          <div class="brand-title">T.C. MİLLÎ EĞİTİM BAKANLIĞI</div>
-          <div class="brand-subtitle">Türkiye Yüzyılı Maarif Modeli • 8. Sınıf LGS Platformu</div>
+          <div class="brand-title">K-12 EĞİTİM PLATFORMU</div>
+          <div class="brand-subtitle">Yayın öncesi doğrulama • 5–8 prototip kapsamı</div>
         </div>
       </div>
 
@@ -95,8 +92,8 @@
             </svg>
           </div>
           <div class="user-profile-info">
-            <span id="navUserName" class="user-nav-name">Kerem Çelik</span>
-            <span id="navUserBadge" class="user-nav-sub">8/A • LGS Adayı</span>
+            <span id="navUserName" class="user-nav-name">Yerel prototip</span>
+            <span id="navUserBadge" class="user-nav-sub">Yayın öncesi inceleme</span>
           </div>
         </button>
 
@@ -106,7 +103,7 @@
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
-          <span>JEV System-1: <strong>ONAYLI</strong></span>
+          <span>Otomatik ön-kontrol: <strong>YAYINA KAPALI</strong></span>
         </div>
         <div id="examTimer" class="timer-pill hidden">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#dc2626;">
@@ -124,12 +121,12 @@
     <div class="admin-container">
       <div class="admin-header-row">
         <div>
-          <h2 class="admin-title">MEB Maarif LMS & Yönetici Paneli</h2>
-          <p class="admin-subtitle">Türkiye Yüzyılı Maarif Modeli 8. Sınıf Soru Bankası ve Oturum Yönetimi</p>
+          <h2 class="admin-title">İçerik İnceleme Panosu</h2>
+          <p class="admin-subtitle">Yayınlanmamış taslaklar • salt-okunur doğrulama yüzeyi</p>
         </div>
         <div class="admin-status-badge">
           <span class="pulse-indicator"></span>
-          <span>Ollama System-1 Çevrimiçi</span>
+          <span>Harici model çağrısı kapalı</span>
         </div>
       </div>
 
@@ -466,7 +463,7 @@
       <!-- Test Seçici (Test Listesi) -->
       <div class="sidebar-block">
         <div class="block-header">
-          <span class="block-label">MEB LGS TESTLERİ</span>
+          <span class="block-label">TASLAK SORU SETLERİ</span>
         </div>
         <div class="test-list" id="testList">
           <!-- Test Butonları Dinamik Gelir -->
@@ -492,30 +489,30 @@
             </svg>
           </div>
           <div>
-            <div class="jev-title">JEV EDİTORYAL DENETİMİ</div>
-            <div class="jev-sub">Ollama System-1 Doğrulaması</div>
+            <div class="jev-title">İÇERİK DOĞRULAMA DURUMU</div>
+            <div class="jev-sub">Otomatik ön-kontrol; yayın kararı değildir</div>
           </div>
         </div>
         <ul class="jev-criteria-list">
           <li>
-            <span>Maarif Kazanım Uyumu</span>
-            <strong class="text-success">%100</strong>
+            <span>Kazanım kaydı</span>
+            <strong>Eşleştirme bekliyor</strong>
           </li>
           <li>
-            <span>Çeldirici Güç Katsayısı</span>
-            <strong class="text-success">0.99</strong>
+            <span>Cevap anahtarı</span>
+            <strong>Uzman kanıtı bekliyor</strong>
           </li>
           <li>
-            <span>Bloom Taksonomisi</span>
-            <strong>ANALİZ / UYGULAMA</strong>
+            <span>Görsel erişilebilirlik</span>
+            <strong>İnceleme bekliyor</strong>
           </li>
           <li>
-            <span>Deterministik Doğruluk</span>
-            <strong class="text-success">Tek Cevap</strong>
+            <span>Yayın durumu</span>
+            <strong>Kapalı</strong>
           </li>
           <li>
-            <span>Zorluk Derecesi</span>
-            <strong id="jevStarRatingText" style="color:#d97706; font-weight:800;">★★★★☆ (4/5)</strong>
+            <span>Zorluk etiketi</span>
+            <strong id="jevStarRatingText" style="color:#d97706; font-weight:800;">Belirlenmedi</strong>
           </li>
         </ul>
       </div>
@@ -527,10 +524,10 @@
         <div class="booklet-top-bar">
           <div class="booklet-title-wrapper">
             <span id="qCourseBadge" class="pill-badge pill-course">TÜRKÇE</span>
-            <span id="qSourceBadge" class="pill-badge pill-source">2024 LGS Formatı</span>
-            <span id="qOutcomeBadge" class="pill-badge pill-outcome">T.8.3.14.03 • Akışı Bozan Cümle</span>
-            <span id="qDifficultyBadge" class="pill-badge pill-diff">LGS Yeni Nesil</span>
-            <span id="qStarBadge" class="pill-badge pill-stars" style="background:#fef3c7; color:#b45309; font-weight:800; border:1px solid #fde68a; display:inline-flex; align-items:center; gap:4px;">★★★★☆ 4 Yıldız</span>
+            <span id="qSourceBadge" class="pill-badge pill-source">İçerik doğrulama bekliyor</span>
+            <span id="qOutcomeBadge" class="pill-badge pill-outcome">Kazanım eşlemesi bekliyor</span>
+            <span id="qDifficultyBadge" class="pill-badge pill-diff">Zorluk etiketi bekliyor</span>
+            <span id="qStarBadge" class="pill-badge pill-stars" style="background:#fef3c7; color:#b45309; font-weight:800; border:1px solid #fde68a; display:inline-flex; align-items:center; gap:4px;">Zorluk doğrulaması bekliyor</span>
           </div>
           <div id="qCodeBadge" class="question-code">LGS-TR-01</div>
         </div>
@@ -607,12 +604,12 @@
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
           <polyline points="14 2 14 8 20 8"/>
         </svg>
-        <span>LGS Optik Formunu Göster / Gizle</span>
+        <span>Taslak yanıt seçimini göster / gizle</span>
       </button>
       <div class="optical-form-card">
         <div class="optical-header-box">
-          <div class="optical-main-title">ÖDSGM LGS OPTİK CEVAP FORMU</div>
-          <div class="optical-sub-title">T.C. MİLLÎ EĞİTİM BAKANLIĞI MERKEZİ SINAVI</div>
+          <div class="optical-main-title">PROTOTİP YANIT SEÇİMİ</div>
+          <div class="optical-sub-title">Puanlama ve öğrenci kaydı bu sürümde kapalıdır</div>
           <div class="optical-info-grid">
             <div class="info-cell">
               <span class="lbl">KİTAPÇIK</span>
@@ -624,7 +621,7 @@
             </div>
             <div class="info-cell">
               <span class="lbl">ADAY</span>
-              <span class="val">KEREM ÇELİK</span>
+              <span class="val">YEREL PROTOTİP</span>
             </div>
           </div>
         </div>
@@ -712,13 +709,13 @@
     </aside>
   </div>
 
-  <!-- Kurumsal MEB Maarif Giriş ve Kimlik Doğrulama Portalı (Giriş Ekranı) -->
+  <!-- Yerel prototip profil ekranı; kimlik doğrulama veya kayıt yapmaz. -->
   <div id="portalAuthModal" class="portal-modal-overlay hidden">
     <div class="portal-auth-card">
       <div class="portal-auth-header">
         <div class="portal-badge-row">
-          <span class="badge-maarif-pill">T.C. MİLLÎ EĞİTİM BAKANLIĞI</span>
-          <span class="badge-year-pill">2026 LGS ADAY PORTALI</span>
+          <span class="badge-maarif-pill">YEREL PROTOTİP</span>
+          <span class="badge-year-pill">YAYIN ÖNCESİ İNCELEME</span>
         </div>
         <div class="portal-emblem-box">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
@@ -727,8 +724,8 @@
             <path d="M2 12L12 17L22 12" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <h2 class="portal-main-title">Türkiye Yüzyılı Maarif Modeli</h2>
-        <p class="portal-subtitle">8. Sınıf LGS Yeni Nesil Ölçme, Değerlendirme ve Optik Sınav Portalı</p>
+        <h2 class="portal-main-title">İçerik Doğrulama Prototipi</h2>
+        <p class="portal-subtitle">Öğrenci kimliği, puanlama ve kalıcı kayıt bu sürümde etkin değildir.</p>
       </div>
 
       <form id="portalLoginForm" class="portal-form">
@@ -739,14 +736,14 @@
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
               <circle cx="12" cy="7" r="4"/>
             </svg>
-            <input type="text" id="inputStudentName" class="portal-input" value="Kerem Çelik" required placeholder="Adınız Soyadınız">
+            <input type="text" id="inputStudentName" class="portal-input" value="Yerel prototip" required placeholder="Yerel inceleme etiketi">
           </div>
         </div>
 
         <div class="portal-form-row">
           <div class="portal-form-group">
             <label class="portal-label">Öğrenci / Okul No</label>
-            <input type="text" id="inputStudentNo" class="portal-input" value="571" required placeholder="Örn: 571">
+            <input type="text" id="inputStudentNo" class="portal-input" value="—" required placeholder="Yerel inceleme etiketi">
           </div>
           <div class="portal-form-group">
             <label class="portal-label">Şube / Sınıf</label>
@@ -786,7 +783,7 @@
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
-          <span>Oturum Verileri JEV System-1 ve PostgreSQL omurgasında güvenli ve kalıcı olarak saklanır.</span>
+          <span>Bu prototip öğrenci oturumu veya kalıcı kişisel veri kaydı tutmaz.</span>
         </div>
       </form>
     </div>
@@ -816,7 +813,7 @@
     </div>
   </div>
 
-  <!-- MEB Resmi Yazdırılabilir Sınav Kitapçığı ve Optik Form (@media print) -->
+  <!-- Yayın öncesi taslak yazdırma alanı (@media print) -->
   <div id="printBookletContainer" class="print-booklet-container print-only"></div>
 
   <script src="app.js"></script>

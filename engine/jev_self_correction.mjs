@@ -38,7 +38,7 @@ export class JevSelfCorrectionPipeline {
    * @param {string} topic - Müfredat konusu
    * @param {string} outcomeCode - MEB kazanım kodu
    * @param {string} difficulty - Zorluk seviyesi (KAVRAMA, UYGULAMA, LGS_YENI_NESIL, SEKIL_VE_OLIMPIYAT)
-   * @returns {Object} JEV Kalite Kapısından tam onaylı soru objesi
+   * @returns {Object} Otomatik ön-kontrol sonucu; yayın onayı değildir.
    */
   generateDeterministicFallback(course = 'turkce', topic = '', outcomeCode = '', difficulty = 'LGS_YENI_NESIL') {
     const timestamp = Date.now().toString().slice(-4);
@@ -465,13 +465,15 @@ export class JevSelfCorrectionPipeline {
       });
 
       if (audit.passed && audit.score >= this.auditor.qualityThreshold) {
-        console.log(`  [ONAY] JEV ONAYI VERİLDİ! Skor: ${audit.score} (Deneme: ${attempt})`);
+        console.log(`  [ÖN-KONTROL] Otomatik kalite ekranı geçti. Skor: ${audit.score} (Deneme: ${attempt})`);
         return {
           success: true,
           question: candidate,
           audit,
           attempts: attempt,
-          history
+          history,
+          publicationEligible: false,
+          lifecycleState: 'automated_pass'
         };
       } else {
         console.warn(`  [RED] JEV REDDİ! Nedenler: ${audit.reasons.join('; ')}`);
@@ -486,19 +488,21 @@ export class JevSelfCorrectionPipeline {
       }
     }
 
-    // Maksimum deneme aşıldığında güvenli onaylı soruya dön
-    console.log(`  [BILGI] Maksimum deneme aşıldı, JEV onaylı kesin şablon döndürülüyor.`);
+    // A terminal fallback remains a draft unless its own automated screen passes.
+    console.log(`  [BILGI] Maksimum deneme aşıldı; fallback taslağı yeniden ön-kontrolden geçiriliyor.`);
     const verifiedFallback = this.generateDeterministicFallback(course, topic, outcomeCode, difficulty);
     const finalAudit = await this.auditor.evaluateQuestion(verifiedFallback);
     verifiedFallback.jevAudit = finalAudit;
 
     return {
-      success: true,
+      success: finalAudit.passed,
       question: verifiedFallback,
       audit: finalAudit,
       attempts: this.maxAttempts,
       history,
-      fallbackUsed: true
+      fallbackUsed: true,
+      publicationEligible: false,
+      lifecycleState: finalAudit.passed ? 'automated_pass' : 'draft'
     };
   }
 }
