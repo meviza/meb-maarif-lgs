@@ -9,6 +9,7 @@ import { createPerimeterLesson } from '../packages/content-factory/perimeter_les
 import { createReasonedMediaJob, auditReasonedMediaJob } from '../packages/media/reasoned_media_job.mjs';
 import { resolveReasonedMediaGeometry } from '../packages/media/reasoned_geometry_resolver.mjs';
 import { createReasonedScenePlan } from '../packages/media/reasoned_scene_renderer.mjs';
+import { createReasonedCaptionPages } from '../packages/media/reasoned_caption_pages.mjs';
 import { createMixedPracticePlan } from '../packages/content-factory/mixed_practice_plan.mjs';
 
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
@@ -164,6 +165,13 @@ try {
   const conceptScenePlans = conceptLessons.map((trace, index) => createReasonedScenePlan({
     source: conceptSource, trace, job: conceptMediaJobs[index],
   }));
+  // Current-cue plain-text pages only; protected answer transcripts remain
+  // locked by default. This is not narration, a rendered frame or authority.
+  const captionPages = plan => plan.cues.map((_, cueIndex) => createReasonedCaptionPages(plan, {
+    cueIndex, progress: 1, reveal: false,
+  }));
+  const questionCuePages = questionScenePlans.map(captionPages);
+  const conceptCuePages = conceptScenePlans.map(captionPages);
   const practiceRequest = {
     count: 6, seed: 'lesson-mixed-v1', scope: { grade: null, programVersion: null },
     exampleFamily: 'perimeter', difficultyProfile: { introductory: 50, intermediate: 50, advanced: 0, challenge: 0 },
@@ -201,6 +209,12 @@ try {
       questionPlans: questionScenePlans, conceptPlans: conceptScenePlans,
       audioAttached: false, videoAttached: false, liveProviderCalls: 0,
       publicationReady: false, learnerReady: false, productionReady: false,
+    },
+    captionPreparation: {
+      schemaVersion: 'reasoned-factory-caption-preparation/v1', questionCuePages, conceptCuePages,
+      audience: 'editor_review_only', contentFormat: 'plain_text_textContent_only', serializedAuthority: 'none',
+      audioAttached: false, videoAttached: false, wordPenAlignmentVerified: false,
+      liveProviderCalls: 0, publicationReady: false, learnerReady: false, productionReady: false,
     },
     practicePreparation: {
       schemaVersion: 'lesson-mixed-practice-preparation/v1', reviewPlan, exampleProfileAudit,

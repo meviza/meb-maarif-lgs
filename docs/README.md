@@ -2,7 +2,10 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
-- [Gece fazları: güncel 740 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece fazları: güncel 783 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [5. sınıf geometrik nicelikler: 4 çıktı / 23 proje mikrobecerisi](GRADE5_GEOMETRIC_QUANTITIES_MATRIX_2026-10-04.md)
+- [Fabrikaya bağlı kayıpsız, yanıtı kilitli kısa caption sayfaları](REASONED_CAPTION_PAGES_EVIDENCE_2026-10-04.md)
+- [DAMA amaç ayrımlı sentetik defter intent sözleşmesi — DB kaydı değil](SYNTHETIC_NOTEBOOK_CONTRACT_EVIDENCE_2026-10-04.md)
 - [Kaynak-bağlı gerekçeli güvenli SVG sahne renderer'ı](REASONED_SCENE_RENDERER_EVIDENCE_2026-10-03.md)
 - [Yeni renderer bytes'ından gerçek sessiz raster/hareket tanığı](REASONED_SCENE_RASTER_MOTION_EVIDENCE_2026-10-04.md)
 - [Gerçek sentetik SQL makbuz aralığına bağlı dar etkinlik özeti](SYNTHETIC_ACTIVITY_SUMMARY_EVIDENCE_2026-10-03.md)

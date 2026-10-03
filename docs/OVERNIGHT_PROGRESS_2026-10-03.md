@@ -146,3 +146,40 @@ Ana ajan son tam suite'i mevcut güvenilir Sharp ve gerçek medya opt-in'i ile t
 Bu fazda kaynak byte/Drive aktarımı, sağlayıcı/TTS/Clef çağrısı, yeni credential, ücretli cloud/model işi, gerçek çocuk verisi, büyük model/Flutter/SDK, Cambridge/başka kurum mesajı veya yayın yok. Arşiv 49/48 ve Drive'ın önceki 48 metadata doğrulaması tarihsel durumdur; yeni uzak readback yapılmadı. 54 büyük kitap ve 88 aylık PDF hâlâ indirilmemiş. Önceki yerel CUA oturum alanı ifşasının sahipçe oturum yenileme/erişim incelemesi açık; bu fazda yeni geniş process okuması/rotation yapılmadı.
 
 Sıradaki güvenli dilim: anlamı/mikrobeceriyi gerçek etkin kaynakla eşleştir; yeni şekil/temsil/konu ailelerini sayı varyantı olarak değil bağımsız amaçlarla tasarla; mevcut sahnede okunur kısa caption/odak tasarımı ve yetkili küçük yeni TTS senkronu; ayrı sentetik kalıcı defter contract'ı ve auth/resolver sınırları. **36.000 soru, sesli video fabrikası ve gerçek öğrenci analitiği tamamlandı değildir.** 4 Ekim 08:00 Türkiye saati gece döngüsü durdurma/sabah raporu sınırı değişmedi.
+
+## Altıncı mikrobeceri/caption/defter hazırlık fazı — 4 Ekim, 00:35 Türkiye saati
+
+Üç çakışmayan paralel iş ve root fabrika bağlantısı yürütüldü; ardından caption ile defter yazımını **diğer ajanlar** salt-okunur denetledi. TDD/doğrulama becerileri; gerçek kaynak incelemesi için PDF becerisi, ayrı defter tasarımı için PostgreSQL rehberi ve iki yeniden üretilen uç durumda sistematik hata ayıklama kullanıldı. Yeni bağımlılık veya skill indirilmedi.
+
+### Gerçek kaynak diliminden mikrobeceri matrisi
+
+[5. sınıf geometrik nicelikler yazım matrisi](GRADE5_GEOMETRIC_QUANTITIES_MATRIX_2026-10-04.md) ve küçük [JSON metaverisi](../sources/grade5-geometric-quantities-authoring-matrix.json) oluşturuldu. Mevcut 3.916.466 baytlık resmî matematik PDF'sinin hash'i tekrar doğrulandı; **gerçek fiziksel/basılı 51–54 metni ve dört sayfa görseli**, ana ajan ve kaynak ajanı tarafından incelendi. Yeni PDF indirilmedi. Önceki kapsam taslağı yeni incelemenin kaynak kanıtı yerine kullanılmadı.
+
+- Dört çıktı MAT.5.4.1–4; **20 resmî basılı süreç harfi / 23 proje mikrobeceri satırı**, **19 önerilen aile / 10 temsil**. İki yönlü .3 süreçlerinin her a/b/c bileşeni ayrı tutulur; 23 bir resmî ders paydası değildir.
+- Aynı alan/farklı çevre ve aynı çevre/farklı alan için **her yönde ≤36 birimkare**; kare dahil; .2/.4 alan dönüşümü dışlanır; uzunluk dönüşümü ön kabulü ayrı. Pick/uç değerler zenginleştirme, zorunlu temel kota değildir.
+- Oluşturma/çizim, tablo, açık yanıt, ölçme ve performans kanıtı salt MCQ'den ayrılır. İşlemin nedeni/operand anlamı, tahmin, strateji düzeltme, alternatif yol ve genelleme sınırı ayrı amaçlardır.
+- Ana ajan çıktı/süreç/satır sayısı, ID/ref, iki yön, iki cap, kapalı kabul bayrakları ve yedi yeni aritmetik kontrol modelini bağımsız doğruladı. JSON SHA `38a87129dd7f4cc31adc48a81e600de0f65d1f32ae36ff3aef529168d3c61763`; PDF SHA kaynak kaydıyla aynı. Kaynak sorusu kopyalama/model aktarımı/yeni ürün sorusu **0**.
+
+Etkin ders-program sürümü, diğer temalar/geçmiş müfredat, mevcut ürün eşlemesi, zorluk, owner/steward, hak ve uzman kabulü pending/unknown. Matris tam müfredat, 23 kabul edilmiş beceri veya tüm soru ailesi tamamlığı değildir.
+
+### Fabrikaya bağlı kayıpsız kısa caption sayfaları
+
+[Caption katmanı](REASONED_CAPTION_PAGES_EVIDENCE_2026-10-04.md) mevcut live scene-plan trust kapısını önce doğrular; yalnız seçilmiş current-cue metnini **iki satır / satırda en çok 62 UTF-16 birimi / en çok 32 sayfa** olarak hazırlar. Tam izinli anlatım ve kaynak boşlukları kayıpsızdır; kaynak/trace/job/geometry/scene/frame/page hash bağları immutable'dır. Karakter sayısı gerçek glyph/piksel genişliği değildir. `textContent` tüketimi zorunlu; markup benzeri metin literal veri, sanitizer değildir.
+
+Normal CLI için iki regresyon önce **0/2 RED**, bağlantı sonrası GREEN. Ana ajanın özel bir/100-aday paketleri current builders ile birebir yeniden kuruldu: **2/13 plan, 40/194 cue, 55/277 sayfa, 18/84 kilitli yanıt**; audit JSON 531.406/2.275.034 bayt. Korunan cevaplar varsayılan reveal=false olduğunda fullTranscript/hash null. Tam editor JSON başka alanlarda cevap içerir; öğrenci teslim paketi değildir. Scene renderer/SVG/source bytes değişmedi; yeni raster veya MP4 üretilmedi. Açık 3338 ve HTML/CSS değişmedi; sayfa gezinmesi/glyph-fit/AX/premium tasarım kabulü açık.
+
+Bağımsız denetim unary `+` sayı işaretinin birimden ayrıldığını buldu; yeni otomatik test RED, minimal işaret sınıfı düzeltmesi GREEN. Son bağımsız **186 işaretli sayı/birim/işlem/bütçe probe'u** geçti; bir/100 canonical audit SHA'ları değişmedi. Başlangıç bağımsız 234 packet exact reconstruction / 102 locked cue ve 249 serialized/rehash authority reddi kaydedildi. Caption yayın/öğrenci/production/TTS/video/senkron bayrakları false.
+
+### Ayrı sentetik defter intent sözleşmesi
+
+[Yeni saf hazırlayıcı](SYNTHETIC_NOTEBOOK_CONTRACT_EVIDENCE_2026-10-04.md), serbest metin/stroke/kaydedilenler/notlar/takılanları learning-progress telemetry'sine sokmaz. Ayrı `student_notebook`, sensitive sınıf ve lifecycle retention; sentetik owner/steward/catalog/policy/revision/target hash bağları vardır. Kapalı istemci DTO'su yalnız mutation/key/expectedRevision/body gönderir; tenant/rol/auth/commit/persist iddiası reddedilir. Başarı prepare_replace/prepare_exact_replay **hazırlığıdır**; closure ilerlemez, yeni DB kaydı/makbuz/endpoint/paylaşım yapılmaz. Ortak gerçek DAMA resolver'ı bağlanmadı; prefix/hash PII veya erişim garantisi değildir.
+
+İlk TDD **14 FAIL → 14 PASS**, genişletilmiş 18 test. Bağımsız denetim revoked Proxy client-root'ta `Array.isArray` çağrı sırası nedeniyle TypeError buldu. Root yeni regresyonla stack'i yeniden üretti; yalnız Proxy guard sırası düzeltildi. İki ayrı regresyon birlikte **39 PASS / 2 FAIL → 43/43 PASS** (caption22 + defter19 + CLI2). Son bağımsız notebook **19/19**, ilgili **63/63**, ayrıca **245 negatif ret + 14 pozitif probe**, hook0; denetlenen kapsamda açık P1/P2 kalmadı. Literal HTML metni güvenli rendering/PII temizliği değildir. Atomik DB commit/readback, auth/purpose/target revizyonu, retention/deletion/restore, cihaz senkronu ve UI pending.
+
+### Taze son gate ve değişmeyen kapılar
+
+Ana ajan iki minimal düzeltmeden sonra tam suite'i mevcut güvenilir Sharp ve gerçek medya opt-in'iyle yeniden koştu: **783/783 PASS, fail 0, skip 0**. Önceki 740'a caption22 + defter19 + fabrika bağlantısı2 = **43 test** eklendi. Ad-hoc probe, kaynak görseli ve önceki gerçek PostgreSQL tanıkları bu toplama eklenmez. SQL değişmedi, yeni container/cloud kredi işi yapılmadı; önceki 22+8+5 gerçek sentetik SQL kanıtı tarihsel olarak korunur. Altı değişen JS modül/araç/testte syntax ve normal/cached diff kontrolü geçti. Seçilen 14 düzenli metin dosyası 512 KiB/file ve NUL/kişisel yerel yol/bilinen token marker kontrolünden geçti; bu sınırlı tarama genel secret veya güvenlik sertifikası değildir. Ham PDF/PNG/SVG/JSON review paketi ve özel yollar Git'e alınmadı; JSON kaynak metaverisi ayrı küçük yazım kaydıdır.
+
+Bu fazda kaynak/Drive aktarımı, uzak readback, provider/Clef/üretici/TTS çağrısı, yeni credential, ücretli cloud/model işi, gerçek çocuk verisi, model/Flutter/SDK indirme, Cambridge/başka kuruma mesaj veya yayın **yok**. Arşiv **49 kayıt / 48 eşsiz PDF**, Drive önceki48 metadata kanıtı; 54 büyük kitap/88 aylık bölüm hâlâ indirilmemiş. Önceki yerel CUA oturumu alanı ifşasının owner oturum yenileme/erişim incelemesi açık; değerler yeniden okunmadı/kopyalanmadı, rotation yapılmadı. Taze teknik testler DAMA/CMMI/SPICE sertifikası, pedagojik/psikometrik kabul veya MEB onayı değildir.
+
+Sıradaki dilim: kaynak matrisini gerçekten farklı karşılaştırma/oluşturma ailelerine taşımak; caption'ı güvenli görünür renderer/UI'de ölçmek; defterin ayrı amaçla gerçek **izole sentetik** atomik DB commit/readback kanıtı. İnsan hak/alan/yaş ve canlı credential/iş bütçesi kapıları korunur. 36.000 soru ve genel sesli video fabrikası tamamlanmadı; **4 Ekim 08:00 Türkiye saati** durdurma/sabah raporu sınırı değişmedi.

@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "grade5-geometric-quantities-authoring-matrix/v1",
+  "state": "authoring_draft",
+  "observedOn": "2026-10-04",
+  "gradeCandidate": 5,
+  "subjectCandidate": "mathematics",
+  "scope": {
+    "description": "Dikdörtgen çevresi ve alanı için dört çıktının kaynak incelemesinden özgün yazıma hazırlık",
+    "reviewedOutputCodes": ["MAT.5.4.1", "MAT.5.4.2", "MAT.5.4.3", "MAT.5.4.4"],
+    "reviewedPrintedProcessComponentCount": 20,
+    "authoringMicroSkillRowCount": 23,
+    "plannedFamilyCount": 19,
+    "microSkillIdsAreOfficialCodes": false,
+    "familyTaxonomyIsOfficial": false,
+    "officialMandatoryCourseDenominator": null,
+    "fullSubjectCoveragePercent": null,
+    "fullProgramSemanticReviewComplete": false,
+    "activeSchoolYearCourseVerified": false,
+    "sourceQuestionsTotal": null,
+    "sourceQuestionsCopied": 0,
+    "productQuestionsContributed": 0,
+    "publishedContentContributed": 0,
+    "questionBudgetPerMicroSkill": null,
+    "officialDifficultyDistribution": null,
+    "difficultyCalibration": "unknown",
+    "existingProductCoverageByMicroSkill": null
+  },
+  "source": {
+    "sourceId": "tymm-current-ortaokul-matematik",
+    "documentTitle": "Ortaokul Matematik Dersi Öğretim Programı",
+    "catalogPageUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ortaokul-matematik-dersi",
+    "pdfUrl": "https://tymm.meb.gov.tr/assets/pdf/ortaokul-matematik-dersi_20260902_111111_630.pdf",
+    "catalogSnapshotVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+    "effectiveProgramDecision": "pending",
+    "sha256": "75f52f93672c8991eabe102adb37ab4d16de63f35fe8488fc29cdedae9155734",
+    "byteLength": 3916466,
+    "freshLocalBytesAndPdfMagicVerified": true,
+    "reviewMethod": "actual_pdf_text_and_four_existing_page_pngs_independently_inspected",
+    "priorCoverageDraftUsedAsEvidence": false,
+    "partialSemanticReview": "physical_pages_51_54_only",
+    "pages": [
+      {"physicalPdfPage": 51, "printedPage": 51, "observedSection": "Çıktılar ve süreç harfleri", "textInspected": true, "visualInspected": true},
+      {"physicalPdfPage": 52, "printedPage": 52, "observedSection": "Kavramlar, ölçme, ön kabul ve köprü", "textInspected": true, "visualInspected": true},
+      {"physicalPdfPage": 53, "printedPage": 53, "observedSection": "İlk üç çıktının uygulama sınırları", "textInspected": true, "visualInspected": true},
+      {"physicalPdfPage": 54, "printedPage": 54, "observedSection": "Problem çözme, performansın devamı ve zenginleştirme", "textInspected": true, "visualInspected": true}
+    ],
+    "usagePolicy": "reference_only",
+    "commercialReuseRights": "unverified",
+    "rightsReview": "pending",
+    "sourceContentRedistributionAllowed": false,
+    "sourceToModelTransferAllowed": false
+  },
+  "governance": {
+    "ownerId": "unassigned",
+    "stewardId": "unassigned",
+    "purpose": "Reference traceability and original authoring planning, not learner delivery",
+    "artifactAudience": "editor_review_only",
+    "studentDataPresent": false,
+    "providerCallsMade": 0,
+    "modelTransfersMade": 0,
+    "retentionDecision": "pending",
+    "expertReview": "pending",
+    "curriculumApproval": "pending",
+    "officialMebApprovalClaim": false,
+    "publicationReady": false,
+    "learnerReady": false,
+    "productionReady": false
+  },
+  "prerequisites": [
+    {"id": "P01", "origin": "source_assumption_page_52", "description": "Standart uzunluk birimlerini tanıma ve kullanma", "studentMasteryVerified": false},
+    {"id": "P02", "origin": "source_assumption_page_52", "description": "Standart uzunluk birimleri arasında dönüşüm deneyimi; alan dönüşümü değil", "studentMasteryVerified": false},
+    {"id": "P03", "origin": "source_assumption_page_52", "description": "Çevreyi ölçerken geometrik araç veya teknoloji kullanma", "studentMasteryVerified": false},
+    {"id": "P04", "origin": "source_assumption_page_52", "description": "Standart olmayan birimlerle yüzey alanını ölçme deneyimi", "studentMasteryVerified": false},
+    {"id": "P05", "origin": "authoring_preflight_inference_not_official_prerequisite_code", "description": "Gereken doğal sayı toplama, çarpma ve sayma işlemleri için kısa ön değerlendirme", "studentMasteryVerified": false},
+    {"id": "P06", "origin": "dependency_inside_reviewed_outputs", "description": "MAT.5.4.1 çevre ilişkisi ve MAT.5.4.2 birim kare alan anlamı", "studentMasteryVerified": false}
+  ],
+  "boundaries": [
+    {
+      "id": "B01",
+      "origin": "source",
+      "sourcePages": [51, 53],
+      "outputCodes": ["MAT.5.4.1", "MAT.5.4.2", "MAT.5.4.3"],
+      "rule": "Bu hedeflerde doğal sayı kenarlarla çalışılır.",
+      "notImplied": "MAT.5.4.4 için bütün olası bağlamların kenar türü bu dilimde ayrıca yeniden sayılmış değildir."
+    },
+    {
+      "id": "B02",
+      "origin": "source",
+      "sourcePages": [53, 54],
+      "outputCodes": ["MAT.5.4.2", "MAT.5.4.4"],
+      "rule": "cm²/m² ile alan çalışması; alan birimlerini birbirine dönüştürme hedeflenmez.",
+      "forbiddenCoreRequirement": "area_unit_conversion",
+      "notImplied": "Uzunluk dönüşümü ön kabulünün yasaklanması veya birimlerin karıştırılarak kullanılabilmesi değildir."
+    },
+    {
+      "id": "B03",
+      "origin": "source",
+      "sourcePages": [53],
+      "outputCodes": ["MAT.5.4.3"],
+      "rule": "Aynı alan/farklı çevre ve aynı çevre/farklı alan yönlerinin her birindeki karşılaştırma modelleri en fazla 36 birimkare.",
+      "directions": ["area_to_perimeter", "perimeter_to_area"],
+      "maximumComparisonModelAreaSquareUnits": 36,
+      "notImplied": "Bu sayfa bütün diğer çıktıların veya günlük yaşam bağlamlarının alanına aynı genel üst sınırı koymaz."
+    },
+    {
+      "id": "B04",
+      "origin": "source",
+      "sourcePages": [53],
+      "outputCodes": ["MAT.5.4.1"],
+      "rule": "Kare dikdörtgenin özel örneği olarak dahil edilir."
+    },
+    {
+      "id": "B05",
+      "origin": "source_enrichment_not_core",
+      "sourcePages": [54],
+      "outputCodes": ["MAT.5.4.1", "MAT.5.4.3", "MAT.5.4.4"],
+      "rule": "Sabit çevrede alan uç değerleri, sabit alanda çevre uç değerleri ve Pick teoremi ayrı zenginleştirme katmanıdır.",
+      "coreQuestionQuotaContribution": 0,
+      "advancedTeacherReview": "pending"
+    },
+    {
+      "id": "B06",
+      "origin": "authoring_geometry_validity_guard",
+      "sourcePages": [51, 53],
+      "rule": "Temel dikdörtgen modellerinde kenarlar pozitif tam sayı ve birimler tutarlı olmalı; sıfır kenar geçerli dikdörtgen olmaz.",
+      "notAnOfficialStandaloneProcess": true
+    },
+    {
+      "id": "B07",
+      "origin": "authoring_diversity_and_semantics_guard",
+      "sourcePages": [51, 53],
+      "rule": "Döndürülmüş aynı dikdörtgen yeni geometrik örnek sayılmaz; alan veya çevre tek başına tek cevaplı ters ilişkiyi veya iki farklı model varlığını garanti etmez. İki model görevinde en az iki farklı geçerli çift ve ilgili 36 sınırı önceden denetlenir.",
+      "notAnOfficialStandaloneProcess": true
+    },
+    {
+      "id": "B08",
+      "origin": "review_scope_limit",
+      "sourcePages": [51, 52, 53, 54],
+      "rule": "Oran/rasyonel çarpan/kesirli kenar/başka şekil formülü gerektiren varyantın önkoşulu veya tüm program uyumu bu dört sayfadan çıkarılmaz.",
+      "separateSourceAndPedagogyReviewRequired": true
+    }
+  ],
+  "representations": [
+    {"id": "R01", "kind": "Etiketli dikdörtgen sınırı", "requiredProof": "Kenarlar, açıklık varsa gerçek yer ve ölçekli değilse açık etiket"},
+    {"id": "R02", "kind": "Birim kareli yüzey", "requiredProof": "Eş birim kare, boşluksuz/örtüşmesiz örtme, satır-sütun ve gerçek model ölçeği"},
+    {"id": "R03", "kind": "Noktalı düzlem veya sanal geometri tahtası", "requiredProof": "Öğrencinin oluşturduğu model ile verilen koşulun ilişkisinin doğrulanması"},
+    {"id": "R04", "kind": "Kenar-alan-çevre tablosu", "requiredProof": "Satırların çizimle eşleşmesi, birim ve iki karşılaştırma yönünün korunması"},
+    {"id": "R05", "kind": "Öğrencinin gerekçeli açıklaması", "requiredProof": "Kendi açıklaması ile hazır anlatım veya ipucu sonrası yanıtın ayrılması"},
+    {"id": "R06", "kind": "Anlamı etiketli sembolik işlem", "requiredProof": "Her operandın kaynak verilen veya önceki sonuçla bağı ve sonuç birimi"},
+    {"id": "R07", "kind": "Verilenleri işaretlenebilir bağlam", "requiredProof": "Ne istendiğinin, sayıların anlamlarının ve geçerlilik koşulunun ayrılması"},
+    {"id": "R08", "kind": "Yan yana çözüm stratejileri", "requiredProof": "İki yolun gerekçesi, doğruluğu ve hangi koşulda uygun olduğu"},
+    {"id": "R09", "kind": "Özgün piksel sanatı", "requiredProof": "Matematiksel model doğruluğu ile estetik/orijinallik değerlendirmesinin ayrılması"},
+    {"id": "R10", "kind": "Parçaları yeniden düzenlenmiş birim kare modeli", "requiredProof": "Alan korunumunu ölçülebilir modelle tartışma; dönüşüm formülü ezberi değil"}
+  ],
+  "questionFamilies": [
+    {"id": "F01", "name": "Çevreden olası kenar çiftlerini araştırma", "formats": ["short_answer", "open_ended_table"], "representationIds": ["R01", "R03", "R04"]},
+    {"id": "F02", "name": "Verilen çevreye uygun dikdörtgen oluşturma", "formats": ["construction", "open_ended"], "representationIds": ["R01", "R03", "R05"]},
+    {"id": "F03", "name": "Aynı çevrede farklı biçimleri açıklama", "formats": ["matching_with_reason", "true_false_with_reason", "open_ended"], "representationIds": ["R01", "R04", "R05"]},
+    {"id": "F04", "name": "Alan ölçütü olarak eş birim kare seçme", "formats": ["selection_with_reason", "open_ended"], "representationIds": ["R02", "R05"]},
+    {"id": "F05", "name": "Birim kareyle yüzeyi örtme ve sayma", "formats": ["interactive_tiling", "short_answer_with_unit"], "representationIds": ["R02", "R06"]},
+    {"id": "F06", "name": "Satır-sütun sayısını kenarlarla ilişkilendirme", "formats": ["matching_with_reason", "open_ended"], "representationIds": ["R02", "R04", "R06"]},
+    {"id": "F07", "name": "Alan bağıntısını ölçme modelinden keşfetme", "formats": ["open_ended", "explain_relationship"], "representationIds": ["R02", "R05", "R06"]},
+    {"id": "F08", "name": "Aynı alanlı modellerden farklı çevreleri inceleme", "direction": "area_to_perimeter", "formats": ["construction", "open_ended_table", "structured_grid_with_reason"], "representationIds": ["R01", "R02", "R03", "R04", "R05"], "maximumModelAreaSquareUnits": 36},
+    {"id": "F09", "name": "Aynı çevreli modellerden farklı alanları inceleme", "direction": "perimeter_to_area", "formats": ["construction", "open_ended_table", "structured_grid_with_reason"], "representationIds": ["R01", "R02", "R03", "R04", "R05"], "maximumModelAreaSquareUnits": 36},
+    {"id": "F10", "name": "Bağlamı, verilenleri ve isteneni çözümleme", "formats": ["annotate_givens", "open_ended"], "representationIds": ["R01", "R05", "R07"]},
+    {"id": "F11", "name": "Bağlam ile çizim/tablo arasında temsil dönüştürme", "formats": ["construction", "representation_translation", "open_ended"], "representationIds": ["R01", "R02", "R03", "R04", "R05", "R07"]},
+    {"id": "F12", "name": "İşlem öncesi tahmin ve strateji seçme", "formats": ["estimate_then_plan", "open_ended"], "representationIds": ["R04", "R05", "R07"]},
+    {"id": "F13", "name": "Her işlemin anlamını koruyarak çözme", "formats": ["reasoned_solution", "short_answer_with_reason"], "representationIds": ["R01", "R02", "R05", "R06", "R07"]},
+    {"id": "F14", "name": "İşe yaramayan stratejiyi fark edip değiştirme", "formats": ["error_diagnosis_with_reason", "revise_strategy"], "representationIds": ["R05", "R06", "R08"]},
+    {"id": "F15", "name": "Alternatif çözüm yollarını değerlendirme", "formats": ["compare_solutions", "open_ended"], "representationIds": ["R05", "R08"]},
+    {"id": "F16", "name": "Yöntemi yeni bir probleme taşıma ve problem kurma", "formats": ["author_problem", "construction", "open_ended"], "representationIds": ["R01", "R03", "R05", "R07"]},
+    {"id": "F17", "name": "Genellemeyi örnek ve karşı örnekle sınama", "formats": ["counterexample", "open_ended"], "representationIds": ["R01", "R04", "R05", "R06"]},
+    {"id": "F18", "name": "Alan/çevre karşılaştırması içeren özgün piksel sanatı", "scope": "source_performance_option_not_additional_mandatory_process", "sourcePages": [52, 53, 54], "formats": ["performance_task", "peer_review_with_rubric"], "representationIds": ["R02", "R04", "R09"]},
+    {"id": "F19", "name": "Parçaları yeniden düzenleyerek alanın korunmasını tartışma", "scope": "source_optional_teaching_discussion_not_additional_mandatory_process", "sourcePages": [53], "formats": ["manipulation_with_reason", "open_ended"], "representationIds": ["R02", "R05", "R10"]}
+  ],
+  "microSkillCellDefaults": {
+    "state": "authoring_proposal",
+    "sourceTraceability": "reviewed_program_pages_only_not_product_acceptance",
+    "existingProductMapping": "not_evaluated",
+    "existingProductCoverage": null,
+    "lessonQuestionAndAnswerSemanticAcceptance": "pending",
+    "constructionAndOpenEndedRubricImplemented": false,
+    "visualAcceptance": "pending",
+    "difficultyCalibration": "unknown",
+    "expertReview": "pending",
+    "rightsReview": "pending",
+    "publicationReady": false,
+    "learnerReady": false,
+    "missingStatuses": ["existing_product_mapping_or_new_original_authoring", "source_to_item_semantic_acceptance", "answer_and_representation_acceptance", "required_learner_evidence_and_rubric", "difficulty_calibration", "expert_and_rights_acceptance"]
+  },
+  "outputs": [
+    {
+      "code": "MAT.5.4.1",
+      "ownWordsTarget": "Verilen çevreyle uyumlu doğal sayı kenarları araştırma, oluşturma ve çoklu olasılığı açıklama",
+      "sourcePhysicalAndPrintedPages": [51, 53],
+      "sourceProcessLetters": ["a", "b", "c"],
+      "boundaryIds": ["B01", "B04", "B06", "B07", "B08"],
+      "notSufficient": "Tek bir bilinmeyen kenarı hesaplama bütün çıktının kanıtı değildir.",
+      "microSkills": [
+        {"id": "GQ-411-a", "sourceProcessLetter": "a", "ownWordsSkill": "Çevre koşuluyla uyumlu farklı kenar çiftlerini araştırma", "prerequisiteIds": ["P01", "P03", "P05"], "targetFamilyIds": ["F01"], "representationIds": ["R01", "R03", "R04"], "purpose": "Tek örnekten tek cevap varsayımına gitmemek", "requiredLearnerEvidence": "Geçerli çiftler ve çevre denetimi"},
+        {"id": "GQ-411-b", "sourceProcessLetter": "b", "ownWordsSkill": "Verilen çevreye uyan dikdörtgeni kendisi oluşturma", "prerequisiteIds": ["P01", "P03", "P05"], "targetFamilyIds": ["F02"], "representationIds": ["R01", "R03", "R05"], "purpose": "Hazır şekil seçiminden bağımsız oluşturma", "requiredLearnerEvidence": "Çizim, kenar etiketi ve dört kenar kontrolü"},
+        {"id": "GQ-411-c", "sourceProcessLetter": "c", "ownWordsSkill": "Farklı kenarlı dikdörtgenlerin aynı çevreye sahip olabilmesini açıklama", "prerequisiteIds": ["P01", "P03", "P05"], "targetFamilyIds": ["F03"], "representationIds": ["R01", "R04", "R05"], "purpose": "Sabit çevre ve değişen biçimi ayırt etme", "requiredLearnerEvidence": "En az iki model arasında gerekçeli ilişki"}
+      ]
+    },
+    {
+      "code": "MAT.5.4.2",
+      "ownWordsTarget": "Eş birim kareyle ölçmeden satır-sütun ilişkisine ve alan bağıntısına ulaşma",
+      "sourcePhysicalAndPrintedPages": [51, 52, 53],
+      "sourceProcessLetters": ["a", "b", "c", "ç"],
+      "boundaryIds": ["B01", "B02", "B06", "B08"],
+      "notSufficient": "Ölçme düzeni olmadan ezberlenmiş çarpma sonucu anlama kanıtı değildir.",
+      "microSkills": [
+        {"id": "GQ-412-a", "sourceProcessLetter": "a", "ownWordsSkill": "Alanı ölçmek için eş birim kareyi ölçüt seçme", "prerequisiteIds": ["P04", "P05"], "targetFamilyIds": ["F04"], "representationIds": ["R02", "R05"], "purpose": "Ölçülen yüzey ile ölçü birimini ayırma", "requiredLearnerEvidence": "Seçilen birimin neden uygun olduğu"},
+        {"id": "GQ-412-b", "sourceProcessLetter": "b", "ownWordsSkill": "Yüzeyi eş birim karelerle ölçme", "prerequisiteIds": ["P04", "P05"], "targetFamilyIds": ["F05"], "representationIds": ["R02", "R06"], "purpose": "Birim kare sayısı olarak alanı anlamlandırma", "requiredLearnerEvidence": "Boşluksuz/örtüşmesiz örtme ve birimli sayım"},
+        {"id": "GQ-412-c", "sourceProcessLetter": "c", "ownWordsSkill": "Satır ve sütun sayısını iki komşu kenarla ilişkilendirme", "prerequisiteIds": ["P01", "P04", "P05"], "targetFamilyIds": ["F06"], "representationIds": ["R02", "R04", "R06"], "purpose": "Her çarpanın neyi saydığını bilme", "requiredLearnerEvidence": "Kare düzeninden çarpanların açıklanması"},
+        {"id": "GQ-412-ç", "sourceProcessLetter": "ç", "ownWordsSkill": "Alan bağıntısını düzenli birim kare sayımından gerekçelendirme", "prerequisiteIds": ["P01", "P04", "P05"], "targetFamilyIds": ["F07"], "representationIds": ["R02", "R05", "R06"], "purpose": "Formülün ölçme anlamından kopmaması", "requiredLearnerEvidence": "Model, çarpma bağıntısı ve alan biriminin ilişkisi"}
+      ]
+    },
+    {
+      "code": "MAT.5.4.3",
+      "ownWordsTarget": "Alan-çevre ilişkisini iki yönde farklı doğal sayı kenarlı modellerle inceleme",
+      "sourcePhysicalAndPrintedPages": [51, 53, 54],
+      "sourceProcessLetters": ["a", "b", "c"],
+      "boundaryIds": ["B01", "B03", "B06", "B07", "B08"],
+      "requiredComparisonDirections": ["area_to_perimeter", "perimeter_to_area"],
+      "notSufficient": "Yalnız aynı alan yönü, tek ters işlem veya çok sayıda sayısal varyant çift yönlü çıktıyı tamamlamaz.",
+      "microSkills": [
+        {"id": "GQ-413-a-A2P", "sourceProcessLetter": "a", "direction": "area_to_perimeter", "ownWordsSkill": "Alan verildiğinde oluşabilecek çevreleri araştırma", "prerequisiteIds": ["P01", "P03", "P04", "P05", "P06"], "targetFamilyIds": ["F08"], "representationIds": ["R01", "R02", "R03"], "purpose": "Alanın tek başına çevreyi belirlemediğini inceleme", "requiredLearnerEvidence": "Aynı alanı koruyan birden fazla oluşturulmuş model"},
+        {"id": "GQ-413-a-P2A", "sourceProcessLetter": "a", "direction": "perimeter_to_area", "ownWordsSkill": "Çevre verildiğinde oluşabilecek alanları araştırma", "prerequisiteIds": ["P01", "P03", "P04", "P05", "P06"], "targetFamilyIds": ["F09"], "representationIds": ["R01", "R02", "R03"], "purpose": "Çevrenin tek başına alanı belirlemediğini inceleme", "requiredLearnerEvidence": "Aynı çevreyi koruyan birden fazla oluşturulmuş model"},
+        {"id": "GQ-413-b-A2P", "sourceProcessLetter": "b", "direction": "area_to_perimeter", "ownWordsSkill": "Aynı alanlı modellerin çevrelerini tablo ve çizimle belirleme", "prerequisiteIds": ["P01", "P03", "P04", "P05", "P06"], "targetFamilyIds": ["F08"], "representationIds": ["R01", "R02", "R04"], "purpose": "Sabit alanı korurken çevrenin değişimini doğru ölçme", "requiredLearnerEvidence": "Çizimle eşleşen kenar-alan-çevre satırları"},
+        {"id": "GQ-413-b-P2A", "sourceProcessLetter": "b", "direction": "perimeter_to_area", "ownWordsSkill": "Aynı çevreli modellerin alanlarını tablo ve çizimle belirleme", "prerequisiteIds": ["P01", "P03", "P04", "P05", "P06"], "targetFamilyIds": ["F09"], "representationIds": ["R01", "R02", "R04"], "purpose": "Sabit çevreyi korurken alanın değişimini doğru ölçme", "requiredLearnerEvidence": "Çizimle eşleşen alan satırları ve tüm modellerde 36 sınırı"},
+        {"id": "GQ-413-c-A2P", "sourceProcessLetter": "c", "direction": "area_to_perimeter", "ownWordsSkill": "Alan eşitliğinin çevre eşitliğini zorunlu kılmadığını açıklama", "prerequisiteIds": ["P01", "P04", "P05", "P06"], "targetFamilyIds": ["F08"], "representationIds": ["R01", "R04", "R05"], "purpose": "Yanlış ilişkiyi gerekçeli karşı örnekle sınama", "requiredLearnerEvidence": "Sabit alan ve farklı çevreyi gösteren açıklama"},
+        {"id": "GQ-413-c-P2A", "sourceProcessLetter": "c", "direction": "perimeter_to_area", "ownWordsSkill": "Çevre eşitliğinin alan eşitliğini zorunlu kılmadığını açıklama", "prerequisiteIds": ["P01", "P04", "P05", "P06"], "targetFamilyIds": ["F09"], "representationIds": ["R01", "R04", "R05"], "purpose": "Ters yöndeki yanlış ilişkiyi ayrı karşı örnekle sınama", "requiredLearnerEvidence": "Sabit çevre ve farklı alanı gösteren açıklama"}
+      ]
+    },
+    {
+      "code": "MAT.5.4.4",
+      "ownWordsTarget": "Bağlamı çözümleyip temsil ve strateji kurma, uygulama, denetleme ve koşullu genelleme",
+      "sourcePhysicalAndPrintedPages": [51, 54],
+      "sourceProcessLetters": ["a", "b", "c", "ç", "d", "e", "f", "g", "ğ", "h"],
+      "boundaryIds": ["B02", "B06", "B08"],
+      "comparisonBoundaryWhenBorrowingMat543": "B03",
+      "naturalSidesInCoreAuthoring": "authoring_scope_choice_not_a_repeated_explicit_page_54_rule",
+      "notSufficient": "Sonuç puanı, kullanılan stratejiyi veya bağımsız transferi tek başına göstermez.",
+      "microSkills": [
+        {"id": "GQ-414-a", "sourceProcessLetter": "a", "ownWordsSkill": "İstenen büyüklük ve ilgili matematiksel verilenleri ayıklama", "prerequisiteIds": ["P01", "P04", "P06"], "targetFamilyIds": ["F10"], "representationIds": ["R01", "R05", "R07"], "purpose": "Her sayının neyi temsil ettiğini bilme", "requiredLearnerEvidence": "Verilen-istenen ayrımı ve sayı anlamları"},
+        {"id": "GQ-414-b", "sourceProcessLetter": "b", "ownWordsSkill": "Şekil, uzunluk ve yüzey arasındaki ilişkileri belirleme", "prerequisiteIds": ["P01", "P04", "P06"], "targetFamilyIds": ["F10"], "representationIds": ["R01", "R04", "R05"], "purpose": "İşlemin seçilme nedenini kavrama", "requiredLearnerEvidence": "Ölçülen büyüklük ile işlem arasındaki gerekçe"},
+        {"id": "GQ-414-c", "sourceProcessLetter": "c", "ownWordsSkill": "Bağlamı farklı matematiksel temsillere dönüştürme", "prerequisiteIds": ["P01", "P03", "P04", "P06"], "targetFamilyIds": ["F11"], "representationIds": ["R01", "R02", "R03", "R04", "R07"], "purpose": "Bilgiyi temsil değiştirirken koruma", "requiredLearnerEvidence": "Eşleşen bağlam, çizim ve tablo"},
+        {"id": "GQ-414-ç", "sourceProcessLetter": "ç", "ownWordsSkill": "Temsil ettiği problemi kendi sözleriyle açıklama", "prerequisiteIds": ["P01", "P04", "P06"], "targetFamilyIds": ["F10", "F11"], "representationIds": ["R01", "R04", "R05", "R07"], "purpose": "Hazır çözüm metninden bağımsız anlamlandırma", "requiredLearnerEvidence": "Kendi temsiline bağlı anlaşılabilir açıklama"},
+        {"id": "GQ-414-d", "sourceProcessLetter": "d", "ownWordsSkill": "Sonuç büyüklüğünü tahmin etme ve strateji seçme", "prerequisiteIds": ["P01", "P05", "P06"], "targetFamilyIds": ["F12"], "representationIds": ["R04", "R05", "R07"], "purpose": "Hesaptan önce tahmin ve yol tercihi", "requiredLearnerEvidence": "Önceki tahmin ve seçilen yolun nedeni"},
+        {"id": "GQ-414-e", "sourceProcessLetter": "e", "ownWordsSkill": "Seçilen stratejiyi gerekçeli adımlarla uygulama", "prerequisiteIds": ["P01", "P05", "P06"], "targetFamilyIds": ["F13"], "representationIds": ["R01", "R02", "R05", "R06", "R07"], "purpose": "Aritmetik ile ölçme anlamını birlikte koruma", "requiredLearnerEvidence": "İşlem, operand anlamı, ara sonuç ve birim"},
+        {"id": "GQ-414-f", "sourceProcessLetter": "f", "ownWordsSkill": "Çözümü kontrol edip işe yaramayan yolu değiştirme", "prerequisiteIds": ["P01", "P05", "P06"], "targetFamilyIds": ["F14"], "representationIds": ["R05", "R06", "R08"], "purpose": "Hata nedeninden uygun yeni stratejiye geçme", "requiredLearnerEvidence": "İlk iz, kontrol ve gerekçeli düzeltme"},
+        {"id": "GQ-414-g", "sourceProcessLetter": "g", "ownWordsSkill": "Alternatif çözüm yollarının uygunluğunu karşılaştırma", "prerequisiteIds": ["P01", "P05", "P06"], "targetFamilyIds": ["F15"], "representationIds": ["R05", "R08"], "purpose": "Yol tercihini doğru sonuçtan ayrı değerlendirme", "requiredLearnerEvidence": "İki yolun doğruluğu ve kullanım koşulu"},
+        {"id": "GQ-414-ğ", "sourceProcessLetter": "ğ", "ownWordsSkill": "Bir stratejiyi benzer yeni bir probleme taşıma", "prerequisiteIds": ["P01", "P05", "P06"], "targetFamilyIds": ["F16"], "representationIds": ["R01", "R03", "R05", "R07"], "purpose": "Yöntemi bağımsız problem kurmada kullanma", "requiredLearnerEvidence": "Öğrenci oluşturduğu bağlam, koşul ve çözüm gerekçesi"},
+        {"id": "GQ-414-h", "sourceProcessLetter": "h", "ownWordsSkill": "Genellemenin geçerli olduğu koşulları örneklerle sınama", "prerequisiteIds": ["P01", "P05", "P06"], "targetFamilyIds": ["F17"], "representationIds": ["R01", "R04", "R05", "R06"], "purpose": "Kısa yolun koşulsuz kurala dönüşmemesi", "requiredLearnerEvidence": "Doğrulayan örnek ve gerektiğinde karşı örnek"}
+      ]
+    }
+  ],
+  "authoringControlExamples": {
+    "origin": "new_math_control_vectors_not_copied_source_questions_or_product_items",
+    "sameArea": {"areaSquareUnits": 12, "models": [{"width": 1, "height": 12, "perimeterUnits": 26}, {"width": 2, "height": 6, "perimeterUnits": 16}, {"width": 3, "height": 4, "perimeterUnits": 14}]},
+    "samePerimeter": {"perimeterUnits": 16, "models": [{"width": 1, "height": 7, "areaSquareUnits": 7}, {"width": 2, "height": 6, "areaSquareUnits": 12}, {"width": 3, "height": 5, "areaSquareUnits": 15}, {"width": 4, "height": 4, "areaSquareUnits": 16}]},
+    "productQuestionContribution": 0
+  },
+  "assessment": {
+    "sourcePages": [52, 53, 54],
+    "observedFormatFamiliesOwnWords": ["Açık uçlu açıklama", "Kısa cevap", "Eşleştirme ve gerekçeli doğru/yanlış", "Yapılandırılmış grid", "Çalışma kağıdı", "İzleme testi", "Performans ve akran değerlendirme"],
+    "constructionCannotBeProvedBySelectionOnly": true,
+    "openEndedRubricsImplemented": false,
+    "sourceOfficialQuestionCounts": null,
+    "sourceOfficialDifficultyPercentages": null,
+    "projectDifficultyProfileRequiresSeparateTeacherAndCalibrationReview": true,
+    "independentAttemptHintedAttemptAndConstructionEvidenceMustDiffer": true,
+    "studentCognitiveOrIntelligenceClassificationApproved": false
+  },
+  "media": {
+    "visualRepresentationProposalsOnly": true,
+    "unscaledSourceMustNotGainInventedPixelsPerUnit": true,
+    "unknownSideMustNotBeShownAsGiven": true,
+    "newTransferGeometryRequiresItsOwnVerifiedRepresentation": true,
+    "rendererBindingImplementedByThisArtifact": false,
+    "audioGeneratedByThisArtifact": false,
+    "videoGeneratedByThisArtifact": false,
+    "wordPenAlignmentVerifiedByThisArtifact": false,
+    "accessibilityAcceptance": "pending"
+  },
+  "gaps": [
+    {"area": "active_course_program_decision", "status": "pending", "requiredEvidence": "Öğretim yılına ve derse özgü resmî uygulama kararı"},
+    {"area": "other_themes_and_historical_versions", "status": "not_reviewed_in_this_slice", "requiredEvidence": "Ayrı metin/görsel inceleme ve sürüm karşılaştırması"},
+    {"area": "real_lessons_and_questions_for_each_micro_skill", "status": "not_authored_by_this_artifact_existing_product_mapping_unverified", "requiredEvidence": "Her mikrobeceri için özgün içerik veya mevcut içeriğin yeni kaynak eşlemesi; cevap/anlam ve temsil denetimi"},
+    {"area": "family_distinctness", "status": "authoring_proposals_only", "requiredEvidence": "Sayısal varyanttan farklı amaç/temsil ve uzman kontrolü"},
+    {"area": "construction_and_open_ended_rubrics", "status": "not_implemented", "requiredEvidence": "Öğretmen rubriği, yanlış/eksik yanıt örnekleri ve pilot değerlendirme"},
+    {"area": "difficulty", "status": "unknown", "requiredEvidence": "Hedef grupta kalibrasyon ve öğretmen kabulü"},
+    {"area": "governance_owner_steward_and_retention", "status": "unassigned_or_pending", "requiredEvidence": "Sahip, veri sözlüğü, sürüm/amaç/erişim/saklama ve denetim kaydı"},
+    {"area": "commercial_rights_and_expert_acceptance", "status": "pending", "requiredEvidence": "Açık erişimden bağımsız ticari izin ve pedagojik kabul"},
+    {"area": "visual_audio_video_and_accessibility_acceptance", "status": "pending", "requiredEvidence": "Kaynağa bağlı medya, gerçek oynatım ve öğretmen/erişilebilirlik kabulü"}
+  ]
+}
