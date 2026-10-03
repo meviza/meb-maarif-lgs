@@ -7,6 +7,8 @@
  * human reviews and source records.
  */
 
+import { findCanonicalCurriculumOutcome } from '../reference-data/curriculum_registry.mjs';
+
 export const CONTENT_PACKAGE_CONTRACT_VERSION = '1.0.0';
 
 const FORBIDDEN_STUDENT_FIELDS = new Set([
@@ -102,7 +104,12 @@ function validateCurriculum(curriculum, errors) {
     return;
   }
 
+  requireString(errors, curriculum.registryEntryId, 'curriculum.registryEntryId', 'curriculum_registry_entry_id_missing', 'A curriculum registry entry identifier is required');
   requireString(errors, curriculum.programVersion, 'curriculum.programVersion', 'program_version_missing', 'A program version is required');
+  if (!Number.isInteger(curriculum.grade) || curriculum.grade < 1 || curriculum.grade > 8) {
+    addError(errors, 'curriculum.grade', 'curriculum_grade_invalid', 'A grade from 1 through 8 is required');
+  }
+  requireString(errors, curriculum.courseKey, 'curriculum.courseKey', 'curriculum_course_key_missing', 'A course key is required');
   requireString(errors, curriculum.outcomeCode, 'curriculum.outcomeCode', 'outcome_code_missing', 'An outcome code is required');
   if (curriculum.verificationState !== 'canonical_verified') {
     addError(errors, 'curriculum.verificationState', 'curriculum_not_verified', 'Curriculum must be canonically verified before student delivery');
@@ -176,4 +183,39 @@ export function validateStudentContentPackageManifest(manifest) {
   }
 
   return { valid: errors.length === 0, errors };
+}
+
+/**
+ * Validate a package against a supplied curriculum registry snapshot. A
+ * self-declared canonical state is not enough to cross the student boundary.
+ * This function is pure and never fetches, writes, or publishes anything.
+ */
+export function validateStudentDeliveryPackage(manifest, curriculumEntries) {
+  const manifestValidation = validateStudentContentPackageManifest(manifest);
+  if (!manifestValidation.valid) {
+    return manifestValidation;
+  }
+
+  const canonicalEntry = findCanonicalCurriculumOutcome(curriculumEntries, {
+    registryEntryId: manifest.curriculum.registryEntryId,
+    programVersion: manifest.curriculum.programVersion,
+    grade: manifest.curriculum.grade,
+    courseKey: manifest.curriculum.courseKey,
+    outcomeCode: manifest.curriculum.outcomeCode
+  });
+
+  if (!canonicalEntry) {
+    return {
+      valid: false,
+      errors: [
+        {
+          path: 'curriculum',
+          code: 'curriculum_registry_no_canonical_match',
+          message: 'A matching canonically verified curriculum registry entry is required'
+        }
+      ]
+    };
+  }
+
+  return { valid: true, errors: [] };
 }

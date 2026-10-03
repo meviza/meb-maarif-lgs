@@ -18,8 +18,10 @@ function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
-function findReview(reviews, discipline) {
-  return reviews.find(review => review?.discipline === discipline);
+function findReviews(reviews, discipline) {
+  return reviews
+    .map((review, index) => ({ review, index }))
+    .filter(({ review }) => review?.discipline === discipline);
 }
 
 /**
@@ -44,8 +46,8 @@ export function evaluateContentReleaseReadiness(candidate) {
   }
 
   for (const requiredReview of REQUIRED_REVIEWS) {
-    const review = findReview(reviews, requiredReview.discipline);
-    if (!review) {
+    const matchingReviews = findReviews(reviews, requiredReview.discipline);
+    if (matchingReviews.length === 0) {
       addError(
         errors,
         'reviews',
@@ -55,7 +57,19 @@ export function evaluateContentReleaseReadiness(candidate) {
       continue;
     }
 
-    const reviewIndex = reviews.indexOf(review);
+    if (matchingReviews.length > 1) {
+      matchingReviews.slice(1).forEach(({ index }) => {
+        addError(
+          errors,
+          `reviews[${index}].discipline`,
+          'duplicate_review_discipline',
+          'only one active review is allowed for each discipline'
+        );
+      });
+      continue;
+    }
+
+    const { review, index: reviewIndex } = matchingReviews[0];
     const reviewPath = `reviews[${reviewIndex}]`;
     if (review.decision !== 'approved' || review.reviewerRole !== requiredReview.reviewerRole) {
       addError(

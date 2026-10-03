@@ -18,6 +18,7 @@ async function loadRegistry() {
 function canonicalEntry(overrides = {}) {
   return {
     contractVersion: '1.0.0',
+    registryEntryId: 'CURR-G1-TR-001',
     programVersion: 'FIXTURE-PROGRAM-2026-V1',
     grade: 1,
     courseKey: 'turkce',
@@ -64,6 +65,24 @@ test('rejects a record labelled canonical_verified when human canonical-review e
   });
 });
 
+test('rejects a canonical record that has no stable registry entry identifier', async () => {
+  const { validateCurriculumRegistryEntry } = await loadRegistry();
+  const entry = canonicalEntry({ registryEntryId: '' });
+
+  const result = validateCurriculumRegistryEntry(entry);
+
+  assert.deepEqual(result, {
+    valid: false,
+    errors: [
+      {
+        path: 'registryEntryId',
+        code: 'registry_entry_id_missing',
+        message: 'a stable curriculum registry entry identifier is required'
+      }
+    ]
+  });
+});
+
 test('resolves an outcome only from a matching canonically verified program record', async () => {
   const { findCanonicalCurriculumOutcome } = await loadRegistry();
   const entry = canonicalEntry();
@@ -81,6 +100,7 @@ test('resolves an outcome only from a matching canonically verified program reco
   const result = findCanonicalCurriculumOutcome(
     [unverifiedImport, entry],
     {
+      registryEntryId: 'CURR-G1-TR-001',
       programVersion: 'FIXTURE-PROGRAM-2026-V1',
       grade: 1,
       courseKey: 'turkce',
@@ -91,3 +111,19 @@ test('resolves an outcome only from a matching canonically verified program reco
   assert.deepEqual(result, entry);
 });
 
+test('does not resolve a same-scope record when the stable registry entry identifier differs', async () => {
+  const { findCanonicalCurriculumOutcome } = await loadRegistry();
+
+  const result = findCanonicalCurriculumOutcome(
+    [canonicalEntry()],
+    {
+      registryEntryId: 'CURR-G1-TR-OTHER',
+      programVersion: 'FIXTURE-PROGRAM-2026-V1',
+      grade: 1,
+      courseKey: 'turkce',
+      outcomeCode: 'FIXTURE.1.1'
+    }
+  );
+
+  assert.equal(result, null);
+});

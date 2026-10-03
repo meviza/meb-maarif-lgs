@@ -278,3 +278,28 @@ test('blocks a purported human review without a review record or reviewer identi
     ]
   });
 });
+
+test('blocks a raw release candidate with duplicate review disciplines', async () => {
+  const { evaluateContentReleaseReadiness } = await loadReleaseGate();
+  const candidate = releaseReadyCandidate();
+  candidate.reviews.push(review({
+    reviewId: 'AR-002',
+    discipline: 'academic',
+    reviewerId: 'academic-reviewer-002',
+    reviewerRole: 'academic_reviewer'
+  }));
+
+  const result = evaluateContentReleaseReadiness(candidate);
+
+  assert.deepEqual(result, {
+    ready: false,
+    nextState: 'blocked',
+    errors: [
+      {
+        path: 'reviews[4].discipline',
+        code: 'duplicate_review_discipline',
+        message: 'only one active review is allowed for each discipline'
+      }
+    ]
+  });
+});

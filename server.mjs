@@ -211,12 +211,10 @@ export function createPlatformServer() {
 
     const testMatch = pathname.match(/^\/api\/tests\/([a-zA-Z0-9_-]+)$/);
     if (req.method === 'GET' && testMatch) {
-      const testData = db.getTestById(testMatch[1]);
-      if (!testData) {
-        sendNotFound(res);
-        return;
-      }
-      sendJson(res, 200, toStudentTestDto(testData));
+      // Legacy banks have no verified delivery manifest, canonical registry
+      // match, or decision-backed release evidence. Do not expose a raw test
+      // DTO until a later read-only package resolver supplies all three.
+      sendNotFound(res);
       return;
     }
 

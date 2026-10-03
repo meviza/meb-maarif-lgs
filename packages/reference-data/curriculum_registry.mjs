@@ -91,6 +91,9 @@ export function validateCurriculumRegistryEntry(entry) {
   if (entry.contractVersion !== CURRICULUM_REGISTRY_CONTRACT_VERSION) {
     addError(errors, 'contractVersion', 'contract_version_unsupported', `expected contract version ${CURRICULUM_REGISTRY_CONTRACT_VERSION}`);
   }
+  if (!isNonEmptyString(entry.registryEntryId)) {
+    addError(errors, 'registryEntryId', 'registry_entry_id_missing', 'a stable curriculum registry entry identifier is required');
+  }
   if (!isNonEmptyString(entry.programVersion)) {
     addError(errors, 'programVersion', 'program_version_missing', 'a program version is required');
   }
@@ -128,6 +131,7 @@ export function findCanonicalCurriculumOutcome(entries, selector) {
     const validation = validateCurriculumRegistryEntry(entry);
     return validation.valid &&
       entry.verificationState === 'canonical_verified' &&
+      entry.registryEntryId === selector.registryEntryId &&
       entry.programVersion === selector.programVersion &&
       entry.grade === selector.grade &&
       entry.courseKey === selector.courseKey &&
@@ -136,4 +140,3 @@ export function findCanonicalCurriculumOutcome(entries, selector) {
 
   return found ? structuredClone(found) : null;
 }
-

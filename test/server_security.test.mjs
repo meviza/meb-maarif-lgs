@@ -19,7 +19,7 @@ async function startServer() {
   };
 }
 
-test('keeps answer-bearing banks private while exposing only a student-safe test DTO', async (t) => {
+test('keeps answer-bearing banks and raw prototype test DTOs unavailable without a verified delivery package', async (t) => {
   const platform = await startServer();
   t.after(async () => platform.stop());
 
@@ -34,25 +34,9 @@ test('keeps answer-bearing banks private while exposing only a student-safe test
   }
 
   const response = await fetch(`${platform.origin}/api/tests/TR-T1`);
-  assert.equal(response.status, 200);
+  assert.equal(response.status, 404);
   assert.equal(response.headers.get('access-control-allow-origin'), null);
-
-  const testDto = await response.json();
-  const question = testDto.questions[0];
-  for (const forbiddenField of [
-    'correctOption',
-    'correct_option',
-    'correctAnswer',
-    'solutionStrategy',
-    'solution_strategy',
-    'detailedSolution',
-    'detailed_solution',
-    'distractors',
-    'jevAudit',
-    'videoSolution'
-  ]) {
-    assert.equal(forbiddenField in question, false, forbiddenField);
-  }
+  assert.deepEqual(await response.json(), { error: 'Not found' });
 });
 
 test('rejects cross-origin preflight instead of advertising a wildcard CORS policy', async (t) => {
