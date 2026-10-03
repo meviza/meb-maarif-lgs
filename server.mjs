@@ -123,6 +123,15 @@ function safeGradeSummary() {
   return buildGradesOneToEightFoundationCatalog(prototypeSummaries);
 }
 
+function getSupportedGradeMetadata(parsedUrl) {
+  const requestedGrade = parsedUrl.searchParams.get('grade');
+  const grade = requestedGrade === null ? 8 : Number(requestedGrade);
+  if (!Number.isInteger(grade)) {
+    return null;
+  }
+  return safeGradeSummary().find(summary => summary.grade === grade) || null;
+}
+
 export function createPlatformServer() {
   return http.createServer((req, res) => {
     const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
@@ -155,7 +164,12 @@ export function createPlatformServer() {
     }
 
     if (req.method === 'GET' && pathname === '/api/courses') {
-      const grade = Number(parsedUrl.searchParams.get('grade') || 8);
+      const gradeMetadata = getSupportedGradeMetadata(parsedUrl);
+      if (!gradeMetadata) {
+        sendNotFound(res);
+        return;
+      }
+      const grade = gradeMetadata.grade;
       const courses = db.getCoursesSummary(grade).map(({ key, name, grade: courseGrade, icon, subtitle, testCount, questionCount }) => ({
         key,
         name,
@@ -165,14 +179,25 @@ export function createPlatformServer() {
         testCount,
         questionCount
       }));
-      sendJson(res, 200, { grade, courses, scope: 'prototype_metadata' });
+      sendJson(res, 200, {
+        grade,
+        courses,
+        contentState: gradeMetadata.contentState,
+        curriculumTraceability: gradeMetadata.curriculumTraceability,
+        scope: 'foundation_reference_and_prototype_metadata'
+      });
       return;
     }
 
     const courseTestsMatch = pathname.match(/^\/api\/courses\/([a-zA-Z0-9_-]+)\/tests$/);
     if (req.method === 'GET' && courseTestsMatch) {
       const courseKey = courseTestsMatch[1];
-      const grade = parsedUrl.searchParams.get('grade');
+      const gradeMetadata = getSupportedGradeMetadata(parsedUrl);
+      if (!gradeMetadata) {
+        sendNotFound(res);
+        return;
+      }
+      const grade = gradeMetadata.grade;
       const tests = db.getTestsByCourse(courseKey, grade).map(({ id, title, questionCount, durationMinutes }) => ({
         id,
         title,
@@ -180,7 +205,7 @@ export function createPlatformServer() {
         durationMinutes,
         contentState: 'draft'
       }));
-      sendJson(res, 200, { courseKey, grade: grade ? Number(grade) : null, tests });
+      sendJson(res, 200, { courseKey, grade, tests });
       return;
     }
 

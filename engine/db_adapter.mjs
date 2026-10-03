@@ -106,8 +106,9 @@ class DatabaseAdapter {
   // 1. Kurs Özetleri (Varsayılan grade = 8 ile geriye dönük %100 uyumlu)
   getCoursesSummary(grade = 8) {
     this.init();
-    const g = Number(grade) || 8;
-    const bank = this.gradeBanks[g] || this.gradeBanks[8] || this.multiTestBank;
+    const requestedGrade = Number(grade);
+    const g = Number.isInteger(requestedGrade) ? requestedGrade : 8;
+    const bank = this.gradeBanks[g] || {};
     const result = [];
     const courseMeta = {
       turkce: { icon: 'book-open', subtitle: g === 8 ? 'Paragraf & Sözel Mantık' : 'Okuma Anlama & Dil Becerileri' },
@@ -137,15 +138,7 @@ class DatabaseAdapter {
   getTestsByCourse(courseKey, grade = null) {
     this.init();
     const g = grade ? Number(grade) : 8;
-    let course = this.gradeBanks[g]?.[courseKey] || this.multiTestBank?.[courseKey];
-    if (!course) {
-      for (const b of Object.values(this.gradeBanks)) {
-        if (b[courseKey]) {
-          course = b[courseKey];
-          break;
-        }
-      }
-    }
+    const course = this.gradeBanks[g]?.[courseKey];
     if (!course || !course.tests) return [];
 
     return course.tests.map(t => ({
