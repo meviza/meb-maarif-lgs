@@ -11,6 +11,7 @@ import http from 'http';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { db } from './engine/db_adapter.mjs';
+import { buildGradesOneToEightFoundationCatalog } from './packages/reference-data/grade_catalog.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -112,13 +113,14 @@ function serveStaticFile(req, res, pathname) {
 }
 
 function safeGradeSummary() {
-  return db.getGrades().map(({ grade, name, courseCount, testCount, questionCount }) => ({
+  const prototypeSummaries = db.getGrades().map(({ grade, name, courseCount, testCount, questionCount }) => ({
     grade,
     name,
     courseCount,
     testCount,
     questionCount
   }));
+  return buildGradesOneToEightFoundationCatalog(prototypeSummaries);
 }
 
 export function createPlatformServer() {
@@ -145,7 +147,10 @@ export function createPlatformServer() {
     }
 
     if (req.method === 'GET' && pathname === '/api/grades') {
-      sendJson(res, 200, { grades: safeGradeSummary(), scope: 'prototype_metadata' });
+      sendJson(res, 200, {
+        grades: safeGradeSummary(),
+        scope: 'foundation_reference_and_prototype_metadata'
+      });
       return;
     }
 

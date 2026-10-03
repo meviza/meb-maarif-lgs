@@ -118,6 +118,7 @@ Bu kapılar çalışmadan DAMA, CMMI veya SPICE uyumu; MEB onayı; ya da üretim
 
 - [`packages/contracts/content_package_manifest.mjs`](../packages/contracts/content_package_manifest.mjs), öğrenciye dağıtılacak içerik paketinde sürüm, owner/steward, amaç/saklama sınıfı, kaynak soy-ağacı, kanonik müfredat durumu, insan incelemeleri ve varlık hak/erişilebilirlik metadatasını denetler. Cevap anahtarı, doğru şık, ayrıntılı çözüm ve ham HTML öğrenci paketinde reddedilir.
 - [`packages/contracts/learning_event.mjs`](../packages/contracts/learning_event.mjs), Flutter'ın ilerideki çevrimdışı eşitlemesinde yalnız takma kimlikli, sürümlü içerik bağlamına bağlı olayları kabul eder. E-posta, telefon, ulusal kimlik, veli e-postası ve serbest yanıt metni reddedilir.
+- [`packages/reference-data/grade_catalog.mjs`](../packages/reference-data/grade_catalog.mjs) ve `/api/grades`, 1–8'i ana referans veri olarak döndürür. `not_seeded`, `prototype_unverified` ve `not_verified` durumları içerik, kanonik müfredat veya yayın kanıtı varmış gibi sunulmasını engeller.
 - Bu doğrulayıcılar saf ve durum tutmayan fonksiyonlardır: veri yazmaz, ağ çağrısı yapmaz, kimlik çözmez veya bir paketi kendiliğinden yayımlamaz. İnsan onayı ve gerçek yetkilendirme yerlerine geçmezler.
 
 Bu çekirdek, sonraki `learning_api`, Flutter ve React/Next istemcilerinin aynı sözleşmeyi uygulaması için başlangıç noktasıdır. Sözleşme sürüm değişiklikleri geriye dönük uyumluluk ve veri migrasyonu kanıtı olmadan yayınlanmaz.
