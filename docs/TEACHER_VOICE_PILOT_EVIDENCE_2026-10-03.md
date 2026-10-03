@@ -90,3 +90,18 @@ Toplam 22,12 s, iki düzeltilmiş WAV 1.061.916 byte. Dört kaynak/türev FFprob
 Normalize PCM RMS/peak: E 0,123633 / 0,858521; F 0,121769 / 0,813751. Her ikisinde tam ölçek örnek sayısı 0. Bu yalnız dosya düzeyi ölçümdür; algısal kalite, clipping yokluğu, hitabet, öğretmen sıcaklığı veya gerçek okunmuş metin kabulü anlamına gelmez. Yerel `male-alternatives-receipt.json` kaynak/üslup/hash/konfigürasyon/ölçüm/tercih beyanlarını tutar; sesler ve hesap ekranları kamu Git'ine alınmadı. Uygulama kodu değişmedi; önceki test sayısı yeni koşu olarak sunulmaz.
 
 Dinleme, hak ve öğretmen kabulü bekliyor; isimler/ders eşlemeleri seçilmedi, `publicationReady = false`. Çok sesli ürün yönü ve yaşa uygun şeffaf kurmaca karakter planı: [Türkçe rehber personaları](TEACHER_PERSONA_PLAN_2026-10-03.md). Önce isim/ses tercihi; sonra ders/yaş bazında daha temsilî değerlendirme ve kabul kapıları.
+
+## Sulafat ve Erinome — iki kadın hazır ses önizlemi
+
+Kullanıcı önceki seslerde tonlama/vurgu/duraklamayı doğal bulduğunu ve açık telaffuz/sıcak hitap istediğini bildirdi; tekil ses seçimi/rubrik skoru vermedi. İki kadın örneği daha üretmeyi onayladı. Sulafat ve Erinome [resmî tabloda kadın](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts); [hazır ses karakterleri](https://ai.google.dev/gemini-api/docs/speech-generation#prebuilt-voices) sırasıyla sıcak ve nettir. Bunlar sağlayıcı etiketleri, Türkçe performans kabulü değildir. Yeni önizlemlerden önceki olumlu geri bildirim bu iki örneğe uygulanmaz.
+
+Canlı `Feminine` filtresi, seçicide `Current` ve üretim öncesi kod önizlemesinde `voice_name="Sulafat"` / `voice_name="Erinome"` doğrulandı. Eski Fola etiketi kimlik kanıtı olarak kullanılmadı. Erinome panel kapanışı sonrası ilk AX okumasında ana kontrol henüz görünmedi; yeni durum okunarak kontrol bulundu, tahminî tıklama/ek üretim yapılmadı. Konfigürasyon kanıtı sağlayıcı yanıtından bağımsız ses attestasyonu değildir. Aynı özgün 24 kelimelik kaynak ve C üslup hash'i kullanıldı; iki anahtarsız UI üretimi, yeni credential/faturalama/Flow/öğrenci verisi yok.
+
+| Örnek | Hazır ses / üslup | Önizlem ismi | Süre | Düzeltilmiş WAV byte sayısı | Düzeltilmiş WAV SHA-256 |
+| --- | --- | --- | --- | --- | --- |
+| G | Sulafat / C | Selin | 11,64 s | 558.798 | `005f2bd509ba49138fe65c07c1a0a63f631678b7b6d52df71d0c332e88485631` |
+| H | Erinome / C | Ece | 10,96 s | 526.158 | `807ce40dccbe929da0ecf15725166c73456a72c2ba3e1986643c90c00e019f54` |
+
+Toplam 22,60 s, iki türev 1.084.956 byte. Kaynak/türevlerin FFprobe, tam decode, RIFF/WAV başlık ve hash kontrolleri geçti: mono 24 kHz/16-bit PCM. Kaynak byte-rate kusuru 96.000 → türev 48.000 olarak düzeltildi. PCM hashleri kaynak/türevde aynı: G `7245678b5e35cc5bdffaf6d8198cf0e42853e138f399724b3f4c03d7ccb640fb`, H `26a3cb82eb3833434d5d572fe38a2c35115d608fb3661d897e3acbbf0df8a6cb`. Ses hızı, seviyesi, örnekleme veya konuşma değiştirilmedi.
+
+Normalize RMS/peak: G 0,112968 / 0,735931; H 0,093397 / 0,650940; tam ölçek örnek sayısı iki dosyada da 0. Ölçümler doğallık, algısal kalite, clipping yokluğu, kelime doğruluğu veya pedagojik başarı kanıtı değildir. Yerel `female-alternatives-receipt.json` dosya ve kaynak bağını, yeni örneklerde kabul beklediğini, önceki öznel geri bildirimle ölçülmemiş pedagojik hipotezi ayrı kaydeder. Sesler/hesap ekranları kamu Git'ine gönderilmedi. Kod değişmedi, önceki yazılım test sayısı yeni koşu sayılmadı. Yeni örneklerin dinleme/hak/öğretmen incelemesi bekliyor; isimler derslere atanmadı, `publicationReady = false`.

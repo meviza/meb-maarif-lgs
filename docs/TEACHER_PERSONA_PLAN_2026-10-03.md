@@ -8,6 +8,14 @@ B keşif/merak, C adımlı çözüm/strateji üslup adayları korunur. Hazır se
 
 İlk isim önerileri: Iapetus → Deniz, Algieba → Arda, önceki Charon → Barış. Bunlar dinlemeyi kolaylaştıran **aday etiketler**, seçilmiş isimler veya belirli ders atamaları değildir. Uzun ders, geometri, fen terimleri, Türkçe vurgu ve İngilizce telaffuz bakımından ayrı örnekler değerlendirilmeden beş/altı ders için otomatik dağıtım yapılmaz. 1–2. sınıf hitabı bu 7–8. sınıf yönergeli matematik önizlemiyle onaylanmaz.
 
+Kullanıcı önceki isim önerilerini genel olarak beğendi; tekil isim/ses/ders seçimi yapılmadı. İki kadın hazır ses için önizlem etiketleri Sulafat → Selin, Erinome → Ece olarak verildi; ürün isimlerinin kesinleşmesi ve ses seçimi ayrıdır. İlk A/B/C örneklerinden kadın olarak algılanan sesin gerçek hazır ses kimliği doğrulanmadığından, o sesin ismi veya yeni kadın adaylarıyla aynı kimlikte olduğu uydurulmaz.
+
+## Dinleme geri bildirimi ve kalite hedefi
+
+Kullanıcı önceki örneklerin tonlama, vurgu ve doğal duraklamalarını insan benzeri bulduğunu; tok erkek hitabı ile açık telaffuz ve sıcak öğretici söyleyişi tercih ettiğini belirtti. Bu **genel, öznel dinleme geri bildirimi**; belirli aday ID'sinin seçimi, rubrik puanı, öğretmen onayı veya yeni kadın örneklerinin kabulü değildir. “TRT/spiker” ifadesi düzgün artikülasyon beklentisi olarak yorumlandı; belirli bir kişiyi klonlama veya kurum bağlantısı iddiası değildir. Sıcak, açık, anlaşılır hitap tüm adaylarda değerlendirilecektir; pedagojik yetenek cinsiyetten çıkarılmaz.
+
+Sesin öğrenci dikkatini, hatırlamayı ve çözüm isteğini artıracağı düşüncesi ürün/pedagoji **hipotezidir**, ölçülmüş öğrenme etkisi değildir. Sonraki pilotta yaşa uygun örneklerle anlama, sayı/birim doğruluğu, dinleme konforu ve öğrenme sonuçları ayrı değerlendirilir; performans iddiası yalnız uygun ölçüm ve uzman incelemesiyle yapılır.
+
 ## Çocuklara sunum
 
 İsimler kurmaca dijital öğrenme rehberlerini tanımlar. Gerçek, lisanslı bir insan öğretmen veya tanınmış kişinin sesi olduğu iddia edilmez; klonlama yapılmaz. Yaşa uygun kısa tanıtım: “Deniz, uygulamada yapay sesle konuşan öğrenme rehberin.” Kalite hedefi doğal ve anlaşılır hitabettir; yapay ses kullanımını yanıltıcı biçimde gizlemek değildir. Kullanıcı okul öğretmenine erişim ile dijital rehberi ayırt edebilmelidir.
