@@ -533,6 +533,43 @@ function assetRightsAreCurrent(rights, asOf) {
     (rights.validity.endsAt === null || timestamp <= Date.parse(rights.validity.endsAt));
 }
 
+function immutableAssetSubjectKey(asset) {
+  return JSON.stringify({
+    assetId: asset.assetId,
+    revisionId: asset.revisionId,
+    mediaType: asset.mediaType,
+    byteSha256: asset.byteSha256
+  });
+}
+
+function registerEvidenceRecord(recordRegistry, record, subjectKey, path, kind, errors) {
+  const existing = recordRegistry.get(record.recordId);
+  if (!existing) {
+    recordRegistry.set(record.recordId, {
+      sha256: record.sha256,
+      subjectKey
+    });
+    return;
+  }
+  if (existing.sha256 !== record.sha256) {
+    addError(
+      errors,
+      path,
+      'asset_evidence_record_hash_conflict',
+      `the same ${kind} record identifier cannot name different immutable record hashes`
+    );
+    return;
+  }
+  if (existing.subjectKey !== subjectKey) {
+    addError(
+      errors,
+      path,
+      'asset_evidence_record_subject_conflict',
+      `the same immutable ${kind} record cannot be reused for a different delivered asset subject`
+    );
+  }
+}
+
 /**
  * Validate a complete asset set at an explicitly supplied time and derive a
  * deterministic hash from the immutable, delivery-relevant evidence fields.
@@ -553,6 +590,8 @@ export function evaluateAssetEvidenceBundleSet(bundles, asOf) {
   }
 
   const seenAssetRevisions = new Set();
+  const rightsRecords = new Map();
+  const accessibilityRecords = new Map();
   bundles.forEach((bundle, index) => {
     const validation = validateAssetEvidenceBundle(bundle);
     if (!validation.valid) {
@@ -563,7 +602,8 @@ export function evaluateAssetEvidenceBundleSet(bundles, asOf) {
     }
 
     const assetKey = `${bundle.asset.assetId}\u0000${bundle.asset.revisionId}`;
-    if (seenAssetRevisions.has(assetKey)) {
+    const duplicateAssetRevision = seenAssetRevisions.has(assetKey);
+    if (duplicateAssetRevision) {
       addError(
         errors,
         `bundles[${index}].asset`,
@@ -572,6 +612,32 @@ export function evaluateAssetEvidenceBundleSet(bundles, asOf) {
       );
     }
     seenAssetRevisions.add(assetKey);
+
+    if (!duplicateAssetRevision) {
+      const subjectKey = immutableAssetSubjectKey(bundle.asset);
+      registerEvidenceRecord(
+        rightsRecords,
+        {
+          recordId: bundle.rights.rightsRecordId,
+          sha256: bundle.rights.rightsRecordSha256
+        },
+        subjectKey,
+        `bundles[${index}].rights.rightsRecordId`,
+        'rights',
+        errors
+      );
+      registerEvidenceRecord(
+        accessibilityRecords,
+        {
+          recordId: bundle.accessibility.accessibilityRecordId,
+          sha256: bundle.accessibility.accessibilityRecordSha256
+        },
+        subjectKey,
+        `bundles[${index}].accessibility.accessibilityRecordId`,
+        'accessibility',
+        errors
+      );
+    }
 
     if (!assetRightsAreCurrent(bundle.rights, asOf)) {
       addError(

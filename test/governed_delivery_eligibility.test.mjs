@@ -630,6 +630,36 @@ test('blocks delivery when a later withdrawn decision is effective in the public
   });
 });
 
+test('blocks a publication history whose decision sequence conflicts with the later withdrawal timestamp', async () => {
+  const { evaluateGovernedStudentDeliveryEligibility } = await loadEligibilityGate();
+  const publishedAtSequenceTwo = publicationDecision({
+    decisionId: 'PUB-G1-TR-002',
+    decisionSequence: 2,
+    decidedAt: '2026-10-03T02:00:00.000Z'
+  });
+  const withdrawnLaterButAtSequenceOne = publicationDecision({
+    decisionId: 'PUB-G1-TR-001',
+    outcome: 'withdrawn',
+    decisionSequence: 1,
+    decidedAt: '2026-10-03T03:00:00.000Z'
+  });
+  const baselineManifest = studentManifest();
+  const candidate = governedCandidate({
+    manifest: studentManifest({
+      content: {
+        ...baselineManifest.content,
+        publicationDecisionId: 'PUB-G1-TR-002'
+      }
+    }),
+    publicationDecisionHistory: [withdrawnLaterButAtSequenceOne, publishedAtSequenceTwo]
+  });
+
+  const result = evaluateGovernedStudentDeliveryEligibility(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'publication_history_timestamp_regression'), true);
+});
+
 test('blocks delivery when a review decision postdates the effective publication decision', async () => {
   const { evaluateGovernedStudentDeliveryEligibility } = await loadEligibilityGate();
   const candidate = governedCandidate({

@@ -321,6 +321,29 @@ test('derives an order-independent asset-set hash and rejects a duplicate immuta
   });
 });
 
+test('rejects reuse of one rights or accessibility record across different immutable asset subjects', async () => {
+  const { evaluateAssetEvidenceBundleSet } = await loadAssetEvidenceContract();
+  const visual = criticalSvgBundle();
+  const audio = instructionalAudioBundle({
+    rights: {
+      ...instructionalAudioBundle().rights,
+      rightsRecordId: visual.rights.rightsRecordId,
+      rightsRecordSha256: visual.rights.rightsRecordSha256
+    },
+    accessibility: {
+      ...instructionalAudioBundle().accessibility,
+      accessibilityRecordId: visual.accessibility.accessibilityRecordId,
+      accessibilityRecordSha256: visual.accessibility.accessibilityRecordSha256
+    }
+  });
+
+  const result = evaluateAssetEvidenceBundleSet([visual, audio], '2026-10-03T00:00:00.000Z');
+
+  assert.equal(result.valid, false);
+  assert.equal(result.errors.some(error => error.code === 'asset_evidence_record_subject_conflict'), true);
+  assert.equal(result.errors.filter(error => error.code === 'asset_evidence_record_subject_conflict').length, 2);
+});
+
 test('rejects an asset set when delivery rights have expired at the explicitly supplied evaluation time', async () => {
   const { evaluateAssetEvidenceBundleSet } = await loadAssetEvidenceContract();
   const bundle = criticalSvgBundle({

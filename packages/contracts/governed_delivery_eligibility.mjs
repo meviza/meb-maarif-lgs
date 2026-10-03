@@ -50,6 +50,7 @@ function resolveEffectivePublicationDecision(history, revision) {
   }
 
   const seenSequences = new Set();
+  const seenDecisionIds = new Set();
   const validDecisions = [];
   history.forEach((decision, index) => {
     const validation = validateContentPublicationDecision(decision);
@@ -67,6 +68,16 @@ function resolveEffectivePublicationDecision(history, revision) {
       );
     }
     seenSequences.add(decision.decisionSequence);
+
+    if (seenDecisionIds.has(decision.decisionId)) {
+      addError(
+        errors,
+        `publicationDecisionHistory[${index}].decisionId`,
+        'publication_history_decision_id_not_distinct',
+        'each publication decision identifier must be distinct within a revision history'
+      );
+    }
+    seenDecisionIds.add(decision.decisionId);
 
     if (
       decision.targetRevision.contentItemId !== revision.contentItemId ||
@@ -95,11 +106,26 @@ function resolveEffectivePublicationDecision(history, revision) {
     return { errors, decision: null, index: -1 };
   }
 
-  validDecisions.sort((left, right) => right.decision.decisionSequence - left.decision.decisionSequence);
+  validDecisions.sort((left, right) => left.decision.decisionSequence - right.decision.decisionSequence);
+  for (let index = 1; index < validDecisions.length; index += 1) {
+    const prior = validDecisions[index - 1];
+    const current = validDecisions[index];
+    if (Date.parse(current.decision.decidedAt) < Date.parse(prior.decision.decidedAt)) {
+      addError(
+        errors,
+        `publicationDecisionHistory[${current.index}].decidedAt`,
+        'publication_history_timestamp_regression',
+        'publication decision timestamps must not move backward as decision sequence increases'
+      );
+    }
+  }
+  if (errors.length > 0) {
+    return { errors, decision: null, index: -1 };
+  }
   return {
     errors: [],
-    decision: validDecisions[0].decision,
-    index: validDecisions[0].index
+    decision: validDecisions[validDecisions.length - 1].decision,
+    index: validDecisions[validDecisions.length - 1].index
   };
 }
 
