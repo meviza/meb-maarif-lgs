@@ -5,7 +5,8 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
-- [Gece ilerleme kaydı: 839 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece ilerleme kaydı: 893 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gerçek aylık LGS edinimi ve özel Drive byte kanıtı](docs/LGS_MONTHLY_ROOT_ARCHIVE_ACCEPTANCE_2026-10-04.md), [caption review/DOM fabrika bağlantısı](docs/CAPTION_REVIEW_FACTORY_ACCEPTANCE_2026-10-04.md) ve [gerçek sentetik defter adaptörü SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_ADAPTER_SQL_EVIDENCE_2026-10-04.md)
 - [İki yönlü karşılaştırma taslakları](docs/GEOMETRIC_COMPARISON_DRAFT_EVIDENCE_2026-10-04.md), [görünür kısa caption SVG](docs/REASONED_CAPTION_FRAME_EVIDENCE_2026-10-04.md) ve [gerçek sentetik defter SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_POSTGRES_EVIDENCE_2026-10-04.md)
 - [Fabrika bağlantısı ve gerçek küçük raster kontrolü](docs/CAPTION_COMPARISON_FACTORY_ACCEPTANCE_2026-10-04.md)
 - [Kaynak sayfalı geometrik nicelikler/mikrobeceri matrisi](docs/GRADE5_GEOMETRIC_QUANTITIES_MATRIX_2026-10-04.md), [fabrikaya bağlı kayıpsız caption sayfaları](docs/REASONED_CAPTION_PAGES_EVIDENCE_2026-10-04.md) ve [ayrı sentetik defter hazırlık sözleşmesi](docs/SYNTHETIC_NOTEBOOK_CONTRACT_EVIDENCE_2026-10-04.md)

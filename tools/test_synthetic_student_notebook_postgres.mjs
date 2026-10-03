@@ -35,13 +35,14 @@ function inertArray(value,maximum,error) {
   return out;
 }
 export function parseSyntheticNotebookArgs(argv) {
-  const a=inertArray(argv,3,'invalid_synthetic_notebook_args');let run=false,container=DEFAULT_CONTAINER,named=false;
+  const a=inertArray(argv,4,'invalid_synthetic_notebook_args');let run=false,container=DEFAULT_CONTAINER,named=false,adapter=false;
   for(let i=0;i<a.length;i++) {
     if(a[i]==='--run'&&!run) run=true;
+    else if(a[i]==='--adapter'&&!adapter) adapter=true;
     else if(a[i]==='--container'&&!named&&typeof a[i+1]==='string'&&NAME.test(a[i+1])) {container=a[++i];named=true;}
     else throw new Error('invalid_synthetic_notebook_args');
   }
-  return Object.freeze({run,container});
+  return Object.freeze(adapter?{run,container,adapter:true}:{run,container});
 }
 export function buildSyntheticNotebookDockerArgs(options) {
   const d=inertObject(options,['run','container']);
@@ -62,7 +63,10 @@ export function buildSyntheticNotebookDockerArgs(options) {
 // Values are quoted here, not a real wire-protocol parameterized driver.
 export function buildSyntheticNotebookPsqlStatement(query) {
   const d=inertObject(query,['text','values']);if(!d) throw new Error('invalid_synthetic_notebook_query');
-  const plans=[[SYNTHETIC_NOTEBOOK_SQL.commit,['jsonb']],[SYNTHETIC_NOTEBOOK_SQL.current,['text']],[SYNTHETIC_NOTEBOOK_SQL.historical,['text','bigint']]];
+  const plans=[[SYNTHETIC_NOTEBOOK_SQL.commit,['jsonb']],[SYNTHETIC_NOTEBOOK_SQL.current,['text']],[SYNTHETIC_NOTEBOOK_SQL.historical,['text','bigint']],
+    ['SELECT student_notebook.commit_intent($1::jsonb) AS notebook_result',['jsonb']],
+    ['SELECT student_notebook.read_current($1::text) AS notebook_result',['text']],
+    ['SELECT student_notebook.read_revision($1::text,$2::bigint) AS notebook_result',['text','bigint']]];
   const plan=plans.find(p=>p[0]===d.text.value);if(!plan) throw new Error('invalid_synthetic_notebook_query');
   const values=inertArray(d.values.value,2,'invalid_synthetic_notebook_query');
   if(values.length!==plan[1].length||values.some(v=>Buffer.byteLength(v,'utf8')>524288||v.includes('\0'))
@@ -91,8 +95,8 @@ async function runProof(options) {
   if(!confirmedAbsent(existing)) throw new Error('synthetic_notebook_container_absence_not_confirmed');
   docker(['image','inspect',IMAGE]);
   const migration=await readFile(new URL('../db/migrations/002_synthetic_student_notebook.sql',import.meta.url),'utf8');
-  const createdId=docker(buildSyntheticNotebookDockerArgs(options)).stdout.trim();
-  let stopped=false;const witnesses=[];
+  const createdId=docker(buildSyntheticNotebookDockerArgs({run:options.run,container:options.container})).stdout.trim();
+  let stopped=false;const witnesses=[],adapterWitnesses=[];
   const psql=(role,sql,allowFailure=false)=>docker(['exec','-i',name,'psql','-X','-q','-A','-t','-v','ON_ERROR_STOP=1','-v','VERBOSITY=verbose','-U',role,'-d','synthetic_notebook'],sql,allowFailure);
   const scalar=(role,sql)=>psql(role,sql).stdout.trim();
   const result=(role,text,values)=>JSON.parse(scalar(role,buildSyntheticNotebookPsqlStatement({text,values})));
@@ -108,6 +112,7 @@ async function runProof(options) {
     psql('postgres',`${seed(a)}${seed(b)}INSERT INTO student_notebook.principal_scopes VALUES(${literal(roles.a)},${literal(scope)}),(${literal(roles.b)},${literal(scopeB)});`);
     // The remainder is explicit real SQL assertions, never mocked by default.
     await verifyNotebookDatabase({a,b,req,reqB,intent,intentB,scope,scopeB,psql,scalar,result,denied,commitSql,witnesses});
+    if(options.adapter) await verifyNotebookAdapter({a,b,scope,scopeB,psql,scalar,result,witnesses:adapterWitnesses});
   } finally {
     const owner=docker(['container','inspect','--format','{{.Id}}',name],undefined,true);
     if(owner.status===0&&owner.stdout.trim()===createdId){docker(['stop','--time','5',name]);stopped=confirmedAbsent(docker(['container','inspect',name],undefined,true));}
@@ -115,7 +120,91 @@ async function runProof(options) {
     assert.equal(stopped,true,'owned synthetic notebook container cleanup not confirmed');
   }
   return {state:'passed',syntheticOnly:true,databaseProofExecuted:true,productionReady:false,container:name,containerStopped:stopped,
-    limits:{cpu:1,memoryMiB:256,tmpfsMiB:58,shmMiB:2,network:'none',hostPorts:0,hostMounts:0},witnessCount:witnesses.length,witnesses};
+    limits:{cpu:1,memoryMiB:256,tmpfsMiB:58,shmMiB:2,network:'none',hostPorts:0,hostMounts:0},witnessCount:witnesses.length,witnesses,
+    ...(options.adapter?{adapterProofRequested:true,adapterProofExecuted:true,adapterWitnessCount:adapterWitnesses.length,adapterWitnesses}: {})};
+}
+async function verifyNotebookAdapter(context) {
+  const {a,b,scope,scopeB,psql,scalar,result,witnesses}=context;
+  const {createSyntheticNotebookAdapter,SYNTHETIC_NOTEBOOK_ADAPTER_SQL:sql}=await import('../packages/contracts/synthetic_notebook_adapter.mjs');
+  // Trusted test composition reconstructs its fixed fixture from real scoped
+  // reads. This is not a learner DTO or a production catalog/auth resolver.
+  const sourceAt=(base,role,sha)=>{
+    const head=result(role,sql.current,[sha]),source=structuredClone(base);
+    source.currentRevision={revision:head.revision,bodySha256:head.bodySha256};source.receipts=[];
+    for(let n=1;n<=head.revision;n++) source.receipts.push(result(role,sql.historical,[sha,String(n)]).receipt);
+    return source;
+  };
+  const executeAt=(role,calls,transform=value=>value)=>query=>{
+    assert.equal(Object.isFrozen(query),true);assert.equal(Object.isFrozen(query.values),true);
+    assert.deepEqual(Object.keys(query),['text','values']);assert.ok(Object.values(sql).includes(query.text));
+    calls.push(query.text);const outcome=psql(role,buildSyntheticNotebookPsqlStatement(query),true);
+    if(outcome.status!==0){const error=new Error('synthetic_sql_execution_denied');error.code=outcome.stderr.match(/ERROR:\s+([0-9A-Z]{5}):/u)?.[1];throw error;}
+    return transform({rowCount:1,rows:[{notebook_result:JSON.parse(outcome.stdout.trim())}]},query);
+  };
+  const requestAt=(n,text)=>{const r=createSyntheticNotebookRequest('a');r.expectedRevision=n-1;r.mutationId=`mutation-notebook-adapter-${n}`;r.idempotencyKey=`idem-notebook-adapter-${n}`;r.body.text=text;return r;};
+  const source2=sourceAt(a,roles.a,scope),sourceB=sourceAt(b,roles.b,scopeB),calls=[];
+  assert.equal(source2.currentRevision.revision,2);assert.equal(sourceB.currentRevision.revision,1);
+  const adapter=createSyntheticNotebookAdapter({sourceFixture:source2,execute:executeAt(roles.a,calls)});
+  const other=createSyntheticNotebookAdapter({sourceFixture:sourceB,execute:executeAt(roles.b,[])});
+  const req3=requestAt(3,'Üçüncü kayıt: çevreyi izledim. 📝'),prepared3=adapter.prepare(req3);assert.equal(prepared3.valid,true);
+  assert.equal((await adapter.commit(structuredClone(prepared3.command))).error.code,'untrusted_notebook_command');
+  assert.equal((await other.commit(prepared3.command)).error.code,'untrusted_notebook_command');assert.equal(calls.length,0);
+  witnesses.push('adapter_clone_and_other_adapter_commands_rejected_before_database');
+  const saved=await adapter.commit(prepared3.command);assert.equal(saved.valid,true);assert.equal(saved.outcome,'accepted');
+  assert.equal(saved.persisted,true);assert.equal(saved.persistenceConfirmed,true);assert.equal(saved.currentHeadVerified,false);assert.equal(saved.sourceAdvanced,false);
+  assert.deepEqual(saved.receipt,createSyntheticNotebookReceipt(source2,req3));assert.equal(saved.head.revision,3);
+  assert.equal(scalar(roles.a,'SELECT count(*) FROM student_notebook.history;'),'3');
+  witnesses.push('adapter_exact_typed_query_values_commit_matches_real_sql_receipt');
+  const next=requestAt(4,'Dördüncü kayıt');assert.equal(adapter.prepare(next).valid,false);
+  const changed=structuredClone(req3);changed.body.text+=' değişti';const beforeConflict=calls.length;
+  assert.equal(adapter.prepare(changed).error.code,'notebook_idempotency_conflict');assert.equal(calls.length,beforeConflict);
+  witnesses.push('confirmed_write_does_not_advance_source_and_changed_idempotency_body_is_local_denial');
+  const repeated=await adapter.commit(prepared3.command);assert.equal(repeated.outcome,'idempotent_replay');assert.deepEqual(repeated.receipt,saved.receipt);
+  assert.equal(scalar(roles.a,'SELECT count(*) FROM student_notebook.history;'),'3');
+  witnesses.push('adapter_exact_duplicate_real_sql_replay_creates_no_extra_history');
+  const current=await adapter.readCurrent();assert.equal(current.valid,true);assert.equal(current.revision,3);assert.equal(current.sourceAdvanced,true);
+  assert.equal(current.body.text,req3.body.text);assert.equal(adapter.prepare(next).valid,true);
+  witnesses.push('explicit_real_current_read_alone_advances_adapter_source');
+  const old=await adapter.readRevision(1);assert.equal(old.valid,true);assert.equal(old.revision,1);assert.equal(old.sourceAdvanced,false);
+  assert.deepEqual(old.body,createSyntheticNotebookRequest('a').body);assert.equal(adapter.prepare(next).valid,true);
+  witnesses.push('adapter_real_historical_read_never_rolls_back_current_head');
+  const wrongCalls=[],wrongRole=createSyntheticNotebookAdapter({sourceFixture:sourceAt(a,roles.a,scope),execute:executeAt(roles.b,wrongCalls)});
+  const wrong=await wrongRole.commit(wrongRole.prepare(next).command);assert.equal(wrong.valid,false);assert.equal(wrong.error.code,'notebook_scope_denied');
+  assert.equal(wrong.commitState,'unknown');assert.equal(wrong.persisted,null);assert.equal(wrong.automaticRetry,false);assert.equal(wrongCalls.length,1);
+  assert.equal(result(roles.a,sql.current,[scope]).revision,3);assert.equal(result(roles.b,sql.current,[scopeB]).revision,1);
+  witnesses.push('fixed_wrong_school_executor_real_sql_scope_denial_is_sanitized_unknown_not_success');
+  const badReadCalls=[],badRead=createSyntheticNotebookAdapter({sourceFixture:source2,execute:executeAt(roles.a,badReadCalls,value=>({...value,rowCount:2}))});
+  const malformed=await badRead.readCurrent();assert.equal(malformed.valid,false);assert.equal(malformed.readState,'unknown');assert.equal(malformed.persisted,null);
+  assert.equal(badRead.prepare(next).valid,false);assert.equal(badReadCalls.length,1);
+  witnesses.push('malformed_real_scoped_read_response_does_not_advance_adapter_source');
+  // Failure is injected AFTER a genuine SQL commit. No fake rollback or
+  // automatic retry may turn this into a known non-persisted write.
+  const lostCalls=[],lost=createSyntheticNotebookAdapter({sourceFixture:sourceAt(a,roles.a,scope),execute:executeAt(roles.a,lostCalls,(value,query)=>{
+    if(query.text===sql.commit)throw new Error('synthetic_response_lost_after_commit');return value;
+  })});
+  const unknown=await lost.commit(lost.prepare(next).command);assert.equal(unknown.valid,false);assert.equal(unknown.commitState,'unknown');
+  assert.equal(unknown.persisted,null);assert.equal(unknown.persistenceConfirmed,false);assert.equal(unknown.automaticRetry,false);assert.equal(lostCalls.length,1);
+  assert.equal(result(roles.a,sql.current,[scope]).revision,4);assert.equal(scalar(roles.a,'SELECT count(*) FROM student_notebook.history;'),'4');
+  witnesses.push('genuine_sql_commit_then_response_throw_remains_unknown_persisted_null_no_automatic_retry');
+  const recovered=await lost.readCurrent();assert.equal(recovered.valid,true);assert.equal(recovered.revision,4);assert.equal(recovered.sourceAdvanced,true);
+  assert.equal(recovered.body.text,next.body.text);
+  witnesses.push('explicit_scoped_read_recovers_actual_committed_head_after_response_loss');
+  const malformedCalls=[],badWrite=createSyntheticNotebookAdapter({sourceFixture:sourceAt(a,roles.a,scope),execute:executeAt(roles.a,malformedCalls,(value,query)=>{
+    if(query.text===sql.commit)value.rows[0].notebook_result.head.bodySha256='0'.repeat(64);return value;
+  })});
+  const req5=requestAt(5,'Beşinci kayıt: sonucu denetledim.'),unknown5=await badWrite.commit(badWrite.prepare(req5).command);
+  assert.equal(unknown5.valid,false);assert.equal(unknown5.error.code,'notebook_response_invalid');assert.equal(unknown5.persisted,null);assert.equal(unknown5.automaticRetry,false);
+  assert.equal(malformedCalls.length,1);assert.equal(result(roles.a,sql.current,[scope]).revision,5);
+  assert.equal((await badWrite.readCurrent()).revision,5);
+  witnesses.push('genuine_sql_commit_with_malformed_receipt_response_remains_unknown_until_explicit_read');
+  const profileCalls=[],profile=createSyntheticNotebookAdapter({sourceFixture:sourceAt(a,roles.a,scope),execute:executeAt(roles.a,profileCalls)});
+  for(const mutate of [r=>{r.body.strokes[0].points[0].x=0.12345;},r=>{r.body.text='\u0000';},r=>{r.body.text='\ud800';}]) {
+    const r=requestAt(6,'Altıncı kayıt');mutate(r);assert.equal(profile.prepare(r).error.code,'notebook_postgres_profile_unsupported');
+  }
+  assert.equal(profileCalls.length,0);assert.equal(scalar(roles.a,'SELECT count(*) FROM student_notebook.history;'),'5');
+  assert.equal(scalar(roles.b,'SELECT count(*) FROM student_notebook.history;'),'1');assert.equal(scalar(roles.none,'SELECT count(*) FROM student_notebook.history;'),'0');
+  witnesses.push('postgres_precision_and_unicode_profiles_fail_before_database_without_rounding');
+  witnesses.push('adapter_phase_two_school_history_and_heads_remain_isolated_a5_b1_unmapped0');
 }
 async function verifyNotebookDatabase(context) {
   const {a,b,req,reqB,intent,intentB,scope,scopeB,psql,scalar,result,denied,commitSql,witnesses}=context;
@@ -240,6 +329,7 @@ async function verifyNotebookDatabase(context) {
 }
 if(process.argv[1]&&pathToFileURL(resolve(process.argv[1])).href===import.meta.url) {
   try {const options=parseSyntheticNotebookArgs(process.argv.slice(2));console.log(JSON.stringify(options.run?await runProof(options):
-    {state:'not_run',syntheticOnly:true,databaseProofExecuted:false,productionReady:false}));}
+    {state:'not_run',syntheticOnly:true,databaseProofExecuted:false,productionReady:false,
+      ...(options.adapter?{adapterProofRequested:true,adapterProofExecuted:false}:{})}));}
   catch(error){console.error(error.message);process.exitCode=1;}
 }

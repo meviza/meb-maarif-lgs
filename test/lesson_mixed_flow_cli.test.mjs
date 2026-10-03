@@ -34,6 +34,8 @@ class Element {
     return result;
   }
   querySelector(selector) { return this.querySelectorAll(selector)[0] ?? null; }
+  createElement(tag) { return new Element(tag); }
+  append(element) { this.children.push(element); }
   addEventListener(type, listener) {
     if (!this.listeners.has(type)) this.listeners.set(type, []);
     this.listeners.get(type).push(listener);
@@ -47,7 +49,10 @@ function mount(html) {
   assert.ok(script, 'real preview controller script must be emitted');
   const document = new Element();
   const stack = [document];
-  const markup = html.replace(/<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)>/gu, '');
+  // Keep the inert application/json caption payload. Only executable owned
+  // script and CSS are excluded from this minimal markup tree; stripping every
+  // script also stripped the new data node before the real consumer could read.
+  const markup = html.replace(/<style\b[^>]*>[\s\S]*?<\/style>|<script>[\s\S]*?<\/script>/gu, '');
   let end = 0;
   for (const match of markup.matchAll(/<(\/?)([a-zA-Z][\w:-]*)([^>]*)>/gu)) {
     stack.at(-1).textContent += markup.slice(end, match.index);
@@ -202,6 +207,10 @@ test('source markup is escaped in author provenance and draft gates remain expli
 test('the emitted practice controller navigates one visible question and respects both bounds', async t => {
   const { html } = await run(t);
   const document = mount(html);
+  const captionPanels=document.querySelectorAll('[data-initial-dom-caption]');
+  assert.equal(captionPanels.length,2);
+  for(const panel of captionPanels)assert.deepEqual(panel.querySelector('[data-dom-caption-lines]').querySelectorAll('p').map(line=>line.textContent),
+    JSON.parse(panel.querySelector('[data-dom-caption-payload]').textContent));
   const practice = document.querySelector('[data-mixed-practice]');
   assert.ok(practice, 'mixed practice controller is not connected');
   const questions = practice.querySelectorAll('[data-practice-question]');

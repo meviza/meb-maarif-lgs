@@ -2,7 +2,13 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
-- [Gece fazları: güncel 839 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece fazları: güncel 893 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Aylık LGS: gerçek PDF, özel Drive byte readback ve güncel 50/49 kapsam](LGS_MONTHLY_ROOT_ARCHIVE_ACCEPTANCE_2026-10-04.md)
+- [İki bounded aylık LGS GET ve kaynak-biçimi pilotu](LGS_MONTHLY_DOWNLOAD_PILOT_2026-10-04.md)
+- [Kaynak-bağlı kapalı caption review controller](REASONED_CAPTION_REVIEW_EVIDENCE_2026-10-04.md)
+- [Normal fabrikada ayrı DOM caption: UI gezinmesi henüz bağlı değil](CAPTION_REVIEW_FACTORY_ACCEPTANCE_2026-10-04.md)
+- [Ayrı sentetik notebook adapter sözleşmesi ve unknown state](SYNTHETIC_NOTEBOOK_ADAPTER_EVIDENCE_2026-10-04.md)
+- [Gerçek notebook adapter SQL: eski73 + yeni13 tanık](SYNTHETIC_NOTEBOOK_ADAPTER_SQL_EVIDENCE_2026-10-04.md)
 - [İki yönlü geometrik karşılaştırma: farklı görev aileleri, stok değil](GEOMETRIC_COMPARISON_DRAFT_EVIDENCE_2026-10-04.md)
 - [Görünür, kaynak-bağlı iki satırlı caption SVG](REASONED_CAPTION_FRAME_EVIDENCE_2026-10-04.md)
 - [Ayrı sentetik defter: 73 gerçek PostgreSQL kontrolü](SYNTHETIC_NOTEBOOK_POSTGRES_EVIDENCE_2026-10-04.md)
