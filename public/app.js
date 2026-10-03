@@ -218,7 +218,7 @@ function setupEventListeners() {
         const data = await res.json();
         if (data.success) {
           if (cloudStatus) {
-            cloudStatus.innerHTML = `[BULUT AKTARIMI BAŞARILI]<br/>Hedef: kerem.newton571@gmail.com (5 TB Drive)<br/>Orijinal: ${data.rawSizeKb} KB | Sıkıştırılmış: ${data.compSizeKb} KB (%${data.ratio} Tasarruf)<br/>Yerel SSD Tüketimi: 0 KB (Zero-Disk Stream)`;
+            cloudStatus.innerHTML = `[BULUT AKTARIMI BAŞARILI]<br/>Hedef: account-not-configured (5 TB Drive)<br/>Orijinal: ${data.rawSizeKb} KB | Sıkıştırılmış: ${data.compSizeKb} KB (%${data.ratio} Tasarruf)<br/>Yerel SSD Tüketimi: 0 KB (Zero-Disk Stream)`;
           }
         }
       } catch (err) {

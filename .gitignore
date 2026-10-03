@@ -4,6 +4,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Credentials and bounded local reference/production artifacts are never source.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.cache/
+reference-cache/
+outputs/
+
 # Temporary test backups and batch matrix artifacts
 data/archive/lgs_maarif_backup_2*.json.gz
 !data/archive/lgs_maarif_backup_20261001165120.json.gz

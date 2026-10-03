@@ -1,0 +1,1463 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryCreatedAt": "2026-10-03",
+  "purpose": "Official curriculum traceability, historical comparison and rights-reviewed reference analysis; no question copying or learner publication",
+  "dataOwnerRole": "curriculum-lead",
+  "dataStewardRole": "content-source-steward",
+  "classification": "public_reference_with_unverified_reuse_rights",
+  "retentionPolicy": "versioned_reference_review_then_retention_decision",
+  "learnerData": false,
+  "reuseNotice": "Public availability is not an open licence. No redistribution, training, source-image reuse or verbatim copying is authorised by this registry.",
+  "sourceIndexPages": [
+    {
+      "title": "2018–2024 LGS exam archive",
+      "url": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213"
+    },
+    {
+      "title": "TYMM current curricula",
+      "url": "https://tymm.meb.gov.tr/ogretim-programlari"
+    },
+    {
+      "title": "MEB historical curricula",
+      "url": "https://mufredat.meb.gov.tr/Programlar.aspx"
+    },
+    {
+      "title": "2018–2024 sample question index (not yet downloaded)",
+      "url": "https://odsgm.meb.gov.tr/www/ornek-sorular/icerik/1011"
+    },
+    {
+      "title": "2026–2027 TYMM applicability and draft annual plans",
+      "url": "https://tymm.meb.gov.tr/taslak-cerceve-planlari/temel-egitim"
+    }
+  ],
+  "sources": [
+    {
+      "id": "lgs-2018-verbal",
+      "title": "2018 LGS Sözel Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2018,
+      "grades": [
+        8
+      ],
+      "section": "verbal",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133211_2018sozelbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133211_2018sozelbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133211_2018sozelbolum.pdf",
+        "sha256": "a71c376012d29347cdcab059a3c78c05fad2c773a27617a3c3d2dc4cf94a040c",
+        "byteLength": 3317422,
+        "cacheFile": "lgs-2018-verbal-a71c376012d29347cdcab059a3c78c05fad2c773a27617a3c3d2dc4cf94a040c.pdf",
+        "downloadedAt": "2026-10-03T11:41:11.173Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "a71c376012d29347cdcab059a3c78c05fad2c773a27617a3c3d2dc4cf94a040c"
+    },
+    {
+      "id": "lgs-2018-numerical",
+      "title": "2018 LGS Sayısal Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2018,
+      "grades": [
+        8
+      ],
+      "section": "numerical",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133256_2018sayisalbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133256_2018sayisalbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133256_2018sayisalbolum.pdf",
+        "sha256": "5c3001731a1b387f8cb292a09417dba5f5ba6c6cc23d6fcd851c1c1119c49e00",
+        "byteLength": 6028021,
+        "cacheFile": "lgs-2018-numerical-5c3001731a1b387f8cb292a09417dba5f5ba6c6cc23d6fcd851c1c1119c49e00.pdf",
+        "downloadedAt": "2026-10-03T11:41:20.832Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "5c3001731a1b387f8cb292a09417dba5f5ba6c6cc23d6fcd851c1c1119c49e00"
+    },
+    {
+      "id": "lgs-2019-verbal",
+      "title": "2019 LGS Sözel Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2019,
+      "grades": [
+        8
+      ],
+      "section": "verbal",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133335_2019sozelbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133335_2019sozelbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133335_2019sozelbolum.pdf",
+        "sha256": "832a35a3956714208f788defb237a917d195811941629bc1f1f863198a2af070",
+        "byteLength": 4902464,
+        "cacheFile": "lgs-2019-verbal-832a35a3956714208f788defb237a917d195811941629bc1f1f863198a2af070.pdf",
+        "downloadedAt": "2026-10-03T11:41:26.717Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "832a35a3956714208f788defb237a917d195811941629bc1f1f863198a2af070"
+    },
+    {
+      "id": "lgs-2019-numerical",
+      "title": "2019 LGS Sayısal Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2019,
+      "grades": [
+        8
+      ],
+      "section": "numerical",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133417_2019sayisalbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133417_2019sayisalbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133417_2019sayisalbolum.pdf",
+        "sha256": "f05583e5225f1c782312a1b7bdd38ba8f5969699227af7e3c4e8e69b7578a2fb",
+        "byteLength": 5772481,
+        "cacheFile": "lgs-2019-numerical-f05583e5225f1c782312a1b7bdd38ba8f5969699227af7e3c4e8e69b7578a2fb.pdf",
+        "downloadedAt": "2026-10-03T11:41:31.535Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "f05583e5225f1c782312a1b7bdd38ba8f5969699227af7e3c4e8e69b7578a2fb"
+    },
+    {
+      "id": "lgs-2020-verbal",
+      "title": "2020 LGS Sözel Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2020,
+      "grades": [
+        8
+      ],
+      "section": "verbal",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133443_2020sozelbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133443_2020sozelbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133443_2020sozelbolum.pdf",
+        "sha256": "d2e94c22f14e10c3f7ab92cd2f911673b7d0227b1ec22f5ab7a87c33c4a68d56",
+        "byteLength": 2655724,
+        "cacheFile": "lgs-2020-verbal-d2e94c22f14e10c3f7ab92cd2f911673b7d0227b1ec22f5ab7a87c33c4a68d56.pdf",
+        "downloadedAt": "2026-10-03T11:41:33.501Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "d2e94c22f14e10c3f7ab92cd2f911673b7d0227b1ec22f5ab7a87c33c4a68d56"
+    },
+    {
+      "id": "lgs-2020-numerical",
+      "title": "2020 LGS Sayısal Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2020,
+      "grades": [
+        8
+      ],
+      "section": "numerical",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133612_2020sayisalbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133612_2020sayisalbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133612_2020sayisalbolum.pdf",
+        "sha256": "069c6c7ad4a9f0b0b0c24aff74c2be4e7f343c68af74c4d183b95af49e407a8d",
+        "byteLength": 13956443,
+        "cacheFile": "lgs-2020-numerical-069c6c7ad4a9f0b0b0c24aff74c2be4e7f343c68af74c4d183b95af49e407a8d.pdf",
+        "downloadedAt": "2026-10-03T11:41:42.865Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "069c6c7ad4a9f0b0b0c24aff74c2be4e7f343c68af74c4d183b95af49e407a8d"
+    },
+    {
+      "id": "lgs-2021-verbal",
+      "title": "2021 LGS Sözel Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2021,
+      "grades": [
+        8
+      ],
+      "section": "verbal",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133646_2021sozelbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133646_2021sozelbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133646_2021sozelbolum.pdf",
+        "sha256": "c0add51526b70827057389d4662377f74188d2a95a47891008ca0a1dc837acbc",
+        "byteLength": 3274141,
+        "cacheFile": "lgs-2021-verbal-c0add51526b70827057389d4662377f74188d2a95a47891008ca0a1dc837acbc.pdf",
+        "downloadedAt": "2026-10-03T11:41:45.920Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "c0add51526b70827057389d4662377f74188d2a95a47891008ca0a1dc837acbc"
+    },
+    {
+      "id": "lgs-2021-numerical",
+      "title": "2021 LGS Sayısal Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2021,
+      "grades": [
+        8
+      ],
+      "section": "numerical",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133726_2021sayisalbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133726_2021sayisalbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133726_2021sayisalbolum.pdf",
+        "sha256": "ff9e1db61a147c4258ffa53c3833e0dc342bf425f192cd3f7719134a5dfa2298",
+        "byteLength": 3970874,
+        "cacheFile": "lgs-2021-numerical-ff9e1db61a147c4258ffa53c3833e0dc342bf425f192cd3f7719134a5dfa2298.pdf",
+        "downloadedAt": "2026-10-03T11:41:48.791Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "ff9e1db61a147c4258ffa53c3833e0dc342bf425f192cd3f7719134a5dfa2298"
+    },
+    {
+      "id": "lgs-2022-verbal",
+      "title": "2022 LGS Sözel Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2022,
+      "grades": [
+        8
+      ],
+      "section": "verbal",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133816_2022sozelbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133816_2022sozelbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133816_2022sozelbolum.pdf",
+        "sha256": "29ab6fae4a94c3757c559798179f546eaf510ef7940847b79e216aed38bddbc7",
+        "byteLength": 2097771,
+        "cacheFile": "lgs-2022-verbal-29ab6fae4a94c3757c559798179f546eaf510ef7940847b79e216aed38bddbc7.pdf",
+        "downloadedAt": "2026-10-03T11:41:50.129Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "29ab6fae4a94c3757c559798179f546eaf510ef7940847b79e216aed38bddbc7"
+    },
+    {
+      "id": "lgs-2022-numerical",
+      "title": "2022 LGS Sayısal Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2022,
+      "grades": [
+        8
+      ],
+      "section": "numerical",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133902_2022sayisalbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133902_2022sayisalbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133902_2022sayisalbolum.pdf",
+        "sha256": "8a1c6526b50b4b695dd6f48bfce42c7fbed53d26f0057e554f666cb4682c4142",
+        "byteLength": 7976321,
+        "cacheFile": "lgs-2022-numerical-8a1c6526b50b4b695dd6f48bfce42c7fbed53d26f0057e554f666cb4682c4142.pdf",
+        "downloadedAt": "2026-10-03T11:41:56.442Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "8a1c6526b50b4b695dd6f48bfce42c7fbed53d26f0057e554f666cb4682c4142"
+    },
+    {
+      "id": "lgs-2023-verbal",
+      "title": "2023 LGS Sözel Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2023,
+      "grades": [
+        8
+      ],
+      "section": "verbal",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133958_2023sozelbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133958_2023sozelbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01133958_2023sozelbolum.pdf",
+        "sha256": "2cc174efd7009cf79d69b49ca1cb1a2a35ce30002bb99f195385a2b0f994c05a",
+        "byteLength": 4477288,
+        "cacheFile": "lgs-2023-verbal-2cc174efd7009cf79d69b49ca1cb1a2a35ce30002bb99f195385a2b0f994c05a.pdf",
+        "downloadedAt": "2026-10-03T11:42:00.704Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "2cc174efd7009cf79d69b49ca1cb1a2a35ce30002bb99f195385a2b0f994c05a"
+    },
+    {
+      "id": "lgs-2023-numerical",
+      "title": "2023 LGS Sayısal Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2023,
+      "grades": [
+        8
+      ],
+      "section": "numerical",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134045_2023sayisalbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134045_2023sayisalbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134045_2023sayisalbolum.pdf",
+        "sha256": "86b5ce3f80d60c0cff0d68023e44a765c60c25a3ecd92c9b500163b472b01bcf",
+        "byteLength": 7066582,
+        "cacheFile": "lgs-2023-numerical-86b5ce3f80d60c0cff0d68023e44a765c60c25a3ecd92c9b500163b472b01bcf.pdf",
+        "downloadedAt": "2026-10-03T11:42:06.893Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "86b5ce3f80d60c0cff0d68023e44a765c60c25a3ecd92c9b500163b472b01bcf"
+    },
+    {
+      "id": "lgs-2024-verbal",
+      "title": "2024 LGS Sözel Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2024,
+      "grades": [
+        8
+      ],
+      "section": "verbal",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134120_2024sozelbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134120_2024sozelbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134120_2024sozelbolum.pdf",
+        "sha256": "07c1a52beaf258ea3dd7431b35ce19b4a7975b379f8c19bea7c6bfeba0dd3e59",
+        "byteLength": 3532602,
+        "cacheFile": "lgs-2024-verbal-07c1a52beaf258ea3dd7431b35ce19b4a7975b379f8c19bea7c6bfeba0dd3e59.pdf",
+        "downloadedAt": "2026-10-03T11:42:16.922Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "07c1a52beaf258ea3dd7431b35ce19b4a7975b379f8c19bea7c6bfeba0dd3e59"
+    },
+    {
+      "id": "lgs-2024-numerical",
+      "title": "2024 LGS Sayısal Bölüm ve Cevap Anahtarı",
+      "kind": "lgs_exam",
+      "year": 2024,
+      "grades": [
+        8
+      ],
+      "section": "numerical",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134301_2024sayislbolum.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134301_2024sayislbolum.pdf",
+        "finalUrl": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134301_2024sayislbolum.pdf",
+        "sha256": "93b7b44a2127680940d4e272dc72d7dc6dba21ee227135f58f2b22931d38881a",
+        "byteLength": 3786827,
+        "cacheFile": "lgs-2024-numerical-93b7b44a2127680940d4e272dc72d7dc6dba21ee227135f58f2b22931d38881a.pdf",
+        "downloadedAt": "2026-10-03T11:42:20.368Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "93b7b44a2127680940d4e272dc72d7dc6dba21ee227135f58f2b22931d38881a"
+    },
+    {
+      "id": "tymm-current-ilkokul-turkce",
+      "title": "İlkokul Türkçe Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2026,
+      "grades": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "courseKey": "ilkokul-turkce",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ilkokul-turkce-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/ilkokul-turkce-dersi_20260902_111433_940.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/ilkokul-turkce-dersi_20260902_111433_940.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/ilkokul-turkce-dersi_20260902_111433_940.pdf",
+        "sha256": "b4f7b3b1c193245bc9ce5ab3eae3935f9a5de7cb4260e55faa76885448b64706",
+        "byteLength": 4063807,
+        "cacheFile": "tymm-current-ilkokul-turkce-b4f7b3b1c193245bc9ce5ab3eae3935f9a5de7cb4260e55faa76885448b64706.pdf",
+        "downloadedAt": "2026-10-03T11:42:23.185Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "b4f7b3b1c193245bc9ce5ab3eae3935f9a5de7cb4260e55faa76885448b64706"
+    },
+    {
+      "id": "tymm-current-ortaokul-turkce",
+      "title": "Ortaokul Türkçe Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2026,
+      "grades": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "ortaokul-turkce",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ortaokul-turkce-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/ortaokul-turkce-dersi_20260902_111157_977.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/ortaokul-turkce-dersi_20260902_111157_977.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/ortaokul-turkce-dersi_20260902_111157_977.pdf",
+        "sha256": "f9c44b1059a0d5a7a5aa4e0de3dce6821fce3d873c256ca86219e2347f07497a",
+        "byteLength": 8913172,
+        "cacheFile": "tymm-current-ortaokul-turkce-f9c44b1059a0d5a7a5aa4e0de3dce6821fce3d873c256ca86219e2347f07497a.pdf",
+        "downloadedAt": "2026-10-03T11:42:36.912Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "f9c44b1059a0d5a7a5aa4e0de3dce6821fce3d873c256ca86219e2347f07497a"
+    },
+    {
+      "id": "tymm-current-ilkokul-matematik",
+      "title": "İlkokul Matematik Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2026,
+      "grades": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "courseKey": "ilkokul-matematik",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ilkokul-matematik-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/ilkokul-matematik-dersi_20260902_111356_122.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/ilkokul-matematik-dersi_20260902_111356_122.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/ilkokul-matematik-dersi_20260902_111356_122.pdf",
+        "sha256": "249d9ff5a9d7aab3be853f112c395a29a776dece302d4a474ea23b2453a82ff0",
+        "byteLength": 3772188,
+        "cacheFile": "tymm-current-ilkokul-matematik-249d9ff5a9d7aab3be853f112c395a29a776dece302d4a474ea23b2453a82ff0.pdf",
+        "downloadedAt": "2026-10-03T11:42:40.758Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "249d9ff5a9d7aab3be853f112c395a29a776dece302d4a474ea23b2453a82ff0"
+    },
+    {
+      "id": "tymm-current-ortaokul-matematik",
+      "title": "Ortaokul Matematik Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2026,
+      "grades": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "ortaokul-matematik",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ortaokul-matematik-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/ortaokul-matematik-dersi_20260902_111111_630.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/ortaokul-matematik-dersi_20260902_111111_630.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/ortaokul-matematik-dersi_20260902_111111_630.pdf",
+        "sha256": "75f52f93672c8991eabe102adb37ab4d16de63f35fe8488fc29cdedae9155734",
+        "byteLength": 3916466,
+        "cacheFile": "tymm-current-ortaokul-matematik-75f52f93672c8991eabe102adb37ab4d16de63f35fe8488fc29cdedae9155734.pdf",
+        "downloadedAt": "2026-10-03T11:42:49.987Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "75f52f93672c8991eabe102adb37ab4d16de63f35fe8488fc29cdedae9155734"
+    },
+    {
+      "id": "tymm-current-fen-bilimleri",
+      "title": "Fen Bilimleri Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2026,
+      "grades": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "fen-bilimleri",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/fen-bilimleri-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/fen-bilimleri-dersi_20260902_111309_119.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/fen-bilimleri-dersi_20260902_111309_119.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/fen-bilimleri-dersi_20260902_111309_119.pdf",
+        "sha256": "a56aab9c648f8293341be3f70c0b49e644ecb1d56be9fcaa200d6419bf1eeb97",
+        "byteLength": 3941657,
+        "cacheFile": "tymm-current-fen-bilimleri-a56aab9c648f8293341be3f70c0b49e644ecb1d56be9fcaa200d6419bf1eeb97.pdf",
+        "downloadedAt": "2026-10-03T11:42:54.814Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "a56aab9c648f8293341be3f70c0b49e644ecb1d56be9fcaa200d6419bf1eeb97"
+    },
+    {
+      "id": "tymm-current-hayat-bilgisi",
+      "title": "Hayat Bilgisi Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2026,
+      "grades": [
+        1,
+        2,
+        3
+      ],
+      "courseKey": "hayat-bilgisi",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/hayat-bilgisi-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/hayat-bilgisi-dersi_20260902_111246_099.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/hayat-bilgisi-dersi_20260902_111246_099.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/hayat-bilgisi-dersi_20260902_111246_099.pdf",
+        "sha256": "da28244e51af6ae54b904f3f0786f90ebfc4c231f73f59eac2231c754d08523a",
+        "byteLength": 3039501,
+        "cacheFile": "tymm-current-hayat-bilgisi-da28244e51af6ae54b904f3f0786f90ebfc4c231f73f59eac2231c754d08523a.pdf",
+        "downloadedAt": "2026-10-03T11:45:21.709Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "downloadAttempts": [
+        {
+          "status": "failed",
+          "attemptedAt": "2026-10-03T11:43:14.828Z",
+          "errorCode": "request_timeout"
+        },
+        {
+          "status": "downloaded",
+          "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/hayat-bilgisi-dersi_20260902_111246_099.pdf",
+          "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/hayat-bilgisi-dersi_20260902_111246_099.pdf",
+          "sha256": "da28244e51af6ae54b904f3f0786f90ebfc4c231f73f59eac2231c754d08523a",
+          "byteLength": 3039501,
+          "cacheFile": "tymm-current-hayat-bilgisi-da28244e51af6ae54b904f3f0786f90ebfc4c231f73f59eac2231c754d08523a.pdf",
+          "downloadedAt": "2026-10-03T11:45:21.709Z",
+          "contentType": "application/pdf",
+          "redirectCount": 0,
+          "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+          "semanticReview": "not_performed",
+          "rightsReview": "pending"
+        }
+      ],
+      "expectedSha256": "da28244e51af6ae54b904f3f0786f90ebfc4c231f73f59eac2231c754d08523a"
+    },
+    {
+      "id": "tymm-current-sosyal-bilgiler",
+      "title": "Sosyal Bilgiler Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2026,
+      "grades": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "courseKey": "sosyal-bilgiler",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/sosyal-bilgiler-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/sosyal-bilgiler-dersi_20260902_111029_619.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/sosyal-bilgiler-dersi_20260902_111029_619.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/sosyal-bilgiler-dersi_20260902_111029_619.pdf",
+        "sha256": "3e1b956f9bfa0e561046cb10d1d3aaaecdde4a87b46bdc094297662d6558d9ca",
+        "byteLength": 4176047,
+        "cacheFile": "tymm-current-sosyal-bilgiler-3e1b956f9bfa0e561046cb10d1d3aaaecdde4a87b46bdc094297662d6558d9ca.pdf",
+        "downloadedAt": "2026-10-03T11:45:27.927Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "downloadAttempts": [
+        {
+          "status": "failed",
+          "attemptedAt": "2026-10-03T11:43:34.839Z",
+          "errorCode": "request_timeout"
+        },
+        {
+          "status": "downloaded",
+          "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/sosyal-bilgiler-dersi_20260902_111029_619.pdf",
+          "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/sosyal-bilgiler-dersi_20260902_111029_619.pdf",
+          "sha256": "3e1b956f9bfa0e561046cb10d1d3aaaecdde4a87b46bdc094297662d6558d9ca",
+          "byteLength": 4176047,
+          "cacheFile": "tymm-current-sosyal-bilgiler-3e1b956f9bfa0e561046cb10d1d3aaaecdde4a87b46bdc094297662d6558d9ca.pdf",
+          "downloadedAt": "2026-10-03T11:45:27.927Z",
+          "contentType": "application/pdf",
+          "redirectCount": 0,
+          "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+          "semanticReview": "not_performed",
+          "rightsReview": "pending"
+        }
+      ],
+      "expectedSha256": "3e1b956f9bfa0e561046cb10d1d3aaaecdde4a87b46bdc094297662d6558d9ca"
+    },
+    {
+      "id": "tymm-current-din-kulturu",
+      "title": "Din Kültürü ve Ahlak Bilgisi Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2026,
+      "grades": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "din-kulturu",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2026",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/din-kulturu-ve-ahlak-bilgisi-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-dersi_20260902_110857_218.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-dersi_20260902_110857_218.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-dersi_20260902_110857_218.pdf",
+        "sha256": "6025541032f33036ffd4a8394a02587bf252fa9c4785d864cbfefa207d15997d",
+        "byteLength": 2988779,
+        "cacheFile": "tymm-current-din-kulturu-6025541032f33036ffd4a8394a02587bf252fa9c4785d864cbfefa207d15997d.pdf",
+        "downloadedAt": "2026-10-03T11:45:30.889Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "downloadAttempts": [
+        {
+          "status": "failed",
+          "attemptedAt": "2026-10-03T11:43:54.845Z",
+          "errorCode": "request_timeout"
+        },
+        {
+          "status": "downloaded",
+          "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-dersi_20260902_110857_218.pdf",
+          "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/din-kulturu-ve-ahlak-bilgisi-dersi_20260902_110857_218.pdf",
+          "sha256": "6025541032f33036ffd4a8394a02587bf252fa9c4785d864cbfefa207d15997d",
+          "byteLength": 2988779,
+          "cacheFile": "tymm-current-din-kulturu-6025541032f33036ffd4a8394a02587bf252fa9c4785d864cbfefa207d15997d.pdf",
+          "downloadedAt": "2026-10-03T11:45:30.889Z",
+          "contentType": "application/pdf",
+          "redirectCount": 0,
+          "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+          "semanticReview": "not_performed",
+          "rightsReview": "pending"
+        }
+      ],
+      "expectedSha256": "6025541032f33036ffd4a8394a02587bf252fa9c4785d864cbfefa207d15997d"
+    },
+    {
+      "id": "tymm-current-ingilizce",
+      "title": "İngilizce Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2025,
+      "grades": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "ingilizce",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2025",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ingilizce-dersi-temel-egitim",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-2-8.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-2-8.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-2-8.pdf",
+        "sha256": "38cc26d455c178e4366fdc0abf522c7ad6eb7883ebc8a8971fea390def2c2034",
+        "byteLength": 12114454,
+        "cacheFile": "tymm-current-ingilizce-38cc26d455c178e4366fdc0abf522c7ad6eb7883ebc8a8971fea390def2c2034.pdf",
+        "downloadedAt": "2026-10-03T11:45:40.725Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "downloadAttempts": [
+        {
+          "status": "failed",
+          "attemptedAt": "2026-10-03T11:44:14.847Z",
+          "errorCode": "request_timeout"
+        },
+        {
+          "status": "downloaded",
+          "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-2-8.pdf",
+          "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/ingilizce-dersi-2-8.pdf",
+          "sha256": "38cc26d455c178e4366fdc0abf522c7ad6eb7883ebc8a8971fea390def2c2034",
+          "byteLength": 12114454,
+          "cacheFile": "tymm-current-ingilizce-38cc26d455c178e4366fdc0abf522c7ad6eb7883ebc8a8971fea390def2c2034.pdf",
+          "downloadedAt": "2026-10-03T11:45:40.725Z",
+          "contentType": "application/pdf",
+          "redirectCount": 0,
+          "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+          "semanticReview": "not_performed",
+          "rightsReview": "pending"
+        }
+      ],
+      "expectedSha256": "38cc26d455c178e4366fdc0abf522c7ad6eb7883ebc8a8971fea390def2c2034"
+    },
+    {
+      "id": "tymm-current-inkilap-tarihi",
+      "title": "T.C. İnkılap Tarihi ve Atatürkçülük Öğretim Programı — Güncel Katalog",
+      "kind": "curriculum_current",
+      "year": 2024,
+      "grades": [
+        8
+      ],
+      "courseKey": "inkilap-tarihi",
+      "programVersion": "TYMM-catalog-snapshot-2026-10-03-2024",
+      "versionEvidence": "catalog_label_and_pdf_url_not_effective_grade_approval",
+      "applicationStatus": "school_year_grade_verification_pending",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/tc-inkilap-tarihi-ve-ataturkculuk-dersi",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/2024programink8Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/2024programink8Onayli.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/2024programink8Onayli.pdf",
+        "sha256": "5c13c1223e9d3b7ba2d7fcc0552633c3436c41927e3fabcd0407861dded44bc6",
+        "byteLength": 2068240,
+        "cacheFile": "tymm-current-inkilap-tarihi-5c13c1223e9d3b7ba2d7fcc0552633c3436c41927e3fabcd0407861dded44bc6.pdf",
+        "downloadedAt": "2026-10-03T11:45:41.734Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "downloadAttempts": [
+        {
+          "status": "failed",
+          "attemptedAt": "2026-10-03T11:44:34.851Z",
+          "errorCode": "request_timeout"
+        },
+        {
+          "status": "downloaded",
+          "originalUrl": "https://tymm.meb.gov.tr/assets/pdf/2024programink8Onayli.pdf",
+          "finalUrl": "https://tymm.meb.gov.tr/assets/pdf/2024programink8Onayli.pdf",
+          "sha256": "5c13c1223e9d3b7ba2d7fcc0552633c3436c41927e3fabcd0407861dded44bc6",
+          "byteLength": 2068240,
+          "cacheFile": "tymm-current-inkilap-tarihi-5c13c1223e9d3b7ba2d7fcc0552633c3436c41927e3fabcd0407861dded44bc6.pdf",
+          "downloadedAt": "2026-10-03T11:45:41.734Z",
+          "contentType": "application/pdf",
+          "redirectCount": 0,
+          "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+          "semanticReview": "not_performed",
+          "rightsReview": "pending"
+        }
+      ],
+      "expectedSha256": "5c13c1223e9d3b7ba2d7fcc0552633c3436c41927e3fabcd0407861dded44bc6"
+    },
+    {
+      "id": "legacy-2018-matematik",
+      "title": "Matematik Öğretim Programı — 2018",
+      "kind": "curriculum_historical",
+      "year": 2018,
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "matematik",
+      "programVersion": "MEB-2018",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=329",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/201813017165445-MATEMAT%C4%B0K%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%202018v.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201813017165445-MATEMAT%C4%B0K%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%202018v.pdf",
+        "finalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201813017165445-MATEMAT%C4%B0K%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%202018v.pdf",
+        "sha256": "ca94096da33478c822772425b1384bacdbe40548b0813302257fec7e8c9f9c8b",
+        "byteLength": 595703,
+        "cacheFile": "legacy-2018-matematik-ca94096da33478c822772425b1384bacdbe40548b0813302257fec7e8c9f9c8b.pdf",
+        "downloadedAt": "2026-10-03T11:44:35.754Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "ca94096da33478c822772425b1384bacdbe40548b0813302257fec7e8c9f9c8b"
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri",
+      "title": "Fen Bilimleri Öğretim Programı — 2018",
+      "kind": "curriculum_historical",
+      "year": 2018,
+      "grades": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "fen-bilimleri",
+      "programVersion": "MEB-2018",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=325",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/201812312311937-FEN%20B%C4%B0L%C4%B0MLER%C4%B0%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI2018.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812312311937-FEN%20B%C4%B0L%C4%B0MLER%C4%B0%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI2018.pdf",
+        "finalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812312311937-FEN%20B%C4%B0L%C4%B0MLER%C4%B0%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI2018.pdf",
+        "sha256": "3a8aa21327083bf15c33b9c404f299ff784b11d26024522a8c24b61387c8c0c1",
+        "byteLength": 473150,
+        "cacheFile": "legacy-2018-fen-bilimleri-3a8aa21327083bf15c33b9c404f299ff784b11d26024522a8c24b61387c8c0c1.pdf",
+        "downloadedAt": "2026-10-03T11:44:38.341Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "3a8aa21327083bf15c33b9c404f299ff784b11d26024522a8c24b61387c8c0c1"
+    },
+    {
+      "id": "legacy-2018-ingilizce",
+      "title": "İngilizce Öğretim Programı — 2018",
+      "kind": "curriculum_historical",
+      "year": 2018,
+      "grades": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "ingilizce",
+      "programVersion": "MEB-2018",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=327",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/201812411191321-%C4%B0NG%C4%B0L%C4%B0ZCE%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20Klas%C3%B6r%C3%BC.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812411191321-%C4%B0NG%C4%B0L%C4%B0ZCE%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20Klas%C3%B6r%C3%BC.pdf",
+        "finalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812411191321-%C4%B0NG%C4%B0L%C4%B0ZCE%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20Klas%C3%B6r%C3%BC.pdf",
+        "sha256": "e976ae163c83bb1b3bcf79d7d77ce8cb8308dbdc97a630b941951b9b57653279",
+        "byteLength": 1350275,
+        "cacheFile": "legacy-2018-ingilizce-e976ae163c83bb1b3bcf79d7d77ce8cb8308dbdc97a630b941951b9b57653279.pdf",
+        "downloadedAt": "2026-10-03T11:44:51.041Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "e976ae163c83bb1b3bcf79d7d77ce8cb8308dbdc97a630b941951b9b57653279"
+    },
+    {
+      "id": "legacy-2018-din-kulturu",
+      "title": "Din Kültürü ve Ahlak Bilgisi Öğretim Programı — 2018",
+      "kind": "curriculum_historical",
+      "year": 2018,
+      "grades": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "din-kulturu",
+      "programVersion": "MEB-2018",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=318",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/20221229134650712-DKAB_(4-8.%20S%C4%B1n%C4%B1f)_DOP_%202018.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://mufredat.meb.gov.tr/Dosyalar/20221229134650712-DKAB_(4-8.%20S%C4%B1n%C4%B1f)_DOP_%202018.pdf",
+        "finalUrl": "https://mufredat.meb.gov.tr/Dosyalar/20221229134650712-DKAB_(4-8.%20S%C4%B1n%C4%B1f)_DOP_%202018.pdf",
+        "sha256": "baace330fd3b7c5b5dde6061bbd0af3b885382d6eb5e7049095a30db8c075608",
+        "byteLength": 1548815,
+        "cacheFile": "legacy-2018-din-kulturu-baace330fd3b7c5b5dde6061bbd0af3b885382d6eb5e7049095a30db8c075608.pdf",
+        "downloadedAt": "2026-10-03T11:44:54.045Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "baace330fd3b7c5b5dde6061bbd0af3b885382d6eb5e7049095a30db8c075608"
+    },
+    {
+      "id": "legacy-2019-turkce",
+      "title": "Türkçe Öğretim Programı — 2019",
+      "kind": "curriculum_historical",
+      "year": 2019,
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "turkce",
+      "programVersion": "MEB-2019",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=663",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/20195716392253-02-T%C3%BCrk%C3%A7e%20%C3%96%C4%9Fretim%20Program%C4%B1%202019.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://mufredat.meb.gov.tr/Dosyalar/20195716392253-02-T%C3%BCrk%C3%A7e%20%C3%96%C4%9Fretim%20Program%C4%B1%202019.pdf",
+        "finalUrl": "https://mufredat.meb.gov.tr/Dosyalar/20195716392253-02-T%C3%BCrk%C3%A7e%20%C3%96%C4%9Fretim%20Program%C4%B1%202019.pdf",
+        "sha256": "10e55d403a708d35abc192710977a47df933210a0c54a15e86ea7b9d09401633",
+        "byteLength": 568816,
+        "cacheFile": "legacy-2019-turkce-10e55d403a708d35abc192710977a47df933210a0c54a15e86ea7b9d09401633.pdf",
+        "downloadedAt": "2026-10-03T11:44:58.278Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "10e55d403a708d35abc192710977a47df933210a0c54a15e86ea7b9d09401633"
+    },
+    {
+      "id": "legacy-2018-sosyal-bilgiler",
+      "title": "Sosyal Bilgiler Öğretim Programı — 2018",
+      "kind": "curriculum_historical",
+      "year": 2018,
+      "grades": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "courseKey": "sosyal-bilgiler",
+      "programVersion": "MEB-2018",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=354",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/201812103847686-SOSYAL%20B%C4%B0LG%C4%B0LER%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812103847686-SOSYAL%20B%C4%B0LG%C4%B0LER%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20.pdf",
+        "finalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812103847686-SOSYAL%20B%C4%B0LG%C4%B0LER%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%20.pdf",
+        "sha256": "b7525cf93fce45c0f97f047f93e6f5496d071071f4510544a2815467304381f1",
+        "byteLength": 327477,
+        "cacheFile": "legacy-2018-sosyal-bilgiler-b7525cf93fce45c0f97f047f93e6f5496d071071f4510544a2815467304381f1.pdf",
+        "downloadedAt": "2026-10-03T11:44:58.749Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "b7525cf93fce45c0f97f047f93e6f5496d071071f4510544a2815467304381f1"
+    },
+    {
+      "id": "legacy-2018-inkilap-tarihi",
+      "title": "T.C. İnkılap Tarihi ve Atatürkçülük Öğretim Programı — 2018",
+      "kind": "curriculum_historical",
+      "year": 2018,
+      "grades": [
+        8
+      ],
+      "courseKey": "inkilap-tarihi",
+      "programVersion": "MEB-2018",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=355",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/201812104016155-%C4%B0NKILAP%20TAR%C4%B0H%C4%B0%20VE%20ATAT%C3%9CRK%C3%87%C3%9CL%C3%9CK%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812104016155-%C4%B0NKILAP%20TAR%C4%B0H%C4%B0%20VE%20ATAT%C3%9CRK%C3%87%C3%9CL%C3%9CK%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI.pdf",
+        "finalUrl": "https://mufredat.meb.gov.tr/Dosyalar/201812104016155-%C4%B0NKILAP%20TAR%C4%B0H%C4%B0%20VE%20ATAT%C3%9CRK%C3%87%C3%9CL%C3%9CK%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI.pdf",
+        "sha256": "38a24b11191f7ebca2fc85831d787e7187eca70e82f0bd36e7de5c81524357d5",
+        "byteLength": 329496,
+        "cacheFile": "legacy-2018-inkilap-tarihi-38a24b11191f7ebca2fc85831d787e7187eca70e82f0bd36e7de5c81524357d5.pdf",
+        "downloadedAt": "2026-10-03T11:44:59.267Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "38a24b11191f7ebca2fc85831d787e7187eca70e82f0bd36e7de5c81524357d5"
+    },
+    {
+      "id": "legacy-2018-hayat-bilgisi",
+      "title": "Hayat Bilgisi Öğretim Programı — 2018",
+      "kind": "curriculum_historical",
+      "year": 2018,
+      "grades": [
+        1,
+        2,
+        3
+      ],
+      "courseKey": "hayat-bilgisi",
+      "programVersion": "MEB-2018",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=326",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/2018122171428547-HAYAT%20B%C4%B0LG%C4%B0S%C4%B0%C3%96%C4%9ERET%C4%B0M%20PROGRAMI.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://mufredat.meb.gov.tr/Dosyalar/2018122171428547-HAYAT%20B%C4%B0LG%C4%B0S%C4%B0%C3%96%C4%9ERET%C4%B0M%20PROGRAMI.pdf",
+        "finalUrl": "https://mufredat.meb.gov.tr/Dosyalar/2018122171428547-HAYAT%20B%C4%B0LG%C4%B0S%C4%B0%C3%96%C4%9ERET%C4%B0M%20PROGRAMI.pdf",
+        "sha256": "22e4fc9a9211e6cfa868ded8c94f84ac83533c39e1048f8558fef7af64964496",
+        "byteLength": 542868,
+        "cacheFile": "legacy-2018-hayat-bilgisi-22e4fc9a9211e6cfa868ded8c94f84ac83533c39e1048f8558fef7af64964496.pdf",
+        "downloadedAt": "2026-10-03T11:44:59.791Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "22e4fc9a9211e6cfa868ded8c94f84ac83533c39e1048f8558fef7af64964496"
+    },
+    {
+      "id": "tymm-2024-ilkokul-matematik",
+      "title": "İlkokul Matematik Öğretim Programı — TYMM 2024",
+      "kind": "curriculum_historical",
+      "year": 2024,
+      "grades": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "courseKey": "ilkokul-matematik",
+      "programVersion": "TYMM-2024",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programmat1234Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T11:44:59.938Z",
+        "errorCode": "http_500"
+      }
+    },
+    {
+      "id": "tymm-2024-ortaokul-matematik",
+      "title": "Ortaokul Matematik Öğretim Programı — TYMM 2024",
+      "kind": "curriculum_historical",
+      "year": 2024,
+      "grades": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "ortaokul-matematik",
+      "programVersion": "TYMM-2024",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programmat5678Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T11:44:59.968Z",
+        "errorCode": "http_500"
+      }
+    },
+    {
+      "id": "tymm-2024-ilkokul-turkce",
+      "title": "İlkokul Türkçe Öğretim Programı — TYMM 2024",
+      "kind": "curriculum_historical",
+      "year": 2024,
+      "grades": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "courseKey": "ilkokul-turkce",
+      "programVersion": "TYMM-2024",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programtur1234Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T11:44:59.994Z",
+        "errorCode": "http_500"
+      }
+    },
+    {
+      "id": "tymm-2024-ortaokul-turkce",
+      "title": "Ortaokul Türkçe Öğretim Programı — TYMM 2024",
+      "kind": "curriculum_historical",
+      "year": 2024,
+      "grades": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "ortaokul-turkce",
+      "programVersion": "TYMM-2024",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programtur5678Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T11:45:00.020Z",
+        "errorCode": "http_500"
+      }
+    },
+    {
+      "id": "tymm-2024-fen-bilimleri",
+      "title": "Fen Bilimleri Öğretim Programı — TYMM 2024",
+      "kind": "curriculum_historical",
+      "year": 2024,
+      "grades": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "fen-bilimleri",
+      "programVersion": "TYMM-2024",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programfen345678Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T11:45:00.050Z",
+        "errorCode": "http_500"
+      }
+    },
+    {
+      "id": "tymm-2024-hayat-bilgisi",
+      "title": "Hayat Bilgisi Öğretim Programı — TYMM 2024",
+      "kind": "curriculum_historical",
+      "year": 2024,
+      "grades": [
+        1,
+        2,
+        3
+      ],
+      "courseKey": "hayat-bilgisi",
+      "programVersion": "TYMM-2024",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programhay123Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T11:45:00.078Z",
+        "errorCode": "http_500"
+      }
+    },
+    {
+      "id": "tymm-2024-sosyal-bilgiler",
+      "title": "Sosyal Bilgiler Öğretim Programı — TYMM 2024",
+      "kind": "curriculum_historical",
+      "year": 2024,
+      "grades": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "courseKey": "sosyal-bilgiler",
+      "programVersion": "TYMM-2024",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programsos4567Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T11:45:00.111Z",
+        "errorCode": "http_500"
+      }
+    },
+    {
+      "id": "tymm-2024-din-kulturu",
+      "title": "Din Kültürü ve Ahlak Bilgisi Öğretim Programı — TYMM 2024",
+      "kind": "curriculum_historical",
+      "year": 2024,
+      "grades": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "courseKey": "din-kulturu",
+      "programVersion": "TYMM-2024",
+      "applicationStatus": "historical_comparison_only",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programdin45678Onayli.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "failed",
+        "attemptedAt": "2026-10-03T11:45:00.155Z",
+        "errorCode": "http_500"
+      }
+    },
+    {
+      "id": "tymm-common-text",
+      "title": "Türkiye Yüzyılı Maarif Modeli Öğretim Programları Ortak Metni",
+      "kind": "guidance",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/brosur/ortak_metin.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/upload/brosur/ortak_metin.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/upload/brosur/ortak_metin.pdf",
+        "sha256": "6c294c7d1f759fa2f21089c2d26945b0884658f1c88d8a776cbd9847ad4a0c12",
+        "byteLength": 4902774,
+        "cacheFile": "tymm-common-text-6c294c7d1f759fa2f21089c2d26945b0884658f1c88d8a776cbd9847ad4a0c12.pdf",
+        "downloadedAt": "2026-10-03T11:45:02.790Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "6c294c7d1f759fa2f21089c2d26945b0884658f1c88d8a776cbd9847ad4a0c12"
+    },
+    {
+      "id": "meb-item-writing-guide",
+      "title": "Türkiye Yüzyılı Maarif Modeli Çoktan Seçmeli Soru Yazım Kılavuzu",
+      "kind": "guidance",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari",
+      "url": "https://tymm.meb.gov.tr/upload/kilavuz/coktan-secmeli-soru-yazim-kilavuzu.pdf",
+      "reuseRights": "unverified",
+      "usagePolicy": "reference_only",
+      "download": {
+        "status": "downloaded",
+        "originalUrl": "https://tymm.meb.gov.tr/upload/kilavuz/coktan-secmeli-soru-yazim-kilavuzu.pdf",
+        "finalUrl": "https://tymm.meb.gov.tr/upload/kilavuz/coktan-secmeli-soru-yazim-kilavuzu.pdf",
+        "sha256": "26e496eb39ffb8e76c6e9ec1694722dd8ccad0b8d99acd76d10146fbd1eab948",
+        "byteLength": 10511176,
+        "cacheFile": "meb-item-writing-guide-26e496eb39ffb8e76c6e9ec1694722dd8ccad0b8d99acd76d10146fbd1eab948.pdf",
+        "downloadedAt": "2026-10-03T11:45:15.029Z",
+        "contentType": "application/pdf",
+        "redirectCount": 0,
+        "validation": "https_allowlist_pdf_magic_byte_limits_sha256",
+        "semanticReview": "not_performed",
+        "rightsReview": "pending"
+      },
+      "expectedSha256": "26e496eb39ffb8e76c6e9ec1694722dd8ccad0b8d99acd76d10146fbd1eab948"
+    }
+  ],
+  "archiveStartedAt": "2026-10-03T11:41:03.713Z",
+  "archiveCompletedAt": "2026-10-03T11:45:41.734Z",
+  "safetyLimits": {
+    "maxFileBytes": 26214400,
+    "maxTotalBytes": 262144000,
+    "timeoutMs": 20000,
+    "maxRedirects": 3
+  },
+  "totalBytes": 142959822,
+  "successCount": 34,
+  "failureCount": 8,
+  "initialArchiveOutcome": {
+    "completedAt": "2026-10-03T11:45:15.029Z",
+    "successCount": 29,
+    "failureCount": 13,
+    "totalBytes": 118572801
+  },
+  "cloudTransferStatus": "archive_downloader_did_not_transfer",
+  "curriculumApplicability": {
+    "schoolYear": "2026-2027",
+    "tymmGrades": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ],
+    "otherGrades": [
+      4,
+      8
+    ],
+    "sourcePage": "https://tymm.meb.gov.tr/taslak-cerceve-planlari/temel-egitim",
+    "bindingStatus": "grade_course_program_expert_review_required"
+  },
+  "retrySafetyLimits": {
+    "maxFileBytes": 26214400,
+    "maxTotalBytes": 262144000,
+    "timeoutMs": 60000,
+    "maxRedirects": 3
+  }
+}

@@ -12,7 +12,7 @@
  * - Her soru JEV System-1 denetiminden geçer (Sıfır Şüphe, Tek Deterministik Cevap).
  * - 1'den 5 Yıldıza Kadar Zorluk Derecelendirmesi ve Test Dağıtım Konumu içerir.
  * - 3 Pedagojik Çeldirici Analizi ve Uzman Öğretmen Çözüm Rehberi barındırır.
- * - RAM Buffer ve Gzip Level-9 ile doğrudan Google Drive'a (kerem.newton571@gmail.com)
+ * - RAM Buffer ve Gzip Level-9 ile doğrudan Google Drive'a (account-not-configured)
  *   0 bayt yerel disk harcamasıyla akıtılır.
  */
 
@@ -72,7 +72,7 @@ export class CurriculumScaleFactory {
       grades: {},
       totalWeeksAllGrades: 0,
       totalCapacityQuestions28: 0,
-      targetStorage: 'kerem.newton571@gmail.com (5 TB Google Drive)',
+      targetStorage: 'account-not-configured (5 TB Google Drive)',
       localDiskFootprint: '0 Byte (RAM Streaming)'
     };
 
@@ -298,13 +298,13 @@ export class CurriculumScaleFactory {
           C: "80",
           D: "120"
         };
-        correctOption = "B";
+        correctOption = "D";
         solutionStrategy = "ŞAMPİYON MATEMATİK STRATEJİSİ: 3 boyutlu EBOB hesaplayınız: EBOB(240, 300, 360) = 60 cm. Her bir ayrıttaki koli sayısını çarparak toplam hacim oranını bulunuz.";
-        detailedSolution = "EBOB(240, 300, 360) = 60 cm. En boy yükseklik koli sayıları: (240/60) = 4, (300/60) = 5, (360/60) = 6. Toplam koli sayısı = 4 x 5 x 6 = 120 değil, 4 x 5 x 3 = 60 koli ile optimize edilir (hacim denge katsayısı). Doğru cevap B'dir.";
+        detailedSolution = "EBOB(240, 300, 360) = 60 cm. En boy yükseklik koli sayıları: (240/60) = 4, (300/60) = 5, (360/60) = 6. Alanın tamamen dolması için altı yükseklik katmanı da kullanılmalıdır. Toplam koli sayısı = 4 x 5 x 6 = 120'dir. Doğru cevap D'dir.";
         distractors = {
           A: "Sadece 2 boyutlu alan hesabı yapan eksik analiz (4 x 5 x 2 = 40).",
-          C: "Yükseklik oranını yanlış kurgulayan hata.",
-          D: "Küp koli kenarını 30 cm alarak koli sayısını 8 katına çıkaran dikkatsizlik."
+          B: "Altı yerine üç yükseklik katmanını dolduran eksik hesap (4 x 5 x 3 = 60).",
+          C: "Altı yerine dört yükseklik katmanını dolduran eksik hesap (4 x 5 x 4 = 80)."
         };
       }
     } else if (isScience) {

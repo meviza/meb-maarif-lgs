@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>İçerik Atölyesi · Meviza</title>
+    <link rel="stylesheet" href="/studio.css">
+    <script type="module" src="/studio.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+    <div class="workspace">
+      <aside class="rail" aria-label="Atölye gezinmesi">
+        <a class="wordmark" href="#overview" aria-label="Meviza İçerik Atölyesi"><span class="wordmark-name">meviza<span class="wordmark-stop">.</span></span><span class="wordmark-note">EĞİTİM ATÖLYESİ</span></a>
+        <div class="environment"><span class="status-dot" aria-hidden="true"></span> YEREL İNCELEME</div>
+        <nav class="rail-nav">
+          <a class="active" href="#overview"><span class="nav-number">01</span> Genel görünüm</a>
+          <a href="#review"><span class="nav-number">02</span> Soru & çözüm</a>
+          <a href="#sources"><span class="nav-number">03</span> Kaynak defteri</a>
+        </nav>
+        <div class="rail-note"><span class="eyebrow">YAYIN KAPISI</span><strong>Henüz açık değil.</strong><p>Bu atölye taslakları ve kanıtlarını gösterir. Gerçek yönetici paneli veya öğrenci uygulaması değildir.</p><span class="rail-rule"></span><small>Öğrenci verisi işlenmez.<br>Yayın / yükleme işlemi yoktur.</small></div>
+      </aside>
+      <main id="main" tabindex="-1">
+        <header class="topbar"><span class="breadcrumb">PLATFORM / İÇERİK KALİTESİ</span><span class="private-label">Yerel önizleme · yayın kapalı</span></header>
+        <section id="overview" class="intro" aria-labelledby="page-title">
+          <div><p class="eyebrow">EDİTÖRYAL İNCELEME ALANI</p><h1 id="page-title">İçerik Atölyesi</h1><p class="intro-copy">Bir sorunun amacını, görselini ve çözüm izini<br class="desktop-break"> aynı masada buluşturalım.</p></div>
+          <div class="intro-note"><span class="intro-note-index">1 → 8</span><p>Sürekli öğrenme için<br>önce güvenilir içerik.</p></div>
+        </section>
+        <div id="connection-message" class="connection-message" role="status" aria-live="polite">Yerel raporlar okunuyor…</div>
+        <section class="metrics" aria-label="Gerçek pilot raporu sayıları">
+          <article class="metric"><span class="metric-label">Üretim adayı</span><strong id="count-requested">—</strong><span class="metric-note">Tek pilot parti</span></article>
+          <article class="metric"><span class="metric-label">İncelemeye kalan taslak</span><strong id="count-drafts">—</strong><span class="metric-note">Uzman onayı değildir</span></article>
+          <article class="metric metric-rejected"><span class="metric-label">Kalite kapısında red</span><strong id="count-rejected">—</strong><span class="metric-note">Tekrarı artırmayan üretim</span></article>
+          <article class="metric"><span class="metric-label">Yayınlanan içerik</span><strong id="count-published">—</strong><span class="metric-note">Bu önizleme yayın yapmaz</span></article>
+        </section>
+        <section id="review" class="review-section" aria-labelledby="review-title">
+          <div class="section-heading"><div><p class="eyebrow">02 / SORU & ÇÖZÜM</p><h2 id="review-title">Taslağın içine bakalım.</h2></div><label class="filter-label">Soru ailesi<select id="family-filter"><option value="all">Tüm aileler</option></select></label></div>
+          <div id="empty-state" class="empty-state" hidden><p class="eyebrow">İNCELEME BEKLİYOR</p><h3>Gösterilecek doğrulanabilir taslak yok.</h3><p id="empty-copy">Pilot raporu bulunduğunda sorular burada görünecek. Eksik veriden başarı veya onay sonucu üretilmez.</p><button id="retry-load" class="button button-primary" type="button">Raporları yeniden oku</button></div>
+          <div id="review-workspace" class="review-grid" hidden>
+            <div class="question-column">
+              <div class="question-browser"><span id="question-position">—</span><div id="question-selector" class="question-selector" aria-label="İncelenecek soruyu seçin"></div></div>
+              <article class="question-card" aria-labelledby="question-prompt">
+                <div class="question-card-heading"><span id="question-family" class="family-label">—</span><span class="pill pill-draft">TASLAK / YAYIN DEĞİL</span></div>
+                <h3 id="question-prompt"></h3>
+                <figure class="geometry-stage"><img id="question-diagram" alt=""><figcaption id="diagram-caption">Özgün vektör çizim · ölçek ve sayı kontrolü raporda</figcaption></figure>
+                <ol id="question-options" class="options-list" aria-label="Seçenekler ve editöryal yanıt anahtarı"></ol>
+                <p class="answer-key-note">Yanıt anahtarı yalnız bu yerel editöryal incelemede gösterilir.</p>
+              </article>
+              <section class="solution-card" aria-labelledby="solution-title"><div class="solution-heading"><div><p class="eyebrow">ÇÖZÜMÜN AKIŞI</p><h3 id="solution-title">Adım adım, aynı kanıttan.</h3></div><span id="storyboard-position" class="step-count">—</span></div><div id="storyboard-stage" class="storyboard-stage"><img id="storyboard-image" alt="Çözüm adımının vektör çizimi"><p id="storyboard-narration" aria-live="polite"></p><code id="storyboard-expression"></code></div><div class="storyboard-controls"><button id="step-reset" class="button button-outline" type="button">Başa dön</button><button id="step-next" class="button button-primary" type="button">Sonraki adım <span aria-hidden="true">→</span></button></div><p class="solution-footnote">Bu, oynatılabilir SVG adım taslağıdır. Render edilmiş video veya ses kaydı değildir.</p><details class="transcript"><summary>Çözüm metnini aç</summary><p id="storyboard-transcript"></p></details></section>
+            </div>
+            <aside class="evidence-card" aria-labelledby="evidence-title"><p class="eyebrow">KALİTE & İZLENEBİLİRLİK</p><h3 id="evidence-title">İnceleme izi</h3><div class="evidence-stamp"><span>01</span><div><strong>Uzman incelemesi bekliyor</strong><small>Otomatik sayısal kontrol ≠ pedagojik onay</small></div></div><dl id="question-metadata" class="metadata-list"></dl><div class="evidence-divider"></div><h4>Yerel kontrol sonuçları</h4><ul id="question-checks" class="check-list"></ul><div class="pending-box"><span class="eyebrow">AÇIK KAPILAR</span><ul id="question-pending"></ul></div><details class="integrity"><summary>Sürüm bütünlüğü</summary><code id="content-hash"></code></details></aside>
+          </div>
+        </section>
+        <section id="sources" class="source-section" aria-labelledby="sources-title"><div class="section-heading"><div><p class="eyebrow">03 / KAYNAK DEFTERİ</p><h2 id="sources-title">Bilginin izi kaybolmasın.</h2></div><span id="source-count" class="source-count">—</span></div><p class="source-intro">Resmî kaynağa erişmek, ticari yeniden kullanım izni değildir. Bu belgeler yalnız referans incelemesi içindir; lisans ve semantik inceleme ayrıca gerekir.</p><div id="source-list" class="source-list"></div></section>
+        <footer class="page-footer"><span>MEVIZA / K–12 İÇERİK ATÖLYESİ</span><p>Yerel pilot. MEB onayı, uzman kabulü, canlı model çalışması veya üretim ortamı kanıtı değildir.</p><button id="refresh-data" type="button" class="text-button">Veriyi yenile <span aria-hidden="true">↗</span></button></footer>
+      </main>
+    </div>
+  </body>
+</html>

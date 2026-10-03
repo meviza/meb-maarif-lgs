@@ -1,63 +1,27 @@
-# GitHub ve Google Drive (5 TB) Senkronizasyon Kılavuzu
+# GitHub ve Drive — Gerçek İşlem ve Doğrulama Sınırı
 
-> **Hedef:** Kullanıcı hesabı: `kerem.newton571@gmail.com`  
-> **Amaç:** Yerel Mac diskinde yer tasarrufu sağlamak, tüm projeyi GitHub'da versiyonlamak ve soru paketleri ile MEB müfredat verilerini doğrudan 5 TB bulut alanında depolamak.
+## Git dalı
 
----
+Kanonik çalışma dalı `codex/k12-foundation-audit`, uzak depo `https://github.com/meviza/meb-maarif-lgs.git`. Antigravity'nin ana dalına veya özgün çalışma ağacına reset/merge yapılmaz. 3 Ekim 2026 denetiminde uzak depo PUBLIC olarak doğrulandı; bu nedenle anahtarlar, öğrenci verisi, kullanıcı kimliği ve telifli ham PDF'ler yüklenmez.
 
-## 1. GitHub Uzak Depo (Remote Repository) Entegrasyonu
+Kod, testler, planlar ve resmî kaynakların URL/hash/sürüm/hak durum metaverisi Git'te sürümlenir. Çalışma kodu için yayın/üretim onayı verilmiş sayılmaz. Push sonrasında uzak dal commit'i yerel HEAD ile karşılaştırılır; yalnız yerel commit, GitHub'a yükleme değildir.
 
-Projeyi GitHub hesabınıza bağlamak için terminalden aşağıdaki adımları uygulayın:
+## Drive (kullanıcının bildirdiği 5 TB hesap)
 
-```bash
-# 1. GitHub üzerinde yeni boş bir repo oluşturun (örn: meb-maarif-lgs)
-# 2. Yerel projeyi GitHub deposuna bağlayın:
-git remote add origin https://github.com/KULLANICI_ADINIZ/meb-maarif-lgs.git
+Mevcut Google Drive Desktop senkronizasyon alanı bulundu. Yeni Google Drive MCP bağlantısı veya OAuth kurulmadı. Mevcut Desktop mount'u üzerinden yalnız açık, öğrenci verisi içermeyen kaynak referansları ve özgün inceleme taslakları ayrı bir `K12-Codex-Archive` dizinine kopyalanabilir.
 
-# 3. Ana dalı ayarlayıp kodları yükleyin:
-git branch -M master
-git push -u origin master
-```
+`packages/storage/verified_archive.mjs`:
 
-Bundan sonraki her geliştirme adımında tek komutla buluta gönderebilirsiniz:
-```bash
-git push
-```
+- explicit, sınırlı dosya envanteri ve izin verilen veri sınıfı ister;
+- kaynak ve kopya için SHA-256/bayt bütünlüğünü doğrular;
+- yeni `k12-archive-...` dizini kullanır; eski dosyaların üstüne yazmaz veya silmez;
+- 300 MiB toplam sınır uygular; kaynaklar için hak/purpose/retention defteri ayrıca geçerlidir;
+- `local_copy_verified` ile `remoteSyncState: not_verified` durumlarını ayrı tutar.
 
----
+Masaüstü klasörüne doğrulanmış kopya, Google Drive sunucusuna başarıyla yüklendiğine kanıt değildir. Uzak dosya/hash doğrulaması için sonradan yetkili Drive API/MCP veya Desktop eşitleme kanıtı gerekir. Kullanıcının bildirdiği 5 TB toplam/boş kota bu çalışmada API ile doğrulanmadı.
 
-## 2. Google Drive 5 TB Bulut Yedekleme (Sıfır Disk Tüketimi)
+## Disk ve veri mimarisi
 
-### Yöntem A: `rclone` ile Doğrudan Bulut Yüklemesi (Önerilen)
-`rclone`, dosyaları yerel SSD'nizde tutmadan doğrudan Google Drive'a akıtır:
+“Sıfır SSD kullanımı” garantisi yoktur. Drive Desktop önbelleği, çevrimdışı tutulan dosyalar ve geçici çıktı yer tüketebilir. Referans indirme cache'i repo dışındadır; otomatik cache silme yapılmaz. Doğrulanmış uzak yedek olmadan yerel tek kopya kaldırılmaz.
 
-1. Kurulum:
-   ```bash
-   brew install rclone
-   ```
-2. Yapılandırma:
-   ```bash
-   rclone config
-   # 'n' (yeni remote) -> İsim: 'gdrive' -> Tip: 'drive'
-   # Giriş ekranında 'kerem.newton571@gmail.com' hesabınızı seçip izin verin.
-   ```
-3. Tek Komutla Buluta Aktar:
-   ```bash
-   # Sıkıştırılmış soru paketlerini ve veritabanı yedeğini Drive'a yükler:
-   npm run cloud:sync
-   ```
-
-### Yöntem B: Google Drive for Desktop
-Eğer Mac'inizde Google Drive masaüstü uygulaması kuruluysa:
-```bash
-# data/archive klasörünü Drive içerisine sembolik bağlayın:
-mkdir -p ~/Google\ Drive/My\ Drive/MEB_Maarif_LGS
-cp data/archive/*.json.gz ~/Google\ Drive/My\ Drive/MEB_Maarif_LGS/
-```
-
----
-
-## 3. Otomatik Paket Komutları
-Platformumuza eklenen yeni scriptler:
-- `npm run cloud:backup`: Tüm 53 soruyu ve SQL şemasını gzip formatında arşivler (< 100 KB).
-- `npm run cloud:sync`: Arşivi Google Drive'a aktarır ve yükleme rehberini yazdırır.
+Drive arşiv/taşıma alanıdır; işlem veritabanı, PostgreSQL eşdeğeri, öğrenci verisi deposu veya canlı uygulama içerik sunucusu değildir. Okul verisi için tenant izolasyonlu PostgreSQL, yetkili nesne deposu, saklama/silme/yedekleme ve kota rezervasyonu ayrı fazda uygulanacaktır.

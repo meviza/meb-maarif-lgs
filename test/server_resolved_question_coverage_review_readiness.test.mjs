@@ -5,6 +5,7 @@ import test from 'node:test';
 
 const BRIDGE_MODULE_URL = new URL('../packages/contracts/server_resolved_question_coverage_review_readiness.mjs', import.meta.url);
 const PACKAGE_COVERAGE_BINDING_MODULE_URL = new URL('../packages/contracts/server_resolved_content_package_coverage_binding.mjs', import.meta.url);
+const PACKAGE_MANIFEST_GOVERNANCE_MODULE_URL = new URL('../packages/contracts/server_resolved_content_package_manifest_coverage_governance_readiness.mjs', import.meta.url);
 const COVERAGE_MODULE_URL = new URL('../packages/contracts/question_coverage_blueprint.mjs', import.meta.url);
 
 const SHA_A = 'a'.repeat(64);
@@ -34,6 +35,15 @@ async function loadPackageCoverageBinding() {
     'a package target needs a server-resolved coverage binding before a later publication or delivery phase'
   );
   return import(PACKAGE_COVERAGE_BINDING_MODULE_URL.href);
+}
+
+async function loadPackageManifestGovernanceReadiness() {
+  assert.equal(
+    fs.existsSync(PACKAGE_MANIFEST_GOVERNANCE_MODULE_URL),
+    true,
+    'a V3 package needs a server-resolved DAMA coverage-governance sidecar before any later V4 publication or delivery phase'
+  );
+  return import(PACKAGE_MANIFEST_GOVERNANCE_MODULE_URL.href);
 }
 
 async function loadCoverageContract() {
@@ -242,6 +252,137 @@ async function packageCoverageBindingCandidate(
     resolverContext,
     packageContentTarget,
     coverageReviewResolverInput: coverageCandidate
+  };
+}
+
+function v3ManifestForCoverageCandidate(coverageCandidate, itemIndex = 0) {
+  const target = packageTargetFor(coverageCandidate, itemIndex);
+  return {
+    contractVersion: '3.0.0',
+    packageId: target.packageId,
+    dataGovernance: {
+      owner: 'content_owner_001',
+      steward: 'content_steward_001',
+      classification: 'educational-content',
+      processingPurpose: 'student-learning-delivery',
+      retentionClass: 'content-lifecycle',
+      sourceLineage: [{
+        sourceId: 'source_tymm_math_g1_001',
+        kind: 'original',
+        retrievedAt: '2026-10-03T08:00:00.000Z'
+      }]
+    },
+    curriculum: {
+      ...target.curriculum,
+      verificationState: 'canonical_verified'
+    },
+    content: {
+      contentItemId: target.contentItemId,
+      revisionId: target.contentRevisionId,
+      revisionSha256: target.contentRevisionSha256,
+      assetSetSha256: target.assetSetSha256,
+      authorId: 'content_author_001',
+      lifecycleState: 'published',
+      academicReviewId: `decision_academic_${target.itemId}`,
+      assessmentReviewId: `decision_assessment_${target.itemId}`,
+      rightsReviewId: `decision_rights_${target.itemId}`,
+      accessibilityReviewId: `decision_accessibility_${target.itemId}`,
+      publicationDecisionId: `publication_${target.itemId}`
+    },
+    assets: []
+  };
+}
+
+function v3AssetReference() {
+  return {
+    assetEvidenceBundleId: 'bundle_g1_math_001',
+    assetId: 'asset_g1_math_001',
+    revisionId: 'assetrev_g1_math_001',
+    mediaType: 'image/svg+xml',
+    byteSha256: 'e'.repeat(64),
+    deliveryProfile: 'sanitized_static_svg_v1',
+    provenanceRecordId: 'provenance_g1_math_001',
+    provenanceRecordSha256: 'f'.repeat(64),
+    rightsRecordId: 'rights_g1_math_001',
+    rightsRecordSha256: '1'.repeat(64),
+    accessibilityRecordId: 'accessibility_g1_math_001',
+    accessibilityRecordSha256: '2'.repeat(64)
+  };
+}
+
+function packageTargetForV3Manifest(manifest, coverageCandidate, itemIndex = 0) {
+  const item = coverageCandidate.coverageEvaluationInput.itemMetadata[itemIndex];
+  return {
+    packageId: manifest.packageId,
+    packageManifestSha256: SHA_C,
+    itemId: item.itemId,
+    contentItemId: manifest.content.contentItemId,
+    contentRevisionId: manifest.content.revisionId,
+    contentRevisionSha256: manifest.content.revisionSha256,
+    assetSetSha256: manifest.content.assetSetSha256,
+    blueprintCellId: item.blueprintCellId,
+    curriculum: {
+      registryEntryId: manifest.curriculum.registryEntryId,
+      programVersion: manifest.curriculum.programVersion,
+      grade: manifest.curriculum.grade,
+      courseKey: manifest.curriculum.courseKey,
+      outcomeCode: manifest.curriculum.outcomeCode
+    }
+  };
+}
+
+async function packageManifestGovernanceCandidate(
+  coverageCandidate,
+  manifest = v3ManifestForCoverageCandidate(coverageCandidate),
+  itemIndex = 0
+) {
+  const packageBinding = await loadPackageCoverageBinding();
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const packageTarget = packageTargetForV3Manifest(manifest, coverageCandidate, itemIndex);
+  const coverageBindingResolverContext = {
+    contractVersion: '1.0.0',
+    snapshotId: 'package_coverage_snapshot_g1_math_001',
+    observedAt: '2026-10-03T11:30:00.000Z',
+    sourcePolicyVersion: 'package-coverage-source-v1',
+    packageCoverageSnapshotSha256: null
+  };
+  coverageBindingResolverContext.packageCoverageSnapshotSha256 =
+    packageBinding.calculatePackageCoverageSnapshotSha256(
+      coverageBindingResolverContext,
+      packageTarget,
+      coverageCandidate
+    );
+  const packageArtifact = {
+    packageId: manifest.packageId,
+    packageArtifactSha256: SHA_C,
+    manifest,
+    coverageLocator: {
+      itemId: packageTarget.itemId,
+      blueprintCellId: packageTarget.blueprintCellId
+    }
+  };
+  const coverageBindingResolverInput = {
+    resolverContext: coverageBindingResolverContext,
+    coverageReviewResolverInput: coverageCandidate
+  };
+  const resolverContext = {
+    contractVersion: '1.0.0',
+    snapshotId: 'manifest_governance_snapshot_g1_math_001',
+    observedAt: '2026-10-03T11:45:00.000Z',
+    sourcePolicyVersion: 'manifest-governance-source-v1',
+    manifestGovernanceSnapshotSha256: null
+  };
+  resolverContext.manifestGovernanceSnapshotSha256 =
+    governanceReadiness.calculatePackageManifestCoverageGovernanceSnapshotSha256(
+      resolverContext,
+      packageArtifact,
+      coverageBindingResolverInput
+    );
+  return {
+    contractVersion: '1.0.0',
+    resolverContext,
+    packageArtifact,
+    coverageBindingResolverInput
   };
 }
 
@@ -775,5 +916,218 @@ test('remains valid when numeric and timestamp intrinsics are poisoned after the
   assert.deepEqual(JSON.parse(child.stdout), {
     eligible: true,
     errorCodes: []
+  });
+});
+
+test('recomputes a V3 package manifest and coverage binding into a DAMA governance-ready sidecar without publishing or delivering', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const coverageCandidate = await bridgeCandidate();
+  const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(
+    await packageManifestGovernanceCandidate(coverageCandidate)
+  );
+
+  assert.equal(result.eligible, true);
+  assert.equal(result.nextState, 'package_manifest_coverage_governance_ready');
+  assert.equal(result.scopeCoverageComplete, true);
+  assert.equal(result.packageManifestCoverageGovernanceIntent.packageId, 'package_g1_math_001');
+  assert.equal(typeof result.packageManifestCoverageGovernanceIntent.manifestGovernanceSnapshotSha256, 'string');
+  assert.equal(result.packageManifestCoverageGovernanceIntent.manifestGovernanceSnapshotSha256.length, 64);
+  assert.equal('published' in result, false);
+  assert.equal('publicationEligible' in result, false);
+  assert.equal('deliveryEligible' in result, false);
+});
+
+test('blocks a freshly rehashed manifest whose author differs from the resolved lifecycle author', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const candidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+  candidate.packageArtifact.manifest.content.authorId = 'unrelated_author_001';
+  candidate.resolverContext.manifestGovernanceSnapshotSha256 =
+    governanceReadiness.calculatePackageManifestCoverageGovernanceSnapshotSha256(
+      candidate.resolverContext,
+      candidate.packageArtifact,
+      candidate.coverageBindingResolverInput
+    ) ?? SHA_C;
+
+  const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'manifest_author_lifecycle_mismatch'), true);
+});
+
+test('blocks freshly rehashed manifest review references that do not match their resolved discipline decisions', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  for (const field of ['academicReviewId', 'assessmentReviewId', 'rightsReviewId', 'accessibilityReviewId']) {
+    const candidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+    candidate.packageArtifact.manifest.content[field] = 'unrelated_review_001';
+    candidate.resolverContext.manifestGovernanceSnapshotSha256 =
+      governanceReadiness.calculatePackageManifestCoverageGovernanceSnapshotSha256(
+        candidate.resolverContext,
+        candidate.packageArtifact,
+        candidate.coverageBindingResolverInput
+      ) ?? SHA_C;
+
+    const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(candidate);
+
+    assert.equal(result.eligible, false, field);
+    assert.equal(result.errors.some(error => error.code === 'manifest_review_lifecycle_mismatch' && error.path.endsWith(field)), true, field);
+  }
+});
+
+test('states that publication authority, asset evidence and source usage rights are not established by manifest governance readiness', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const candidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+  candidate.packageArtifact.manifest.content.publicationDecisionId = 'unresolved_publication_001';
+  candidate.resolverContext.manifestGovernanceSnapshotSha256 =
+    governanceReadiness.calculatePackageManifestCoverageGovernanceSnapshotSha256(
+      candidate.resolverContext,
+      candidate.packageArtifact,
+      candidate.coverageBindingResolverInput
+    );
+
+  const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(candidate);
+
+  assert.equal(result.eligible, true);
+  assert.deepEqual({ ...result.verificationScope }, {
+    manifestMetadata: 'integrity_bound',
+    curriculumAndCoverage: 'recomputed',
+    authorAndReviewReferences: 'matched_to_resolved_lifecycle',
+    publicationAuthority: 'not_evaluated',
+    assetEvidenceAndBytes: 'not_evaluated',
+    sourceUsageRights: 'not_evaluated'
+  });
+  assert.equal('published' in result, false);
+  assert.equal('publicationEligible' in result, false);
+  assert.equal('deliveryEligible' in result, false);
+});
+
+test('rejects a caller-supplied precomputed package coverage binding instead of recomputing the manifest-derived target', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const candidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+  candidate.precomputedPackageCoverageBinding = { eligible: true };
+
+  const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'unexpected_field'), true);
+});
+
+test('blocks manifest lineage metadata drift after a governance resolver snapshot was formed', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const candidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+  candidate.packageArtifact.manifest.dataGovernance.sourceLineage[0].sourceId = 'source_tymm_math_g1_002';
+
+  const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'manifest_governance_snapshot_hash_mismatch'), true);
+});
+
+test('blocks rights, accessibility, provenance, or byte-evidence drift in a V3 manifest after the governance snapshot', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const coverageCandidate = await bridgeCandidate();
+  const manifest = v3ManifestForCoverageCandidate(coverageCandidate);
+  manifest.assets = [v3AssetReference()];
+  const candidate = await packageManifestGovernanceCandidate(coverageCandidate, manifest);
+  candidate.packageArtifact.manifest.assets[0].rightsRecordSha256 = SHA_A;
+
+  const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'manifest_governance_snapshot_hash_mismatch'), true);
+});
+
+test('blocks manifest content or blueprint-cell aliases instead of trusting an earlier package coverage snapshot', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const coverageCandidate = await bridgeCandidate();
+  const contentAlias = await packageManifestGovernanceCandidate(coverageCandidate);
+  contentAlias.packageArtifact.manifest.content.revisionSha256 = SHA_A;
+  const cellAlias = await packageManifestGovernanceCandidate(coverageCandidate);
+  cellAlias.packageArtifact.coverageLocator.blueprintCellId = coverageCandidate.coverageEvaluationInput.itemMetadata[1].blueprintCellId;
+
+  const contentResult = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(contentAlias);
+  const cellResult = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(cellAlias);
+
+  assert.equal(contentResult.eligible, false);
+  assert.equal(contentResult.errors.some(error => error.code === 'package_coverage_binding_blocked'), true);
+  assert.equal(cellResult.eligible, false);
+  assert.equal(cellResult.errors.some(error => error.code === 'package_coverage_binding_blocked'), true);
+});
+
+test('keeps partial scope explicit in the manifest coverage governance sidecar', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(
+    await packageManifestGovernanceCandidate(await bridgeCandidate({ partialCoverage: true }))
+  );
+
+  assert.equal(result.eligible, true);
+  assert.equal(result.scopeCoverageComplete, false);
+  assert.equal(result.coverageSummary.missingRequiredVariantCellCount, 1);
+});
+
+test('rejects learner data and accessor-backed DAMA metadata from the content-governance sidecar', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const learnerCandidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+  learnerCandidate.packageArtifact.manifest.learnerId = 'student_001';
+  const accessorCandidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+  Object.defineProperty(accessorCandidate.packageArtifact.manifest.dataGovernance, 'owner', {
+    configurable: true,
+    enumerable: true,
+    get() {
+      throw new Error('governance owner accessor must not run');
+    }
+  });
+
+  const learnerResult = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(learnerCandidate);
+  const accessorResult = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(accessorCandidate);
+
+  assert.equal(learnerResult.eligible, false);
+  assert.equal(learnerResult.errors.some(error => error.code === 'unexpected_field'), true);
+  assert.equal(accessorResult.eligible, false);
+  assert.equal(accessorResult.errors.some(error => error.code === 'accessor_field_not_allowed'), true);
+});
+
+test('blocks a manifest governance observation that predates the package coverage binding observation', async () => {
+  const governanceReadiness = await loadPackageManifestGovernanceReadiness();
+  const candidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+  candidate.resolverContext.observedAt = '2026-10-03T11:00:00.000Z';
+
+  const result = governanceReadiness.evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(candidate);
+
+  assert.equal(result.eligible, false);
+  assert.equal(result.errors.some(error => error.code === 'resolver_observed_before_package_coverage_binding'), true);
+});
+
+test('does not inherit publication, delivery, or manifest claims after Object prototype pollution in manifest governance readiness', async () => {
+  const candidate = await packageManifestGovernanceCandidate(await bridgeCandidate());
+  const script = `
+    import fs from 'node:fs';
+    import { evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness } from ${JSON.stringify(PACKAGE_MANIFEST_GOVERNANCE_MODULE_URL.href)};
+    const candidate = JSON.parse(fs.readFileSync(0, 'utf8'));
+    Object.defineProperties(Object.prototype, {
+      published: { configurable: true, enumerable: true, value: true },
+      deliveryEligible: { configurable: true, enumerable: true, value: true },
+      manifestValid: { configurable: true, enumerable: true, value: true }
+    });
+    const result = evaluateServerResolvedContentPackageManifestCoverageGovernanceReadiness(candidate);
+    process.stdout.write(JSON.stringify({
+      eligible: result.eligible,
+      resultPrototypeIsNull: Object.getPrototypeOf(result) === null,
+      publishedInResult: 'published' in result,
+      deliveryEligibleInResult: 'deliveryEligible' in result,
+      manifestValidInResult: 'manifestValid' in result
+    }));
+  `;
+  const child = spawnSync(process.execPath, ['--input-type=module', '--eval', script], {
+    encoding: 'utf8',
+    input: JSON.stringify(candidate)
+  });
+
+  assert.equal(child.status, 0, child.stderr);
+  assert.deepEqual(JSON.parse(child.stdout), {
+    eligible: true,
+    resultPrototypeIsNull: true,
+    publishedInResult: false,
+    deliveryEligibleInResult: false,
+    manifestValidInResult: false
   });
 });
