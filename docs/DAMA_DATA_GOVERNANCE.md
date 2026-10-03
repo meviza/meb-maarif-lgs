@@ -111,3 +111,13 @@ Birinci mobil dikey dilim için kanıtlar:
 - Operasyon testleri: yedek geri-yükleme, saklama/imha, erişim gözden geçirmesi, veri kalite skor kartı ve geri çekme tatbikatı.
 
 Bu kapılar çalışmadan DAMA, CMMI veya SPICE uyumu; MEB onayı; ya da üretime hazır çocuk eğitim platformu iddia edilmez.
+
+## 10. Uygulanmış sözleşme çekirdeği
+
+İlk teknik dikey dilim, istemci veya veritabanına veri yazmadan önce paylaşılabilir veri sınırlarını uygulamaya alır:
+
+- [`packages/contracts/content_package_manifest.mjs`](../packages/contracts/content_package_manifest.mjs), öğrenciye dağıtılacak içerik paketinde sürüm, owner/steward, amaç/saklama sınıfı, kaynak soy-ağacı, kanonik müfredat durumu, insan incelemeleri ve varlık hak/erişilebilirlik metadatasını denetler. Cevap anahtarı, doğru şık, ayrıntılı çözüm ve ham HTML öğrenci paketinde reddedilir.
+- [`packages/contracts/learning_event.mjs`](../packages/contracts/learning_event.mjs), Flutter'ın ilerideki çevrimdışı eşitlemesinde yalnız takma kimlikli, sürümlü içerik bağlamına bağlı olayları kabul eder. E-posta, telefon, ulusal kimlik, veli e-postası ve serbest yanıt metni reddedilir.
+- Bu doğrulayıcılar saf ve durum tutmayan fonksiyonlardır: veri yazmaz, ağ çağrısı yapmaz, kimlik çözmez veya bir paketi kendiliğinden yayımlamaz. İnsan onayı ve gerçek yetkilendirme yerlerine geçmezler.
+
+Bu çekirdek, sonraki `learning_api`, Flutter ve React/Next istemcilerinin aynı sözleşmeyi uygulaması için başlangıç noktasıdır. Sözleşme sürüm değişiklikleri geriye dönük uyumluluk ve veri migrasyonu kanıtı olmadan yayınlanmaz.
