@@ -122,6 +122,9 @@ export function evaluateDecisionBackedReleaseReadiness(candidate) {
 
   return evaluateContentReleaseReadiness({
     revision: {
+      contentItemId: revision.contentItemId,
+      revisionId: revision.revisionId,
+      sha256: revision.sha256,
       lifecycleState: revision.lifecycleState,
       authorId: revision.authorId
     },
@@ -130,7 +133,12 @@ export function evaluateDecisionBackedReleaseReadiness(candidate) {
       discipline: decision.discipline,
       reviewerId: decision.reviewer.reviewerId,
       reviewerRole: decision.reviewer.role,
-      decision: decision.outcome
+      decision: decision.outcome,
+      reviewedRevision: {
+        contentItemId: decision.reviewedRevision.contentItemId,
+        revisionId: decision.reviewedRevision.revisionId,
+        sha256: decision.reviewedRevision.sha256
+      }
     })),
     release: candidate?.release
   });

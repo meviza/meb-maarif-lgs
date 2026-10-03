@@ -18,10 +18,66 @@ function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
+function isSha256(value) {
+  return typeof value === 'string' && /^[a-f0-9]{64}$/iu.test(value);
+}
+
 function findReviews(reviews, discipline) {
   return reviews
     .map((review, index) => ({ review, index }))
     .filter(({ review }) => review?.discipline === discipline);
+}
+
+function validateReleaseRevisionIdentity(revision, errors) {
+  if (!isNonEmptyString(revision.contentItemId)) {
+    addError(
+      errors,
+      'revision.contentItemId',
+      'release_content_item_missing',
+      'a release content item identifier is required'
+    );
+  }
+  if (!isNonEmptyString(revision.revisionId)) {
+    addError(
+      errors,
+      'revision.revisionId',
+      'release_revision_id_missing',
+      'a release revision identifier is required'
+    );
+  }
+  if (!isSha256(revision.sha256)) {
+    addError(
+      errors,
+      'revision.sha256',
+      'release_revision_sha256_invalid',
+      'a release revision SHA-256 hash is required'
+    );
+  }
+}
+
+function validateReviewTarget(review, revision, reviewPath, errors) {
+  const target = review?.reviewedRevision;
+
+  if (target?.contentItemId !== revision.contentItemId) {
+    addError(
+      errors,
+      `${reviewPath}.reviewedRevision.contentItemId`,
+      'review_content_item_mismatch',
+      'review record must target the release content item'
+    );
+  }
+
+  if (
+    target?.revisionId !== revision.revisionId ||
+    target?.sha256 !== revision.sha256
+  ) {
+    addError(
+      errors,
+      `${reviewPath}.reviewedRevision.sha256`,
+      'review_revision_mismatch',
+      'review record must target the release revision'
+    );
+  }
 }
 
 /**
@@ -44,6 +100,7 @@ export function evaluateContentReleaseReadiness(candidate) {
       'only an approved revision can enter release readiness review'
     );
   }
+  validateReleaseRevisionIdentity(revision, errors);
 
   for (const requiredReview of REQUIRED_REVIEWS) {
     const matchingReviews = findReviews(reviews, requiredReview.discipline);
@@ -98,6 +155,8 @@ export function evaluateContentReleaseReadiness(candidate) {
         'a human reviewer identifier is required'
       );
     }
+
+    validateReviewTarget(review, revision, reviewPath, errors);
 
     if (review.reviewerId === revision.authorId) {
       addError(

@@ -15,15 +15,26 @@ async function loadReleaseGate() {
   return import(RELEASE_GATE_MODULE_URL.href);
 }
 
-function review({ reviewId, discipline, reviewerId, reviewerRole, decision = 'approved' }) {
-  return { reviewId, discipline, reviewerId, reviewerRole, decision };
+function reviewedRevision(overrides = {}) {
+  return {
+    contentItemId: 'CONTENT-G1-TR-001',
+    revisionId: 'REV-G1-TR-001',
+    sha256: 'a'.repeat(64),
+    ...overrides
+  };
+}
+
+function review({ reviewId, discipline, reviewerId, reviewerRole, decision = 'approved', reviewedRevision: target = reviewedRevision() }) {
+  return { reviewId, discipline, reviewerId, reviewerRole, decision, reviewedRevision: target };
 }
 
 function releaseReadyCandidate(overrides = {}) {
   return {
     contractVersion: '1.0.0',
     revision: {
+      contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
+      sha256: 'a'.repeat(64),
       lifecycleState: 'approved',
       authorId: 'content-editor-001',
       automatedScreeningStatus: 'passed'
@@ -206,7 +217,9 @@ test('blocks a direct draft-to-release attempt even when review records are supp
   const { evaluateContentReleaseReadiness } = await loadReleaseGate();
   const candidate = releaseReadyCandidate({
     revision: {
+      contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
+      sha256: 'a'.repeat(64),
       lifecycleState: 'draft',
       authorId: 'content-editor-001',
       automatedScreeningStatus: 'passed'
@@ -223,6 +236,58 @@ test('blocks a direct draft-to-release attempt even when review records are supp
         path: 'revision.lifecycleState',
         code: 'revision_not_approved',
         message: 'only an approved revision can enter release readiness review'
+      }
+    ]
+  });
+});
+
+test('blocks a human review for another content item even when its revision identifier and hash match', async () => {
+  const { evaluateContentReleaseReadiness } = await loadReleaseGate();
+  const candidate = releaseReadyCandidate();
+  candidate.reviews[1] = review({
+    reviewId: 'MR-001',
+    discipline: 'assessment',
+    reviewerId: 'assessment-reviewer-001',
+    reviewerRole: 'assessment_reviewer',
+    reviewedRevision: reviewedRevision({ contentItemId: 'CONTENT-G1-TR-OTHER' })
+  });
+
+  const result = evaluateContentReleaseReadiness(candidate);
+
+  assert.deepEqual(result, {
+    ready: false,
+    nextState: 'blocked',
+    errors: [
+      {
+        path: 'reviews[1].reviewedRevision.contentItemId',
+        code: 'review_content_item_mismatch',
+        message: 'review record must target the release content item'
+      }
+    ]
+  });
+});
+
+test('blocks a human review for a different revision hash even when its content item and revision identifier match', async () => {
+  const { evaluateContentReleaseReadiness } = await loadReleaseGate();
+  const candidate = releaseReadyCandidate();
+  candidate.reviews[2] = review({
+    reviewId: 'RR-001',
+    discipline: 'rights',
+    reviewerId: 'rights-reviewer-001',
+    reviewerRole: 'rights_reviewer',
+    reviewedRevision: reviewedRevision({ sha256: 'b'.repeat(64) })
+  });
+
+  const result = evaluateContentReleaseReadiness(candidate);
+
+  assert.deepEqual(result, {
+    ready: false,
+    nextState: 'blocked',
+    errors: [
+      {
+        path: 'reviews[2].reviewedRevision.sha256',
+        code: 'review_revision_mismatch',
+        message: 'review record must target the release revision'
       }
     ]
   });

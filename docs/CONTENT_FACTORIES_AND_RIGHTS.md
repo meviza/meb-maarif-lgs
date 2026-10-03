@@ -18,6 +18,10 @@ MEB/ÖDSGM soru, kitap, PDF ve görsellerinin kamuya erişilebilir olması açı
 
 Soru sayısı hedefi ancak bu kayıtlardan türetilir. “Bir derse 1.000 soru” hedefi, her mikro konuya rastgele dağıtılmış sayı değil; farklı bilişsel düzey, soru tipi, hata örüntüsü ve tekrar aralığını içeren onaylı blueprint sonucu olmalıdır.
 
+İlk uygulama çekirdeği olan [`question_coverage_blueprint.mjs`](../packages/contracts/question_coverage_blueprint.mjs), `item_blueprint_registry` için kapalı ve değişmez bir planlama sözleşmesidir. Her revizyon; program/sınıf/ders kapsamındaki kanonik öğrenme çıktısı anlık görüntüsü özeti, owner/steward/amaç/saklama/erişim politikası, insan onayı ve 1–36 arası her öğretim haftasının hücrelerini bağlar. Hücre; kazanım, mikro beceri, madde/yanıt tipi, bilişsel süreç, zorluk, kota, gerekli varyant, hata hipotezi ve görsel/işitsel erişilebilirlik-hak referanslarını taşır. İnsan onayı, onay zarfı ve yaşam döngüsünden ayrı hesaplanan değişmez blueprint tanım özetini hedefler; böylece plan değiştiğinde eski onay yeniden kullanılamaz. Buradaki 36 hafta **planlama görünümüdür**; resmî okul takvimi ya da MEB onayı iddiası değildir ve ilgili takvim/program sürümünün ayrı kanonik kaynaktan çözülmesi gerekir.
+
+Kapsam denetimi yalnız insan-onaylı blueprint ile, tam kapsam için sağlanan kanonik müfredat anlık görüntüsünün hash'i ve madde düzeyi metaveri eşleştiğinde `coverage_evaluated` sonucu üretir. Madde metaverisi; değişmez içerik öğesi, revizyon ve revizyon/varlık-seti özetlerine ek olarak aynı mikro beceri, madde/yanıt tipi, bilişsel süreç ve zorluk hedefini taşır; aynı revizyon veya hash farklı takma kimliklerle tekrar sayılmaz. Eksik kota, eksik varyant, planlanmamış kanonik kazanım veya kritik görsel/işitsel erişilebilirlik-hak kanıtı eksikliği görünür kalır. Bu saf sözleşme soru üretmez, soru metni/cevap anahtarı/öğrenci verisi taşımaz, içerik yayımlamaz ve kaynağın otoritesini kanıtlamaz; gerçek çözümleyici ileride tam ve yetkili snapshot'ı, aktif onay/geri çekme geçmişini ve gerçek içerik kimliği–hash bağını sunucu tarafında çözmelidir.
+
 ## 3. İçerik yaşam döngüsü
 
 ```text
