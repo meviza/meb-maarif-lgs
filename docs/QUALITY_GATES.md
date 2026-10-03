@@ -72,6 +72,7 @@ Bu belge sertifika veya resmî değerlendirme iddiası değildir. Amaç, CMMI Se
 | `CURR-*` | Program/kazanım izlenebilirliği | Her yayımlanmış varlık tek kanonik sürüme bağlanır |
 | `ITEM-*` | Şema, cevap, rubrik, çeldirici | Eksik/çelişkili alan yayına geçemez |
 | `MATH-*` | Sayısal/geometri doğruluğu | Kodla doğrulanan sonuç ve diyagram parametresi eşleşir |
+| `REASON-*` | Hedef, kanıt/veri, yol gerekçesi, sonuç anlamı, kontrol ve aktarım | Adımlar kaynağa/birime/önceki sonuca bağlıdır; koşul, neden ve amaç açıklanır; sayısal hata kapalı kalır; alan/yaş/transfer anlamı insan incelemesi bekler |
 | `VIS-*` | Görsel/alt metin/kontrast | Küçük ekran, baskı ve ekran okuyucu kontrolü geçer |
 | `LANG-*` | Türkçe ve yaş seviyesi | İnsan incelemesi + örnekleme raporu vardır |
 | `RIGHTS-*` | Telif/lisans | Her varlıkta kaynak/izin/attribution kanıtı vardır |
@@ -86,6 +87,8 @@ Bu belge sertifika veya resmî değerlendirme iddiası değildir. Amaç, CMMI Se
 WCAG 2.2 bir W3C Recommendation’dır; erişilebilirlik hedefi için uygun temel standardı sağlar. [W3C WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/)
 
 Videoda teknik MP4 başarısı ile öğretici kalite kabulü ayrıdır. Önceki statik/sessiz pilot kullanıcı tarafından kalite bakımından reddedildi; [yeni öğretmen/kalem/ses kabul standardı](TEACHER_VIDEO_STANDARD_2026-10-03.md) uygulanır. Unit test, model öz-değerlendirmesi veya AI-detector puanı dinleyici kabulünün yerine geçemez.
+
+Gerekçe sözleşmesi ve altı soru ailesi + ayrı kavram dersi normal fabrika pilotuna bağlandı; [kapsam ve taze test kanıtı](REASONED_FACTORY_STATUS_2026-10-03.md). İşlem sayısı değişkendir; her alan dokuz adıma zorlanmaz. Genel kaynak hash'i beyanı gerçek resolver değildir; yorum adımlarının anlamsal doğruluğu ve cevap sızıntısı insan incelemesi gerektirir. Editörde `reveal` veya sonraki adımın açılması öğrenci yetkisi, öğrenme, ustalık veya analitik puan kanıtı değildir.
 
 ## 5. UI/UX kalite standardı
 

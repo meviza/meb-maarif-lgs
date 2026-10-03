@@ -1,4 +1,6 @@
 # T.C. Millî Eğitim Bakanlığı & Türkiye Yüzyılı Maarif Modeli
+> **Tarihî Antigravity taslağı — bağlayıcı veya doğrulanmış standart değildir.** Aşağıdaki tam uyum, bütün sınavların incelendiği, sabit oran/soru tipi ve her sorunun görselliği gibi iddiaların kabul kanıtı yoktur. Başlık MEB tarafından hazırlanmış/onaylanmış belge anlamına gelmez. Metin geçmiş kararları izlemek için korunur; aktif kaynak/yaşam döngüsü/kalite kapıları için [QUALITY_GATES.md](QUALITY_GATES.md), [kaynak arşivi](MEB_SOURCE_ARCHIVE_2026-10-03.md) ve [güncel fabrika durumunu](REASONED_FACTORY_STATUS_2026-10-03.md) kullanın.
+
 ## 8. Sınıf LGS Soru Hazırlama, Pedagojik Ölçme ve Yayın Standartları Kılavuzu
 
 ---

@@ -43,6 +43,8 @@ Hak/kaynak kaydı + aktif program + kapsam hücresi
 
 İlk pilotta sayı hesabı ve geometri programatik doğrulanır; “AI doğru dedi” kanıt değildir. Yalnız sayı değiştirilen şablonları 100 özgün soru diye saymayız. Şablon/strateji/temsil çeşitliliği kotaları, benzerlik veri kümesi ve tarama sınırı raporlanır. “Sıfır intihal garantisi” ve “halüsinasyon imkânsız” denmez; kritik hatayı yayına geçirmeyen kapılar ve geri çekme mekanizması kurulur.
 
+Son uygulama: gerekçeli öğretim ortak sözleşmesi, altı dikdörtgen ailesi/sabit bahçe adaptörü ve ayrı çevre–alan kavram dersi normal fabrika CLI'sine bağlandı. Yeni 100 adaydan 12 taslak tutuldu; bütün dersler, canlı modeller veya yeni ses/video tamamlanmış değildir. [Konu bazlı durum, bağımsız denetim, 561/561 test ve güncellenen paralel iş planı](REASONED_FACTORY_STATUS_2026-10-03.md) sonraki adımların güncel dayanağıdır.
+
 Her üretim işinin üst sınırı 100; yeniden deneme sayısı, sağlayıcı maliyeti, prompt/model sürümü, kaynak kapsamı ve kabul/ret nedenleri kaydedilir. Başarısız 100'lük işi tamamlamak için denetim gevşetilmez. Onay/çeşitlilik/kazanım kapısı geçmeyen taslaklar toplam yayımlanmış banka sayısına eklenmez. Mevcut pilot tüm sınıfları/dersleri kapsamıyor.
 
 Konu anlatımı hattı: çıktı ve ön koşul → somut örnek → görsel temsil → açıklama → kontrollü uygulama → farklı bakış açısı → biçimlendirici soru → öğretmen incelemesi. İlk sınıfta ses sonradan süs değildir; okuryazarlık engelini kaldıracak temel gereksinimdir. Konu anlatımı tek sorunun çözüme çevrilmiş metni değildir.
