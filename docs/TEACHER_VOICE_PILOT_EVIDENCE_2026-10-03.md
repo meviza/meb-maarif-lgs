@@ -14,7 +14,7 @@ Kaynak: `ink-garden-two-rows-v1`, varsayılan plan SHA-256 `309a08895704329e9db1
 
 ## Karşılaştırma tasarımı ve gözlenen sınır
 
-Ses seçicisinde Bodi/Kira seçilmeye çalışıldı, fakat konuşma bloğunda uygulanmış ses etiketi **Fola** olarak kaldı. Başka bir sesin uygulandığı kaydedilmedi. Bu nedenle üç farklı hazır ses denemesi yerine aynı görünen hazır sesle üç **üslup yönergesi** denendi: A sakin, B merak uyandıran, C kararlı/strateji odaklı. Yönerge ve okunacak metin ayrı UI alanlarında tutuldu; klonlama veya referans ses yüklemesi yapılmadı. Backend voice ID ve hazır sesin yaş/provenansı bağımsız doğrulanmış değildir.
+Ses seçicisinde Bodi/Kira seçilmeye çalışıldı, fakat konuşma bloğundaki ses etiketi **Fola** olarak kaldı. Üç **üslup yönergesi** denendi: A sakin, B merak uyandıran, C kararlı/strateji odaklı. A/B/C için gerçek ses kimliği bağımsız doğrulanmadı; aynı veya farklı hazır sesler kullandıkları söylenemez. Sonraki Charon pilotunda seçici ve kod önizlemesi Charon gösterirken konuşma bloğu Fola olarak kaldı; dolayısıyla bu etiket eski kalabiliyor ve tek başına ses kimliği kanıtı değil. İlk yerel receipt bu sonraki bulgudan önceki gözlem olarak korundu; yeni receipt bu açıklamayı içerir. Yönerge ve okunacak metin ayrı UI alanlarında tutuldu; klonlama veya referans ses yüklemesi yapılmadı. Hazır seslerin yaş/provenansı bağımsız doğrulanmış değildir.
 
 Bu küçük karşılaştırma doğal ses karakterini kabul etmez; üslubun gerçekten değişip değişmediği dinlenmelidir. C yönergesinde 7–8. sınıf hitabı istenmesi, sorunun o sınıfa kanonik program eşlemesini sağlamaz. Kaynak soru hâlâ `unmapped_draft`.
 
@@ -59,3 +59,19 @@ Yerel klasör yalnız proje operatörüne açık. Yerel 30 günlük inceleme sak
 Dinleyici rubriği: dört/seksen altı/iki/yüz yetmiş iki ve **metre** doğruluğu; bir sıra–iki sıra ayrımı; doğal yetişkin öğretmen tonu; cümle sınırında duraklama; açıklık; ses sürekliliği. 1–5 medyan ≥4 ve kritik sayı/birim hatası 0 yalnız pilot kabul hedefidir, ölçülmüş sonuç değildir. Kullanıcı tercihi profesyonel öğretmen/dil uzmanı kabulünün yerine geçmez.
 
 Sonraki uygulama: tercih edilen üslup ve hak kapsamı → altı cue için ayrı doğrulanmış ses → dinlenmiş metin kontrolü → gerçek ses zamanlarına bağlı kalem vurgusu → zor geometri/fen örneğinde uçtan uca oynatılabilir video → cihaz/erişilebilirlik ve öğretmen kabulü. Tam öğretici çözüm gerekli süreyi kullanır; 30–35 saniyelik reklam özeti ayrı türevdir.
+
+## Kullanıcı tercihi ve erkek hazır ses ek denemesi
+
+Kullanıcı B ve C arasında kaldığını ve ikisini de kullanmak istediğini bildirdi. İki üslup aday olarak korunur: B keşif/konu anlatımı/ipucu, C adımlı çözüm/strateji/özet için **ürün önerisidir**; ölçülmüş pedagojik eşleme veya profesyonel kabul değildir. Ses kimliği ile anlatım üslubu ayrı boyutlardır; aynı öğretmen kimliğinin iki modu olarak ürünleştirmek ileride ayrıca doğrulanmalıdır. Öğrenci seçimi için cinsiyete bağlı başarı veya yetenek varsayımı yapılmaz.
+
+“Erkek sesi de var mı?” isteğine karşılık tek ek kısa özgün metin denemesi yapıldı. [Google'ın resmî ses tablosu](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts) Charon, Orus ve Puck'ı erkek ses olarak listeler. [Gemini TTS kılavuzu](https://ai.google.dev/gemini-api/docs/speech-generation) sırasıyla bilgilendirici, kararlı ve canlı karakterleri belirtir; bunlar sağlayıcı tanımıdır, Türkçe öğretmen performansı kabulü değildir.
+
+Canlı seçicide `Masculine` filtresi altında Charon seçildi. `Get code` önizlemesindeki `voice_name="Charon"` üretimden önce görsel olarak doğrulandı; konuşma bloğu ve panel üst etiketi Fola olarak kaldı. Kod önizlemesi istenen konfigürasyonu gösterir; sağlayıcı yanıtından bağımsız bir ses kimliği attestasyonu elde edilmedi. Aynı 24 kelimelik kaynak ve C'nin birebir aynı üslup yönergesi kullanıldı; ses kimliği değişkenini ayırmayı hedefler, önceki C ses kimliği belirsizliği nedeniyle kontrollü deney sonucu sayılmaz.
+
+| Ek örnek | İstenen ses/üslup | Süre | Düzeltilmiş WAV byte sayısı | Düzeltilmiş WAV SHA-256 |
+| --- | --- | --- | --- | --- |
+| D | Charon / C-kararlı | 10,76 s | 516.558 | `99b9544d690b2a0ccd12362e63259b9ef6f85fb5fd56ba5dd3a0ab6cd77139a3` |
+
+Tek anahtarsız UI üretimi yapıldı; yeni credential, faturalama veya ücretli plan açılmadı. Aynı mono 24 kHz/16-bit PCM formatı ve kaynak WAV byte-rate kusuru görüldü. Özgün dosya korundu; ayrı türevin byte-rate'i 48.000 olarak düzeltildi. Kaynak ve türev tam decode, FFprobe, WAV başlığı ve dosya hash kontrollerinden geçti; PCM payload SHA-256 `cd2a3c5e202af61d3480c39c44668886827a07743f0e43e90df985be2cfa2e81` birebir eşleşti. Ses hızlandırılmadı, yeniden örneklenmedi veya düzenlenmedi.
+
+Yerel `male-preview-receipt.json` kaynak/metin/üslup kimliği, kullanıcı tercihi, konfigürasyon kanıtı, hashler ve inceleme durumlarını kaydeder. Ses ve hesap arayüzü kanıtı kamu Git'ine yüklenmedi. Bu turda uygulama kodu değişmedi; önceki 441 test sonucu yeni bir yazılım testi olarak sunulmaz. Ek sesin telaffuz, sayı/birim, doğallık, yaş uygunluğu, hak ve öğretmen incelemeleri bekliyor; `publicationReady = false`. Tam sesli çözüm videosu veya kelime–kalem senkronu henüz üretilmedi.

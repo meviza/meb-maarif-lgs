@@ -36,7 +36,7 @@ Güncel ayrıntılı plan: [PLATFORM_REBASE_PLAN_2026-10-03.md](PLATFORM_REBASE_
 | 36.000 soru hedefi | Aşağıdan yukarıya kapsam bütçesi; henüz tamamlanmış banka yok | Mikrobeceri hücreleri toplamı 36.000; eksik ders ve kazanım sıfır; her hücrede gerçek çeşitlilik |
 | Üretim | Özgün deterministik geometri pilotu; model üretimi ayrıca yapılandırılır | Üretici + bağımsız çözüm + görsel + Clef + alan/ölçme/dil-hak incelemesinden geçen ilk 100 |
 | Konu anlatımı / çözüm | Pilot çözüm grafiği ve sahne/transkript | Yaş düzeyi onaylı ders paketleri; gerçek video/ses çıktısının kare ve altyazı denetimi |
-| Türkçe öğretmen sesi | Üç gerçek kısa üslup önizlemi; teknik doğrulama geçti, dinleme kabulü bekliyor | Hak kapsamı + sayı/birim/karakter dinlemesi; sonra altı ayrı cue ve kelime–kalem ölçümü; [pilot kanıtı](TEACHER_VOICE_PILOT_EVIDENCE_2026-10-03.md) |
+| Türkçe öğretmen sesi | B+C üslup adayları korunuyor; üç ilk önizlem ve bir Charon erkek ses önizlemi teknik doğrulandı; A/B/C gerçek ses kimliği ve profesyonel kabul doğrulanmadı | Erkek ses dinleme tercihi + hak kapsamı + sayı/birim/karakter dinlemesi; sonra altı ayrı cue ve kelime–kalem ölçümü; [pilot kanıtı](TEACHER_VOICE_PILOT_EVIDENCE_2026-10-03.md) |
 | İçerik Atölyesi | Yerel, salt-okunur inceleme prototipi | Kimlik/yetki ve kalıcı işlem kaydı; editör → uzman → yayıncı görev akışı |
 | Okul backend'i | Mimari ve sözleşmeler; öğrenci verisi kapalı | Gerçek DB migrasyon/tenant izolasyonu/iş kotası/geri yükleme entegrasyon testleri |
 | Analitik | Ölçülebilir öğrenme kanıtı tasarımı | Açıklanabilir beceri ölçümü ve psikometri; çocukları zekâ/meslek etiketleriyle sıralamama |
