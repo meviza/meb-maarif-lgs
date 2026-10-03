@@ -17,12 +17,13 @@ async function loadPublicationDecisionContract() {
 
 function publicationDecision(overrides = {}) {
   return {
-    contractVersion: '2.0.0',
+    contractVersion: '3.0.0',
     decisionId: 'PUB-G1-TR-001',
     targetRevision: {
       contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
-      sha256: 'a'.repeat(64)
+      sha256: 'a'.repeat(64),
+      assetSetSha256: 'c'.repeat(64)
     },
     contentAuthorId: 'content-editor-001',
     outcome: 'published',
@@ -53,7 +54,7 @@ function publicationDecision(overrides = {}) {
   };
 }
 
-test('accepts an independent human publication decision bound to a revision and all four review decisions', async () => {
+test('accepts a v3 independent human publication decision bound to a revision, asset-evidence set, and all four review decisions', async () => {
   const { validateContentPublicationDecision } = await loadPublicationDecisionContract();
 
   const result = validateContentPublicationDecision(publicationDecision());
@@ -61,10 +62,10 @@ test('accepts an independent human publication decision bound to a revision and 
   assert.deepEqual(result, { valid: true, errors: [] });
 });
 
-test('rejects the retired v1 publication-decision contract', async () => {
+test('rejects the retired v2 publication-decision contract', async () => {
   const { validateContentPublicationDecision } = await loadPublicationDecisionContract();
 
-  const result = validateContentPublicationDecision(publicationDecision({ contractVersion: '1.0.0' }));
+  const result = validateContentPublicationDecision(publicationDecision({ contractVersion: '2.0.0' }));
 
   assert.deepEqual(result, {
     valid: false,
@@ -72,7 +73,7 @@ test('rejects the retired v1 publication-decision contract', async () => {
       {
         path: 'contractVersion',
         code: 'contract_version_unsupported',
-        message: 'expected contract version 2.0.0'
+        message: 'expected contract version 3.0.0'
       }
     ]
   });
@@ -91,6 +92,30 @@ test('rejects a publication decision without a positive decision sequence for ef
     result.errors.some(error => error.code === 'publication_sequence_invalid'),
     true
   );
+});
+
+test('rejects a publication decision whose target revision lacks an immutable asset-evidence-set hash', async () => {
+  const { validateContentPublicationDecision } = await loadPublicationDecisionContract();
+  const decision = publicationDecision({
+    targetRevision: {
+      contentItemId: 'CONTENT-G1-TR-001',
+      revisionId: 'REV-G1-TR-001',
+      sha256: 'a'.repeat(64)
+    }
+  });
+
+  const result = validateContentPublicationDecision(decision);
+
+  assert.deepEqual(result, {
+    valid: false,
+    errors: [
+      {
+        path: 'targetRevision.assetSetSha256',
+        code: 'asset_set_sha256_invalid',
+        message: 'an asset-evidence set SHA-256 hash is required'
+      }
+    ]
+  });
 });
 
 test('rejects a calendar-normalized or non-UTC publication timestamp', async () => {

@@ -37,12 +37,13 @@ const REVIEW_DETAILS = {
 function reviewDecision(discipline, overrides = {}) {
   const detail = REVIEW_DETAILS[discipline];
   return {
-    contractVersion: '1.0.0',
+    contractVersion: '2.0.0',
     decisionId: `DEC-${discipline.toUpperCase()}-001`,
     reviewedRevision: {
       contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
-      sha256: 'a'.repeat(64)
+      sha256: 'a'.repeat(64),
+      assetSetSha256: 'c'.repeat(64)
     },
     contentAuthorId: 'content-editor-001',
     discipline,
@@ -78,6 +79,7 @@ function releaseCandidate(overrides = {}) {
       contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
       sha256: 'a'.repeat(64),
+      assetSetSha256: 'c'.repeat(64),
       lifecycleState: 'approved',
       authorId: 'content-editor-001'
     },
@@ -115,7 +117,8 @@ test('blocks release readiness when a valid decision belongs to a different revi
     reviewedRevision: {
       contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
-      sha256: 'c'.repeat(64)
+      sha256: 'c'.repeat(64),
+      assetSetSha256: 'c'.repeat(64)
     }
   });
 
@@ -141,7 +144,8 @@ test('blocks release readiness when a valid decision belongs to a different cont
     reviewedRevision: {
       contentItemId: 'CONTENT-G1-TR-OTHER',
       revisionId: 'REV-G1-TR-001',
-      sha256: 'a'.repeat(64)
+      sha256: 'a'.repeat(64),
+      assetSetSha256: 'c'.repeat(64)
     }
   });
 
@@ -225,6 +229,53 @@ test('blocks release readiness when a decision names a different content author 
         path: 'decisions[0].contentAuthorId',
         code: 'decision_author_mismatch',
         message: 'review decision must name the release revision author'
+      }
+    ]
+  });
+});
+
+test('blocks release readiness when an approved decision targets a different immutable asset-evidence set', async () => {
+  const { evaluateDecisionBackedReleaseReadiness } = await loadDecisionBackedReleaseGate();
+  const candidate = releaseCandidate();
+  candidate.decisions[2] = reviewDecision('rights', {
+    reviewedRevision: {
+      contentItemId: 'CONTENT-G1-TR-001',
+      revisionId: 'REV-G1-TR-001',
+      sha256: 'a'.repeat(64),
+      assetSetSha256: 'd'.repeat(64)
+    }
+  });
+
+  const result = evaluateDecisionBackedReleaseReadiness(candidate);
+
+  assert.deepEqual(result, {
+    ready: false,
+    nextState: 'blocked',
+    errors: [
+      {
+        path: 'decisions[2].reviewedRevision.assetSetSha256',
+        code: 'review_asset_set_mismatch',
+        message: 'review decision must target the release asset-evidence set'
+      }
+    ]
+  });
+});
+
+test('blocks release readiness with a clear root-cause error when the release revision omits its asset-evidence-set hash', async () => {
+  const { evaluateDecisionBackedReleaseReadiness } = await loadDecisionBackedReleaseGate();
+  const candidate = releaseCandidate();
+  delete candidate.revision.assetSetSha256;
+
+  const result = evaluateDecisionBackedReleaseReadiness(candidate);
+
+  assert.deepEqual(result, {
+    ready: false,
+    nextState: 'blocked',
+    errors: [
+      {
+        path: 'revision.assetSetSha256',
+        code: 'release_asset_set_sha256_invalid',
+        message: 'the release revision requires an asset-evidence set SHA-256 hash'
       }
     ]
   });

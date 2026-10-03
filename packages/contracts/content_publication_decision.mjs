@@ -4,7 +4,7 @@
  * ledger: it neither authenticates the publisher nor writes a decision.
  */
 
-export const CONTENT_PUBLICATION_DECISION_CONTRACT_VERSION = '2.0.0';
+export const CONTENT_PUBLICATION_DECISION_CONTRACT_VERSION = '3.0.0';
 
 const REQUIRED_DISCIPLINES = ['academic', 'assessment', 'rights', 'accessibility'];
 const PUBLICATION_OUTCOMES = new Set(['published', 'withdrawn']);
@@ -83,6 +83,9 @@ function validateTargetRevision(targetRevision, errors) {
   requireString(errors, targetRevision.revisionId, 'targetRevision.revisionId', 'revision_id_missing', 'a revision identifier is required');
   if (!isSha256(targetRevision.sha256)) {
     addError(errors, 'targetRevision.sha256', 'revision_sha256_invalid', 'a SHA-256 revision hash is required');
+  }
+  if (!isSha256(targetRevision.assetSetSha256)) {
+    addError(errors, 'targetRevision.assetSetSha256', 'asset_set_sha256_invalid', 'an asset-evidence set SHA-256 hash is required');
   }
 }
 

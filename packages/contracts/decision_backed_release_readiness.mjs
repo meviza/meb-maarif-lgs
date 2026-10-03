@@ -10,6 +10,10 @@ function isRecord(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
+function isSha256(value) {
+  return typeof value === 'string' && /^[a-f0-9]{64}$/iu.test(value);
+}
+
 function addError(errors, path, code, message) {
   errors.push({ path, code, message });
 }
@@ -27,6 +31,16 @@ export function evaluateDecisionBackedReleaseReadiness(candidate) {
   const revision = isRecord(candidate?.revision) ? candidate.revision : {};
   const decisions = Array.isArray(candidate?.decisions) ? candidate.decisions : [];
   const seenDisciplines = new Set();
+
+  if (!isSha256(revision.assetSetSha256)) {
+    return blocked([
+      {
+        path: 'revision.assetSetSha256',
+        code: 'release_asset_set_sha256_invalid',
+        message: 'the release revision requires an asset-evidence set SHA-256 hash'
+      }
+    ]);
+  }
 
   decisions.forEach((decision, index) => {
     const validation = validateContentReviewDecision(decision);
@@ -80,6 +94,15 @@ export function evaluateDecisionBackedReleaseReadiness(candidate) {
         `decisions[${index}].reviewedRevision.sha256`,
         'review_revision_mismatch',
         'review decision must target the release revision'
+      );
+    }
+
+    if (decision.reviewedRevision.assetSetSha256 !== revision.assetSetSha256) {
+      addError(
+        errors,
+        `decisions[${index}].reviewedRevision.assetSetSha256`,
+        'review_asset_set_mismatch',
+        'review decision must target the release asset-evidence set'
       );
     }
 

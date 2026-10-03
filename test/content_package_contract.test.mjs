@@ -17,7 +17,7 @@ async function loadContract() {
 
 function publishableManifest(overrides = {}) {
   return {
-    contractVersion: '2.0.0',
+    contractVersion: '3.0.0',
     packageId: 'CP-G1-TR-001',
     dataGovernance: {
       owner: 'academic-content-owner',
@@ -45,6 +45,7 @@ function publishableManifest(overrides = {}) {
       contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
       revisionSha256: 'a'.repeat(64),
+      assetSetSha256: 'b'.repeat(64),
       authorId: 'content-editor-001',
       lifecycleState: 'published',
       academicReviewId: 'AR-001',
@@ -55,13 +56,18 @@ function publishableManifest(overrides = {}) {
     },
     assets: [
       {
+        assetEvidenceBundleId: 'AEB-G1-COUNTING-001',
         assetId: 'ASSET-ILLUSTRATION-001',
+        revisionId: 'ASSETREV-ILLUSTRATION-001',
         mediaType: 'image/svg+xml',
-        sha256: 'a'.repeat(64),
-        rightsStatus: 'verified',
+        byteSha256: 'a'.repeat(64),
+        deliveryProfile: 'sanitized_static_svg_v1',
+        provenanceRecordId: 'PROV-001',
+        provenanceRecordSha256: 'b'.repeat(64),
         rightsRecordId: 'RIGHTS-001',
-        altText: 'Üç farklı renkte balon',
-        longDescription: 'Sayı sayma etkinliğinde kullanılan üç balon çizimi.'
+        rightsRecordSha256: 'c'.repeat(64),
+        accessibilityRecordId: 'ACC-001',
+        accessibilityRecordSha256: 'd'.repeat(64)
       }
     ],
     ...overrides
@@ -92,7 +98,7 @@ function canonicalRegistryEntry(overrides = {}) {
   };
 }
 
-test('accepts a published student package only with ownership, canonical curriculum, reviews, and an accessible rights-verified visual', async () => {
+test('accepts a v3 published student package only with immutable asset-evidence references and canonical curriculum', async () => {
   const { validateStudentContentPackageManifest } = await loadContract();
 
   const result = validateStudentContentPackageManifest(publishableManifest());
@@ -100,10 +106,10 @@ test('accepts a published student package only with ownership, canonical curricu
   assert.deepEqual(result, { valid: true, errors: [] });
 });
 
-test('rejects the retired v1 package contract before it can reach a governed delivery gate', async () => {
+test('rejects the retired v2 package contract before it can reach a governed delivery gate', async () => {
   const { validateStudentContentPackageManifest } = await loadContract();
 
-  const result = validateStudentContentPackageManifest(publishableManifest({ contractVersion: '1.0.0' }));
+  const result = validateStudentContentPackageManifest(publishableManifest({ contractVersion: '2.0.0' }));
 
   assert.deepEqual(result, {
     valid: false,
@@ -111,13 +117,13 @@ test('rejects the retired v1 package contract before it can reach a governed del
       {
         path: 'contractVersion',
         code: 'contract_version_unsupported',
-        message: 'Expected contract version 2.0.0'
+        message: 'Expected contract version 3.0.0'
       }
     ]
   });
 });
 
-test('requires immutable revision, all four review bindings, and a publication decision in a v2 package', async () => {
+test('requires immutable revision, immutable asset-set hash, all four review bindings, and a publication decision in a v3 package', async () => {
   const { validateStudentContentPackageManifest } = await loadContract();
   const manifest = publishableManifest({
     content: {
@@ -136,6 +142,7 @@ test('requires immutable revision, all four review bindings, and a publication d
     [
       'content_item_id_missing',
       'revision_sha256_invalid',
+      'asset_set_sha256_invalid',
       'content_author_missing',
       'assessment_review_missing',
       'publication_decision_missing'
@@ -143,18 +150,14 @@ test('requires immutable revision, all four review bindings, and a publication d
   );
 });
 
-test('rejects a published student package whose visual lacks verified rights or accessibility evidence', async () => {
+test('rejects a published student package whose asset reference omits immutable evidence bindings', async () => {
   const { validateStudentContentPackageManifest } = await loadContract();
   const manifest = publishableManifest({
     assets: [
       {
         assetId: 'ASSET-ILLUSTRATION-001',
         mediaType: 'image/svg+xml',
-        sha256: 'not-a-sha256',
-        rightsStatus: 'pending',
-        rightsRecordId: '',
-        altText: '',
-        longDescription: ''
+        byteSha256: 'not-a-sha256'
       }
     ]
   });
@@ -165,13 +168,37 @@ test('rejects a published student package whose visual lacks verified rights or 
   assert.deepEqual(
     result.errors.map(error => error.code),
     [
-      'asset_sha256_invalid',
-      'asset_rights_not_verified',
+      'asset_evidence_bundle_id_missing',
+      'asset_revision_id_missing',
+      'asset_byte_sha256_invalid',
+      'asset_delivery_profile_missing',
+      'asset_provenance_record_missing',
+      'asset_provenance_record_sha256_invalid',
       'asset_rights_record_missing',
-      'asset_alt_text_missing',
-      'asset_long_description_missing'
+      'asset_rights_record_sha256_invalid',
+      'asset_accessibility_record_missing',
+      'asset_accessibility_record_sha256_invalid'
     ]
   );
+});
+
+test('rejects a package that references the same immutable asset evidence bundle more than once', async () => {
+  const { validateStudentContentPackageManifest } = await loadContract();
+  const manifest = publishableManifest();
+  manifest.assets.push({ ...manifest.assets[0] });
+
+  const result = validateStudentContentPackageManifest(manifest);
+
+  assert.deepEqual(result, {
+    valid: false,
+    errors: [
+      {
+        path: 'assets[1].assetEvidenceBundleId',
+        code: 'asset_evidence_bundle_duplicate',
+        message: 'each asset evidence bundle may be referenced only once per student package'
+      }
+    ]
+  });
 });
 
 test('rejects answer-bearing fields and raw HTML from a student content package', async () => {
@@ -181,6 +208,7 @@ test('rejects answer-bearing fields and raw HTML from a student content package'
       contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
       revisionSha256: 'a'.repeat(64),
+      assetSetSha256: 'b'.repeat(64),
       authorId: 'content-editor-001',
       lifecycleState: 'published',
       academicReviewId: 'AR-001',
@@ -192,13 +220,18 @@ test('rejects answer-bearing fields and raw HTML from a student content package'
     },
     assets: [
       {
+        assetEvidenceBundleId: 'AEB-G1-COUNTING-001',
         assetId: 'ASSET-ILLUSTRATION-001',
+        revisionId: 'ASSETREV-ILLUSTRATION-001',
         mediaType: 'image/svg+xml',
-        sha256: 'a'.repeat(64),
-        rightsStatus: 'verified',
+        byteSha256: 'a'.repeat(64),
+        deliveryProfile: 'sanitized_static_svg_v1',
+        provenanceRecordId: 'PROV-001',
+        provenanceRecordSha256: 'b'.repeat(64),
         rightsRecordId: 'RIGHTS-001',
-        altText: 'Üç farklı renkte balon',
-        longDescription: 'Sayı sayma etkinliğinde kullanılan üç balon çizimi.',
+        rightsRecordSha256: 'c'.repeat(64),
+        accessibilityRecordId: 'ACC-001',
+        accessibilityRecordSha256: 'd'.repeat(64),
         rawHtml: '<svg><script>alert(1)</script></svg>'
       }
     ]

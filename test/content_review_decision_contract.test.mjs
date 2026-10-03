@@ -17,12 +17,13 @@ async function loadReviewDecisionContract() {
 
 function approvedAcademicDecision(overrides = {}) {
   return {
-    contractVersion: '1.0.0',
+    contractVersion: '2.0.0',
     decisionId: 'DEC-ACADEMIC-001',
     reviewedRevision: {
       contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
-      sha256: 'a'.repeat(64)
+      sha256: 'a'.repeat(64),
+      assetSetSha256: 'c'.repeat(64)
     },
     contentAuthorId: 'content-editor-001',
     discipline: 'academic',
@@ -52,7 +53,7 @@ function approvedAcademicDecision(overrides = {}) {
   };
 }
 
-test('accepts an independently reviewed academic decision bound to a revision hash and curriculum evidence', async () => {
+test('accepts a v2 independently reviewed academic decision bound to a revision and asset-evidence-set hash', async () => {
   const { validateContentReviewDecision } = await loadReviewDecisionContract();
 
   const result = validateContentReviewDecision(approvedAcademicDecision());
@@ -156,7 +157,8 @@ test('rejects a decision with an invalid revision hash', async () => {
     reviewedRevision: {
       contentItemId: 'CONTENT-G1-TR-001',
       revisionId: 'REV-G1-TR-001',
-      sha256: 'not-a-hash'
+      sha256: 'not-a-hash',
+      assetSetSha256: 'c'.repeat(64)
     }
   });
 
@@ -169,6 +171,36 @@ test('rejects a decision with an invalid revision hash', async () => {
         path: 'reviewedRevision.sha256',
         code: 'revision_sha256_invalid',
         message: 'a SHA-256 revision hash is required'
+      }
+    ]
+  });
+});
+
+test('rejects a retired v1 review decision that lacks an immutable asset-evidence-set binding', async () => {
+  const { validateContentReviewDecision } = await loadReviewDecisionContract();
+  const decision = approvedAcademicDecision({
+    contractVersion: '1.0.0',
+    reviewedRevision: {
+      contentItemId: 'CONTENT-G1-TR-001',
+      revisionId: 'REV-G1-TR-001',
+      sha256: 'a'.repeat(64)
+    }
+  });
+
+  const result = validateContentReviewDecision(decision);
+
+  assert.deepEqual(result, {
+    valid: false,
+    errors: [
+      {
+        path: 'contractVersion',
+        code: 'contract_version_unsupported',
+        message: 'expected contract version 2.0.0'
+      },
+      {
+        path: 'reviewedRevision.assetSetSha256',
+        code: 'asset_set_sha256_invalid',
+        message: 'an asset-evidence set SHA-256 hash is required'
       }
     ]
   });

@@ -9,7 +9,7 @@
 
 import { findCanonicalCurriculumOutcome } from '../reference-data/curriculum_registry.mjs';
 
-export const CONTENT_PACKAGE_CONTRACT_VERSION = '2.0.0';
+export const CONTENT_PACKAGE_CONTRACT_VERSION = '3.0.0';
 
 const FORBIDDEN_STUDENT_FIELDS = new Set([
   'answerKey',
@@ -26,6 +26,10 @@ function isRecord(value) {
 
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
+}
+
+function isSha256(value) {
+  return typeof value === 'string' && /^[a-f0-9]{64}$/iu.test(value);
 }
 
 function addError(errors, path, code, message) {
@@ -124,8 +128,11 @@ function validateContentReview(content, errors) {
 
   requireString(errors, content.contentItemId, 'content.contentItemId', 'content_item_id_missing', 'A content item identifier is required');
   requireString(errors, content.revisionId, 'content.revisionId', 'revision_id_missing', 'A content revision identifier is required');
-  if (typeof content.revisionSha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(content.revisionSha256)) {
+  if (!isSha256(content.revisionSha256)) {
     addError(errors, 'content.revisionSha256', 'revision_sha256_invalid', 'A content revision requires a SHA-256 hash');
+  }
+  if (!isSha256(content.assetSetSha256)) {
+    addError(errors, 'content.assetSetSha256', 'asset_set_sha256_invalid', 'A content revision requires an asset-evidence set SHA-256 hash');
   }
   requireString(errors, content.authorId, 'content.authorId', 'content_author_missing', 'A content author identifier is required');
   if (content.lifecycleState !== 'published') {
@@ -145,18 +152,26 @@ function validateAsset(asset, index, errors) {
     return;
   }
 
+  requireString(errors, asset.assetEvidenceBundleId, `${path}.assetEvidenceBundleId`, 'asset_evidence_bundle_id_missing', 'An asset evidence bundle identifier is required');
   requireString(errors, asset.assetId, `${path}.assetId`, 'asset_id_missing', 'An asset identifier is required');
+  requireString(errors, asset.revisionId, `${path}.revisionId`, 'asset_revision_id_missing', 'An asset revision identifier is required');
   requireString(errors, asset.mediaType, `${path}.mediaType`, 'asset_media_type_missing', 'An asset media type is required');
-
-  if (typeof asset.sha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(asset.sha256)) {
-    addError(errors, `${path}.sha256`, 'asset_sha256_invalid', 'An asset requires a SHA-256 hash');
+  if (!isSha256(asset.byteSha256)) {
+    addError(errors, `${path}.byteSha256`, 'asset_byte_sha256_invalid', 'An asset byte SHA-256 is required');
   }
-  if (asset.rightsStatus !== 'verified') {
-    addError(errors, `${path}.rightsStatus`, 'asset_rights_not_verified', 'Asset rights must be verified');
+  requireString(errors, asset.deliveryProfile, `${path}.deliveryProfile`, 'asset_delivery_profile_missing', 'An asset delivery profile is required');
+  requireString(errors, asset.provenanceRecordId, `${path}.provenanceRecordId`, 'asset_provenance_record_missing', 'An asset provenance record is required');
+  if (!isSha256(asset.provenanceRecordSha256)) {
+    addError(errors, `${path}.provenanceRecordSha256`, 'asset_provenance_record_sha256_invalid', 'An asset provenance record SHA-256 is required');
   }
   requireString(errors, asset.rightsRecordId, `${path}.rightsRecordId`, 'asset_rights_record_missing', 'An asset rights record is required');
-  requireString(errors, asset.altText, `${path}.altText`, 'asset_alt_text_missing', 'Alternative text is required');
-  requireString(errors, asset.longDescription, `${path}.longDescription`, 'asset_long_description_missing', 'A long description is required');
+  if (!isSha256(asset.rightsRecordSha256)) {
+    addError(errors, `${path}.rightsRecordSha256`, 'asset_rights_record_sha256_invalid', 'An asset rights record SHA-256 is required');
+  }
+  requireString(errors, asset.accessibilityRecordId, `${path}.accessibilityRecordId`, 'asset_accessibility_record_missing', 'An asset accessibility record is required');
+  if (!isSha256(asset.accessibilityRecordSha256)) {
+    addError(errors, `${path}.accessibilityRecordSha256`, 'asset_accessibility_record_sha256_invalid', 'An accessibility record SHA-256 is required');
+  }
 }
 
 /**
@@ -186,7 +201,22 @@ export function validateStudentContentPackageManifest(manifest) {
   if (!Array.isArray(manifest.assets)) {
     addError(errors, 'assets', 'assets_invalid', 'Assets must be an array');
   } else {
-    manifest.assets.forEach((asset, index) => validateAsset(asset, index, errors));
+    const seenAssetEvidenceBundleIds = new Set();
+    manifest.assets.forEach((asset, index) => {
+      const bundleId = asset?.assetEvidenceBundleId;
+      if (isNonEmptyString(bundleId)) {
+        if (seenAssetEvidenceBundleIds.has(bundleId)) {
+          addError(
+            errors,
+            `assets[${index}].assetEvidenceBundleId`,
+            'asset_evidence_bundle_duplicate',
+            'each asset evidence bundle may be referenced only once per student package'
+          );
+        }
+        seenAssetEvidenceBundleIds.add(bundleId);
+      }
+      validateAsset(asset, index, errors);
+    });
   }
 
   return { valid: errors.length === 0, errors };

@@ -6,7 +6,7 @@
  * audit-ledger layers.
  */
 
-export const CONTENT_REVIEW_DECISION_CONTRACT_VERSION = '1.0.0';
+export const CONTENT_REVIEW_DECISION_CONTRACT_VERSION = '2.0.0';
 
 const REVIEW_REQUIREMENTS = new Map([
   ['academic', { role: 'academic_reviewer', evidenceKind: 'curriculum_registry_entry' }],
@@ -91,6 +91,9 @@ function validateReviewedRevision(revision, errors) {
   requireString(errors, revision.revisionId, 'reviewedRevision.revisionId', 'revision_id_missing', 'a revision identifier is required');
   if (!isSha256(revision.sha256)) {
     addError(errors, 'reviewedRevision.sha256', 'revision_sha256_invalid', 'a SHA-256 revision hash is required');
+  }
+  if (!isSha256(revision.assetSetSha256)) {
+    addError(errors, 'reviewedRevision.assetSetSha256', 'asset_set_sha256_invalid', 'an asset-evidence set SHA-256 hash is required');
   }
 }
 
