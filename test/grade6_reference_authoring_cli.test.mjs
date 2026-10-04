@@ -36,9 +36,45 @@ test('authoring CLI rejects paths counts providers and unknown or duplicated fla
     ['--common-relations-html','--plan'],['--common-relations-html','--common-relations-html'],
     ['--common-relations-html','--common-relations-draft'],['--common-relations-html','--factor-html'],
     ['--common-relations-html','--source','arbitrary'],['--common-relations-html','--provider','clef'],
-    ['--common-relations-html','--count','100'],['--common-relations-html','--out','anything']]) {
+    ['--common-relations-html','--count','100'],['--common-relations-html','--out','anything'],
+    ['--common-relations-media','--plan'],['--common-relations-media','--common-relations-media'],
+    ['--common-relations-media','--common-relations-html'],['--common-relations-media','--factor-draft'],
+    ['--common-relations-media','--source','arbitrary'],['--common-relations-media','--provider','clef'],
+    ['--common-relations-media','--count','100'],['--common-relations-media','--out','anything']]) {
     const out = run(args); assert.equal(out.status, 1); assert.equal(out.stdout, ''); assert.equal(out.stderr.trim(), 'invalid_grade6_reference_authoring_args');
   }
+});
+// Break caught: context narration preparation is missing, loses its oracle or
+// source binding, labels text interpretation as arithmetic, or promotes jobs.
+test('closed common-relations-media opt-in builds two actual pending narration jobs for one existing draft', () => {
+  const out = run(['--common-relations-media']);
+  assert.equal(out.status, 0, out.stderr); assert.equal(out.stderr, '');
+  assert.ok(Buffer.byteLength(out.stdout) < 131072);
+  const result = JSON.parse(out.stdout);
+  assert.equal(result.schemaVersion, 'grade6-common-relations-media-preparation/v1');
+  assert.equal(result.state, 'editor_media_preparation'); assert.equal(result.artifactAudience, 'editor_only');
+  assert.equal(result.verification.valid, true); assert.equal(result.verification.localMathChecks, 'passed');
+  assert.deepEqual(result.contexts.map(c => c.contextId), ['repeat', 'grouping']);
+  assert.deepEqual(result.manifest.counts, {existingAuthoredDrafts:1,contextNarrationJobs:2,newAuthoredQuestions:0,acceptedProductQuestions:0,publishedQuestions:0});
+  for (const context of result.contexts) {
+    assert.equal(context.trace.schemaVersion, 'reasoned-teaching-trace/v1');
+    assert.equal(context.trace.goal.unit, 'text'); assert.equal(context.traceAudit.numericStepsChecked, 0);
+    assert.equal(context.job.schemaVersion, 'reasoned-media-job/v1');
+    assert.equal(context.job.source.contentSha256, context.trace.source.contentSha256);
+    assert.equal(context.job.trace.contentSha256, context.trace.contentSha256);
+    assert.equal(context.job.cues.length, 10); assert.equal(context.job.provider, null);
+    assert.equal(context.job.audioStatus, 'not_generated'); assert.equal(context.job.videoStatus, 'not_rendered');
+    assert.equal(context.audioRequest.schemaVersion, 'reasoned-media-audio-request/v1');
+    assert.equal(context.audioRequest.jobSha256, context.job.contentSha256);
+    assert.equal(context.audioRequest.providerCallsAllowed, false); assert.equal(context.audioRequest.providerReady, false);
+    assert.equal(context.jobAudit.voiced, false); assert.equal(context.jobAudit.rendered, false);
+    assert.equal(context.jobAudit.publicationReady, false);
+    assert.equal(context.trace.publicationReady, false); assert.equal(context.trace.semanticReview, 'pending');
+  }
+  assert.equal(result.editorView.manifest.inlineSvgCount, 1);
+  assert.equal(result.editorView.manifest.groupRowCount, 6);
+  assert.equal(result.editorView.manifest.publicationReady, false);
+  assert.equal(Object.values(result.manifest.gates).every(v => v === 'pending'), true);
 });
 // Break caught: the common-relation view is unavailable, returns its JSON draft
 // instead of actual SVG/tables, or adds script/external media delivery.

@@ -82,4 +82,8 @@ Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında günce
 - [Ortak ilişkiler: Root native tarayıcı ve bağımsız audit kanıtı](GRADE6_COMMON_RELATIONS_ROOT_BROWSER_EVIDENCE_2026-10-04.md)
 - [TÜBİTAK 2024 seçili ortaokul matematik soru–çözüm biçimleri](TUBITAK_2024_MIDDLE_MATH_FORM_EVIDENCE_2026-10-04.md)
 
+- [Ortak ilişkiler: İki bağlamın gerçek medya adapter'ı](GRADE6_COMMON_RELATIONS_MEDIA_ADAPTER_EVIDENCE_2026-10-04.md)
+- [Ortak ilişkiler: Root CLI/canlı API ve final test kanıtı](GRADE6_COMMON_RELATIONS_MEDIA_ROOT_ACCEPTANCE_2026-10-04.md)
+- [İngilizce ders-özel karar/materyal ve eski indeks farkı](ENGLISH_ACTIVE_PROGRAM_BOUNDARY_EVIDENCE_2026-10-04.md)
+
 Eski belgeler korunur; ancak bunlardaki tamamlanma, uyum veya üretim iddiaları bağımsız kanıt olmadan sürüm beyanı sayılmaz.
