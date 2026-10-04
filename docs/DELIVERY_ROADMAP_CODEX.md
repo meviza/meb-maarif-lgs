@@ -7,7 +7,7 @@ Bu yol haritası tarihe bağlı satış veya yayın taahhüdü değildir. Her fa
 | 0 — Gerçeklik kaydı | Mevcut prototipi ve iddiaları ayırmak | Baseline, kaynak/hak politikası, ayrı worktree ve kalite kapıları kaydedildi |
 | 1 — Kanonik müfredat | 1–8 program kayıtlarının sürümlü modeli | `curriculum_registry`, yıllık takvim, ders/tema/çıktı haritası ve kaynak denetimi |
 | 2 — İçerik sözleşmesi | Soru/etkinlik/görsel/rubrik şeması | TDD ile doğrulanan sözleşme, hak kaydı ve örnek blueprint |
-| 3 — Tasarım sistemi | Tek platform hissi ve çocuk/kurum dengesi | Üç özgün görsel yön, kullanıcı senaryosu, token/bileşen sistemi, erişilebilirlik planı |
+| 3 — Tasarım sistemi | Tek platform hissi ve çocuk/kurum dengesi | Rol ayrımı; sınavda MEB kitapçığına yakın beyaz, okunaklı düzen; öğrenme/kurum ekranlarında kendi görevine uygun tasarım ve erişilebilirlik |
 | 4 — İlk dikey dilim | Tek sınıf–ders–tema uçtan uca | Öğrenci, öğretmen ve veli akışı; insan onaylı içerik; cihaz/erişilebilirlik testi |
 | 5 — İçerik fabrikası pilotu | Güvenli ölçeklenebilir üretim | Jeneratör + deterministik test + Jev/Clef karar pilotu + uzman inceleme + küçük psikometri |
 | 6 — 1–4 genişlemesi | Görsel/işitsel ve erken okuryazarlık desteği | Yaş düzeyi testi, alternatifler, sınıf bazlı kapsam ve öğretmen pilotu |
@@ -17,6 +17,8 @@ Bu yol haritası tarihe bağlı satış veya yayın taahhüdü değildir. Her fa
 | 10 — Bölgesel genişleme | Türkiye dışı yerelleştirme | Ayrı müfredat/hak/mahremiyet modeli; Türkçe içeriği kopyalamadan ülke bazlı süreç |
 
 ## Önceliklendirme kuralları
+
+4 Ekim 2026 kullanıcı düzeltmesi: Eski 54 soruluk yeşil Fen Atölyesi reddedildi ve kaldırıldı. [Yeniden kuruluş kararı](SCIENCE_BOOKLET_RESET_2026-10-04.md) bundan sonraki Fen yazarlığı ve öğrenci UI'si için bağlayıcıdır. Sıradaki dilim yeni kitabın gerçek öğrenci akışı ve bütün soru/şekil incelemesidir; ardından aynı kabul kapılarıyla 450 hedefine devam edilir. Önceki yeşil test sayıları yeni öğrenci kabulü değildir.
 
 1. Bir öğrenci veya öğretmenin gerçek akışını doğrulamayan gösterişli dashboard, içerik doğruluğunun önüne geçmez.
 2. Birkaç doğrulanmış içerik, binlerce taslak içerikten değerlidir.

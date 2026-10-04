@@ -11,10 +11,10 @@ const api = await import('../packages/content-factory/science_678_clef_transport
 const ACCOUNT = '0123456789abcdef0123456789abcdef';
 const TOKEN = 'synthetic-fixture-token-not-a-real-credential';
 const AUTHORITY = {accountId: ACCOUNT, apiToken: TOKEN, freePlanVerified: true, allowLive: true, maxNewSpendUsd: 0};
-const IDS = ['SCI-G8-solid_pressure_control-V1', 'SCI-G8-periodic_pattern-V1', 'SCI-G8-one_trait_cross-V1'];
+const IDS = ['YF6-06', 'YF7-04', 'YF8-01'];
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const responseBody = () => ({result: {model: 'clef-flash', answers: {
-  ambiguity: {type: 'noul', noul: 0.02}, answer_supported: {type: 'noul', noul: 0.98},
+  ambiguity: {type: 'noul', noul: 0.02}, answer_supported: {type: 'noul', noul: 0.98}, meb_style_fit: {type: 'noul', noul: 0.75},
 }, usage: {input_tokens: 120, output_tokens: 0}}, success: true, errors: [], messages: []});
 const jsonResponse = body => new Response(JSON.stringify(body), {headers: {'Content-Type': 'application/json'}});
 async function run(authority, dependency) {
@@ -45,14 +45,14 @@ test('three real prepared requests run sequentially and preserve typed bounded a
   assert.equal(result.schemaVersion, 'science-678-clef-transport/v1');
   assert.equal(result.state, 'advisory_completed');
   assert.deepEqual(result.counts, {preparedRequests: 3, requestsAttempted: 3, advisoryScreens: 3,
-    decisionProbabilities: 6, generatedQuestions: 0, publishedQuestions: 0});
+    decisionProbabilities: 9, generatedQuestions: 0, publishedQuestions: 0});
   assert.equal(result.preflightSha256, plan.preflightSha256);
   assert.equal(result.bankContentSha256, plan.bankContentSha256);
   assert.deepEqual(result.items.map(row => row.questionId), IDS);
   assert.deepEqual(result.items.map(row => row.decisions), [
-    {ambiguity: {type: 'noul', noul: 0.02}, answer_supported: {type: 'noul', noul: 0.98}},
-    {ambiguity: {type: 'noul', noul: 0.05}, answer_supported: {type: 'noul', noul: 0.95}},
-    {ambiguity: {type: 'noul', noul: 0.08}, answer_supported: {type: 'noul', noul: 0.92}},
+    {ambiguity: {type: 'noul', noul: 0.02}, answer_supported: {type: 'noul', noul: 0.98}, meb_style_fit: {type: 'noul', noul: 0.75}},
+    {ambiguity: {type: 'noul', noul: 0.05}, answer_supported: {type: 'noul', noul: 0.95}, meb_style_fit: {type: 'noul', noul: 0.75}},
+    {ambiguity: {type: 'noul', noul: 0.08}, answer_supported: {type: 'noul', noul: 0.92}, meb_style_fit: {type: 'noul', noul: 0.75}},
   ]);
   assert.deepEqual(result.usage, {input_tokens: 450, output_tokens: 3});
   assert.equal(result.schema_basis, 'primary_cross_doc_pending_live_confirmation');
@@ -110,7 +110,7 @@ test('a second request failure retains only the first verified advisory and stop
   const result = await run(AUTHORITY, {fetchImpl: async () => ++calls === 1 ? jsonResponse(responseBody()) : jsonResponse({success: false})});
   assert.equal(calls, 2); assert.equal(result.error.requestIndex, 1);
   assert.equal(result.error.code, 'malformed_response');
-  assert.equal(result.counts.advisoryScreens, 1); assert.equal(result.counts.decisionProbabilities, 2);
+  assert.equal(result.counts.advisoryScreens, 1); assert.equal(result.counts.decisionProbabilities, 3);
   assert.deepEqual(result.usage, {input_tokens: 120, output_tokens: 0});
   assert.deepEqual(result.items.map(row => row.state), ['advisory_scored', 'failed']);
 });

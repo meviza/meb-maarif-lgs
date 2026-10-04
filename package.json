@@ -20,6 +20,7 @@
     "drive:stream": "node tools/legacy_quarantine.mjs drive:stream",
     "studio": "node tools/studio_preview.mjs",
     "student:preview": "node tools/student_preview.mjs",
+    "science:preview": "node tools/science_booklet_preview.mjs",
     "sources:archive": "node tools/meb_source_archive.mjs",
     "start": "node server.mjs",
     "serve": "node server.mjs"

@@ -1,5 +1,7 @@
 # 6–8. Sınıf Fen Pilotu: Bağımsız Teknik ve İçerik Audit Kaydı
 
+> TARİHSEL / REDDEDİLDİ: İncelenen eski stok kullanıcı tarafından reddedildi. Testlerin teknik geçmesi, fark edilmeyen bütün-paket öğrenci/görsel kusurlarını telafi etmez. Bu rapor yeni kitapçığın kabul kanıtı değildir. [Düzeltme kararı](SCIENCE_BOOKLET_RESET_2026-10-04.md).
+
 Tarih: 4 Ekim 2026. Durum: Kısmi editör pilotunun bağımsız incelemesi; uzman kabulü, yayın veya tam yıllık kapsam kabulü değildir.
 
 ## Sonuç ve İnceleme Sınırı

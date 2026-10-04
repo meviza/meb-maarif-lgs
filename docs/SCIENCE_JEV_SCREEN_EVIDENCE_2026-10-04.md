@@ -1,5 +1,7 @@
 # Fen Soruları İçin Gerçek JEV Danışma Ekranı
 
+> Not: Eski 54 Fen sorusu reddedildi ve aktif stoktan kaldırıldı. Buradaki yerel danışma puanı öğrenci/görsel kabulü sağlamadı. Yeni kitapçık bu puanı kabul etiketi olarak kullanmaz.
+
 ## Teslim ve Sınır
 
 `screenScienceQuestionWithJev(question, sourceExpectation)` gerçek `engine/jev_evaluator.mjs` içindeki `JevQualityAuditor.evaluateQuestion` metodunu kullanır. Mevcut evaluator yerel yapı, metin ve prototip kayıt kontrolleri yapar; bu çağrıda Ollama, başka model veya LLM üretimi yoktur. Bu dilim yeni soru üretmez. Bağımsız bilimsel oracle, soru yazarlığı, kaynak/program incelemesi ve editör kabulü ayrı fabrika katmanlarıdır.

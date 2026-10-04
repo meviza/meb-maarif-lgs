@@ -1,5 +1,7 @@
 # Fen Atölyesi: Gerçek Tarayıcı Kanıtı
 
+> TARİHSEL / REDDEDİLDİ: Eski 54 sorunun arayüzü kullanıcı kabulünden geçmedi ve kaldırıldı. Bu teknik tarayıcı gözlemleri öğrenci kullanılabilirliği veya görsel kalite kabulü yerine kullanılamaz. [Yeni kitapçık kararı](SCIENCE_BOOKLET_RESET_2026-10-04.md).
+
 ## Kapsam Ve Revizyon
 
 4 Ekim 2026 tarihli bu kontrol, yalnız 54 taslağın yetişkin editör önizlemesidir. 450 hedefinden kalan 396 soru, uzman kabulü, öğrenci teslimi ve canlı model çalışması tamamlanmış değildir.

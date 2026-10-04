@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fen Bilimleri · Soru Kitapçığı</title><link rel="stylesheet" href="/booklet.css"><script src="/booklet.mjs" type="module"></script></head>
+<body>
+<header class="toolbar"><a class="wordmark" href="/" aria-label="Denemeye dön">Ders Defteri</a><span id="enrollment"></span><span class="toolbar-end"><span id="elapsed" aria-label="Çalışma süresi">00:00</span><button id="open-answers" aria-expanded="false" aria-controls="answers-panel">Cevaplarım <span id="answered">0</span></button><button id="finish" class="primary">Denemeyi bitir</button></span></header>
+<main id="main"><p id="load-status" role="status">Kitapçık hazırlanıyor…</p>
+<section id="results" hidden aria-labelledby="result-title"><h1 id="result-title" tabindex="-1">Denemen tamamlandı</h1><p id="score"></p><p>Soruların altındaki “Çözümü incele” ile çözüm yoluna bakabilirsin.</p></section>
+<aside id="answers-panel" hidden aria-labelledby="answers-title"><div class="panel-head"><h2 id="answers-title">Cevaplarım</h2><button id="close-answers" aria-label="Cevaplarımı kapat">Kapat</button></div><p>Dolu: Yanıtlandı · Kesik çerçeve: Sonra bakılacak</p><nav id="answer-grid" aria-label="Soruya git"></nav></aside>
+<section id="booklet" aria-label="Soru kitapçığı" hidden></section>
+<nav class="page-controls" aria-label="Kitapçık sayfaları" hidden><button id="previous">← Önceki sayfa</button><span id="page-position" aria-live="polite"></span><button id="next">Sonraki sayfa →</button></nav>
+</main>
+<dialog id="finish-dialog" aria-labelledby="finish-title"><h2 id="finish-title">Denemeyi bitirmek istiyor musun?</h2><p id="finish-summary"></p><p>Bitirdikten sonra yanıtlarını değiştiremezsin. Çözümleri inceleyebilirsin.</p><div class="dialog-actions"><button id="cancel-finish">Sorulara dön</button><button id="confirm-finish" class="primary">Bitir ve sonuçları gör</button></div></dialog>
+<div id="save-status" class="sr-only" role="status"></div>
+</body></html>

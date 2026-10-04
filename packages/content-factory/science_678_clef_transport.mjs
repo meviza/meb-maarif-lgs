@@ -60,7 +60,7 @@ function parseAdvisory(bytes) {
     if (!closed(body, ['result', 'success', 'errors', 'messages']) || body.success !== true ||
         !Array.isArray(body.errors) || body.errors.length !== 0 || !Array.isArray(body.messages) || body.messages.length !== 0 ||
         !closed(body.result, ['model', 'answers', 'usage']) || body.result.model !== 'clef-flash' ||
-        !closed(body.result.answers, ['ambiguity', 'answer_supported']) ||
+        !closed(body.result.answers, ['ambiguity', 'answer_supported', 'meb_style_fit']) ||
         !closed(body.result.usage, ['input_tokens', 'output_tokens'])) throw new Error();
     for (const decision of Object.values(body.result.answers)) {
       if (!closed(decision, ['type', 'noul']) || decision.type !== 'noul' ||
@@ -140,7 +140,7 @@ export async function runScience678ClefPilot(authority, dependency) {
     state: error ? 'stopped_on_error' : 'advisory_completed', schema_basis: 'primary_cross_doc_pending_live_confirmation',
     bankContentSha256: plan.bankContentSha256, preflightSha256: plan.preflightSha256,
     counts: {preparedRequests: 3, requestsAttempted: items.length, advisoryScreens: successful.length,
-      decisionProbabilities: successful.length * 2, generatedQuestions: 0, publishedQuestions: 0},
+      decisionProbabilities: successful.length * 3, generatedQuestions: 0, publishedQuestions: 0},
     activity: {localJevScreens: plan.counts.localJevScreens, transportFetchCalls: items.length},
     provider: {model: 'clef-flash', configured: 'caller_supplied_authority', liveAccessVerified: false},
     budget: {allowedNewSpendUsd: 0, freePlanEvidence: 'caller_ui_attested', quotaMeasured: false,

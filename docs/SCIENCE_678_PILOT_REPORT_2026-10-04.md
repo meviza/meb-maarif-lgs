@@ -1,5 +1,7 @@
 # 6–8. Sınıf Fen Bilimleri: Soru Odaklı Pilot
 
+> TARİHSEL / REDDEDİLDİ: Bu raporun 54 sorusu ve yeşil ekranı 4 Ekim 2026 kullanıcı kararıyla aktif koddan kaldırıldı. Aşağıdaki sayılar/teknik geçişler öğrenci kabulü değildir ve yeni stok sayılmaz. Güncel yön: [yeniden kuruluş kararı](SCIENCE_BOOKLET_RESET_2026-10-04.md).
+
 ## Sonuç Ve Gerçek Sayılar
 
 Kullanıcının isteği, her sınıfta 50 fizik, 50 kimya ve 50 biyoloji sorusu olmak üzere toplam 450 özgün, görselli, gerekçeli sorudur. Bu kontrol noktası **54 yazılmış taslak** sunar; **396 soru henüz hazırlanmadı**. Uzman kabulü, ürün yayını ve öğrenci teslimi sıfırdır. Fizik/kimya/biyoloji, resmî Fen Bilimleri dersi içindeki editoryal raporlama ayrımlarıdır.
