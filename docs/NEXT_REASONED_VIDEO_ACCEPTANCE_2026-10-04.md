@@ -1,6 +1,6 @@
 # Yeni gerekçeli sesli video: test-önce kabul planı
 
-4 Ekim 2026. **Yalnız plan; kod/test/TTS/ses/MP4 veya yeni kabul kanıtı yok.** Üst görevin checkpoint'i `a4a3e1b4116a2e3fc1e41c67a58b09fc4fe70247`; Git çalıştırılmadı. Modüller readonly incelendi; aşağıdaki RED/GREEN bugün değil gelecek dilimin hedefidir.
+İlk kayıt,4 Ekim 2026: **Yalnız plan; o kayıt anında kod/test/TTS/ses/MP4 veya yeni kabul kanıtı yoktu.** Üst görevin checkpoint'i `a4a3e1b4116a2e3fc1e41c67a58b09fc4fe70247`; o incelemede Git çalıştırılmadı. Modüller readonly incelendi. Aşağıdaki başlangıç hedefleri korunur; sonraki gerçek uygulama güncellemesi belgenin sonundadır.
 
 ## Mevcut hat ve kesin açık seam
 
@@ -49,3 +49,11 @@ Korunan result/check_answer/summary/transfer_answer metni mevcut scene'de yalnı
 Native: gerçek MP4'yi ses açık baştan sona oynat; decoded başlangıç/orta/son frame, kelime-vurgu, erken yanıt/caption kaybı/pen-label örtüşmesi/taşma, seek/reload ve alt metni denetle. Codec/string başarısı öğretmen/screenreader/tablet kabulü değil. Clip, tam çözüm, yayın ayrı durumdur.
 
 [Clef](../packages/content-factory/providers.mjs) advisory QA, üretici/TTS/yayın hakemi değil. Hak/müfredat/öğretmen/answer/retention pending; reference_only/unverified. Raw PDF/çocuk sesi-verisi gönderilmez. Docker 250 USD ekranı bütçe/bakiye/auth/cloud/on-prem kanıtı değil. Provider/ağ/Drive/DB/browser/Git/SDK 0; .env/credential okunmadı. Yalnız bu belge yazıldı.
+
+## 4 Ekim Sabah Sonrası: İlk Saf Köprü Ve Güncel İstek Uygulandı
+
+`6172682` başlangıcı üzerinde [root teknik kanıtı](GRADE6_COMMON_RELATIONS_VOICE_BRIDGE_ROOT_ACCEPTANCE_2026-10-04.md) ilk dilimi uygular: gerçek canonical fabrika/live-child audit → değişmeyen görsel scene/default job → ayrı beyanlı provider/style ses job/request → gerçek current scene/narration consumer. Aynı iş ID'si farklı revision SHA'larını gizlemez; bütün10cue anlamı/birimi/anchor/durak eşleşir. Bridge kendi local issuance markasını taşır; factory outer-wrapper kökeni iddia edilmez. JSON/deep bridge'ler render yetkisi olmaz.
+
+Yalnız güncel açık cue için tek tam anlatım isteği; sayfa/ilerleme request kimliğini değiştirmez. Protected cue açık reveal ve tamamlanmış ilerleme yoksa voiceRequestnull/hashnull. Metadata'ya konan20 bilinen kanonik cue metni/tekil hash'i iki bağlamda da issuance öncesi reddedilir; parent zaten frozen olsa da bütün request çocukları dondurulur. Bu dar literal izolasyon genel fragment/rephrase/encoding/gizlilik sınıflandırması değildir; style/privacy incelemesi pending. Bu TTS veya exactly-once playback değil, ayrı saf hazırlıktır.28 upstream açık iş ve altı kapı pending; eski canonical snapshot değiştirilmez. İlk1290 sonucu sonrası iki gerçek P2, ayrı RED→GREEN ile kapandı. Final root tam1295/1295, ayrıca postrepair280 gerçek frame/request durumu; yeni audio/video/provider0.
+
+İlk kayıt içindeki “bridge API henüz yok” ifadesi tarihsel durumdur. **Hâlâ uygulanmayanlar:** kapalı yetkili/bütçeli TTS transport, gerçek ses byte/decode ve dinleyici receipt'i, measured word–pen eşlemesi, common renderer/mux/MP4/native playback ve seri yayın. Normal CLI/HTTP/UI bu ses isteğini henüz oynatmaz. Önce dilim2'nin default transport0 ve gerçek tek-cue kabulü; on cue tamamlanmadan tam çözüm denmez. Gece döngüsü yeniden açılmaz.
