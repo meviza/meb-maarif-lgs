@@ -4,6 +4,7 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 
 ## Güncel çalışma
 
+- [Yeni bölünebilme görevi ve defter yer imleri: root kontrol noktası](docs/GRADE6_DIVISIBILITY_BOOKMARK_ROOT_CHECKPOINT_2026-10-04.md): bir farklı gerekçeli görev, kapalı CLI/editör ve sentetik yer-imi tüketicisi; 1362 PASS/2 SKIP/0 FAIL. Native defter akışı ve gerçek mobil kabulü açık.
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
 - [MEB onaylı kaynak güveni ve Google öncelikli yeni masrafsız karar](docs/MEB_APPROVED_SOURCE_AND_ZERO_COST_DECISION_2026-10-04.md): kurumsal kaynak denetimi temel alınır; yeni üretimin kalite/hak kaydı ayrı, API bütçesi 0.
 - [Kapalı TTS, gerçek PCM decode ve fabrika ön kontrolü](docs/GRADE6_COMMON_RELATIONS_TTS_PCM_ROOT_ACCEPTANCE_2026-10-04.md):1336 test;20 yerel sentetik bağ, canlı konuşma/video/yayın değil. Sağlayıcı hakları ve çocuklara yönelik kullanım koşulları açık kapıdır.

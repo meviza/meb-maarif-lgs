@@ -131,29 +131,41 @@ export function createSyntheticNotebookDeskClient(trustedRequest){
   controller=Object.freeze({current(){guard(this,arguments.length,0);return status();},
     async initialize(){guard(this,arguments.length,0);return operation('initialize');},async read(){guard(this,arguments.length,0);return operation('read');},async save(){guard(this,arguments.length,0);return operation('save');},
     replaceDraft(text){guard(this,arguments.length,1);if(busy)return local(false);try{draft=freeze(bodyValid(parse(text)));errorCode=null;return local(true);}catch{errorCode='draft_invalid';return local(false);}},
+    toggleBookmark(kind,id){guard(this,arguments.length,2);if(busy)return local(false);
+      const key=kind==='question'&&id==='question-a-001'?'questions':kind==='topic'&&id==='topic-a-001'?'topics':null;
+      if(key===null){errorCode='draft_invalid';return local(false);}
+      const selected=draft.bookmarks[key];try{draft=freeze(bodyValid({...draft,bookmarks:{...draft.bookmarks,[key]:selected.includes(id)?[]:[id]}}));
+        errorCode=null;return local(true);}catch{errorCode='draft_invalid';return local(false);}},
     loadRead(){guard(this,arguments.length,0);if(busy||verifiedRead===null)return local(false);draft=verifiedRead.body??freeze(blank());errorCode=null;return local(true);},
     clearDraft(){guard(this,arguments.length,0);if(busy)return local(false);draft=freeze(blank());errorCode=null;return local(true);}});
   return controller;
 }
 
 function mount(){const get=id=>document.getElementById(id),client=createSyntheticNotebookDeskClient();let drawing=null;
-  const editIds=['draft-text','new-note','new-concern','add-note','add-concern','clear-draft','pen-color','pen-width','clear-pen'];
+  const editIds=['draft-text','new-note','new-concern','add-note','add-concern','clear-draft','pen-color','pen-width','clear-pen','bookmark-question','bookmark-topic'];
   const messages={not_read:'Henüz okunmadı. Sunucudaki kaydı görmek için Oku düğmesine basın.',verified_current:'Son açık okuma doğrulandı. Taslak ayrı tutuluyor.',
     read_stale_after_write:'Kayıt makbuzu doğrulandı; önceki okuma artık güncel değil. Yeniden Oku.',save_unknown:'Kayıt sonucu belirsiz; kaydedilmiş olabilir. Otomatik tekrar yok. Açık okuma ile kontrol edin.',
     save_conflict:'Kayıt onaylanmadı. Tekrar kaydetmeden önce açık okuma gerekir.',read_unknown:'Okuma doğrulanamadı. Önceki okuma varsa yalnız eski kanıt olarak tutulur.'};
   function list(id,items){get(id).replaceChildren(...items.map(item=>{const li=document.createElement('li');li.textContent=item.text;return li;}));}
+  function bookmarks(prefix,body){for(const [key,label] of [['questions','Örnek soru'],['topics','Örnek konu']])
+    list(`${prefix}-${key==='questions'?'question':'topic'}-bookmarks`,(body?.bookmarks[key]??[]).map(id=>({text:`${label} A · ${id}`})));}
   function pen(body){const canvas=get('pen-canvas'),ctx=canvas.getContext('2d');if(!ctx)return;ctx.clearRect(0,0,canvas.width,canvas.height);for(const s of body.strokes){ctx.strokeStyle=s.color;ctx.fillStyle=s.color;ctx.lineWidth=s.width;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(s.points[0].x*canvas.width,s.points[0].y*canvas.height);for(const p of s.points.slice(1))ctx.lineTo(p.x*canvas.width,p.y*canvas.height);if(s.points.length===1){ctx.arc(s.points[0].x*canvas.width,s.points[0].y*canvas.height,s.width/2,0,Math.PI*2);ctx.fill();}else ctx.stroke();}}
   function render(){const v=client.current();get('desk-status').textContent=v.busy?'İşlem sürüyor. Başka işlem başlatmayın.':messages[v.state];get('draft-error').textContent=v.errorCode==='draft_invalid'?'Taslak sınırları aşıldı veya desteklenmeyen değer var. Son geçerli taslak değiştirilmedi.':'';
     get('read-notebook').disabled=v.busy;get('save-notebook').disabled=!v.canSave;get('load-read').disabled=!v.canLoadRead;for(const id of editIds)get(id).disabled=v.busy;
-    get('draft-text').value=v.draft.text;list('draft-notes',v.draft.notes);list('draft-concerns',v.draft.concerns);pen(v.draft);
+    get('draft-text').value=v.draft.text;list('draft-notes',v.draft.notes);list('draft-concerns',v.draft.concerns);pen(v.draft);bookmarks('draft',v.draft);
+    for(const [kind,key] of [['question','questions'],['topic','topics']]){const selected=v.draft.bookmarks[key].length===1,button=get(`bookmark-${kind}`);
+      button.setAttribute('aria-pressed',String(selected));button.textContent=kind==='question'?(selected?'Soru işaretini kaldır':'Örnek soruyu işaretle'):(selected?'Konu işaretini kaldır':'Örnek konuyu işaretle');}
     get('draft-counts').textContent=`${v.draft.text.length}/4000 yazı birimi · ${v.draft.strokes.length}/64 çizgi · ${v.draft.notes.length}/100 not · ${v.draft.concerns.length}/100 soru`;
     get('read-revision').textContent=v.verifiedRead===null?'Okuma yok':`Okunan sürüm: ${v.verifiedRead.revision}${v.state==='verified_current'?' · güncel':' · güncelliği doğrulanmış değil'}`;
     get('read-text').textContent=v.verifiedRead?.body?.text??(v.verifiedRead?'Bu sürümde kayıtlı içerik yok.':'Henüz okuma yapılmadı.');list('read-notes',v.verifiedRead?.body?.notes??[]);list('read-concerns',v.verifiedRead?.body?.concerns??[]);
+    bookmarks('read',v.verifiedRead?.body??null);
     get('receipt-status').textContent=v.receipt?`Yazma makbuzu: sürüm ${v.receipt.resultingRevision}. Makbuz, kayıt içeriğinin yeni okuması değildir.`:v.state==='save_unknown'?'Yazma sonucu bilinmiyor (kaydedilme durumu: belirsiz).':'Henüz doğrulanmış yazma makbuzu yok.';
   }
   async function act(type){if(drawing)return;const operation=client[type]();render();await operation;render();}
   get('read-notebook').addEventListener('click',()=>act('read'));get('save-notebook').addEventListener('click',()=>act('save'));
   get('load-read').addEventListener('click',()=>{if(drawing)return;client.loadRead();render();});get('clear-draft').addEventListener('click',()=>{if(drawing)return;client.clearDraft();render();});
+  for(const [kind,id] of [['question','question-a-001'],['topic','topic-a-001']])get(`bookmark-${kind}`).addEventListener('click',()=>{
+    if(drawing)return;client.toggleBookmark(kind,id);render();});
   function change(body){const result=client.replaceDraft(JSON.stringify(body));render();return result.ok;}
   get('draft-text').addEventListener('input',()=>{const v=client.current();change({...v.draft,text:get('draft-text').value});});
   for(const [type,input,button] of [['notes','new-note','add-note'],['concerns','new-concern','add-concern']])get(button).addEventListener('click',()=>{

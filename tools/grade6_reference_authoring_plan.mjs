@@ -27,14 +27,23 @@ async function readSnapshot(name) {
 
 try {
   const args = process.argv.slice(2);
-  if (args.length !== 0 && (args.length !== 1 || !['--plan', '--factor-draft', '--factor-html', '--common-relations-draft', '--common-relations-html', '--common-relations-media', '--common-relations-scene', '--common-relations-frame', '--common-relations-review'].includes(args[0]))) throw new Error('invalid_grade6_reference_authoring_args');
+  if (args.length !== 0 && (args.length !== 1 || !['--plan', '--factor-draft', '--factor-html', '--divisibility-draft', '--divisibility-html', '--common-relations-draft', '--common-relations-html', '--common-relations-media', '--common-relations-scene', '--common-relations-frame', '--common-relations-review'].includes(args[0]))) throw new Error('invalid_grade6_reference_authoring_args');
   const { createGrade6ReferenceAuthoringPlan } = await import('../packages/content-factory/grade6_reference_authoring_plan.mjs');
   const [forms, matrix, main, supplement] = await Promise.all(['grade6-question-form-observations',
     'grade6-source-semantic-candidate-matrix', 'meb-reference-registry', 'education-reference-supplement'].map(readSnapshot));
   const plannerInput = { formObservations: forms, semanticMatrix: matrix,
     sourceScopeInput: { archives: [main, supplement], selection: { sources: [], inventory: [] },
       downloadObservations: { sources: [] }, monthly: { sources: [], batches: [] }, formObservations: forms } };
-  if (['--common-relations-draft', '--common-relations-html', '--common-relations-media', '--common-relations-scene', '--common-relations-frame', '--common-relations-review'].includes(args[0])) {
+  if (['--divisibility-draft', '--divisibility-html'].includes(args[0])) {
+    const { createGrade6DivisibilityClassificationDraft, verifyGrade6DivisibilityClassificationDraft } = await import('../packages/content-factory/grade6_divisibility_classification_draft.mjs');
+    const draft = createGrade6DivisibilityClassificationDraft(plannerInput);
+    const verification = verifyGrade6DivisibilityClassificationDraft(draft, plannerInput);
+    if (!verification.valid) throw new Error('grade6_divisibility_draft_audit_failed');
+    if (args[0] === '--divisibility-html') {
+      const { renderGrade6DivisibilityEditorView } = await import('../packages/content-factory/grade6_divisibility_editor_view.mjs');
+      console.log(renderGrade6DivisibilityEditorView(draft, plannerInput).html);
+    } else console.log(JSON.stringify({ schemaVersion: 'grade6-divisibility-classification-preview/v1', draft, verification }));
+  } else if (['--common-relations-draft', '--common-relations-html', '--common-relations-media', '--common-relations-scene', '--common-relations-frame', '--common-relations-review'].includes(args[0])) {
     const { createGrade6CommonRelationsDraft, verifyGrade6CommonRelationsDraft } = await import('../packages/content-factory/grade6_common_relations_draft.mjs');
     const sourceBindingInput = {
       applicationObservations: await readSnapshot('grade6-common-relations-application-observations'),

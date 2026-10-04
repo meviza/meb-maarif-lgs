@@ -318,3 +318,101 @@ test('pending pointer ink paints immediately but cancelled ink never changes dra
   assert.equal(s.requests.length,1);await canvas.fire('pointercancel',{pointerId:9});
   assert.equal(canvas.paint.at(-1)[0],'clear');assert.equal(e('draft-counts').textContent.includes('0/64 çizgi'),true);assert.equal(s.requests.length,1);
 });
+
+test('desk bookmark toggles change only permitted local targets without fetching or writing',()=>{
+  const s=session(),c=client(s.transport);
+  assert.equal(typeof c.toggleBookmark,'function','local bookmark action missing');
+  c.replaceDraft(JSON.stringify({...empty(),text:'Notumu koru'}));
+  assert.equal(c.toggleBookmark('question','question-a-001').ok,true);
+  assert.equal(c.toggleBookmark('topic','topic-a-001').ok,true);
+  assert.deepEqual(c.current().draft.bookmarks,{questions:['question-a-001'],topics:['topic-a-001']});
+  assert.equal(c.current().draft.text,'Notumu koru');assert.equal(c.current().canSave,false);
+  assert.equal(c.toggleBookmark('question','question-a-001').ok,true);
+  assert.deepEqual(c.current().draft.bookmarks,{questions:[],topics:['topic-a-001']});
+  assert.equal(s.requests.length,0);assert.equal(s.calls.length,0);
+});
+
+test('unknown foreign and malformed bookmark actions preserve the last local draft without transport',()=>{
+  const s=session(),c=client(s.transport);
+  assert.equal(typeof c.toggleBookmark,'function','local bookmark action missing');
+  c.toggleBookmark('question','question-a-001');const before=c.current().draft;
+  for(const [kind,id] of [['question','question-b-001'],['topic','topic-b-001'],['lesson','topic-a-001'],
+    ['question','topic-a-001'],['topic','question-a-001'],['question','unknown'],[{},'question-a-001'],['question',null]]) {
+    assert.equal(c.toggleBookmark(kind,id).ok,false);assert.equal(c.current().draft,before);
+  }
+  assert.throws(()=>c.toggleBookmark('question','question-a-001',true),/invalid_desk_arguments/u);
+  assert.throws(()=>c.toggleBookmark.call({},'question','question-a-001'),/untrusted_desk/u);
+  assert.equal(s.requests.length,0);
+});
+
+test('a pending explicit read locks bookmark editing without queueing or changing the local draft',async()=>{
+  const s=session();let release;const held=new Promise(resolve=>{release=resolve;});
+  const c=client(async(path,opts)=>{const result=await s.transport(path,opts);await held;return result;});
+  assert.equal(typeof c.toggleBookmark,'function','local bookmark action missing');
+  c.toggleBookmark('topic','topic-a-001');const before=c.current().draft;
+  const pending=c.read();assert.equal(c.current().busy,true);
+  assert.equal(c.toggleBookmark('question','question-a-001').ok,false);assert.equal(c.current().draft,before);
+  release();await pending;assert.deepEqual(c.current().draft.bookmarks,{questions:[],topics:['topic-a-001']});
+  assert.equal(s.requests.length,1);
+});
+
+test('adding a bookmark cannot exceed the existing whole-body UTF8 budget or change a full draft',()=>{
+  const s=session(),c=client(s.transport);
+  const body={...empty(),text:'界'.repeat(3300)+'x'.repeat(533),
+    notes:Array.from({length:10},(_,i)=>({id:`n-${i}`,text:'界'.repeat(4000),grade:6,format:'plain_text'}))};
+  assert.equal(Buffer.byteLength(JSON.stringify(body)),131072);
+  assert.equal(c.replaceDraft(JSON.stringify(body)).ok,true);const before=c.current().draft;
+  assert.equal(c.toggleBookmark('question','question-a-001').ok,false);
+  assert.equal(c.current().draft,before);assert.deepEqual(c.current().draft.bookmarks,{questions:[],topics:[]});
+  assert.equal(s.requests.length,0);
+});
+
+test('emitted desk bookmarks survive explicit save and read while local and read lists stay separate',async()=>{
+  const s=session(),ui=await dom(s),e=id=>ui.elements.get(id);
+  assert.ok(e('bookmark-question'),'question bookmark UI missing');assert.ok(e('bookmark-topic'),'topic bookmark UI missing');
+  await e('bookmark-question').fire('click');await e('bookmark-topic').fire('click');
+  assert.equal(e('bookmark-question')['aria-pressed'],'true');assert.equal(e('bookmark-topic')['aria-pressed'],'true');
+  assert.equal(e('draft-question-bookmarks').children.length,1);assert.equal(e('draft-topic-bookmarks').children.length,1);
+  assert.equal(e('read-question-bookmarks').children.length,0);assert.equal(s.requests.length,1);
+  assert.equal(e('save-notebook').disabled,true);
+  await e('read-notebook').fire('click');await e('save-notebook').fire('click');
+  assert.deepEqual(s.head.body.bookmarks,{questions:['question-a-001'],topics:['topic-a-001']});
+  assert.equal(e('read-question-bookmarks').children.length,0);assert.equal(e('save-notebook').disabled,true);
+  await e('read-notebook').fire('click');
+  assert.match(e('read-question-bookmarks').children[0].textContent,/question-a-001/u);
+  assert.match(e('read-topic-bookmarks').children[0].textContent,/topic-a-001/u);
+  await e('bookmark-question').fire('click');assert.equal(e('bookmark-question')['aria-pressed'],'false');
+  assert.equal(e('draft-question-bookmarks').children.length,0);assert.equal(e('read-question-bookmarks').children.length,1);
+  await e('save-notebook').fire('click');await e('read-notebook').fire('click');
+  assert.equal(e('read-question-bookmarks').children.length,0);assert.equal(e('read-topic-bookmarks').children.length,1);
+  assert.deepEqual(s.requests.map(r=>r.path),['/api/notebook/current','/api/notebook/read','/api/notebook/save',
+    '/api/notebook/read','/api/notebook/save','/api/notebook/read']);
+});
+
+test('reading bookmarked records never selects the local draft until explicit load',async()=>{
+  const s=session(request()),ui=await dom(s),e=id=>ui.elements.get(id);
+  assert.ok(e('bookmark-question'),'question bookmark UI missing');
+  await e('read-notebook').fire('click');
+  assert.equal(e('read-question-bookmarks').children.length,1);assert.equal(e('read-topic-bookmarks').children.length,1);
+  assert.equal(e('draft-question-bookmarks').children.length,0);assert.equal(e('bookmark-question')['aria-pressed'],'false');
+  await e('load-read').fire('click');
+  assert.equal(e('draft-question-bookmarks').children.length,1);assert.equal(e('draft-topic-bookmarks').children.length,1);
+  assert.equal(e('bookmark-question')['aria-pressed'],'true');assert.equal(e('bookmark-topic')['aria-pressed'],'true');
+  assert.equal(s.requests.length,2);
+});
+
+test('lost bookmark save reply does not invent a read list or retry before explicit recovery',async()=>{
+  const s=session();let lose=false;const paths=[];
+  const ui=await dom(s,async(path,options)=>{paths.push(path);const raw=JSON.parse(await s.transport(path,options));
+    if(lose&&path.endsWith('/save'))throw new Error('private reply failure');
+    return {status:raw.status,headers:{get(){return 'application/json';}},text:async()=>raw.body};});
+  const e=id=>ui.elements.get(id);assert.ok(e('bookmark-question'),'question bookmark UI missing');
+  await e('read-notebook').fire('click');await e('bookmark-question').fire('click');lose=true;
+  await e('save-notebook').fire('click');
+  assert.deepEqual(s.head.body.bookmarks,{questions:['question-a-001'],topics:[]});
+  assert.equal(e('draft-question-bookmarks').children.length,1);assert.equal(e('read-question-bookmarks').children.length,0);
+  assert.equal(e('save-notebook').disabled,true);await e('save-notebook').fire('click');
+  assert.deepEqual(paths,['/api/notebook/current','/api/notebook/read','/api/notebook/save']);
+  await e('read-notebook').fire('click');assert.equal(e('read-question-bookmarks').children.length,1);
+  assert.equal(e('save-notebook').disabled,false);assert.equal(paths.length,4);
+});

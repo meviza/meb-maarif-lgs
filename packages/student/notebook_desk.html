@@ -24,6 +24,13 @@
         <p class="hint">Okuma taslağı değiştirmez. Yenileme bu yerel taslağı siler; tarayıcıda kalıcı depolama yoktur.</p>
         <label for="draft-text">Düşünceler ve çözüm adımları</label><textarea id="draft-text" rows="7" spellcheck="false" aria-describedby="draft-counts draft-error"></textarea>
         <p id="draft-counts" class="hint"></p><p id="draft-error" class="error" role="status" aria-live="polite"></p>
+        <section class="entry" aria-labelledby="bookmark-heading">
+          <h3 id="bookmark-heading">Soru ve konu yer imlerim</h3>
+          <p class="hint">Bunlar yalnız bu sentetik defterin iki örnek hedefidir; yayımlanmış soru veya ders değildir. İşaretleme taslağı değiştirir, tek başına sunucuya kaydetmez.</p>
+          <div class="bookmark-controls"><button id="bookmark-question" type="button" aria-pressed="false">Örnek soruyu işaretle</button><button id="bookmark-topic" type="button" aria-pressed="false">Örnek konuyu işaretle</button></div>
+          <h3>İşaretlediğim sorular</h3><ul id="draft-question-bookmarks" class="text-list" aria-label="Taslak soru yer imleri"></ul>
+          <h3>İşaretlediğim konular</h3><ul id="draft-topic-bookmarks" class="text-list" aria-label="Taslak konu yer imleri"></ul>
+        </section>
         <div class="entry"><label for="new-note">Kısa not</label><textarea id="new-note" rows="2" spellcheck="false"></textarea><button id="add-note" type="button">Notu ekle</button><ul id="draft-notes" class="text-list" aria-label="Taslak notlar"></ul></div>
         <div class="entry"><label for="new-concern">Aklımdaki soru</label><textarea id="new-concern" rows="2" spellcheck="false"></textarea><button id="add-concern" type="button">Soruyu ekle</button><ul id="draft-concerns" class="text-list" aria-label="Taslak sorular"></ul></div>
         <details class="pen-panel"><summary>İsteğe bağlı kalem çizgileri</summary>
@@ -37,6 +44,8 @@
         <div class="section-heading"><div><p class="eyebrow">Son açık okuma</p><h2 id="read-heading">Okunan kayıt</h2></div><span class="read-icon" aria-hidden="true">↗</span></div>
         <p id="read-revision" class="revision">Okuma yok</p><p class="hint">Yalnız doğrulanmış okuma burada görünür. Kayıt makbuzu bu içeriğin yerine geçmez.</p>
         <p id="read-text" class="read-text">Henüz okuma yapılmadı.</p><h3>Notlar</h3><ul id="read-notes" class="text-list"></ul><h3>Sorular</h3><ul id="read-concerns" class="text-list"></ul>
+        <h3>Okunan soru yer imleri</h3><ul id="read-question-bookmarks" class="text-list" aria-label="Son açık okumadaki soru yer imleri"></ul>
+        <h3>Okunan konu yer imleri</h3><ul id="read-topic-bookmarks" class="text-list" aria-label="Son açık okumadaki konu yer imleri"></ul>
         <button id="load-read" type="button" disabled>Okunan kaydı taslağa al</button><p class="hint">Bu açık eylem mevcut yerel taslağın yerine okunan kaydı koyar.</p>
         <div class="receipt"><p class="eyebrow">Ayrı yazma kanıtı</p><p id="receipt-status" role="status">Henüz doğrulanmış yazma makbuzu yok.</p></div>
       </section>
