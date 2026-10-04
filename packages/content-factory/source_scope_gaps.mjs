@@ -44,8 +44,16 @@ function safeCopy(input) {
     if (!value || typeof value !== 'object' || isProxy(value) || visiting.has(value)) fail('invalid_source_scope_data');
     const array = Array.isArray(value), prototype = Object.getPrototypeOf(value);
     if (array ? prototype !== Array.prototype : ![Object.prototype, null].includes(prototype)) fail('invalid_source_scope_data');
-    const descriptors = Object.getOwnPropertyDescriptors(value), keys = Reflect.ownKeys(value);
-    if (keys.some(key => typeof key !== 'string' || !Object.hasOwn(descriptors[key], 'value'))) fail('invalid_source_scope_data');
+    const keys = Reflect.ownKeys(value);
+    // Field names are data too: bound them before descriptor allocation and
+    // include UTF-8 key bytes in the same aggregate budget as string values.
+    for (const key of keys) {
+      if (typeof key !== 'string' || key.length > 256) fail('invalid_source_scope_data');
+      const keyBytes = Buffer.byteLength(key); textBytes += keyBytes;
+      if (keyBytes > 256 || textBytes > 2 * 1024 * 1024) fail('invalid_source_scope_data');
+    }
+    const descriptors = Object.getOwnPropertyDescriptors(value);
+    if (keys.some(key => !Object.hasOwn(descriptors[key], 'value'))) fail('invalid_source_scope_data');
     visiting.add(value);
     let result;
     if (array) {

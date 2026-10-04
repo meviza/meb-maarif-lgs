@@ -40,9 +40,51 @@ test('authoring CLI rejects paths counts providers and unknown or duplicated fla
     ['--common-relations-media','--plan'],['--common-relations-media','--common-relations-media'],
     ['--common-relations-media','--common-relations-html'],['--common-relations-media','--factor-draft'],
     ['--common-relations-media','--source','arbitrary'],['--common-relations-media','--provider','clef'],
-    ['--common-relations-media','--count','100'],['--common-relations-media','--out','anything']]) {
+    ['--common-relations-media','--count','100'],['--common-relations-media','--out','anything'],
+    ...['--common-relations-scene','--common-relations-frame'].flatMap(flag => [[flag,'--plan'],[flag,flag],
+      [flag,'--common-relations-media'],[flag,'--source','arbitrary'],[flag,'--provider','clef'],
+      [flag,'--count','100'],[flag,'--out','anything'],[flag,'--reveal'],[flag,'--cue','4']])]) {
     const out = run(args); assert.equal(out.status, 1); assert.equal(out.stdout, ''); assert.equal(out.stderr.trim(), 'invalid_grade6_reference_authoring_args');
   }
+});
+// Break caught: a closed scene opt-in is missing, emits the answer-bearing
+// preparation rather than a public scene plan, or promotes it to pupil stock.
+test('closed common-relations-scene CLI emits a bounded editor plan without future narration', () => {
+  const out = run(['--common-relations-scene']);
+  assert.equal(out.status, 0, out.stderr); assert.equal(out.stderr, '');
+  assert.ok(Buffer.byteLength(out.stdout) < 65536);
+  const result = JSON.parse(out.stdout);
+  assert.equal(result.schemaVersion, 'grade6-common-relations-scene-preview/v1');
+  assert.equal(result.state, 'editor_scene_preparation');
+  assert.equal(result.scenePlan.learnerReady, false);
+  assert.equal(result.scenePlan.publicationReady, false);
+  assert.equal(result.scenePlan.productionReady, false);
+  assert.equal(result.scenePlan.videoRendered, false);
+  assert.equal(result.scenePlan.audioGenerated, false);
+  assert.equal(result.scenePlan.genericRendererSupported, false);
+  assert.match(result.scenePlan.contentSha256, /^[a-f0-9]{64}$/u);
+  // Full media cues are editor-only and must not escape inside the scene plan.
+  assert.equal(/"(?:fullTranscript|transcript|answerKey|conditionalNote)"/u.test(JSON.stringify(result.scenePlan)), false);
+});
+// Break caught: frame CLI emits a serialized fake plan, future narration or an
+// ungated response rather than the default source-bound current goal caption.
+test('closed common-relations-frame CLI renders actual current SVG and separate current narration only', () => {
+  const out = run(['--common-relations-frame']);
+  assert.equal(out.status, 0, out.stderr); assert.equal(out.stderr, '');
+  assert.ok(Buffer.byteLength(out.stdout) < 65536);
+  const result = JSON.parse(out.stdout);
+  assert.equal(result.schemaVersion, 'grade6-common-relations-frame-preview/v1');
+  assert.equal(result.state, 'editor_current_cue_frame');
+  assert.match(result.frame.svg, /^<svg\b/u);
+  assert.equal(result.frame.contextId, 'repeat');
+  assert.equal(result.frame.cueIndex, 0); assert.equal(result.frame.kind, 'goal');
+  assert.equal(result.frame.progress, 0); assert.equal(result.frame.revealRequested, false);
+  assert.equal(result.frame.resultVisible, false);
+  assert.equal(result.frame.learnerReady, false); assert.equal(result.frame.publicationReady, false);
+  assert.equal(result.frame.videoRendered, false); assert.equal(result.frame.audioGenerated, false);
+  assert.equal(result.narrationPacket.transcriptVisibility, 'current_cue_only');
+  assert.equal(typeof result.narrationPacket.fullTranscript, 'string');
+  assert.equal(/<script\b|<image\b|<foreignObject\b|https?:\/\//u.test(result.frame.svg.replace('http://www.w3.org/2000/svg','')), false);
 });
 // Break caught: context narration preparation is missing, loses its oracle or
 // source binding, labels text interpretation as arithmetic, or promotes jobs.

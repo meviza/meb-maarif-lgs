@@ -280,6 +280,34 @@ test('getters proxies cycles symbols sparse arrays and oversized input fail with
   assert.equal(hooks, 0);
 });
 
+// Break caught: large property names evade the inert metadata byte budget and
+// are copied/hashed as if they were small public snapshot fields.
+test('oversized ASCII and multibyte metadata keys are rejected before projection', () => {
+  for (const key of ['x'.repeat(2097153), 'ğ'.repeat(129)]) {
+    const input = empty(); input.formObservations[key] = null;
+    assert.throws(() => report(input), /invalid_source_scope_data/u);
+  }
+});
+
+// Break caught: many individually bounded keys evade the aggregate byte cap.
+test('aggregate metadata key bytes count toward the same two-MiB input budget', () => {
+  const input = empty();
+  // 2048 * 5 * 256 = 2,621,440 key bytes before ordinary snapshot keys.
+  const keys = Array.from({ length: 5 }, (_, index) => `${index}:` + 'x'.repeat(254));
+  input.selection.extra = Array.from({ length: 2048 }, () => Object.fromEntries(keys.map(key => [key, null])));
+  assert.throws(() => report(input), /invalid_source_scope_data/u);
+});
+
+// Break caught: key limits accidentally reject supported inert UTF-8 metadata.
+test('a bounded 256-byte UTF-8 key stays inert and does not create source or stock', () => {
+  const input = empty(); input.selection['ğ'.repeat(128)] = null;
+  const before = JSON.stringify(input), result = report(input);
+  assert.equal(JSON.stringify(input), before);
+  assert.equal(result.inventory.sourceIdentityCount, 0);
+  assert.equal(result.productQuestions.sourceReferenceContribution, 0);
+  assert.equal(result.coveragePercentage, null); assert.equal(result.publicationReady, false);
+});
+
 test('report is immutable reproducible and excludes raw snapshot prose URLs and private paths', () => {
   const input = empty(); input.selection.note = '/private/synthetic-do-not-include';
   const first = report(input), second = report(clone(input));
