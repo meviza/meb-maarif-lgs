@@ -71,10 +71,38 @@ test('independent numeric sets and real units stay outside the intentionally tex
     assert.equal(context.traceAudit.sourceBinding, 'declared_requires_source_resolver');
     const result = context.job.cues.find(cue => cue.kind === 'result').transcript;
     assert.equal(result.includes('eşittir'), false);
-    assert.ok(result.includes(context.contextId === 'repeat' ? 'dakika' : 'kart/paket'));
+    assert.ok(result.includes(context.contextId === 'repeat' ? 'dakika' : 'bir paketteki kart sayısı'));
   }
   assert.equal(output.manifest.genericNumericStepsChecked, 0); assert.equal(output.manifest.semanticReview, 'pending');
 });
+
+// Break: the adapter prefixes an already explained numeric list and the real
+// job, subtitle and speech request each repeat the same result within one cue.
+for (const fixture of [
+  { contextId: 'repeat', values: [24, 48], label: 'Birlikte dönüş işaretleri (dakika):',
+    meaning: '24 ve 48, başlangıçtan sonra iki döngünün birlikte başlangıç noktasına döndüğü dakika işaretleridir.' },
+  { contextId: 'grouping', values: [1, 2, 3, 4, 6, 12], label: 'Ortak paket boyutları (bir paketteki kart sayısı):',
+    meaning: '1, 2, 3, 4, 6 ve 12 bir pakette bulunabilecek ortak kart adetleridir; paket sayısı değildir.' },
+]) {
+  test(`${fixture.contextId} result is explained once in the actual job subtitle and audio-request consumers`, () => {
+    const context = bundle().contexts.find(value => value.contextId === fixture.contextId);
+    const result = context.job.cues.find(cue => cue.kind === 'result');
+    const subtitle = context.job.subtitleDraft.cues.find(cue => cue.cueId === result.id);
+    const audioCue = createReasonedMediaAudioRequest(context.job).cues.find(cue => cue.id === result.id);
+    for (const transcript of [result.transcript, subtitle.text, audioCue.transcript]) {
+      assert.deepEqual((transcript.match(/\d+/gu) ?? []).map(Number), fixture.values,
+        'Each result value must appear once in this cue, not as a prefix and again in its explanation.');
+      assert.equal(transcript, `${fixture.label} ${fixture.meaning}`);
+    }
+    assert.equal(context.trace.steps[0].result.value, fixture.label);
+    assert.equal(context.trace.steps[0].result.meaning, fixture.meaning);
+    assert.deepEqual(context.path.result, fixture.values);
+    assert.equal(result.order, 4);
+    assert.deepEqual(result.displayAnchorIds, [`${fixture.contextId}-interpretation`]);
+    assert.ok(context.job.cues.find(cue => cue.kind === 'check_answer').transcript.includes(fixture.meaning));
+    assert.ok(context.job.cues.find(cue => cue.kind === 'summary').transcript.includes(fixture.meaning));
+  });
+}
 
 // Break: cue generation drops the reason/meaning/conditions or narrates a result before explaining the route.
 test('both complete paths survive into real reason result check cues including all four conditional-note fields', () => {

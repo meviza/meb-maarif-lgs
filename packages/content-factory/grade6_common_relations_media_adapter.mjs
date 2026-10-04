@@ -10,7 +10,7 @@ const freeze = value => {
   return value;
 };
 const digest = value => createHash('sha256').update(`k12.grade6-common-relations.media-preparation/v1:${JSON.stringify(value)}`).digest('hex');
-const units = { minute: { display: 'Dakika', spoken: 'dakika' }, card_per_package: { display: 'Kart/paket', spoken: 'kart/paket' } };
+const units = { minute: { display: 'Dakika', spoken: 'dakika' }, card_per_package: { display: 'Kart/paket', spoken: 'bir paketteki kart sayısı' } };
 const positiveList = values => values.length < 2 ? String(values[0]) : `${values.slice(0, -1).join(', ')} ve ${values.at(-1)}`;
 
 function transferAnswer(contextId, transfers) {
@@ -39,7 +39,10 @@ function contextPreparation(draft, path) {
       conditions: ['Verilmiş kanıtın yorumlanmasıdır; öğrencinin kendi listesi veya açıklaması ölçülmedi.',
         path.conditionalNote.when, path.conditionalNote.why, path.conditionalNote.check, path.conditionalNote.notImplied] },
     steps: [{ id: `${id}-interpretation`, why: path.why, operation: { kind: 'interpret', inputIds: [`${id}-given`] },
-      result: { value: `${positiveList(path.result)} ${unit.spoken}`, unit: 'text', meaning: path.resultMeaning },
+      // The canonical meaning already explains the complete numeric set. The
+      // text interpretation label supplies context/unit, never another list.
+      result: { value: `${id === 'repeat' ? 'Birlikte dönüş işaretleri' : 'Ortak paket boyutları'} (${unit.spoken}):`,
+        unit: 'text', meaning: path.resultMeaning },
       check: { prompt: path.conditionalNote.check, answer: `${path.resultMeaning} ${path.conditionalNote.why}` } }],
     transfer: { prompt: id === 'repeat'
       ? 'Süreleri toplamak neden yetmez? 0, 48 ve 72 dakika için ortaklık ve sonlu aralık koşullarını ayrı denetle.'

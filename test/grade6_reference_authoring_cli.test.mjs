@@ -41,11 +41,27 @@ test('authoring CLI rejects paths counts providers and unknown or duplicated fla
     ['--common-relations-media','--common-relations-html'],['--common-relations-media','--factor-draft'],
     ['--common-relations-media','--source','arbitrary'],['--common-relations-media','--provider','clef'],
     ['--common-relations-media','--count','100'],['--common-relations-media','--out','anything'],
-    ...['--common-relations-scene','--common-relations-frame'].flatMap(flag => [[flag,'--plan'],[flag,flag],
+    ...['--common-relations-scene','--common-relations-frame','--common-relations-review'].flatMap(flag => [[flag,'--plan'],[flag,flag],
       [flag,'--common-relations-media'],[flag,'--source','arbitrary'],[flag,'--provider','clef'],
       [flag,'--count','100'],[flag,'--out','anything'],[flag,'--reveal'],[flag,'--cue','4']])]) {
     const out = run(args); assert.equal(out.status, 1); assert.equal(out.stdout, ''); assert.equal(out.stderr.trim(), 'invalid_grade6_reference_authoring_args');
   }
+});
+// Break caught: the responsive review flag is missing, emits a JSON/frame dump
+// instead of current-only HTML, or enables arbitrary cue/answer selection.
+test('closed common-relations-review CLI emits a current-only editor HTML page with semantic source and caption', () => {
+  const out = run(['--common-relations-review']);
+  assert.equal(out.status, 0, out.stderr); assert.equal(out.stderr, '');
+  assert.ok(Buffer.byteLength(out.stdout) < 65536);
+  assert.match(out.stdout, /^<!doctype html>/iu);
+  assert.match(out.stdout, /<html\b[^>]*lang="tr"/u);
+  assert.equal([...out.stdout.matchAll(/<svg\b/gu)].length, 1);
+  assert.equal([...out.stdout.matchAll(/<table\b/gu)].length, 1);
+  assert.equal(/<script\b|<iframe\b|<img\b|<audio\b|<video\b|<foreignObject\b/iu.test(out.stdout), false);
+  assert.equal(/(?:fullTranscript|answerKey|contextNarrationJobs)"\s*:/u.test(out.stdout), false);
+  assert.match(out.stdout, /Editör/u);
+  // Future protected result prose must not leak into the current goal view.
+  assert.equal(out.stdout.includes('24 ve 48, başlangıçtan sonra iki döngünün birlikte başlangıç noktasına döndüğü dakika işaretleridir.'), false);
 });
 // Break caught: a closed scene opt-in is missing, emits the answer-bearing
 // preparation rather than a public scene plan, or promotes it to pupil stock.
