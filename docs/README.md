@@ -3,6 +3,7 @@
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
 - [4 Ekim sabah raporu: gerçek ilerleme, 36.000 ve video açık işleri](MORNING_REPORT_2026-10-04.md)
+- [Kapalı TTS/PCM/fabrika root kabulü:1336 test, canlı konuşma/video değil](GRADE6_COMMON_RELATIONS_TTS_PCM_ROOT_ACCEPTANCE_2026-10-04.md), [TTS hazırlığı](GRADE6_COMMON_RELATIONS_CLOSED_TTS_EVIDENCE_2026-10-04.md) ve [gerçek yerel sample decode](COMMON_RELATIONS_PCM_RECEIPT_EVIDENCE_2026-10-04.md)
 - [Saf görsel–ses köprüsü ve current-cue root kanıtı:1295 test, yeni ses/video değil](GRADE6_COMMON_RELATIONS_VOICE_BRIDGE_ROOT_ACCEPTANCE_2026-10-04.md), [bridge API](GRADE6_COMMON_RELATIONS_VOICE_BRIDGE_API_EVIDENCE_2026-10-04.md) ve [güncel adım tüketicisi](GRADE6_COMMON_RELATIONS_CURRENT_VOICE_CUE_EVIDENCE_2026-10-04.md)
 - [Sabah sonrası ortak-ilişki fabrika girişi: root kabul ve 1258 test](GRADE6_COMMON_RELATIONS_FACTORY_ROOT_ACCEPTANCE_2026-10-04.md), [saf API](GRADE6_COMMON_RELATIONS_FACTORY_API_EVIDENCE_2026-10-04.md) ve [gerçek CLI/dosya hata tanıkları](GRADE6_COMMON_RELATIONS_FACTORY_CLI_EVIDENCE_2026-10-04.md)
 - [Etkin yıl/okul profili ve okul kullanım mevzuatı inceleme kapısı](ACTIVE_YEAR_COURSE_BOUNDARY_RECHECK_2026-10-04.md)

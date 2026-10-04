@@ -119,3 +119,17 @@ Bu dilim yalnız **bir mevcut taslak/iki anlatım işi** için teknik bağlantı
 İlk1290 sonrası bağımsız iki P2 (style/provider metadata'da bilinen cue referansı ve shallow-frozen request iç mutasyonu), ayrı RED→GREEN ile düzeltildi. Dar20cue literal metin/tekilSHA guard'ı ve recursive deep freeze eklendi; genel fragment/rephrase/encoding/privacy sınıflandırması hâlâ pending. Final root taze tam1295/1295, fail/skip/cancel/todo0; postrepair280 gerçek current durumunda56locked/224open ve20 request kimliği. Altı eski leaf/CLI ile altı kaynak metadata byte-identical. Bir mevcut görev/iki bağlam korunur; yeni soru, uzman kabulü, yayın, canlı TTS/ses/MP4 veya yeni DB0. DAMA yaşam döngüsü ve28 upstream açık iş kayıpsız; CMMI/SPICE/MEB sertifikası veya tam müfredat iddiası yok.
 
 Yeni CLI/HTTP/audio UI veya genel renderer açılmadı. Sıradaki gerçek kapı: açık izin/credential/endpoint/privacy/hak ve sınırlı çağrı/maliyet/byte/süre bütçesi olmadan transport0; yeni tek-cue sesin actual byte/decode/metin/telaffuz/dinleyici kabulü, sonra measured kelime–kalem ve common MP4. Eski garden sesi yeni anlatım diye relabel edilmez. Kaynak tamlığı/okul tenant-auth-retention-restore/öğrenci veri ve36.000 seri üretim kapıları ayrı kalır; gece/sabah takipleri yeniden başlatılmaz.
+
+## 4 Ekim Sabah Sonrası: Kapalı TTS/PCM Ve Gerçek Fabrika Tanısı
+
+`27cae11` üzerine [yeni root kabul kaydı](GRADE6_COMMON_RELATIONS_TTS_PCM_ROOT_ACCEPTANCE_2026-10-04.md): saf markalı tek-current TTS hazırlığı, native canonical WAV/full signed16 sample decode ve gerçek factory/current/request ile local-unattested receipt bağı. Varsayılan tanı CLI'si `not_run`; açık sentetik seçenek20 current cue/20 farklı request ve audio SHA/53 pending doğrular. Bir mevcut görev/iki context korunur; yeni authored/accepted/published0. Canlı transport/hesap/credential/çağrı veya ses/video yok.
+
+Root final tam1336/1336, fail/skip/cancel/todo0; bağımsız yeni41/41, syntax7/7 ve ek hostile/PCM/CLI fault tanıkları. Üç gerçek düzeltme test-önce: costly sample-index enumeration, explicit no-provider-call flag, upstream pending düşüşü.120s profile full decode korunur; tek yerel ölçümde maxRSS yaklaşık71MB, ilk yaklaşık661MB historical kabul değil. Benchmark/SLA veya cloud maliyet kararı çıkarılmaz.
+
+| Sonraki Dikey Kapı | Kalan Gerçek Gereksinim |
+| --- | --- |
+| Yetkili yeni ses | Scoped provider hesabı/credential/call-maliyet bütçesi; haklar/privacy/retention/style ve reşit olmayanlara yönelik hizmet şartı incelemesi. Yetişkin offline-editor/statik asset uygunluğu doğrulanmadı. Sonra gerçek tek-cue response/disk/readback/decode/dinleyici; bütün on cue ayrı kabul. |
+| Yeni sesli common video | Ölçülmüş veya insan doğrulanmış word–pen → common raster/mux/MP4/native playback; eski garden sesini relabel etme yok. Bellekte tone decode, konuşma/video teslimi değildir. |
+| Ürün ve veri | Tam etkin müfredat/mikrobeceri/aile/hak paydaları, uzman kabulü/36.000; DAMA owner/steward/access/retention store; gerçek tenant/auth/kota/restore; premium UI/gerçek mobil cihaz ayrı fazlar. |
+
+Clef advisory QA kalır, bu fazda çağrılmadı. Gerçek çocuk/kurum verisi, yeni PDF/Drive/Docker/DB/cloud/SDK/skill işlemi0. TDD/audit/test raporları CMMI/SPICE hazırlık kanıtıdır, sertifika değil. Gece/sabah otomasyonları yeniden açılmadı.
