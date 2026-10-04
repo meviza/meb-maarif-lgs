@@ -18,6 +18,8 @@ Bu yol haritası tarihe bağlı satış veya yayın taahhüdü değildir. Her fa
 
 ## Önceliklendirme kuralları
 
+4 Ekim 2026 son kullanıcı onayı: 1–2 sınıfta 10, 3–4 sınıfta 15, 5–7 sınıfta 20 ve 8. sınıfta 90 soru; toplam 200 taslaklık [notlu kitapçık / rol bazlı okul portalı dikey dilimi](SCHOOL_PORTAL_PILOT_2026-10-04.md). Bu yerel sentetik çalışma, yukarıdaki 4/6/7/8/9. fazları tamamlandı yapmaz. Sonraki kapı içerik zorluğu ve öğretmen kabulü, erken yaş etkinlik biçimi ve gerçek pilot güvenliğidir; canlı okul veya 36.000 yayın ilan edilmez.
+
 4 Ekim 2026 kullanıcı düzeltmesi: Eski 54 soruluk yeşil Fen Atölyesi reddedildi ve kaldırıldı. [Yeniden kuruluş kararı](SCIENCE_BOOKLET_RESET_2026-10-04.md) bundan sonraki Fen yazarlığı ve öğrenci UI'si için bağlayıcıdır. Sıradaki dilim yeni kitabın gerçek öğrenci akışı ve bütün soru/şekil incelemesidir; ardından aynı kabul kapılarıyla 450 hedefine devam edilir. Önceki yeşil test sayıları yeni öğrenci kabulü değildir.
 
 1. Bir öğrenci veya öğretmenin gerçek akışını doğrulamayan gösterişli dashboard, içerik doğruluğunun önüne geçmez.
