@@ -2,7 +2,10 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
-- [Gece fazları: güncel 1109 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Ortak kat–bölen uygulama devamı: gerçek71/72, yeni tema73 kapsam dışı](GRADE6_COMMON_RELATIONS_SOURCE_EVIDENCE_2026-10-04.md)
+- [İki bağlamlı özgün görev: sabit kaynak bağı ve kök CLI kabul sınırı](GRADE6_COMMON_RELATIONS_ROOT_ACCEPTANCE_2026-10-04.md)
+- [Gece fazları: güncel 1134 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Ayrı ortak ilişkiler taslağı ve bağımsız sonlu modulo oracle'ı](GRADE6_COMMON_RELATIONS_DRAFT_EVIDENCE_2026-10-04.md)
 - [Kaynak-bağlı tek taslağın gerçek tablo/gerekçeli editör HTML'si](GRADE6_FACTOR_EVIDENCE_EDITOR_VIEW_EVIDENCE_2026-10-04.md)
 - [Native masaüstü/mobil/dar görünüm, klavye ve gerçek HTML kanıtı](GRADE6_FACTOR_EDITOR_BROWSER_EVIDENCE_2026-10-04.md)
 - [İngilizce/DKAB ve 4/8 için ders–yıl–karar öncelik kontrolü](SOURCE_SCOPE_PRIORITY_CHECK_2026-10-04.md)

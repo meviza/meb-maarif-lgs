@@ -29,9 +29,35 @@ test('fixed full plan opt-in exposes six metadata-only briefs with no approval c
 test('authoring CLI rejects paths counts providers and unknown or duplicated flags before planning', () => {
   for (const args of [['--count','36000'],['--source','arbitrary'],['--provider','clef'],['--plan','--plan'],['--out','anything'],
     ['--factor-draft','--plan'],['--factor-draft','--factor-draft'],['--factor-draft','--source','arbitrary'],
-    ['--factor-html','--plan'],['--factor-html','--factor-draft'],['--factor-html','--factor-html'],['--factor-html','--out','anything']]) {
+    ['--factor-html','--plan'],['--factor-html','--factor-draft'],['--factor-html','--factor-html'],['--factor-html','--out','anything'],
+    ['--common-relations-draft','--plan'],['--common-relations-draft','--common-relations-draft'],
+    ['--common-relations-draft','--factor-draft'],['--common-relations-draft','--source','arbitrary'],
+    ['--common-relations-draft','--count','100'],['--common-relations-draft','--provider','clef']]) {
     const out = run(args); assert.equal(out.status, 1); assert.equal(out.stdout, ''); assert.equal(out.stderr.trim(), 'invalid_grade6_reference_authoring_args');
   }
+});
+// Break caught: a distinct common-relation opt-in is missing, emits a prior
+// factor task, drops the finite interval boundaries, or promotes math to stock.
+test('closed common-relations opt-in binds actual application metadata and distinguishes time from group size', () => {
+  const out = run(['--common-relations-draft']);
+  assert.equal(out.status, 0, out.stderr); assert.equal(out.stderr, '');
+  assert.ok(Buffer.byteLength(out.stdout) < 65536);
+  const result = JSON.parse(out.stdout);
+  assert.equal(result.schemaVersion, 'grade6-common-relations-preview/v1');
+  assert.equal(result.draft.schemaVersion, 'grade6-common-relations-draft/v1');
+  assert.equal(result.draft.state, 'draft'); assert.equal(result.draft.artifactAudience, 'editor_only');
+  assert.equal(result.draft.counts.newAuthoredDrafts, 1);
+  assert.equal(result.draft.counts.semanticFamilies, 1); assert.equal(result.draft.counts.parameterOnlyVariants, 0);
+  assert.equal(result.draft.counts.acceptedProductQuestions, 0); assert.equal(result.draft.counts.publishedQuestions, 0);
+  assert.deepEqual(result.draft.scope.proposedOutcomeCodes, ['MAT.6.1.4']);
+  assert.equal(result.draft.scope.officialOutcomeCode, null); assert.equal(result.draft.scope.activeProgramAccepted, false);
+  assert.equal(result.verification.valid, true); assert.equal(result.verification.localMathChecks, 'passed');
+  assert.deepEqual(result.verification.recomputed.commonPositiveTimes, [24, 48]);
+  assert.deepEqual(result.verification.recomputed.commonPositiveGroupSizes, [1, 2, 3, 4, 6, 12]);
+  assert.equal(result.verification.humanApproval, null);
+  assert.equal(result.verification.learnerReady, false); assert.equal(result.verification.publicationReady, false);
+  assert.equal(result.draft.activity.providersCalled, 0); assert.equal(result.draft.activity.downloadsMade, 0);
+  assert.equal(Object.values(result.draft.gates).every(value => value === 'pending'), true);
 });
 // Break caught: the HTML opt-in is unimplemented, returns a plan instead of
 // actual semantic tables, or expands into script/asset/learner delivery.

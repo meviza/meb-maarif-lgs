@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "grade6-common-relations-application-observations/v1",
+  "state": "source_application_observations_editor_draft",
+  "observedOn": "2026-10-04",
+  "gradeCandidate": 6,
+  "subjectCandidate": "mathematics",
+  "source": {
+    "sourceId": "tymm-current-ortaokul-matematik",
+    "documentTitle": "Ortaokul Matematik Dersi Öğretim Programı",
+    "catalogPageUrl": "https://tymm.meb.gov.tr/ogretim-programlari/ders/ortaokul-matematik-dersi",
+    "pdfUrl": "https://tymm.meb.gov.tr/assets/pdf/ortaokul-matematik-dersi_20260902_111111_630.pdf",
+    "sha256": "75f52f93672c8991eabe102adb37ab4d16de63f35fe8488fc29cdedae9155734",
+    "byteLength": 3916466,
+    "pdfPageCount": 222,
+    "freshLocalHashAndPdfinfoVerified": true,
+    "reviewMethod": "bounded_pdf_text_and_three_native_page_raster_reviews",
+    "pages": [
+      {"physicalPdfPage": 71, "printedPage": 71, "role": "application_guidance_and_enrichment", "textInspected": true, "visualInspected": true, "countsAsApplicationEvidence": true},
+      {"physicalPdfPage": 72, "printedPage": 72, "role": "enrichment_support_and_teacher_reflection", "textInspected": true, "visualInspected": true, "countsAsApplicationEvidence": true},
+      {"physicalPdfPage": 73, "printedPage": 73, "role": "next_theme_context_boundary_only", "textInspected": true, "visualInspected": true, "countsAsApplicationEvidence": false}
+    ],
+    "usagePolicy": "reference_only",
+    "commercialReuseRights": "unverified",
+    "rightsReview": "pending",
+    "sourceContentRedistributionAllowed": false,
+    "sourceToModelTransferAllowed": false,
+    "rawSourceParagraphsPublished": false,
+    "rawSourceMediaPublished": false,
+    "sourceQuestionsOrSolutionsCopied": false,
+    "sourceExampleNumbersOrKeysCopied": false
+  },
+  "priorMatrixBinding": {
+    "schemaVersion": "grade6-source-semantic-candidate-matrix/v1",
+    "contentSha256": "88865918f2c6a10ae874b7ef63d7fcfb18ab096d4a13a40a9c095b0c8ccf5e98",
+    "sourceId": "tymm-current-ortaokul-matematik",
+    "sourceSha256": "75f52f93672c8991eabe102adb37ab4d16de63f35fe8488fc29cdedae9155734",
+    "previouslyReviewedPhysicalPages": [67, 68, 69, 70],
+    "applicationGapId": "G02",
+    "oldApplicationGapState": "unresolved",
+    "priorArtifactChangedByThisObservation": false,
+    "incrementMeaning": "Separate observed application pages; not full outcome or active program acceptance"
+  },
+  "outputBinding": {
+    "code": "MAT.6.1.4",
+    "origin": "existing_observed_source_output_code",
+    "priorPhysicalPdfPage": 67,
+    "priorPrintedPage": 67,
+    "priorProcessLabels": ["a", "b", "c"],
+    "newOfficialOutputCodesContributed": 0,
+    "newOfficialProcessCodesContributed": 0,
+    "applicationPhysicalPages": [71, 72],
+    "applicationPrintedPages": [71, 72],
+    "page73IsNewOutputAcceptance": false
+  },
+  "scope": {
+    "reviewedPhysicalPageCount": 3,
+    "applicationEvidencePageCount": 2,
+    "contextBoundaryPageCount": 1,
+    "applicationObservationCount": 7,
+    "derivedMicroPurposeCount": 6,
+    "derivedQuestionFamilyCount": 2,
+    "sourceRepresentationKindCount": 3,
+    "microPurposeIdsAreOfficial": false,
+    "familyTaxonomyIsOfficial": false,
+    "sourceQuestionTotal": null,
+    "observedSourceQuestionItems": 0,
+    "sourceQuestionsCopied": 0,
+    "productQuestionsContributed": 0,
+    "lessonsContributed": 0,
+    "publishedContentContributed": 0,
+    "officialMandatoryCourseDenominator": null,
+    "fullGrade6OutcomeDenominator": null,
+    "fullCurriculumSemanticDenominator": null,
+    "fullCurriculumCoveragePercent": null,
+    "officialDifficultyDistribution": null,
+    "difficultyCalibration": "unknown",
+    "fullCurriculumSemanticReviewComplete": false,
+    "outcomeSemanticAcceptance": "partial_application_observation_not_expert_accepted",
+    "newDownloadCount": 0,
+    "driveOperationsMade": 0
+  },
+  "boundaries": {
+    "formalGcdLcmTeachingAllowed": false,
+    "formalGcdLcmConceptsSourceBoundary": "not_introduced_in_this_learning_process",
+    "sourceBoundaryPhysicalPage": 71,
+    "sourceBoundaryPrintedPage": 71,
+    "extremalCommonRelationTasksAccepted": false,
+    "allInfiniteMultiplesListRequired": false,
+    "finitePositiveMultipleHorizon": "derived_authoring_guard_not_official_numeric_limit",
+    "positiveIntegerModelGuard": "derived_mathematical_validity_guard",
+    "commonDivisorOneCoprimalityDiscussionObserved": true,
+    "coprimalityDoesNotRequireBothNumbersPrime": "derived_correctness_guard_not_new_source_process",
+    "supportActivitiesAreMandatoryUniformRoutes": false,
+    "olympiadReferenceAutomaticallyApprovesAllQuestions": false,
+    "enrichmentIsCoreExamDifficulty": false,
+    "page73NewThemeIsThisOutcomeCoverage": false
+  },
+  "observations": [
+    {
+      "sourceId": "tymm-current-ortaokul-matematik",
+      "sourceSha256": "75f52f93672c8991eabe102adb37ab4d16de63f35fe8488fc29cdedae9155734",
+      "sourceRole": "program_application_guidance",
+      "items": [],
+      "itemOrdinalCoverage": null,
+      "sourceQuestionTotal": null,
+      "applicationObservations": [
+        {"id": "G6-CR-A01", "physicalPdfPage": 71, "printedPage": 71, "role": "core_application", "outputCode": "MAT.6.1.4", "ownWordSummary": "İki doğal sayının ortak katını veya bölenini anlamlandıran, çocukların günlük yaşamına yakın problem bağlamları seçilir.", "notImplied": "Kaynakta sunulan bağlamların veya soru metinlerinin yeniden kullanım izni yoktur."},
+        {"id": "G6-CR-A02", "physicalPdfPage": 71, "printedPage": 71, "role": "conceptual_boundary", "outputCode": "MAT.6.1.4", "ownWordSummary": "Bu öğrenme sürecinde EBOB/EKOK kavramları tanıtılmaz; yalnız ortak böleni 1 olan sayıların aralarında asal olması tartışılabilir.", "notImplied": "En küçük veya en büyük ortak ilişki algoritması bu dilimde kabul edilmez."},
+        {"id": "G6-CR-A03", "physicalPdfPage": 71, "printedPage": 71, "role": "representation_and_explanation", "outputCode": "MAT.6.1.4", "ownWordSummary": "Ortaklık çizim, tablo ve sayı doğrusu gibi temsillerle incelenir; öğrencinin bu gösterimler üzerinden ilişkiyi açıklaması beklenir.", "notImplied": "Bir temsil etiketi bulunması gerçek görselin doğruluğunu veya erişilebilirliğini kanıtlamaz."},
+        {"id": "G6-CR-A04", "physicalPdfPage": 71, "printedPage": 71, "role": "communication_and_alternative_routes", "outputCode": "MAT.6.1.4", "ownWordSummary": "Bireysel ya da birlikte inceleme, farklı çözüm yollarını tartışma ve gerekçesini saygılı biçimde paylaşma desteklenir.", "notImplied": "Zamanlı yalnız cevap seçimi düşünme sürecinin kanıtı yerine geçmez."},
+        {"id": "G6-CR-A05", "physicalPdfPage": 71, "printedPage": 71, "role": "monitoring_and_feedback", "outputCode": "MAT.6.1.4", "ownWordSummary": "Günlük durumu yorumlatan açık uçlu, doğru-yanlış ve eşleştirme maddeleriyle izleme yapılabilir; sonuçlar geri bildirim için kullanılır.", "notImplied": "Kaynakta bu biçimlerin anılması madde sayısı, zorluk oranı veya cevap anahtarı vermez."},
+        {"id": "G6-CR-A06", "physicalPdfPage": 72, "printedPage": 72, "role": "enrichment", "outputCode": "MAT.6.1.4", "ownWordSummary": "Ortak ilişki öğrenmeleri gerçek yaşam sorunlarında kullanılabilir; aynı bölüm uygun düzeyde olimpiyat materyallerinden yararlanmaya da yer verir.", "notImplied": "Bütün olimpiyat arşivi yaşa uygun, etkin programa eşdeğer veya ticari lisanslı değildir."},
+        {"id": "G6-CR-A07", "physicalPdfPage": 72, "printedPage": 72, "role": "support_across_theme", "outputCode": "MAT.6.1.4", "ownWordSummary": "Ortak ilişkileri de içeren sayısal öğrenmeler için görsel, işitsel ve dijital modelleme ile etkileşimli destek önerilir.", "notImplied": "Desteğin tüm sınıfa zorunlu uygulanması veya ürün ses/video hattının hazır olması sonucuna varılmaz."}
+      ]
+    }
+  ],
+  "derivedMicroPurposes": [
+    {"id": "G6-CR-M01", "origin": "derived_project_authoring_candidate", "sourceOutputCode": "MAT.6.1.4", "sourceProcessLabels": ["a"], "sourceApplicationPages": [71], "purpose": "Sorunun birlikte kalansız paylaştırmayı mı yoksa birlikte tekrarlanmayı mı istediğini açıklama", "learnerEvidence": "İşlemden önce ortak bölen/kat ilişki seçimini kendi gerekçesiyle ifade etme"},
+    {"id": "G6-CR-M02", "origin": "derived_project_authoring_candidate", "sourceOutputCode": "MAT.6.1.4", "sourceProcessLabels": ["a", "b"], "sourceApplicationPages": [71], "purpose": "İki sayının bölenlerini inceleyip ortak olanları ayırma", "learnerEvidence": "Her adayın iki sayı için de kalansız bölme koşulunu sağlamasını gösterme"},
+    {"id": "G6-CR-M03", "origin": "derived_project_authoring_candidate", "sourceOutputCode": "MAT.6.1.4", "sourceProcessLabels": ["a", "b"], "sourceApplicationPages": [71], "purpose": "Açıkça verilen pozitif sonlu aralıkta iki sayının ortak katlarını saptama", "learnerEvidence": "Her ortak adayın her iki kat dizisinde bulunmasını ve sonlu sınırı açıklama"},
+    {"id": "G6-CR-M04", "origin": "derived_project_authoring_candidate", "sourceOutputCode": "MAT.6.1.4", "sourceProcessLabels": ["b", "c"], "sourceApplicationPages": [71], "purpose": "Aynı ortaklığı çizim, tablo veya sayı doğrusunda tutarlı biçimde eşleme", "learnerEvidence": "Temsil işaretlerini sayılara ve problemdeki anlamlarına bağlama"},
+    {"id": "G6-CR-M05", "origin": "derived_project_authoring_candidate", "sourceOutputCode": "MAT.6.1.4", "sourceProcessLabels": ["c"], "sourceApplicationPages": [71], "purpose": "Bir sonucu veya hatalı ilişki seçimini kontrol ederek açıklama", "learnerEvidence": "Sonucu yalnız söylemek yerine iki koşulun da sağlandığını ya da birinin bozulduğunu gösterme"},
+    {"id": "G6-CR-M06", "origin": "derived_project_authoring_candidate", "sourceOutputCode": "MAT.6.1.4", "sourceProcessLabels": ["a", "c"], "sourceApplicationPages": [71], "purpose": "Ortak bölenin yalnız 1 olması ile sayıların tek tek asal olmasını ayırma", "learnerEvidence": "Ortak bölen listesini kullanarak aralarında asal kararını gerekçelendirme"}
+  ],
+  "derivedQuestionFamilies": [
+    {"id": "G6-CR-F01", "origin": "derived_project_authoring_candidate", "meaning": "Ortak bölenleri açıklayıp temsilde eşleme", "sourceOutputCode": "MAT.6.1.4", "sourceApplicationPages": [71], "formats": ["open_ended_explanation", "matching", "error_diagnosis"], "sourceRepresentationIds": ["drawing", "table"], "approvedQuestionCount": 0},
+    {"id": "G6-CR-F02", "origin": "derived_project_authoring_candidate", "meaning": "Verilen sonlu aralıkta ortak katları açıklayıp eşleme", "sourceOutputCode": "MAT.6.1.4", "sourceApplicationPages": [71], "formats": ["open_ended_explanation", "matching", "true_false_with_reason"], "sourceRepresentationIds": ["table", "number_line"], "approvedQuestionCount": 0}
+  ],
+  "sourceRepresentations": [
+    {"id": "drawing", "origin": "observed_named_representation_kind", "physicalPdfPage": 71, "printedPage": 71, "renderedAssetAccepted": false},
+    {"id": "table", "origin": "observed_named_representation_kind", "physicalPdfPage": 71, "printedPage": 71, "renderedAssetAccepted": false},
+    {"id": "number_line", "origin": "observed_named_representation_kind", "physicalPdfPage": 71, "printedPage": 71, "renderedAssetAccepted": false}
+  ],
+  "practicalNotes": [
+    {"id": "G6-CR-N01", "origin": "derived_project_candidate", "whenApplicable": "İki miktarı da kalansız bölen ortak değerler aranıyorsa", "shortRoute": "Her iki sayı için de kalansız bölme koşulunu kontrol et.", "why": "Bir sayıyı bölmesi tek başına ortaklık kurmaz; iki koşul aynı adayda birleşmelidir.", "check": "Adayı iki miktarda da dene ve problemdeki anlamını söyle.", "expertApproved": false},
+    {"id": "G6-CR-N02", "origin": "derived_project_candidate", "whenApplicable": "Açık bir pozitif sonlu sınırda iki kat dizisinin ortak üyeleri aranıyorsa", "shortRoute": "Sınır içindeki iki diziyi aynı tabloda veya sayı doğrusunda eşle.", "why": "İki dizide birlikte görünen işaretler ortaklığı gösterir; aralık dışı sonsuz liste istenmez.", "check": "Her adayın iki dizide yer aldığını ve sınırın dışına çıkılmadığını denetle.", "expertApproved": false}
+  ],
+  "activeProgram": {
+    "schoolYearCandidate": "2026-2027",
+    "grade6ProgramCourseAccepted": false,
+    "effectiveProgramDecision": "pending",
+    "outcomeExistsDoesNotEstablishActiveAcceptance": true
+  },
+  "governance": {
+    "artifactAudience": "editor_review_only",
+    "ownerAssignment": "pending",
+    "stewardAssignment": "pending",
+    "retentionDecision": "pending",
+    "expertReview": "pending",
+    "curriculumApproval": "pending",
+    "rightsReview": "pending",
+    "teacherApproved": false,
+    "officialMebApprovalClaim": false,
+    "publicationReady": false,
+    "learnerReady": false,
+    "productionReady": false,
+    "studentDataPresent": false,
+    "providerCallsMade": 0,
+    "modelTransfersMade": 0,
+    "serializedHashIsAuthentication": false,
+    "qualityTestsArePedagogicalAcceptance": false
+  },
+  "remainingGaps": [
+    {"id": "G6-CR-G01", "state": "unresolved", "meaning": "Etkin program, okul türü ve uzman kabulü ayrı doğrulanmalı"},
+    {"id": "G6-CR-G02", "state": "unresolved", "meaning": "Gerçek özgün soruların cevap, görsel erişilebilirlik ve zorluk kalibrasyonu bu gözlemlerle yapılmadı"},
+    {"id": "G6-CR-G03", "state": "unresolved", "meaning": "Yeni tema başlangıcı gözlendi; sonraki kesir/ondalık çıktı semantiği incelenmedi"}
+  ],
+  "contentSha256": "6d8cdadc7e1e52980bbaf027e83a2226508e98d13b956169fc1e3d74c6ec0205"
+}
