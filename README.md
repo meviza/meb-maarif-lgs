@@ -5,6 +5,7 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
+- [MEB onaylı kaynak güveni ve Google öncelikli yeni masrafsız karar](docs/MEB_APPROVED_SOURCE_AND_ZERO_COST_DECISION_2026-10-04.md): kurumsal kaynak denetimi temel alınır; yeni üretimin kalite/hak kaydı ayrı, API bütçesi 0.
 - [Kapalı TTS, gerçek PCM decode ve fabrika ön kontrolü](docs/GRADE6_COMMON_RELATIONS_TTS_PCM_ROOT_ACCEPTANCE_2026-10-04.md):1336 test;20 yerel sentetik bağ, canlı konuşma/video/yayın değil. Sağlayıcı hakları ve çocuklara yönelik kullanım koşulları açık kapıdır.
 - [Görsel–ses köprüsü ve yalnız güncel adım: root teknik kanıtı](docs/GRADE6_COMMON_RELATIONS_VOICE_BRIDGE_ROOT_ACCEPTANCE_2026-10-04.md): kanonik sahne korunur, cevap kilitliyken ses isteği yok;1295 test, henüz yeni ses/video değil.
 - [Ortak ilişkilerin normal fabrikaya kapalı girişinden teknik kabulü](docs/GRADE6_COMMON_RELATIONS_FACTORY_ROOT_ACCEPTANCE_2026-10-04.md): tek mevcut taslak, iki anlatım işi, yeni kabul/yayın yok.

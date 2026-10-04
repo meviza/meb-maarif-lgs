@@ -2,6 +2,12 @@
 
 Tarih: 2026-10-03. Dal: `codex/k12-foundation-audit`. Asıl Antigravity/Gemini çalışma alanı korunur. Bu belge satış taahhüdü, MEB onayı veya süreç sertifikası değildir.
 
+## 4 Ekim Kaynak Güveni Ve Masraf Önceliği
+
+[Yeni karar kaydı](MEB_APPROVED_SOURCE_AND_ZERO_COST_DECISION_2026-10-04.md): TTKB kabulü ve baskısı doğrulanan MEB ders kitapları bilimsel/pedagojik incelemeden geçmiş güvenilir birincil referanstır. Özel yayınevinin hazırlaması bu incelemeyi ortadan kaldırmaz; kaynağın kurumsal kabulü baştan belirsiz sayılmaz. Program/çıktı/yaş sınırı bu temelden alınır. Yeni soru/anlatım/görsel/ses/video kontrolü, bu bilgilerin bizim özgün üretimimize doğru ve tutarlı taşındığını kanıtlamak içindir; MEB'in incelemesini yeniden yapmak veya bizim ürünü kendiliğinden MEB onaylı ilan etmek değildir.
+
+Mevcut hafif yerel üretim/test korunur; yeni medya aracı seçiminde mevcut Google abonelik imkânları → doğrulanmış ticari lisanslı açık kaynak sırası izlenir. Yeni ücretli servis satın alınmaz. API çağrı/retry bütçesi 0, credential/billing/kredi satın alımı yok. Kullanıcının Docker 250 USD ve Drive 5 TB imkânları planlama girdisidir; güncel hesap/bakiye/kota ayrıca görülür. [Google'ın resmî 2026 duyurusu](https://blog.google/innovation-and-ai/technology/developers-tools/gdp-premium-ai-pro-ultra/) AI Pro'nun aylık 10 USD developer Cloud kredi avantajını ve Gemini API kullanımını açıklar; bu hesabımızda etkin/harcanabilir olduğu bugün kanıtlanmadı. Üyelik/Flow ile API projesi/billing/Prepay koşulları ayrı; ekstra ödeme gerekiyorsa bu masrafsız kapsamda yapılmaz.
+
 ## Ürün kararı
 
 1–8 arasında kimliği ve öğrenme geçmişi devam eden tek platform; öğrenci, veli, öğretmen, içerik editörü, alan uzmanı ve okul idaresi farklı görev/erişimlerle hizmet alır. Önce Ankara okul pilotu, sonra Türkiye. Uluslararası açılım ayrı müfredat, hak ve veri konumu tasarımı gerektirir.
