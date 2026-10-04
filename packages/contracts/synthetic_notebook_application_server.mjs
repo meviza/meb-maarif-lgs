@@ -4,6 +4,9 @@
  */
 import { createServer } from 'node:http';
 import { TextDecoder } from 'node:util';
+import { openSync, closeSync, readSync, lstatSync, fstatSync, realpathSync, constants } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { resolve, join } from 'node:path';
 import { createSyntheticNotebookApplication } from './synthetic_notebook_application.mjs';
 
 const BODY_MAX = 262144, RESPONSE_MAX = 524288, BODY_DEADLINE_MS = 1000;
@@ -11,6 +14,13 @@ const HEADERS = new Set(['host', 'origin', 'connection', 'content-type', 'conten
   'content-encoding', 'accept', 'accept-encoding', 'accept-language', 'user-agent', 'cache-control', 'pragma',
   'sec-fetch-site', 'sec-fetch-mode', 'sec-fetch-dest', 'sec-ch-ua', 'sec-ch-ua-mobile', 'sec-ch-ua-platform']);
 const CSP = "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'";
+const DESK_CSP = "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'";
+const ASSET_MAX = 131072;
+const DESK_ASSETS = Object.freeze([
+  Object.freeze(['/', 'notebook_desk.html', 'text/html; charset=utf-8']),
+  Object.freeze(['/notebook-desk.css', 'notebook_desk.css', 'text/css; charset=utf-8']),
+  Object.freeze(['/notebook-desk.mjs', 'notebook_desk.mjs', 'text/javascript; charset=utf-8']),
+]);
 class HttpError extends Error { constructor(status, code) { super(code); this.status = status; } }
 const deny = (status, code) => { throw new HttpError(status, code); };
 function reply(response, status, value) {
@@ -28,7 +38,52 @@ function reject(response, error) {
     syntheticOnly: true, authentication: 'not_implemented', automaticRead: false, automaticRetry: false,
     learnerReady: false, productionReady: false });
 }
-function boundary(server, request) {
+function assetSnapshot() {
+  const invalid = () => { throw new Error('invalid_synthetic_notebook_desk_assets'); };
+  const directory = resolve(fileURLToPath(new URL('../student/', import.meta.url)));
+  const directoryStat = () => {
+    const stat = lstatSync(directory, { bigint: true });
+    if (!stat.isDirectory() || stat.isSymbolicLink() || realpathSync(directory) !== directory) invalid();
+    return stat;
+  };
+  const same = (a, b, fields) => fields.every(field => a[field] === b[field]);
+  const identity = ['dev', 'ino', 'mode', 'nlink'], stable = [...identity, 'size', 'mtimeNs', 'ctimeNs'];
+  const out = new Map();
+  try {
+    if (!Number.isInteger(constants.O_NOFOLLOW) || !Number.isInteger(constants.O_NONBLOCK)) invalid();
+    for (const [route, filename, type] of DESK_ASSETS) {
+      const dirBefore = directoryStat(), path = join(directory, filename), before = lstatSync(path, { bigint: true });
+      if (!before.isFile() || before.isSymbolicLink() || before.size < 1n || before.size > BigInt(ASSET_MAX)
+        || realpathSync(path) !== path) invalid();
+      let fd;
+      try {
+        // O_NONBLOCK prevents a raced-in pipe from hanging construction;
+        // O_NOFOLLOW rejects the final symlink and fstat pins the opened file.
+        fd = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+        const opened = fstatSync(fd, { bigint: true });
+        if (!opened.isFile() || !same(before, opened, stable)) invalid();
+        const buffer = Buffer.alloc(ASSET_MAX + 1); let count = 0;
+        while (count < buffer.length) { const read = readSync(fd, buffer, count, buffer.length - count, count); if (read === 0) break; count += read; }
+        const after = fstatSync(fd, { bigint: true }), atPath = lstatSync(path, { bigint: true }), dirAfter = directoryStat();
+        if (count > ASSET_MAX || count !== Number(opened.size) || !same(opened, after, stable) || !same(opened, atPath, stable)
+          || !same(dirBefore, dirAfter, identity) || realpathSync(path) !== path) invalid();
+        const bytes = Buffer.from(buffer.subarray(0, count));
+        const text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes);
+        if (text.startsWith('\ufeff') || text.includes('\0')) invalid();
+        out.set(route, Object.freeze({ bytes, type }));
+      } finally { if (fd !== undefined) closeSync(fd); }
+    }
+    return out;
+  } catch { invalid(); }
+}
+function replyAsset(response, asset) {
+  if (response.destroyed || response.writableEnded) return;
+  response.writeHead(200, { 'Content-Type': asset.type, 'Content-Length': asset.bytes.length,
+    'Cache-Control': 'no-store', 'Content-Security-Policy': DESK_CSP, 'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'no-referrer', 'Cross-Origin-Resource-Policy': 'same-origin', 'Connection': 'close' });
+  response.end(asset.bytes);
+}
+function boundary(server, request, fixedAsset = false) {
   const address = server.address(), socket = request.socket;
   if (!address || typeof address !== 'object' || !['127.0.0.1', '::1'].includes(address.address)
     || socket.localAddress !== address.address || socket.localPort !== address.port
@@ -38,7 +93,10 @@ function boundary(server, request) {
   for (let i = 0; i < request.rawHeaders.length; i += 2) {
     const name = request.rawHeaders[i].toLowerCase();
     if (seen.has(name)) deny(400, 'duplicate_request_header'); seen.add(name);
-    if (!HEADERS.has(name)) deny(400, 'closed_request_headers_required');
+    const navigation = fixedAsset && request.method === 'GET'
+      && ((name === 'sec-fetch-user' && request.rawHeaders[i + 1] === '?1')
+        || (name === 'upgrade-insecure-requests' && request.rawHeaders[i + 1] === '1'));
+    if (!HEADERS.has(name) && !navigation) deny(400, 'closed_request_headers_required');
   }
   if (request.headers.host !== host) deny(403, 'bound_host_required');
   const declared = request.headers.origin;
@@ -125,11 +183,34 @@ export function createSyntheticNotebookApplicationServer(options) {
   let app;
   try { app = createSyntheticNotebookApplication(options); }
   catch { throw new Error('invalid_synthetic_notebook_application_server_options'); }
+  return applicationServer(app);
+}
+
+/** Separate opt-in desk profile; only trusted options, never webRoot/path,
+ * caller hooks or UI routing. Bounded synchronous snapshot reads happen once
+ * before a native unbound Server is returned. This is still one shared
+ * synthetic instance, not authentication or browser/UI acceptance evidence.
+ */
+export function createSyntheticNotebookDeskServer(options) {
+  if (arguments.length !== 1) throw new Error('invalid_synthetic_notebook_desk_server_options');
+  let app;
+  try { app = createSyntheticNotebookApplication(options); }
+  catch { throw new Error('invalid_synthetic_notebook_desk_server_options'); }
+  return applicationServer(app, assetSnapshot());
+}
+
+function applicationServer(app, assets = null) {
   const server = createServer({ maxHeaderSize: 8192, headersTimeout: 2000, requestTimeout: 3000,
     keepAliveTimeout: 1000, connectionsCheckingInterval: 500 }, (request, response) => {
     request.on('error', () => {});
     void (async () => {
-      boundary(server, request);
+      const asset = assets?.get(request.url);
+      boundary(server, request, Boolean(asset));
+      if (asset) {
+        if (request.method !== 'GET') deny(405, 'method_not_allowed');
+        if (request.headers['transfer-encoding'] !== undefined || Number(request.headers['content-length'] ?? 0) !== 0) deny(400, 'read_body_not_allowed');
+        replyAsset(response, asset); return;
+      }
       if (request.url === '/api/notebook/current') {
         if (request.method !== 'GET') deny(405, 'method_not_allowed');
         if (request.headers['transfer-encoding'] !== undefined || Number(request.headers['content-length'] ?? 0) !== 0) deny(400, 'read_body_not_allowed');

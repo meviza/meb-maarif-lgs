@@ -2,7 +2,11 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
-- [Gece fazları: güncel 986 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece fazları: güncel 1056 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Altı kaynak-bilgili özgün yazım briefi; üretim ve onay sıfır](GRADE6_REFERENCE_AUTHORING_PLAN_EVIDENCE_2026-10-04.md)
+- [Sentetik defterin browser-safe istemcisi ve taslak/read/receipt ayrımı](SYNTHETIC_NOTEBOOK_DESK_CLIENT_EVIDENCE_2026-10-04.md)
+- [Opt-in sentetik defter için sabit asset ve eski HTTP profilini koruyan sunucu](SYNTHETIC_NOTEBOOK_DESK_SERVER_EVIDENCE_2026-10-04.md)
+- [Gerçek masaüstü/mobil defter akışı ve ayrı SQL regresyonu](SYNTHETIC_NOTEBOOK_DESK_BROWSER_EVIDENCE_2026-10-04.md)
 - [Altı yeni kaynak soru biçimi: gerçek sayfa, mikroamaç ve belirsiz eşleme](GRADE6_QUESTION_FORM_PILOT_2026-10-04.md)
 - [Güvenilen dört anlatım önayarının yerel sunucu bağlantısı](CAPTION_PRESET_SERVER_EVIDENCE_2026-10-04.md)
 - [Üç yeni önayarda 50 adım ve gerçek tarayıcı kanıtı](CAPTION_PRESET_BROWSER_ACCEPTANCE_2026-10-04.md)

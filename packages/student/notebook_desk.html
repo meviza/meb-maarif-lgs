@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Sentetik Defter Masası</title>
+  <link rel="stylesheet" href="/notebook-desk.css">
+  <script type="module" src="/notebook-desk.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Deftere geç</a>
+  <header class="masthead"><div class="brand" aria-hidden="true">d</div><div><p class="eyebrow">Yerel çalışma alanı</p><h1>Defter masası</h1></div><span class="badge">Yalnız sentetik deneme</span></header>
+  <main id="main">
+    <section class="notice" aria-label="Denemenin sınırı"><strong>Gerçek öğrenci hesabı değildir.</strong> Tek yerel oturum ortak sentetik veriyi gösterir; kimlik doğrulama, çok kullanıcılı erişim ve canlı ürün hazır değildir. Gerçek öğrenci bilgisi yazmayın.</section>
+    <div class="context"><span>6. sınıf · 2026–2027</span><span>Örnek okul A · Sentetik defter A</span></div>
+    <section class="toolbar" aria-label="Açık sunucu işlemleri">
+      <div><p class="eyebrow">Okuma ve kayıt ayrı işlemler</p><p id="desk-status" role="status" aria-live="polite">Henüz okunmadı.</p></div>
+      <div class="actions"><button id="read-notebook" type="button">Kaydı oku</button><button id="save-notebook" class="primary" type="button" disabled>Taslağı kaydet</button></div>
+    </section>
+    <div class="columns">
+      <section class="card draft" aria-labelledby="draft-heading">
+        <div class="section-heading"><div><p class="eyebrow">Bu tarayıcı sekmesinde</p><h2 id="draft-heading">Yerel taslağım</h2></div><button id="clear-draft" class="quiet" type="button">Taslağı temizle</button></div>
+        <p class="hint">Okuma taslağı değiştirmez. Yenileme bu yerel taslağı siler; tarayıcıda kalıcı depolama yoktur.</p>
+        <label for="draft-text">Düşünceler ve çözüm adımları</label><textarea id="draft-text" rows="7" spellcheck="false" aria-describedby="draft-counts draft-error"></textarea>
+        <p id="draft-counts" class="hint"></p><p id="draft-error" class="error" role="status" aria-live="polite"></p>
+        <div class="entry"><label for="new-note">Kısa not</label><textarea id="new-note" rows="2" spellcheck="false"></textarea><button id="add-note" type="button">Notu ekle</button><ul id="draft-notes" class="text-list" aria-label="Taslak notlar"></ul></div>
+        <div class="entry"><label for="new-concern">Aklımdaki soru</label><textarea id="new-concern" rows="2" spellcheck="false"></textarea><button id="add-concern" type="button">Soruyu ekle</button><ul id="draft-concerns" class="text-list" aria-label="Taslak sorular"></ul></div>
+        <details class="pen-panel"><summary>İsteğe bağlı kalem çizgileri</summary>
+          <p class="hint" id="pen-profile">Yeni çizgiler 0–1 aralığında, dört ondalıklı nokta profiliyle yakalanır. Bu çizim, el yazısı tanıma değildir. İçe alınan çizgiler yuvarlanmaz. En çok 64 çizgi ve her çizgide 512 nokta.</p>
+          <div class="pen-controls"><label for="pen-color">Renk<select id="pen-color"><option value="#1c3532">Koyu yeşil</option><option value="#a44b35">Kiremit</option><option value="#2f6377">Mavi</option><option value="#8b5e32">Kahverengi</option><option value="#6f527a">Mor</option></select></label><label for="pen-width">Kalınlık<select id="pen-width"><option value="2">İnce</option><option value="4" selected>Orta</option><option value="6">Kalın</option><option value="10">Çok kalın</option></select></label><button id="clear-pen" type="button">Çizgileri temizle</button></div>
+          <canvas id="pen-canvas" width="800" height="260" aria-describedby="pen-profile pen-error" aria-label="İsteğe bağlı işaretleme alanı; metinle eşdeğer not yazabilirsiniz">Çizim desteklenmiyorsa yukarıdaki metin ve not alanlarını kullanın.</canvas>
+          <p id="pen-error" class="error" role="status" aria-live="polite"></p>
+        </details>
+      </section>
+      <section class="card read" aria-labelledby="read-heading">
+        <div class="section-heading"><div><p class="eyebrow">Son açık okuma</p><h2 id="read-heading">Okunan kayıt</h2></div><span class="read-icon" aria-hidden="true">↗</span></div>
+        <p id="read-revision" class="revision">Okuma yok</p><p class="hint">Yalnız doğrulanmış okuma burada görünür. Kayıt makbuzu bu içeriğin yerine geçmez.</p>
+        <p id="read-text" class="read-text">Henüz okuma yapılmadı.</p><h3>Notlar</h3><ul id="read-notes" class="text-list"></ul><h3>Sorular</h3><ul id="read-concerns" class="text-list"></ul>
+        <button id="load-read" type="button" disabled>Okunan kaydı taslağa al</button><p class="hint">Bu açık eylem mevcut yerel taslağın yerine okunan kaydı koyar.</p>
+        <div class="receipt"><p class="eyebrow">Ayrı yazma kanıtı</p><p id="receipt-status" role="status">Henüz doğrulanmış yazma makbuzu yok.</p></div>
+      </section>
+    </div>
+    <footer>Sentetik inceleme: kayıt sayıları öğrenme becerisi, puan veya müfredat onayı değildir. Otomatik okuma / tekrar kayıt yoktur. Üretim, gerçek kimlik doğrulama ve öğrenci erişimi hazır değildir.</footer>
+  </main>
+</body>
+</html>
