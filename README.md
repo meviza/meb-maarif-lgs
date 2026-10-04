@@ -4,6 +4,7 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 
 ## Güncel çalışma
 
+- [Soru odaklı güncel root kontrol noktası](docs/GRADE6_QUESTION_BANK_ROOT_CHECKPOINT_2026-10-04.md): iki yeni özgün aile + üç mevcut görev; beş soruluk gerçek kapalı JSON/HTML editör bankası. Yeni konu anlatımı0;1429 PASS/2 opt-in medya SKIP/0 FAIL. Kalibrasyon, öğrenci teslimi ve yeni iki görevin genel medya/fabrika adapter'ı açık.
 - [Sayı ünitesi ve native defter: güncel root kontrol noktası](docs/GRADE6_NUMBER_UNIT_NOTEBOOK_ROOT_CHECKPOINT_2026-10-04.md): kısa konu → tek gerekçeli örnek → iki farklı alıştırma;8 görev/zorluk açıkları görünür. Native memory defter normal/yanıt kaybı akışı geçti;1388 PASS/2 SKIP/0 FAIL. Fiziksel mobil/öğrenci teslimi ve yeni ses/video açık.
 - [Önceki bölünebilme ve yer-imi kontrol noktası](docs/GRADE6_DIVISIBILITY_BOOKMARK_ROOT_CHECKPOINT_2026-10-04.md): tarihsel1362 PASS/2 SKIP kanıtı; buradaki native erişim açığının sonraki tanısı yukarıdadır.
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
