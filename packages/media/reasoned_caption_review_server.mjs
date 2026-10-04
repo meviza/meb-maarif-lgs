@@ -1,8 +1,10 @@
 import { createServer } from 'node:http';
 import { readFileSync } from 'node:fs';
 import { TextDecoder } from 'node:util';
-import { createGardenQuestion } from '../content-factory/pilot.mjs';
+import { createGardenQuestion, createRectangleQuestion } from '../content-factory/pilot.mjs';
+import { createPerimeterLesson } from '../content-factory/perimeter_lesson.mjs';
 import { createReasonedMathTrace } from '../content-factory/reasoned_math_adapter.mjs';
+import { createReasonedPerimeterLessonTrace } from '../content-factory/reasoned_concept_lesson.mjs';
 import { createReasonedMediaJob } from './reasoned_media_job.mjs';
 import { createReasonedScenePlan } from './reasoned_scene_renderer.mjs';
 import { createReasonedCaptionReview } from './reasoned_caption_review.mjs';
@@ -77,8 +79,23 @@ function readAction(request) {
  * The composition root must listen on canonical 127.0.0.1 or ::1 explicitly. */
 export function createReasonedCaptionReviewServer() {
   if (arguments.length !== 0) throw new Error('invalid_reasoned_caption_review_server_arguments');
-  const source = createGardenQuestion({ id: 'caption-review-loopback-garden' });
-  const trace = createReasonedMathTrace(source), job = createReasonedMediaJob(trace);
+  return presetServer('garden');
+}
+
+/** Trusted construction-time choice only. Never a source/config DTO or an
+ * HTTP selector. Comparison authoring drafts have no canonical trace here. */
+export function createReasonedCaptionReviewPresetServer(presetId) {
+  if (arguments.length !== 1 || typeof presetId !== 'string' || !['garden', 'concept', 'perimeter', 'area'].includes(presetId))
+    throw new Error('invalid_reasoned_caption_review_preset');
+  return presetServer(presetId);
+}
+
+function presetServer(presetId) {
+  const source = presetId === 'garden' ? createGardenQuestion({ id: 'caption-review-loopback-garden' })
+    : presetId === 'concept' ? createPerimeterLesson()
+      : createRectangleQuestion({ id: `caption-review-loopback-${presetId}`, template: presetId, width: 6, height: 4 });
+  const trace = presetId === 'concept' ? createReasonedPerimeterLessonTrace() : createReasonedMathTrace(source);
+  const job = createReasonedMediaJob(trace);
   const controller = createReasonedCaptionReview(createReasonedScenePlan({ source, trace, job }));
   const assets = new Map(assetDefinitions.map(([path, file, type]) => [path, { bytes: readFileSync(new URL(`../../apps/caption-review/${file}`, import.meta.url)), type }]));
   const server = createServer({ maxHeaderSize: 8192, headersTimeout: 2000, requestTimeout: 3000,

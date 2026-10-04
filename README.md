@@ -5,7 +5,8 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
-- [Gece ilerleme kaydı: 940 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece ilerleme kaydı: 986 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Farklı anlatım önayarlarının gerçek tarayıcı kanıtı](docs/CAPTION_PRESET_BROWSER_ACCEPTANCE_2026-10-04.md), [defter SQL→HTTP bağlantısı](docs/SYNTHETIC_NOTEBOOK_HTTP_SQL_EVIDENCE_2026-10-04.md) ve [altı yeni kaynak soru-biçimi gözlemi](docs/GRADE6_QUESTION_FORM_PILOT_2026-10-04.md)
 - [Gerçek tarayıcıda kontrollü altyazı gezinmesi](docs/CAPTION_REVIEW_BROWSER_ACCEPTANCE_2026-10-04.md), [kapalı yerel editör HTTP sınırı](docs/REASONED_CAPTION_HTTP_EVIDENCE_2026-10-04.md), [defter uygulaması gerçek SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_APPLICATION_SQL_EVIDENCE_2026-10-04.md) ve [6. sınıf kaynak/mikrobeceri dilimi](docs/GRADE6_SOURCE_SEMANTIC_PILOT_2026-10-04.md)
 - [Gerçek aylık LGS edinimi ve özel Drive byte kanıtı](docs/LGS_MONTHLY_ROOT_ARCHIVE_ACCEPTANCE_2026-10-04.md), [caption review/DOM fabrika bağlantısı](docs/CAPTION_REVIEW_FACTORY_ACCEPTANCE_2026-10-04.md) ve [gerçek sentetik defter adaptörü SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_ADAPTER_SQL_EVIDENCE_2026-10-04.md)
 - [İki yönlü karşılaştırma taslakları](docs/GEOMETRIC_COMPARISON_DRAFT_EVIDENCE_2026-10-04.md), [görünür kısa caption SVG](docs/REASONED_CAPTION_FRAME_EVIDENCE_2026-10-04.md) ve [gerçek sentetik defter SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_POSTGRES_EVIDENCE_2026-10-04.md)
@@ -28,6 +29,8 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 36.000 soru hedefi kazanım/alt beceri/soru ailesi kapsama matrisinden hesaplanacak; ders anlatımları ayrı sayılacak. Haftalık akış okul takvimi ve uygulanan program sürümüne bağlanacak. İndirilmiş MEB belgeleri yalnız referanstır; ticari yeniden kullanım hakları henüz doğrulanmadı.
 
 ## Yerel çalıştırma
+
+`node tools/caption_review_preview.mjs --preset concept --port 0` güvenilen kavram anlatımını ayrı editör oturumunda açar. Kapalı önayarlar: `garden`, `concept`, `perimeter`, `area`; seçim yalnız sunucu kuruluşundadır, öğrenci/sınıf seçimi değildir. `--preset` verilmezse önceki bahçe akışı korunur. [HTTP ve önayar sınırları](docs/CAPTION_PRESET_SERVER_EVIDENCE_2026-10-04.md).
 
 Node.js ile, yeni bağımlılık veya Flutter SDK indirmeden:
 
