@@ -103,3 +103,11 @@ Bu kontrol, CMMI/SPICE sertifikası veya DAMA kurumsal olgunluk derecesi değild
 | Docker | Kullanıcının250USD applied/no-sandbox ekranı özel hash'li kopya ve küçük safe notla saklandı; spend0. |Güncel kredi/limit/aşım/fiyat ve açık iş bütçesi; önce tek sentetik ölçüm, üretim/on-prem kararı değil. |
 
 Üç sonraki dikey dilim: **kaynaklı özgün paketi normal fabrikaya bağlamak**, **yeni gerekçeli tek sesli çözümü doğrulamak**, **sentetik dar okul identity/DB/lifecycle pilotunu işletim tanığına taşımak**. Uzman/hak/hesap bütçesi/gerçek çocuk/üretim ve okul mevzuatı kapıları teknik kod ilerlemesiyle kendiliğinden açılmaz.08:00 gece sınırı korunur; erken hazırlık snapshot'ı durdurma gerçekleşti iddiası değildir.
+
+## 4 Ekim Sabah Sonrası: İlk Kapalı Fabrika Domain'i
+
+Kullanıcının yeni devam talebiyle, sabah tesliminin `6d82979` checkpoint'i üzerine [ortak-ilişki fabrika dilimi](GRADE6_COMMON_RELATIONS_FACTORY_ROOT_ACCEPTANCE_2026-10-04.md) uygulandı. Gece ve tek seferlik sabah takipleri yeniden başlatılmadı. Önceki sayı/durumlar tarihsel checkpoint olarak korunur.
+
+Normal aracın kapalı `--domain grade6_common_relations` girişi gerçek canonical draft→verifier→iki trace/job/request→özel scene→current başlangıç görünümünü tüketir. Üç küçük editör dosyasında exclusive yazım,0700/0600 izin ve tamamlanan kümede disk readback/hash uygulanır. Normal rectangle/count/metadata consumer gövdesi değişmedi; gerçek100aday→12taslak/88ret korunur. Root taze tam test1258/1258, fail/skip0; soru sayısı değildir.
+
+Bu dilim yalnız **bir mevcut taslak/iki anlatım işi** için teknik bağlantıdır; generic resolver desteği, yeni kabul/yayın, öğrenci rol/teslimi, yeni TTS veya MP4 sağlamaz. Altı uzman kapısı pending; aktif okul/yıl ve DAMA owner/steward/access/retention kararları ayrıca gerekir. Sıradaki medya işi [ayrı çift-job/voice ve gerçek byte–kelime–kalem planı](NEXT_REASONED_VIDEO_ACCEPTANCE_2026-10-04.md); önce eski garden sesini yeni common metin diye yeniden etiketlemeyen saf bridge, sonra açık yetkili/bütçeli gerçek ses ve decode/dinleme kabulüdür. Kaynak blueprint'i, trusted review-store ve sentetik okul işletim kabulü de açık kalır.

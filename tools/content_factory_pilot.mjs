@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 import { mkdir, writeFile, readdir, readFile } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
+import fs from 'node:fs';
+import { isAbsolute, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { createPilotBatch, createStoryboard, createLesson } from '../packages/content-factory/pilot.mjs';
 import { createReasonedMathTrace } from '../packages/content-factory/reasoned_math_adapter.mjs';
 import { createReasonedPerimeterLessonTrace } from '../packages/content-factory/reasoned_concept_lesson.mjs';
@@ -32,6 +36,19 @@ const sentence = value => {
 const difficultyName = level => ({ introductory: 'Başlangıç', intermediate: 'Orta', advanced: 'İleri', challenge: 'Zorlayıcı' }[level] ?? 'Henüz sınıflandırılmadı');
 const familyName = family => ({ perimeter: 'Çevreyi bulma', area: 'Alanı bulma', width_from_area: 'Alandan kenarı bulma', width_from_perimeter: 'Çevreden kenarı bulma', error_diagnosis: 'İşlem hatasını açıklama', fence_gap: 'Açıklık koşulunu uygulama' }[family] ?? 'İnceleme bekleyen soru ailesi');
 function args(argv) {
+  if (commonAttempt(argv)) {
+    if (argv.length !== 4) throw new Error('grade6_common_relations_factory_invalid_args');
+    const seen = new Set(), result = { domain: 'grade6_common_relations', out: null };
+    for (let index = 0; index < argv.length; index += 2) {
+      const option = argv[index], value = argv[index + 1];
+      if (!['--domain', '--out'].includes(option) || seen.has(option) || typeof value !== 'string' || value.startsWith('--')) throw new Error('grade6_common_relations_factory_invalid_args');
+      seen.add(option);
+      if (option === '--domain' && value !== 'grade6_common_relations') throw new Error('grade6_common_relations_factory_invalid_args');
+      if (option === '--out') result.out = value;
+    }
+    if (seen.size !== 2 || !safeCommonOutput(result.out)) throw new Error('grade6_common_relations_factory_invalid_args');
+    return result;
+  }
   const result = { count: 12, out: null, metadata: null };
   for (let index = 0; index < argv.length; index++) {
     const option = argv[index];
@@ -43,6 +60,135 @@ function args(argv) {
   }
   if (!result.out) throw new Error('explicit_output_directory_required');
   return result;
+}
+
+function commonAttempt(argv) { return argv.some(value => value === '--domain' || value.startsWith('--domain=')); }
+function safeCommonOutput(value) {
+  return typeof value === 'string' && Buffer.byteLength(value, 'utf8') <= 4096 && !value.includes('\0')
+    && isAbsolute(value) && value !== '/' && resolve(value) === value
+    && !value.split('/').slice(1).some(part => !part || part === '.' || part === '..');
+}
+const sameIdentity = (a, b) => a.dev === b.dev && a.ino === b.ino;
+const sameFile = (a, b) => sameIdentity(a, b) && a.size === b.size && a.mtimeMs === b.mtimeMs && a.ctimeMs === b.ctimeMs;
+const diskSha = bytes => createHash('sha256').update(bytes).digest('hex');
+function parentSnapshot(path) {
+  const paths = ['/']; let current = '';
+  for (const part of dirname(path).split('/').slice(1)) { if (part) { current += '/' + part; paths.push(current); } }
+  return paths.map(path => {
+    const stat = fs.lstatSync(path);
+    if (!stat.isDirectory() || stat.isSymbolicLink()) throw new Error('unsafe_common_path');
+    return { path, stat };
+  });
+}
+function checkParents(snapshot) {
+  for (const entry of snapshot) {
+    const now = fs.lstatSync(entry.path);
+    if (!now.isDirectory() || now.isSymbolicLink() || !sameIdentity(entry.stat, now)) throw new Error('unstable_common_path');
+  }
+}
+function assertFreshOutput(out, parents) {
+  checkParents(parents);
+  try { fs.lstatSync(out); } catch (error) { if (error.code === 'ENOENT') return; throw error; }
+  throw new Error('common_output_must_be_new');
+}
+function readCommonSnapshot(name) {
+  const path = fileURLToPath(new URL(`../sources/${name}.json`, import.meta.url));
+  const parents = parentSnapshot(path), before = fs.lstatSync(path);
+  if (!before.isFile() || before.isSymbolicLink() || before.size > 524288 || typeof fs.constants.O_NOFOLLOW !== 'number') throw new Error('common_source_metadata_unavailable');
+  const fd = fs.openSync(path, fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW | fs.constants.O_NONBLOCK);
+  try {
+    const stat = fs.fstatSync(fd);
+    if (!stat.isFile() || !sameFile(before, stat)) throw new Error('common_source_metadata_unavailable');
+    const buffer = Buffer.alloc(stat.size + 1); let size = 0;
+    while (size < buffer.length) {
+      const count = fs.readSync(fd, buffer, size, buffer.length - size, size);
+      if (!count) break; size += count;
+    }
+    checkParents(parents);
+    const after = fs.fstatSync(fd), now = fs.lstatSync(path);
+    if (size !== stat.size || !now.isFile() || now.isSymbolicLink() || !sameFile(stat, after) || !sameFile(stat, now)) throw new Error('common_source_metadata_unavailable');
+    return JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(buffer.subarray(0, size)));
+  } finally { fs.closeSync(fd); }
+}
+function commonDirectoryStable(out, parents, expected, directoryFd) {
+  checkParents(parents);
+  const now = fs.lstatSync(out), held = fs.fstatSync(directoryFd), cwd = fs.lstatSync('.');
+  if (!now.isDirectory() || now.isSymbolicLink() || !held.isDirectory() || !cwd.isDirectory()
+    || !sameIdentity(now, expected) || !sameIdentity(held, expected) || !sameIdentity(cwd, expected)) throw new Error('unstable_common_output');
+}
+async function commonFactory(options) {
+  // Snapshot before importing/building; changes during preparation are checked
+  // again before directory reservation. The default rectangle path is separate.
+  const parents = parentSnapshot(options.out); assertFreshOutput(options.out, parents);
+  const { createGrade6CommonRelationsFactoryPreparation } = await import('../packages/content-factory/grade6_common_relations_factory_preparation.mjs');
+  const main = readCommonSnapshot('meb-reference-registry');
+  if (!Array.isArray(main.sources)) throw new Error('common_source_metadata_unavailable');
+  const rows = main.sources.filter(row => row && row.id === 'tymm-current-ortaokul-matematik');
+  if (rows.length !== 1) throw new Error('common_source_metadata_unavailable');
+  const packet = createGrade6CommonRelationsFactoryPreparation({
+    applicationObservations: readCommonSnapshot('grade6-common-relations-application-observations'),
+    semanticMatrix: readCommonSnapshot('grade6-source-semantic-candidate-matrix'), sourceRecord: rows[0],
+  });
+  // These are disk serializations, not the API's domain-separated digests.
+  const files = [
+    { filename: 'batch.json', bytes: Buffer.from(JSON.stringify(packet) + '\n'), cap: 524288 },
+    { filename: 'preview.html', bytes: Buffer.from(packet.initialReview.html), cap: 65536 },
+    { filename: 'manifest.json', bytes: Buffer.from(JSON.stringify(packet.manifest) + '\n'), cap: 16384 },
+  ];
+  if (files.some(file => !file.bytes.length || file.bytes.length > file.cap)) throw new Error('common_output_budget_exceeded');
+  assertFreshOutput(options.out, parents);
+  fs.mkdirSync(options.out, { mode: 0o700 });
+  checkParents(parents);
+  const expected = fs.lstatSync(options.out);
+  if (!expected.isDirectory() || expected.isSymbolicLink()) throw new Error('unstable_common_output');
+  const directoryFd = fs.openSync(options.out, fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW | fs.constants.O_DIRECTORY);
+  const originalCwd = process.cwd();
+  try {
+    if (!sameIdentity(expected, fs.fstatSync(directoryFd))) throw new Error('unstable_common_output');
+    fs.fchmodSync(directoryFd, 0o700);
+    // Relative exclusive filenames are anchored to the created directory inode,
+    // even if a pathname is renamed. Every write also rechecks public identity.
+    process.chdir(options.out); commonDirectoryStable(options.out, parents, expected, directoryFd);
+    const receipts = [], checkedFiles = [];
+    for (const file of files) {
+      commonDirectoryStable(options.out, parents, expected, directoryFd);
+      const fd = fs.openSync(file.filename, fs.constants.O_WRONLY | fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_NOFOLLOW, 0o600);
+      try {
+        fs.fchmodSync(fd, 0o600); let size = 0;
+        while (size < file.bytes.length) {
+          const count = fs.writeSync(fd, file.bytes, size, file.bytes.length - size, size);
+          if (!count) throw new Error('common_output_write_failed'); size += count;
+        }
+      } finally { fs.closeSync(fd); }
+    }
+    // Validate the completed set, not an earlier file while later writes can
+    // still change it. No success receipt is emitted for partial/tampered output.
+    for (const file of files) {
+      commonDirectoryStable(options.out, parents, expected, directoryFd);
+      const readFd = fs.openSync(file.filename, fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW | fs.constants.O_NONBLOCK);
+      try {
+        const before = fs.fstatSync(readFd);
+        if (!before.isFile() || before.size !== file.bytes.length || (before.mode & 0o777) !== 0o600) throw new Error('common_output_readback_failed');
+        const bytes = Buffer.alloc(before.size + 1); let size = 0;
+        while (size < bytes.length) { const count = fs.readSync(readFd, bytes, size, bytes.length - size, size); if (!count) break; size += count; }
+        const now = fs.lstatSync(file.filename);
+        if (size !== before.size || !sameFile(before, fs.fstatSync(readFd)) || !now.isFile() || now.isSymbolicLink()
+          || !sameFile(before, now) || !bytes.subarray(0, size).equals(file.bytes)) throw new Error('common_output_readback_failed');
+        receipts.push(Object.freeze({ filename: file.filename, byteLength: size, sha256: diskSha(bytes.subarray(0, size)) }));
+        checkedFiles.push({ filename: file.filename, stat: before });
+      } finally { fs.closeSync(readFd); }
+    }
+    commonDirectoryStable(options.out, parents, expected, directoryFd);
+    if (fs.readdirSync('.').sort().join('|') !== 'batch.json|manifest.json|preview.html') throw new Error('common_output_readback_failed');
+    for (const file of checkedFiles) {
+      const now = fs.lstatSync(file.filename);
+      if (!now.isFile() || now.isSymbolicLink() || !sameFile(file.stat, now) || (now.mode & 0o777) !== 0o600) throw new Error('common_output_readback_failed');
+    }
+    console.log(JSON.stringify({ domain: options.domain, state: packet.state, out: options.out,
+      audience: 'editor_only', answerBearingEditorArtifact: true, serializedAuthority: 'none',
+      readbackVerified: true, files: receipts, counts: packet.manifest.counts,
+      publicationReady: false, learnerReady: false, productionReady: false }));
+  } finally { process.chdir(originalCwd); fs.closeSync(directoryFd); }
 }
 
 function reasonedPanel(trace) {
@@ -158,6 +304,9 @@ for(const practice of document.querySelectorAll('[data-mixed-practice]')){
 
 try {
   const options = args(process.argv.slice(2));
+  if (options.domain === 'grade6_common_relations') {
+    await commonFactory(options);
+  } else {
   const metadata = options.metadata ? JSON.parse(await readFile(options.metadata, 'utf8')) : undefined;
   const batch = createPilotBatch({ requested: options.count, metadata });
   // Any source or reasoning error aborts before a directory/file is written.
@@ -279,7 +428,10 @@ try {
   await writeFile(join(options.out, 'preview.html'), preview(report));
   for (const item of batch.items) await writeFile(join(options.out, 'diagrams', `${item.id}.svg`), item.visual.svg + '\n');
   console.log(JSON.stringify({ out: options.out, summary: report.summary, providerStatus: report.providerStatus }));
+  }
 } catch (error) {
-  console.error(error?.message ?? 'pilot_failed');
+  console.error(commonAttempt(process.argv.slice(2))
+    ? (error?.message === 'grade6_common_relations_factory_invalid_args' ? error.message : 'grade6_common_relations_factory_failed')
+    : (error?.message ?? 'pilot_failed'));
   process.exitCode = 1;
 }

@@ -3,6 +3,7 @@
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
 - [4 Ekim sabah raporu: gerçek ilerleme, 36.000 ve video açık işleri](MORNING_REPORT_2026-10-04.md)
+- [Sabah sonrası ortak-ilişki fabrika girişi: root kabul ve 1258 test](GRADE6_COMMON_RELATIONS_FACTORY_ROOT_ACCEPTANCE_2026-10-04.md), [saf API](GRADE6_COMMON_RELATIONS_FACTORY_API_EVIDENCE_2026-10-04.md) ve [gerçek CLI/dosya hata tanıkları](GRADE6_COMMON_RELATIONS_FACTORY_CLI_EVIDENCE_2026-10-04.md)
 - [Etkin yıl/okul profili ve okul kullanım mevzuatı inceleme kapısı](ACTIVE_YEAR_COURSE_BOUNDARY_RECHECK_2026-10-04.md)
 - [Yerel50PDF/49revizyon: bağımsız taze bayt kontrolü](LOCAL_REFERENCE_ARCHIVE_RECHECK_2026-10-04.md)
 - [Drive49 dosya metaveri/owner-parent eşliği; uzak byte kontrolü değil](DRIVE_ARCHIVE_METADATA_RECHECK_2026-10-04.md)

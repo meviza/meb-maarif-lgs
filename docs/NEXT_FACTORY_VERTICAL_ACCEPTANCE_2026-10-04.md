@@ -67,3 +67,11 @@ Tek canonical task normal CLI domain'inden kurulmalı; gerçek verifier/live tra
 Bu sonuç yalnız `editor_factory_preparation` teknik geçişidir. Altı kapı — activeProgram, pedagogy, rights, difficulty, answer, accessibility — yetkili karar store'unda ayrı bekler; oracle answer gate'ini approved yapmaz. Hak/benzerlik incelemesi, aktif okul-yıl/çıktı binding, yaş/alan/dil uzmanı ve gerçek erişilebilirlik kabulü olmadan öğrenci kütüphanesi/stok artmaz. DAMA owner/steward/purpose/source/version/access/retention ve audit kararları fixture/hash ile atanmış sayılmaz.
 
 Canlı model/TTS, ses/video, öğrenci auth/analitik, bulk36.000, indirme/Drive/ücretli Docker kapsam dışı. Test kanıtı CMMI/SPICE/MEB sertifikası veya tam müfredat başarısı değildir.
+
+## 4 Ekim Sabah Sonrası Uygulama Kaydı
+
+Yukarıdaki plan, sabah tesliminden önceki durum ve kabul hedefini korur. Kullanıcının devam talebiyle `6d82979` üzerine saf API ve normal araçta ayrı `--domain grade6_common_relations` girişi uygulandı. Son çıktı dizini **henüz mevcut olmamalıdır**; mevcut boş dizin de reddedilir. Bu açıklama eski `ABS_EMPTY_OUTPUT` yer tutucusunu netleştirir.
+
+[Root teknik kabul kaydı](GRADE6_COMMON_RELATIONS_FACTORY_ROOT_ACCEPTANCE_2026-10-04.md), [API TDD kanıtı](GRADE6_COMMON_RELATIONS_FACTORY_API_EVIDENCE_2026-10-04.md) ve [CLI TDD/dosya hata tanıkları](GRADE6_COMMON_RELATIONS_FACTORY_CLI_EVIDENCE_2026-10-04.md) yeni dilimin kanıtlarıdır. Root taze tam koşusu1258/1258, fail/skip0; gerçek CLI diski/API eşliği ve current-only varsayılan görünüm ayrıca kontrol edildi. Genel common resolver desteği hâlâ false; ayrı özel scene bağlantısı vardır. Bir mevcut görev/iki anlatım işi, yeni kabul/yayın/ses/video0.
+
+Tam editör paketi cevap taşır; yalnız başlangıç adımını gösteren HTML'den ayrı tutulur. Aktif okul-yıl/program, altı insan kabul kapısı, trusted review-store ve öğrenci teslimi açık kalır. Sonraki sesli video bridge'i ayrı plan ve ayrı kabul gerektirir. Bu gündüz devamı gece/sabah otomasyonlarını yeniden başlatmaz.
