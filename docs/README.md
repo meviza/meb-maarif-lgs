@@ -2,7 +2,10 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
-- [Gece fazları: güncel 1094 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece fazları: güncel 1109 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Kaynak-bağlı tek taslağın gerçek tablo/gerekçeli editör HTML'si](GRADE6_FACTOR_EVIDENCE_EDITOR_VIEW_EVIDENCE_2026-10-04.md)
+- [Native masaüstü/mobil/dar görünüm, klavye ve gerçek HTML kanıtı](GRADE6_FACTOR_EDITOR_BROWSER_EVIDENCE_2026-10-04.md)
+- [İngilizce/DKAB ve 4/8 için ders–yıl–karar öncelik kontrolü](SOURCE_SCOPE_PRIORITY_CHECK_2026-10-04.md)
 - [Tek özgün çarpan kanıtı taslağı ve ayrı matematik oracle'ı; kabul/yayın sıfır](GRADE6_FACTOR_EVIDENCE_DRAFT_EVIDENCE_2026-10-04.md)
 - [Opt-in PostgreSQL defter aracı: bounded startup, SQL ve ID-sahipli temizlik](SYNTHETIC_NOTEBOOK_DESK_POSTGRES_EVIDENCE_2026-10-04.md)
 - [Native masaüstü/mobil defter → gerçek SQL; normal ve iki fault tanığı](SYNTHETIC_NOTEBOOK_DESK_SQL_BROWSER_EVIDENCE_2026-10-04.md)

@@ -28,9 +28,25 @@ test('fixed full plan opt-in exposes six metadata-only briefs with no approval c
 });
 test('authoring CLI rejects paths counts providers and unknown or duplicated flags before planning', () => {
   for (const args of [['--count','36000'],['--source','arbitrary'],['--provider','clef'],['--plan','--plan'],['--out','anything'],
-    ['--factor-draft','--plan'],['--factor-draft','--factor-draft'],['--factor-draft','--source','arbitrary']]) {
+    ['--factor-draft','--plan'],['--factor-draft','--factor-draft'],['--factor-draft','--source','arbitrary'],
+    ['--factor-html','--plan'],['--factor-html','--factor-draft'],['--factor-html','--factor-html'],['--factor-html','--out','anything']]) {
     const out = run(args); assert.equal(out.status, 1); assert.equal(out.stdout, ''); assert.equal(out.stderr.trim(), 'invalid_grade6_reference_authoring_args');
   }
+});
+// Break caught: the HTML opt-in is unimplemented, returns a plan instead of
+// actual semantic tables, or expands into script/asset/learner delivery.
+test('closed factor-html opt-in renders four actual evidence tables with initially closed editorial reasoning', () => {
+  const out = run(['--factor-html']);
+  assert.equal(out.status, 0, out.stderr); assert.equal(out.stderr, '');
+  assert.ok(Buffer.byteLength(out.stdout) < 65536);
+  assert.match(out.stdout, /^<!doctype html>/iu);
+  assert.equal([...out.stdout.matchAll(/<table\b/gu)].length, 4);
+  assert.equal([...out.stdout.matchAll(/<tbody\b/gu)].length, 4);
+  assert.equal([...out.stdout.matchAll(/<script\b|<iframe\b|<img\b|<video\b|<audio\b/giu)].length, 0);
+  assert.equal([...out.stdout.matchAll(/<details\b[^>]*>/gu)].length, 1);
+  assert.equal(/<details\b[^>]*\bopen(?:\s|=|>)/u.test(out.stdout), false);
+  // Two factors and their product: three column headers in each of four tables.
+  assert.equal([...out.stdout.matchAll(/<th\b[^>]*scope="col"/gu)].length, 12);
 });
 // Break caught: previewing a pending task without consuming the actual source
 // planner and independently recomputing its key, or relabeling math as approval.

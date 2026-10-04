@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Fixed public metadata -> editor pre-blueprint only. No provider, source PDF,
 // arbitrary path, question count, provider, approval, or file output option.
-// A closed factor-draft opt-in emits one own editor task, never learner stock.
+// Closed factor draft/HTML opt-ins emit one own editor task, never learner stock.
 import { constants, lstat, open } from 'node:fs/promises';
 
 const stable = (a, b) => a.dev === b.dev && a.ino === b.ino && a.size === b.size
@@ -27,19 +27,23 @@ async function readSnapshot(name) {
 
 try {
   const args = process.argv.slice(2);
-  if (args.length !== 0 && (args.length !== 1 || !['--plan', '--factor-draft'].includes(args[0]))) throw new Error('invalid_grade6_reference_authoring_args');
+  if (args.length !== 0 && (args.length !== 1 || !['--plan', '--factor-draft', '--factor-html'].includes(args[0]))) throw new Error('invalid_grade6_reference_authoring_args');
   const { createGrade6ReferenceAuthoringPlan } = await import('../packages/content-factory/grade6_reference_authoring_plan.mjs');
   const [forms, matrix, main, supplement] = await Promise.all(['grade6-question-form-observations',
     'grade6-source-semantic-candidate-matrix', 'meb-reference-registry', 'education-reference-supplement'].map(readSnapshot));
   const plannerInput = { formObservations: forms, semanticMatrix: matrix,
     sourceScopeInput: { archives: [main, supplement], selection: { sources: [], inventory: [] },
       downloadObservations: { sources: [] }, monthly: { sources: [], batches: [] }, formObservations: forms } };
-  if (args[0] === '--factor-draft') {
+  if (['--factor-draft', '--factor-html'].includes(args[0])) {
     const { createGrade6FactorEvidenceDraft, verifyGrade6FactorEvidenceDraft } = await import('../packages/content-factory/grade6_factor_evidence_draft.mjs');
     const draft = createGrade6FactorEvidenceDraft(plannerInput);
     const verification = verifyGrade6FactorEvidenceDraft(draft, plannerInput);
     if (!verification.valid) throw new Error('grade6_factor_draft_audit_failed');
-    console.log(JSON.stringify({ schemaVersion: 'grade6-factor-evidence-preview/v1', draft, verification }));
+    if (args[0] === '--factor-html') {
+      const { renderGrade6FactorEvidenceEditorView } = await import('../packages/content-factory/grade6_factor_evidence_editor_view.mjs');
+      const view = renderGrade6FactorEvidenceEditorView(draft, plannerInput);
+      console.log(view.html);
+    } else console.log(JSON.stringify({ schemaVersion: 'grade6-factor-evidence-preview/v1', draft, verification }));
   } else {
     const plan = createGrade6ReferenceAuthoringPlan(plannerInput);
     const summary = { schemaVersion: 'grade6-reference-authoring-summary/v1', state: plan.state,
