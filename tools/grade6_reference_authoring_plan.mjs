@@ -27,14 +27,14 @@ async function readSnapshot(name) {
 
 try {
   const args = process.argv.slice(2);
-  if (args.length !== 0 && (args.length !== 1 || !['--plan', '--factor-draft', '--factor-html', '--common-relations-draft'].includes(args[0]))) throw new Error('invalid_grade6_reference_authoring_args');
+  if (args.length !== 0 && (args.length !== 1 || !['--plan', '--factor-draft', '--factor-html', '--common-relations-draft', '--common-relations-html'].includes(args[0]))) throw new Error('invalid_grade6_reference_authoring_args');
   const { createGrade6ReferenceAuthoringPlan } = await import('../packages/content-factory/grade6_reference_authoring_plan.mjs');
   const [forms, matrix, main, supplement] = await Promise.all(['grade6-question-form-observations',
     'grade6-source-semantic-candidate-matrix', 'meb-reference-registry', 'education-reference-supplement'].map(readSnapshot));
   const plannerInput = { formObservations: forms, semanticMatrix: matrix,
     sourceScopeInput: { archives: [main, supplement], selection: { sources: [], inventory: [] },
       downloadObservations: { sources: [] }, monthly: { sources: [], batches: [] }, formObservations: forms } };
-  if (args[0] === '--common-relations-draft') {
+  if (['--common-relations-draft', '--common-relations-html'].includes(args[0])) {
     const { createGrade6CommonRelationsDraft, verifyGrade6CommonRelationsDraft } = await import('../packages/content-factory/grade6_common_relations_draft.mjs');
     const sourceBindingInput = {
       applicationObservations: await readSnapshot('grade6-common-relations-application-observations'),
@@ -44,7 +44,10 @@ try {
     const draft = createGrade6CommonRelationsDraft(sourceBindingInput);
     const verification = verifyGrade6CommonRelationsDraft(draft, sourceBindingInput);
     if (!verification.valid) throw new Error('grade6_common_relations_draft_audit_failed');
-    console.log(JSON.stringify({ schemaVersion: 'grade6-common-relations-preview/v1', draft, verification }));
+    if (args[0] === '--common-relations-html') {
+      const { renderGrade6CommonRelationsEditorView } = await import('../packages/content-factory/grade6_common_relations_editor_view.mjs');
+      console.log(renderGrade6CommonRelationsEditorView(draft, sourceBindingInput).html);
+    } else console.log(JSON.stringify({ schemaVersion: 'grade6-common-relations-preview/v1', draft, verification }));
   } else if (['--factor-draft', '--factor-html'].includes(args[0])) {
     const { createGrade6FactorEvidenceDraft, verifyGrade6FactorEvidenceDraft } = await import('../packages/content-factory/grade6_factor_evidence_draft.mjs');
     const draft = createGrade6FactorEvidenceDraft(plannerInput);

@@ -78,4 +78,8 @@ Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında günce
 - [Kalite kapıları ve CMMI/SPICE hazırlığı](QUALITY_GATES.md)
 - [Fazlı teslim yol haritası](DELIVERY_ROADMAP_CODEX.md)
 
+- [Ortak ilişkiler: Gerçek SVG ve semantik tablo editör renderer'ı](GRADE6_COMMON_RELATIONS_EDITOR_VIEW_EVIDENCE_2026-10-04.md)
+- [Ortak ilişkiler: Root native tarayıcı ve bağımsız audit kanıtı](GRADE6_COMMON_RELATIONS_ROOT_BROWSER_EVIDENCE_2026-10-04.md)
+- [TÜBİTAK 2024 seçili ortaokul matematik soru–çözüm biçimleri](TUBITAK_2024_MIDDLE_MATH_FORM_EVIDENCE_2026-10-04.md)
+
 Eski belgeler korunur; ancak bunlardaki tamamlanma, uyum veya üretim iddiaları bağımsız kanıt olmadan sürüm beyanı sayılmaz.

@@ -32,9 +32,27 @@ test('authoring CLI rejects paths counts providers and unknown or duplicated fla
     ['--factor-html','--plan'],['--factor-html','--factor-draft'],['--factor-html','--factor-html'],['--factor-html','--out','anything'],
     ['--common-relations-draft','--plan'],['--common-relations-draft','--common-relations-draft'],
     ['--common-relations-draft','--factor-draft'],['--common-relations-draft','--source','arbitrary'],
-    ['--common-relations-draft','--count','100'],['--common-relations-draft','--provider','clef']]) {
+    ['--common-relations-draft','--count','100'],['--common-relations-draft','--provider','clef'],
+    ['--common-relations-html','--plan'],['--common-relations-html','--common-relations-html'],
+    ['--common-relations-html','--common-relations-draft'],['--common-relations-html','--factor-html'],
+    ['--common-relations-html','--source','arbitrary'],['--common-relations-html','--provider','clef'],
+    ['--common-relations-html','--count','100'],['--common-relations-html','--out','anything']]) {
     const out = run(args); assert.equal(out.status, 1); assert.equal(out.stdout, ''); assert.equal(out.stderr.trim(), 'invalid_grade6_reference_authoring_args');
   }
+});
+// Break caught: the common-relation view is unavailable, returns its JSON draft
+// instead of actual SVG/tables, or adds script/external media delivery.
+test('closed common-relations-html opt-in emits actual timeline and unit tables with closed editorial reasoning', () => {
+  const out = run(['--common-relations-html']);
+  assert.equal(out.status, 0, out.stderr); assert.equal(out.stderr, '');
+  assert.ok(Buffer.byteLength(out.stdout) < 65536);
+  assert.match(out.stdout, /^<!doctype html>/iu);
+  assert.equal([...out.stdout.matchAll(/<svg\b/gu)].length, 1);
+  assert.equal([...out.stdout.matchAll(/<table\b/gu)].length, 2);
+  assert.equal([...out.stdout.matchAll(/<tbody\b/gu)].length, 2);
+  assert.equal([...out.stdout.matchAll(/<script\b|<iframe\b|<img\b|<video\b|<audio\b/giu)].length, 0);
+  assert.equal([...out.stdout.matchAll(/<details\b[^>]*>/gu)].length, 1);
+  assert.equal(/<details\b[^>]*\bopen(?:\s|=|>)/u.test(out.stdout), false);
 });
 // Break caught: a distinct common-relation opt-in is missing, emits a prior
 // factor task, drops the finite interval boundaries, or promotes math to stock.
