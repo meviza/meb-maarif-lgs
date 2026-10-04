@@ -2,9 +2,16 @@
 
 Bu dizindeki aşağıdaki belgeler, `codex/k12-foundation-audit` dalında güncel planlama/doğrulama kaynağıdır:
 
+- [4 Ekim sabah raporu: gerçek ilerleme, 36.000 ve video açık işleri](MORNING_REPORT_2026-10-04.md)
+- [Etkin yıl/okul profili ve okul kullanım mevzuatı inceleme kapısı](ACTIVE_YEAR_COURSE_BOUNDARY_RECHECK_2026-10-04.md)
+- [Yerel50PDF/49revizyon: bağımsız taze bayt kontrolü](LOCAL_REFERENCE_ARCHIVE_RECHECK_2026-10-04.md)
+- [Drive49 dosya metaveri/owner-parent eşliği; uzak byte kontrolü değil](DRIVE_ARCHIVE_METADATA_RECHECK_2026-10-04.md)
+- [Normal fabrika, ses/video ve okul backend gerçek hazırlık sınırları](ENGINEERING_READINESS_RECHECK_2026-10-04.md)
+- [Kullanıcının Docker250USD ekran referansı; harcama başlatılmadı](DOCKER_CREDIT_REFERENCE_2026-10-04.md)
+- [Ortak ilişkiler responsive editörü: root native ve test kanıtı](GRADE6_COMMON_RELATIONS_RESPONSIVE_ROOT_ACCEPTANCE_2026-10-04.md)
 - [Ortak kat–bölen uygulama devamı: gerçek71/72, yeni tema73 kapsam dışı](GRADE6_COMMON_RELATIONS_SOURCE_EVIDENCE_2026-10-04.md)
 - [İki bağlamlı özgün görev: sabit kaynak bağı ve kök CLI kabul sınırı](GRADE6_COMMON_RELATIONS_ROOT_ACCEPTANCE_2026-10-04.md)
-- [Gece fazları: güncel 1134 test, kaynaklar ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece fazları: tarihli test/kaynak checkpoint'leri ve açık güvenlik kontrolü](OVERNIGHT_PROGRESS_2026-10-03.md)
 - [Ayrı ortak ilişkiler taslağı ve bağımsız sonlu modulo oracle'ı](GRADE6_COMMON_RELATIONS_DRAFT_EVIDENCE_2026-10-04.md)
 - [Kaynak-bağlı tek taslağın gerçek tablo/gerekçeli editör HTML'si](GRADE6_FACTOR_EVIDENCE_EDITOR_VIEW_EVIDENCE_2026-10-04.md)
 - [Native masaüstü/mobil/dar görünüm, klavye ve gerçek HTML kanıtı](GRADE6_FACTOR_EDITOR_BROWSER_EVIDENCE_2026-10-04.md)

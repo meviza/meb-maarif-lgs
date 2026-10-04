@@ -88,3 +88,18 @@ Faz17'deki mobil caption ve anlatım tekrarı borçları dar editör diliminde g
 | Kaynak/işletim | Bu fazda edinim/Drive/provider/gerçek öğrenci/ücretli cloud0; eski veri/hak paydaları açık. |54büyük kitap/87aylık ve ders bazlı etkin kararlar; tam çıktı/mikrobeceri/aile/rights/uzman,tenant/auth/retention/restore;36.000 ve genel video seri üretimi. |
 
 Bu kontrol, CMMI/SPICE sertifikası veya DAMA kurumsal olgunluk derecesi değildir. Gece döngüsü4Ekim08:00 Europe/Istanbul'da durur; sabah raporu tamamlanmış teknik dilimleri ve gerçek kaynak/üretim/uzman/altyapı boşluklarını birlikte sunar.
+
+## 4 Ekim Sabah Hazırlığı: Faz19 Kaynak Ve Mühendislik Yeniden Kontrolü
+
+[Sabah hazırlık raporu](MORNING_REPORT_2026-10-04.md) teknik geçiş/uzman/yayın/işletimi ayrı gösterir. Yeni uygulama kodu veya içerik stok artışı0; üç paralel readonly audit ve root tekrar tanıkları kullanıldı. Root taze tam test1228/1228, fail/skip0, exit0; test sayısı yeni soru sayısı değildir.
+
+| İş Paketi | Taze Sonuç | Öncelikli Açık Kapı |
+|---|---|---|
+| Kaynak/Drive | Yerel50 fizikselPDF/49SHA tam hash eşliği; Drive49ad-boyut-parent-private-owner metaveri eşliği; remote raw/hash0. |54büyük kitap/87aylık, resmî ders/çıktı/mikrobeceri/aile/temsil paydaları; etkin program/okul profili; hak ve gerektiğinde bounded remote readback/restore. |
+| Ders-sürüm kararı | DKAB2026 değişiklik takvimi iki resmî gövdede aynı; İngilizce olağan45/çoklu46 ve okul izin kohortu ayrı. |4/8 etkin dosya/kitap, hedef okulun profile/izin/yıl bağı;2026/70madde21/22/29 için yetkili okul/mevzuat incelemesi. |
+| Genel fabrika | Normal100aday→12draft/88ret/6aile; common özel review çalışıyor, normal resolver hâlâ unsupported. |Tek aileyi normal kapalı domain dispatch'e bağlayan negatif test; trusted review-store ve gerçek learner delivery ayrı. |
+| Ses/video | Önceki sesli pilot tarihsel; yeni reasoned common audio/video0. |Aynı yeni metnin küçük yetkili TTS, dinleme/sayı-birim/kelime–kalem ve gerçek playable/decode kabulü; genel serial factory açık. |
+| Okul backend | Önceki actual synthetic SQL→HTTP→UI ve receipt-bound dar kayıtlar; yeniDB0. |Server-ownedidentity/tenant, prod wire-driver, retention/kota/restore/yük ve gerçek kurum kararı; gerçek çocuk kapalı. |
+| Docker | Kullanıcının250USD applied/no-sandbox ekranı özel hash'li kopya ve küçük safe notla saklandı; spend0. |Güncel kredi/limit/aşım/fiyat ve açık iş bütçesi; önce tek sentetik ölçüm, üretim/on-prem kararı değil. |
+
+Üç sonraki dikey dilim: **kaynaklı özgün paketi normal fabrikaya bağlamak**, **yeni gerekçeli tek sesli çözümü doğrulamak**, **sentetik dar okul identity/DB/lifecycle pilotunu işletim tanığına taşımak**. Uzman/hak/hesap bütçesi/gerçek çocuk/üretim ve okul mevzuatı kapıları teknik kod ilerlemesiyle kendiliğinden açılmaz.08:00 gece sınırı korunur; erken hazırlık snapshot'ı durdurma gerçekleşti iddiası değildir.

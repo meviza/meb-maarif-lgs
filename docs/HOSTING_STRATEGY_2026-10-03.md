@@ -63,3 +63,7 @@ Drive'ın 5 TB alanı referans/özgün taslak ve arşive yararlı; PostgreSQL/ü
 - Sonra: hesap/kredi/limit doğrulaması ve açık maliyet sınırıyla tek sentetik Docker CPU işi; job çıktısını hash'li özel arşive doğrula, sandbox'ı durdur.
 - Ses: [model/lisans araştırması](MEDIA_TOOL_RESEARCH_2026-10-03.md), izinli yetişkin ses/provenans, küçük Türkçe pilot; başarı/süre/RAM ölçülmeden toplu iş yok.
 - Okul: gerçek auth/tenant/DB, hukuk ve güvenlik kapıları, yük/restore testi; uygun hosting sözleşmesi ve ayrıca üretim izni.
+
+## 4 Ekim Kullanıcı Ekranı: Kredi Görüldü, Kullanım Başlamadı
+
+[Yeni özel ekran referansı](DOCKER_CREDIT_REFERENCE_2026-10-04.md), kullanıcının paylaştığı Agentic Platform ekranında250USD kredi uygulandığını ve henüz sandbox olmadığını kaydeder. Orijinal PNG Git dışında hash eşliğiyle saklandı; kredi harcaması/resource creation0. Yukarıdaki3Ekim fiyat, süre ve hesap araştırması tarihsel varsayımdır; ekran aynı fiyatın, kredi son kullanımının veya kullanılabilir bakiyenin taze hesap doğrulaması değildir. Gerçek job'dan önce güncel hesap/limit/aşım ve açık iş bütçesi tekrar doğrulanır. On-prem/gerçek okul ve KVKK kabul kapıları değişmedi.
