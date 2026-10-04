@@ -12,14 +12,14 @@ export function parseSyntheticNotebookDeskPreviewArgs(argv) {
   const fail = () => { throw new Error('invalid_synthetic_notebook_desk_preview_args'); };
   if (isProxy(argv) || !Array.isArray(argv) || Object.getPrototypeOf(argv) !== Array.prototype) fail();
   const fields = Object.getOwnPropertyDescriptors(argv), length = fields.length?.value;
-  if (![0, 2, 4].includes(length) || Reflect.ownKeys(fields).length !== length + 1) fail();
+  if (![0, 2, 4, 6].includes(length) || Reflect.ownKeys(fields).length !== length + 1) fail();
   const args = [];
   for (let index = 0; index < length; index++) {
     const field = fields[String(index)];
     if (!field?.enumerable || !Object.hasOwn(field, 'value') || typeof field.value !== 'string') fail();
     args.push(field.value);
   }
-  let port = 3340, scenario = 'normal', portSeen = false, scenarioSeen = false;
+  let host = '127.0.0.1', port = 3340, scenario = 'normal', hostSeen = false, portSeen = false, scenarioSeen = false;
   for (let index = 0; index < length; index += 2) {
     if (args[index] === '--port' && !portSeen) {
       if (!/^(?:0|[1-9]\d{3,4})$/u.test(args[index + 1])) fail();
@@ -27,9 +27,11 @@ export function parseSyntheticNotebookDeskPreviewArgs(argv) {
       if (port !== 0 && (port < 1024 || port > 65535)) fail();
     } else if (args[index] === '--scenario' && !scenarioSeen && ['normal', 'reply-loss'].includes(args[index + 1])) {
       scenario = args[index + 1]; scenarioSeen = true;
+    } else if (args[index] === '--host' && !hostSeen && ['127.0.0.1', '::1'].includes(args[index + 1])) {
+      host = args[index + 1]; hostSeen = true;
     } else fail();
   }
-  return Object.freeze({ host: '127.0.0.1', port, scenario });
+  return Object.freeze({ host, port, scenario });
 }
 
 function freeze(value) {
@@ -97,7 +99,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     const server = createSyntheticNotebookDeskServer(createSyntheticNotebookDeskPreviewExecutor(options.scenario));
     await new Promise((resolve, reject) => { server.once('error', reject); server.listen(options.port, options.host, resolve); });
     console.log(JSON.stringify({ state: 'synthetic_notebook_desk_memory_preview',
-      url: `http://127.0.0.1:${server.address().port}/`, scenario: options.scenario,
+      url: `http://${options.host === '::1' ? '[::1]' : options.host}:${server.address().port}/`, scenario: options.scenario,
       storage: 'process_memory_test_double', authenticationImplemented: false, realDatabaseVerified: false,
       learningAnalyticsMapped: false, syntheticOnly: true, learnerReady: false, productionReady: false }));
     let closing = false;
