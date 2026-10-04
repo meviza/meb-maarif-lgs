@@ -5,7 +5,8 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 ## Güncel çalışma
 
 - [Yenilenmiş faz planı](docs/PLATFORM_REBASE_PLAN_2026-10-03.md)
-- [Gece ilerleme kaydı: 1056 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Gece ilerleme kaydı: 1094 test ve açık işler](docs/OVERNIGHT_PROGRESS_2026-10-03.md)
+- [Tek özgün çarpan kanıtı taslağı ve bağımsız cevap denetimi](docs/GRADE6_FACTOR_EVIDENCE_DRAFT_EVIDENCE_2026-10-04.md), [izole PostgreSQL defter aracı](docs/SYNTHETIC_NOTEBOOK_DESK_POSTGRES_EVIDENCE_2026-10-04.md) ve [gerçek tarayıcı → SQL ortak kanıtı](docs/SYNTHETIC_NOTEBOOK_DESK_SQL_BROWSER_EVIDENCE_2026-10-04.md)
 - [Kaynak-bilgili altı özgün yazım briefi](docs/GRADE6_REFERENCE_AUTHORING_PLAN_EVIDENCE_2026-10-04.md) ve [sentetik defter masası gerçek tarayıcı kanıtı](docs/SYNTHETIC_NOTEBOOK_DESK_BROWSER_EVIDENCE_2026-10-04.md)
 - [Farklı anlatım önayarlarının gerçek tarayıcı kanıtı](docs/CAPTION_PRESET_BROWSER_ACCEPTANCE_2026-10-04.md), [defter SQL→HTTP bağlantısı](docs/SYNTHETIC_NOTEBOOK_HTTP_SQL_EVIDENCE_2026-10-04.md) ve [altı yeni kaynak soru-biçimi gözlemi](docs/GRADE6_QUESTION_FORM_PILOT_2026-10-04.md)
 - [Gerçek tarayıcıda kontrollü altyazı gezinmesi](docs/CAPTION_REVIEW_BROWSER_ACCEPTANCE_2026-10-04.md), [kapalı yerel editör HTTP sınırı](docs/REASONED_CAPTION_HTTP_EVIDENCE_2026-10-04.md), [defter uygulaması gerçek SQL kanıtı](docs/SYNTHETIC_NOTEBOOK_APPLICATION_SQL_EVIDENCE_2026-10-04.md) ve [6. sınıf kaynak/mikrobeceri dilimi](docs/GRADE6_SOURCE_SEMANTIC_PILOT_2026-10-04.md)
@@ -31,7 +32,9 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 
 ## Yerel çalıştırma
 
-`node tools/grade6_reference_authoring_plan.mjs` sabit public kaynak metadatasını altı editör briefi özetine bağlar (`--plan` tam küçük planı verir). Soru üretmez, provider çağırmaz ve uzman/onaylı coverage blueprint oluşturmaz.
+`node tools/grade6_reference_authoring_plan.mjs` sabit public kaynak metadatasını altı editör briefi özetine bağlar (`--plan` tam küçük planı verir). Varsayılan ve `--plan` soru üretmez. Ayrı `--factor-draft`, sabit bir özgün editör taslağı ile bağımsız matematik denetimini verir: 1 taslak / 0 uzman kabulü / 0 yayın. Tekrar çağırmak yeni soru değildir; render ve altı uzman kapısı bekliyor. Hiçbir seçenek provider çağırmaz veya onaylı kapsam planı oluşturmaz.
+
+`node tools/synthetic_notebook_desk_postgres_preview.mjs` varsayılan olarak `not_run` döndürür; Docker/SQL/sunucu açmaz. Açık `--run --port 0 --container k12-synthetic-notebook-desk-root-normal --scenario normal` yalnız mevcut cached imajla izole sentetik defter açar; `reply-loss-once` ve `stale-once` ayrı hata senaryolarıdır. `Ctrl+C` sahip olunan sunucu/konteyneri kapatır; 600 saniyelik süre sonu başarı sayılmaz. [Üç gerçek tarayıcı → SQL denemesi](docs/SYNTHETIC_NOTEBOOK_DESK_SQL_BROWSER_EVIDENCE_2026-10-04.md), üretim kimlik doğrulaması veya gerçek öğrenci kabulü değildir.
 
 `node tools/synthetic_notebook_desk_preview.mjs --port 0` ayrı sentetik defter masası açar; sabit executor yalnız process belleğinde test double'dır. Varsayılan port3340; `--scenario reply-loss` ilk yazmadan sonra bilerek yanıt kaybı gösterir. Taslak/okunan kayıt/makbuz ayrıdır; manuel read gerekir. Bu eski3335 scope'unu veya gerçek DB/auth'u değiştirmez. [İstemci sınırları](docs/SYNTHETIC_NOTEBOOK_DESK_CLIENT_EVIDENCE_2026-10-04.md) ve [sabit asset sunucusu](docs/SYNTHETIC_NOTEBOOK_DESK_SERVER_EVIDENCE_2026-10-04.md).
 

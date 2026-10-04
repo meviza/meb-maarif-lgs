@@ -27,7 +27,32 @@ test('fixed full plan opt-in exposes six metadata-only briefs with no approval c
   }
 });
 test('authoring CLI rejects paths counts providers and unknown or duplicated flags before planning', () => {
-  for (const args of [['--count','36000'],['--source','arbitrary'],['--provider','clef'],['--plan','--plan'],['--out','anything']]) {
+  for (const args of [['--count','36000'],['--source','arbitrary'],['--provider','clef'],['--plan','--plan'],['--out','anything'],
+    ['--factor-draft','--plan'],['--factor-draft','--factor-draft'],['--factor-draft','--source','arbitrary']]) {
     const out = run(args); assert.equal(out.status, 1); assert.equal(out.stdout, ''); assert.equal(out.stderr.trim(), 'invalid_grade6_reference_authoring_args');
   }
+});
+// Break caught: previewing a pending task without consuming the actual source
+// planner and independently recomputing its key, or relabeling math as approval.
+test('closed factor-draft opt-in emits one source-bound editor task and an independently recomputed non-approval audit', () => {
+  const out = run(['--factor-draft']); assert.equal(out.status, 0, out.stderr); assert.equal(out.stderr, '');
+  assert.ok(Buffer.byteLength(out.stdout) < 65536);
+  const result = JSON.parse(out.stdout);
+  assert.equal(result.schemaVersion, 'grade6-factor-evidence-preview/v1');
+  assert.equal(result.draft.artifactAudience, 'editor_only');
+  assert.equal(result.draft.counts.newAuthoredDrafts, 1); assert.equal(result.draft.counts.parameterOnlyVariants, 0);
+  assert.equal(result.draft.counts.acceptedProductQuestions, 0); assert.equal(result.draft.counts.publishedQuestions, 0);
+  assert.equal(result.draft.sourceLineage.sourceOrdinal, 16);
+  assert.equal(result.draft.answerKey.boardId, 'board-c');
+  assert.equal(result.verification.valid, true); assert.equal(result.verification.localMathChecks, 'passed');
+  assert.deepEqual(result.verification.recomputed.positiveDivisors, [1,2,3,4,6,9,12,18,36]);
+  assert.deepEqual(result.verification.recomputed.factorPairs, [[1,36],[2,18],[3,12],[4,9],[6,6]]);
+  assert.deepEqual(result.verification.recomputed.distinctPrimeFactors, [2,3]);
+  assert.equal(result.verification.recomputed.primeBadgeSum, 5);
+  assert.deepEqual(result.verification.recomputed.correctBoardIds, ['board-c']);
+  assert.equal(result.verification.humanApproval, null); assert.equal(result.verification.serializedHashIsAuthority, false);
+  assert.equal(result.verification.learnerReady, false); assert.equal(result.verification.publicationReady, false);
+  assert.equal(result.verification.counts.acceptedProductQuestions, 0);
+  assert.equal(result.draft.scope.officialOutcomeCode, null); assert.equal(result.draft.scope.fullOutcomeCoverage, false);
+  assert.ok(Object.values(result.draft.gates).every(value => value === 'pending'));
 });

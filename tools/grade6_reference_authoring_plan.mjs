@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Fixed public metadata -> editor pre-blueprint only. No provider, source PDF,
-// arbitrary path, question count, approval, generation, or file output option.
+// arbitrary path, question count, provider, approval, or file output option.
+// A closed factor-draft opt-in emits one own editor task, never learner stock.
 import { constants, lstat, open } from 'node:fs/promises';
 
 const stable = (a, b) => a.dev === b.dev && a.ino === b.ino && a.size === b.size
@@ -26,21 +27,30 @@ async function readSnapshot(name) {
 
 try {
   const args = process.argv.slice(2);
-  if (args.length !== 0 && (args.length !== 1 || args[0] !== '--plan')) throw new Error('invalid_grade6_reference_authoring_args');
+  if (args.length !== 0 && (args.length !== 1 || !['--plan', '--factor-draft'].includes(args[0]))) throw new Error('invalid_grade6_reference_authoring_args');
   const { createGrade6ReferenceAuthoringPlan } = await import('../packages/content-factory/grade6_reference_authoring_plan.mjs');
   const [forms, matrix, main, supplement] = await Promise.all(['grade6-question-form-observations',
     'grade6-source-semantic-candidate-matrix', 'meb-reference-registry', 'education-reference-supplement'].map(readSnapshot));
-  const plan = createGrade6ReferenceAuthoringPlan({ formObservations: forms, semanticMatrix: matrix,
+  const plannerInput = { formObservations: forms, semanticMatrix: matrix,
     sourceScopeInput: { archives: [main, supplement], selection: { sources: [], inventory: [] },
-      downloadObservations: { sources: [] }, monthly: { sources: [], batches: [] }, formObservations: forms } });
-  const summary = { schemaVersion: 'grade6-reference-authoring-summary/v1', state: plan.state,
-    planContentSha256: plan.contentSha256, counts: plan.counts, gates: plan.gates,
-    briefTitles: plan.briefs.map(brief => brief.title),
-    unmatchedSourceOrdinals: plan.briefs.filter(brief => !brief.proposedOutcomeCodes.length).map(brief => brief.sourceReference.ordinal),
-    unsampledPriorityOutcome: 'MAT.6.1.4', fullCurriculumCoveragePercent: null,
-    freshPdfByteChecks: plan.lineage.sourceScope.freshPdfByteChecks, providerCallsMade: plan.activity.providersCalled,
-    humanApproval: null, coverageBlueprintReady: false, productionReady: false };
-  console.log(JSON.stringify(args.length ? plan : summary));
+      downloadObservations: { sources: [] }, monthly: { sources: [], batches: [] }, formObservations: forms } };
+  if (args[0] === '--factor-draft') {
+    const { createGrade6FactorEvidenceDraft, verifyGrade6FactorEvidenceDraft } = await import('../packages/content-factory/grade6_factor_evidence_draft.mjs');
+    const draft = createGrade6FactorEvidenceDraft(plannerInput);
+    const verification = verifyGrade6FactorEvidenceDraft(draft, plannerInput);
+    if (!verification.valid) throw new Error('grade6_factor_draft_audit_failed');
+    console.log(JSON.stringify({ schemaVersion: 'grade6-factor-evidence-preview/v1', draft, verification }));
+  } else {
+    const plan = createGrade6ReferenceAuthoringPlan(plannerInput);
+    const summary = { schemaVersion: 'grade6-reference-authoring-summary/v1', state: plan.state,
+      planContentSha256: plan.contentSha256, counts: plan.counts, gates: plan.gates,
+      briefTitles: plan.briefs.map(brief => brief.title),
+      unmatchedSourceOrdinals: plan.briefs.filter(brief => !brief.proposedOutcomeCodes.length).map(brief => brief.sourceReference.ordinal),
+      unsampledPriorityOutcome: 'MAT.6.1.4', fullCurriculumCoveragePercent: null,
+      freshPdfByteChecks: plan.lineage.sourceScope.freshPdfByteChecks, providerCallsMade: plan.activity.providersCalled,
+      humanApproval: null, coverageBlueprintReady: false, productionReady: false };
+    console.log(JSON.stringify(args.length ? plan : summary));
+  }
 } catch (error) {
   console.error(error?.message === 'invalid_grade6_reference_authoring_args' ? error.message : 'grade6_reference_authoring_failed');
   process.exitCode = 1;
