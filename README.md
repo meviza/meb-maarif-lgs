@@ -4,6 +4,7 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 
 ## Güncel çalışma
 
+- [6–8. sınıf Fen Bilimleri pilotu](docs/SCIENCE_678_PILOT_REPORT_2026-10-04.md): 54 kaynak-bağlı görselli ve gerekçeli taslak; 27 aile, 9 sınıf–alan hücresi. 450 hedefinden 396 soru henüz hazırlanmadı. [Gerçek tarayıcı kontrolü](docs/SCIENCE_678_BROWSER_EVIDENCE_2026-10-04.md) ve [bağımsız inceleme](docs/SCIENCE_678_INDEPENDENT_AUDIT_2026-10-04.md); canlı Clef ve uzman kabulü ayrı durumlardır.
 - [Soru odaklı güncel root kontrol noktası](docs/GRADE6_QUESTION_BANK_ROOT_CHECKPOINT_2026-10-04.md): iki yeni özgün aile + üç mevcut görev; beş soruluk gerçek kapalı JSON/HTML editör bankası. Yeni konu anlatımı0;1429 PASS/2 opt-in medya SKIP/0 FAIL. Kalibrasyon, öğrenci teslimi ve yeni iki görevin genel medya/fabrika adapter'ı açık.
 - [Sayı ünitesi ve native defter: güncel root kontrol noktası](docs/GRADE6_NUMBER_UNIT_NOTEBOOK_ROOT_CHECKPOINT_2026-10-04.md): kısa konu → tek gerekçeli örnek → iki farklı alıştırma;8 görev/zorluk açıkları görünür. Native memory defter normal/yanıt kaybı akışı geçti;1388 PASS/2 SKIP/0 FAIL. Fiziksel mobil/öğrenci teslimi ve yeni ses/video açık.
 - [Önceki bölünebilme ve yer-imi kontrol noktası](docs/GRADE6_DIVISIBILITY_BOOKMARK_ROOT_CHECKPOINT_2026-10-04.md): tarihsel1362 PASS/2 SKIP kanıtı; buradaki native erişim açığının sonraki tanısı yukarıdadır.
@@ -43,6 +44,8 @@ Bu dal, Antigravity prototipini koruyarak 1–8. sınıf için ortak platform te
 36.000 soru hedefi kazanım/alt beceri/soru ailesi kapsama matrisinden hesaplanacak; ders anlatımları ayrı sayılacak. Haftalık akış okul takvimi ve uygulanan program sürümüne bağlanacak. İndirilmiş MEB belgeleri yalnız referanstır; ticari yeniden kullanım hakları henüz doğrulanmadı.
 
 ## Yerel çalıştırma
+
+`node tools/science_678_pilot.mjs --preview` Fen Atölyesi'nin yanıt içeren yetişkin editör görünümünü yalnız loopback üzerinde açar; gerçek adres stdout'ta verilir. Sınıf/alan/zorluk filtreleri, seçenek denemesi ve neden–yol–işlem–kontrol–püf nokta çözümü bulunur. Varsayılan komut küçük durum özeti, `--json` sabit 54 taslak, `--benchmark` mevcut stok için gerçek yerel süre ölçümü verir. Tekrar çalıştırmak yeni soru üretmez. `--clef-preflight` üç gerçek sorudan altı tipli karar isteği hazırlar; bu komut anahtar okumaz, dış çağrı yapmaz ve görsel denetimi yapılmış göstermez.
 
 `node tools/grade6_reference_authoring_plan.mjs --number-unit-review` üç sabit kaynak-bağlı mevcut taslağı1mini ders/1gerekçeli örnek/2farklı alıştırma editör paketine bağlar. `--number-unit-review-html` aynı akışın tek belge/3kapalı çözüm/1SVG/tablo ve görünür kota açığı içeren HTML'sini stdout'a verir. İki görevde zorluk atanmadığı için10hedef/2seçili/8eksik ve1/3/3/3 band açığı korunur. Yeni soru/provider/ses/video0; normal karma-test kapsamı veya count üreticisi gevşetilmez. [Ders kanıtı](docs/GRADE6_NUMBER_LESSON_REVIEW_EVIDENCE_2026-10-04.md).
 

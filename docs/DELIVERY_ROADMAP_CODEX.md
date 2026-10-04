@@ -133,3 +133,18 @@ Root final tam1336/1336, fail/skip/cancel/todo0; bağımsız yeni41/41, syntax7/
 | Ürün ve veri | Tam etkin müfredat/mikrobeceri/aile/hak paydaları, uzman kabulü/36.000; DAMA owner/steward/access/retention store; gerçek tenant/auth/kota/restore; premium UI/gerçek mobil cihaz ayrı fazlar. |
 
 Clef advisory QA kalır, bu fazda çağrılmadı. Gerçek çocuk/kurum verisi, yeni PDF/Drive/Docker/DB/cloud/SDK/skill işlemi0. TDD/audit/test raporları CMMI/SPICE hazırlık kanıtıdır, sertifika değil. Gece/sabah otomasyonları yeniden açılmadı.
+
+## 4 Ekim Soru Önceliği: Fen Bilimleri 6–8 Ve 450 Hedefi
+
+Kullanıcının yeni önceliği, konu anlatımı genişletmekten önce üç sınıfın görselli ve gerekçeli Fen bankasıdır. [Güncel pilot raporu](SCIENCE_678_PILOT_REPORT_2026-10-04.md), [bağımsız audit](SCIENCE_678_INDEPENDENT_AUDIT_2026-10-04.md) ve [gerçek tarayıcı tanığı](SCIENCE_678_BROWSER_EVIDENCE_2026-10-04.md) önceki sayılardan ayrı kontrol noktasıdır.
+
+| İş Paketi | Fiilî Durum | Sonraki Kabul |
+| --- | --- | --- |
+| Kaynak ve çeşitlilik | 132 resmî çıktı kodlu blueprint; 27 aile / 54 taslak / 9 sınıf–alan hücresi. Pilotta 27 kod referanslı, 105 henüz örneklenmemiş. | Okulun etkin yıllık planı; çıktı–mikrobeceri–temsil–aile farkı; 450 için en az 198 ek özgün aile brief'i. |
+| Soru ve cevap | Kaynak bağı, cevaptan bağımsız sonlu bilim hesabı, yanlış anahtar ve koşul negatifleri; verilenlerden SVG; neden–yol–ara anlam–kontrol–püf nokta. | Serbest Türkçe–typed claim–çözüm uyumu, alan/ölçme/yaş ve özgünlük/benzerlik incelemesi; çok zor düzeyler henüz 0. |
+| JEV / Clef | 54 gerçek yerel sezgisel JEV yürütmesi; canlı TypeSafe çağrısı değil. Kullanıcının seçimi Cloudflare/Clef. Üç gerçek sorudan altı tipli karar hazırlığı ve sınırlandırılmış taşıma kodu var. | Güvenli yeni token, Free planında en fazla üç gerçek danışma isteği; response grameri ve süre tanığı. Henüz canlı Clef 0. |
+| Arayüz | Gerçek loopback editör önizlemesi; sınıf/alan/zorluk, seçenek ve gerekçeli çözüm. 54 aktif SVG metninde taşma yok; 320/390 piksel sayfa genişliği tekrar doğrulandı. | Fiziksel telefon/tablet, tam AX/WCAG ve çocuk/öğretmen UX; öğrenci rolünde başka sınıf kaynakları kesin kapalı. |
+| Süre ve kalite | Mevcut sabit stok yerel hazırlığı yaklaşık 89 ms, editör ayrı yaklaşık 87 ms; gerçek tam repo 1539/1539, fail/skip 0. | Gerçek üretici–bağımsız çözüm–görsel–uzman çevriminden kabul/süre ve ret oranı. Yerel sabit stok hızı 450 üretim süresi değildir. |
+| Medya / DAMA / veri | Yeni Fen sesi/video/öğrenci DB kaydı 0; amaç/sürüm/kaynak/hash/kalite/erişim kaydı var. | Owner/steward/retention, kabul edilen sorunun gerçek yeni TTS/kalem/video trace'i ve yetkili sentetik öğrenme olayı. |
+
+Her hücre için 50 hedef ve en fazla iki varyant sınırı korunur. 54 mevcut taslak 450 diye genişletilmez; kalan 396 soru görünürdür. Yazarın %10/%30/%30/%30 test hedefi resmî MEB oranı değildir; Bloom görev etiketleri öğrenci gelişim ölçümü değildir. Canlı API ve seri üretim ayrı kalır; gece/sabah otomasyonları yeniden başlatılmaz.

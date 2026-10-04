@@ -1,0 +1,2143 @@
+{
+  "schemaVersion": "science-678-source-blueprint/v1",
+  "state": "source_backed_editorial_blueprint_not_product_acceptance",
+  "observedAt": "2026-10-04",
+  "courseKey": "fen-bilimleri",
+  "academicYear": "2026-2027",
+  "editorialBranchClassification": true,
+  "branchMeaning": "Physics, chemistry and biology are editorial routing labels inside the integrated official Fen Bilimleri course, not three official middle-school courses.",
+  "quota": {
+    "perCell": 50,
+    "total": 450,
+    "basis": "human_requested_not_official_annual_distribution",
+    "generatedDraftsInThisFile": 0
+  },
+  "programSources": [
+    {
+      "id": "tymm-current-fen-bilimleri",
+      "url": "https://tymm.meb.gov.tr/assets/pdf/fen-bilimleri-dersi_20260902_111309_119.pdf",
+      "sourcePage": "https://tymm.meb.gov.tr/ogretim-programlari/ders/fen-bilimleri-dersi",
+      "version": "TYMM-2026-catalog",
+      "pdfSha256": "a56aab9c648f8293341be3f70c0b49e644ecb1d56be9fcaa200d6419bf1eeb97",
+      "byteLength": 3941657,
+      "freshLocalHashMatched": true,
+      "usagePolicy": "reference_only_source_body_not_redistributed"
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri",
+      "url": "https://mufredat.meb.gov.tr/Dosyalar/201812312311937-FEN%20B%C4%B0L%C4%B0MLER%C4%B0%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI2018.pdf",
+      "sourcePage": "https://mufredat.meb.gov.tr/ProgramDetay.aspx?PID=325",
+      "version": "MEB-2018",
+      "pdfSha256": "3a8aa21327083bf15c33b9c404f299ff784b11d26024522a8c24b61387c8c0c1",
+      "byteLength": 473150,
+      "freshLocalHashMatched": true,
+      "usagePolicy": "reference_only_source_body_not_redistributed"
+    }
+  ],
+  "archiveSources": [
+    {
+      "id": "meb-archive-grade7-science-skills-unit1",
+      "url": "https://cdn.eba.gov.tr/yardimcikaynaklar/2022/01/odsgm/beceri/2223/fen/7_fen_1.pdf",
+      "sourcePage": "https://odsgm.meb.gov.tr/www/7-sinif-beceri-temelli-testler/icerik/490",
+      "pdfSha256": "28d70fd1510969b7ef5d1b86cd0f8027a4a6f9ab0cdd8138768ffa690ac2f8fd",
+      "byteLength": 5379465,
+      "freshLocalHashMatched": true,
+      "programAlignment": "legacy_archive_not_automatically_current_TYMM",
+      "usagePolicy": "reference_only_source_body_not_redistributed"
+    },
+    {
+      "id": "lgs-2024-numerical",
+      "url": "https://karabukodm.meb.gov.tr/meb_iys_dosyalar/2025_07/01134301_2024sayislbolum.pdf",
+      "sourcePage": "https://karabukodm.meb.gov.tr/www/lgs-yayimlanmis-sorular/icerik/213",
+      "pdfSha256": "93b7b44a2127680940d4e272dc72d7dc6dba21ee227135f58f2b22931d38881a",
+      "byteLength": 3786827,
+      "freshLocalHashMatched": true,
+      "programAlignment": "2024_LGS_reference_for_legacy_grade8_and_style_not_all_grades",
+      "usagePolicy": "reference_only_source_body_not_redistributed"
+    }
+  ],
+  "cohortEvidence": [
+    {
+      "url": "https://tegm.meb.gov.tr/www/2026-2027-egitim-ogretim-yili-taslak-cerceve-planlar-yayinlandi/icerik/1316/tr",
+      "publishedDate": "2026-09-03",
+      "observationDate": "2026-10-04",
+      "meaning": "Official central notice places grades6/7 in TYMM2026-27 cohort"
+    },
+    {
+      "url": "https://menderes.meb.gov.tr/www/20262027-egitim-ve-ogretim-yili-turkiye-yuzyili-maarif-modeli-temel-egitim-taslak-cerceve-planlari-yayimlandi/icerik/1760/",
+      "publishedDate": "2026-09-05",
+      "observationDate": "2026-10-04",
+      "meaning": "Official MEB district notice explicitly retains existing programs in grade8; course-specific final school/year plan not collected here"
+    }
+  ],
+  "pageHashMeaning": "SHA256 over exact UTF8 pdftotext -layout -f P -l P stdout including formfeed; text extraction revision, not a cropped PDF byte hash or raster acceptance",
+  "pageEvidence": [
+    {
+      "id": "tymm-current-fen-bilimleri:p112",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 112,
+      "printedPage": 112,
+      "pdftotextLayoutPageSha256": "2551f9a4d4ca2aa47212622a70c0f3f69317263e42a8d15775e9e4bc06fc1a04",
+      "verifiedOutcomeCodes": [
+        "FB.6.1.1",
+        "FB.6.1.2",
+        "FB.6.1.3",
+        "FB.6.1.4"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p116",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 116,
+      "printedPage": 116,
+      "pdftotextLayoutPageSha256": "56e293fc5e0e4cb59c42c355661677237d0040ab078c9b8a0e21200c186bedde",
+      "verifiedOutcomeCodes": [
+        "FB.6.2.1",
+        "FB.6.2.2",
+        "FB.6.2.3"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p120",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 120,
+      "printedPage": 120,
+      "pdftotextLayoutPageSha256": "dddea229b7b7fdae7e1fa5f80faaf0adc8f8be6ded759537e62f3ce7882050d6",
+      "verifiedOutcomeCodes": [
+        "FB.6.3.1",
+        "FB.6.3.2",
+        "FB.6.3.3",
+        "FB.6.3.4",
+        "FB.6.3.5",
+        "FB.6.3.6",
+        "FB.6.3.7",
+        "FB.6.3.8",
+        "FB.6.3.9"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p127",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 127,
+      "printedPage": 127,
+      "pdftotextLayoutPageSha256": "a1344f53334a6202f067b97f67ae49e4c35d70066cd737b02f3d2b9606bdd369",
+      "verifiedOutcomeCodes": [
+        "FB.6.4.1",
+        "FB.6.4.2",
+        "FB.6.4.3",
+        "FB.6.4.4",
+        "FB.6.4.5",
+        "FB.6.4.6",
+        "FB.6.4.7"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p132",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 132,
+      "printedPage": 132,
+      "pdftotextLayoutPageSha256": "b547b02febe2844583123a2c104800c090e01313317cc3ed878c04f0521f9fa5",
+      "verifiedOutcomeCodes": [
+        "FB.6.5.1",
+        "FB.6.5.2",
+        "FB.6.5.3",
+        "FB.6.5.4",
+        "FB.6.5.5",
+        "FB.6.5.6"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p138",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 138,
+      "printedPage": 138,
+      "pdftotextLayoutPageSha256": "6fd586ca5705555bd39f9cdd4bb2cf42e4c0ad5d137637696f8a2b1cb0654cc3",
+      "verifiedOutcomeCodes": [
+        "FB.6.6.1",
+        "FB.6.6.2",
+        "FB.6.6.3"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p142",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 142,
+      "printedPage": 142,
+      "pdftotextLayoutPageSha256": "d71b8a65bc39c2c90143b2c06689529eeb273787fdc99693e54a22de26454991",
+      "verifiedOutcomeCodes": [
+        "FB.6.7.1",
+        "FB.6.7.2",
+        "FB.6.7.3",
+        "FB.6.7.4"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p147",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 147,
+      "printedPage": 147,
+      "pdftotextLayoutPageSha256": "d119d68ef7f3229f443562d27ef9cd3061aed51ba43de3976c2fe2afb51e461b",
+      "verifiedOutcomeCodes": [
+        "FB.7.1.1",
+        "FB.7.1.2",
+        "FB.7.1.3",
+        "FB.7.1.4",
+        "FB.7.1.5"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p152",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 152,
+      "printedPage": 152,
+      "pdftotextLayoutPageSha256": "5cc22ee89029f3ee1202526c89cffa060d23dab8874820bed0c6675a13862b0d",
+      "verifiedOutcomeCodes": [
+        "FB.7.2.1",
+        "FB.7.2.2",
+        "FB.7.2.3"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p156",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 156,
+      "printedPage": 156,
+      "pdftotextLayoutPageSha256": "a95059f9fde5cd3fd0b4063316167d3ccb4d637589ce9f109c4f24c451282607",
+      "verifiedOutcomeCodes": [
+        "FB.7.3.1",
+        "FB.7.3.2",
+        "FB.7.3.3",
+        "FB.7.3.4",
+        "FB.7.3.5",
+        "FB.7.3.6",
+        "FB.7.3.7"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p157",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 157,
+      "printedPage": 157,
+      "pdftotextLayoutPageSha256": "ef55786d99dae358f311aed03b28ca2c725b21d6cfba3ffa28454485abfc2488",
+      "verifiedOutcomeCodes": [
+        "FB.7.3.8",
+        "FB.7.3.9"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p165",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 165,
+      "printedPage": 165,
+      "pdftotextLayoutPageSha256": "e249cc5b208e701c5fe10dc28387da679ed988775784c03a0b06ae42917c7723",
+      "verifiedOutcomeCodes": [
+        "FB.7.4.1",
+        "FB.7.4.2",
+        "FB.7.4.3"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p169",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 169,
+      "printedPage": 169,
+      "pdftotextLayoutPageSha256": "76fb49973c98e42635f476a1db3b81ae26879e593bc3a20c1667be2eb1fcfdee",
+      "verifiedOutcomeCodes": [
+        "FB.7.5.1",
+        "FB.7.5.2",
+        "FB.7.5.3",
+        "FB.7.5.4",
+        "FB.7.5.5",
+        "FB.7.5.6",
+        "FB.7.5.7",
+        "FB.7.5.8",
+        "FB.7.5.9",
+        "FB.7.5.10"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p177",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 177,
+      "printedPage": 177,
+      "pdftotextLayoutPageSha256": "a791bdb86378b11a7272884b443ec7f77b5cd6e559a9320e75ac172c3abea0f4",
+      "verifiedOutcomeCodes": [
+        "FB.7.6.1",
+        "FB.7.6.2",
+        "FB.7.6.3"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p181",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 181,
+      "printedPage": 181,
+      "pdftotextLayoutPageSha256": "56f91b3290705339eae8ac964e6052d4d789bf728db8968a5a29bee4245be9e4",
+      "verifiedOutcomeCodes": [
+        "FB.7.7.1",
+        "FB.7.7.2"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p118",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 118,
+      "printedPage": 118,
+      "pdftotextLayoutPageSha256": "504095eee2982c2deffaaf2b608a808e3adaf1c17efd6d10890fd0e6144ca9cd",
+      "verifiedOutcomeCodes": [],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p134",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 134,
+      "printedPage": 134,
+      "pdftotextLayoutPageSha256": "6bbcd83308fcbfca168ebcb0a087770a699930dd112ce15e8c9570ff632cc6f6",
+      "verifiedOutcomeCodes": [],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p135",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 135,
+      "printedPage": 135,
+      "pdftotextLayoutPageSha256": "aa905ce5bf0cb6887aed7f6ca3458449a5102c3d72776ef55df6e5d165aa0579",
+      "verifiedOutcomeCodes": [],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p153",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 153,
+      "printedPage": 153,
+      "pdftotextLayoutPageSha256": "412138905d637fa24e0d56f37b6a811492f072063deea4695397a4bfc401b311",
+      "verifiedOutcomeCodes": [],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p170",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 170,
+      "printedPage": 170,
+      "pdftotextLayoutPageSha256": "4dbb4f9dc06b84821492c0843905da99af0e16af493e370a51946cefa0b7013f",
+      "verifiedOutcomeCodes": [],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p172",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 172,
+      "printedPage": 172,
+      "pdftotextLayoutPageSha256": "3bc4891197c9cb05114f1bfebf15108910cb5c3b08347d6948a98af6aa3b5ddb",
+      "verifiedOutcomeCodes": [],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p158",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 158,
+      "printedPage": 158,
+      "pdftotextLayoutPageSha256": "254e5974b9dbb98a52b1faa4edc92c30400242fb95ff5831db630f2adbe2d42e",
+      "verifiedOutcomeCodes": ["FB.7.3.1"],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p159",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 159,
+      "printedPage": 159,
+      "pdftotextLayoutPageSha256": "fa3d53d9a75a4ee74d0d6312c222c01785c86379c731841ed18c486fb279944e",
+      "verifiedOutcomeCodes": ["FB.7.3.2", "FB.7.3.3"],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p166",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 166,
+      "printedPage": 166,
+      "pdftotextLayoutPageSha256": "55dbaed572ac0725a1cc3e886cc936149b34c1437d19fc02d55474ec0e4d5d5f",
+      "verifiedOutcomeCodes": ["FB.7.4.1", "FB.7.4.2"],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "tymm-current-fen-bilimleri:p175",
+      "sourceId": "tymm-current-fen-bilimleri",
+      "physicalPdfPage": 175,
+      "printedPage": 175,
+      "pdftotextLayoutPageSha256": "cb4f82af47cd865a22f9d134eb11a03adf6dfaf8a5f85281eb53443bdf18125c",
+      "verifiedOutcomeCodes": ["FB.7.5.10"],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri:p49",
+      "sourceId": "legacy-2018-fen-bilimleri",
+      "physicalPdfPage": 49,
+      "printedPage": 47,
+      "pdftotextLayoutPageSha256": "e477cc2dc5d6af9ba6ba4a23f9c3ef1ceb90bee92bd57eebed1fc01833519383",
+      "verifiedOutcomeCodes": [
+        "F.8.1.1.1",
+        "F.8.1.2.1",
+        "F.8.1.2.2"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri:p50",
+      "sourceId": "legacy-2018-fen-bilimleri",
+      "physicalPdfPage": 50,
+      "printedPage": 48,
+      "pdftotextLayoutPageSha256": "7f4be88749a62389293ecf5fdaabf8495a94c17f0e06df17360543a441b58f83",
+      "verifiedOutcomeCodes": [
+        "F.8.2.1.1",
+        "F.8.2.1.2",
+        "F.8.2.1.3",
+        "F.8.2.2.1",
+        "F.8.2.2.2",
+        "F.8.2.2.3",
+        "F.8.2.3.1",
+        "F.8.2.3.2",
+        "F.8.2.3.3"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri:p51",
+      "sourceId": "legacy-2018-fen-bilimleri",
+      "physicalPdfPage": 51,
+      "printedPage": 49,
+      "pdftotextLayoutPageSha256": "6591b6b76b08a27c1313fd3c4144ec8d77d25bc62bd15dbe239bbdbd851b8d9a",
+      "verifiedOutcomeCodes": [
+        "F.8.2.4.1",
+        "F.8.2.5.1",
+        "F.8.2.5.2",
+        "F.8.2.5.3",
+        "F.8.3.1.1",
+        "F.8.3.1.2",
+        "F.8.3.1.3"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri:p52",
+      "sourceId": "legacy-2018-fen-bilimleri",
+      "physicalPdfPage": 52,
+      "printedPage": 50,
+      "pdftotextLayoutPageSha256": "b99ec1e95f3577188452d0610a964f95dae88d594800da30a50607044578edd9",
+      "verifiedOutcomeCodes": [
+        "F.8.4.1.1",
+        "F.8.4.1.2",
+        "F.8.4.2.1",
+        "F.8.4.3.1",
+        "F.8.4.4.1",
+        "F.8.4.4.2",
+        "F.8.4.4.3",
+        "F.8.4.4.4",
+        "F.8.4.4.5",
+        "F.8.4.4.6",
+        "F.8.4.4.7"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri:p53",
+      "sourceId": "legacy-2018-fen-bilimleri",
+      "physicalPdfPage": 53,
+      "printedPage": 51,
+      "pdftotextLayoutPageSha256": "08a46309bb82b32b98ff95d7dd20419aaf48c22b77d916f30a0bf0f40639669f",
+      "verifiedOutcomeCodes": [
+        "F.8.4.5.1",
+        "F.8.4.5.2",
+        "F.8.4.5.3",
+        "F.8.4.5.4",
+        "F.8.4.6.1",
+        "F.8.4.6.2",
+        "F.8.5.1.1",
+        "F.8.5.1.2"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri:p54",
+      "sourceId": "legacy-2018-fen-bilimleri",
+      "physicalPdfPage": 54,
+      "printedPage": 52,
+      "pdftotextLayoutPageSha256": "68e65df2cd38027510a2a330c7881288d63c4f5b87fa93d4c0915e8b71329929",
+      "verifiedOutcomeCodes": [
+        "F.8.6.1.1",
+        "F.8.6.2.1",
+        "F.8.6.2.2",
+        "F.8.6.2.3",
+        "F.8.6.3.1",
+        "F.8.6.3.2",
+        "F.8.6.3.3"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri:p55",
+      "sourceId": "legacy-2018-fen-bilimleri",
+      "physicalPdfPage": 55,
+      "printedPage": 53,
+      "pdftotextLayoutPageSha256": "6e44311aa6d716d9a8a41513477871cf0b41f5f8bcdeb49ffe2b86d2d42e4ccd",
+      "verifiedOutcomeCodes": [
+        "F.8.6.4.1",
+        "F.8.6.4.2",
+        "F.8.6.4.3",
+        "F.8.6.4.4",
+        "F.8.6.4.5",
+        "F.8.7.1.1",
+        "F.8.7.1.2",
+        "F.8.7.1.3",
+        "F.8.7.2.1"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "legacy-2018-fen-bilimleri:p56",
+      "sourceId": "legacy-2018-fen-bilimleri",
+      "physicalPdfPage": 56,
+      "printedPage": 54,
+      "pdftotextLayoutPageSha256": "aeee4b46496c8e9dad71fb08ec4ee763a63869add9990e87ea166f3a4c115113",
+      "verifiedOutcomeCodes": [
+        "F.8.7.2.2",
+        "F.8.7.3.1",
+        "F.8.7.3.2",
+        "F.8.7.3.3",
+        "F.8.7.3.4",
+        "F.8.7.3.5",
+        "F.8.7.3.6"
+      ],
+      "review": "local_hash_matched_pdf_text_semantics",
+      "rasterReviewed": false
+    },
+    {
+      "id": "meb-archive-grade7-science-skills-unit1:p1",
+      "sourceId": "meb-archive-grade7-science-skills-unit1",
+      "physicalPdfPage": 1,
+      "printedPage": null,
+      "pdftotextLayoutPageSha256": "5e3608d17cb12d0e729439a1b829b5191a3657c086073d6dfe1f669c51efa139",
+      "verifiedOutcomeCodes": [],
+      "review": "local_text_review",
+      "rasterReviewed": false
+    },
+    {
+      "id": "meb-archive-grade7-science-skills-unit1:p2",
+      "sourceId": "meb-archive-grade7-science-skills-unit1",
+      "physicalPdfPage": 2,
+      "printedPage": null,
+      "pdftotextLayoutPageSha256": "4eef6c182d1cc9b4e0c0eb9a155738b7ea930c395c6ad9c65f79ad7c476a06e0",
+      "verifiedOutcomeCodes": [],
+      "review": "local_raster_and_text_review",
+      "rasterReviewed": true
+    },
+    {
+      "id": "lgs-2024-numerical:p19",
+      "sourceId": "lgs-2024-numerical",
+      "physicalPdfPage": 19,
+      "printedPage": 19,
+      "pdftotextLayoutPageSha256": "179bf2c7909c6c4f7ddabec61cb67da9a62055f94e7ed446b49bea127f1b3663",
+      "verifiedOutcomeCodes": [],
+      "review": "local_raster_and_text_review",
+      "rasterReviewed": true
+    },
+    {
+      "id": "lgs-2024-numerical:p23",
+      "sourceId": "lgs-2024-numerical",
+      "physicalPdfPage": 23,
+      "printedPage": 23,
+      "pdftotextLayoutPageSha256": "43892061a75974df3e3013261c993c1fb4538e796977d38828307f4307e223ae",
+      "verifiedOutcomeCodes": [],
+      "review": "local_text_review",
+      "rasterReviewed": false
+    },
+    {
+      "id": "lgs-2024-numerical:p24",
+      "sourceId": "lgs-2024-numerical",
+      "physicalPdfPage": 24,
+      "printedPage": 24,
+      "pdftotextLayoutPageSha256": "f09f0a3632c0219ebc949f1de771ea78c5312adf9a5b92adbe922b5240172d52",
+      "verifiedOutcomeCodes": [],
+      "review": "local_raster_and_text_review",
+      "rasterReviewed": true
+    },
+    {
+      "id": "lgs-2024-numerical:p25",
+      "sourceId": "lgs-2024-numerical",
+      "physicalPdfPage": 25,
+      "printedPage": 25,
+      "pdftotextLayoutPageSha256": "6831ddf3b51d78f8afec2533f725a739135f7b749c8a4bcc4cf3d5e2805bb6d0",
+      "verifiedOutcomeCodes": [],
+      "review": "local_text_review",
+      "rasterReviewed": false
+    },
+    {
+      "id": "lgs-2024-numerical:p28",
+      "sourceId": "lgs-2024-numerical",
+      "physicalPdfPage": 28,
+      "printedPage": 28,
+      "pdftotextLayoutPageSha256": "7699cd1588c6bcb55caf7c215940a81dd71beb6957fba4deec86f9ce439b1083",
+      "verifiedOutcomeCodes": [],
+      "review": "local_raster_and_text_review",
+      "rasterReviewed": true
+    },
+    {
+      "id": "lgs-2024-numerical:p29",
+      "sourceId": "lgs-2024-numerical",
+      "physicalPdfPage": 29,
+      "printedPage": 29,
+      "pdftotextLayoutPageSha256": "a5c1e518c51c39ef21cebc499b57403ccb0af5625a3efd31955a1f58aa495fe9",
+      "verifiedOutcomeCodes": [],
+      "review": "local_text_review",
+      "rasterReviewed": false
+    },
+    {
+      "id": "lgs-2024-numerical:p30",
+      "sourceId": "lgs-2024-numerical",
+      "physicalPdfPage": 30,
+      "printedPage": 30,
+      "pdftotextLayoutPageSha256": "b705ca2549f96e94d7edea1339dab979ccc1828f6d8ad852c350164021963495",
+      "verifiedOutcomeCodes": [],
+      "review": "local_text_review",
+      "rasterReviewed": false
+    }
+  ],
+  "styleEvidence": [
+    {
+      "id": "archive7-space-prevention",
+      "sourceId": "meb-archive-grade7-science-skills-unit1",
+      "pageEvidenceId": "meb-archive-grade7-science-skills-unit1:p2",
+      "physicalPdfPage": 2,
+      "questionOrdinals": [
+        3
+      ],
+      "family": "evidence_based_preventive_design_choice",
+      "visualKind": "scenario_and_options",
+      "review": "local_raster_and_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "archive7-space-trend",
+      "sourceId": "meb-archive-grade7-science-skills-unit1",
+      "pageEvidenceId": "meb-archive-grade7-science-skills-unit1:p2",
+      "physicalPdfPage": 2,
+      "questionOrdinals": [
+        4
+      ],
+      "family": "graph_supported_vs_unsupported_inference",
+      "visualKind": "time_series_graph",
+      "review": "local_raster_and_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-genotype-constraint",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p19",
+      "physicalPdfPage": 19,
+      "questionOrdinals": [
+        2
+      ],
+      "family": "infer_impossible_genotype_under_multiple_constraints",
+      "visualKind": "partial_cross_visual",
+      "review": "local_raster_and_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-solid-pressure-variable",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p23",
+      "physicalPdfPage": 23,
+      "questionOrdinals": [
+        10
+      ],
+      "family": "controlled_variable_effect_inference",
+      "visualKind": "multiple_experiment_setups",
+      "review": "local_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-liquid-pressure-hypothesis",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p24",
+      "physicalPdfPage": 24,
+      "questionOrdinals": [
+        11
+      ],
+      "family": "select_observation_supporting_one_hypothesis",
+      "visualKind": "container_depth_gauge_panels",
+      "review": "local_raster_and_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-machine-claim-check",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p25",
+      "physicalPdfPage": 25,
+      "questionOrdinals": [
+        12
+      ],
+      "family": "necessary_vs_possible_claim_under_given_mechanical_conditions",
+      "visualKind": "two_position_board",
+      "review": "local_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-periodic-pattern",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p28",
+      "physicalPdfPage": 28,
+      "questionOrdinals": [
+        16
+      ],
+      "family": "pattern_and_set_relations_in_table",
+      "visualKind": "patterned_periodic_grid_legend",
+      "review": "local_raster_and_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-compound-inference",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p28",
+      "physicalPdfPage": 28,
+      "questionOrdinals": [
+        17
+      ],
+      "family": "new_substance_properties_from_closed_experiment",
+      "visualKind": "textual_experiment_evidence",
+      "review": "local_raster_and_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-acid-observation-claim",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p29",
+      "physicalPdfPage": 29,
+      "questionOrdinals": [
+        18
+      ],
+      "family": "claim_supported_by_given_observation_not_unseen_case",
+      "visualKind": "three_experiment_panels",
+      "review": "local_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-heating-fair-test",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p30",
+      "physicalPdfPage": 30,
+      "questionOrdinals": [
+        19
+      ],
+      "family": "which_variable_can_be_isolated_from_setup_comparison",
+      "visualKind": "heater_mass_material_panels",
+      "review": "local_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    },
+    {
+      "id": "lgs2024-phase-graph-transfer",
+      "sourceId": "lgs-2024-numerical",
+      "pageEvidenceId": "lgs-2024-numerical:p30",
+      "physicalPdfPage": 30,
+      "questionOrdinals": [
+        20
+      ],
+      "family": "transfer_same_substance_graph_with_changed_mass",
+      "visualKind": "temperature_time_graph",
+      "review": "local_text_review",
+      "currentEquivalence": "requires_current_outcome_mapping_not_same_unit_number",
+      "bodyCopied": false,
+      "optionsNumbersMediaCopied": false
+    }
+  ],
+  "cells": [
+    {
+      "id": "g6-physics",
+      "grade": 6,
+      "branch": "physics",
+      "officialSeparateCourse": false,
+      "programSourceId": "tymm-current-fen-bilimleri",
+      "programVersion": "TYMM-2026-catalog",
+      "activeProgramBindingStatus": "tymm_cohort_confirmed_catalog_outcomes_matched_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "Güneş sistemi ve tutulma modelleri",
+          "unitNumber": 1,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p112"
+          ],
+          "outcomeCodes": [
+            "FB.6.1.1",
+            "FB.6.1.2",
+            "FB.6.1.3",
+            "FB.6.1.4"
+          ]
+        },
+        {
+          "editorialTopic": "Aynı doğrultuda kuvvet; sürat ve hızın nitel karşılaştırması",
+          "unitNumber": 2,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p116"
+          ],
+          "outcomeCodes": [
+            "FB.6.2.1",
+            "FB.6.2.2",
+            "FB.6.2.3"
+          ]
+        },
+        {
+          "editorialTopic": "Yansıma, aynalar, renk ve soğurma",
+          "unitNumber": 4,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p127"
+          ],
+          "outcomeCodes": [
+            "FB.6.4.1",
+            "FB.6.4.2",
+            "FB.6.4.3",
+            "FB.6.4.4",
+            "FB.6.4.5",
+            "FB.6.4.6",
+            "FB.6.4.7"
+          ]
+        },
+        {
+          "editorialTopic": "Elektrik iletimi ve direnç",
+          "unitNumber": 6,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p138"
+          ],
+          "outcomeCodes": [
+            "FB.6.6.1",
+            "FB.6.6.2",
+            "FB.6.6.3"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "force_opposed_arrows",
+          "outcomeCodes": [
+            "FB.6.2.1"
+          ],
+          "taskGoal": "Aynı doğrultudaki kuvvetlerin yönlerini ayırıp bileşke/dengeleyici ilişkisini açıklama",
+          "visualKind": "labelled_collinear_force_arrows",
+          "conditions": [
+            "Kuvvetler aynı doğrultuda",
+            "Büyüklük ve yönler etiketli",
+            "Hareket hakkında net kuvvetten tek başına sabit hız sonucu çıkarılmaz"
+          ],
+          "independentVerification": "Yönlü tam sayı toplamı ve bütün şıkların ayrı sınanması",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "reflection_normal",
+          "outcomeCodes": [
+            "FB.6.4.2"
+          ],
+          "taskGoal": "Gelen/yansıyan ışını normalle ilişkilendirip hatalı açı yorumunu ayırma",
+          "visualKind": "labelled_mirror_normal_ray_board",
+          "conditions": [
+            "Normal yüzeye diktir",
+            "Açılar yüzeye değil normale göre tanımlı",
+            "Şekil etiketleri modelle tutarlı"
+          ],
+          "independentVerification": "Normal açı eşitliği; yüzey açılarıyla karışan bütün adayların ayrı kontrolü",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "circuit_fair_variable",
+          "outcomeCodes": [
+            "FB.6.6.2"
+          ],
+          "taskGoal": "Ampul parlaklığına etkiyi test eden kontrollü düzenek çiftini seçme",
+          "visualKind": "labelled_circuit_variable_table",
+          "conditions": [
+            "Pil ve ampul özdeş",
+            "Tek tel özelliği değişir",
+            "Görsel tel uzunluğu/kalınlığı modelle aynı",
+            "Ohm kanunu hesabı üretilmez"
+          ],
+          "independentVerification": "Bağımsız/bağımlı/kontrol değişken matrisi; tek değişken koşulu",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    },
+    {
+      "id": "g6-chemistry",
+      "grade": 6,
+      "branch": "chemistry",
+      "officialSeparateCourse": false,
+      "programSourceId": "tymm-current-fen-bilimleri",
+      "programVersion": "TYMM-2026-catalog",
+      "activeProgramBindingStatus": "tymm_cohort_confirmed_catalog_outcomes_matched_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "Genleşme, hâl değişimi ve yoğunluk",
+          "unitNumber": 5,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p132"
+          ],
+          "outcomeCodes": [
+            "FB.6.5.1",
+            "FB.6.5.2",
+            "FB.6.5.3",
+            "FB.6.5.4",
+            "FB.6.5.5",
+            "FB.6.5.6"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "density_displacement",
+          "outcomeCodes": [
+            "FB.6.5.3"
+          ],
+          "taskGoal": "Sıvı seviyesinin artışından cismin hacmini bulup kütle/hacimle yoğunluğu açıklama",
+          "visualKind": "balance_graduated_cylinder_before_after",
+          "conditions": [
+            "Cisim sıvıda çözünmez",
+            "Tamamen sıvı içinde",
+            "Taşma yok",
+            "Başlangıç/son seviye birimleri aynı"
+          ],
+          "independentVerification": "Hacim farkı ve kütle/hacim oranını ayrı aritmetik oracle; birim kontrolü",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "phase_identification",
+          "outcomeCodes": [
+            "FB.6.5.2"
+          ],
+          "taskGoal": "Aynı basınçta saf madde deneyinden erime/donma/kaynama gözlemini ayırma",
+          "visualKind": "phase_temperature_observation_table",
+          "conditions": [
+            "Madde saf",
+            "Basınç aynı",
+            "Hâl ve zaman gözlemleri açık",
+            "Genel olarak her ısınmanın sıcaklığı artıracağı varsayılmaz"
+          ],
+          "independentVerification": "Gözlem tablosu ile saf madde hâl değişimi sabit sıcaklık önermesi",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "ice_water_density",
+          "outcomeCodes": [
+            "FB.6.5.5"
+          ],
+          "taskGoal": "Eşit kütleli su/buzun hacim farkını yoğunluk ve canlı yaşamıyla ilişkilendirme",
+          "visualKind": "equal_mass_water_ice_volume_board",
+          "conditions": [
+            "Kapalı örnekte kütle kaybı yok",
+            "Eşit kütle şartı açık",
+            "Buz yoğunluğu sıvı sudan küçük",
+            "Kaldırma kuvveti formülü yok"
+          ],
+          "independentVerification": "Eşit kütlede hacim sıralamasından ters yoğunluk sıralaması",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    },
+    {
+      "id": "g6-biology",
+      "grade": 6,
+      "branch": "biology",
+      "officialSeparateCourse": false,
+      "programSourceId": "tymm-current-fen-bilimleri",
+      "programVersion": "TYMM-2026-catalog",
+      "activeProgramBindingStatus": "tymm_cohort_confirmed_catalog_outcomes_matched_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "Üreme, gelişme ve düzenleyici sistemler",
+          "unitNumber": 3,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p120"
+          ],
+          "outcomeCodes": [
+            "FB.6.3.1",
+            "FB.6.3.2",
+            "FB.6.3.3",
+            "FB.6.3.4",
+            "FB.6.3.5",
+            "FB.6.3.6",
+            "FB.6.3.7",
+            "FB.6.3.8",
+            "FB.6.3.9"
+          ]
+        },
+        {
+          "editorialTopic": "Biyoçeşitlilik ve çevre etkileşimi",
+          "unitNumber": 7,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p142"
+          ],
+          "outcomeCodes": [
+            "FB.6.7.1",
+            "FB.6.7.2",
+            "FB.6.7.3",
+            "FB.6.7.4"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "germination_control",
+          "outcomeCodes": [
+            "FB.6.3.3"
+          ],
+          "taskGoal": "Çimlenme hipotezi için yalnız bir değişkeni değiştiren karşılaştırmayı seçme",
+          "visualKind": "seed_experiment_conditions_matrix",
+          "conditions": [
+            "Aynı tür ve benzer canlı tohumlar",
+            "Nem/sıcaklık/oksijen koşulları açık",
+            "Çimlenme ile sonraki fotosentez karıştırılmaz",
+            "Gözlem süresi eşit"
+          ],
+          "independentVerification": "Kontrol edilen özellikler ve tek değişken matrisi",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "reproduction_comparison",
+          "outcomeCodes": [
+            "FB.6.3.1"
+          ],
+          "taskGoal": "Eşeyli/eşeysiz üreme kanıtını süreç kartlarından ayırma",
+          "visualKind": "labelled_reproduction_process_cards",
+          "conditions": [
+            "Süreç özelliği metinde açık",
+            "Kalıtsal çeşitlilik mutlak tüm bireyler aynı iddiasına indirgenmez",
+            "Tür ve üreme örneği yaşa uygun"
+          ],
+          "independentVerification": "Döllenme/ata sayısı süreç önermeleri ile şık doğruluk tablosu",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "biodiversity_evidence",
+          "outcomeCodes": [
+            "FB.6.7.1"
+          ],
+          "taskGoal": "Tür çeşitliliği ile tek türün birey sayısı artışını farklı kanıt olarak yorumlama",
+          "visualKind": "habitat_species_presence_table",
+          "conditions": [
+            "Örnekleme alanı/süresi eşit",
+            "Veri tüm ekosistemin kanıtı diye genellenmez",
+            "Tür etiketi birey sayısından ayrı"
+          ],
+          "independentVerification": "Tür kümesi sayımı ile birey toplamını ayrı hesaplama",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    },
+    {
+      "id": "g7-physics",
+      "grade": 7,
+      "branch": "physics",
+      "officialSeparateCourse": false,
+      "programSourceId": "tymm-current-fen-bilimleri",
+      "programVersion": "TYMM-2026-catalog",
+      "activeProgramBindingStatus": "tymm_cohort_confirmed_catalog_outcomes_matched_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "Uzay araştırmaları ve yıldız modelleri",
+          "unitNumber": 1,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p147"
+          ],
+          "outcomeCodes": [
+            "FB.7.1.1",
+            "FB.7.1.2",
+            "FB.7.1.3",
+            "FB.7.1.4",
+            "FB.7.1.5"
+          ]
+        },
+        {
+          "editorialTopic": "İş, kinetik/potansiyel enerji ve dönüşüm",
+          "unitNumber": 2,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p152"
+          ],
+          "outcomeCodes": [
+            "FB.7.2.1",
+            "FB.7.2.2",
+            "FB.7.2.3"
+          ]
+        },
+        {
+          "editorialTopic": "Kırılma ve mercekler",
+          "unitNumber": 4,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p165"
+          ],
+          "outcomeCodes": [
+            "FB.7.4.1",
+            "FB.7.4.2",
+            "FB.7.4.3"
+          ]
+        },
+        {
+          "editorialTopic": "Elektriklenme ve yük sınıflama",
+          "unitNumber": 6,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p177"
+          ],
+          "outcomeCodes": [
+            "FB.7.6.1",
+            "FB.7.6.2",
+            "FB.7.6.3"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "work_direction",
+          "outcomeCodes": [
+            "FB.7.2.1"
+          ],
+          "taskGoal": "Kuvvetin doğrultusuyla yer değiştirmeyi karşılaştırıp fiziksel işi günlük işten ayırma",
+          "visualKind": "force_displacement_direction_cards",
+          "conditions": [
+            "Kuvvet/yer değiştirme doğrultuları açık",
+            "Cisim yer değiştiriyor mu belli",
+            "W=F×d sayısal hesaplaması zorunlu kılınmaz"
+          ],
+          "independentVerification": "İş koşulu önermeleri; hareket yok/perpendicular ayrımı",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "kinetic_potential_transform",
+          "outcomeCodes": [
+            "FB.7.2.3"
+          ],
+          "taskGoal": "Hareket modelinde enerji türleri dönüşümünü ve korunumu ilişkilendirme",
+          "visualKind": "track_positions_energy_direction_board",
+          "conditions": [
+            "Aynı cisim",
+            "Sürtünme ihmal edilme veya ısıya dönüşüm koşulu açık",
+            "Kinetik/potansiyel dışı ezber genişletmesi yok",
+            "Enerji dönüşümü matematiksel bağıntısı yok"
+          ],
+          "independentVerification": "Konum ve hareket üzerinden nitel enerji dönüşüm önermeleri",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "refraction_path",
+          "outcomeCodes": [
+            "FB.7.4.1"
+          ],
+          "taskGoal": "Ortam değişiminde ışık yolunu normalle ilişkilendirip doğru nitel çizimi seçme",
+          "visualKind": "two_media_boundary_normal_ray_board",
+          "conditions": [
+            "Ortamların optik yoğunluk sırası belirtilmiş",
+            "Geliş ışını normale paralel olmayan açık durum",
+            "Snell bağıntısı yok",
+            "Normal çizilmiş"
+          ],
+          "independentVerification": "Yoğun ortama/az yoğun ortama kırılma yönü; şekil-model tutarlılığı",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    },
+    {
+      "id": "g7-chemistry",
+      "grade": 7,
+      "branch": "chemistry",
+      "officialSeparateCourse": false,
+      "programSourceId": "tymm-current-fen-bilimleri",
+      "programVersion": "TYMM-2026-catalog",
+      "activeProgramBindingStatus": "tymm_cohort_confirmed_catalog_outcomes_matched_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "Atom, element/bileşik, karışım ve ayırma",
+          "unitNumber": 5,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p169",
+            "tymm-current-fen-bilimleri:p175"
+          ],
+          "outcomeCodes": [
+            "FB.7.5.1",
+            "FB.7.5.2",
+            "FB.7.5.3",
+            "FB.7.5.4",
+            "FB.7.5.5",
+            "FB.7.5.6",
+            "FB.7.5.7",
+            "FB.7.5.8",
+            "FB.7.5.9",
+            "FB.7.5.10"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "particle_element_compound",
+          "outcomeCodes": [
+            "FB.7.5.4"
+          ],
+          "taskGoal": "Tanecik modelinden saf madde/element/bileşik ayrımını gerekçelendirme",
+          "visualKind": "labelled_particle_legend_cards",
+          "conditions": [
+            "Farklı semboller farklı atom türleri",
+            "Bağlı tanecik grupları açık",
+            "Renk tek anlam taşımaz",
+            "Bileşik ile karışım ayrılır"
+          ],
+          "independentVerification": "Atom türü ve tanecik türü kümeleri; madde sınıflama doğruluk matrisi",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "dissolution_fair_test",
+          "outcomeCodes": [
+            "FB.7.5.9"
+          ],
+          "taskGoal": "Çözünme hızını etkileyen tek etken için adil karşılaştırma seçme",
+          "visualKind": "dissolution_trial_conditions_table",
+          "conditions": [
+            "Aynı çözünen/çözücü",
+            "Başlangıç miktarları eşit",
+            "Sıcaklık/tanecik boyutu/karıştırma ayrı özellikler",
+            "Hız ile en fazla çözünen miktar karıştırılmaz"
+          ],
+          "independentVerification": "Tek kontrollü değişken tablosu; hız/gözlem yönü",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "separation_method",
+          "outcomeCodes": [
+            "FB.7.5.10"
+          ],
+          "taskGoal": "Karışım özelliklerine göre uygun ayırma yolunu seçip nedenini açıklama",
+          "visualKind": "mixture_properties_process_flow",
+          "conditions": [
+            "Tanecik boyutu, çözünürlük, yoğunluk veya erime/kaynama farkı açık verilmiş",
+            "Kaynak örnekleri buharlaştırma, yoğunluk farkı ve damıtma vb.; yalnız üç yönteme kapalı değildir",
+            "Süzme seçilirse çözünmeme, tanecik boyutu ve süzgeç koşulları açık",
+            "Bu dilimde mıknatısla ayırma için doğrudan güncel program sayfa bağı bulunmadı",
+            "Yeni madde oluştuğu ileri sürülmez",
+            "İşlem güvenliği öğretmen denetimli"
+          ],
+          "independentVerification": "Özellik-yöntem uygunluk matrisi; bütün seçenek yollarının koşulları",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    },
+    {
+      "id": "g7-biology",
+      "grade": 7,
+      "branch": "biology",
+      "officialSeparateCourse": false,
+      "programSourceId": "tymm-current-fen-bilimleri",
+      "programVersion": "TYMM-2026-catalog",
+      "activeProgramBindingStatus": "tymm_cohort_confirmed_catalog_outcomes_matched_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "Sindirim, dolaşım, solunum ve boşaltım sistemleri",
+          "unitNumber": 3,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p156",
+            "tymm-current-fen-bilimleri:p157"
+          ],
+          "outcomeCodes": [
+            "FB.7.3.1",
+            "FB.7.3.2",
+            "FB.7.3.3",
+            "FB.7.3.4",
+            "FB.7.3.5",
+            "FB.7.3.6",
+            "FB.7.3.7",
+            "FB.7.3.8",
+            "FB.7.3.9"
+          ]
+        },
+        {
+          "editorialTopic": "Besin ilişkileri ve kaynak tasarrufu",
+          "unitNumber": 7,
+          "pageEvidenceIds": [
+            "tymm-current-fen-bilimleri:p181"
+          ],
+          "outcomeCodes": [
+            "FB.7.7.1",
+            "FB.7.7.2"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "digestion_route",
+          "outcomeCodes": [
+            "FB.7.3.1"
+          ],
+          "taskGoal": "Modelde besinin izlediği yolu organların görevleriyle ilişkilendirme",
+          "visualKind": "labelled_digestive_flow_board",
+          "conditions": [
+            "Besin yolu ile yardımcı organ ayrılır",
+            "Tıbbi tanı yok",
+            "Organ etiketleri okunur"
+          ],
+          "independentVerification": "Yönlü anatomik besin yolu ve görev ilişkisi",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "circulation_route",
+          "outcomeCodes": [
+            "FB.7.3.3"
+          ],
+          "taskGoal": "Dolaşım modelinde organ-damar akışını izleyip küçük/büyük dolaşımı ayırma",
+          "visualKind": "labelled_heart_lung_body_flow_board",
+          "conditions": [
+            "Akış okları açık",
+            "Atardamarı her durumda oksijenli diye genelleme yok",
+            "Küçük/büyük dolaşım koşulu belirtilmiş"
+          ],
+          "independentVerification": "Kalp-akciğer-vücut yönlü akış ve damar ilişkisi",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "food_web_roles",
+          "outcomeCodes": [
+            "FB.7.7.1"
+          ],
+          "taskGoal": "Besin ilişkisi oklarından üretici/tüketici rollerini çıkarma",
+          "visualKind": "food_web_with_arrow_semantics",
+          "conditions": [
+            "Ok besinden tüketene enerji aktarımını gösterir",
+            "Tür rolleri/verilen beslenme ilişkileri açık",
+            "Ok yönü alt metinde cevaba dönüşmez"
+          ],
+          "independentVerification": "Yönlü kenarlar ve rol önermeleri; alternatif yorum engeli",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    },
+    {
+      "id": "g8-physics",
+      "grade": 8,
+      "branch": "physics",
+      "officialSeparateCourse": false,
+      "programSourceId": "legacy-2018-fen-bilimleri",
+      "programVersion": "MEB-2018",
+      "activeProgramBindingStatus": "current_program_cohort_confirmed_2018_course_candidate_with_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "Mevsimler; hava ve iklim",
+          "unitNumber": 1,
+          "pageEvidenceIds": [
+            "legacy-2018-fen-bilimleri:p49"
+          ],
+          "outcomeCodes": [
+            "F.8.1.1.1",
+            "F.8.1.2.1",
+            "F.8.1.2.2"
+          ]
+        },
+        {
+          "editorialTopic": "Basınç değişkenleri ve günlük uygulamalar",
+          "unitNumber": 3,
+          "pageEvidenceIds": [
+            "legacy-2018-fen-bilimleri:p51"
+          ],
+          "outcomeCodes": [
+            "F.8.3.1.1",
+            "F.8.3.1.2",
+            "F.8.3.1.3"
+          ]
+        },
+        {
+          "editorialTopic": "Basit makine avantajları ve tasarım",
+          "unitNumber": 5,
+          "pageEvidenceIds": [
+            "legacy-2018-fen-bilimleri:p53"
+          ],
+          "outcomeCodes": [
+            "F.8.5.1.1",
+            "F.8.5.1.2"
+          ]
+        },
+        {
+          "editorialTopic": "Elektrik yükleri ve elektrik enerjisi",
+          "unitNumber": 7,
+          "pageEvidenceIds": [
+            "legacy-2018-fen-bilimleri:p55",
+            "legacy-2018-fen-bilimleri:p56"
+          ],
+          "outcomeCodes": [
+            "F.8.7.1.1",
+            "F.8.7.1.2",
+            "F.8.7.1.3",
+            "F.8.7.2.1",
+            "F.8.7.2.2",
+            "F.8.7.3.1",
+            "F.8.7.3.2",
+            "F.8.7.3.3",
+            "F.8.7.3.4",
+            "F.8.7.3.5",
+            "F.8.7.3.6"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "solid_pressure_control",
+          "outcomeCodes": [
+            "F.8.3.1.1"
+          ],
+          "taskGoal": "Katı basıncı deneyinde yalnız ağırlık veya temas alanını sınayan çift seçme",
+          "visualKind": "solid_contact_area_weight_comparison",
+          "conditions": [
+            "Zemin aynı",
+            "Temas yüzeyi açık",
+            "Ağırlık ve temas alanı birbirinden ayrılır",
+            "P=F/A hesaplaması yok"
+          ],
+          "independentVerification": "Ağırlık/alan nitel ilişkisi ve tek değişken matrisi",
+          "styleEvidenceIds": [
+            "lgs2024-solid-pressure-variable"
+          ],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "liquid_depth_control",
+          "outcomeCodes": [
+            "F.8.3.1.2"
+          ],
+          "taskGoal": "Aynı sıvıda noktanın derinliği ile kabın şekli/miktarını ayırma",
+          "visualKind": "labelled_liquid_depth_points_board",
+          "conditions": [
+            "Sıvı aynı",
+            "Açık kaplar aynı ortamda",
+            "Derinlik yüzeyden ölçülür",
+            "ρgh hesabı yok"
+          ],
+          "independentVerification": "Eşit derinlik/eşit basınç ve derinlik sıralaması",
+          "styleEvidenceIds": [
+            "lgs2024-liquid-pressure-hypothesis"
+          ],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "machine_work_tradeoff",
+          "outcomeCodes": [
+            "F.8.5.1.1"
+          ],
+          "taskGoal": "İdeal basit makinede kuvvet kazancı ile yol değişimini ve işten kazanç olmadığını açıklama",
+          "visualKind": "labelled_qualitative_machine_comparison",
+          "conditions": [
+            "İdeal/sürtünmesiz şart belirtilmiş",
+            "Aynı yük ve çıkış yüksekliği",
+            "Kaldıraç/makara bağıntısı hesabı yok"
+          ],
+          "independentVerification": "Nitel kuvvet-yol işten kazanç yok önermeleri",
+          "styleEvidenceIds": [
+            "lgs2024-machine-claim-check"
+          ],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    },
+    {
+      "id": "g8-chemistry",
+      "grade": 8,
+      "branch": "chemistry",
+      "officialSeparateCourse": false,
+      "programSourceId": "legacy-2018-fen-bilimleri",
+      "programVersion": "MEB-2018",
+      "activeProgramBindingStatus": "current_program_cohort_confirmed_2018_course_candidate_with_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "Madde, değişim, asit/baz ve ısı etkileşimi",
+          "unitNumber": 4,
+          "pageEvidenceIds": [
+            "legacy-2018-fen-bilimleri:p52",
+            "legacy-2018-fen-bilimleri:p53"
+          ],
+          "outcomeCodes": [
+            "F.8.4.1.1",
+            "F.8.4.1.2",
+            "F.8.4.2.1",
+            "F.8.4.3.1",
+            "F.8.4.4.1",
+            "F.8.4.4.2",
+            "F.8.4.4.3",
+            "F.8.4.4.4",
+            "F.8.4.4.5",
+            "F.8.4.4.6",
+            "F.8.4.4.7",
+            "F.8.4.5.1",
+            "F.8.4.5.2",
+            "F.8.4.5.3",
+            "F.8.4.5.4",
+            "F.8.4.6.1",
+            "F.8.4.6.2"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "periodic_pattern",
+          "outcomeCodes": [
+            "F.8.4.1.2"
+          ],
+          "taskGoal": "Etiketli/desenli periyodik tablo parçasında sınıf-grup-periyot ilişkisini çıkarma",
+          "visualKind": "periodic_grid_pattern_legend",
+          "conditions": [
+            "Metal/yarımetal/ametal anahtarı açık",
+            "Element özellikleri ayrıntısına girilmez",
+            "Dış tablo kaynak gövdesi kopyalanmaz"
+          ],
+          "independentVerification": "Satır/sütun ve verilen kategori kümeleri",
+          "styleEvidenceIds": [
+            "lgs2024-periodic-pattern"
+          ],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "pH_classification",
+          "outcomeCodes": [
+            "F.8.4.4.4"
+          ],
+          "taskGoal": "Verilen pH değerleri/ayraç gözleminden asit-nötr-baz ayrımını açıklama",
+          "visualKind": "labelled_ph_indicator_table",
+          "conditions": [
+            "Sulu çözelti ve okul düzeyi koşul açık",
+            "pH7 nötr sınır kullanımı açık",
+            "Çocuklara kimyasal deneme talimatı verilmez",
+            "Asit/baz gücü konsantrasyonla karıştırılmaz"
+          ],
+          "independentVerification": "Verilen pH<7/=7/>7 sınıflama; gözlem uyumu",
+          "styleEvidenceIds": [
+            "lgs2024-acid-observation-claim"
+          ],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "chemical_new_substance",
+          "outcomeCodes": [
+            "F.8.4.2.1",
+            "F.8.4.3.1"
+          ],
+          "taskGoal": "Gözlem/süreçten yeni madde oluşmasını fiziksel hâl değişiminden ayırma",
+          "visualKind": "before_after_substance_property_cards",
+          "conditions": [
+            "Yeni madde kanıtı belirtilmiş",
+            "Renk/ısı değişimi tek başına evrensel kesin kanıt sayılmaz",
+            "Tepkime denklemi/formül yok"
+          ],
+          "independentVerification": "Açık madde-kimliği önermeleri; hâl değişimi kimlik korur",
+          "styleEvidenceIds": [
+            "lgs2024-compound-inference"
+          ],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    },
+    {
+      "id": "g8-biology",
+      "grade": 8,
+      "branch": "biology",
+      "officialSeparateCourse": false,
+      "programSourceId": "legacy-2018-fen-bilimleri",
+      "programVersion": "MEB-2018",
+      "activeProgramBindingStatus": "current_program_cohort_confirmed_2018_course_candidate_with_final_school_plan_pending",
+      "requestedDraftCount": 50,
+      "outcomeGroups": [
+        {
+          "editorialTopic": "DNA, kalıtım, değişim, adaptasyon ve biyoteknoloji",
+          "unitNumber": 2,
+          "pageEvidenceIds": [
+            "legacy-2018-fen-bilimleri:p50",
+            "legacy-2018-fen-bilimleri:p51"
+          ],
+          "outcomeCodes": [
+            "F.8.2.1.1",
+            "F.8.2.1.2",
+            "F.8.2.1.3",
+            "F.8.2.2.1",
+            "F.8.2.2.2",
+            "F.8.2.2.3",
+            "F.8.2.3.1",
+            "F.8.2.3.2",
+            "F.8.2.3.3",
+            "F.8.2.4.1",
+            "F.8.2.5.1",
+            "F.8.2.5.2",
+            "F.8.2.5.3"
+          ]
+        },
+        {
+          "editorialTopic": "Besin ağı, fotosentez/solunum, döngüler ve sürdürülebilirlik",
+          "unitNumber": 6,
+          "pageEvidenceIds": [
+            "legacy-2018-fen-bilimleri:p54",
+            "legacy-2018-fen-bilimleri:p55"
+          ],
+          "outcomeCodes": [
+            "F.8.6.1.1",
+            "F.8.6.2.1",
+            "F.8.6.2.2",
+            "F.8.6.2.3",
+            "F.8.6.3.1",
+            "F.8.6.3.2",
+            "F.8.6.3.3",
+            "F.8.6.4.1",
+            "F.8.6.4.2",
+            "F.8.6.4.3",
+            "F.8.6.4.4",
+            "F.8.6.4.5"
+          ]
+        }
+      ],
+      "priorityFamilies": [
+        {
+          "id": "one_trait_cross",
+          "outcomeCodes": [
+            "F.8.2.2.2"
+          ],
+          "taskGoal": "Tek karakter çaprazlamasında verilen genotiplerden olası yavru örüntülerini kurma",
+          "visualKind": "single_trait_cross_grid",
+          "conditions": [
+            "Tek karakter ve baskınlık açık",
+            "Model basit Mendel koşullarında",
+            "Gerçek çocuk/aile verisi yok",
+            "Olasılık gerçekleşen yavru sayısına kesin eşitlenmez"
+          ],
+          "independentVerification": "Gamete setlerinin bağımsız kartezyen çarpımı",
+          "styleEvidenceIds": [
+            "lgs2024-genotype-constraint"
+          ],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "mutation_modification",
+          "outcomeCodes": [
+            "F.8.2.3.3"
+          ],
+          "taskGoal": "Genetik değişim kanıtını çevresel fenotip değişiminden ayırma",
+          "visualKind": "paired_environment_genetic_evidence_cards",
+          "conditions": [
+            "Verilen neden/kalıtım gözlemi açık",
+            "Mutasyonun her zaman kalıtılacağı genellemesi yok",
+            "Uyum ile bireyin isteği karıştırılmaz"
+          ],
+          "independentVerification": "Genetik madde/çevre kanıtlarının kaynak önermeleri",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        },
+        {
+          "id": "photosynthesis_control",
+          "outcomeCodes": [
+            "F.8.6.2.2"
+          ],
+          "taskGoal": "Fotosentez hızına ilişkin hipotezi kontrollü deney verisiyle sınama",
+          "visualKind": "plant_light_co2_trial_table",
+          "conditions": [
+            "Aynı tür/benzer bitki",
+            "Ölçme süresi/diğer koşullar eşit",
+            "Glukoz/oksijen ölçütü soruda tanımlı",
+            "Kimyasal fotosentez denklemi yok"
+          ],
+          "independentVerification": "Kontrol değişkenleri ve verilen üretim verisi kıyaslaması",
+          "styleEvidenceIds": [],
+          "classification": "original_editorial_family_proposal_not_official_question_taxonomy",
+          "fullOutcomeCoverage": false
+        }
+      ],
+      "gaps": [
+        "Textbook full content and page mapping not reviewed in this slice",
+        "Priority families sample the source; all outcome performance evidence and annual distribution remain unproven"
+      ]
+    }
+  ],
+  "integratedRouting": [
+    {
+      "codes": [
+        "FB.6.7.3",
+        "FB.6.7.4"
+      ],
+      "primaryCell": "g6-biology",
+      "secondaryBranchTags": [
+        "chemistry",
+        "integrated"
+      ],
+      "reason": "Environmental fuel and local problem contexts; same question counted once"
+    },
+    {
+      "codes": [
+        "FB.7.7.2"
+      ],
+      "primaryCell": "g7-biology",
+      "secondaryBranchTags": [
+        "chemistry",
+        "integrated"
+      ],
+      "reason": "Resource conservation is cross-disciplinary; same question counted once"
+    },
+    {
+      "codes": [
+        "F.8.4.5.1",
+        "F.8.4.5.2",
+        "F.8.4.5.3",
+        "F.8.4.5.4"
+      ],
+      "primaryCell": "g8-chemistry",
+      "secondaryBranchTags": [
+        "physics"
+      ],
+      "reason": "Heat/matter official unit routed to matter/chemistry quota here without duplicate stock"
+    },
+    {
+      "codes": [
+        "F.8.6.4.1",
+        "F.8.6.4.2",
+        "F.8.6.4.3",
+        "F.8.6.4.4",
+        "F.8.6.4.5"
+      ],
+      "primaryCell": "g8-biology",
+      "secondaryBranchTags": [
+        "chemistry",
+        "integrated"
+      ],
+      "reason": "Sustainability/waste stream contextual overlap without duplicate stock"
+    }
+  ],
+  "activeScopeRules": [
+    {
+      "id": "g6-speed-no-arithmetic-graph-conversion",
+      "grade": 6,
+      "branches": [
+        "physics"
+      ],
+      "outcomeCodes": [
+        "FB.6.2.3"
+      ],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p118",
+      "excludedTaskKinds": [
+        "speed_numerical_calculation",
+        "speed_graph_reading",
+        "speed_unit_conversion"
+      ],
+      "allowedAlternative": "Qualitative path/displacement/direction comparison from model"
+    },
+    {
+      "id": "g6-matter-no-element-compound-extension",
+      "grade": 6,
+      "branches": [
+        "chemistry"
+      ],
+      "outcomeCodes": [
+        "FB.6.5.2"
+      ],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p134",
+      "excludedTaskKinds": [
+        "grade6_element_compound_mixture_formal_classification"
+      ],
+      "allowedAlternative": "Pure/nonpure particle matter and phase observation; element/compound taxonomy belongs to source-backed grade7"
+    },
+    {
+      "id": "g6-density-no-buoyancy-force",
+      "grade": 6,
+      "branches": [
+        "chemistry"
+      ],
+      "outcomeCodes": [
+        "FB.6.5.4"
+      ],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p135",
+      "excludedTaskKinds": [
+        "buoyant_force_formula"
+      ],
+      "allowedAlternative": "Density and observed sink/float ordering; do not calculate buoyant force"
+    },
+    {
+      "id": "g6-density-approved-arithmetic",
+      "grade": 6,
+      "branches": ["chemistry"],
+      "outcomeCodes": ["FB.6.5.3"],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p135",
+      "excludedTaskKinds": [],
+      "permittedTaskKinds": ["density_mass_volume_ratio", "density_displaced_volume_difference"],
+      "requiredConditions": ["Mass and volume units are explicit and compatible", "Displacement sample is fully immersed, insoluble and does not overflow"],
+      "allowedAlternative": "Density calculation is expressly taught; this permission does not extend to grade6 speed/velocity calculations"
+    },
+    {
+      "id": "g7-energy-no-formulas",
+      "grade": 7,
+      "branches": [
+        "physics"
+      ],
+      "outcomeCodes": [
+        "FB.7.2.3"
+      ],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p153",
+      "excludedTaskKinds": [
+        "kinetic_energy_formula",
+        "potential_energy_formula",
+        "energy_conversion_numerical_relation"
+      ],
+      "allowedAlternative": "Qualitative kinetic/potential transformation and friction condition"
+    },
+    {
+      "id": "g7-light-no-advanced-optics",
+      "grade": 7,
+      "branches": ["physics"],
+      "outcomeCodes": ["FB.7.4.1", "FB.7.4.2"],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p166",
+      "excludedTaskKinds": ["Snell_law_calculation", "critical_angle", "total_internal_reflection", "lens_special_ray_image_construction", "lens_mathematical_equation"],
+      "allowedAlternative": "Qualitative labelled normal/ray path between stated optically less/more dense transparent media; thin/thick-edged lens observations without special-ray image construction"
+    },
+    {
+      "id": "g7-digestion-no-enzyme-structure",
+      "grade": 7,
+      "branches": ["biology"],
+      "outcomeCodes": ["FB.7.3.1"],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p158",
+      "excludedTaskKinds": ["enzyme_molecular_structure"],
+      "allowedAlternative": "Digestive tract structures/functions, physical versus chemical digestion and liver/pancreas as helper organs"
+    },
+    {
+      "id": "g7-circulation-no-anatomical-molecular-extension",
+      "grade": 7,
+      "branches": ["biology"],
+      "outcomeCodes": ["FB.7.3.3"],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p159",
+      "excludedTaskKinds": ["heart_chamber_identification", "named_special_vessels_aorta", "blood_molecular_structure", "blood_cell_structure"],
+      "allowedAlternative": "Heart/lung/body routes, small and large circulation, artery/vein/capillary roles and oxygen change; blood cell functions only"
+    },
+    {
+      "id": "g7-separation-property-bound-scope",
+      "grade": 7,
+      "branches": ["chemistry"],
+      "outcomeCodes": ["FB.7.5.10"],
+      "pageEvidenceId": "tymm-current-fen-bilimleri:p175",
+      "excludedTaskKinds": ["magnetic_separation_without_current_program_page_anchor"],
+      "ruleClassification": "property_mapping_from_program_with_editorial_hold_for_unanchored_magnetic_extension",
+      "permittedTaskKinds": ["evaporation_from_stated_properties", "density_separation_from_stated_properties", "distillation_from_stated_properties", "filtration_with_explicit_particle_and_filter_conditions"],
+      "allowedAlternative": "Program names particle size, solubility, density and phase temperatures as discriminating properties and evaporation/density/distillation as nonexhaustive examples; filter inference needs explicit model conditions"
+    },
+    {
+      "id": "g8-pressure-no-equations",
+      "grade": 8,
+      "branches": [
+        "physics"
+      ],
+      "outcomeCodes": [
+        "F.8.3.1.1",
+        "F.8.3.1.2"
+      ],
+      "pageEvidenceId": "legacy-2018-fen-bilimleri:p51",
+      "excludedTaskKinds": [
+        "pressure_force_area_equation",
+        "liquid_pressure_rho_g_h",
+        "gas_pressure_variable_laws"
+      ],
+      "allowedAlternative": "Experimental variable control and qualitative ranking"
+    },
+    {
+      "id": "g8-machines-no-equations",
+      "grade": 8,
+      "branches": [
+        "physics"
+      ],
+      "outcomeCodes": [
+        "F.8.5.1.1"
+      ],
+      "pageEvidenceId": "legacy-2018-fen-bilimleri:p53",
+      "excludedTaskKinds": [
+        "lever_torque_equation",
+        "pulley_mechanical_advantage_equation"
+      ],
+      "allowedAlternative": "Qualitative force/path/work relationship and design"
+    },
+    {
+      "id": "g8-reactions-no-symbolic-equations",
+      "grade": 8,
+      "branches": [
+        "chemistry"
+      ],
+      "outcomeCodes": [
+        "F.8.4.3.1"
+      ],
+      "pageEvidenceId": "legacy-2018-fen-bilimleri:p52",
+      "excludedTaskKinds": [
+        "symbolic_chemical_reaction_equation"
+      ],
+      "allowedAlternative": "Substance identity/property and mass conservation observations"
+    },
+    {
+      "id": "g8-heat-no-QmcDeltaT",
+      "grade": 8,
+      "branches": [
+        "chemistry"
+      ],
+      "outcomeCodes": [
+        "F.8.4.5.1",
+        "F.8.4.5.2"
+      ],
+      "pageEvidenceId": "legacy-2018-fen-bilimleri:p53",
+      "excludedTaskKinds": [
+        "Q_m_c_deltaT",
+        "phase_change_heat_numerical_calculation"
+      ],
+      "allowedAlternative": "Controlled heating experiments and qualitative temperature graph transfer"
+    },
+    {
+      "id": "g8-biology-no-biochemical-equations",
+      "grade": 8,
+      "branches": [
+        "biology"
+      ],
+      "outcomeCodes": [
+        "F.8.6.2.1",
+        "F.8.6.2.3"
+      ],
+      "pageEvidenceId": "legacy-2018-fen-bilimleri:p54",
+      "excludedTaskKinds": [
+        "photosynthesis_chemical_equation",
+        "respiration_chemical_equation",
+        "respiration_stage_quantitative_yield"
+      ],
+      "allowedAlternative": "Given observations, controlled variables and organism-level processes"
+    }
+  ],
+  "textbookCandidates": [
+    {
+      "id": "tymm-book-48",
+      "grade": 6,
+      "part": 1,
+      "url": "https://tymm.meb.gov.tr/kitap/48/fen-bilimleri-6sinif-ders-kitabi-1kitap",
+      "status": "catalog_reference_content_not_reviewed_here"
+    },
+    {
+      "id": "tymm-book-49",
+      "grade": 6,
+      "part": 2,
+      "url": "https://tymm.meb.gov.tr/kitap/49/fen-bilimleri-6sinif-ders-kitabi-2kitap",
+      "status": "catalog_reference_content_not_reviewed_here"
+    },
+    {
+      "id": "tymm-book-272",
+      "grade": 7,
+      "part": 1,
+      "url": "https://tymm.meb.gov.tr/kitap/272/fen-bilimleri-7sinif-ders-kitabi-1kitap",
+      "status": "catalog_reference_content_not_reviewed_here"
+    },
+    {
+      "id": "tymm-book-273",
+      "grade": 7,
+      "part": 2,
+      "url": "https://tymm.meb.gov.tr/kitap/273/fen-bilimleri-7sinif-ders-kitabi-2kitap",
+      "status": "catalog_reference_content_not_reviewed_here"
+    }
+  ],
+  "historicalProgramAvailability": [
+    {
+      "id": "tymm-2024-fen-bilimleri",
+      "url": "https://tymm.meb.gov.tr/upload/program/2024programfen345678Onayli.pdf",
+      "status": "existing_registry_failed_http500_not_retried_this_slice",
+      "pdfSha256": null
+    }
+  ],
+  "bloom": {
+    "sourceUrl": "https://celt.iastate.edu/prepare-and-teach/design-your-course/blooms-taxonomy/",
+    "supportingPrimaryUrl": "https://lth.engineering.asu.edu/reference-guide/blooms-taxonomy/",
+    "revision": "Anderson_Krathwohl_2001",
+    "intendedDemandTags": [
+      "remember",
+      "understand",
+      "apply",
+      "analyze",
+      "evaluate",
+      "create"
+    ],
+    "classification": "editorial_intended_cognitive_process_not_a_difficulty_scale",
+    "notLearnerDiagnosis": true,
+    "creationRequiresConstructedEvidence": true
+  },
+  "reasonedSolutionContract": [
+    "What is asked",
+    "What each given value/condition means",
+    "Why this route fits",
+    "Source of each intermediate conclusion",
+    "Condition-aware shortcut",
+    "Check all options and visual/model consistency",
+    "Transfer boundary without extra question-stock credit"
+  ],
+  "acceptance": {
+    "acceptedProductQuestions": 0,
+    "publishedQuestions": 0,
+    "fullAnnualCoverage": false,
+    "learnerDevelopmentMeasured": false,
+    "sourceTrustedPrimary": true,
+    "newOriginalTransformationQARequired": true,
+    "expertAccepted": false
+  },
+  "activity": {
+    "newPdfDownloads": 0,
+    "cloudProviderCalls": 0,
+    "paidServiceCalls": 0,
+    "driveTransfers": 0,
+    "realChildDataUsed": false,
+    "localPdfHashesRechecked": 4,
+    "localProgramPageTextHashes": 33,
+    "localArchivePageTextHashes": 9,
+    "localArchiveRasterPagesReviewed": 4
+  },
+  "gaps": [
+    "27 priority family proposals do not fulfill50 questions per cell",
+    "All authentic annual lesson weighting and school-specific plan comparison remain pending",
+    "Grade8 course-specific final2026-27 school plan/decision reference is not collected in this slice",
+    "Textbook contents and complete2018-2024 science question style census are not reviewed here",
+    "Remote archive7unit1 timeout and unit4 too-large13MB error were not bypassed; use existing authorized cache only",
+    "No full public commercial reuse permission is inferred from access; product stems/options/media are original"
+  ]
+}
